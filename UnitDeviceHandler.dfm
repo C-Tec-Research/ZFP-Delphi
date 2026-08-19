@@ -1,0 +1,69 @@
+object FormDeviceHandler: TFormDeviceHandler
+  Left = 0
+  Top = 0
+  Caption = 'Devices'
+  ClientHeight = 565
+  ClientWidth = 877
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 524
+    Width = 877
+    Height = 41
+    Align = alBottom
+    TabOrder = 0
+    ExplicitLeft = 280
+    ExplicitTop = 496
+    ExplicitWidth = 185
+    object BitBtn1: TBitBtn
+      Left = 392
+      Top = 6
+      Width = 75
+      Height = 25
+      Caption = 'Done'
+      Kind = bkOK
+      NumGlyphs = 2
+      TabOrder = 0
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 0
+    Width = 877
+    Height = 524
+    Align = alClient
+    TabOrder = 1
+    ExplicitLeft = 368
+    ExplicitTop = 240
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object Panel3: TPanel
+      Left = 568
+      Top = 1
+      Width = 308
+      Height = 522
+      Align = alRight
+      BevelOuter = bvLowered
+      TabOrder = 0
+    end
+    object Panel4: TPanel
+      Left = 1
+      Top = 1
+      Width = 567
+      Height = 522
+      Align = alClient
+      BevelOuter = bvLowered
+      TabOrder = 1
+      ExplicitLeft = 568
+      ExplicitWidth = 308
+    end
+  end
+end

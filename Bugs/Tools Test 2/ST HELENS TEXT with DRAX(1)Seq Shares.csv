@@ -1,0 +1,19 @@
+152,BEGIN,1
+152,0,"RESET",0,1,2
+152,1,"ON",0,1,2
+152,2,"Simple Pulse",0,1,2
+152,3,"Mode Change",0,1,2
+152,4,"Enable Input",0,1,2
+152,5,"Enable Output",0,1,2
+152,6,"Enable Zone",0,1,2
+152,7,"Disable Input",0,1,2
+152,8,"Disable Output",0,1,2
+152,9,"Disable Zone",0,1,2
+152,12,"Access Level Cha",0,1,2
+152,13,"Mode Change",0,1,2
+152,17,"Disable OP Grp",0,1,2
+152,18,"Enable OP Grp",0,1,2
+152,19,"Mode Restore",0,1,2
+152,10,"Grp Evec",0,1,2
+152,11,"Frp Alert",0,1,2
+152,END,1

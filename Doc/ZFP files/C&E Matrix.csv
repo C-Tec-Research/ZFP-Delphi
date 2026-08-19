@@ -1,0 +1,12 @@
+"C&E Terms. Each row begins with the Input Group, then all the terms that the input group will use",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+30,BEGIN,op grp,op seq m0,op seq m1,op seq m2,op seq m3,op grp,op seq m0,op seq m1,op seq m2,op seq m3,op grp,op seq m0,op seq m1,op seq m2,op seq m3,op grp,op seq m0,op seq m1,op seq m2,op seq m3,op grp,op seq m0,op seq m1,op seq m2,op seq m3,op grp,op seq m0,op seq m1,op seq m2,op seq m3
+30,1,1,1,1,1,1,3,1,1,1,1,4,1,1,1,1,2,4,4,4,4,6,9,9,9,8, , , , , 
+30,2,2,1,1,1,1,4,1,1,1,1,3,1,1,1,1,1,4,4,4,4,5,1,1,1,1,,,,,
+30,3,1,1,1,1,1,2,1,1,1,1,3,1,1,1,1,4,1,1,1,1,5,1,1,1,1,,,,,
+30,10,1252,1,1,1,1,5,1,1,1,1,,,,,,,,,,,,,,,,,,,,
+30,11,1200,1,1,1,1,11,1,1,1,1,,,,,,,,,,,,,,,,,,,,
+30,257,1002,3,3,3,3,,,,,,,,,,,,,,,,,,,,,,,,,
+30,65278,1002,0,0,0,0,6,10,10,10,10,,,,,,,,,,,,,,,,,,,,
+30,END,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+10000,Update the file CRCs,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

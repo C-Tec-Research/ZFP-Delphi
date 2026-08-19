@@ -1,0 +1,16 @@
+100,BEGIN,1
+100,1,"GROUND FLOOR",0,1
+100,2,"1ST FLOOR",0,1
+100,3,"STAIR",0,1
+100,4,"WAREHOUSE",0,1
+100,201,System Zone
+100,202,System Zone
+100,203,System Zone
+100,204,System Zone
+100,205,System Zone
+100,206,System Zone
+100,207,System Zone
+100,208,System Zone
+100,209,System Zone
+100,210,ABUS Devices
+100,END,1

@@ -1,0 +1,66 @@
+150,BEGIN,1
+150,0,0,"One out All out","C & E Block"
+150,1,1,"All Input Devic","Input Group",2,1
+150,2,2,"Activated","Input Group State",2
+150,3,3,"ON","Action",1
+150,4,4,"All Output Devi","Output Object",4,1
+150,5,0,"Monitored I/Ps","C & E Block"
+150,6,1,"Class Change","Input Group",2,2
+150,7,2,"Activated","Input Group State",2
+150,8,3,"ON","Action",1
+150,9,4,"All Output Devi","Output Object",4,1
+150,10,1,"Alert","Input Group",2,3
+150,11,2,"Activated","Input Group State",2
+150,12,3,"Simple Pulse","Action",2
+150,13,4,"All Output Devi","Output Object",4,1
+150,14,0,"Relays","C & E Block"
+150,15,1,"All Input Devic","Input Group",2,1
+150,16,2,"Activated","Input Group State",2
+150,17,3,"ON","Action",1
+150,18,4,"Relay 1","Output Object",4,2
+150,19,4,"Relay 2","Output Object",4,3
+150,20,0,"Mode Change","C & E Block"
+150,21,1,"Mode Change","Input Group",2,17
+150,22,2,"On","Input Group State",2
+150,23,3,"Mode Change","Action",3
+150,24,4,"Mode 5","Output Object",6,1
+150,25,2,"Off","Input Group State",0
+150,26,3,"Mode Change","Action",3
+150,27,4,"Mode 1","Output Object",6,0
+150,28,0,"Cause and Effects 4","C & E Block"
+150,29,1,"Tone 1","Input Group",2,7
+150,30,2,"Activated","Input Group State",2
+150,31,3,"Tone 1 Pri","Action",13
+150,32,4,"Group 6","Output Object",4,6
+150,33,2,"Normal","Input Group State",0
+150,34,3,"OFF","Action",0
+150,35,4,"Group 6","Output Object",4,6
+150,36,1,"Tone 2","Input Group",2,8
+150,37,2,"Activated","Input Group State",2
+150,38,3,"Tone 1 Sec","Action",14
+150,39,4,"Group 6","Output Object",4,6
+150,40,2,"Normal","Input Group State",0
+150,41,3,"OFF","Action",0
+150,42,4,"Group 6","Output Object",4,6
+150,43,1,"Tone 3","Input Group",2,9
+150,44,2,"Activated","Input Group State",2
+150,45,3,"Tone 2 Pri","Action",15
+150,46,4,"Group 6","Output Object",4,6
+150,47,2,"Normal","Input Group State",0
+150,48,3,"OFF","Action",0
+150,49,4,"Group 6","Output Object",4,6
+150,50,1,"Tone 4","Input Group",2,10
+150,51,2,"Activated","Input Group State",2
+150,52,3,"Tone 2 Sec","Action",16
+150,53,4,"Group 6","Output Object",4,6
+150,54,2,"Normal","Input Group State",0
+150,55,3,"OFF","Action",0
+150,56,4,"Group 6","Output Object",4,6
+150,57,1,"Tone 5","Input Group",2,11
+150,58,2,"Activated","Input Group State",2
+150,59,3,"Tone 3 Pri","Action",17
+150,60,4,"Group 6","Output Object",4,6
+150,61,2,"Normal","Input Group State",0
+150,62,3,"OFF","Action",0
+150,63,4,"Group 6","Output Object",4,6
+150,END,1

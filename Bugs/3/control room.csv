@@ -1,0 +1,497 @@
+200,IAM,2,9A50,1
+135,BEGIN,1
+135,1,14/02/14  9:04:32,SYSTEM ,D: 10/0,Zone 205 - ,System Zone  ,Panel Device           ,Events Cleared ,4296,0,2058,                                                                                 
+
+135,2,14/02/14  9:04:50,L:4    ,D: 20/0,Zone  21 - ,SOUTH 1ST FLR,CORRIDOR BY KITCHEN    ,MISSING ,16386,20,65556,                                                                                     
+
+135,3,14/02/14  9:04:50,L:4    ,D: 21/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY KITCHEN VOID   ,MISSING ,16386,20,65557,                                                                                     
+
+135,4,14/02/14  9:04:51,L:4    ,D: 24/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS ROOM VOID     ,MISSING ,16386,20,65560,                                                                                     
+
+135,5,14/02/14  9:04:51,L:4    ,D: 22/0,Zone  21 - ,SOUTH 1ST FLR,CORRIDOR BY KITCHEN    ,MISSING ,16386,20,65558,                                                                                     
+
+135,6,14/02/14  9:04:52,L:4    ,D: 23/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS ROOM BY KITCHEN,MISSING ,16386,20,65559,                                                                                    
+
+135,7,14/02/14  9:04:53,L:4    ,D: 26/0,Zone  21 - ,SOUTH 1ST FLR,CORR VOID BY KITCHEN   ,MISSING ,16386,20,65562,                                                                                     
+
+135,8,14/02/14  9:04:54,L:4    ,D: 27/0,Zone  21 - ,SOUTH 1ST FLR,CORRIDOR BY KITCHEN    ,MISSING ,16386,20,65563,                                                                                     
+
+135,9,14/02/14  9:04:56,L:4    ,D: 28/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65564,                                                                                     
+
+135,10,14/02/14  9:04:58,L:4    ,D: 29/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,MISSING ,16386,20,65565,                                                                                     
+
+135,11,14/02/14  9:04:59,L:4    ,D: 30/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY SPONSORS VOID  ,MISSING ,16386,20,65566,                                                                                     
+
+135,12,14/02/14  9:04:59,L:4    ,D: 31/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY SPONSORS LOUNGE,MISSING ,16386,20,65567,                                                                                     
+
+135,13,14/02/14  9:05:00,L:4    ,D: 32/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65568,                                                                                     
+
+135,14,14/02/14  9:05:02,L:4    ,D: 33/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,MISSING ,16386,20,65569,                                                                                     
+
+135,15,14/02/14  9:05:04,L:4    ,D: 34/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY SPONSORS VOID  ,MISSING ,16386,20,65570,                                                                                     
+
+135,16,14/02/14  9:05:05,L:4    ,D: 35/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY SPONSORS LOUNGE,MISSING ,16386,20,65571,                                                                                     
+
+135,17,14/02/14  9:05:06,L:4    ,D: 36/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65572,                                                                                     
+
+135,18,14/02/14  9:05:07,L:4    ,D: 37/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,MISSING ,16386,20,65573,                                                                                     
+
+135,19,14/02/14  9:05:09,L:4    ,D: 38/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE CELLAR ,MISSING ,16386,20,65574,                                                                                     
+
+135,20,14/02/14  9:05:10,L:4    ,D: 39/0,Zone  14 - ,STAIR 3 S.   ,1ST FLOOR LANDING      ,MISSING ,16386,20,65575,                                                                                     
+
+135,21,14/02/14  9:05:12,L:4    ,D: 40/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE STORE  ,MISSING ,16386,20,65576,                                                                                     
+
+135,22,14/02/14  9:05:12,L:4    ,D: 41/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65577,                                                                                     
+
+135,23,14/02/14  9:05:13,L:4    ,D: 42/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65578,                                                                                     
+
+135,24,14/02/14  9:05:15,L:4    ,D: 43/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65579,                                                                                     
+
+135,25,14/02/14  9:05:17,L:4    ,D: 44/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,MISSING ,16386,20,65580,                                                                                     
+
+135,26,14/02/14  9:05:18,L:4    ,D: 45/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,MISSING ,16386,20,65581,                                                                                     
+
+135,27,14/02/14  9:05:18,L:4    ,D: 46/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65582,                                                                                     
+
+135,28,14/02/14  9:05:19,L:4    ,D: 47/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,MISSING ,16386,20,65583,                                                                                     
+
+135,29,14/02/14  9:05:22,L:4    ,D: 48/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65584,                                                                                     
+
+135,30,14/02/14  9:05:23,L:4    ,D: 49/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,MISSING ,16386,20,65585,                                                                                     
+
+135,31,14/02/14  9:05:25,L:4    ,D: 50/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65586,                                                                                     
+
+135,32,14/02/14  9:05:25,L:4    ,D: 51/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS STORE VOID    ,MISSING ,16386,20,65587,                                                                                     
+
+135,33,14/02/14  9:05:26,L:4    ,D: 52/0,Zone  23 - ,SOUTH 1ST FLR,FEMALE CHANGING VOID   ,MISSING ,16386,20,65588,                                                                                     
+
+135,34,14/02/14  9:05:28,L:4    ,D: 53/0,Zone  23 - ,SOUTH 1ST FLR,FEMALE CHANGING WC VOID,MISSING ,16386,20,65589,                                                                                     
+
+135,35,14/02/14  9:05:29,L:4    ,D: 54/0,Zone  23 - ,SOUTH 1ST FLR,MALE CHANGING WC VOID  ,MISSING ,16386,20,65590,                                                                                     
+
+135,36,14/02/14  9:05:31,L:4    ,D: 55/0,Zone  23 - ,SOUTH 1ST FLR,MALE CHANGING VOID     ,MISSING ,16386,20,65591,                                                                                     
+
+135,37,14/02/14  9:05:31,L:4    ,D: 56/0,Zone  23 - ,SOUTH 1ST FLR,MALE CHANGING WC       ,MISSING ,16386,20,65592,                                                                                     
+
+135,38,14/02/14  9:05:32,L:4    ,D: 57/0,Zone  23 - ,SOUTH 1ST FLR,FEMALE CHANGING WC     ,MISSING ,16386,20,65593,                                                                                     
+
+135,39,14/02/14  9:05:34,L:4    ,D: 58/0,Zone  16 - ,STAIR 5 W.   ,1ST FLOOR DIS. WC      ,MISSING ,16386,20,65594,                                                                                     
+
+135,40,14/02/14  9:05:36,L:4    ,D: 59/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN EXIT TO CORRIDOR,MISSING ,16386,20,65595,                                                                                    
+
+135,41,14/02/14  9:05:37,L:4    ,D: 60/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,MISSING ,16386,20,65596,                                                                                     
+
+135,42,14/02/14  9:05:37,L:4    ,D: 61/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN                ,MISSING ,16386,20,65597,                                                                                     
+
+135,43,14/02/14  9:05:39,L:4    ,D: 62/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,MISSING ,16386,20,65598,                                                                                     
+
+135,44,14/02/14  9:05:41,L:4    ,D: 63/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,MISSING ,16386,20,65599,                                                                                     
+
+135,45,14/02/14  9:05:42,L:4    ,D: 64/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,MISSING ,16386,20,65600,                                                                                     
+
+135,46,14/02/14  9:05:44,L:4    ,D: 65/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN                ,MISSING ,16386,20,65601,                                                                                     
+
+135,47,14/02/14  9:05:44,L:4    ,D: 66/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,WRONG TYPE ,16388,23,65602,                                                                                  
+
+135,48,14/02/14  9:05:45,L:4    ,D: 67/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN                ,MISSING ,16386,20,65603,                                                                                     
+
+135,49,14/02/14  9:05:47,L:4    ,D: 68/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN                ,MISSING ,16386,20,65604,                                                                                     
+
+135,50,14/02/14  9:05:49,L:4    ,D: 69/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,MISSING ,16386,20,65605,                                                                                     
+
+135,51,14/02/14  9:05:50,L:4    ,D: 70/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN EXIT TO SPONSORS,MISSING ,16386,20,65606,                                                                                    
+
+135,52,14/02/14  9:05:50,L:4    ,D:100/0,Zone   1 - ,SOUTH  G FLOOR,                       ,MISSING ,16386,20,65636,                                                                                    
+
+135,53,14/02/14  9:05:51,L:4    ,D:101/0,Zone   3 - ,WEST STAND   ,                       ,MISSING ,16386,20,65637,                                                                                     
+
+135,54,14/02/14  9:05:54,L:4    ,D:102/0,Zone   6 - ,NORTH STAND  ,                       ,MISSING ,16386,20,65638,                                                                                     
+
+135,55,14/02/14  9:05:54,L:4    ,D:103/0,Zone   1 - ,SOUTH  G FLOOR,                       ,MISSING ,16386,20,65639,                                                                                    
+
+135,56,14/02/14  9:05:56,L:4    ,D:  1/0,Zone   0 - ,,1ST FLOOR DIS WC       ,MISSING ,16386,20,65537,                                                                                                  
+
+135,57,14/02/14  9:05:57,L:4    ,D:  2/0,Zone  16 - ,STAIR 5 W.   ,1ST FLOOR LANDING      ,MISSING ,16386,20,65538,                                                                                     
+
+135,58,14/02/14  9:05:58,L:4    ,D:  3/0,Zone  16 - ,STAIR 5 W.   ,1ST FLOOR BY LIFT      ,MISSING ,16386,20,65539,                                                                                     
+
+135,59,14/02/14  9:06:00,L:4    ,D:  4/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY CLEANER STORE  ,MISSING ,16386,20,65540,                                                                                     
+
+135,60,14/02/14  9:06:01,L:4    ,D:  5/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY CLEANER STORE  ,MISSING ,16386,20,65541,                                                                                     
+
+135,61,14/02/14  9:06:03,L:4    ,D:  6/0,Zone  23 - ,SOUTH 1ST FLR,CLEANERS STORE         ,MISSING ,16386,20,65542,                                                                                     
+
+135,62,14/02/14  9:06:03,L:4    ,D:  7/0,Zone  23 - ,SOUTH 1ST FLR,MALE CHANGING          ,MISSING ,16386,20,65543,                                                                                     
+
+135,63,14/02/14  9:06:04,L:4    ,D:  8/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY MALE CHANGING  ,MISSING ,16386,20,65544,                                                                                     
+
+135,64,14/02/14  9:06:06,L:4    ,D:  9/0,Zone   0 - ,,MALE CHANGING WC       ,MISSING ,16386,20,65545,                                                                                                  
+
+135,65,14/02/14  9:06:08,L:4    ,D: 10/0,Zone   0 - ,,FEMALE CHANGING WC     ,MISSING ,16386,20,65546,                                                                                                  
+
+135,66,14/02/14  9:06:09,L:4    ,D: 11/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY FEMALE CHANGE  ,MISSING ,16386,20,65547,                                                                                     
+
+135,67,14/02/14  9:06:09,L:4    ,D: 12/0,Zone  23 - ,SOUTH 1ST FLR,FEMALE CHANGING        ,MISSING ,16386,20,65548,                                                                                     
+
+135,68,14/02/14  9:06:10,L:4    ,D: 13/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY FEMALE CHANGING,MISSING ,16386,20,65549,                                                                                     
+
+135,69,14/02/14  9:06:12,L:4    ,D: 14/0,Zone  23 - ,SOUTH 1ST FLR,CORR NEAR FEMALE CHANGE,MISSING ,16386,20,65550,                                                                                     
+
+135,70,14/02/14  9:06:14,L:4    ,D: 15/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY FEMALE CHANGE  ,MISSING ,16386,20,65551,                                                                                     
+
+135,71,14/02/14  9:06:15,L:4    ,D: 16/0,Zone  15 - ,STAIR 4 S.W. ,1ST FLOOR LANDING      ,MISSING ,16386,20,65552,                                                                                     
+
+135,72,14/02/14  9:06:16,L:4    ,D: 17/0,Zone  21 - ,SOUTH 1ST FLR,CORRIDOR BY KITCHEN    ,MISSING ,16386,20,65553,                                                                                     
+
+135,73,14/02/14  9:06:17,L:4    ,D: 18/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY KITCHEN/STAIR 4,MISSING ,16386,20,65554,                                                                                     
+
+135,74,14/02/14  9:06:19,L:4    ,D: 19/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,MISSING ,16386,20,65555,                                                                                     
+
+135,75,14/02/14  9:09:48,SYSTEM ,D: 10/0,Zone 205 - ,System Zone  ,Panel Device           ,User Logged in - AL3 User,4223,4,2058,                                                                       
+
+135,76,14/02/14  9:09:49,SYSTEM ,D: 10/0,Zone 205 - ,System Zone  ,Panel Device           ,Panel Reset ,4151,0,2058,                                                                                    
+
+135,77,14/02/14  9:09:49,SYSTEM ,D: 15/0,Zone 206 - ,System Zone  ,Aux Fuse               ,Short Circuit ,16411,26,67599,                                                                               
+
+135,78,14/02/14  9:09:50,SYSTEM ,D: 15/0,Zone 206 - ,System Zone  ,Aux Fuse               ,OK ,16391,0,67599,                                                                                           
+
+135,79,14/02/14  9:09:54,L:4    ,D: 16/0,Zone  15 - ,STAIR 4 S.W. ,1ST FLOOR LANDING      ,MISSING ,16386,20,65552,                                                                                     
+
+135,80,14/02/14  9:09:54,L:4    ,D: 17/0,Zone  21 - ,SOUTH 1ST FLR,CORRIDOR BY KITCHEN    ,MISSING ,16386,20,65553,                                                                                     
+
+135,81,14/02/14  9:09:54,L:4    ,D: 18/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY KITCHEN/STAIR 4,MISSING ,16386,20,65554,                                                                                     
+
+135,82,14/02/14  9:09:56,L:4    ,D: 15/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY FEMALE CHANGE  ,MISSING ,16386,20,65551,                                                                                     
+
+135,83,14/02/14  9:09:56,L:4    ,D: 20/0,Zone  21 - ,SOUTH 1ST FLR,CORRIDOR BY KITCHEN    ,MISSING ,16386,20,65556,                                                                                     
+
+135,84,14/02/14  9:09:56,L:4    ,D: 21/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY KITCHEN VOID   ,MISSING ,16386,20,65557,                                                                                     
+
+135,85,14/02/14  9:09:58,L:4    ,D: 22/0,Zone  21 - ,SOUTH 1ST FLR,CORRIDOR BY KITCHEN    ,MISSING ,16386,20,65558,                                                                                     
+
+135,86,14/02/14  9:10:01,L:4    ,D: 23/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS ROOM BY KITCHEN,MISSING ,16386,20,65559,                                                                                    
+
+135,87,14/02/14  9:10:01,L:4    ,D: 24/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS ROOM VOID     ,MISSING ,16386,20,65560,                                                                                     
+
+135,88,14/02/14  9:10:01,L:4    ,D: 26/0,Zone  21 - ,SOUTH 1ST FLR,CORR VOID BY KITCHEN   ,MISSING ,16386,20,65562,                                                                                     
+
+135,89,14/02/14  9:10:03,L:4    ,D: 27/0,Zone  21 - ,SOUTH 1ST FLR,CORRIDOR BY KITCHEN    ,MISSING ,16386,20,65563,                                                                                     
+
+135,90,14/02/14  9:10:04,L:4    ,D: 28/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65564,                                                                                     
+
+135,91,14/02/14  9:10:06,L:4    ,D: 29/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,MISSING ,16386,20,65565,                                                                                     
+
+135,92,14/02/14  9:10:08,L:4    ,D: 30/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY SPONSORS VOID  ,MISSING ,16386,20,65566,                                                                                     
+
+135,93,14/02/14  9:10:08,L:4    ,D: 31/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY SPONSORS LOUNGE,MISSING ,16386,20,65567,                                                                                     
+
+135,94,14/02/14  9:10:09,L:4    ,D: 32/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65568,                                                                                     
+
+135,95,14/02/14  9:10:11,L:4    ,D: 33/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,MISSING ,16386,20,65569,                                                                                     
+
+135,96,14/02/14  9:10:12,L:4    ,D: 34/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY SPONSORS VOID  ,MISSING ,16386,20,65570,                                                                                     
+
+135,97,14/02/14  9:10:14,L:4    ,D: 35/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY SPONSORS LOUNGE,MISSING ,16386,20,65571,                                                                                     
+
+135,98,14/02/14  9:10:14,L:4    ,D: 36/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65572,                                                                                     
+
+135,99,14/02/14  9:10:15,L:4    ,D: 37/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,MISSING ,16386,20,65573,                                                                                     
+
+135,100,14/02/14  9:10:17,L:4    ,D: 38/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE CELLAR ,MISSING ,16386,20,65574,                                                                                     
+
+135,101,14/02/14  9:10:19,L:4    ,D: 39/0,Zone  14 - ,STAIR 3 S.   ,1ST FLOOR LANDING      ,MISSING ,16386,20,65575,                                                                                     
+
+135,102,14/02/14  9:10:20,L:4    ,D: 41/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65577,                                                                                     
+
+135,103,14/02/14  9:10:21,L:4    ,D: 42/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65578,                                                                                     
+
+135,104,14/02/14  9:10:22,L:4    ,D: 43/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65579,                                                                                     
+
+135,105,14/02/14  9:10:22,SYSTEM ,D: 20/0,Zone 205 - ,System Zone  ,Radiopager             ,MISSING ,16386,20,67604,                                                                                     
+
+135,106,14/02/14  9:10:24,L:4    ,D: 44/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,MISSING ,16386,20,65580,                                                                                     
+
+135,107,14/02/14  9:10:25,L:4    ,D: 45/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,MISSING ,16386,20,65581,                                                                                     
+
+135,108,14/02/14  9:10:27,L:4    ,D: 46/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65582,                                                                                     
+
+135,109,14/02/14  9:10:27,L:4    ,D: 47/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,MISSING ,16386,20,65583,                                                                                     
+
+135,110,14/02/14  9:10:28,L:4    ,D: 48/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65584,                                                                                     
+
+135,111,14/02/14  9:10:30,L:4    ,D: 49/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,MISSING ,16386,20,65585,                                                                                     
+
+135,112,14/02/14  9:10:32,L:4    ,D: 50/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,MISSING ,16386,20,65586,                                                                                     
+
+135,113,14/02/14  9:10:33,L:4    ,D: 51/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS STORE VOID    ,MISSING ,16386,20,65587,                                                                                     
+
+135,114,14/02/14  9:10:33,L:4    ,D: 52/0,Zone  23 - ,SOUTH 1ST FLR,FEMALE CHANGING VOID   ,MISSING ,16386,20,65588,                                                                                     
+
+135,115,14/02/14  9:10:35,L:4    ,D: 54/0,Zone  23 - ,SOUTH 1ST FLR,MALE CHANGING WC VOID  ,MISSING ,16386,20,65590,                                                                                     
+
+135,116,14/02/14  9:10:36,L:4    ,D: 55/0,Zone  23 - ,SOUTH 1ST FLR,MALE CHANGING VOID     ,MISSING ,16386,20,65591,                                                                                     
+
+135,117,14/02/14  9:10:38,L:4    ,D: 56/0,Zone  23 - ,SOUTH 1ST FLR,MALE CHANGING WC       ,MISSING ,16386,20,65592,                                                                                     
+
+135,118,14/02/14  9:10:40,L:4    ,D: 57/0,Zone  23 - ,SOUTH 1ST FLR,FEMALE CHANGING WC     ,MISSING ,16386,20,65593,                                                                                     
+
+135,119,14/02/14  9:10:40,L:4    ,D: 58/0,Zone  16 - ,STAIR 5 W.   ,1ST FLOOR DIS. WC      ,MISSING ,16386,20,65594,                                                                                     
+
+135,120,14/02/14  9:10:41,L:4    ,D: 59/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN EXIT TO CORRIDOR,MISSING ,16386,20,65595,                                                                                    
+
+135,121,14/02/14  9:10:43,L:4    ,D: 60/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,MISSING ,16386,20,65596,                                                                                     
+
+135,122,14/02/14  9:10:44,L:4    ,D: 61/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN                ,MISSING ,16386,20,65597,                                                                                     
+
+135,123,14/02/14  9:10:46,L:4    ,D: 62/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,MISSING ,16386,20,65598,                                                                                     
+
+135,124,14/02/14  9:10:46,L:4    ,D: 63/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,MISSING ,16386,20,65599,                                                                                     
+
+135,125,14/02/14  9:10:48,L:4    ,D: 64/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,MISSING ,16386,20,65600,                                                                                     
+
+135,126,14/02/14  9:10:49,L:4    ,D: 65/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN                ,MISSING ,16386,20,65601,                                                                                     
+
+135,127,14/02/14  9:10:51,L:4    ,D: 66/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,MISSING ,16386,20,65602,                                                                                     
+
+135,128,14/02/14  9:10:52,L:4    ,D: 67/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN                ,MISSING ,16386,20,65603,                                                                                     
+
+135,129,14/02/14  9:10:53,L:4    ,D: 68/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN                ,MISSING ,16386,20,65604,                                                                                     
+
+135,130,14/02/14  9:10:54,L:4    ,D: 69/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,MISSING ,16386,20,65605,                                                                                     
+
+135,131,14/02/14  9:10:56,L:4    ,D: 70/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN EXIT TO SPONSORS,MISSING ,16386,20,65606,                                                                                    
+
+135,132,14/02/14  9:10:57,L:4    ,D:100/0,Zone   1 - ,SOUTH  G FLOOR,                       ,MISSING ,16386,20,65636,                                                                                    
+
+135,133,14/02/14  9:10:59,L:4    ,D:101/0,Zone   3 - ,WEST STAND   ,                       ,MISSING ,16386,20,65637,                                                                                     
+
+135,134,14/02/14  9:10:59,L:4    ,D:102/0,Zone   6 - ,NORTH STAND  ,                       ,MISSING ,16386,20,65638,                                                                                     
+
+135,135,14/02/14  9:11:00,L:4    ,D:103/0,Zone   1 - ,SOUTH  G FLOOR,                       ,MISSING ,16386,20,65639,                                                                                    
+
+135,136,14/02/14  9:11:05,L:4    ,D:  1/0,Zone   0 - ,,1ST FLOOR DIS WC       ,MISSING ,16386,20,65537,                                                                                                  
+
+135,137,14/02/14  9:11:05,L:4    ,D:  2/0,Zone  16 - ,STAIR 5 W.   ,1ST FLOOR LANDING      ,MISSING ,16386,20,65538,                                                                                     
+
+135,138,14/02/14  9:11:06,L:4    ,D:  3/0,Zone  16 - ,STAIR 5 W.   ,1ST FLOOR BY LIFT      ,MISSING ,16386,20,65539,                                                                                     
+
+135,139,14/02/14  9:11:06,L:4    ,D:  4/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY CLEANER STORE  ,MISSING ,16386,20,65540,                                                                                     
+
+135,140,14/02/14  9:11:06,L:4    ,D:  5/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY CLEANER STORE  ,MISSING ,16386,20,65541,                                                                                     
+
+135,141,14/02/14  9:11:08,L:4    ,D:  6/0,Zone  23 - ,SOUTH 1ST FLR,CLEANERS STORE         ,MISSING ,16386,20,65542,                                                                                     
+
+135,142,14/02/14  9:11:10,L:4    ,D:  7/0,Zone  23 - ,SOUTH 1ST FLR,MALE CHANGING          ,MISSING ,16386,20,65543,                                                                                     
+
+135,143,14/02/14  9:13:57,L:4    ,D:--,Zone 201 - ,System Zone  ,--,Open Circuit ,16410,0,0,                                                                                                             
+
+135,144,14/02/14  9:14:51,L:4    ,D:  8/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY MALE CHANGING  ,MISSING ,16386,20,65544,                                                                                     
+
+135,145,14/02/14  9:14:51,L:4    ,D:  9/0,Zone   0 - ,,MALE CHANGING WC       ,MISSING ,16386,20,65545,                                                                                                  
+
+135,146,14/02/14  9:14:52,L:4    ,D: 10/0,Zone   0 - ,,FEMALE CHANGING WC     ,MISSING ,16386,20,65546,                                                                                                  
+
+135,147,14/02/14  9:14:52,L:4    ,D: 11/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY FEMALE CHANGE  ,MISSING ,16386,20,65547,                                                                                     
+
+135,148,14/02/14  9:14:52,L:4    ,D: 12/0,Zone  23 - ,SOUTH 1ST FLR,FEMALE CHANGING        ,MISSING ,16386,20,65548,                                                                                     
+
+135,149,14/02/14  9:14:52,L:4    ,D: 13/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY FEMALE CHANGING,MISSING ,16386,20,65549,                                                                                     
+
+135,150,14/02/14  9:14:52,L:4    ,D: 14/0,Zone  23 - ,SOUTH 1ST FLR,CORR NEAR FEMALE CHANGE,MISSING ,16386,20,65550,                                                                                     
+
+135,151,14/02/14  9:23:22,L:4    ,D: 62/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,OK ,16391,0,65598,                                                                                           
+
+135,152,14/02/14  9:23:23,L:4    ,D: 63/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,OK ,16391,0,65599,                                                                                           
+
+135,153,14/02/14  9:23:24,L:4    ,D: 64/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,OK ,16391,0,65600,                                                                                           
+
+135,154,14/02/14  9:23:24,L:4    ,D: 65/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN                ,OK ,16391,0,65601,                                                                                           
+
+135,155,14/02/14  9:23:25,L:4    ,D: 66/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,OK ,16391,0,65602,                                                                                           
+
+135,156,14/02/14  9:23:26,L:4    ,D: 67/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN                ,OK ,16391,0,65603,                                                                                           
+
+135,157,14/02/14  9:23:28,L:4    ,D: 68/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN                ,OK ,16391,0,65604,                                                                                           
+
+135,158,14/02/14  9:23:29,L:4    ,D:102/0,Zone   6 - ,NORTH STAND  ,                       ,FAULT ,16390,199,65638,                                                                                      
+
+135,159,14/02/14  9:23:31,L:4    ,D: 69/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,OK ,16391,0,65605,                                                                                           
+
+135,160,14/02/14  9:23:32,L:4    ,D: 70/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN EXIT TO SPONSORS,OK ,16391,0,65606,                                                                                          
+
+135,161,14/02/14  9:23:33,L:4    ,D:100/0,Zone   1 - ,SOUTH  G FLOOR,                       ,OK ,16391,0,65636,                                                                                          
+
+135,162,14/02/14  9:23:36,L:4    ,D:103/0,Zone   1 - ,SOUTH  G FLOOR,                       ,OK ,16391,0,65639,                                                                                          
+
+135,163,14/02/14  9:23:37,L:4    ,D:  1/0,Zone   0 - ,,1ST FLOOR DIS WC       ,OK ,16391,0,65537,                                                                                                        
+
+135,164,14/02/14  9:23:44,L:4    ,D:  8/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY MALE CHANGING  ,OK ,16391,0,65544,                                                                                           
+
+135,165,14/02/14  9:23:46,L:4    ,D:  3/0,Zone  16 - ,STAIR 5 W.   ,1ST FLOOR BY LIFT      ,OK ,16391,0,65539,                                                                                           
+
+135,166,14/02/14  9:23:47,L:4    ,D:  4/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY CLEANER STORE  ,OK ,16391,0,65540,                                                                                           
+
+135,167,14/02/14  9:23:47,L:4    ,D:  6/0,Zone  23 - ,SOUTH 1ST FLR,CLEANERS STORE         ,OK ,16391,0,65542,                                                                                           
+
+135,168,14/02/14  9:23:48,L:4    ,D:  7/0,Zone  23 - ,SOUTH 1ST FLR,MALE CHANGING          ,OK ,16391,0,65543,                                                                                           
+
+135,169,14/02/14  9:23:49,L:4    ,D:  9/0,Zone   0 - ,,MALE CHANGING WC       ,OK ,16391,0,65545,                                                                                                        
+
+135,170,14/02/14  9:23:50,L:4    ,D: 10/0,Zone   0 - ,,FEMALE CHANGING WC     ,OK ,16391,0,65546,                                                                                                        
+
+135,171,14/02/14  9:23:54,L:4    ,D: 11/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY FEMALE CHANGE  ,OK ,16391,0,65547,                                                                                           
+
+135,172,14/02/14  9:23:59,L:4    ,D: 12/0,Zone  23 - ,SOUTH 1ST FLR,FEMALE CHANGING        ,OK ,16391,0,65548,                                                                                           
+
+135,173,14/02/14  9:24:00,L:4    ,D: 13/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY FEMALE CHANGING,OK ,16391,0,65549,                                                                                           
+
+135,174,14/02/14  9:24:01,L:4    ,D: 14/0,Zone  23 - ,SOUTH 1ST FLR,CORR NEAR FEMALE CHANGE,OK ,16391,0,65550,                                                                                           
+
+135,175,14/02/14  9:24:01,L:4    ,D: 15/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY FEMALE CHANGE  ,OK ,16391,0,65551,                                                                                           
+
+135,176,14/02/14  9:24:02,L:4    ,D: 16/0,Zone  15 - ,STAIR 4 S.W. ,1ST FLOOR LANDING      ,OK ,16391,0,65552,                                                                                           
+
+135,177,14/02/14  9:24:04,L:4    ,D: 17/0,Zone  21 - ,SOUTH 1ST FLR,CORRIDOR BY KITCHEN    ,OK ,16391,0,65553,                                                                                           
+
+135,178,14/02/14  9:24:04,L:4    ,D: 18/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY KITCHEN/STAIR 4,OK ,16391,0,65554,                                                                                           
+
+135,179,14/02/14  9:24:10,L:4    ,D: 20/0,Zone  21 - ,SOUTH 1ST FLR,CORRIDOR BY KITCHEN    ,OK ,16391,0,65556,                                                                                           
+
+135,180,14/02/14  9:24:10,L:4    ,D: 21/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY KITCHEN VOID   ,OK ,16391,0,65557,                                                                                           
+
+135,181,14/02/14  9:24:11,L:4    ,D: 22/0,Zone  21 - ,SOUTH 1ST FLR,CORRIDOR BY KITCHEN    ,FAULT ,16390,4,65558,                                                                                        
+
+135,182,14/02/14  9:24:16,L:4    ,D: 28/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,OK ,16391,0,65564,                                                                                           
+
+135,183,14/02/14  9:24:17,L:4    ,D: 30/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY SPONSORS VOID  ,OK ,16391,0,65566,                                                                                           
+
+135,184,14/02/14  9:24:18,L:4    ,D: 31/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY SPONSORS LOUNGE,OK ,16391,0,65567,                                                                                           
+
+135,185,14/02/14  9:24:19,L:4    ,D: 32/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,OK ,16391,0,65568,                                                                                           
+
+135,186,14/02/14  9:24:20,L:4    ,D: 29/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,OK ,16391,0,65565,                                                                                           
+
+135,187,14/02/14  9:24:21,L:4    ,D: 33/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,OK ,16391,0,65569,                                                                                           
+
+135,188,14/02/14  9:24:21,L:4    ,D: 34/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY SPONSORS VOID  ,OK ,16391,0,65570,                                                                                           
+
+135,189,14/02/14  9:24:26,L:4    ,D: 35/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY SPONSORS LOUNGE,FAULT ,16390,4,65571,                                                                                        
+
+135,190,14/02/14  9:24:27,L:4    ,D: 39/0,Zone  14 - ,STAIR 3 S.   ,1ST FLOOR LANDING      ,OK ,16391,0,65575,                                                                                           
+
+135,191,14/02/14  9:24:28,L:4    ,D: 36/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,FAULT ,16390,4,65572,                                                                                        
+
+135,192,14/02/14  9:24:29,L:4    ,D: 37/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,OK ,16391,0,65573,                                                                                           
+
+135,193,14/02/14  9:24:29,L:4    ,D: 38/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE CELLAR ,OK ,16391,0,65574,                                                                                           
+
+135,194,14/02/14  9:24:31,L:4    ,D: 41/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,OK ,16391,0,65577,                                                                                           
+
+135,195,14/02/14  9:24:33,L:4    ,D: 42/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,OK ,16391,0,65578,                                                                                           
+
+135,196,14/02/14  9:24:35,L:4    ,D: 43/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,OK ,16391,0,65579,                                                                                           
+
+135,197,14/02/14  9:24:36,L:4    ,D: 44/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,OK ,16391,0,65580,                                                                                           
+
+135,198,14/02/14  9:24:36,L:4    ,D: 45/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,OK ,16391,0,65581,                                                                                           
+
+135,199,14/02/14  9:24:38,L:4    ,D: 46/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,OK ,16391,0,65582,                                                                                           
+
+135,200,14/02/14  9:24:40,L:4    ,D: 47/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,OK ,16391,0,65583,                                                                                           
+
+135,201,14/02/14  9:24:50,L:4    ,D: 58/0,Zone  16 - ,STAIR 5 W.   ,1ST FLOOR DIS. WC      ,OK ,16391,0,65594,                                                                                           
+
+135,202,14/02/14  9:24:51,L:4    ,D: 54/0,Zone  23 - ,SOUTH 1ST FLR,MALE CHANGING WC VOID  ,OK ,16391,0,65590,                                                                                           
+
+135,203,14/02/14  9:24:52,L:4    ,D: 55/0,Zone  23 - ,SOUTH 1ST FLR,MALE CHANGING VOID     ,OK ,16391,0,65591,                                                                                           
+
+135,204,14/02/14  9:24:52,L:4    ,D: 56/0,Zone  23 - ,SOUTH 1ST FLR,MALE CHANGING WC       ,OK ,16391,0,65592,                                                                                           
+
+135,205,14/02/14  9:24:53,L:4    ,D: 57/0,Zone  23 - ,SOUTH 1ST FLR,FEMALE CHANGING WC     ,OK ,16391,0,65593,                                                                                           
+
+135,206,14/02/14  9:24:54,L:4    ,D: 59/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN EXIT TO CORRIDOR,OK ,16391,0,65595,                                                                                          
+
+135,207,14/02/14  9:24:54,L:4    ,D: 60/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN VOID           ,OK ,16391,0,65596,                                                                                           
+
+135,208,14/02/14  9:24:56,L:4    ,D: 61/0,Zone  22 - ,SOUTH 1ST FLR,KITCHEN                ,OK ,16391,0,65597,                                                                                           
+
+135,209,14/02/14  9:24:57,L:4    ,D:102/0,Zone   6 - ,NORTH STAND  ,                       ,OK ,49159,0,65638,                                                                                           
+
+135,210,14/02/14  9:25:05,L:4    ,D:101/0,Zone   3 - ,WEST STAND   ,                       ,OK ,16391,0,65637,                                                                                           
+
+135,211,14/02/14  9:25:05,L:4    ,D:  2/0,Zone  16 - ,STAIR 5 W.   ,1ST FLOOR LANDING      ,OK ,16391,0,65538,                                                                                           
+
+135,212,14/02/14  9:25:06,L:4    ,D:  5/0,Zone  23 - ,SOUTH 1ST FLR,CORR BY CLEANER STORE  ,OK ,16391,0,65541,                                                                                           
+
+135,213,14/02/14  9:25:08,L:4    ,D: 22/0,Zone  21 - ,SOUTH 1ST FLR,CORRIDOR BY KITCHEN    ,OK ,16391,0,65558,                                                                                           
+
+135,214,14/02/14  9:25:13,L:4    ,D: 23/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS ROOM BY KITCHEN,OK ,16391,0,65559,                                                                                          
+
+135,215,14/02/14  9:25:14,L:4    ,D: 24/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS ROOM VOID     ,OK ,16391,0,65560,                                                                                           
+
+135,216,14/02/14  9:25:16,L:4    ,D: 35/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY SPONSORS LOUNGE,OK ,16391,0,65571,                                                                                           
+
+135,217,14/02/14  9:25:16,L:4    ,D: 36/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,OK ,16391,0,65572,                                                                                           
+
+135,218,14/02/14  9:25:23,L:4    ,D: 48/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,OK ,16391,0,65584,                                                                                           
+
+135,219,14/02/14  9:25:24,L:4    ,D: 49/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE VOID   ,OK ,16391,0,65585,                                                                                           
+
+135,220,14/02/14  9:25:25,L:4    ,D: 50/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,OK ,16391,0,65586,                                                                                           
+
+135,221,14/02/14  9:25:25,L:4    ,D: 51/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS STORE VOID    ,OK ,16391,0,65587,                                                                                           
+
+135,222,14/02/14  9:25:27,L:4    ,D: 52/0,Zone  23 - ,SOUTH 1ST FLR,FEMALE CHANGING VOID   ,OK ,16391,0,65588,                                                                                           
+
+135,223,14/02/14  9:25:36,L:4    ,D: 22/0,Zone  21 - ,SOUTH 1ST FLR,CORRIDOR BY KITCHEN    ,FAULT ,16390,4,65558,                                                                                        
+
+135,224,14/02/14  9:25:37,L:4    ,D: 26/0,Zone  21 - ,SOUTH 1ST FLR,CORR VOID BY KITCHEN   ,OK ,16391,0,65562,                                                                                           
+
+135,225,14/02/14  9:25:38,L:4    ,D: 27/0,Zone  21 - ,SOUTH 1ST FLR,CORRIDOR BY KITCHEN    ,OK ,16391,0,65563,                                                                                           
+
+135,226,14/02/14  9:25:38,L:4    ,D: 35/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY SPONSORS LOUNGE,FAULT ,16390,4,65571,                                                                                        
+
+135,227,14/02/14  9:25:39,L:4    ,D: 36/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,FAULT ,16390,4,65572,                                                                                        
+
+135,228,14/02/14  9:37:00,SYSTEM ,D: 10/0,Zone 205 - ,System Zone  ,Panel Device           ,User Logged in - AL3 User,4223,4,2058,                                                                       
+
+135,229,14/02/14  9:37:00,SYSTEM ,D: 10/0,Zone 205 - ,System Zone  ,Panel Device           ,AL3 Entered ,4149,4,2058,                                                                                    
+
+135,230,14/02/14  9:51:28,SYSTEM ,D: 10/0,Zone 205 - ,System Zone  ,Panel Device           ,User Logged in - AL3 User,4223,4,2058,                                                                       
+
+135,231,14/02/14 10:32:22,SYSTEM ,D: 10/0,Zone 205 - ,System Zone  ,Panel Device           ,User Logged in - AL3 User,4223,4,2058,                                                                       
+
+135,232,14/02/14 10:32:22,SYSTEM ,D: 10/0,Zone 205 - ,System Zone  ,Panel Device           ,AL3 Entered ,4149,4,2058,                                                                                    
+
+135,233,14/02/14 10:39:12,SYSTEM ,D: 10/0,Zone 205 - ,System Zone  ,Panel Device           ,POWER UP ,4147,0,2058,                                                                                       
+
+135,234,14/02/14 10:39:44,SYSTEM ,D: 20/0,Zone 205 - ,System Zone  ,Radiopager             ,MISSING ,16386,20,67604,                                                                                     
+
+135,235,14/02/14 10:39:49,L:4    ,D: 22/0,Zone  21 - ,SOUTH 1ST FLR,CORRIDOR BY KITCHEN    ,FAULT ,16390,4,65558,                                                                                        
+
+135,236,14/02/14 10:39:51,L:4    ,D: 35/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY SPONSORS LOUNGE,FAULT ,16390,4,65571,                                                                                        
+
+135,237,14/02/14 10:39:52,L:4    ,D: 36/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,FAULT ,16390,4,65572,                                                                                        
+
+135,238,14/02/14 10:41:27,SYSTEM ,D: 10/0,Zone 205 - ,System Zone  ,Panel Device           ,User Logged in - AL3 User,4223,4,2058,                                                                       
+
+135,239,14/02/14 10:41:27,SYSTEM ,D: 10/0,Zone 205 - ,System Zone  ,Panel Device           ,AL3 Entered ,4149,4,2058,                                                                                    
+
+135,240,14/02/14 11:22:03,SYSTEM ,D: 10/0,Zone 205 - ,System Zone  ,Panel Device           ,User Logged in - AL3 User,4223,4,2058,                                                                       
+
+135,241,14/02/14 11:22:03,SYSTEM ,D: 10/0,Zone 205 - ,System Zone  ,Panel Device           ,AL3 Entered ,4149,4,2058,                                                                                    
+
+135,242,14/02/14 12:13:19,SYSTEM ,D: 10/0,Zone 205 - ,System Zone  ,Panel Device           ,User Logged in - AL3 User,4223,4,2058,                                                                       
+
+135,243,14/02/14 12:13:19,SYSTEM ,D: 10/0,Zone 205 - ,System Zone  ,Panel Device           ,AL3 Entered ,4149,4,2058,                                                                                    
+
+135,244,14/02/14 12:23:03,L:4    ,D: 22/0,Zone  21 - ,SOUTH 1ST FLR,CORRIDOR BY KITCHEN    ,OK ,16391,0,65558,                                                                                           
+
+135,245,14/02/14 12:23:04,L:4    ,D: 36/0,Zone  21 - ,SOUTH 1ST FLR,SPONSORS LOUNGE        ,OK ,16391,0,65572,                                                                                           
+
+135,246,14/02/14 12:23:31,SYSTEM ,D: 20/0,Zone 205 - ,System Zone  ,Radiopager             ,OK ,16391,0,67604,                                                                                           
+
+135,247,14/02/14 12:24:06,L:4    ,D: 35/0,Zone  21 - ,SOUTH 1ST FLR,CORR BY SPONSORS LOUNGE,OK ,16391,0,65571,                                                                                           
+
+135,END,1,0

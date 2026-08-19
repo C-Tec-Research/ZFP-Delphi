@@ -1,0 +1,858 @@
+2,BEGIN,2
+2,9,1,0,Sounder1
+2,9,1,1,Sounder1
+2,9,2,0,Sounder2
+2,9,2,1,Sounder2
+2,9,3,0,Sounder3
+2,9,3,1,Sounder3
+2,9,4,0,Sounder4
+2,9,4,1,Sounder4
+2,9,5,0,Relay 5
+2,9,5,1,Relay 5
+2,9,6,0,Relay 6
+2,9,6,1,Relay 6
+2,9,7,0,Relay 7
+2,9,7,1,Relay 7
+2,9,8,0,Relay 8
+2,9,8,1,Relay 8
+2,9,9,0,Mon IP 1
+2,9,9,1,Mon IP 1
+2,9,10,0,Mon IP 2
+2,9,10,1,Mon IP 2
+2,9,11,0,Earth Fault
+2,9,11,1,Earth Fault
+2,9,12,0,Fault Relay
+2,9,12,1,Fault Relay
+2,9,13,0,Aux Fuse
+2,9,13,1,Aux Fuse
+2,9,14,0,PSU
+2,9,14,1,PSU
+2,9,15,0,User IP 15
+2,9,15,1,User IP 15
+2,9,16,0,User IP 16
+2,9,16,1,User IP 16
+2,9,17,0,User IP 17
+2,9,17,1,User IP 17
+2,9,18,0,User IP 18
+2,9,18,1,User IP 18
+2,9,19,0,Fn LED 19
+2,9,19,1,Fn LED 19
+2,9,20,0,Fn LED 20
+2,9,20,1,Fn LED 20
+2,9,21,0,Fn LED 21
+2,9,21,1,Fn LED 21
+2,9,22,0,Fn LED 22
+2,9,22,1,Fn LED 22
+2,9,23,0,Fn LED 23
+2,9,23,1,Fn LED 23
+2,9,24,0,Fn LED 24
+2,9,24,1,Fn LED 24
+2,9,25,0,Buzzer
+2,9,25,1,Buzzer
+2,9,26,0,Zonal LED
+2,9,26,1,Zonal LED
+2,9,27,0,Event Log
+2,9,27,1,Event Log
+2,9,28,0,Panel Device
+2,9,28,1,Panel Device
+2,9,29,0,Keyswitch
+2,9,29,1,Keyswitch
+2,9,30,0,Printer
+2,9,30,1,Printer
+2,9,31,0,Touch Panel
+2,9,31,1,Touch Panel
+2,1,1,0,Kiosk 017 GF SW
+2,1,1,1,Kiosk 017 GF SW
+2,1,1,2,Kiosk 017 GF SW
+2,1,1,3,Kiosk 017 GF SW
+2,1,1,4,Kiosk 017 GF SW
+2,1,2,0,Stairs 01 GF SW
+2,1,2,1,Stairs 01 GF SW
+2,1,2,2,Stairs 01 GF SW
+2,1,3,0,Stairs 01 GF SW
+2,1,3,1,Stairs 01 GF SW
+2,1,4,0,Stairs 01 GF SW
+2,1,4,1,Stairs 01 GF SW
+2,1,4,2,Stairs 01 GF SW
+2,1,5,0,Shop Storage GF SW
+2,1,5,1,Shop Storage GF SW
+2,1,6,0,Mains Room GF SW
+2,1,6,1,Mains Room GF SW
+2,1,6,2,Mains Room GF SW
+2,1,7,0,Mains Room GF SW
+2,1,7,1,Mains Room GF SW
+2,1,7,2,Mains Room GF SW
+2,1,8,0,Main Incoming Room
+2,1,8,1,Main Incoming Room
+2,1,8,2,Main Incoming Room
+2,1,9,0,Main Incoming Room
+2,1,9,1,Main Incoming Room
+2,1,9,2,Main Incoming Room
+2,1,10,0,Plant Room GF SW
+2,1,10,1,Plant Room GF SW
+2,1,10,2,Plant Room GF SW
+2,1,11,0,Plant Room GF SW
+2,1,11,1,Plant Room GF SW
+2,1,11,2,Plant Room GF SW
+2,1,12,0,Pallet Store
+2,1,12,1,Pallet Store
+2,1,12,2,Pallet Store
+2,1,13,0,Pallet Store
+2,1,13,1,Pallet Store
+2,1,13,2,Pallet Store
+2,1,14,0,Bin Storage
+2,1,14,1,Bin Storage
+2,1,14,2,Bin Storage
+2,1,15,0,Bin Storage
+2,1,15,1,Bin Storage
+2,1,15,2,Bin Storage
+2,1,16,0,Bin Storage
+2,1,16,1,Bin Storage
+2,1,17,0,Plant Room GF SW
+2,1,17,1,Plant Room GF SW
+2,1,18,0,Plant Room GF SW
+2,1,18,1,Plant Room GF SW
+2,1,18,2,Plant Room GF SW
+2,1,18,3,Plant Room GF SW
+2,1,18,4,Plant Room GF SW
+2,1,19,0,Main Incoming Room
+2,1,19,1,Main Incoming Room
+2,1,20,0,HV Room
+2,1,20,1,HV Room
+2,1,21,0,HV Room
+2,1,21,1,HV Room
+2,1,21,2,HV Room
+2,1,22,0,HV Room
+2,1,22,1,HV Room
+2,1,22,2,HV Room
+2,1,23,0,Shop Storage GF SW
+2,1,23,1,Shop Storage GF SW
+2,1,23,2,Shop Storage GF SW
+2,1,24,0,Female WC GF SW
+2,1,24,1,Female WC GF SW
+2,1,24,2,Female WC GF SW
+2,1,25,0,Female WC GF SW
+2,1,25,1,Female WC GF SW
+2,1,25,2,Female WC GF SW
+2,1,26,0,Kiosk 011 GF SW
+2,1,26,1,Kiosk 011 GF SW
+2,1,26,2,Kiosk 011 GF SW
+2,1,26,3,Kiosk 011 GF SW
+2,1,26,4,Kiosk 011 GF SW
+2,1,27,0,Conc adj Male WC GF SW
+2,1,27,1,Conc adj Male WC GF SW
+2,1,28,0,Male WC GF SW
+2,1,28,1,Male WC GF SW
+2,1,28,2,Male WC GF SW
+2,1,29,0,Male WC GF SW
+2,1,29,1,Male WC GF SW
+2,1,29,2,Male WC GF SW
+2,1,30,0,Male WC GF SW
+2,1,30,1,Male WC GF SW
+2,1,30,2,Male WC GF SW
+2,1,31,0,Male WC GF SW
+2,1,31,1,Male WC GF SW
+2,1,31,2,Male WC GF SW
+2,1,32,0,Female WC GF NW
+2,1,32,1,Female WC GF NW
+2,1,32,2,Female WC GF NW
+2,1,33,0,Female WC GF NW
+2,1,33,1,Female WC GF NW
+2,1,33,2,Female WC GF NW
+2,1,34,0,Female WC GF NW
+2,1,34,1,Female WC GF NW
+2,1,34,2,Female WC GF NW
+2,1,35,0,Female WC GF NW
+2,1,35,1,Female WC GF NW
+2,1,35,2,Female WC GF NW
+2,1,36,0,Kiosk 016 GF NW
+2,1,36,1,Kiosk 016 GF NW
+2,1,36,2,Kiosk 016 GF NW
+2,1,36,3,Kiosk 016 GF NW
+2,1,36,4,Kiosk 016 GF NW
+2,1,37,0,First Aid GF NW
+2,1,37,1,First Aid GF NW
+2,1,38,0,First Aid GF NW
+2,1,38,1,First Aid GF NW
+2,1,38,2,First Aid GF NW
+2,1,39,0,First Aid Dis WC GF NW
+2,1,39,1,First Aid Dis WC GF NW
+2,1,39,2,First Aid Dis WC GF NW
+2,1,40,0,First Aid Dis WC GF NW
+2,1,40,1,First Aid Dis WC GF NW
+2,1,40,2,First Aid Dis WC GF NW
+2,1,41,0,First Aid Void GF NW
+2,1,41,1,First Aid Void GF NW
+2,1,41,2,First Aid Void GF NW
+2,1,42,0,Conc adj First Aid GF NW
+2,1,42,1,Conc adj First Aid GF NW
+2,1,43,0,Small Groundsman GF NW
+2,1,43,1,Small Groundsman GF NW
+2,1,43,2,Small Groundsman GF NW
+2,1,43,3,Small Groundsman GF NW
+2,1,43,4,Small Groundsman GF NW
+2,1,44,0,Large Groundsman GF NW
+2,1,44,1,Large Groundsman GF NW
+2,1,45,0,Large Groundsman GF NW
+2,1,45,1,Large Groundsman GF NW
+2,1,46,0,Small Groundsman GF NW
+2,1,46,1,Small Groundsman GF NW
+2,1,46,2,Small Groundsman GF NW
+2,1,47,0,Small Groundsman GF NW
+2,1,47,1,Small Groundsman GF NW
+2,1,47,2,Small Groundsman GF NW
+2,1,48,0,Large Groundsman GF NW
+2,1,48,1,Large Groundsman GF NW
+2,1,48,2,Large Groundsman GF NW
+2,1,49,0,Lg Groundsman WC GF NW
+2,1,49,1,Lg Groundsman WC GF NW
+2,1,49,2,Lg Groundsman WC GF NW
+2,1,50,0,Conc adj Lg Grdman GF NW
+2,1,50,1,Conc adj Lg Grdman GF NW
+2,1,51,0,Store 006 GF NW
+2,1,51,1,Store 006 GF NW
+2,1,51,2,Store 006 GF NW
+2,1,52,0,Kiosk 007 GF NW
+2,1,52,1,Kiosk 007 GF NW
+2,1,52,2,Kiosk 007 GF NW
+2,1,52,3,Kiosk 007 GF NW
+2,1,52,4,Kiosk 007 GF NW
+2,1,53,0,Female WC GF NW
+2,1,53,1,Female WC GF NW
+2,1,53,2,Female WC GF NW
+2,1,54,0,Female WC GF NW
+2,1,54,1,Female WC GF NW
+2,1,54,2,Female WC GF NW
+2,1,55,0,Female WC GF NW
+2,1,55,1,Female WC GF NW
+2,1,55,2,Female WC GF NW
+2,1,56,0,Female WC GF NW
+2,1,56,1,Female WC GF NW
+2,1,56,2,Female WC GF NW
+2,1,57,0,SF Dis Stairwell
+2,1,57,1,SF Dis Stairwell
+2,1,58,0,GF Dis Stairwell
+2,1,58,1,GF Dis Stairwell
+2,1,59,0,GF Dis Stairwell
+2,1,59,1,GF Dis Stairwell
+2,1,59,2,GF Dis Stairwell
+2,1,60,0,SF Dis Stairwell
+2,1,60,1,SF Dis Stairwell
+2,1,60,2,SF Dis Stairwell
+2,1,61,0,Lift Shaft Dis Stairwell
+2,1,61,1,Lift Shaft Dis Stairwell
+2,1,61,2,Lift Shaft Dis Stairwell
+2,1,62,0,SF East Dis WC Dis Stairwell
+2,1,62,1,SF East Dis WC Dis Stairwell
+2,1,62,2,SF East Dis WC Dis Stairwell
+2,1,63,0,SF East Dis WC Dis Stairwell
+2,1,63,1,SF East Dis WC Dis Stairwell
+2,1,63,2,SF East Dis WC Dis Stairwell
+2,1,64,0,SF East Dis WC Dis Stairwell
+2,1,64,1,SF East Dis WC Dis Stairwell
+2,1,64,2,SF East Dis WC Dis Stairwell
+2,1,65,0,SF East Dis WC Dis Stairwell
+2,1,65,1,SF East Dis WC Dis Stairwell
+2,1,65,2,SF East Dis WC Dis Stairwell
+2,1,66,0,SF Dis Stairwell
+2,1,66,1,SF Dis Stairwell
+2,1,66,2,SF Dis Stairwell
+2,1,66,3,SF Dis Stairwell
+2,1,66,4,SF Dis Stairwell
+2,1,67,0,SF West Dis WC Dis Stairwell
+2,1,67,1,SF West Dis WC Dis Stairwell
+2,1,67,2,SF West Dis WC Dis Stairwell
+2,1,68,0,SF West Dis WC Dis Stairwell
+2,1,68,1,SF West Dis WC Dis Stairwell
+2,1,68,2,SF West Dis WC Dis Stairwell
+2,1,69,0,SF West Dis WC Dis Stairwell
+2,1,69,1,SF West Dis WC Dis Stairwell
+2,1,69,2,SF West Dis WC Dis Stairwell
+2,1,70,0,SF West Dis WC Dis Stairwell
+2,1,70,1,SF West Dis WC Dis Stairwell
+2,1,70,2,SF West Dis WC Dis Stairwell
+2,1,71,0,Kiosk 010 GF NE
+2,1,71,1,Kiosk 010 GF NE
+2,1,71,2,Kiosk 010 GF NE
+2,1,71,3,Kiosk 010 GF NE
+2,1,71,4,Kiosk 010 GF NE
+2,1,72,0,Male WC GF NE
+2,1,72,1,Male WC GF NE
+2,1,72,2,Male WC GF NE
+2,1,73,0,Male WC GF NE
+2,1,73,1,Male WC GF NE
+2,1,73,2,Male WC GF NE
+2,1,74,0,Male WC GF NE
+2,1,74,1,Male WC GF NE
+2,1,74,2,Male WC GF NE
+2,1,75,0,Male WC GF NE
+2,1,75,1,Male WC GF NE
+2,1,75,2,Male WC GF NE
+2,1,76,0,Conc adj Male WC GF NE
+2,1,76,1,Conc adj Male WC GF NE
+2,1,77,0,Female WC GF NE
+2,1,77,1,Female WC GF NE
+2,1,77,2,Female WC GF NE
+2,1,78,0,Female WC GF NE
+2,1,78,1,Female WC GF NE
+2,1,78,2,Female WC GF NE
+2,1,79,0,Kiosk 014 GF NE
+2,1,79,1,Kiosk 014 GF NE
+2,1,79,2,Kiosk 014 GF NE
+2,1,79,3,Kiosk 014 GF NE
+2,1,79,4,Kiosk 014 GF NE
+2,1,80,0,Store 015 GF NE
+2,1,80,1,Store 015 GF NE
+2,1,80,2,Store 015 GF NE
+2,1,81,0,Conc adj Kiosk 002 GF NE
+2,1,81,1,Conc adj Kiosk 002 GF NE
+2,1,82,0,Kiosk 002 GF NE
+2,1,82,1,Kiosk 002 GF NE
+2,1,82,2,Kiosk 002 GF NE
+2,1,82,3,Kiosk 002 GF NE
+2,1,82,4,Kiosk 002 GF NE
+2,1,83,0,Kiosk 003 GF NE
+2,1,83,1,Kiosk 003 GF NE
+2,1,83,2,Kiosk 003 GF NE
+2,1,83,3,Kiosk 003 GF NE
+2,1,83,4,Kiosk 003 GF NE
+2,1,84,0,Female WC GF NE
+2,1,84,1,Female WC GF NE
+2,1,84,2,Female WC GF NE
+2,1,85,0,Female WC GF NE
+2,1,85,1,Female WC GF NE
+2,1,85,2,Female WC GF NE
+2,1,86,0,Female WC GF NE
+2,1,86,1,Female WC GF NE
+2,1,86,2,Female WC GF NE
+2,1,87,0,Female WC GF NE
+2,1,87,1,Female WC GF NE
+2,1,87,2,Female WC GF NE
+2,1,88,0,Male WC GF SE
+2,1,88,1,Male WC GF SE
+2,1,88,2,Male WC GF SE
+2,1,89,0,Male WC GF SE
+2,1,89,1,Male WC GF SE
+2,1,89,2,Male WC GF SE
+2,1,90,0,Male WC GF SE
+2,1,90,1,Male WC GF SE
+2,1,90,2,Male WC GF SE
+2,1,91,0,Male WC GF SE
+2,1,91,1,Male WC GF SE
+2,1,91,2,Male WC GF SE
+2,1,92,0,Conc adj Male WC GF SE
+2,1,92,1,Conc adj Male WC GF SE
+2,1,93,0,Kiosk 008 GF SE
+2,1,93,1,Kiosk 008 GF SE
+2,1,93,2,Kiosk 008 GF SE
+2,1,93,3,Kiosk 008 GF SE
+2,1,93,4,Kiosk 008 GF SE
+2,1,94,0,Female WC GF SE
+2,1,94,1,Female WC GF SE
+2,1,94,2,Female WC GF SE
+2,1,95,0,Female WC GF SE
+2,1,95,1,Female WC GF SE
+2,1,95,2,Female WC GF SE
+2,1,96,0,First Aid GF SE
+2,1,96,1,First Aid GF SE
+2,1,97,0,Staff Uniform GF SE
+2,1,97,1,Staff Uniform GF SE
+2,1,98,0,Staff Uniform GF SE
+2,1,98,1,Staff Uniform GF SE
+2,1,98,2,Staff Uniform GF SE
+2,1,99,0,Staff Uniform WC GF SE
+2,1,99,1,Staff Uniform WC GF SE
+2,1,99,2,Staff Uniform WC GF SE
+2,1,100,0,Staff Uniform WC GF SE
+2,1,100,1,Staff Uniform WC GF SE
+2,1,100,2,Staff Uniform WC GF SE
+2,1,101,0,First Aid Dis WC GF SE
+2,1,101,1,First Aid Dis WC GF SE
+2,1,101,2,First Aid Dis WC GF SE
+2,1,102,0,First Aid Dis WC GF SE
+2,1,102,1,First Aid Dis WC GF SE
+2,1,102,2,First Aid Dis WC GF SE
+2,1,103,0,First Aid GF SE
+2,1,103,1,First Aid GF SE
+2,1,103,2,First Aid GF SE
+2,1,104,0,First Aid Void GF SE
+2,1,104,1,First Aid Void GF SE
+2,1,104,2,First Aid Void GF SE
+2,1,105,0,Goods Lift Exit GF SW
+2,1,105,1,Goods Lift Exit GF SW
+2,2,1,0,Treatment Rm GF SW
+2,2,1,1,Treatment Rm GF SW
+2,2,1,2,Treatment Rm GF SW
+2,2,2,0,Treatment Rm Void GF SW
+2,2,2,1,Treatment Rm Void GF SW
+2,2,2,2,Treatment Rm Void GF SW
+2,2,3,0,Corr adj Tment Rm GF SW
+2,2,3,1,Corr adj Tment Rm GF SW
+2,2,3,2,Corr adj Tment Rm GF SW
+2,2,4,0,Coaches Office GF SW
+2,2,4,1,Coaches Office GF SW
+2,2,4,2,Coaches Office GF SW
+2,2,5,0,Coaches Office Void GF SW
+2,2,5,1,Coaches Office Void GF SW
+2,2,5,2,Coaches Office Void GF SW
+2,2,6,0,Tea Room GF SW
+2,2,6,1,Tea Room GF SW
+2,2,6,2,Tea Room GF SW
+2,2,7,0,Changing 3 GF SW
+2,2,7,1,Changing 3 GF SW
+2,2,7,2,Changing 3 GF SW
+2,2,8,0,Corr adj Changing 3 GF SW
+2,2,8,1,Corr adj Changing 3 GF SW
+2,2,8,2,Corr adj Changing 3 GF SW
+2,2,9,0,Corr adj Chnge3 Void GFW
+2,2,9,1,Corr adj Chnge3 Void GFW
+2,2,9,2,Corr adj Chnge3 Void GFW
+2,2,10,0,Changing 3 Void GF SW
+2,2,10,1,Changing 3 Void GF SW
+2,2,10,2,Changing 3 Void GF SW
+2,2,11,0,Home Changing Void GF SW
+2,2,11,1,Home Changing Void GF SW
+2,2,11,2,Home Changing Void GF SW
+2,2,12,0,Players Tunnel
+2,2,12,1,Players Tunnel
+2,2,12,2,Players Tunnel
+2,2,13,0,Players Tunnel Void
+2,2,13,1,Players Tunnel Void
+2,2,13,2,Players Tunnel Void
+2,2,14,0,Players Tunnel
+2,2,14,1,Players Tunnel
+2,2,15,0,Home Changing GF SW
+2,2,15,1,Home Changing GF SW
+2,2,15,2,Home Changing GF SW
+2,2,16,0,Conc adj Hm Change GF SW
+2,2,16,1,Conc adj Hm Change GF SW
+2,2,16,2,Conc adj Hm Change GF SW
+2,2,17,0,Conc GF SW adj Fem WC
+2,2,17,1,Conc GF SW adj Fem WC
+2,2,17,2,Conc GF SW adj Fem WC
+2,2,18,0,Conc GF SW adj Cellar
+2,2,18,1,Conc GF SW adj Cellar
+2,2,18,2,Conc GF SW adj Cellar
+2,2,19,0,Conc GF SW adj Kiosk 055
+2,2,19,1,Conc GF SW adj Kiosk 055
+2,2,19,2,Conc GF SW adj Kiosk 055
+2,2,20,0,Conc GF SW adj Stairs 04
+2,2,20,1,Conc GF SW adj Stairs 04
+2,2,20,2,Conc GF SW adj Stairs 04
+2,2,22,0,Conc GF SW Turnstiles
+2,2,22,1,Conc GF SW Turnstiles
+2,2,23,0,Stairs 04 GF SW
+2,2,23,1,Stairs 04 GF SW
+2,2,23,2,Stairs 04 GF SW
+2,2,24,0,Lift Lobby GF SW
+2,2,24,1,Lift Lobby GF SW
+2,2,24,2,Lift Lobby GF SW
+2,2,25,0,Cafe Bar Kitchen GF SW
+2,2,25,1,Cafe Bar Kitchen GF SW
+2,2,25,2,Cafe Bar Kitchen GF SW
+2,2,25,3,Cafe Bar Kitchen GF SW
+2,2,25,4,Cafe Bar Kitchen GF SW
+2,2,26,0,Kiosk 056 GF SW
+2,2,26,1,Kiosk 056 GF SW
+2,2,26,2,Kiosk 056 GF SW
+2,2,26,3,Kiosk 056 GF SW
+2,2,26,4,Kiosk 056 GF SW
+2,2,27,0,Cafe Bar Dis WC GF SW
+2,2,27,1,Cafe Bar Dis WC GF SW
+2,2,27,2,Cafe Bar Dis WC GF SW
+2,2,28,0,Cafe Bar FemWC GF SW
+2,2,28,1,Cafe Bar FemWC GF SW
+2,2,28,2,Cafe Bar FemWC GF SW
+2,2,29,0,CafeBar WC Lob Void GFSW
+2,2,29,1,CafeBar WC Lob Void GFSW
+2,2,29,2,CafeBar WC Lob Void GFSW
+2,2,30,0,Cafe Bar Kitchen Void GFSW
+2,2,30,1,Cafe Bar Kitchen Void GFSW
+2,2,30,2,Cafe Bar Kitchen Void GFSW
+2,2,31,0,Cafe Bar Kitchen
+2,2,31,1,Cafe Bar Kitchen
+2,2,31,2,Cafe Bar Kitchen
+2,2,32,0,Cafe Bar GF SW
+2,2,32,1,Cafe Bar GF SW
+2,2,33,0,Cafe Bar GF SW
+2,2,33,1,Cafe Bar GF SW
+2,2,33,2,Cafe Bar GF SW
+2,2,34,0,Cafe Bar Void GF SW
+2,2,34,1,Cafe Bar Void GF SW
+2,2,34,2,Cafe Bar Void GF SW
+2,2,35,0,Male WC Cafe Bar GF SW
+2,2,35,1,Male WC Cafe Bar GF SW
+2,2,35,2,Male WC Cafe Bar GF SW
+2,2,36,0,Office 06 GF SW
+2,2,36,1,Office 066 GF SW
+2,2,36,2,Office 06 GF SW
+2,2,37,0,Conc Dis WC GF SW
+2,2,37,1,Conc Dis WC GF SW
+2,2,37,2,Conc Dis WC GF SW
+2,2,38,0,Conc Female WC GF SW
+2,2,38,1,Conc Female WC GF SW
+2,2,38,2,Conc Female WC GF SW
+2,2,39,0,Conc Female WC GF SW
+2,2,39,1,Conc Female WC GF SW
+2,2,39,2,Conc Female WC GF SW
+2,2,40,0,Club Shop & Museum GF SW
+2,2,40,1,Club Shop & Museum GF SW
+2,2,40,2,Club Shop & Museum GF SW
+2,2,40,3,Club Shop & Museum GF SW
+2,2,40,4,Club Shop & Museum GF SW
+2,2,41,0,Conc Male WC GF SW
+2,2,41,1,Conc Male WC GF SW
+2,2,41,2,Conc Male WC GF SW
+2,2,42,0,Conc Male WC GF SW
+2,2,42,1,Conc Male WC GF SW
+2,2,42,2,Conc Male WC GF SW
+2,2,43,0,Players Gym GF SW
+2,2,43,1,Players Gym GF SW
+2,2,43,2,Players Gym GF SW
+2,2,44,0,Changing 3 Toilets
+2,2,44,1,Changing 3 Toilets
+2,2,44,2,Changing 3 Toilets
+2,2,45,0,Stadium Manager GF SW
+2,2,45,1,Stadium Manager GF SW
+2,2,45,2,Stadium Manager GF SW
+2,2,46,0,Stadium Mgr Void GF SW
+2,2,46,1,Stadium Mgr Void GF SW
+2,2,46,2,Stadium Mgr Void GF SW
+2,2,47,0,Corr adj Stad Mgr Void GFSW
+2,2,47,1,Corr adj Stad Mgr Void GFSW
+2,2,47,2,Corr adj Stad Mgr Void GFSW
+2,2,48,0,Reception Dis WC GF SW
+2,2,48,1,Reception Dis WC GF SW
+2,2,48,2,Reception Dis WC GF SW
+2,2,49,0,Adj Rec Dis WC GF SW
+2,2,49,1,Adj Rec Dis WC GF SW
+2,2,49,2,Adj Rec Dis WC GF SW
+2,2,50,0,Stairs 03 GF SW
+2,2,50,1,Stairs 03 GF SW
+2,2,50,2,Stairs 03 GF SW
+2,2,51,0,Adj Stairs 03 GF SW
+2,2,51,1,Adj Stairs 03 GF SW
+2,2,51,2,Adj Stairs 03 GF SW
+2,2,51,3,Adj Stairs 03 GF SW
+2,2,51,4,Adj Stairs 03 GF SW
+2,2,52,0,Lobby adj Ticket Off GFSW
+2,2,52,1,Lobby adj Ticket Off GFSW
+2,2,52,2,Lobby adj Ticket Off GFSW
+2,2,53,0,Lobby adj Ticket Off GFSW
+2,2,53,1,Lobby adj Ticket Off GFSW
+2,2,54,0,Ticket Office GF SW
+2,2,54,1,Ticket Office GF SW
+2,2,54,2,Ticket Office GF SW
+2,2,55,0,Ticket Office Void GF SW
+2,2,55,1,Ticket Office Void GF SW
+2,2,55,2,Ticket Office Void GF SW
+2,2,56,0,Ticket Office GF SW
+2,2,56,1,Ticket Office GF SW
+2,2,57,0,Home Changing WC GFSW
+2,2,57,1,Home Changing WC GFSW
+2,2,57,2,Home Changing WC GFSW
+2,2,58,0,Home Changing WC GFSW
+2,2,58,1,Home Changing WC GFSW
+2,2,58,2,Home Changing WC GFSW
+2,2,59,0,Cafe Bar Dis WC GFSW
+2,2,59,1,Cafe Bar Dis WC GFSW
+2,2,59,2,Cafe Bar Dis WC GFSW
+2,2,60,0,Cafe Bar Female WC GFSW
+2,2,60,1,Cafe Bar Female WC GFSW
+2,2,60,2,Cafe Bar Female WC GFSW
+2,2,61,0,Cafe Bar Male WC GFSW
+2,2,61,1,Cafe Bar Male WC GFSW
+2,2,61,2,Cafe Bar Male WC GFSW
+2,2,62,0,Conc Dis WC GF SW
+2,2,62,1,Conc Dis WC GF SW
+2,2,62,2,Conc Dis WC GF SW
+2,2,63,0,Conc Female WC GF SW
+2,2,63,1,Conc Female WC GF SW
+2,2,63,2,Conc Female WC GF SW
+2,2,64,0,Conc Female WC GF SW
+2,2,64,1,Conc Female WC GF SW
+2,2,64,2,Conc Female WC GF SW
+2,2,65,0,Conc Male WC GF SW
+2,2,65,1,Conc Male WC GF SW
+2,2,65,2,Conc Male WC GF SW
+2,2,66,0,Conc Male WC GF SW
+2,2,66,1,Conc Male WC GF SW
+2,2,66,2,Conc Male WC GF SW
+2,2,67,0,Changing 3 GF SW
+2,2,67,1,Changing 3 GF SW
+2,2,67,2,Changing 3 GF SW
+2,2,68,0,Cafe Bar Fem WC Void GFSW
+2,2,68,1,Cafe Bar Fem WC Void GFSW
+2,2,68,2,Cafe Bar Fem WC Void GFSW
+2,2,69,0,Cafe Bar Dis WC Void GFSW
+2,2,69,1,Cafe Bar Dis WC Void GFSW
+2,2,69,2,Cafe Bar Dis WC Void GFSW
+2,2,70,0,Cafe Bar adj Dis WC GFSW
+2,2,70,1,Cafe Bar adj Dis WC GFSW
+2,2,70,2,Cafe Bar adj Dis WC GFSW
+2,2,71,0,Cafe Bar GF SW
+2,2,71,1,Cafe Bar GF SW
+2,2,71,2,Cafe Bar GF SW
+2,2,72,0,Cafe Bar Void GF SW
+2,2,72,1,Cafe Bar Void GF SW
+2,2,72,2,Cafe Bar Void GF SW
+2,2,73,0,Adj Rec Dis WC Void GF SW
+2,2,73,1,Adj Rec Dis WC Void GF SW
+2,2,73,2,Adj Rec Dis WC Void GF SW
+2,2,74,0,Adj Rec Dis WC GF SW
+2,2,74,1,Adj Rec Dis WC GF SW
+2,2,74,2,Adj Rec Dis WC GF SW
+2,2,75,0,Cafe Bar GF SW
+2,2,75,1,Cafe Bar GF SW
+2,2,76,0,Reception Lock
+2,2,76,1,Reception Lock
+2,2,76,2,Reception Lock
+2,2,76,3,Reception Lock
+2,2,76,4,Reception Lock
+2,2,77,0,Rise & Fall Bollards
+2,2,77,1,Rise & Fall Bollards
+2,2,77,2,Rise & Fall Bollards
+2,2,77,3,Rise & Fall Bollards
+2,2,77,4,Rise & Fall Bollards
+2,3,1,0,Corr adj DopingCtrl GF SE
+2,3,1,1,Corr adj DopingCtrl GF SE
+2,3,1,2,Corr adj DopingCtrl GF SE
+2,3,2,0,Corr adj DopeCtrl Vd GFSE
+2,3,2,1,Corr adj DopeCtrl Vd GFSE
+2,3,2,2,Corr adj DopeCtrl Vd GFSE
+2,3,3,0,Doping Ctrl Void GF SE
+2,3,3,1,Doping Ctrl Void GF SE
+2,3,3,2,Doping Ctrl Void GF SE
+2,3,4,0,Doping Ctrl GF SE
+2,3,4,1,Doping Ctrl GF SE
+2,3,4,2,Doping Ctrl GF SE
+2,3,5,0,Changing 04 GF SE
+2,3,5,1,Changing 04 GF SE
+2,3,5,2,Changing 04 GF SE
+2,3,6,0,Changing 04 Void GF SE
+2,3,6,1,Changing 04 Void GF SE
+2,3,6,2,Changing 04 Void GF SE
+2,3,7,0,Away Changing WC GFSE
+2,3,7,1,Away Changing WC GFSE
+2,3,7,2,Away Changing WC GFSE
+2,3,8,0,Away Changing Void GF SE
+2,3,8,1,Away Changing Void GF SE
+2,3,8,2,Away Changing Void GF SE
+2,3,9,0,Away Changing GF SE
+2,3,9,1,Away Changing GF SE
+2,3,9,2,Away Changing GF SE
+2,3,10,0,Changing 04 WC GF SE
+2,3,10,1,Changing 04 WC GF SE
+2,3,10,2,Changing 04 WC GF SE
+2,3,11,0,Match Officials Void GF SE
+2,3,11,1,Match Officials Void GF SE
+2,3,11,2,Match Officials Void GF SE
+2,3,12,0,Match Officials GF SE
+2,3,12,1,Match Officials GF SE
+2,3,12,2,Match Officials GF SE
+2,3,13,0,Match Officials WC GF SE
+2,3,13,1,Match Officials WC GF SE
+2,3,13,2,Match Officials WC GF SE
+2,3,14,0,Kit Room/Laundry GF SE
+2,3,14,1,Kit Room/Laundry GF SE
+2,3,14,2,Kit Room/Laundry GF SE
+2,3,15,0,Corr adj Kit Room GF SE
+2,3,15,1,Corr adj Kit Room GF SE
+2,3,15,2,Corr adj Kit Room GF SE
+2,3,16,0,Kiosk 010 GF SE
+2,3,16,1,Kiosk 010 GF SE
+2,3,16,2,Kiosk 010 GF SE
+2,3,16,3,Kiosk 010 GF SE
+2,3,16,4,Kiosk 010 GF SE
+2,3,17,0,Kit Room/L'dry Void GF SE
+2,3,17,1,Kit Room/L'dry Void GF SE
+2,3,17,2,Kit Room/L'dry Void GF SE
+2,3,18,0,Conc adj Kiosk 010 GF SE
+2,3,18,1,Conc adj Kiosk 010 GF SE
+2,3,18,2,Conc adj Kiosk 010 GF SE
+2,3,19,0,Conc adj Kiosk 010 GF SE
+2,3,19,1,Conc adj Kiosk 010 GF SE
+2,3,19,2,Conc adj Kiosk 010 GF SE
+2,3,20,0,Conc adj Kiosk 010 GF SE
+2,3,20,1,Conc adj Kiosk 010 GF SE
+2,3,20,2,Conc adj Kiosk 010 GF SE
+2,3,21,0,Conc adj Kiosk 010 GF SE
+2,3,21,1,Conc adj Kiosk 010 GF SE
+2,3,21,2,Conc adj Kiosk 010 GF SE
+2,3,22,0,Conc adj Female W GF SE
+2,3,22,1,Conc adj Female W GF SE
+2,3,22,2,Conc adj Female W GF SE
+2,3,23,0,Conc adj Male WC GF SE
+2,3,23,1,Conc adj Male WC GF SE
+2,3,23,2,Conc adj Male WC GF SE
+2,3,24,0,Conc adj Turnstiles GF SE
+2,3,24,1,Conc adj Turnstiles GF SE
+2,3,25,0,Stairs 01 GF SE
+2,3,25,1,Stairs 01 GF SE
+2,3,25,2,Stairs 01 GF SE
+2,3,26,0,Conc Dis WC GF SE
+2,3,26,1,Conc Dis WC GF SE
+2,3,26,2,Conc Dis WC GF SE
+2,3,27,0,GF SE Goods Access
+2,3,27,1,GF SE Goods Access
+2,3,27,2,GF SE Goods Access
+2,3,28,0,Comm Area GF SE
+2,3,28,1,Comm Area GF SE
+2,3,29,0,Comm Area GF SE
+2,3,29,1,Comm Area GF SE
+2,3,29,2,Comm Area GF SE
+2,3,30,0,Conc Male WC GF SE
+2,3,30,1,Conc Male WC GF SE
+2,3,30,2,Conc Male WC GF SE
+2,3,31,0,Conc Male WC GF SE
+2,3,31,1,Conc Male WC GF SE
+2,3,31,2,Conc Male WC GF SE
+2,3,32,0,Comm Area GF SE
+2,3,32,1,Comm Area GF SE
+2,3,32,2,Comm Area GF SE
+2,3,33,0,Conc Female WC GF SE
+2,3,33,1,Conc Female WC GF SE
+2,3,33,2,Conc Female WC GF SE
+2,3,34,0,Conc Dis WC GF SE
+2,3,34,1,Conc Dis WC GF SE
+2,3,34,2,Conc Dis WC GF SE
+2,3,35,0,Conc Female WC GF SE
+2,3,35,1,Conc Female WC GF SE
+2,3,35,2,Conc Female WC GF SE
+2,3,36,0,Comm Area Female WC GFSE
+2,3,36,1,Comm Area Female WC GFSE
+2,3,36,2,Comm Area Female WC GFSE
+2,3,37,0,Comm Area Dis WC GF SE
+2,3,37,1,Comm Area Dis WC GF SE
+2,3,37,2,Comm Area Dis WC GF SE
+2,3,38,0,Comm Area Male WC GF SE
+2,3,38,1,Comm Area Male WC GF SE
+2,3,38,2,Comm Area Male WC GF SE
+2,3,39,0,Cor adj CommArea WC GFSE
+2,3,39,1,Cor adj CommArea WC GFSE
+2,3,39,2,Cor adj CommArea WC GFSE
+2,3,40,0,Cor adj CommArea WC GFSE
+2,3,40,1,Cor adj CommArea WC GFSE
+2,3,41,0,Community Area Void GFSE
+2,3,41,1,Community Area Void GFSE
+2,3,41,2,Community Area Void GFSE
+2,3,42,0,Community Area GF SE
+2,3,42,1,Community Area GF SE
+2,3,42,2,Community Area GF SE
+2,3,43,0,Community Area GF SE
+2,3,43,1,Community Area GF SE
+2,3,43,2,Community Area GF SE
+2,3,44,0,Comm Area Void GF SE
+2,3,44,1,Comm Area Void GF SE
+2,3,44,2,Comm Area Void GF SE
+2,3,45,0,Community Area GF SE
+2,3,45,1,Community Area GF SE
+2,3,45,2,Community Area GF SE
+2,3,46,0,Comm Area Void GF SE
+2,3,46,1,Comm Area Void GF SE
+2,3,46,2,Comm Area Void GF SE
+2,3,47,0,Comm Area GF SE
+2,3,47,1,Comm Area GF SE
+2,3,47,2,Comm Area GF SE
+2,3,48,0,Comm Area Void GF SE
+2,3,48,1,Comm Area Void GF SE
+2,3,48,2,Comm Area Void GF SE
+2,3,49,0,Comm Area GF SE
+2,3,49,1,Comm Area GF SE
+2,3,50,0,Press Entrance Void GF SE
+2,3,50,1,Press Entrance Void GF SE
+2,3,50,2,Press Entrance Void GF SE
+2,3,51,0,Press Entrance GF SE
+2,3,51,1,Press Entrance GF SE
+2,3,51,2,Press Entrance GF SE
+2,3,52,0,Stairs 02 GF SE
+2,3,52,1,Stairs 02 GF SE
+2,3,52,2,Stairs 02 GF SE
+2,3,53,0,Press Entrance GF SE
+2,3,53,1,Press Entrance GF SE
+2,3,54,0,Stairs 02 GF SE
+2,3,54,1,Stairs 02 GF SE
+2,3,55,0,Stairs 02 GF SE
+2,3,55,1,Stairs 02 GF SE
+2,3,55,2,Stairs 02 GF SE
+2,3,56,0,Stairs 02 GF SE
+2,3,56,1,Stairs 02 GF SE
+2,3,56,2,Stairs 02 GF SE
+2,3,56,3,Stairs 02 GF SE
+2,3,56,4,Stairs 02 GF SE
+2,3,57,0,Reception Void GF SE
+2,3,57,1,Reception Void GF SE
+2,3,57,2,Reception Void GF SE
+2,3,58,0,Reception Lift GF SE
+2,3,58,1,Reception Lift GF SE
+2,3,58,2,Reception Lift GF SE
+2,3,59,0,Reception GF SE
+2,3,59,1,Reception GF SE
+2,3,59,2,Reception GF SE
+2,3,60,0,Reception GF SE
+2,3,60,1,Reception GF SE
+2,3,61,0,Reception Entrance GF SE
+2,3,61,1,Reception Entrance GF SE
+2,3,61,2,Reception Entrance GF SE
+2,3,62,0,Reception Void GF SE
+2,3,62,1,Reception Void GF SE
+2,3,62,2,Reception Void GF SE
+2,3,63,0,Reception GF SE
+2,3,63,1,Reception GF SE
+2,3,63,2,Reception GF SE
+2,3,64,0,Away Change WC GF SE
+2,3,64,1,Away Change WC GF SE
+2,3,64,2,Away Change WC GF SE
+2,3,65,0,Changing 04 WC GF SE
+2,3,65,1,Changing 04 WC GF SE
+2,3,65,2,Changing 04 WC GF SE
+2,3,66,0,Match Officials WC GF SE
+2,3,66,1,Match Officials WC GF SE
+2,3,66,2,Match Officials WC GF SE
+2,3,67,0,Conc Dis WC GF SE
+2,3,67,1,Conc Dis WC GF SE
+2,3,67,2,Conc Dis WC GF SE
+2,3,68,0,Conc Male WC GF SE
+2,3,68,1,Conc Male WC GF SE
+2,3,68,2,Conc Male WC GF SE
+2,3,69,0,Conc Male WC GF SE
+2,3,69,1,Conc Male WC GF SE
+2,3,69,2,Conc Male WC GF SE
+2,3,70,0,Conc Female WC GF SE
+2,3,70,1,Conc Female WC GF SE
+2,3,70,2,Conc Female WC GF SE
+2,3,71,0,Conc Female WC GF SE
+2,3,71,1,Conc Female WC GF SE
+2,3,71,2,Conc Female WC GF SE
+2,3,72,0,Comm Area FemWC GF SE
+2,3,72,1,Comm Area FemWC GF SE
+2,3,72,2,Comm Area FemWC GF SE
+2,3,73,0,Comm AreaDis WC GF SE
+2,3,73,1,Comm AreaDis WC GF SE
+2,3,73,2,Comm AreaDis WC GF SE
+2,3,74,0,Comm Area MaleWC GF SE
+2,3,74,1,Comm Area MaleWC GF SE
+2,3,74,2,Comm Area MaleWC GF SE
+2,3,75,0,Cor adjCommArea WC Void
+2,3,75,1,Cor adjCommArea WC Void
+2,3,75,2,Cor adjCommArea WC Void
+2,3,76,0,Reception Void
+2,3,76,1,Reception Void
+2,3,76,2,Reception Void
+2,3,77,0,Community Area
+2,3,77,1,Community Area
+2,3,77,2,Community Area
+2,3,78,0,Community Area
+2,3,78,1,Community Area
+2,3,78,2,Community Area
+2,3,79,0,Reception Void
+2,3,79,1,Reception Void
+2,3,79,2,Reception Void
+2,3,80,0,Reception
+2,3,80,1,Reception
+2,3,81,0,Reception Lock
+2,3,81,1,Reception Lock
+2,3,81,2,Reception Lock
+2,3,81,3,Reception Lock
+2,3,81,4,Reception Lock
+2,END,2

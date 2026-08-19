@@ -1,0 +1,5 @@
+17,BEGIN,2
+17,1,"All Input Device",0,1,2,3
+17,2,"Class Change",0,1,2,3
+17,3,"Alert",0,1,2,3
+17,END,2

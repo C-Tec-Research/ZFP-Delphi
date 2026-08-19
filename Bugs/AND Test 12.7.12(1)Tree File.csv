@@ -1,0 +1,111 @@
+150,BEGIN,1
+150,0,0,"VOICE ALARM C+E","C & E Block"
+150,1,1,"IG AREA 1","Input Group",2,2
+150,2,2,"Activated","Input Group State",2
+150,3,3,"ON","Action",1
+150,4,4,"VA ALERT AREA 2","Output Object",4,13
+150,5,3,"ON","Action",1
+150,6,4,"BEACONS AREA 1","Output Object",4,2
+150,7,4,"VA EVAC AREA 1","Output Object",4,7
+150,8,3,"5 mins->ON","Action",3
+150,9,4,"ALL EVAC MSGS","Output Object",5,3
+150,10,1,"IG AREA 2","Input Group",2,3
+150,11,2,"Activated","Input Group State",2
+150,12,3,"ON","Action",1
+150,13,4,"BEACONS AREA 2","Output Object",4,3
+150,14,4,"VA EVAC AREA 2","Output Object",4,8
+150,15,3,"ON","Action",1
+150,16,4,"VA ALERT AREA 1","Output Object",4,12
+150,17,4,"VA ALERT AREA 3","Output Object",4,14
+150,18,4,"VA ALERT AREA 4","Output Object",4,15
+150,19,3,"5 mins->ON","Action",3
+150,20,4,"ALL EVAC MSGS","Output Object",5,3
+150,21,1,"IG AREA 3","Input Group",2,4
+150,22,2,"Activated","Input Group State",2
+150,23,3,"ON","Action",1
+150,24,4,"BEACONS AREA 3","Output Object",4,4
+150,25,4,"VA EVAC AREA 3","Output Object",4,9
+150,26,3,"ON","Action",1
+150,27,4,"VA ALERT AREA 2","Output Object",4,13
+150,28,4,"VA ALERT AREA 4","Output Object",4,15
+150,29,4,"VA ALERT AREA 5","Output Object",4,16
+150,30,3,"5 mins->ON","Action",3
+150,31,4,"ALL EVAC MSGS","Output Object",5,3
+150,32,1,"IG AREA 4","Input Group",2,5
+150,33,2,"Activated","Input Group State",2
+150,34,3,"ON","Action",1
+150,35,4,"BEACONS AREA 4","Output Object",4,5
+150,36,4,"VA EVAC AREA 4","Output Object",4,10
+150,37,3,"ON","Action",1
+150,38,4,"VA ALERT AREA 2","Output Object",4,13
+150,39,4,"VA ALERT AREA 3","Output Object",4,14
+150,40,4,"VA ALERT AREA 5","Output Object",4,16
+150,41,3,"5 mins->ON","Action",3
+150,42,4,"ALL EVAC MSGS","Output Object",5,3
+150,43,1,"IG AREA 5","Input Group",2,6
+150,44,2,"Activated","Input Group State",2
+150,45,3,"ON","Action",1
+150,46,4,"BEACONS AREA 5","Output Object",4,6
+150,47,4,"VA EVAC AREA 5","Output Object",4,11
+150,48,3,"ON","Action",1
+150,49,4,"VA ALERT AREA 3","Output Object",4,14
+150,50,4,"VA ALERT AREA 5","Output Object",4,16
+150,51,3,"5 mins->ON","Action",3
+150,52,4,"ALL EVAC MSGS","Output Object",5,3
+150,53,0,"AREA1 LIFT","C & E Block"
+150,54,1,"IG AREA 1","Input Group",2,2
+150,55,2,"Activated","Input Group State",2
+150,56,3,"ON","Action",1
+150,57,4,"LIFT","Output Object",4,20
+150,58,0,"MEET RM SPEAKS","C & E Block"
+150,59,1,"IG AREA 1","Input Group",2,2
+150,60,2,"Activated","Input Group State",2
+150,61,3,"ON","Action",1
+150,62,4,"MEET RM SPEAKERS","Output Object",4,21
+150,63,0,"AREA 1 DOORS","C & E Block"
+150,64,1,"IG AREA 1","Input Group",2,2
+150,65,2,"Activated","Input Group State",2
+150,66,3,"ON","Action",1
+150,67,4,"AREA 1 PAXTON","Output Object",4,22
+150,68,0,"AREA 2 DOORS","C & E Block"
+150,69,1,"IG AREA 2","Input Group",2,3
+150,70,2,"Activated","Input Group State",2
+150,71,3,"ON","Action",1
+150,72,4,"AREA 2 PAXTON","Output Object",4,23
+150,73,0,"AREA 3 DOORS","C & E Block"
+150,74,1,"IG AREA 3","Input Group",2,4
+150,75,2,"Activated","Input Group State",2
+150,76,3,"ON","Action",1
+150,77,4,"AREA 3 PAXTON","Output Object",4,24
+150,78,0,"AREA 4 DOORS","C & E Block"
+150,79,1,"IG AREA 4","Input Group",2,5
+150,80,2,"Activated","Input Group State",2
+150,81,3,"ON","Action",1
+150,82,4,"AREA 4 PAXTON","Output Object",4,25
+150,83,0,"AREA 5 DOORS","C & E Block"
+150,84,1,"IG AREA 5","Input Group",2,6
+150,85,2,"Activated","Input Group State",2
+150,86,3,"ON","Action",1
+150,87,4,"AREA 5 PAXTON","Output Object",4,26
+150,88,0,"AND group test","C & E Block"
+150,89,1,"IG AREA 1","Input Group",2,2
+150,90,2,"Activated","Input Group State",2
+150,91,3,"ON","Action",1
+150,92,4,"AND Group","Output Object",2,1
+150,93,1,"IG AREA 2","Input Group",2,3
+150,94,2,"Activated","Input Group State",2
+150,95,3,"ON","Action",1
+150,96,4,"AND Group","Output Object",2,1
+150,97,1,"IG AREA 4","Input Group",2,5
+150,98,2,"Activated","Input Group State",2
+150,99,3,"ON","Action",1
+150,100,4,"AND Group","Output Object",2,1
+150,101,1,"AND Group","Input Group",2,1
+150,102,2,"Full Activation","Input Group State",2
+150,103,3,"ON","Action",1
+150,104,4,"REDCARE","Output Object",4,17
+150,105,1,"AND Group","Input Group",2,1
+150,106,2,"Partial Activation","Input Group State",1
+150,107,3,"ON","Action",1
+150,108,4,"EXT.FRONT GATE","Output Object",4,18
+150,END,1

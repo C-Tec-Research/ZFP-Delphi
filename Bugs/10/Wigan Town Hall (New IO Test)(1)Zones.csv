@@ -1,0 +1,57 @@
+100,BEGIN,1
+100,1,"Basement",0,1,2,3
+100,2,"Ground Floor",0,1,2,3
+100,3,"Ground Floor",0,1,2,3
+100,4,"Ground Floor",0,1,2,3
+100,5,"First Floor",0,1,2,3
+100,6,"Second Floor",0,1,2,3
+100,7,"Main Stairwell",0,1,2,3
+100,8,"Rear Stairwell",0,1,2,3
+100,9,"Plant Room Ground",0,1,2,3
+100,10,"Plant Room 1st",0,1,2,3
+100,11,"Plant Room 2nd",0,1,2,3
+100,12,"Main Lift Shaft",0,1,2,3
+100,13,"Rear Lift Shaft",0,1,2,3
+100,14,"Atrium",0,1,2,3
+100,15,"Lift Room LowerGroun",0,1,2,3
+100,16,"Central Watch",0,1,2,3
+100,17,"Mayors Area",0,1,2,3
+100,18,"Envirolabs",0,1,2,3
+100,19,"Lower Ground",0,1,2,3
+100,20,"Lower Ground",0,1,2,3
+100,21,"Lower Ground",0,1,2,3
+100,22,"Records",0,1,2,3
+100,23,"Council Chamber",0,1,2,3
+100,24,"First Floor",0,1,2,3
+100,25,"First Floor",0,1,2,3
+100,26,"1st Floor Adj Stairs",0,1,2,3
+100,27,"1st Floor Adj Stairs",0,1,2,3
+100,28,"1st Floor Adj RStair",0,1,2,3
+100,29,"1st Floor",0,1,2,3
+100,30,"1st Floor",0,1,2,3
+100,31,"1st Floor",0,1,2,3
+100,32,"1stFloor",0,1,2,3
+100,33,"2ndFloor Adj MStair",0,1,2,3
+100,34,"2nd Floor Adj MStair",0,1,2,3
+100,35,"Second Floor",0,1,2,3
+100,36,"Second Floor",0,1,2,3
+100,37,"Second Floor",0,1,2,3
+100,38,"Second Floor",0,1,2,3
+100,39,"Second Floor",0,1,2,3
+100,40,"Second Floor",0,1,2,3
+100,41,"Second Floor",0,1,2,3
+100,42,"Second Floor",0,1,2,3
+100,43,"1st Floor",0,1,2,3
+100,44,"2nd Floor Rear Stair",0,1,2,3
+100,45,"2nd Floor Rear Stair",0,1,2,3
+100,201,System Zone
+100,202,System Zone
+100,203,System Zone
+100,204,System Zone
+100,205,System Zone
+100,206,System Zone
+100,207,System Zone
+100,208,System Zone
+100,209,System Zone
+100,210,ABUS Devices
+100,END,1

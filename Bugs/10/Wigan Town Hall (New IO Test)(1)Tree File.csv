@@ -1,0 +1,37 @@
+150,BEGIN,1
+150,0,0,"One out All out","C & E Block"
+150,1,1,"All Input Device","Input Group",2,1
+150,2,2,"Activated","Input Group State",2
+150,3,3,"ON","Action",1
+150,4,4,"Relay 1","Output Object",4,2
+150,5,4,"Relay 2","Output Object",4,3
+150,6,4,"OG7-10","Output Object",5,2
+150,7,4,"OG 11","Output Object",4,11
+150,8,4,"OG 12","Output Object",4,12
+150,9,4,"OG 13","Output Object",4,13
+150,10,4,"OG 14","Output Object",4,14
+150,11,4,"OG 15","Output Object",4,15
+150,12,3,"10 -> ON","Action",13
+150,13,4,"OG16-20","Output Object",5,4
+150,14,4,"OG26-30","Output Object",5,6
+150,15,3,"20 -> ON","Action",14
+150,16,4,"OG31-35","Output Object",5,7
+150,17,4,"OG36-41","Output Object",5,8
+150,18,3,"Simple Pulse","Action",2
+150,19,4,"OG21-25","Output Object",5,5
+150,20,0,"Class Change Test","C & E Block"
+150,21,1,"CC Switch","Input Group",2,4
+150,22,2,"On","Input Group State",2
+150,23,3,"Group ON T4 V2","Action",11
+150,24,4,"Class Change","Output Object",4,6
+150,25,3,"ON","Action",1
+150,26,4,"OG7-41","Output Object",5,9
+150,27,2,"Off","Input Group State",0
+150,28,3,"OFF","Action",0
+150,29,4,"Class Change","Output Object",4,6
+150,30,4,"OG7-41","Output Object",5,9
+150,31,1,"Alert","Input Group",2,3
+150,32,2,"Activated","Input Group State",2
+150,33,3,"Simple Pulse","Action",2
+150,34,4,"All Sounders","Output Object",4,1
+150,END,1

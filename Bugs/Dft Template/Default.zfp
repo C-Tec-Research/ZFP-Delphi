@@ -1,0 +1,1513 @@
+File ZFP File
+  Object Client
+    Name = 
+    Memo Address
+    End Memo
+    Post Code = 
+    Tel. No. = 
+  End Object
+  Object Installer
+    Name = 
+    Memo Address
+    End Memo
+    Post Code = 
+    Tel. No. = 
+  End Object
+  Memo Site Notes
+  End Memo
+  Object Global Defaults
+    Language = 0
+    Default AutoAdjust DST = TRUE
+    Allow Pager Texts = FALSE
+  End Object
+  ObjectArray Node List
+    Active Child = 0
+    Max = 0
+    Object Item( 0 )
+      Name = Panel 1
+      Node Type = zfp_Panel
+      ObjectList Loop List
+        Active Child = 0
+        ObjectArray Loop List
+          Active Child = 3
+          Max = 3
+          Object Item( 0 )
+            Loop Address = 9
+            Loop Name = 
+            ObjectList Loop Devices
+              ObjectArray Loop Devices
+                Active Child = 13
+                Max = 13
+                Object Item( 0 )
+                  Device Map = 3
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Object Item( 0 )
+                        Name = Panel Sounder 1
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 12
+                            Object Item( 0 ) = 258
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 206
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 5 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 6 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 7 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 8 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 9 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 10 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 11 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 12 ) = Yes
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 2
+                            Object Item( 0 ) = 6
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 1
+                              Output Group = Item( 0 )
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                  Locked = TRUE
+                End Object
+                Object Item( 1 )
+                  Device Map = 3
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Object Item( 0 )
+                        Name = Panel Sounder 2
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 12
+                            Object Item( 0 ) = 258
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 206
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 5 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 6 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 7 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 8 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 9 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 10 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 11 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 12 ) = Yes
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 2
+                            Object Item( 0 ) = 6
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 1
+                              Output Group = Item( 0 )
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                  Locked = TRUE
+                End Object
+                Object Item( 2 )
+                  Device Map = 4
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Object Item( 0 )
+                        Name = Relay 1
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 12
+                            Object Item( 0 ) = 259
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 206
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 5 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 6 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 7 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 8 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 9 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 10 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 11 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 12 ) = Yes
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 3
+                            Object Item( 0 ) = Output
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 1
+                              Output Group = Item( 0 )
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = Norm Open
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                  Locked = TRUE
+                End Object
+                Object Item( 3 )
+                  Device Map = 4
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Object Item( 0 )
+                        Name = Panel Relay 2
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 12
+                            Object Item( 0 ) = 259
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 206
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 5 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 6 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 7 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 8 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 9 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 10 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 11 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 12 ) = Yes
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 3
+                            Object Item( 0 ) = Output
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 1
+                              Output Group = Item( 0 )
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = Norm Open
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                  Locked = TRUE
+                End Object
+                Object Item( 4 )
+                  Device Map = 8
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Object Item( 0 )
+                        Name = Fault Relay
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 12
+                            Object Item( 0 ) = 263
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 206
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 5 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 6 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 7 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 8 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 9 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 10 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 11 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 12 ) = No
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 0
+                            Object Item( 0 )
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                  Locked = TRUE
+                End Object
+                Object Item( 5 )
+                  Device Map = 7
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Object Item( 0 )
+                        Name = Fault Buzzer
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 12
+                            Object Item( 0 ) = 257
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 206
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 5 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 6 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 7 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 8 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 9 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 10 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 11 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 12 ) = No
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 0
+                            Object Item( 0 ) = 4
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                  Locked = TRUE
+                End Object
+                Object Item( 6 )
+                  Device Map = 1
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Object Item( 0 )
+                        Name = PSU
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 12
+                            Object Item( 0 ) = 257
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 206
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 5 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 6 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 7 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 8 )
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 9 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 10 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 11 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 12 ) = No
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 0
+                            Object Item( 0 ) = 4
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                  Locked = TRUE
+                End Object
+                Object Item( 7 )
+                  Device Map = 10
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Object Item( 0 )
+                        Name = Panel Device
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 12
+                            Object Item( 0 ) = 265
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 205
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 )
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 5 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 6 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 7 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 8 )
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 9 )
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 10 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 11 )
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 12 ) = No
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 0
+                            Object Item( 0 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                  Locked = TRUE
+                End Object
+                Object Item( 8 )
+                  Device Map = 13
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Object Item( 0 )
+                        Name = Mon I/P 1
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 12
+                            Object Item( 0 ) = 278
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 206
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 5 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 6 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 7 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 8 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 9 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 10 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 11 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 12 ) = Yes
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 4
+                            Object Item( 0 ) = 4
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 100
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                  Locked = TRUE
+                End Object
+                Object Item( 9 )
+                  Device Map = 13
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Object Item( 0 )
+                        Name = Mon I/P 2
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 12
+                            Object Item( 0 ) = 278
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 206
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 5 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 6 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 7 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 8 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 9 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 10 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 11 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 12 ) = Yes
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 4
+                            Object Item( 0 ) = 4
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 100
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 )
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                  Locked = TRUE
+                End Object
+                Object Item( 10 )
+                  Device Map = 13
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Object Item( 0 )
+                        Name = Earth Fault
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 12
+                            Object Item( 0 ) = 274
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 205
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 5 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 6 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 7 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 8 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 9 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 10 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 11 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 12 ) = No
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = E
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 4
+                            Object Item( 0 ) = 4
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 100
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 )
+                              Pointer Type = lf_Input
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                  Locked = TRUE
+                End Object
+                Object Item( 11 )
+                  Device Map = 13
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Object Item( 0 )
+                        Name = Aus 24V Fuse
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 12
+                            Object Item( 0 ) = 264
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 205
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 5 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 6 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 7 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 8 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 9 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 10 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 11 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 12 ) = No
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 4
+                            Object Item( 0 ) = 4
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 100
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 )
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                  Locked = TRUE
+                End Object
+                Object Item( 12 )
+                  Device Map = 12
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Object Item( 0 )
+                        Name = Touch Screen
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 12
+                            Object Item( 0 ) = 274
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 205
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 5 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 6 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 7 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 8 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 9 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 10 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 11 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 12 ) = No
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 0
+                            Object Item( 0 ) = 4
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                  Locked = TRUE
+                End Object
+                Object Item( 13 )
+                  Device Map = 9
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Object Item( 0 )
+                        Name = Event Log
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 12
+                            Object Item( 0 ) = 264
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 1 ) = 205
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 2 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 3 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 4 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 5 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 6 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 7 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 8 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 9 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 10 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 11 ) = 0
+                              Pointer Type = lf_None
+                            End Object
+                            Object Item( 12 ) = No
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 0
+                            Object Item( 0 ) = 4
+                              Pointer Type = lf_None
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                  Locked = TRUE
+                End Object
+              End ObjectArray
+            End ObjectList
+          End Object
+          Object Item( 1 )
+            Loop Address = 10
+            Loop Name = 
+            ObjectList Loop Devices
+              ObjectArray Loop Devices
+                Max = -1
+              End ObjectArray
+            End ObjectList
+          End Object
+          Object Item( 2 )
+            Loop Address = 11
+            Loop Name = 
+            ObjectList Loop Devices
+              ObjectArray Loop Devices
+                Max = -1
+              End ObjectArray
+            End ObjectList
+          End Object
+          Object Item( 3 )
+            Loop Address = 1
+            Loop Name = 
+            ObjectList Loop Devices
+              ObjectArray Loop Devices
+                Max = -1
+              End ObjectArray
+            End ObjectList
+          End Object
+        End ObjectArray
+      End ObjectList
+      Object General Properties
+        Object Recalibration Time
+          Recalibration Time = rt_4_00
+        End Object
+        Object Panel Maintenance Date
+          Maintenance Date = 01/01/2099
+        End Object
+        Object Alarm Verification Times
+          Detectors = 10
+          Manual Call Points = 0
+          I/O = 5
+          I/O = 5
+        End Object
+        Object Maintenance String
+          Maintenance String = Maintenance is due
+        End Object
+        Object Name
+        End Object
+        Object Panel Language
+          Use Global Default = TRUE
+          Language = 0
+        End Object
+        Object Keyswitch Entry Version
+          Keyswitch Entry Only = FALSE
+        End Object
+        Object Loops Fitted
+          Loops Fitted = 1
+        End Object
+        Object HC595 Registers Fitted
+          HC595 Registers Fitted = 0
+        End Object
+        Object Print Options
+          Use Global Print Options = TRUE
+          Print Options = 0
+        End Object
+        Object Loop Protocol
+          Loop Protocol = 0
+        End Object
+        Object Access Codes
+          AL2 Code = 3333
+          AL3 Code = 4444
+        End Object
+        Object Panel AutoAdjust DST
+        End Object
+        Object LCD Dimming
+          LCD Dimming Delay = 120
+        End Object
+        Main Board Version = Not Known
+        Display Board Version = Not Fitted
+        Loop Driver Version = Not Fitted
+      End Object
+      ObjectArray Data Filters List
+        Object Item( 0 )
+          Name = Rcv Zone Alarms From
+          ID = 13
+          Nodes Where Used = 0
+          Pager Text = 
+        End Object
+        Object Item( 1 )
+          Name = Rcv Device Alarms From
+          ID = 1
+          Nodes Where Used = 0
+          Pager Text = 
+        End Object
+        Object Item( 2 )
+          Name = Rcv Faults From
+          ID = 2
+          Nodes Where Used = 0
+          Pager Text = 
+        End Object
+        Object Item( 3 )
+          Name = Rcv Disablements From
+          ID = 3
+          Nodes Where Used = 0
+          Pager Text = 
+        End Object
+        Object Item( 4 )
+          Name = Rcv Selections From
+          ID = 4
+          Nodes Where Used = 0
+          Pager Text = 
+        End Object
+        Object Item( 5 )
+          Name = Rcv Test Conditions From
+          ID = 5
+          Nodes Where Used = 0
+          Pager Text = 
+        End Object
+        Object Item( 6 )
+          Name = Rcv Supervisory Actions From
+          ID = 6
+          Nodes Where Used = 0
+          Pager Text = 
+        End Object
+        Object Item( 7 )
+          Name = Rcv Silence Action From
+          ID = 7
+          Nodes Where Used = 0
+          Pager Text = 
+        End Object
+        Object Item( 8 )
+          Name = Rcv Mute Action From
+          ID = 8
+          Nodes Where Used = 0
+          Pager Text = 
+        End Object
+        Object Item( 9 )
+          Name = Rcv Reset From
+          ID = 9
+          Nodes Where Used = 0
+          Pager Text = 
+        End Object
+        Object Item( 10 )
+          Name = Rcv Investigation Acks From
+          ID = 10
+          Nodes Where Used = 0
+          Pager Text = 
+        End Object
+        Object Item( 11 )
+          Name = Rcv Modes From
+          ID = 11
+          Nodes Where Used = 0
+          Pager Text = 
+        End Object
+        Object Item( 12 )
+          Name = Hide Panel Name in Events from
+          ID = 266
+          Nodes Where Used = 0
+          Pager Text = 
+        End Object
+      End ObjectArray
+      Object Panel Notes
+        Memo Panel Notes
+        End Memo
+      End Object
+      Object Network Properties
+        Object Panel Address
+          Segment = 1
+          Address = 1
+        End Object
+        Object Tethered Address
+          Segment = 1
+          Address = 0
+        End Object
+      End Object
+      Object Panel Zones
+      End Object
+    End Object
+  End ObjectArray
+  Object Cause and Effects
+    ObjectArray Logical Output Groups
+      Active Child = 0
+      Max = 0
+      Object Item( 0 )
+        Name = All Output Devices
+        ID = 1
+        Nodes Where Used = 0
+        Pager Text = 
+        Silenceable = TRUE
+        Norm on Reset = TRUE
+      End Object
+    End ObjectArray
+    ObjectArray Logical Input Groups
+      Active Child = 0
+      Max = 0
+      Object Item( 0 )
+        Name = All Input Devices
+        ID = 1
+        Nodes Where Used = 0
+        Pager Text = 
+        Auto Clear on Panel Reset = TRUE
+        Output Delays Apply to MCPs = FALSE
+        Output Delays Apply to Detectors = TRUE
+        MCP Qualifies Dependencies = TRUE
+        Trigger Mode = igs_Classic
+        ObjectArray Modal Operations
+          Max = -1
+        End ObjectArray
+        ObjectArray Group Dependencies
+          Active Child = 3
+          Max = 3
+        End ObjectArray
+        Object Default Operating Mode
+          Silence = FALSE
+          Op Mode = opm_Single
+          Data 1 = 0
+          Data 2 = 0
+          AND Partial Activation Count = 0
+          AND Full Activation Count = 2
+        End Object
+      End Object
+    End ObjectArray
+    CETree Cause and Effects Tree
+      Tree Text = 
+      CETree C & E Block( 1 )
+        Tree Text = One out All out
+        Panel List = 1-64
+        CETree Input Group( 1 )
+          Tree Text = All Input Devices
+          Input Group Pointer = Item( 0 )
+          Pointer Type = lf_Input
+          CETree Input Group State( 1 )
+            Tree Text = Activated
+            State = 2
+            Switch State = 2
+            AND State = 2
+            CETree Action( 1 )
+              Tree Text = ON
+              Sequence = Item( 1 )
+              CETree Output Object( 1 )
+                Tree Text = All Output Devices
+                Output Type = lf_Output
+                Output Group = Item( 0 )
+              End CETree
+            End CETree
+          End CETree
+        End CETree
+      End CETree
+    End CETree
+  End Object
+  ObjectArray Zone List
+    Active Child = 0
+    Max = 0
+    Object Item( 0 )
+      Name = Zone 1
+      ID = 1
+      Nodes Where Used = 0
+      Pager Text = 
+    End Object
+  End ObjectArray
+  ObjectArray Mode List
+    Max = -1
+  End ObjectArray
+  ObjectArray Supergroup List
+    Max = -1
+  End ObjectArray
+  ObjectArray Input Supergroup List
+    Max = -1
+  End ObjectArray
+  ObjectArray Pulse Patterns
+    Active Child = 0
+    Max = 0
+    Object Item( 0 )
+      Name = Default
+      ID = 1
+      Nodes Where Used = 0
+      Pager Text = 
+      Pattern = 
+      Cycle Index = 0
+    End Object
+  End ObjectArray
+  ObjectArray Group Action List
+    Max = -1
+  End ObjectArray
+  ObjectArray Sequences
+    Active Child = 0
+    Max = 2
+    Object Item( 0 )
+      Name = OFF
+      ID = 0
+      Nodes Where Used = 0
+      Pager Text = 
+      Priority = 255
+      Style = og_Output_Group
+      ObjectArray Lines
+        Active Child = 0
+        Max = 0
+        Object Item( 0 )
+          Predelay = 0
+          Action = 20
+        End Object
+      End ObjectArray
+    End Object
+    Object Item( 1 )
+      Name = ON
+      ID = 1
+      Nodes Where Used = 0
+      Pager Text = 
+      Priority = 240
+      Style = og_Output_Group
+      ObjectArray Lines
+        Active Child = 0
+        Max = 0
+        Object Item( 0 )
+          Predelay = 0
+          Action = 10
+        End Object
+      End ObjectArray
+    End Object
+    Object Item( 2 )
+      Name = Simple Pulse
+      ID = 2
+      Nodes Where Used = 0
+      Pager Text = 
+      Priority = 240
+      Style = og_Output_Group
+      ObjectArray Lines
+        Active Child = 0
+        Max = 0
+        Object Item( 0 )
+          Predelay = 0
+          Action = 40
+        End Object
+      End ObjectArray
+    End Object
+  End ObjectArray
+  Logo = Images\Logo.gif
+  Logo Oversized = FALSE
+End File

@@ -1,0 +1,59 @@
+100,BEGIN,2
+100,1,"Bakehouse Fire Doors",0,1,2
+100,2,"Bakehouse Fire Doors",0,1,2
+100,3,"Annex Roof Void",0,1,2
+100,4,"Annex Fire Doors",0,1,2
+100,5,"Canteen Roof Void",0,1,2
+100,6,"Staff Canteen",0,1,2
+100,7,"Canteen Corridor",0,1,2
+100,8,"Staff Changing",0,1,2
+100,9,"Changing Fire Escape",0,1,2
+100,10,"Bakehouse Lift Corr",0,1,2
+100,11,"Packing Warehouse",0,1,2
+100,12,"Packing Warehouse",0,1,2
+100,13,"Chemical Stores Area",0,1,2
+100,14,"Engineers Workshop",0,1,2
+100,15,"Engineers Stores",0,1,2
+100,16,"Walk On Deck Void",0,1,2
+100,17,"Walk On Deck Void",0,1,2
+100,18,"Out Of Packing",0,1,2
+100,19,"Beef Dripping",0,1,2
+100,20,"Beef Dripping 2",0,1,2
+100,21,"Toad",0,1,2
+100,22,"Inner Packing",0,1,2
+100,23,"Bakehouse Slope",0,1,2
+100,24,"Plantroom 1",0,1,2
+100,25,"Sprinkler Plant Room",0,1,2
+100,26,"NPD Staircase",0,1,2
+100,27,"NPD Ground Floor",0,1,2
+100,28,"NPD 1st Floor",0,1,2
+100,29,"NPD 2nd Floor",0,1,2
+100,30,"Drying Room",0,1,2
+100,31,"Plantroom 2",0,1,2
+100,32,"Plantroom 2",0,1,2
+100,33,"Modular Offices",0,1,2
+100,34,"Cold Store",0,1,2
+100,35,"Loading Bay",0,1,2
+100,36,"Reception G Floor",0,1,2
+100,37,"Reception 1st Floor",0,1,2
+100,38,"Reception 2nd Floor",0,1,2
+100,39,"Ammonia Alarm",0,1,2
+100,40,"Oven Suppression",0,1,2
+100,41,"Heat Spooner 1",0,1,2
+100,42,"Heat Spooner 1",0,1,2
+100,43,"Heat Spooner 1",0,1,2
+100,44,"Heat Spooner 2",0,1,2
+100,45,"Annex Traywash",0,1,2
+100,46,"Annex Mixing Room",0,1,2
+100,47,"Annex Warehouse",0,1,2
+100,201,System Zone
+100,202,System Zone
+100,203,System Zone
+100,204,System Zone
+100,205,System Zone
+100,206,System Zone
+100,207,System Zone
+100,208,System Zone
+100,209,System Zone
+100,210,ABUS Devices
+100,END,2

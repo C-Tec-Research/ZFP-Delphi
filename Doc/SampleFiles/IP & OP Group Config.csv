@@ -1,0 +1,45 @@
+Input Group configuration,,,,,,,,,,,Panel,2,,,,,,,,,
+14,BEGIN,2,,,,,,,,,,,,,,,,,,,
+rec type,ip grp,desc,op mode 0,data0,data1,op mode 1,data0,data1,op mode 2,data0,data1,op mode 3,data0,data1,IG 1st st.,OG 1st st.,Dis. Grp,auto clear,Delays MCP,Delays Det,MCP qualifies dep
+14,1,Zone 16,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,1,1,1
+14,2,Zone 17,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,1,1,1
+14,3,Zone 18,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,1,1,1
+14,4,Zone 19,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,1,1,1
+14,5,Zone 20,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,1,1,1
+14,6,Zone 21,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,1,1,1
+14,7,Zone 22,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,1,1,1
+14,8,Zone 23,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,1,1,1
+14,9,Zone 24,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,1,1,1
+14,10,Zone 25,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,1,1,1
+14,30,Zone 30,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,1,1,1
+14,200,Keyswitch,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,0,1,1,1
+14,203,Mon IP 1,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,1,1,1
+14,257,Net IP 1,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,0,0,1,1
+14,258,Net IP 2,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,0,0,1,1
+14,259,Net IP 3,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,0,0,1,1
+14,260,Net IP 4,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,0,0,1,1
+14,261,Net IP 5,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,0,0,1,1
+14,END,2,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+Output Group Configuration,,,,,,,,,,,,,,,,,,,,,
+15,BEGIN,2,,,,,,,,,,,,,,,,,,,
+rec type,op grp,desc,Dis. Grp,silenceable,norm on reset,,,,,,,,,,,,,,,,
+15,1,S-Zone 16,202,1,1,,,,,,,,,,,,,,,,
+15,2,S-Zone 17,202,1,1,,,,,,,,,,,,,,,,
+15,3,S-Zone 18,202,1,1,,,,,,,,,,,,,,,,
+15,4,S-Zone 19,202,1,1,,,,,,,,,,,,,,,,
+15,5,S-Zone 20,202,1,1,,,,,,,,,,,,,,,,
+15,6,S-Zone 21,202,1,1,,,,,,,,,,,,,,,,
+15,7,S-Zone 22,202,1,1,,,,,,,,,,,,,,,,
+15,8,S-Zone 23,202,1,1,,,,,,,,,,,,,,,,
+15,9,S-Zone 24,202,1,1,,,,,,,,,,,,,,,,
+15,10,S-Zone 25,202,1,1,,,,,,,,,,,,,,,,
+15,30,S-Zone 30,202,1,1,,,,,,,,,,,,,,,,
+15,202,Disablement,202,0,0,,,,,,,,,,,,,,,,
+15,END,2,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+SuperGroups,,,,,,,,,,,,,,,,,,,,,
+16,BEGIN,2,,,,,,,,,,,,,,,,,,,
+,SuperGrp,Grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,,,,
+16,1,1,1,2,3,4,5,6,7,8,9,10,11, , , , ,,,,
+16,END,2,,,,,,,,,,,,,,,,,,,

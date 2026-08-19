@@ -1,0 +1,14 @@
+152,BEGIN,3
+152,0,"OFF",0,3,4
+152,1,"ON",0,3,4
+152,2,"Simple Pulse",0,3,4
+152,3,"Mode Change",0,3,4
+152,4,"Enable Input",0,3,4
+152,5,"PULSE 5MINS> ON",0,3,4
+152,6,"Enable Output",0,3,4
+152,7,"Enable Zone",0,3,4
+152,8,"Disable Input",0,3,4
+152,9,"Disable Output",0,3,4
+152,10,"Disable Zone",0,3,4
+152,11,"DELAY 5MINS> ON",0,3,4
+152,END,3

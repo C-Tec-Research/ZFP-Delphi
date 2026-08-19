@@ -1,0 +1,26 @@
+100,BEGIN,1
+100,1,"Zone   1",0,1,2
+100,2,"Zone   2",0,1,2
+100,3,"Zone   3",0,1,2
+100,4,"Zone   4",0,1,2
+100,5,"Zone   5",0,1,2
+100,6,"Zone   6",0,1,2
+100,7,"Zone   7",0,1,2
+100,8,"Zone   8",0,1,2
+100,9,"Zone   9",0,1,2
+100,10,"Zone  10",0,1,2
+100,11,"Floor 103",0,1
+100,12,"Floor 104",0,1
+100,13,"Floor 105",0,1
+100,14,"Floor 106",0,1
+100,201,System Zone
+100,202,System Zone
+100,203,System Zone
+100,204,System Zone
+100,205,System Zone
+100,206,System Zone
+100,207,System Zone
+100,208,System Zone
+100,209,System Zone
+100,210,ABUS Devices
+100,END,1

@@ -1,0 +1,54 @@
+Input Group configuration,,,,,,,,,,,Panel,1,,,,,,,,,,,,,
+14,BEGIN,1,,,,,,,,,,,,,,,,,,,,,,,
+rec type,ip grp,desc,op mode 0,data0,data1,op mode 1,data0,data1,op mode 2,data0,data1,op mode 3,data0,data1,IG 1st st.,OG 1st st.,Dis. Grp,auto clear,Delays MCP,Delays Det,MCP qualifies dep,dep IG 1,dep IG 2,dep IG 3,dep IG 4
+14,1,Detectors,2 Devices,0,0,2 Devices,0,0,Single,0,0,Single,0,0,20,0,202,1,1,1,1,0,0,0,0
+14,2,Det Recep,2 Devices,0,0,2 Devices,0,0,Single,0,0,Single,0,0,20,0,202,1,1,1,1,0,0,0,0
+14,10,MCPs,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,1,1,1,0,0,0,0
+14,15,EVAC MCP,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,1,1,1,0,0,0,0
+14,20,Alert,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,1,1,1,0,0,0,0
+14,30,Mode Sw,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,0,1,1,1,0,0,0,0
+14,40,Keyswitch,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,0,1,1,1,0,0,0,0
+14,257,Net IP 1,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,0,1,1,0,0,0,0
+14,258,Net IP 2,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,0,1,1,0,0,0,0
+14,259,Net IP 3,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,0,1,1,0,0,0,0
+14,260,Net IP 4,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,0,1,1,0,0,0,0
+14,261,Net IP 5,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,0,1,1,0,0,0,0
+14,262,Net IP 6,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,0,1,1,0,0,0,0
+14,263,Net IP 7,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,0,1,1,0,0,0,0
+14,264,Net IP 8,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,0,1,1,0,0,0,0
+14,265,Net IP 9,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,0,1,1,0,0,0,0
+14,266,Net IP 10,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,0,1,1,0,0,0,0
+14,267,Net IP 11,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,0,1,1,0,0,0,0
+14,268,Net IP 12,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,0,1,1,0,0,0,0
+14,269,Net IP 13,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,0,1,1,0,0,0,0
+14,270,Net IP 14,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,0,1,1,0,0,0,0
+14,271,Net IP 15,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,0,1,1,0,0,0,0
+14,272,Net IP 16,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,202,1,0,1,1,0,0,0,0
+14,END,1,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,
+Output Group Configuration,,,,,,,,,,,,,,,,,,,,,,,,,
+15,BEGIN,1,,,,,,,,,,,,,,,,,,,,,,,
+rec type,op grp,desc,Dis. Grp,silenceable,norm on reset,,,,,,,,,,,,,,,,,,,,
+15,1,Door Rel,202,1,1,,,,,,,,,,,,,,,,,,,,
+15,2,Door Lock,202,1,1,,,,,,,,,,,,,,,,,,,,
+15,3,Beacon,202,1,1,,,,,,,,,,,,,,,,,,,,
+15,4,Brigade,202,1,1,,,,,,,,,,,,,,,,,,,,
+15,20,Alert Msg,202,1,1,,,,,,,,,,,,,,,,,,,,
+15,21,Evac Msg,202,1,1,,,,,,,,,,,,,,,,,,,,
+15,END,1,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,
+SuperGroups,,,,,,,,,,,,,,,,,,,,,,,,,
+16,BEGIN,1,,,,,,,,,,,,,,,,,,,,,,,
+,SuperGrp,desc,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,,,,,,,,
+16,1,EVAC,1,3,4,21, , , , , , , , , , , ,,,,,,,,
+16,2,ALERT,3,20,,,,,,,,,,,,,,,,,,,,,
+16,3,ALL Ops,1,2,3,4,20,21,,,,,,,,,,,,,,,,,
+16,END,1,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,
+Input Group ShareData,,,,,,,,,,,,,,,,,,,,,,,,,
+17,BEGIN,1,,,,,,,,,,,,,,,,,,,,,,,
+17,1,1,2,,,,,,,,,,,,,,,,,,,,,,
+17,2,1,2,,,,,,,,,,,,,,,,,,,,,,
+17,10,1,2,,,,,,,,,,,,,,,,,,,,,,
+17,15,1,2,,,,,,,,,,,,,,,,,,,,,,
+17,END,1,,,,,,,,,,,,,,,,,,,,,,,

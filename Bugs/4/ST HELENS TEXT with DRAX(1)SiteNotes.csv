@@ -1,0 +1,16 @@
+301,BEGIN,1
+301,1,"\SNotes.txt"
+301,2,0,15,"Memo Site Notes"
+301,2,1,0,""
+301,2,2,14,"// Hello World"
+301,2,3,0,""
+301,2,4,32,"// Does this send & retreive OK?"
+301,2,5,0,""
+301,2,6,2,"//"
+301,2,7,0,""
+301,2,8,174,"// nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm ooooooooooooooooooooooooooooooooooooooooooooo"
+301,2,9,173,"pppppppppppppppppppppppppppppppppppppppppppppp qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee tttttttttttttttttttttttttttttttttttttttttttttt"
+301,2,10,135,"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy ssssssssssssssssssssssssssssssssssssssssssss aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+301,2,11,8,"End Memo"
+301,3,58624
+301,END,1

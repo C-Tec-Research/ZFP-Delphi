@@ -1,0 +1,12 @@
+152,BEGIN,4
+152,0,"OFF",0,4,1
+152,1,"ON/Evac",0,4,1
+152,2,"Pulse/Alert",0,4,1
+152,3,"Mode Change",0,4,1
+152,4,"Enable Input",0,4,1
+152,5,"Enable Output",0,4,1
+152,6,"Enable Zone",0,4,1
+152,7,"Disable Input",0,4,1
+152,8,"Disable Output",0,4,1
+152,9,"Disable Zone",0,4,1
+152,END,4

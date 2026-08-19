@@ -1,0 +1,17 @@
+Input Group configuration,,,,,,,,,,,Panel,1,,,,,,,,,,,,,,,,,,,
+14,BEGIN,1,,,,,,,,,,,,,,,,,,,,,,,,,,Silence Fn,Silence Fn,Silence Fn,Silence Fn
+rec type,ip grp,Description,op mode 0,data0,data1,op mode 1,data0,data1,op mode 2,data0,data1,op mode 3,data0,data1,IG 1st st.,OG 1st st.,Sequence,Dis. Grp,auto clear,Delays MCP,Delays Det,MCP qualifies dep,,dep IG 1,dep IG 2,dep IG 3,dep IG 4,Mode 0,Mode 1,Mode 2,Mode 3
+14,1,All Input Devices,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+14,100,Keyswitch,Single,0,0,Single,0,0,Single,0,0,Single,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+14,END,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Output Group Configuration,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+15,BEGIN,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+rec type,op grp,desc,Dis. Grp,silenceable,norm on reset,,,,,,,,,,,,,,,,,,,,,,,,,,
+15,1,All Output Devices,0,0,1,,,,,,,,,,,,,,,,,,,,,,,,,,
+15,END,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+SuperGroups,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16,BEGIN,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,SuperGrp,Description,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,op grp,,op grp,op grp,,,,,,,,,,,,
+16,END,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

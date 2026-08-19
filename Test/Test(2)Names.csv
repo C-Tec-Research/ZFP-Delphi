@@ -1,0 +1,32 @@
+2,BEGIN,2
+2,9,1,0,Panel Sounder 1
+2,9,1,1,Panel Sounder 1
+2,9,2,0,Panel Sounder 2
+2,9,2,1,Panel Sounder 2
+2,9,3,0,Panel Relay 1
+2,9,3,1,Panel Relay 1
+2,9,4,0,Panel Relay 2
+2,9,4,1,Panel Relay 2
+2,9,5,0,Keyswitch
+2,9,5,1,Keyswitch
+2,9,6,0,System PSU
+2,9,6,1,System PSU
+2,9,7,0,Fault Buzzer
+2,9,7,1,Fault Buzzer
+2,9,8,0,Fault Relay
+2,9,8,1,Fault Relay
+2,9,9,0,Event Log
+2,9,9,1,Event Log
+2,9,10,0,Panel device
+2,9,10,1,Panel device
+2,9,11,0,Touch Pnl
+2,9,11,1,Touch Pnl
+2,9,12,0,Mon I/P 1
+2,9,12,1,Mon I/P 1
+2,9,13,0,Mon I/P 2
+2,9,13,1,Mon I/P 2
+2,9,14,0,Earth Fault
+2,9,14,1,Earth Fault
+2,9,15,0,24V Fuse
+2,9,15,1,24V Fuse
+2,END,2

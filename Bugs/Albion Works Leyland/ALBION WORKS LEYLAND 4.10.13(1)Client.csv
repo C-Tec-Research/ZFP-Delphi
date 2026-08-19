@@ -1,0 +1,11 @@
+301,BEGIN,1
+301,1,"\Client.txt"
+301,2,0,13,"Object Client"
+301,2,1,6,"Name ="
+301,2,2,12,"Memo Address"
+301,2,3,8,"End Memo"
+301,2,4,11,"Post Code ="
+301,2,5,10,"Tel. No. ="
+301,2,6,10,"End Object"
+301,3,6099
+301,END,1

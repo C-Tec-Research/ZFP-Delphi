@@ -1,0 +1,17 @@
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\signtool" sign /a /v /s MY /n "SigNET (AC) Limited" /t http://timestamp.VeriSign.com/scripts/timstamp.dll "C:\Delphi Projects\ZFP\Doc\Driver\dsmVer\Bin_x86\usbzfpbulk.cat"
+
+"C:\Program Files (x86)\Microsoft Winqual Submission Tool\Inf2Cat" /driver:"C:\Delphi Projects\ZFP\Doc\Driver\dsmVer2\Bin_x64" /os:XP_X64,Server2003_X64,Vista_X64,Server2008_X64
+
+"C:\Program Files (x86)\Microsoft Winqual Submission Tool\Inf2Cat" /driver:"C:\Delphi Projects\ZFP\Doc\Driver\dsmVer2\Bin_x86" /os:2000,XP_X86,Server2003_X86,Vista_X86,Server2008_X86
+
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\signtool" sign /a /v /s MY /n "SigNET (AC) Limited" /t http://timestamp.VeriSign.com/scripts/timstamp.dll "C:\Delphi Projects\ZFP\Doc\Driver\dsmVer\Bin_x86\usbzfpbulk.cat"
+
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\signtool" sign /a /v /ac "C:\Transfer\DSM Documents\VeriSign\After_10-10-10_MSCV-VSClass3.cer" /s MY /n "SigNET (AC) Limited" /t "http://timestamp.VeriSign.com/scripts/timstamp.dll" "C:\Delphi Projects\ZFP\Doc\Driver\dsmVer2\Bin_x64\usbbulkx64.cat"
+
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\signtool" sign /v /ac "C:\Transfer\DSM Documents\VeriSign\After_10-10-10_MSCV-VSClass3.cer" /s MY /n "SigNET (AC) Limited" /t http://timestamp.VeriSign.com/scripts/timstamp.dll "C:\Delphi Projects\ZFP\Doc\Driver\dsmVer2\Bin_x64\usbbulk.cat"
+
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\signtool" sign /a /v /ac "C:\Transfer\DSM Documents\VeriSign\After_10-10-10_MSCV-VSClass3.cer" /s MY /n "SigNET (AC) Limited" /t "http://timestamp.VeriSign.com/scripts/timstamp.dll" "C:\Delphi Projects\ZFP\Doc\Driver\dsmVer2\Bin_x86\usbbulk.cat"
+
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\signtool" sign /a /v /ac "C:\Transfer\DSM Documents\VeriSign\After_10-10-10_MSCV-VSClass3.cer" /s MY /n "SigNET (AC) Limited" /t "http://timestamp.VeriSign.com/scripts/timstamp.dll" "C:\Delphi Projects\ZFP\Doc\Driver\dsmVer2\Bin_x86\usbbulk.sys"
+
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\signtool" sign /a /v /ac "C:\Transfer\DSM Documents\VeriSign\After_10-10-10_MSCV-VSClass3.cer" /s MY /n "SigNET (AC) Limited" /t http://timestamp.VeriSign.com/scripts/timstamp.dll "C:\Delphi Projects\ZFP\Install\ZFP Tools\Express\SingleImage\DiskImages\DISK1\setup.exe"

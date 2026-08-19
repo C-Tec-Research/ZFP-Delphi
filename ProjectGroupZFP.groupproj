@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{415E8ED8-144D-4057-B94A-EFF1424A6E1C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ZFPTools.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\XFP\PCToolsCFGEditor\ZFPCfgEditor.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ZFPTools">
+        <MSBuild Projects="ZFPTools.dproj"/>
+    </Target>
+    <Target Name="ZFPTools:Clean">
+        <MSBuild Projects="ZFPTools.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ZFPTools:Make">
+        <MSBuild Projects="ZFPTools.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ZFPCfgEditor">
+        <MSBuild Projects="..\XFP\PCToolsCFGEditor\ZFPCfgEditor.dproj"/>
+    </Target>
+    <Target Name="ZFPCfgEditor:Clean">
+        <MSBuild Projects="..\XFP\PCToolsCFGEditor\ZFPCfgEditor.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ZFPCfgEditor:Make">
+        <MSBuild Projects="..\XFP\PCToolsCFGEditor\ZFPCfgEditor.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ZFPTools;ZFPCfgEditor"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ZFPTools:Clean;ZFPCfgEditor:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ZFPTools:Make;ZFPCfgEditor:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

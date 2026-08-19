@@ -1,0 +1,40 @@
+100,BEGIN,1
+100,1,"West Wing Ground Flo",1,1,2,3
+100,2,"Heart Area Ground Fl",0,1,2,3
+100,3,"Kitchen",0,1,2,3
+100,4,"East Wing Ground Flo",0,1,2,3
+100,5,"West Wing First Floo",0,1,2,3
+100,6,"Heart Area First Flo",0,1,2,3
+100,7,"East Wing First Floo",0,1,2,3
+100,8,"West Wing Second Flo",0,1,2,3
+100,9,"Heart Area Second Fl",0,1,2,3
+100,10,"East Wing Second Flo",0,1,2,3
+100,11,"Staircase 1",0,1,2,3
+100,12,"Staircase 2",0,1,2,3
+100,13,"Staircase 3",0,1,2,3
+100,14,"Plant Room",0,1,2,3
+100,15,"Staircase 4",0,1,2,3
+100,16,"Lift Shaft",0,1,2,3
+100,17,"Staircase to Roof",0,1,2,3
+100,18,"Riser by Lift",0,1,2,3
+100,19,"Riser By Staircase 3",0,1,2,3
+100,20,"Dry Riser",0,1,2,3
+100,21,"Riser by Staircase 2",0,1,2,3
+100,22,"East Wing Riser By T",0,1,2,3
+100,23,"Duct Riser",0,1,2,3
+100,24,"CLC Building",0,1,2,3
+100,25,"Main Sports Hall",0,1,2,3
+100,26,"Sports Block",0,1,2,3
+100,27,"Sports Hall Plant Ro",0,1,2,3
+100,28,"Sports hall Staircas",0,1,2,3
+100,201,System Zone
+100,202,System Zone
+100,203,System Zone
+100,204,System Zone
+100,205,System Zone
+100,206,System Zone
+100,207,System Zone
+100,208,System Zone
+100,209,System Zone
+100,210,ABUS Devices
+100,END,1

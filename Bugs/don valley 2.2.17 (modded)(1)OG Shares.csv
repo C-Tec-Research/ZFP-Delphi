@@ -1,0 +1,8 @@
+18,BEGIN,1
+18,1,"All Output Devic",0,1,2,3
+18,2,"Relay 1",0,1,2,3
+18,3,"Relay 2",0,1,2,3
+18,4,"io unit",0,1,2,3
+18,5,"Not Class Change",0,1,2,3
+18,6,"CLC Building",0,1,2,3
+18,END,1

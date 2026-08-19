@@ -1,0 +1,6 @@
+17,BEGIN,1
+17,1,"All Input Device",0,1,3
+17,2,"Class Change",0,1,3
+17,3,"Alert",0,1,3
+17,4,"CC Switch",0,1,2,3
+17,END,1

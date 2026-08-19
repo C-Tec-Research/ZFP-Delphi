@@ -1,0 +1,5 @@
+Zone Zonfiguration,,,,,,,,,,,Panel,1
+100,BEGIN,1,,,,,,,,,,
+,zone,name,Dis. Grp.,share 1,share 2,share 3,share 4,,,,,
+100,1,All Devices,0,,,,,,,,,
+100,END,1,,,,,,,,,,

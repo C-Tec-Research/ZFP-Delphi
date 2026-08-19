@@ -1,0 +1,36 @@
+"C&E Terms. Each row begins with the Input Group, then all the terms that the input group will use",,,,,,,,,,,Panel,2,,,,,,,,,,,,,,,,,,,
+30,BEGIN,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+rec type,ip grp,op grp,op seq m0,op seq m1,op seq m2,op seq m3,op grp,op seq m0,op seq m1,op seq m2,op seq m3,op grp,op seq m0,op seq m1,op seq m2,op seq m3,op grp,op seq m0,op seq m1,op seq m2,op seq m3,op grp,op seq m0,op seq m1,op seq m2,op seq m3,op grp,op seq m0,op seq m1,op seq m2,op seq m3
+30,1,1,1,1,1,1,2,3,3,3,3,3,4,4,4,4,4,5,5,5,5,5,6,6,6,6,TRIG_NIG,1,1,1,1
+30,2,2,1,1,1,1,1,3,3,3,3,3,3,3,3,3,4,4,4,4,4,5,5,5,5,5,TRIG_NIG,2,1,1,1
+30,3,3,1,1,1,1,2,3,3,3,3,4,3,3,3,3,1,4,4,4,4,5,4,4,4,4,TRIG_NIG,3,1,1,1
+30,4,4,1,1,1,1,3,3,3,3,3,5,3,3,3,3,2,4,4,4,4,1,5,5,5,5,TRIG_NIG,4,1,1,1
+30,5,5,1,1,1,1,4,3,3,3,3,3,4,4,4,4,2,5,5,5,5,1,6,6,6,6,TRIG_NIG,5,1,1,1
+30,200,SOG_GotoAL2,1,1,1,1, , , , , ,,,,,,,,,,,,,,,,,,,,
+30,202,202,1,1,1,1,,,,,,,,,,,,,,,,,,,,,,,,,
+30,END,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Output Sequences,,,Phase 0,,,Phase 1,,,Phase 2,,,Phase 3,,,Phase 4,,,Phase 5,,,Phase 6,,,Phase 7,,,,,,,
+40,BEGIN,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+rec type,op seq,Priority,predelay,action,actiondata,predelay,action,actiondata,predelay,action,actiondata,predelay,action,actiondata,predelay,action,actiondata,predelay,action,actiondata,predelay,action,actiondata,predelay,action,actiondata,,,,,
+40,0,255,0,OP_RESET,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,OP_RESET,0,,,,,
+40,1,240,0,OP_ON,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,OP_RESET,0,,,,,
+40,2,127,0,OP_Pulse,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,OP_RESET,0,,,,,
+40,3,10,0,OP_Pulse,0,30,OP_ON,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,OP_RESET,0,,,,,
+40,4,9,30,OP_Pulse,0,30,OP_ON,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,OP_RESET,0,,,,,
+40,5,8,60,OP_Pulse,0,30,OP_ON,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,OP_RESET,0,,,,,
+40,6,7,90,OP_Pulse,0,30,OP_ON,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,OP_RESET,0,,,,,
+40,7,6,120,OP_Pulse,0,30,OP_ON,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,NONE,0,0,OP_RESET,0,,,,,
+40,END,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Pulse Patterns,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+60,BEGIN,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+rec type,pattern,state,state ,state,state,state,state,state,state,state,state ,state,state,state,state,state,state,,,,,,,,,,,,,,
+60,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,,,,,,,,,,,,
+60,1,1,0,255,0,0,0,0,0,0,0,0,0,0,0,0,0,,,,,,,,,,,,,,
+60,2,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,,,,,,,,,,,,,,
+60,3,1,1,1,1,0,0,0,0,1,1,1,1,0,0,0,0,,,,,,,,,,,,,,
+60,4,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,,,,,,,,,,,,,,
+60,END,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

@@ -1,0 +1,1442 @@
+File ZFP File
+  Object Client
+    Name = 
+    Memo Address
+    End Memo
+    Post Code = 
+    Tel. No. = 
+  End Object
+  Object Installer
+    Name = 
+    Memo Address
+    End Memo
+    Post Code = 
+    Tel. No. = 
+  End Object
+  Memo Site Notes
+  End Memo
+  Object Global Defaults
+    Recalibration Time = rt_4_00
+    Use Global MaintenanceDate = TRUE
+    Maintenance Date = 01/01/2099
+    Default Verification Time - Detectors = 10
+    Default Verification Time - I/O = 0
+    Default Verification Time - Manual Call Points = 0
+    Use Global Maintenance String = TRUE
+    Maintenance String = Maintenenance is Due
+    Language = 0
+    Keyswitch Entry Version = FALSE
+    Default Print Options = 0
+    Loop Protocol = 0
+    AL2 Code = 2222
+    AL3 Code = 3333
+    Default AutoAdjust DST = TRUE
+    Default AutoDim Time = 120
+    Allow Pager Texts = FALSE
+  End Object
+  ObjectArray Node List
+    Active Child = 0
+    Max = 0
+    Object Item( 0 )
+      Name = Panel 1
+      Node Type = zfp_Panel
+      Object General Properties
+        Object Recalibration Time
+          Recalibration Time = rt_Global_Default
+        End Object
+        Object Panel Maintenance Date
+          Maintenance Date = 01/01/2099
+        End Object
+        Object Alarm Verification Times
+          Detectors = 10
+          Manual Call Points = 0
+          I/O = 0
+          Use Global Defaults = TRUE
+        End Object
+        Object Maintenance String
+          Maintenance String = 
+        End Object
+        Object Name
+        End Object
+        Object Panel Language
+          Use Global Default = TRUE
+          Language = 0
+        End Object
+        Object Keyswitch Entry Version
+          Use Global Default = TRUE
+          Keyswitch Entry Only = FALSE
+        End Object
+        Object Loops Fitted
+          Loops Fitted = 1
+        End Object
+        Object HC595 Registers Fitted
+          HC595 Registers Fitted = 0
+        End Object
+        Object Print Options
+          Use Global Print Options = TRUE
+          Print Options = 0
+        End Object
+        Object Loop Protocol
+          Loop Protocol = 0
+          Use Global Default Loop Protocol = TRUE
+        End Object
+        Object Access Codes
+          Use Global Defaults = TRUE
+          AL2 Code = 2222
+          AL3 Code = 3333
+        End Object
+        Object Synchronise Date/Time to PC
+        End Object
+        Object Panel AutoAdjust DST
+        End Object
+        Object LCD Dimming
+          LCD Dimming Delay = 120
+        End Object
+      End Object
+      Object Panel Notes
+        Memo Panel Notes
+        End Memo
+      End Object
+      Object Network Properties
+        Object Panel Address
+          Segment = 0
+          Address = 1
+        End Object
+      End Object
+      Object Panel Zones
+      End Object
+      ObjectList Loop List
+        Active Child = 0
+        ObjectArray Loop List
+          Active Child = 3
+          Max = 3
+          Object Item( 0 )
+            Loop Address = 9
+            Loop Name = 
+            ObjectList Loop Devices
+              ObjectArray Loop Devices
+                Active Child = 17
+                Max = 17
+                Object Item( 0 )
+                  Device Map = 3
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = Panel Sounder 1
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 11
+                            Max = 11
+                            Object Item( 0 ) = 258
+                            End Object
+                            Object Item( 1 ) = 206
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 ) = 0
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 ) = 0
+                            End Object
+                            Object Item( 9 ) = 0
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 ) = 0
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 2
+                            Max = 2
+                            Object Item( 0 ) = 6
+                            End Object
+                            Object Item( 1 ) = 0
+                            End Object
+                            Object Item( 2 ) = 1
+                              Output Group = Item( 0 )
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+                Object Item( 1 )
+                  Device Map = 3
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = Panel Sounder 2
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 11
+                            Max = 11
+                            Object Item( 0 ) = 258
+                            End Object
+                            Object Item( 1 ) = 206
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 ) = 0
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 ) = 0
+                            End Object
+                            Object Item( 9 ) = 0
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 ) = 0
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 2
+                            Max = 2
+                            Object Item( 0 ) = 6
+                            End Object
+                            Object Item( 1 ) = 1
+                            End Object
+                            Object Item( 2 ) = 1
+                              Output Group = Item( 0 )
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+                Object Item( 2 )
+                  Device Map = 3
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = Panel Sounder 3
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 11
+                            Max = 11
+                            Object Item( 0 ) = 258
+                            End Object
+                            Object Item( 1 ) = 206
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 ) = 0
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 ) = 0
+                            End Object
+                            Object Item( 9 ) = 0
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 ) = 0
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 2
+                            Max = 2
+                            Object Item( 0 ) = 6
+                            End Object
+                            Object Item( 1 ) = 2
+                            End Object
+                            Object Item( 2 ) = 1
+                              Output Group = Item( 0 )
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+                Object Item( 3 )
+                  Device Map = 3
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = Panel Sounder 4
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 11
+                            Max = 11
+                            Object Item( 0 ) = 258
+                            End Object
+                            Object Item( 1 ) = 206
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 ) = 0
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 ) = 0
+                            End Object
+                            Object Item( 9 ) = 0
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 ) = 0
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 2
+                            Max = 2
+                            Object Item( 0 ) = 6
+                            End Object
+                            Object Item( 1 ) = 3
+                            End Object
+                            Object Item( 2 ) = 1
+                              Output Group = Item( 0 )
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+                Object Item( 4 )
+                  Device Map = 4
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = Panel Relay 1
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 11
+                            Max = 11
+                            Object Item( 0 ) = 259
+                            End Object
+                            Object Item( 1 ) = 206
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 ) = 0
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 ) = 0
+                            End Object
+                            Object Item( 9 ) = 0
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 ) = 0
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 3
+                            Max = 3
+                            Object Item( 0 ) = Output
+                            End Object
+                            Object Item( 1 ) = 0
+                            End Object
+                            Object Item( 2 ) = 1
+                              Output Group = Item( 0 )
+                            End Object
+                            Object Item( 3 ) = Norm Open
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+                Object Item( 5 )
+                  Device Map = 4
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = Panel Relay 2
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 11
+                            Max = 11
+                            Object Item( 0 ) = 259
+                            End Object
+                            Object Item( 1 ) = 206
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 ) = 0
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 ) = 0
+                            End Object
+                            Object Item( 9 ) = 0
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 ) = 0
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 3
+                            Max = 3
+                            Object Item( 0 ) = Output
+                            End Object
+                            Object Item( 1 ) = 1
+                            End Object
+                            Object Item( 2 ) = 1
+                              Output Group = Item( 0 )
+                            End Object
+                            Object Item( 3 ) = Norm Open
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+                Object Item( 6 )
+                  Device Map = 8
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = Fault Relay
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 12
+                            Max = 11
+                            Object Item( 0 ) = 267
+                            End Object
+                            Object Item( 1 ) = 205
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 ) = 0
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 ) = 0
+                            End Object
+                            Object Item( 9 ) = 0
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 ) = 1
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 1
+                            Max = 0
+                            Object Item( 0 ) = Output
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+                Object Item( 7 )
+                  Device Map = 1
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = PSU
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 11
+                            Max = 11
+                            Object Item( 0 ) = 263
+                            End Object
+                            Object Item( 1 ) = 206
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 ) = 0
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 ) = 0
+                            End Object
+                            Object Item( 9 ) = 0
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 ) = 0
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 0
+                            Max = 0
+                            Object Item( 0 ) = 4
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+                Object Item( 8 )
+                  Device Map = 13
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = Mon IP 1
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 11
+                            Max = 11
+                            Object Item( 0 ) = 261
+                            End Object
+                            Object Item( 1 ) = 206
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 ) = 0
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 ) = 0
+                            End Object
+                            Object Item( 9 ) = 0
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 ) = 0
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 4
+                            Max = 4
+                            Object Item( 0 ) = 4
+                            End Object
+                            Object Item( 1 )
+                            End Object
+                            Object Item( 2 ) = 100
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 )
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+                Object Item( 9 )
+                  Device Map = 13
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = Mon IP 2
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 11
+                            Max = 11
+                            Object Item( 0 ) = 261
+                            End Object
+                            Object Item( 1 ) = 206
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 ) = 0
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 ) = 0
+                            End Object
+                            Object Item( 9 ) = 0
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 ) = 0
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 4
+                            Max = 4
+                            Object Item( 0 ) = 4
+                            End Object
+                            Object Item( 1 ) = 1
+                            End Object
+                            Object Item( 2 ) = 100
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 )
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+                Object Item( 10 )
+                  Device Map = 13
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = Earth Fault
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 11
+                            Max = 11
+                            Object Item( 0 ) = 261
+                            End Object
+                            Object Item( 1 ) = 206
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 ) = 0
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 ) = 0
+                            End Object
+                            Object Item( 9 ) = 0
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 ) = 0
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 4
+                            Max = 4
+                            Object Item( 0 ) = 4
+                            End Object
+                            Object Item( 1 ) = 2
+                            End Object
+                            Object Item( 2 ) = 100
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 )
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+                Object Item( 11 )
+                  Device Map = 13
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = Aux 24V Fuse
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 11
+                            Max = 11
+                            Object Item( 0 ) = 261
+                            End Object
+                            Object Item( 1 ) = 206
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 ) = 0
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 ) = 0
+                            End Object
+                            Object Item( 9 ) = 0
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 ) = 0
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 4
+                            Max = 4
+                            Object Item( 0 ) = 4
+                            End Object
+                            Object Item( 1 ) = 3
+                            End Object
+                            Object Item( 2 ) = 100
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 )
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+                Object Item( 12 )
+                  Device Map = 1
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = PSU
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 11
+                            Max = 11
+                            Object Item( 0 ) = 257
+                            End Object
+                            Object Item( 1 ) = 206
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 ) = 0
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 )
+                            End Object
+                            Object Item( 9 ) = 0
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 ) = 0
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 0
+                            Max = 0
+                            Object Item( 0 ) = 4
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+                Object Item( 13 )
+                  Device Map = 2
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = Keyswitch
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 12
+                            Max = 11
+                            Object Item( 0 ) = 267
+                            End Object
+                            Object Item( 1 ) = 205
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 ) = 0
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 ) = 0
+                            End Object
+                            Object Item( 9 ) = 0
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 ) = 1
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 1
+                            Max = 1
+                            Object Item( 0 ) = 4
+                            End Object
+                            Object Item( 1 ) = 100
+                              Input Group = Item( 1 )
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+                Object Item( 14 )
+                  Device Map = 7
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = Fault Buzzer
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 11
+                            Max = 11
+                            Object Item( 0 ) = 262
+                            End Object
+                            Object Item( 1 )
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 ) = 0
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 ) = 0
+                            End Object
+                            Object Item( 9 ) = 0
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 ) = 0
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Output
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 0
+                            Max = 0
+                            Object Item( 0 ) = 6
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+                Object Item( 15 )
+                  Device Map = 9
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = Event Log
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 11
+                            Max = 11
+                            Object Item( 0 ) = 264
+                            End Object
+                            Object Item( 1 ) = 205
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 ) = 0
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 ) = 0
+                            End Object
+                            Object Item( 9 ) = 0
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 ) = 0
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 0
+                            Max = 0
+                            Object Item( 0 ) = 4
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+                Object Item( 16 )
+                  Device Map = 10
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = Panel Device
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 11
+                            Max = 11
+                            Object Item( 0 ) = 265
+                            End Object
+                            Object Item( 1 ) = 205
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 )
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 )
+                            End Object
+                            Object Item( 9 )
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 )
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 0
+                            Max = 0
+                            Object Item( 0 ) = 0
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+                Object Item( 17 )
+                  Device Map = 12
+                  ObjectList Sub-Devices
+                    ObjectArray Sub-Devices
+                      Active Child = 1
+                      Max = 1
+                      Object Item( 0 )
+                        Name = Touch Panel
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 11
+                            Max = 11
+                            Object Item( 0 ) = 274
+                            End Object
+                            Object Item( 1 ) = 205
+                            End Object
+                            Object Item( 2 ) = 0
+                            End Object
+                            Object Item( 3 ) = 0
+                            End Object
+                            Object Item( 4 ) = 0
+                            End Object
+                            Object Item( 5 ) = 0
+                            End Object
+                            Object Item( 6 ) = 0
+                            End Object
+                            Object Item( 7 ) = 0
+                            End Object
+                            Object Item( 8 ) = 0
+                            End Object
+                            Object Item( 9 ) = 0
+                            End Object
+                            Object Item( 10 ) = 0
+                            End Object
+                            Object Item( 11 ) = 0
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                      Object Item( 1 )
+                        Name = 
+                        Pager Text = 
+                        Short Text = 
+                        IO Type = sdt_Input
+                        Custom Image = 
+                        ObjectList Fields
+                          ObjectArray Fields
+                            Active Child = 0
+                            Max = 0
+                            Object Item( 0 ) = 4
+                            End Object
+                          End ObjectArray
+                        End ObjectList
+                      End Object
+                    End ObjectArray
+                  End ObjectList
+                End Object
+              End ObjectArray
+            End ObjectList
+          End Object
+          Object Item( 1 )
+            Loop Address = 10
+            Loop Name = 
+            ObjectList Loop Devices
+              ObjectArray Loop Devices
+                Max = -1
+              End ObjectArray
+            End ObjectList
+          End Object
+          Object Item( 2 )
+            Loop Address = 11
+            Loop Name = 
+            ObjectList Loop Devices
+              ObjectArray Loop Devices
+                Max = -1
+              End ObjectArray
+            End ObjectList
+          End Object
+          Object Item( 3 )
+            Loop Address = 1
+            Loop Name = 
+            ObjectList Loop Devices
+              ObjectArray Loop Devices
+                Max = -1
+              End ObjectArray
+            End ObjectList
+          End Object
+        End ObjectArray
+      End ObjectList
+    End Object
+  End ObjectArray
+  ObjectArray Zone List
+    Active Child = 0
+    Max = 0
+    Object Item( 0 )
+      Name = Zone 1
+      ID = 1
+      Nodes Where Used = 0
+      Pager Text = 
+    End Object
+  End ObjectArray
+  ObjectArray Mode List
+    Active Child = 0
+    Max = 0
+    Object Item( 0 )
+      Name = Normal
+      ID = 0
+      Nodes Where Used = 0
+      Pager Text = 
+    End Object
+  End ObjectArray
+  ObjectArray Trigger List
+    Max = -1
+  End ObjectArray
+  ObjectArray Supergroup List
+    Max = -1
+  End ObjectArray
+  Object Cause and Effects
+    ObjectArray Logical Output Groups
+      Active Child = 0
+      Max = 0
+      Object Item( 0 )
+        Name = All Output Devices
+        ID = 1
+        Nodes Where Used = 0
+        Pager Text = 
+        Silenceable = TRUE
+        Norm on Reset = TRUE
+      End Object
+    End ObjectArray
+    ObjectArray Logical Input Groups
+      Active Child = 1
+      Max = 1
+      Object Item( 0 )
+        Name = All Input Devices
+        ID = 1
+        Nodes Where Used = 0
+        Pager Text = 
+        Auto Clear on Panel Reset = TRUE
+        ObjectArray Modal Operations
+          Active Child = 3
+          Max = 3
+          Object Item( 0 )
+            Op Mode = opm_NA
+            Data 1 = 0
+            Data 2 = 0
+          End Object
+          Object Item( 1 )
+            Op Mode = opm_NA
+            Data 1 = 0
+            Data 2 = 0
+          End Object
+          Object Item( 2 )
+            Op Mode = opm_NA
+            Data 1 = 0
+            Data 2 = 0
+          End Object
+          Object Item( 3 )
+            Op Mode = opm_NA
+            Data 1 = 0
+            Data 2 = 0
+          End Object
+        End ObjectArray
+        Output Delays Apply to MCPs = FALSE
+        Output Delays Apply to Detectors = TRUE
+        MCP Qualifies Dependencies = TRUE
+        ObjectArray Group Dependencies
+          Max = 3
+        End ObjectArray
+      End Object
+      Object Item( 1 )
+        Name = Keyswitch
+        ID = 100
+        Nodes Where Used = 0
+        Pager Text = 
+        Auto Clear on Panel Reset = TRUE
+        ObjectArray Modal Operations
+          Active Child = 3
+          Max = 3
+          Object Item( 0 )
+            Op Mode = opm_NA
+            Data 1 = 0
+            Data 2 = 0
+          End Object
+          Object Item( 1 )
+            Op Mode = opm_NA
+            Data 1 = 0
+            Data 2 = 0
+          End Object
+          Object Item( 2 )
+            Op Mode = opm_NA
+            Data 1 = 0
+            Data 2 = 0
+          End Object
+          Object Item( 3 )
+            Op Mode = opm_NA
+            Data 1 = 0
+            Data 2 = 0
+          End Object
+        End ObjectArray
+        Output Delays Apply to MCPs = FALSE
+        Output Delays Apply to Detectors = TRUE
+        MCP Qualifies Dependencies = TRUE
+        ObjectArray Group Dependencies
+          Max = 3
+        End ObjectArray
+      End Object
+    End ObjectArray
+    CETree Cause and Effects Tree
+      Tree Text = 
+    End CETree
+  End Object
+End File

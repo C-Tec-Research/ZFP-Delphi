@@ -1,0 +1,53 @@
+150,BEGIN,1
+150,0,0,"R&D Cause & Effects","C & E Block"
+150,1,1,"Normal","Mode Set",0
+150,2,2,"Workshop Det","Input Group",2,1
+150,3,3,"Activated","Input Group State",2
+150,4,4,"All Sndrs & Door","Output Object",5,1
+150,5,5,"ON","Action",1
+150,6,4,"Workshop Power","Output Object",4,1
+150,7,5,"ON","Action",1
+150,8,2,"EMC Room Det","Input Group",2,2
+150,9,3,"Activated","Input Group State",2
+150,10,4,"All Sndrs & Door","Output Object",5,1
+150,11,5,"ON","Action",1
+150,12,4,"EMC Power","Output Object",4,2
+150,13,5,"ON","Action",1
+150,14,2,"Ground Flr Det","Input Group",2,3
+150,15,3,"Activated","Input Group State",2
+150,16,4,"All Sndrs & Door","Output Object",5,1
+150,17,5,"ON","Action",1
+150,18,2,"Ground Flr MCP","Input Group",2,4
+150,19,3,"Activated","Input Group State",2
+150,20,4,"All Sndrs & Door","Output Object",5,1
+150,21,5,"ON","Action",1
+150,22,2,"Rear Lab Det","Input Group",2,5
+150,23,3,"Activated","Input Group State",2
+150,24,4,"All Sndrs & Door","Output Object",5,1
+150,25,5,"ON","Action",1
+150,26,4,"Rear Lab Power","Output Object",4,5
+150,27,5,"ON","Action",1
+150,28,2,"Front Lab Det","Input Group",2,6
+150,29,3,"Activated","Input Group State",2
+150,30,4,"All Sndrs & Door","Output Object",5,1
+150,31,5,"ON","Action",1
+150,32,4,"Front Lab Power","Output Object",4,6
+150,33,5,"ON","Action",1
+150,34,2,"1st Flr Det","Input Group",2,7
+150,35,3,"Activated","Input Group State",2
+150,36,4,"All Sndrs & Door","Output Object",5,1
+150,37,5,"ON","Action",1
+150,38,2,"1st Flr MCP","Input Group",2,8
+150,39,3,"Activated","Input Group State",2
+150,40,4,"All Sndrs & Door","Output Object",5,1
+150,41,5,"ON","Action",1
+150,42,1,"Voice Test","Input Group",2,9
+150,43,2,"Activated","Input Group State",2
+150,44,3,"ON","Action",1
+150,45,4,"Grnd Flr Sounder","Output Object",4,3
+150,46,4,"1st Flr Sounders","Output Object",4,7
+150,47,2,"Normal","Input Group State",0
+150,48,3,"RESET","Action",0
+150,49,4,"Grnd Flr Sounder","Output Object",4,3
+150,50,4,"1st Flr Sounders","Output Object",4,7
+150,END,1

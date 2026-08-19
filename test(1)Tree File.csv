@@ -1,0 +1,7 @@
+150,BEGIN,1
+150,0,0,"One out All out","C & E Block"
+150,1,1,"All Input Devices","Input Group",2,1
+150,2,2,"Activated","Input Group State",2
+150,3,3,"ON/Evac","Action",1
+150,4,4,"test","Output Object",5,2
+150,END,1

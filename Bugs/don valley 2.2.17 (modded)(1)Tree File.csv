@@ -1,0 +1,29 @@
+150,BEGIN,1
+150,0,0,"One out All out","C & E Block"
+150,1,1,"All Input Device","Input Group",2,1
+150,2,2,"Activated","Input Group State",2
+150,3,3,"ON","Action",1
+150,4,4,"All Output Devic","Output Object",4,1
+150,5,4,"io unit","Output Object",4,4
+150,6,4,"Not Class Change","Output Object",4,5
+150,7,4,"CLC Building","Output Object",4,6
+150,8,0,"Relays","C & E Block"
+150,9,1,"All Input Device","Input Group",2,1
+150,10,2,"Activated","Input Group State",2
+150,11,3,"ON","Action",1
+150,12,4,"Relay 1","Output Object",4,2
+150,13,4,"Relay 2","Output Object",4,3
+150,14,0,"Cause and Effects 4","C & E Block"
+150,15,1,"CLC Building","Input Group",2,4
+150,16,2,"Activated","Input Group State",2
+150,17,3,"ON","Action",1
+150,18,4,"All Output Devic","Output Object",4,1
+150,19,0,"Cause and Effects 5","C & E Block"
+150,20,1,"Class Change","Input Group",2,2
+150,21,2,"On","Input Group State",2
+150,22,3,"Simple Pulse","Action",2
+150,23,4,"All Output Devic","Output Object",4,1
+150,24,2,"Off","Input Group State",0
+150,25,3,"OFF","Action",0
+150,26,4,"All Output Devic","Output Object",4,1
+150,END,1

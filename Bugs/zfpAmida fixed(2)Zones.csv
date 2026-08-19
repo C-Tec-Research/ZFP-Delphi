@@ -1,0 +1,24 @@
+100,BEGIN,2
+100,1,"ZONE 1",0,1,2,3
+100,2,"ZONE 2",0,1,2,3
+100,3,"ZONE 3",0,1,2,3
+100,4,"ZONE 4",0,1,2,3
+100,5,"ZONE 5",0,1,2,3
+100,6,"ZONE 6",0,1,2,3
+100,7,"ZONE 7",0,1,2,3
+100,8,"ZONE 8",0,1,2,3
+100,9,"ZONE 9",0,1,2,3
+100,10,"ZONE 10",0,1,2,3
+100,11,"ZONE 11",0,1,2,3
+100,12,"ZONE 12",0,1,2,3
+100,201,System Zone
+100,202,System Zone
+100,203,System Zone
+100,204,System Zone
+100,205,System Zone
+100,206,System Zone
+100,207,System Zone
+100,208,System Zone
+100,209,System Zone
+100,210,ABUS Devices
+100,END,2

@@ -1,0 +1,444 @@
+150,BEGIN,1
+150,0,0,"Stadium C&E All Modes","C & E Block"
+150,1,1,"Mode Change","Input Group",2,110
+150,2,2,"Activated","Input Group State",2
+150,3,3,"Mode Change","Action",13
+150,4,4,"Non Match Day","Output Object",6,1
+150,5,2,"Normal","Input Group State",0
+150,6,3,"Mode Change","Action",13
+150,7,4,"Match Day","Output Object",6,0
+150,8,1,"Weekly Test","Input Group",2,112
+150,9,2,"Activated","Input Group State",2
+150,10,3,"Disable OP Grp","Action",17
+150,11,4,"Weekly Test","Output Object",5,9
+150,12,2,"Normal","Input Group State",0
+150,13,3,"Enable OP Grp","Action",18
+150,14,4,"Weekly Test","Output Object",5,9
+150,15,0,"Stadium C&E Match Day","C & E Block"
+150,16,1,"Match Day","Mode Set",0
+150,17,2,"EVAC MCP","Input Group",2,15
+150,18,3,"Activated","Input Group State",2
+150,19,4,"2nd Stage Match","Output Object",5,4
+150,20,5,"ON","Action",1
+150,21,4,"SOUTH DOOR HOLD","Output Object",4,8
+150,22,5,"ON","Action",1
+150,23,4,"DIS WC BEACONS","Output Object",4,4
+150,24,5,"ON","Action",1
+150,25,2,"CONCOURSE MCPs","Input Group",2,34
+150,26,3,"1st Stage","Input Group State",1
+150,27,4,"1st Stage Match","Output Object",5,2
+150,28,5,"ON","Action",1
+150,29,3,"Activated","Input Group State",2
+150,30,4,"1st Stage MCPs","Output Object",5,6
+150,31,5,"ON","Action",1
+150,32,2,"W N E DETECTORS","Input Group",3,1
+150,33,3,"1st Stage","Input Group State",1
+150,34,4,"1st Stage Match","Output Object",5,2
+150,35,5,"ON","Action",1
+150,36,3,"Activated","Input Group State",2
+150,37,4,"2nd Stage Match","Output Object",5,4
+150,38,5,"ON","Action",1
+150,39,2,"W N E MCPS","Input Group",3,2
+150,40,3,"1st Stage","Input Group State",1
+150,41,4,"1st Stage Match","Output Object",5,2
+150,42,5,"ON","Action",1
+150,43,3,"Activated","Input Group State",2
+150,44,4,"1st Stage MCPs","Output Object",5,6
+150,45,5,"ON","Action",1
+150,46,2,"S DETECTORS","Input Group",2,3
+150,47,3,"1st Stage","Input Group State",1
+150,48,4,"1st Stage Match","Output Object",5,2
+150,49,5,"ON","Action",1
+150,50,4,"RECP DOOR RELEAS","Output Object",4,1
+150,51,5,"ON","Action",1
+150,52,4,"SOUTH DOOR HOLD","Output Object",4,8
+150,53,5,"ON","Action",1
+150,54,3,"Activated","Input Group State",2
+150,55,4,"2nd Stage Match","Output Object",5,4
+150,56,5,"ON","Action",1
+150,57,4,"SOUTH DOOR HOLD","Output Object",4,8
+150,58,5,"ON","Action",1
+150,59,2,"S MCP","Input Group",2,4
+150,60,3,"1st Stage","Input Group State",1
+150,61,4,"1st Stage Match","Output Object",5,2
+150,62,5,"ON","Action",1
+150,63,4,"RECP DOOR RELEAS","Output Object",4,1
+150,64,5,"ON","Action",1
+150,65,4,"SOUTH DOOR HOLD","Output Object",4,8
+150,66,5,"ON","Action",1
+150,67,3,"Activated","Input Group State",2
+150,68,4,"1st Stage MCPs","Output Object",5,6
+150,69,5,"ON","Action",1
+150,70,4,"SOUTH DOOR HOLD","Output Object",4,8
+150,71,5,"ON","Action",1
+150,72,2,"RECP. DETECTORS","Input Group",2,13
+150,73,3,"1st Stage","Input Group State",1
+150,74,4,"1st Stage Match","Output Object",5,2
+150,75,5,"ON","Action",1
+150,76,4,"RECP DOOR RELEAS","Output Object",4,1
+150,77,5,"ON","Action",1
+150,78,4,"SOUTH DOOR HOLD","Output Object",4,8
+150,79,5,"ON","Action",1
+150,80,3,"Activated","Input Group State",2
+150,81,4,"2nd Stage Match","Output Object",5,4
+150,82,5,"ON","Action",1
+150,83,4,"RECP DOOR LOCK","Output Object",4,2
+150,84,5,"ON","Action",1
+150,85,4,"SOUTH DOOR HOLD","Output Object",4,8
+150,86,5,"ON","Action",1
+150,87,2,"RECP. MCP","Input Group",2,14
+150,88,3,"1st Stage","Input Group State",1
+150,89,4,"1st Stage Match","Output Object",5,2
+150,90,5,"ON","Action",1
+150,91,4,"RECP DOOR RELEAS","Output Object",4,1
+150,92,5,"ON","Action",1
+150,93,4,"SOUTH DOOR HOLD","Output Object",4,8
+150,94,5,"ON","Action",1
+150,95,3,"Activated","Input Group State",2
+150,96,4,"1st Stage MCPs","Output Object",5,6
+150,97,5,"ON","Action",1
+150,98,4,"RECP DOOR LOCK","Output Object",4,2
+150,99,5,"ON","Action",1
+150,100,4,"SOUTH DOOR HOLD","Output Object",4,8
+150,101,5,"ON","Action",1
+150,102,2,"KIOSK 2","Input Group",3,4
+150,103,3,"1st Stage","Input Group State",1
+150,104,4,"1st Stage Match","Output Object",5,2
+150,105,5,"ON","Action",1
+150,106,4,"KIOSK 2 RS","Output Object",4,5
+150,107,5,"ON","Action",1
+150,108,3,"Activated","Input Group State",2
+150,109,4,"2nd Stage Match","Output Object",5,4
+150,110,5,"ON","Action",1
+150,111,4,"KIOSK 2 RS","Output Object",4,5
+150,112,5,"ON","Action",1
+150,113,2,"KIOSK 6","Input Group",3,7
+150,114,3,"1st Stage","Input Group State",1
+150,115,4,"1st Stage Match","Output Object",5,2
+150,116,5,"ON","Action",1
+150,117,4,"KIOSK 6 RS","Output Object",4,13
+150,118,5,"ON","Action",1
+150,119,3,"Activated","Input Group State",2
+150,120,4,"2nd Stage Match","Output Object",5,4
+150,121,5,"ON","Action",1
+150,122,4,"KIOSK 6 RS","Output Object",4,13
+150,123,5,"ON","Action",1
+150,124,2,"KIOSK 7","Input Group",3,8
+150,125,3,"1st Stage","Input Group State",1
+150,126,4,"1st Stage Match","Output Object",5,2
+150,127,5,"ON","Action",1
+150,128,4,"KIOSK 7 RS","Output Object",4,14
+150,129,5,"ON","Action",1
+150,130,3,"Activated","Input Group State",2
+150,131,4,"2nd Stage Match","Output Object",5,4
+150,132,5,"ON","Action",1
+150,133,4,"KIOSK 7 RS","Output Object",4,14
+150,134,5,"ON","Action",1
+150,135,2,"KIOSK 5","Input Group",3,6
+150,136,3,"1st Stage","Input Group State",1
+150,137,4,"1st Stage Match","Output Object",5,2
+150,138,5,"ON","Action",1
+150,139,4,"KIOSK 5 RS","Output Object",4,12
+150,140,5,"ON","Action",1
+150,141,3,"Activated","Input Group State",2
+150,142,4,"2nd Stage Match","Output Object",5,4
+150,143,5,"ON","Action",1
+150,144,4,"KIOSK 5 RS","Output Object",4,12
+150,145,5,"ON","Action",1
+150,146,2,"KIOSK 8","Input Group",3,9
+150,147,3,"1st Stage","Input Group State",1
+150,148,4,"1st Stage Match","Output Object",5,2
+150,149,5,"ON","Action",1
+150,150,4,"KIOSK 8 RS","Output Object",4,15
+150,151,5,"ON","Action",1
+150,152,3,"Activated","Input Group State",2
+150,153,4,"2nd Stage Match","Output Object",5,4
+150,154,5,"ON","Action",1
+150,155,4,"KIOSK 8 RS","Output Object",4,15
+150,156,5,"ON","Action",1
+150,157,2,"KIOSK 1","Input Group",3,10
+150,158,3,"1st Stage","Input Group State",1
+150,159,4,"1st Stage Match","Output Object",5,2
+150,160,5,"ON","Action",1
+150,161,4,"KIOSK 1 RS","Output Object",4,16
+150,162,5,"ON","Action",1
+150,163,3,"Activated","Input Group State",2
+150,164,4,"2nd Stage Match","Output Object",5,4
+150,165,5,"ON","Action",1
+150,166,4,"KIOSK 1 RS","Output Object",4,16
+150,167,5,"ON","Action",1
+150,168,2,"KIOSK 9","Input Group",3,11
+150,169,3,"1st Stage","Input Group State",1
+150,170,4,"1st Stage Match","Output Object",5,2
+150,171,5,"ON","Action",1
+150,172,4,"KIOSK 9 RS","Output Object",4,17
+150,173,5,"ON","Action",1
+150,174,3,"Activated","Input Group State",2
+150,175,4,"2nd Stage Match","Output Object",5,4
+150,176,5,"ON","Action",1
+150,177,4,"KIOSK 9 RS","Output Object",4,17
+150,178,5,"ON","Action",1
+150,179,2,"KIOSK 4","Input Group",3,3
+150,180,3,"1st Stage","Input Group State",1
+150,181,4,"1st Stage Match","Output Object",5,2
+150,182,5,"ON","Action",1
+150,183,4,"KIOSK 4 RS","Output Object",4,11
+150,184,5,"ON","Action",1
+150,185,3,"Activated","Input Group State",2
+150,186,4,"2nd Stage Match","Output Object",5,4
+150,187,5,"ON","Action",1
+150,188,4,"KIOSK 4 RS","Output Object",4,11
+150,189,5,"ON","Action",1
+150,190,2,"KIOSK 3","Input Group",3,5
+150,191,3,"1st Stage","Input Group State",1
+150,192,4,"1st Stage Match","Output Object",5,2
+150,193,5,"ON","Action",1
+150,194,4,"KIOSK 3 RS","Output Object",4,6
+150,195,5,"ON","Action",1
+150,196,3,"Activated","Input Group State",2
+150,197,4,"2nd Stage Match","Output Object",5,4
+150,198,5,"ON","Action",1
+150,199,4,"KIOSK 3 RS","Output Object",4,6
+150,200,5,"ON","Action",1
+150,201,2,"KIOSK 10","Input Group",3,12
+150,202,3,"1st Stage","Input Group State",1
+150,203,4,"1st Stage Match","Output Object",5,2
+150,204,5,"ON","Action",1
+150,205,4,"KIOSK 10 RS","Output Object",4,27
+150,206,5,"ON","Action",1
+150,207,3,"Activated","Input Group State",2
+150,208,4,"2nd Stage Match","Output Object",5,4
+150,209,5,"ON","Action",1
+150,210,4,"KIOSK 10 RS","Output Object",4,27
+150,211,5,"ON","Action",1
+150,212,2,"KIOSK 11","Input Group",3,13
+150,213,3,"1st Stage","Input Group State",1
+150,214,4,"1st Stage Match","Output Object",5,2
+150,215,5,"ON","Action",1
+150,216,4,"KIOSK 11 RS","Output Object",4,28
+150,217,5,"ON","Action",1
+150,218,3,"Activated","Input Group State",2
+150,219,4,"2nd Stage Match","Output Object",5,4
+150,220,5,"ON","Action",1
+150,221,4,"KIOSK 11 RS","Output Object",4,28
+150,222,5,"ON","Action",1
+150,223,0,"Stadium C&E Non Match Day","C & E Block"
+150,224,1,"Non Match Day","Mode Set",1
+150,225,2,"EVAC MCP","Input Group",2,15
+150,226,3,"Activated","Input Group State",2
+150,227,4,"2nd Stage Non-Ma","Output Object",5,5
+150,228,5,"ON","Action",1
+150,229,2,"CONCOURSE MCPs","Input Group",2,34
+150,230,3,"Activated","Input Group State",2
+150,231,4,"2nd Stage Non-Ma","Output Object",5,5
+150,232,5,"ON","Action",1
+150,233,4,"DIS WC BEACONS","Output Object",4,4
+150,234,5,"ON","Action",1
+150,235,3,"1st Stage","Input Group State",1
+150,236,4,"1st Stage Non-Ma","Output Object",5,3
+150,237,5,"ON","Action",1
+150,238,2,"W N E DETECTORS","Input Group",3,1
+150,239,3,"1st Stage","Input Group State",1
+150,240,4,"1st Stage Non-Ma","Output Object",5,3
+150,241,5,"ON","Action",1
+150,242,3,"Activated","Input Group State",2
+150,243,4,"2nd Stage Non-Ma","Output Object",5,5
+150,244,5,"ON","Action",1
+150,245,2,"W N E MCPS","Input Group",3,2
+150,246,3,"1st Stage","Input Group State",1
+150,247,4,"1st Stage Non-Ma","Output Object",5,3
+150,248,5,"ON","Action",1
+150,249,3,"Activated","Input Group State",2
+150,250,4,"2nd Stage Non-Ma","Output Object",5,5
+150,251,5,"ON","Action",1
+150,252,2,"S DETECTORS","Input Group",2,3
+150,253,3,"1st Stage","Input Group State",1
+150,254,4,"1st Stage Non-Ma","Output Object",5,3
+150,255,5,"ON","Action",1
+150,256,4,"RECP DOOR RELEAS","Output Object",4,1
+150,257,5,"ON","Action",1
+150,258,4,"SOUTH DOOR HOLD","Output Object",4,8
+150,259,5,"ON","Action",1
+150,260,3,"Activated","Input Group State",2
+150,261,4,"2nd Stage Non-Ma","Output Object",5,5
+150,262,5,"ON","Action",1
+150,263,4,"SOUTH DOOR HOLD","Output Object",4,8
+150,264,5,"ON","Action",1
+150,265,2,"S MCP","Input Group",2,4
+150,266,3,"1st Stage","Input Group State",1
+150,267,4,"1st Stage Non-Ma","Output Object",5,3
+150,268,5,"ON","Action",1
+150,269,4,"RECP DOOR RELEAS","Output Object",4,1
+150,270,5,"ON","Action",1
+150,271,4,"SOUTH DOOR HOLD","Output Object",4,8
+150,272,5,"ON","Action",1
+150,273,3,"Activated","Input Group State",2
+150,274,4,"2nd Stage Non-Ma","Output Object",5,5
+150,275,5,"ON","Action",1
+150,276,4,"SOUTH DOOR HOLD","Output Object",4,8
+150,277,5,"ON","Action",1
+150,278,2,"RECP. DETECTORS","Input Group",2,13
+150,279,3,"1st Stage","Input Group State",1
+150,280,4,"1st Stage Non-Ma","Output Object",5,3
+150,281,5,"ON","Action",1
+150,282,4,"RECP DOOR RELEAS","Output Object",4,1
+150,283,5,"ON","Action",1
+150,284,4,"SOUTH DOOR HOLD","Output Object",4,8
+150,285,5,"ON","Action",1
+150,286,3,"Activated","Input Group State",2
+150,287,4,"2nd Stage Non-Ma","Output Object",5,5
+150,288,5,"ON","Action",1
+150,289,4,"RECP DOOR LOCK","Output Object",4,2
+150,290,5,"ON","Action",1
+150,291,4,"SOUTH DOOR HOLD","Output Object",4,8
+150,292,5,"ON","Action",1
+150,293,2,"RECP. MCP","Input Group",2,14
+150,294,3,"1st Stage","Input Group State",1
+150,295,4,"1st Stage Non-Ma","Output Object",5,3
+150,296,5,"ON","Action",1
+150,297,4,"RECP DOOR RELEAS","Output Object",4,1
+150,298,5,"ON","Action",1
+150,299,4,"SOUTH DOOR HOLD","Output Object",4,8
+150,300,5,"ON","Action",1
+150,301,3,"Activated","Input Group State",2
+150,302,4,"2nd Stage Non-Ma","Output Object",5,5
+150,303,5,"ON","Action",1
+150,304,4,"SOUTH DOOR HOLD","Output Object",4,8
+150,305,5,"ON","Action",1
+150,306,4,"RECP DOOR LOCK","Output Object",4,2
+150,307,5,"ON","Action",1
+150,308,2,"KIOSK 2","Input Group",3,4
+150,309,3,"1st Stage","Input Group State",1
+150,310,4,"1st Stage Non-Ma","Output Object",5,3
+150,311,5,"ON","Action",1
+150,312,4,"KIOSK 2 RS","Output Object",4,5
+150,313,5,"ON","Action",1
+150,314,3,"Activated","Input Group State",2
+150,315,4,"2nd Stage Non-Ma","Output Object",5,5
+150,316,5,"ON","Action",1
+150,317,4,"KIOSK 2 RS","Output Object",4,5
+150,318,5,"ON","Action",1
+150,319,2,"KIOSK 6","Input Group",3,7
+150,320,3,"1st Stage","Input Group State",1
+150,321,4,"1st Stage Non-Ma","Output Object",5,3
+150,322,5,"ON","Action",1
+150,323,4,"KIOSK 6 RS","Output Object",4,13
+150,324,5,"ON","Action",1
+150,325,3,"Activated","Input Group State",2
+150,326,4,"2nd Stage Non-Ma","Output Object",5,5
+150,327,5,"ON","Action",1
+150,328,4,"KIOSK 6 RS","Output Object",4,13
+150,329,5,"ON","Action",1
+150,330,2,"KIOSK 7","Input Group",3,8
+150,331,3,"1st Stage","Input Group State",1
+150,332,4,"1st Stage Non-Ma","Output Object",5,3
+150,333,5,"ON","Action",1
+150,334,4,"KIOSK 7 RS","Output Object",4,14
+150,335,5,"ON","Action",1
+150,336,3,"Activated","Input Group State",2
+150,337,4,"2nd Stage Non-Ma","Output Object",5,5
+150,338,5,"ON","Action",1
+150,339,4,"KIOSK 7 RS","Output Object",4,14
+150,340,5,"ON","Action",1
+150,341,2,"KIOSK 5","Input Group",3,6
+150,342,3,"1st Stage","Input Group State",1
+150,343,4,"1st Stage Non-Ma","Output Object",5,3
+150,344,5,"ON","Action",1
+150,345,4,"KIOSK 5 RS","Output Object",4,12
+150,346,5,"ON","Action",1
+150,347,3,"Activated","Input Group State",2
+150,348,4,"2nd Stage Non-Ma","Output Object",5,5
+150,349,5,"ON","Action",1
+150,350,4,"KIOSK 5 RS","Output Object",4,12
+150,351,5,"ON","Action",1
+150,352,2,"KIOSK 8","Input Group",3,9
+150,353,3,"1st Stage","Input Group State",1
+150,354,4,"1st Stage Non-Ma","Output Object",5,3
+150,355,5,"ON","Action",1
+150,356,4,"KIOSK 8 RS","Output Object",4,15
+150,357,5,"ON","Action",1
+150,358,3,"Activated","Input Group State",2
+150,359,4,"2nd Stage Non-Ma","Output Object",5,5
+150,360,5,"ON","Action",1
+150,361,4,"KIOSK 8 RS","Output Object",4,15
+150,362,5,"ON","Action",1
+150,363,2,"KIOSK 1","Input Group",3,10
+150,364,3,"1st Stage","Input Group State",1
+150,365,4,"1st Stage Non-Ma","Output Object",5,3
+150,366,5,"ON","Action",1
+150,367,4,"KIOSK 1 RS","Output Object",4,16
+150,368,5,"ON","Action",1
+150,369,3,"Activated","Input Group State",2
+150,370,4,"2nd Stage Non-Ma","Output Object",5,5
+150,371,5,"ON","Action",1
+150,372,4,"KIOSK 1 RS","Output Object",4,16
+150,373,5,"ON","Action",1
+150,374,2,"KIOSK 9","Input Group",3,11
+150,375,3,"1st Stage","Input Group State",1
+150,376,4,"1st Stage Non-Ma","Output Object",5,3
+150,377,5,"ON","Action",1
+150,378,4,"KIOSK 9 RS","Output Object",4,17
+150,379,5,"ON","Action",1
+150,380,3,"Activated","Input Group State",2
+150,381,4,"2nd Stage Non-Ma","Output Object",5,5
+150,382,5,"ON","Action",1
+150,383,4,"KIOSK 9 RS","Output Object",4,17
+150,384,5,"ON","Action",1
+150,385,2,"KIOSK 4","Input Group",3,3
+150,386,3,"1st Stage","Input Group State",1
+150,387,4,"1st Stage Non-Ma","Output Object",5,3
+150,388,5,"ON","Action",1
+150,389,4,"KIOSK 4 RS","Output Object",4,11
+150,390,5,"ON","Action",1
+150,391,3,"Activated","Input Group State",2
+150,392,4,"2nd Stage Non-Ma","Output Object",5,5
+150,393,5,"ON","Action",1
+150,394,4,"KIOSK 4 RS","Output Object",4,11
+150,395,5,"ON","Action",1
+150,396,2,"KIOSK 3","Input Group",3,5
+150,397,3,"1st Stage","Input Group State",1
+150,398,4,"1st Stage Non-Ma","Output Object",5,3
+150,399,5,"ON","Action",1
+150,400,4,"KIOSK 3 RS","Output Object",4,6
+150,401,5,"ON","Action",1
+150,402,3,"Activated","Input Group State",2
+150,403,4,"2nd Stage Non-Ma","Output Object",5,5
+150,404,5,"ON","Action",1
+150,405,4,"KIOSK 3 RS","Output Object",4,6
+150,406,5,"ON","Action",1
+150,407,2,"KIOSK 10","Input Group",3,12
+150,408,3,"1st Stage","Input Group State",1
+150,409,4,"1st Stage Non-Ma","Output Object",5,3
+150,410,5,"ON","Action",1
+150,411,4,"KIOSK 10 RS","Output Object",4,27
+150,412,5,"ON","Action",1
+150,413,3,"Activated","Input Group State",2
+150,414,4,"2nd Stage Non-Ma","Output Object",5,5
+150,415,5,"ON","Action",1
+150,416,4,"KIOSK 10 RS","Output Object",4,27
+150,417,5,"ON","Action",1
+150,418,2,"KIOSK 11","Input Group",3,13
+150,419,3,"1st Stage","Input Group State",1
+150,420,4,"1st Stage Non-Ma","Output Object",5,3
+150,421,5,"ON","Action",1
+150,422,4,"KIOSK 11 RS","Output Object",4,28
+150,423,5,"ON","Action",1
+150,424,3,"Activated","Input Group State",2
+150,425,4,"2nd Stage Non-Ma","Output Object",5,5
+150,426,5,"ON","Action",1
+150,427,4,"KIOSK 11 RS","Output Object",4,28
+150,428,5,"ON","Action",1
+150,429,0,"Voice test","C & E Block"
+150,430,1,"Voice test","Input Group",2,35
+150,431,2,"Activated","Input Group State",2
+150,432,3,"Frp Alert","Action",11
+150,433,4,"KIOSK 8 RS","Output Object",4,15
+150,434,0,"Isolate Plant GF","C & E Block"
+150,435,1,"Isol Plant GF","Input Group",2,36
+150,436,2,"On","Input Group State",2
+150,437,3,"Disable Output","Action",8
+150,438,4,"PLANT GF","Output Object",4,106
+150,439,2,"Off","Input Group State",0
+150,440,3,"Enable Output","Action",5
+150,441,4,"PLANT GF","Output Object",4,106
+150,END,1
