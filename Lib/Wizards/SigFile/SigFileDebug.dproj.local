@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2011/02/11 11:49:23.796.pas,C:\Documents and Settings\Dave Mear\My Documents\RAD Studio\Projects\Unit1.pas=C:\Delphi Projects\Lib\Wizards\SigFile\UnitSigFileDebug.pas</Transaction>
+    <Transaction>2011/02/11 11:49:23.796.dfm,C:\Documents and Settings\Dave Mear\My Documents\RAD Studio\Projects\Unit1.dfm=C:\Delphi Projects\Lib\Wizards\SigFile\UnitSigFileDebug.dfm</Transaction>
+    <Transaction>2011/02/11 11:49:40.406.dproj,C:\Documents and Settings\Dave Mear\My Documents\RAD Studio\Projects\Project1.dproj=C:\Delphi Projects\Lib\Wizards\SigFile\SigFileDebug.dproj</Transaction>
+    <Transaction>2011/02/11 12:20:34.000.pas,C:\Delphi Projects\Lib\Wizards\SigFile\UnitSigFileGUI.pas=</Transaction>
+    <Transaction>2011/02/11 12:20:34.000.dfm,C:\Delphi Projects\Lib\Wizards\SigFile\UnitSigFileGUI.dfm=</Transaction>
+    <Transaction>2011/02/15 14:25:44.500.pas,C:\Delphi Projects\Lib\Wizards\SigFile\Unit1.pas=C:\Delphi Projects\Lib\Wizards\NTAMenu.pas</Transaction>
+    <Transaction>2011/02/15 15:31:51.500.pas,C:\Delphi Projects\Lib\Wizards\NTAMenu.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

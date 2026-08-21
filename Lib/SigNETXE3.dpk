@@ -1,0 +1,72 @@
+package SigNETXE3;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  vclx,
+  VclSmp;
+
+contains
+  Common in 'Common\Common.pas',
+  ComDrv32 in 'Comms\ComDrv32.pas',
+  comm32 in 'Comms\comm32.pas',
+  companel in 'Comms\companel.pas',
+  iComPort in 'Comms\iComPort.pas',
+  misc in 'Comms\misc.pas',
+  PanelComms in 'Comms\PanelComms.pas',
+  ErrorList in 'ErrorList\ErrorList.pas',
+  UnitFileNotSaved in 'FileNotSaved\UnitFileNotSaved.pas' {FormFileNotSaved},
+  UnitManagedControlList in 'ManagedControlList\UnitManagedControlList.pas',
+  MemoMessage in 'MemoMessage\MemoMessage.pas',
+  UnitMemoryMap in 'MemoMessage\UnitMemoryMap.pas',
+  UnitMessageFile in 'MemoMessage\UnitMessageFile.pas',
+  FormSettings in 'Printer\FormSettings.pas',
+  Gopage in 'Printer\Gopage.pas' {GoPageForm},
+  PageSetupDlg in 'Printer\PageSetupDlg.pas',
+  PrevForm in 'Printer\PrevForm.pas' {PreviewForm},
+  PrevPrinter in 'Printer\PrevPrinter.pas',
+  RichEditLog in 'RichEditLog\RichEditLog.pas',
+  SelectableEdit in 'SelectableEdit\SelectableEdit.pas',
+  SigFile in 'SigFile\SigFile.pas',
+  SigImage in 'SigImage\SigImage.pas',
+  SigRegistry in 'SigRegistry\SigRegistry.pas',
+  SigSaveDialog in 'SigSave\SigSaveDialog.pas',
+  SigSpinEdit in 'SigSpinEdit\SigSpinEdit.pas',
+  SigGeneralGrid in 'SigStringGrid\SigGeneralGrid.pas',
+  SigNETStringGrid in 'SigStringGrid\SigNETStringGrid.pas',
+  SigVariableEditor in 'SigVariableComponent\SigVariableEditor.pas',
+  SigVariableEditorList in 'SigVariableComponent\SigVariableEditorList.pas',
+  TimeSpinButton in 'TimeSpinButton\TimeSpinButton.pas',
+  UnitTransferInterface in 'TransferInterface\UnitTransferInterface.pas',
+  USBPanel in 'USB\USBPanel.pas',
+  sigparse in 'sigparse.pas',
+  SigComPort in 'SigComPort\SigComPort.pas';
+
+end.

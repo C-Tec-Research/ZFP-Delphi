@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<TgConfig Version="3" SubLevelDisabled="False">
+  <Option Name="namespaceFolder.QObjects" Type="System.String" Value="Quantec Objects" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Objects" Type="System.String" Value="AFP Objects" IsBrowsable="False" />
+</TgConfig>

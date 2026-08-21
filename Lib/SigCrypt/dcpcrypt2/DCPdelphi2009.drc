@@ -1,0 +1,14 @@
+/* VER210
+  Generiert vom CodeGear Delphi Pascal-Compiler, weil -GD oder --drc an den Compiler übergeben wurde..
+
+  Diese Datei enthält vom Compiler erzeugte Ressourcen, die an die ausführbare Datei gebunden wurden. Wenn diese Datei leer ist, dann wurden keine vom Compiler generierten Ressourcen an die erzeugte ausführbare Datei gebunden.
+*/
+
+STRINGTABLE
+BEGIN
+END
+
+/* DCPciphers.dcr */
+/* DCPhashes.dcr */
+/* E:\projekte\Delphi\Gateway\dcpcrypt2\DCPdelphi2009.res */
+/* E:\projekte\Delphi\Gateway\dcpcrypt2\DCPdelphi2009.drf */

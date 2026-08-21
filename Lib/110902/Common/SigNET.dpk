@@ -1,0 +1,75 @@
+package SigNET;
+
+{$R *.res}
+{$R '..\Comms\ComDrv32.dcr'}
+{$R '..\Comms\comm32.dcr'}
+{$R '..\Comms\iComPort.dcr'}
+{$R 'SigBrand.dcr'}
+{$R '..\MemoMessage\MemoMessage.dcr'}
+{$R '..\SigImage\SigImage.dcr'}
+{$R '..\StdMainMenu\StdMainMenu.dcr'}
+{$R '..\TimeSpinButton\TimeSpinButton.dcr'}
+{$R '..\USB\USBPanel.dcr'}
+{$R '..\SigTime32\SigTime32.dcr'}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl,
+  VclSmp,
+  vclx;
+
+contains
+  SS2NMsg in '..\Comms\SS2NMsg.pas',
+  ComDrv32 in '..\Comms\ComDrv32.pas',
+  comm32 in '..\Comms\comm32.pas',
+  companel in '..\Comms\companel.pas',
+  ComPort in '..\Comms\ComPort.pas',
+  iComPort in '..\Comms\iComPort.pas',
+  misc in '..\Comms\misc.pas',
+  QueryMsg in '..\Comms\QueryMsg.pas',
+  ss2ncomm in '..\Comms\ss2ncomm.pas',
+  SigBrand in 'SigBrand.pas',
+  Sigload in 'Sigload.pas',
+  sigparse in 'sigparse.pas',
+  UnitManagedControlList in '..\ManagedControlList\UnitManagedControlList.pas',
+  UnitMessageFile in '..\MemoMessage\UnitMessageFile.pas',
+  MemoMessage in '..\MemoMessage\MemoMessage.pas',
+  UnitMemoryMap in '..\MemoMessage\UnitMemoryMap.pas',
+  SigImage in '..\SigImage\SigImage.pas',
+  StdMainMenu in '..\StdMainMenu\StdMainMenu.pas',
+  SigFileHandler in '..\StdMainMenu\SigFileHandler.pas',
+  TimeSpinButton in '..\TimeSpinButton\TimeSpinButton.pas',
+  USBPanel in '..\USB\USBPanel.pas',
+  SigSpinEdit in '..\SigSpinEdit\SigSpinEdit.pas',
+  Common in 'Common.pas',
+  SigNETStringGrid in '..\SigStringGrid\SigNETStringGrid.pas',
+  SigRegistry in '..\SigRegistry\SigRegistry.pas',
+  SigTime32 in '..\SigTime32\SigTime32.pas',
+  SigGeneralGrid in '..\SigStringGrid\SigGeneralGrid.pas',
+  SigSaveDialog in '..\SigSave\SigSaveDialog.pas',
+  SigComPort in '..\SigComPort\SigComPort.pas',
+  UnitFileNotSaved in '..\FileNotSaved\UnitFileNotSaved.pas' {FormFileNotSaved};
+
+end.

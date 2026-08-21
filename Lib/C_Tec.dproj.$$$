@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2006/02/16 16:27:55.680.bdsproj,\\ctecrnd.co.uk\files\Delphi Lib\C_Tec.bdsproj=C:\Documents and Settings\phil.green\My Documents\Borland Studio Projects\Package1.bdsproj</Transaction>
+    <Transaction>2006/02/16 16:46:48.279.pas,\\ctecrnd.co.uk\files\Delphi Lib\Printer\TestPrev.pas=</Transaction>
+    <Transaction>2006/02/17 11:00:22.067.dcr,\\ctecrnd.co.uk\files\Delphi Lib\SigSpinEdit\TimeSpinButton.dcr=</Transaction>
+    <Transaction>2006/02/17 11:01:34.251.dfm,\\ctecrnd.co.uk\files\Delphi Lib\SigSpinEdit\UnitTest.dfm=</Transaction>
+    <Transaction>2006/02/17 11:01:34.251.pas,\\ctecrnd.co.uk\files\Delphi Lib\SigSpinEdit\UnitTest.pas=</Transaction>
+    <Transaction>2006/02/17 11:01:41.591.dfm,\\ctecrnd.co.uk\files\Delphi Lib\SigSpinEdit\UnitTimeSpinButtonTest.dfm=</Transaction>
+    <Transaction>2006/02/17 11:01:41.591.pas,\\ctecrnd.co.uk\files\Delphi Lib\SigSpinEdit\UnitTimeSpinButtonTest.pas=</Transaction>
+    <Transaction>2006/02/17 11:09:33.741.pas,\\ctecrnd.co.uk\files\Delphi Lib\Comms\XFPPanelComms.pas=\\ctecrnd.co.uk\files\Delphi Lib\Comms\XFPPanelComms1.pas</Transaction>
+    <Transaction>2006/03/06 12:24:59.593.pas,\\ctecrnd.co.uk\files\Delphi Lib\Quantec\QObjects.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

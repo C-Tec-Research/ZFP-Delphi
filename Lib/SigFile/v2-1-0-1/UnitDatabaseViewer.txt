@@ -1,0 +1,140 @@
+unit UnitDatabaseViewer;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages,
+  System.SysUtils, System.Variants,
+  System.Classes,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.StdCtrls,
+  Vcl.ExtCtrls,
+  Vcl.ComCtrls,
+  Vcl.Buttons,
+  SigPanel,
+  SigDBRawDB,
+  UnitSigDBFileStructure,
+  SigGeneralGrid, Vcl.Grids, Vcl.Samples.Spin,
+  SigSpinEdit, Vcl.ImgList;
+
+type
+  TFrameDatabaseViewer = class(TFrame)
+    SigPanel1: TSigPanel;
+    SigPanel2: TSigPanel;
+    Label1: TLabel;
+    SigPanel3: TSigPanel;
+    ComboBoxIndexFiles: TComboBox;
+    PageControlView: TPageControl;
+    TabSheetTreeView: TTabSheet;
+    SigPanel9: TSigPanel;
+    SpeedButtonStartReindex: TSpeedButton;
+    SpeedButtonReindexNext: TSpeedButton;
+    SpeedButtonCompleteReindex: TSpeedButton;
+    SigPanel4: TSigPanel;
+    PaintBoxDBTree: TPaintBox;
+    TabSheetRawView: TTabSheet;
+    FrameSigDBFileStructureListViews: TFrameSigDBFileStructure;
+    TabSheetDataView: TTabSheet;
+    SigPanel5: TSigPanel;
+    SigPanel7: TSigPanel;
+    SigPanel8: TSigPanel;
+    SigGeneralGridData: TSigGeneralGrid;
+    ImageListSel: TImageList;
+    SigGridEditorDataSel: TSigGridEditor;
+    SigGridEditorData: TSigGridEditor;
+    SigPanel6: TSigPanel;
+    procedure ComboBoxIndexFilesChange(Sender: TObject);
+  private
+    fDatabase: TSigDBDatabase;
+    fIndexFile : TSigDBIndexFile;
+    procedure SetDatabase(const Value: TSigDBDatabase);
+    { Private declarations }
+    procedure BuildDataViewKeyList;
+  public
+    { Public declarations }
+    property Database : TSigDBDatabase
+             read fDatabase
+             write SetDatabase;
+
+  end;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrame1 }
+
+procedure TFrameDatabaseViewer.BuildDataViewKeyList;
+var
+  iDataFile : TSigDBFileBase;
+  iRow : integer;
+  i: Integer;
+begin
+  {
+    Builds the key list to allow users to enter their key values, and also headings
+    for data grid.
+  }
+  if assigned( fIndexFile ) then
+  begin
+    iDataFile := fIndexFile.DataFile;
+    iRow := 0;
+    for i := 0 to iDataFile.FieldCount - 1 do
+    begin
+      inc( iRow );
+      SigGeneralGridKeys.Cell[ 0, iRow ] := iDataFile.FieldTitle( i );
+      SigGeneralGridKeys.Cell[ 1, iRow ] := '';
+    end;
+    if iRow < 1 then
+    begin
+      SigGeneralGridKeys.Visible := FALSE;
+    end
+    else
+    begin
+      SigGeneralGridKeys.Visible := TRUE;
+      SigGeneralGridKeys.RowCount := iRow + 1;
+    end;
+  end
+  else
+  begin
+    SigGeneralGridKeys.Visible := FALSE;
+  end;
+end;
+
+procedure TFrameDatabaseViewer.ComboBoxIndexFilesChange(Sender: TObject);
+begin
+  if ComboBoxIndexFiles.ItemIndex < 0 then
+  begin
+    fIndexFile := nil;
+  end
+  else
+  begin
+    fIndexFile := ComboBoxIndexFiles.Items.Objects[ ComboBoxIndexFiles.ItemIndex ] as tSigDBIndexFile;
+  end;
+  FrameSigDBFileStructureListViews.SigDBIndexFile := fIndexFile;
+end;
+
+procedure TFrameDatabaseViewer.SetDatabase(const Value: TSigDBDatabase);
+var
+  i : integer;
+  iIndexFile : tSigDBIndexFile;
+begin
+  fDatabase := Value;
+  ComboBoxIndexFiles.Clear;
+  if assigned( fDatabase ) then
+  begin
+    with fDatabase.IndexFiles do
+    begin
+      for i := 0 to Count - 1 do
+      begin
+        iIndexFile := IndexFile[ i ];
+        ComboBoxIndexFiles.Items.AddObject( iIndexFile.ClassName, iIndexFile );
+      end;
+    end;
+    BuildDataViewKeyList;
+  end;
+end;
+
+end.

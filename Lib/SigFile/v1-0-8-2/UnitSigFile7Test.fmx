@@ -1,0 +1,95 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object Label1: TLabel
+    AutoSize = True
+    Position.X = 80.000000000000000000
+    Position.Y = 72.000000000000000000
+    Size.Width = 134.000000000000000000
+    Size.Height = 16.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.WordWrap = False
+    Text = 'SigFile7IntegerProperty1'
+  end
+  object Label2: TLabel
+    Position.X = 80.000000000000000000
+    Position.Y = 104.000000000000000000
+    Text = 'SigFile7TextProperty1'
+  end
+  object Edit1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 3
+    Text = '67'
+    Position.X = 248.000000000000000000
+    Position.Y = 104.000000000000000000
+    OnChange = SigFile7EditorChange
+  end
+  object ButtonShowSource: TButton
+    Position.X = 88.000000000000000000
+    Position.Y = 152.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Text = 'Show Source'
+    OnClick = ButtonShowSourceClick
+  end
+  object MemoSource: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    Position.X = 248.000000000000000000
+    Position.Y = 152.000000000000000000
+    Size.Width = 361.000000000000000000
+    Size.Height = 177.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+  end
+  object Label3: TLabel
+    Position.X = 80.000000000000000000
+    Position.Y = 352.000000000000000000
+    Text = 'Errors'
+  end
+  object ButtonLoadSource: TButton
+    Position.X = 88.000000000000000000
+    Position.Y = 192.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = 'Load Source'
+    OnClick = ButtonLoadSourceClick
+  end
+  object MemoErrors: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    Position.X = 248.000000000000000000
+    Position.Y = 352.000000000000000000
+    Size.Width = 361.000000000000000000
+    Size.Height = 65.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+  end
+  object SigFile7File1: TSigFile7File
+    object SigFile7IntegerProperty1: TSigFile7IntegerProperty
+      Value = 0
+    end
+    object SigFile7TextProperty1: TSigFile7TextProperty
+    end
+    object SigFile7SingleProperty1: TSigFile7SingleProperty
+    end
+  end
+  object SpinBox1: TSpinBox
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 8
+    Cursor = crIBeam
+    Position.X = 248.000000000000000000
+    Position.Y = 72.000000000000000000
+    OnChange = SigFile7EditorChange
+  end
+end

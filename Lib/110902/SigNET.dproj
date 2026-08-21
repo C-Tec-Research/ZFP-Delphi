@@ -1,0 +1,189 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{EB82EFFF-8A59-4C86-B15F-5EAB0CFD7B1F}</ProjectGuid>
+			<MainSource>SigNET.dpk</MainSource>
+			<ProjectVersion>12.0</ProjectVersion>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DesignOnlyPackage>false</DesignOnlyPackage>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<GenPackage>true</GenPackage>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_Platform>x86</DCC_Platform>
+			<DCC_DependencyCheckOutputName>C:\Documents and Settings\All Users\Documents\RAD Studio\6.0\Bpl\SigNET.bpl</DCC_DependencyCheckOutputName>
+			<DCC_N>false</DCC_N>
+			<DCC_S>false</DCC_S>
+			<GenDll>true</GenDll>
+			<DCC_E>false</DCC_E>
+			<DCC_F>false</DCC_F>
+			<DCC_K>false</DCC_K>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="SigNET.dpk">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="Comms\ComDrv32.dcr"/>
+			<DCCReference Include="Comms\comm32.dcr"/>
+			<DCCReference Include="TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="SigTime32\SigTime32.dcr"/>
+			<DCCReference Include="SigImage\SigImage.dcr"/>
+			<DCCReference Include="USB\USBPanel.dcr"/>
+			<DCCReference Include="MemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="Printer\FormSettings.dcr"/>
+			<DCCReference Include="Comms\iComPort.dcr"/>
+			<DCCReference Include="rtl.dcp"/>
+			<DCCReference Include="vcl.dcp"/>
+			<DCCReference Include="VclSmp.dcp"/>
+			<DCCReference Include="vclx.dcp"/>
+			<DCCReference Include="dbrtl.dcp"/>
+			<DCCReference Include="vcldb.dcp"/>
+			<DCCReference Include="designide.dcp"/>
+			<DCCReference Include="xmlrtl.dcp"/>
+			<DCCReference Include="vclactnband.dcp"/>
+			<DCCReference Include="SigSpinEdit\SigSpinEdit.pas"/>
+			<DCCReference Include="Comms\companel.pas"/>
+			<DCCReference Include="Comms\ComDrv32.pas"/>
+			<DCCReference Include="Comms\comm32.pas"/>
+			<DCCReference Include="SigComPort\SigComPort.pas"/>
+			<DCCReference Include="Common\Common.pas"/>
+			<DCCReference Include="Comms\misc.pas"/>
+			<DCCReference Include="TimeSpinButton\TimeSpinButton.pas"/>
+			<DCCReference Include="SigStringGrid\SigNETStringGrid.pas"/>
+			<DCCReference Include="SigImage\SigImage.pas"/>
+			<DCCReference Include="USB\USBPanel.pas"/>
+			<DCCReference Include="RichEditLog\RichEditLog.pas"/>
+			<DCCReference Include="MemoMessage\MemoMessage.pas"/>
+			<DCCReference Include="MemoMessage\UnitMessageFile.pas"/>
+			<DCCReference Include="ManagedControlList\UnitManagedControlList.pas"/>
+			<DCCReference Include="sigparse.pas"/>
+			<DCCReference Include="MemoMessage\UnitMemoryMap.pas"/>
+			<DCCReference Include="Printer\FormSettings.pas"/>
+			<DCCReference Include="Printer\PageSetupDlg.pas">
+				<Form>PageSetupForm</Form>
+			</DCCReference>
+			<DCCReference Include="Printer\PrevPrinter.pas"/>
+			<DCCReference Include="Printer\PrevForm.pas">
+				<Form>PreviewForm</Form>
+			</DCCReference>
+			<DCCReference Include="Printer\Gopage.pas">
+				<Form>GoPageForm</Form>
+			</DCCReference>
+			<DCCReference Include="Comms\PanelComms.pas"/>
+			<DCCReference Include="SigSave\SigSaveDialog.pas"/>
+			<DCCReference Include="SigRegistry\SigRegistry.pas"/>
+			<DCCReference Include="FileNotSaved\UnitFileNotSaved.pas">
+				<Form>FormFileNotSaved</Form>
+			</DCCReference>
+			<DCCReference Include="Comms\iComPort.pas"/>
+			<DCCReference Include="TransferInterface\UnitTransferInterface.pas"/>
+			<DCCReference Include="WinIOCtl\WinIOCtl.pas"/>
+			<DCCReference Include="SigStringGrid\SigGeneralGrid.pas"/>
+			<DCCReference Include="Wizards\SigFile\UnitSigFileGUI.pas">
+				<Form>FormSigFileGUI</Form>
+			</DCCReference>
+			<DCCReference Include="Wizards\SigFile\UnitSigFileAnalyser.pas"/>
+			<DCCReference Include="SigFile\SigFile.pas"/>
+			<DCCReference Include="SelectableEdit\SelectableEdit.pas"/>
+			<DCCReference Include="ErrorList\ErrorList.pas"/>
+			<DCCReference Include="Wizards\SigFile\UnitProjectExportFile.pas"/>
+			<DCCReference Include="SigVariableComponent\SigVariableEditor.pas"/>
+			<DCCReference Include="SigVariableComponent\SigVariableEditorList.pas"/>
+			<DCCReference Include="Comms\ComDrv32.dcr"/>
+			<DCCReference Include="Comms\comm32.dcr"/>
+			<DCCReference Include="TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="SigTime32\SigTime32.dcr"/>
+			<DCCReference Include="SigImage\SigImage.dcr"/>
+			<DCCReference Include="USB\USBPanel.dcr"/>
+			<DCCReference Include="MemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="Printer\FormSettings.dcr"/>
+			<DCCReference Include="Comms\iComPort.dcr"/>
+			<DCCReference Include="SigFile\SigFile.dcr"/>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>Package</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">SigNET.dpk</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">2057</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright">(c) SigNET (AC) Ltd</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\bcboffice2k120.bpl">CodeGear C++Builder Office 2000 Servers Package</Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\bcbofficexp120.bpl">CodeGear C++Builder Office XP Servers Package</Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\dcloffice2k120.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\dclofficexp120.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+					</Excluded_Packages>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

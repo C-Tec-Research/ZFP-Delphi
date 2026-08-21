@@ -1,0 +1,1143 @@
+{$IFNDEF VCL_SigVariableEditor}
+{$IFNDEF FMX_SigVariableEditor}
+unit SigVariableEditor;
+{$ENDIF}
+{$ENDIF}
+
+{
+  This is a chameleon editor that can take the form of several editors
+}
+
+interface
+
+uses
+  SysUtils,
+  Classes,
+  System.Contnrs,
+  System.Types,
+{$IFDEF FMX_SigVariableEditor}
+  FMX.Types,
+  FMX.Controls,
+  FMX.Listbox,
+  FMX.Edit,
+  FMX.Layouts,
+  //FMX.SigImage,
+  FMX.Forms;
+{$ELSE}
+  SigImage,
+  Controls,
+  StdCtrls,
+  Graphics,
+  Mask,
+  SigSpinEdit,
+  Buttons,
+  Forms;
+{$ENDIF}
+
+type
+  tSigVariableEditorStyle = ( vesNone, vesMaskEdit, vesSpinEdit, vesComboBox, vesCheckbox,
+                              vesButton
+{$IFDEF FMX_SigVariableEditor}
+{$ELSE}
+                              , vesImage
+{$ENDIF}
+                               );  // use Sig variants where appropriate!
+
+type
+  TSigVariableEditors = class;
+
+{$IFDEF FMX_SigVariableEditor}
+  TSigVariableEditor = class(TControl)
+{$ELSE}
+  TSigVariableEditor = class(TComponent)
+{$ENDIF}
+  private
+    fEditor: tControl;
+    fLabel : tLabel;
+    //fItemsList: tStringList;
+    fTop: integer;
+    fLeft: integer;
+    fWidth: integer;
+    fHeight: integer;
+    fVisible: boolean;
+    fParentDoubleBuffered: boolean;
+    fEditorStyle: tSigVariableEditorStyle;
+{$IFDEF FMX_SigVariableEditor}
+    fParent: tControl;
+{$ELSE}
+    fParent: tWinControl;
+    fDoubleBuffered: boolean;
+{$ENDIF}
+    fEnabled: boolean;
+    fEditorList: TSigVariableEditors;
+    fLabelText: string;
+    fUserObject: tObject;
+    fOnChange: tNotifyEvent;
+    fText: string;
+    fEditorWidth : integer;
+{$IFNDEF FMX_SigVariableEditor}
+    fImageList: tImageList;
+{$ENDIF}
+    fOnLabelClick: tNotifyEvent;
+    procedure OnEditorChange( Sender : tObject );
+    procedure SelfOnLabelClick( Sender : tObject );
+    //procedure SetItemsList(const Value: tStringList);
+    function GetComboBox: tComboBox;
+    procedure SetTop(const Value: integer);
+    function GetTop: integer;
+    procedure SetLeft(const Value: integer);
+    function GetLeft: integer;
+    procedure SetWidth(const Value: integer);
+    function GetWidth: integer;
+    procedure SetHeight(const Value: integer);
+    function GetHeight: integer;
+    procedure SetVisible(const Value: boolean);
+    function GetVisible: boolean;
+    function GetBrush: tBrush;
+    procedure SetEditorStyle(const Value: tSigVariableEditorStyle);
+{$IFDEF FMX_SigVariableEditor}
+    procedure SetParent(const Value: tControl);
+{$ELSE}
+    procedure SetParentDoubleBuffered(const Value: boolean);
+    function GetMouseInClient: boolean;
+    procedure SetParent(const Value: tWinControl);
+    procedure SetDoubleBuffered(const Value: boolean);
+    function GetDoubleBuffered: boolean;
+{$ENDIF}
+    procedure SetEnabled(const Value: boolean);
+    procedure SetLabelText(const Value: string);
+    procedure SetOnChange(const Value: tNotifyEvent);
+    function GetEditorLeft: integer;
+    function GetTextLeft: integer;
+    function GetEditorWidth: integer;
+    function GetTextWidth: integer;
+    procedure SetText(const Value: string);
+{$IFDEF FMX_SigVariableEditor}
+    function GetEdit: tEdit;
+    function GetSpinBox: tSpinBox;
+{$ELSE}
+    function GetMaskEdit: tMaskEdit;
+    function GetSpinEdit: tSigSpinEdit;
+    function GetImage: tSigImage;
+    procedure SetImageList(const Value: tImageList);
+{$ENDIF}
+    function GetFont: tFont;
+    function GetCheckBox: tCheckbox;
+    function GetButton: tButton;
+    function GetLabelFont: tFont;
+    function GetText: string;
+    { Private declarations }
+  protected
+    { Protected declarations }
+    //property ComboBox : tComboBox
+    //         read GetComboBox;
+  public
+    { Public declarations }
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+
+    procedure Invalidate;
+
+    property Brush : tBrush
+             read GetBrush;
+    property Font : tFont
+             read GetFont;
+    property LabelFont : tFont
+             read GetLabelFont;
+
+{$IFDEF FMX_SigVariableEditor}
+{$ELSE}
+    property MouseInClient : boolean
+             read GetMouseInClient;
+{$ENDIF}
+
+    property EditorLeft : integer
+             read GetEditorLeft;
+    property TextLeft : integer
+             read GetTextLeft;
+    property EditorWidth : integer
+             read GetEditorWidth;
+    property TextWidth : integer
+             read GetTextWidth;
+
+    property EditorAsComboBox : tComboBox
+             read GetComboBox;
+{$IFDEF FMX_SigVariableEditor}
+    property EditorAsMaskEdit : tEdit      // still call it mask edit for compatibility and readability
+             read GetEdit;
+    property EditorAsSpinEdit : tSpinBox
+             read GetSpinBox;
+{$ELSE}
+    property EditorAsMaskEdit : tMaskEdit
+             read GetMaskEdit;
+    property EditorAsSpinEdit : tSigSpinEdit
+             read GetSpinEdit;
+    property EditorAsImage : tSigImage
+             read GetImage;
+{$ENDIF}
+    property EditorAsCheckBox : tCheckbox
+             read GetCheckBox;
+    property EditorAsButton : tButton
+             read GetButton;
+
+    property EditorList : TSigVariableEditors
+             read fEditorList
+             write fEditorList;
+
+    property UserObject : tObject
+             read fUserObject
+             write fUserObject;
+  published
+    { Published declarations }
+
+    property Top : integer
+             read GetTop
+             write SetTop;
+    property Left : integer
+             read GetLeft
+             write SetLeft;
+    property Width : integer
+             read GetWidth
+             write SetWidth
+             default 121;
+    property Height : integer
+             read GetHeight
+             write SetHeight
+             default 21;
+    property Visible : boolean
+             read GetVisible
+             write SetVisible
+             default TRUE;
+    property FixedEditorWidth : integer   // if non-zero makes editor widths fixed
+             read fEditorWidth
+             write fEditorWidth
+             default 0;
+
+
+    property Text : string
+             read GetText
+             write SetText;
+{$IFDEF FMX_SigVariableEditor}
+{$ELSE}
+    property ImageList : tImageList
+             read fImageList
+             write SetImageList;
+    property Parent : tWinControl
+             read fParent
+             write SetParent;
+    property DoubleBuffered : boolean
+             read GetDoubleBuffered
+             write SetDoubleBuffered
+             default FALSE;
+    property ParentDoubleBuffered : boolean
+             read fParentDoubleBuffered
+             write SetParentDoubleBuffered
+             default TRUE;
+{$ENDIF}
+
+    property EditorStyle : tSigVariableEditorStyle
+             read fEditorStyle
+             write SetEditorStyle
+             default vesNone;
+    property Enabled : boolean
+             read fEnabled
+             write SetEnabled;
+    property LabelText : string
+             read fLabelText
+             write SetLabelText;
+
+    property OnChange : tNotifyEvent
+             read fOnChange
+             write SetOnChange;
+    property OnLabelClick : tNotifyEvent
+             read fOnLabelClick
+             write fOnLabelClick;
+  end;
+
+  TSigVariableEditors = class( tComponentList )
+  private
+    function GetItem(const i: integer): TSigVariableEditor;
+  public
+    constructor Create; reintroduce;
+
+    procedure Clear; override;
+
+    function Add( NewVal : TSigVariableEditor ) : integer; reintroduce;
+
+    property Item[ const i : integer ] : TSigVariableEditor
+             read GetItem;
+  end;
+
+{$IFDEF ALLOWINSTALL}
+procedure Register;
+{$ENDIF}
+
+implementation
+
+{$IFDEF ALLOWINSTALL}
+procedure Register;
+begin
+  RegisterComponents('SigNET', [TSigVariableEditor]);
+end;
+{$ENDIF}
+
+{ TSigVariableEditorSigNET }
+
+constructor TSigVariableEditor.Create(AOwner: TComponent);
+begin
+  inherited;
+
+  Width := 121;
+  Height := 21;
+
+  Visible := TRUE;
+{$IFDEF FMX_SigVariableEditor}
+{$ELSE}
+  fParentDoubleBuffered := TRUE;
+{$ENDIF}
+end;
+
+destructor TSigVariableEditor.Destroy;
+begin
+  if assigned( EditorList ) then
+  begin
+    EditorList.Remove( self );
+  end;
+
+  inherited;
+end;
+
+function TSigVariableEditor.GetBrush: tBrush;
+begin
+  if not assigned( fEditor ) then
+  begin
+    result := nil;
+  end
+{$IFDEF FMX_SigVariableEditor}
+  else
+  begin
+    Result := fEditor.Canvas.Stroke;
+  end;
+{$ELSE}
+  else if fEditor is tWinControl then
+  begin
+    Result := (fEditor as tWinControl).Brush;
+  end
+  else
+  begin
+    Result := nil;
+  end;
+{$ENDIF}
+end;
+
+function TSigVariableEditor.GetButton: tButton;
+begin
+  if not assigned( fEditor ) then
+  begin
+    Result := nil;
+  end
+  else if fEditor is tButton then
+  begin
+    Result := fEditor as tButton;
+  end
+  else
+  begin
+    Result := nil;
+  end;
+end;
+
+function TSigVariableEditor.GetCheckBox: tCheckbox;
+begin
+  if fEditor is tCheckBox then
+  begin
+    Result := fEditor as tCheckBox;
+  end
+  else
+  begin
+    Result := nil;
+  end;
+end;
+
+function TSigVariableEditor.GetComboBox: tComboBox;
+begin
+  try
+    if fEditor is tComboBox then
+    begin
+      Result := fEditor as tComboBox;
+    end
+    else
+    begin
+      Result := nil;
+    end;
+  except
+    Result := nil;
+  end;
+end;
+
+{$IFDEF FMX_SigVariableEditor}
+{$ELSE}
+function TSigVariableEditor.GetDoubleBuffered: boolean;
+begin
+  if assigned( fEditor ) then
+  begin
+    if fEditor is tWinControl then
+    begin
+      fDoubleBuffered := (fEditor as tWinControl).DoubleBuffered;
+    end;
+  end;
+  Result := fDoubleBuffered;
+end;
+{$ENDIF}
+
+function TSigVariableEditor.GetEditorLeft: integer;
+begin
+  Result := Left + 15 + (Width - EditorWidth);
+end;
+
+function TSigVariableEditor.GetEditorWidth: integer;
+begin
+  if fEditorWidth = 0 then
+  begin
+    Result := Width div 2;
+  end
+  else
+  begin
+    Result := fEditorWidth;
+  end;
+end;
+
+function TSigVariableEditor.GetFont: tFont;
+begin
+  case EditorStyle of
+    vesNone:     Result := nil;
+    vesMaskEdit: Result := EditorAsMaskEdit.Font;
+    vesSpinEdit: Result := EditorAsSpinEdit.Font;
+{$IFDEF FMX_SigVariableEditor}
+{$ELSE}
+    vesComboBox: Result := EditorAsComboBox.Font;
+    vesImage   : Result := nil;
+{$ENDIF}
+    vesCheckBox: Result := EditorAsCheckBox.Font;
+    vesButton  : Result := EditorAsButton.Font;
+    else         Result := nil;
+  end;
+end;
+
+function TSigVariableEditor.GetHeight: integer;
+begin
+  Result := fHeight;
+end;
+
+{$IFDEF FMX_SigVariableEditor}
+{$ELSE}
+function TSigVariableEditor.GetImage: tSigImage;
+begin
+  if fEditor is tSigImage then
+  begin
+    Result := fEditor as tSigImage;
+  end
+  else
+  begin
+    Result := nil;
+  end;
+end;
+{$ENDIF}
+
+function TSigVariableEditor.GetLabelFont: tFont;
+begin
+  if assigned( fLabel ) then
+  begin
+    Result := fLabel.Font;
+  end
+  else
+  begin
+    Result := nil;
+  end;
+end;
+
+function TSigVariableEditor.GetLeft: integer;
+begin
+  Result := fLeft;
+end;
+
+{$IFDEF FMX_SigVariableEditor}
+function TSigVariableEditor.GetEdit: tEdit;
+begin
+  if not assigned( fEditor ) then
+  begin
+    Result := nil;
+  end
+  else if fEditor is tEdit then
+  begin
+    Result := fEditor as tEdit;
+  end
+  else
+  begin
+    Result := nil;
+  end;
+end;
+{$ELSE}
+function TSigVariableEditor.GetMaskEdit: tMaskEdit;
+begin
+  if not assigned( fEditor ) then
+  begin
+    Result := nil;
+  end
+  else if fEditor is tMaskEdit then
+  begin
+    Result := fEditor as tMaskEdit;
+  end
+  else
+  begin
+    Result := nil;
+  end;
+end;
+{$ENDIF}
+
+{$IFDEF FMX_SigVariableEditor}
+{$ELSE}
+function TSigVariableEditor.GetMouseInClient: boolean;
+begin
+  if assigned( fEditor ) then
+  begin
+    if fEditor is tWinControl then
+    begin
+      Result := (fEditor as tWinControl).MouseInClient;
+    end
+    else
+    begin
+      Result := FALSE;
+    end
+  end
+  else
+  begin
+    Result := FALSE;
+  end;
+end;
+{$ENDIF}
+
+{$IFDEF FMX_SigVariableEditor}
+function TSigVariableEditor.GetSpinBox: tSpinBox;
+begin
+  if not assigned( fEditor ) then
+  begin
+    Result := nil;
+  end
+  else if fEditor is tSpinBox then
+  begin
+    Result := fEditor as tSpinBox;
+  end
+  else
+  begin
+    Result := nil;
+  end;
+end;
+{$ELSE}
+function TSigVariableEditor.GetSpinEdit: tSigSpinEdit;
+begin
+  if not assigned( fEditor ) then
+  begin
+    Result := nil;
+  end
+  else if fEditor is tSigSpinEdit then
+  begin
+    Result := fEditor as tSigSpinEdit;
+  end
+  else
+  begin
+    Result := nil;
+  end;
+end;
+{$ENDIF}
+
+function TSigVariableEditor.GetText: string;
+begin
+  case EditorStyle of
+    vesNone:     Result := fText;
+    vesMaskEdit: Result := EditorAsMaskEdit.Text;
+    vesSpinEdit: Result := EditorAsSpinEdit.Text;
+{$IFDEF FMX_SigVariableEditor}
+    vesComboBox:
+    begin
+      with EditorAsComboBox do
+      begin
+        if Index < 0 then
+        begin
+          Result := '';
+        end
+        else
+        begin
+          Result := Items[ Index ];
+        end;
+      end;
+    end;
+{$ELSE}
+    vesComboBox: Result := EditorAsComboBox.Text;
+    vesImage:    Result := fText;
+{$ENDIF}
+    vesCheckbox: Result := fText;
+    vesButton:   Result := fText;
+  end;
+end;
+
+function TSigVariableEditor.GetTextLeft: integer;
+begin
+  Result := Left;
+end;
+
+function TSigVariableEditor.GetTextWidth: integer;
+begin
+  Result := Width - EditorWidth;
+end;
+
+function TSigVariableEditor.GetTop: integer;
+begin
+  Result := fTop;
+end;
+
+function TSigVariableEditor.GetVisible: boolean;
+begin
+  Result := fVisible;
+end;
+
+function TSigVariableEditor.GetWidth: integer;
+begin
+  Result := fWidth;
+end;
+
+procedure TSigVariableEditor.Invalidate;
+begin
+  if assigned( fEditor ) then
+  begin
+{$IFDEF FMX_SigVariableEditor}
+    fEditor.RePaint;
+{$ELSE}
+    fEditor.Invalidate;
+{$ENDIF}
+  end;
+  if assigned( fLabel ) then
+  begin
+{$IFDEF FMX_SigVariableEditor}
+    fLabel.RePaint;
+{$ELSE}
+    fLabel.Invalidate;
+{$ENDIF}
+  end;
+end;
+
+procedure TSigVariableEditor.OnEditorChange(Sender: tObject);
+{$IFDEF FMX_SigVariableEditor}
+{$ELSE}
+{$ENDIF}
+begin
+  if assigned( fEditor ) then
+  begin
+{$IFDEF FMX_SigVariableEditor}
+    if fEditor is tEdit then
+    begin
+      fText := (fEditor as tEdit).Text;
+    end
+    else if fEditor is tComboBox then
+    begin
+      with EditorAsComboBox do
+      begin
+        if Index < 0 then
+        begin
+          fText := '';
+        end
+        else
+        begin
+          fText := Items[ Index ];
+        end;
+      end;
+    end
+    else if fEditor is tSpinBox then
+    begin
+      fText := (fEditor as tSpinBox).Text;
+    end
+    else if fEditor is tCheckBox then
+    begin
+      if (fEditor as tCheckbox).IsChecked then
+      begin
+        fText := 'TRUE';
+      end
+      else
+      begin
+        fText := 'FALSE';
+      end;
+    end;
+{$ELSE}
+    if fEditor is tMaskEdit then
+    begin
+      fText := (fEditor as tMaskEdit).Text;
+    end
+    else if fEditor is tComboBox then
+    begin
+      fText := (fEditor as tComboBox).Text;
+    end
+    else if fEditor is tSigSpinEdit then
+    begin
+      fText := (fEditor as tSigSpinEdit).Text;
+    end
+    else if fEditor is tCheckBox then
+    begin
+      if (fEditor as tCheckbox).Checked then
+      begin
+        fText := 'TRUE';
+      end
+      else
+      begin
+        fText := 'FALSE';
+      end;
+    end
+    else if fEditor is tSigImage then
+    begin
+      fText := IntToStr( EditorAsImage.ImageIndex );
+    end;
+{$ENDIF}
+    if assigned( fOnChange ) then
+    begin
+      fOnChange( self );
+    end;
+  end;
+end;
+
+procedure TSigVariableEditor.SelfOnLabelClick(Sender: tObject);
+begin
+  if assigned( fOnLabelClick ) then
+  begin
+    fOnLabelClick( self );
+  end;
+end;
+
+{$IFDEF FMX_SigVariableEditor}
+{$ELSE}
+procedure TSigVariableEditor.SetDoubleBuffered(const Value: boolean);
+begin
+  fDoubleBuffered := Value;
+  if assigned( fEditor ) then
+  begin
+    if fEditor is tWinControl then
+    begin
+      (fEditor as tWinControl).DoubleBuffered := Value;
+    end;
+  end;
+end;
+{$ENDIF}
+
+procedure TSigVariableEditor.SetEditorStyle(
+  const Value: tSigVariableEditorStyle);
+var
+{$IFDEF FMX_SigVariableEditor}
+  iTop : single;
+{$ELSE}
+  iTop : integer;
+{$ENDIF}
+begin
+  if fEditorStyle <> Value then
+  begin
+    if assigned( fLabel ) then
+    begin
+      fLabel.Visible := FALSE;
+    end;
+    fEditorStyle := Value;
+    FreeAndNil( fEditor );
+    case fEditorStyle of
+      vesNone:
+      begin
+      end;
+      vesMaskEdit:
+      begin
+{$IFDEF FMX_SigVariableEditor}
+        fEditor := tEdit.Create( self );
+        (fEditor as tEdit).OnChange := OnEditorChange;
+{$ELSE}
+        fEditor := tMaskEdit.Create( self );
+        (fEditor as tMaskEdit).OnChange := OnEditorChange;
+{$ENDIF}
+      end;
+      vesSpinEdit:
+      begin
+{$IFDEF FMX_SigVariableEditor}
+        fEditor := tSpinBox.Create( self );
+        (fEditor as tSpinBox).OnChange := OnEditorChange;
+{$ELSE}
+        fEditor := tSigSpinEdit.Create( self );
+        (fEditor as tSigSpinEdit).OnChange := OnEditorChange;
+{$ENDIF}
+      end;
+      vesComboBox:
+      begin
+        fEditor := tComboBox.Create( self );
+        (fEditor as tComboBox).OnChange := OnEditorChange;
+      end;
+      vesCheckBox:
+      begin
+        fEditor := tCheckBox.Create( self );
+        (fEditor as tCheckBox).OnClick := OnEditorChange;
+      end;
+      vesButton:
+      begin
+        fEditor := tButton.Create( self );
+        (fEditor as tButton).OnClick := OnEditorChange;
+{$IFDEF FMX_SigVariableEditor}
+        (fEditor as tButton).Text := fText;
+{$ELSE}
+        (fEditor as tButton).Caption := fText;
+{$ENDIF}
+      end;
+{$IFDEF FMX_SigVariableEditor}
+{$ELSE}
+      vesImage:
+      begin
+        fEditor := tSigImage.Create( self );
+        EditorAsImage.Transparent := FALSE;
+        EditorAsImage.OnClick := OnEditorChange;
+        EditorAsImage.ImageList := fImageList
+      end;
+{$ENDIF}
+    end;
+    if assigned( fEditor ) then
+    begin
+      fEditor.Parent := self.Parent;
+{$IFDEF FMX_SigVariableEditor}
+      iTop := (self.Parent as tScrollBox).VScrollBar.Value;
+      fEditor.Position.Y := fTop + iTop;
+      fEditor.Position.X := EditorLeft;
+{$ELSE}
+      iTop := (self.Parent as tScrollBox).VertScrollBar.ScrollPos;
+      fEditor.Top := fTop + iTop;
+      fEditor.Left := EditorLeft;
+{$ENDIF}
+      fEditor.Width := EditorWidth;
+      fEditor.Height := fHeight;
+      fEditor.Visible := fVisible;
+{$IFDEF FMX_SigVariableEditor}
+{$ELSE}
+      if fEditor is tWinControl then
+      begin
+        (fEditor as tWinControl).DoubleBuffered := fDoubleBuffered;
+        (fEditor as tWinControl).ParentDoubleBuffered := fParentDoubleBuffered;
+      end;
+{$ENDIF}
+      SetText( fText );
+      if assigned( fLabel ) then
+      begin
+        fLabel.Visible := fVisible;
+{$IFDEF FMX_SigVariableEditor}
+        fLabel.Position.Y := Top + iTop + ((fHeight - fLabel.Height) / 2 );
+        fLabel.Position.X := TextLeft;
+{$ELSE}
+        fLabel.Top := Top + iTop + ((fHeight - fLabel.Height) div 2 );
+        fLabel.Left := TextLeft;
+{$ENDIF}
+        fLabel.Width := TextWidth;
+      end;
+    end;
+  end;
+end;
+
+procedure TSigVariableEditor.SetEnabled(const Value: boolean);
+begin
+  fEnabled := Value;
+  if assigned( fEditor ) then
+  begin
+    fEditor.Enabled := Value;
+  end;
+  if assigned( fLabel ) then
+  begin
+    fLabel.Enabled := Value;
+  end;
+end;
+
+procedure TSigVariableEditor.SetHeight(const Value: integer);
+begin
+  fHeight := Value;
+  if assigned( fEditor ) then
+  begin
+    fEditor.Height := Value;
+  end;
+  if assigned( fLabel ) then
+  begin
+{$IFDEF FMX_SigVariableEditor}
+    fLabel.Position.Y := Top + ((fHeight - fLabel.Height) / 2 );
+{$ELSE}
+    fLabel.Top := Top + ((fHeight - fLabel.Height) div 2 );
+{$ENDIF}
+  end;
+end;
+
+{$IFDEF FMX_SigVariableEditor}
+{$ELSE}
+procedure TSigVariableEditor.SetImageList(const Value: tImageList);
+begin
+  fImageList := Value;
+  if fEditor is tSigImage then
+  begin
+    EditorAsImage.ImageList := Value;
+  end;
+end;
+{$ENDIF}
+
+procedure TSigVariableEditor.SetLabelText(const Value: string);
+begin
+  fLabelText := Value;
+  if not assigned( fLabel ) then
+  begin
+    fLabel := tLabel.Create( self );
+    fLabel.Parent := Parent;
+{$IFDEF FMX_SigVariableEditor}
+    fLabel.Position.Y := Top + ((fHeight - fLabel.Height) / 2 );
+    fLabel.Position.X := TextLeft;
+{$ELSE}
+    fLabel.Top := Top + ((fHeight - fLabel.Height) div 2 );
+    fLabel.Left := TextLeft;
+{$ENDIF}
+    fLabel.OnClick := SelfOnLabelClick;
+  end;
+{$IFDEF FMX_SigVariableEditor}
+  fLabel.Text := Value;
+{$ELSE}
+  fLabel.Caption := Value;
+{$ENDIF}
+end;
+
+procedure TSigVariableEditor.SetLeft(const Value: integer);
+begin
+  fLeft := Value;
+  if assigned( fEditor ) then
+  begin
+{$IFDEF FMX_SigVariableEditor}
+    fEditor.Position.X := EditorLeft;
+{$ELSE}
+    fEditor.Left := EditorLeft;
+{$ENDIF}
+  end;
+  if assigned( fLabel ) then
+  begin
+{$IFDEF FMX_SigVariableEditor}
+    fLabel.Position.X := TextLeft;
+{$ELSE}
+    fLabel.Left := TextLeft;
+{$ENDIF}
+  end;
+end;
+
+procedure TSigVariableEditor.SetOnChange(const Value: tNotifyEvent);
+begin
+  fOnChange := Value;
+end;
+
+{$IFDEF FMX_SigVariableEditor}
+procedure TSigVariableEditor.SetParent(const Value: tControl);
+{$ELSE}
+procedure TSigVariableEditor.SetParent(const Value: tWinControl);
+{$ENDIF}
+begin
+  fParent := Value;
+  if assigned( fEditor ) then
+  begin
+    fEditor.Parent := Value;
+  end;
+  if assigned( fLabel ) then
+  begin
+    fLabel.Parent := Value;
+  end;
+end;
+
+{$IFDEF FMX_SigVariableEditor}
+{$ELSE}
+procedure TSigVariableEditor.SetParentDoubleBuffered(
+  const Value: boolean);
+begin
+  fParentDoubleBuffered := Value;
+  if assigned( fEditor ) then
+  begin
+    if fEditor is tWinControl then
+    begin
+      (fEditor as tWinControl).ParentDoubleBuffered := Value;
+    end;
+  end;
+end;
+{$ENDIF}
+
+procedure TSigVariableEditor.SetText(const Value: string);
+var
+  i : integer;
+begin
+  fText := Value;
+  case EditorStyle of
+    vesNone:;
+    vesMaskEdit:
+    begin
+      EditorAsMaskEdit.Text := Value;
+    end;
+    vesSpinEdit:
+    begin
+      if Value <> '' then
+      begin
+        EditorAsSpinEdit.Text := Value;
+      end;
+    end;
+    vesComboBox:
+    begin
+      with EditorAsComboBox do
+      begin
+        for i := 0 to Items.Count - 1 do
+        begin
+          if SameText( Items[ i ], Value ) then
+          begin
+            ItemIndex := i;
+            exit;
+          end;
+        end;
+      end;
+{$IFDEF FMX_SigVariableEditor}
+{$ELSE}
+      // else
+      EditorAsComboBox.Text := Value; // may not work for dropdowns
+{$ENDIF}
+    end;
+    vesCheckbox:
+    begin
+      if SameText( Value, 'TRUE') then
+      begin
+{$IFDEF FMX_SigVariableEditor}
+        EditorAsCheckBox.IsChecked := TRUE;
+{$ELSE}
+        EditorAsCheckBox.Checked := TRUE;
+{$ENDIF}
+      end
+      else if SameText( Value, 'FALSE') then
+      begin
+{$IFDEF FMX_SigVariableEditor}
+        EditorAsCheckBox.IsChecked := FALSE;
+{$ELSE}
+        EditorAsCheckBox.Checked := FALSE;
+{$ENDIF}
+      end
+    end;
+    vesButton:
+    begin
+      try
+{$IFDEF FMX_SigVariableEditor}
+        EditorAsButton.Text := Value;
+{$ELSE}
+        EditorAsButton.Caption := Value;
+{$ENDIF}
+      except
+
+      end;
+    end;
+{$IFDEF FMX_SigVariableEditor}
+{$ELSE}
+    vesImage:
+    begin
+      try
+        if Value = '' then
+        begin
+          EditorAsImage.ImageIndex := 0;
+        end
+        else
+        begin
+          EditorAsImage.ImageIndex := StrToInt( Value );
+        end;
+      except
+
+      end;
+    end;
+{$ENDIF}
+  end;
+end;
+
+procedure TSigVariableEditor.SetTop(const Value: integer);
+var
+{$IFDEF FMX_SigVariableEditor}
+  iTop : single;
+{$ELSE}
+  iTop : integer;
+{$ENDIF}
+begin
+  fTop := Value;
+  if assigned( self.Parent ) then
+  begin
+{$IFDEF FMX_SigVariableEditor}
+    iTop := (self.Parent as tScrollBox).VScrollBar.Value;
+{$ELSE}
+    iTop := (self.Parent as tScrollBox).VertScrollBar.ScrollPos;
+{$ENDIF}
+    if assigned( fEditor ) then
+    begin
+{$IFDEF FMX_SigVariableEditor}
+      fEditor.Position.Y := fTop + iTop;
+{$ELSE}
+      fEditor.Top := Value + iTop;
+{$ENDIF}
+    end;
+    if assigned( fLabel ) then
+    begin
+{$IFDEF FMX_SigVariableEditor}
+      fEditor.Position.Y := Top + iTop + ((fHeight - fLabel.Height) / 2 );
+{$ELSE}
+      fLabel.Top := Top + iTop + ((fHeight - fLabel.Height) div 2 );
+{$ENDIF}
+    end;
+  end;
+end;
+
+procedure TSigVariableEditor.SetVisible(const Value: boolean);
+begin
+  fVisible := Value;
+  if assigned( fEditor ) then
+  begin
+    fEditor.Visible := Value;
+  end;
+  if assigned( fLabel ) then
+  begin
+    fLabel.Visible := Value;
+  end;
+end;
+
+procedure TSigVariableEditor.SetWidth(const Value: integer);
+begin
+  fWidth := Value;
+  if assigned( fEditor ) then
+  begin
+{$IFDEF FMX_SigVariableEditor}
+    fEditor.Position.X := EditorLeft;
+{$ELSE}
+    fEditor.Left := EditorLeft;
+{$ENDIF}
+    fEditor.Width := EditorWidth;
+  end;
+  if assigned( fLabel ) then
+  begin
+    fLabel.Width := TextWidth;
+  end;
+end;
+
+{ TSigVariableEditors }
+
+function TSigVariableEditors.Add(NewVal: TSigVariableEditor): integer;
+begin
+  Result := inherited Add( NewVal );
+  NewVal.EditorList := self;
+end;
+
+procedure TSigVariableEditors.Clear;
+begin
+  inherited;
+
+end;
+
+constructor TSigVariableEditors.Create;
+begin
+  inherited Create( FALSE );
+end;
+
+function TSigVariableEditors.GetItem(const i: integer): TSigVariableEditor;
+begin
+  result := items[ i ] as TSigVariableEditor;
+end;
+
+end.

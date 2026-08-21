@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{F7590F2F-D34A-491D-9439-A4909786CB04}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="DCPdelphi2009.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="..\UserGateway.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="DCPdelphi2009">
+			<MSBuild Projects="DCPdelphi2009.dproj"/>
+		</Target>
+		<Target Name="DCPdelphi2009:Clean">
+			<MSBuild Targets="Clean" Projects="DCPdelphi2009.dproj"/>
+		</Target>
+		<Target Name="DCPdelphi2009:Make">
+			<MSBuild Targets="Make" Projects="DCPdelphi2009.dproj"/>
+		</Target>
+		<Target Name="UserGateway">
+			<MSBuild Projects="..\UserGateway.dproj"/>
+		</Target>
+		<Target Name="UserGateway:Clean">
+			<MSBuild Targets="Clean" Projects="..\UserGateway.dproj"/>
+		</Target>
+		<Target Name="UserGateway:Make">
+			<MSBuild Targets="Make" Projects="..\UserGateway.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="DCPdelphi2009;UserGateway"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="DCPdelphi2009:Clean;UserGateway:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="DCPdelphi2009:Make;UserGateway:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

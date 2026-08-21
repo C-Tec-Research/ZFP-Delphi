@@ -1,0 +1,4346 @@
+unit UnitMessageFile;
+
+interface
+
+uses
+  SysUtils,
+  Classes,
+  Contnrs,
+  Controls,
+  SigParse,
+  UnitManagedControlList,
+  MPlayer,
+  Buttons,
+  ExtCtrls,
+  UnitMemoryMap;
+
+
+type
+  TSVMElement = class
+  protected
+    iIsDirty : boolean;
+  public
+    property IsDirty : boolean
+             read iIsDirty
+             write iIsDirty;
+    constructor Create;
+//    class function CreateFromFile( var F : TextFile ) : tSVMElement;
+  end;
+
+  TSVMLibraryElement = class( TSVMElement )
+  protected
+    iFileLength : integer;
+    iFileName : tFileName;
+    iLongText : tStringList;
+    iShortText : string;
+    iIgnoreFileError : boolean;
+    iUsed : boolean;
+    procedure fSetFileName( pFileName : tFileName );
+    procedure fSetLongText( NewVal : TStringList );
+    procedure fSetShortText( NewVal : string );
+    function fGetPath : string;
+    procedure fSetPath( NewVal : string );
+  public
+    constructor Create;
+    procedure Save( var F : TextFile; indent : integer );
+    procedure Load( var F : TextFile );
+    procedure LoadText( var F : TextFile );
+    property FileName : tFileName
+             read iFileName
+             write fSetFileName;
+    property FileLength : integer
+             read iFileLength;
+    property LongText : TStringList
+             read iLongText
+             write fSetLongText;
+    property ShortText : string
+             read iShortText
+             write fSetShortText;
+    property IgnoreFileError : boolean
+             read iIgnoreFileError
+             write iIgnoreFileError;
+             // for this property, changing the value does
+             // not change the IsDirty property
+    property Path : string
+             read fGetPath
+             write fSetPath;
+    function ExpandFileName : boolean; // attempts to expand the dos file name to the full windows path
+    function AbbreviatedLongText : string;
+    property Used : boolean
+             read iUsed
+             write iUsed;
+    function Copy : TSVMLibraryElement;
+    procedure SetFile( pFileName : string; pFileSize : integer );
+  end;
+
+  tChangeIndex = procedure( Sender : TObject; NewVal : integer ) of object;
+
+  tPlayableList = class( TObjectList )
+  protected
+    iIsDirty : boolean;
+    {
+      The play list controls enabling and disabling these
+      buttons, but not their action. Their click
+      actions should, at a minimum call the corresponding
+      functions, but may perform additional actions too.
+    }
+    iPlay : TManagedControlList;
+    iStop : TManagedControlList;
+    iNext : TManagedControlList;
+    iPrev : TManagedControlList;
+    iActiveOption : integer;
+    iOnChange : TChangeIndex;
+    procedure fSetActiveOption( NewVal : integer ); virtual;
+    procedure fSetPlay( NewVal : TControl );
+    procedure fSetStop( NewVal : TControl );
+    procedure fSetNext( NewVal : TControl );
+    procedure fSetPrev( NewVal : TControl );
+  public
+    constructor Create;
+    procedure RegisterButtons( pPlay, pStop, pNext, pPrev : TControl ); virtual;
+    property PlayButton : TControl
+             write fSetPlay; // that rare object, a write only property
+    property StopButton : TControl
+             write fSetStop;
+    property NextButton : TControl
+             write fSetNext;
+    property PrevButton : TControl
+             write fSetPrev;
+    property ActiveOption : integer
+             read iActiveOption
+             write fSetActiveOption;
+    property OnChange : TChangeIndex
+             read iOnChange
+             write iOnChange;
+    function Add( NewVal : tObject ) : integer; reintroduce;
+    procedure Play; virtual;
+    procedure Stop; virtual;
+    procedure Next; virtual;
+    procedure Prev; virtual;
+    procedure MoveUp;
+    procedure MoveDown;
+    procedure DeleteCurr;
+  end;
+
+  tSVMLibrary = class( tPlayableList )
+  protected
+    iMaxEntries : integer; // max no entries in library
+    function fGetDirty : boolean;
+    function fGetItem( index : integer ) : TSVMLibraryElement;
+    procedure fOnNotify(Sender: TObject);
+    function fGetCurr : tSVMLibraryElement;
+    procedure fSetCurr( NewVal : tSVMLibraryElement );
+  public
+    constructor Create;
+    property Item[ index : integer ] : tSVMLibraryElement
+             read fGetItem;
+    function Add( NewVal : tSVMLibraryElement ) : integer; reintroduce;
+    procedure Load( var F : TextFile );
+    procedure Save( var F : TextFile; indent : integer );
+    procedure ExportAsCtec( var F : TextFile );
+    procedure ImportAsCtec( var F : TextFile );
+    procedure SubstitutePath( const OldPath : string; const NewPath : string );
+    procedure IgnoreFileErrorsForPath( OldPath : string );
+    procedure Play; override;
+    procedure Stop; override;
+    property MaxEntries : integer
+             read iMaxEntries;
+    function Copy: tSVMLibrary;
+    procedure ResetUsed;
+    procedure Delete(Index: Integer); reintroduce;
+    property Curr : tSVMLibraryElement
+             read fGetCurr
+             write fSetCurr;
+    function FileExists( TestVal : string ) : boolean;
+    property IsDirty : boolean
+             read fGetDirty;
+    procedure CreateMemoryMap( pMemoryMap : tMemoryMap; pPageSize : integer );
+  end;
+
+  tSVMNotifyStatus = ( nsChange, nsStop );
+
+  tSVMOnNotify = procedure ( NewState : tSVMNotifyStatus ) of object;
+
+  tSVMMessageElement = class( tSVMElement )
+  protected
+    iLength : integer;
+    iOnNotify : tSVMOnNotify;
+    iPlaying : boolean;
+    iUsed : boolean;
+  public
+    class function SaveID : string; virtual; abstract;
+    constructor Create;
+    procedure Save( var F : TextFile; var indent : integer );
+    procedure SaveStart( var F : TextFile; var indent : integer ); virtual;
+    procedure SaveMiddle( var F : TextFile; var indent : integer ); virtual;
+    procedure SaveEnd( var F : TextFile; var indent : integer ); virtual;
+    function Text( UsingLibrary : tSVMLibrary ) : string; virtual; abstract;
+    procedure Load( var F : TextFile ); virtual; abstract;
+    property TextLength : integer
+             read iLength;
+    procedure LoadData( NewVal : word ); virtual;
+    procedure LoadExtraData( NewVal : word ); virtual;
+    property OnNotify : tSVMOnNotify
+             read iOnNotify
+             write iOnNotify;
+    procedure Play( UsingLibrary : tSVMLibrary ); virtual;
+    procedure Stop; virtual;
+    procedure ExportAsCtec( var F : TextFile ); virtual; abstract;
+    procedure SetUsed( UsingLibrary : tSVMLibrary ); virtual;
+    property Used : boolean
+             read iUsed
+             write iUsed;
+    procedure AdjustMessageIndexDown( FromReference : integer ); virtual;
+    procedure AdjustMessageIndexUp( FromReference : integer ); virtual;
+    function Copy : tSVMMessageElement; virtual; abstract;
+    procedure CreateMemoryMap( pMemoryMap : tMemoryMap; var pCS : word ); virtual; abstract;
+  end;
+
+  tSVMTimedMessageElement = class( tSVMMessageElement )
+  protected
+    iMessageTime : integer;
+    procedure fSetMessageTime( NewVal : integer );
+  public
+    constructor Create;
+    procedure SaveMiddle( var F : TextFile; var indent : integer ); override;
+    property MessageTime : integer
+             read iMessageTime
+             write fSetMessageTime;
+    procedure LoadData( NewVal : word ); override;
+  end;
+
+  tSVMPlay = class( tSVMTimedMessageElement )
+  protected
+    iMessageNo : integer;
+    iFade : boolean;
+    procedure fSetMessageNo( NewVal : integer );
+    procedure fSetFade( NewVal : boolean );
+    procedure fOnNotify(Sender: TObject);
+  public
+    class function SaveID : string; override;
+    constructor Create;
+    procedure SaveMiddle( var F : TextFile; var indent : integer ); override;
+    property MessageNo : integer
+             read iMessageNo
+             write fSetMessageNo;
+    property Fade : boolean
+             read iFade
+             write fSetFade;
+    function Text( UsingLibrary : tSVMLibrary ) : string; override;
+    procedure Load( var F : TextFile ); override;
+    procedure Play( UsingLibrary : tSVMLibrary ); override;
+    procedure Stop; override;
+    procedure ExportAsCtec( var F : TextFile ); override;
+    procedure SetUsed( UsingLibrary : tSVMLibrary ); override;
+    procedure AdjustMessageIndexDown( FromReference : integer ); override;
+    procedure AdjustMessageIndexUp( FromReference : integer ); override;
+    function Copy : tSVMMessageElement; override;
+    procedure LoadData( NewVal : word ); override;
+    procedure LoadExtraData( NewVal : word ); override;
+    procedure CreateMemoryMap( pMemoryMap : tMemoryMap; var pCS : word); override;
+  end;
+
+  tSVMSilence = class( tSVMTimedMessageElement )
+  protected
+    procedure fOnNotify(Sender: TObject);
+  public
+    class function SaveID : string; override;
+    procedure SaveMiddle( var F : TextFile; var indent : integer ); override;
+    function Text( UsingLibrary : tSVMLibrary ) : string; override;
+    procedure Load( var F : TextFile ); override;
+    procedure Play( UsingLibrary : tSVMLibrary ); override;
+    procedure Stop; override;
+    procedure ExportAsCtec( var F : TextFile ); override;
+    function Copy : tSVMMessageElement; override;
+    procedure CreateMemoryMap( pMemoryMap : tMemoryMap; var pCS : word ); override;
+  end;
+
+  tSVMStop = class( tSVMMessageElement )
+  protected
+  public
+    class function SaveID : string; override;
+    procedure SaveMiddle( var F : TextFile; var indent : integer ); override;
+    procedure SaveEnd( var F : TextFile; var indent : integer ); override;
+    function Text( UsingLibrary : tSVMLibrary ) : string; override;
+    procedure Load( var F : TextFile ); override;
+    procedure Play( UsingLibrary : tSVMLibrary ); override;
+//    procedure Stop; override;
+    procedure ExportAsCtec( var F : TextFile ); override;
+    function Copy : tSVMMessageElement; override;
+    procedure CreateMemoryMap( pMemoryMap : tMemoryMap; var pCS : word ); override;
+  end;
+
+  tSVMIdle = class( tSVMTimedMessageElement )
+  protected
+    procedure fOnNotify(Sender: TObject);
+  public
+    class function SaveID : string; override;
+    procedure SaveMiddle( var F : TextFile; var indent : integer ); override;
+    function Text( UsingLibrary : tSVMLibrary ) : string; override;
+    procedure Load( var F : TextFile ); override;
+    procedure Play( UsingLibrary : tSVMLibrary ); override;
+    procedure Stop; override;
+    procedure ExportAsCtec( var F : TextFile ); override;
+    function Copy : tSVMMessageElement; override;
+    procedure CreateMemoryMap( pMemoryMap : tMemoryMap; var pCS : word ); override;
+  end;
+
+  tSVMBlockBegin = class( tSVMMessageElement )
+  protected
+    iBlockCount : integer;
+    procedure fSetBlockCount( NewVal : integer );
+  public
+    constructor Create;
+    class function SaveID : string; override;
+//    procedure SaveStart( var F : TextFile; var indent : integer ); override;
+    procedure SaveMiddle( var F : TextFile; var indent : integer ); override;
+    procedure SaveEnd( var F : TextFile; var indent : integer ); override;
+    property BlockCount : integer
+             read iBlockCount
+             write fSetBlockCount;
+    function Text( UsingLibrary : tSVMLibrary ) : string; override;
+    procedure Load( var F : TextFile ); override;
+    procedure ExportAsCtec( var F : TextFile ); override;
+    function Copy : tSVMMessageElement; override;
+    procedure LoadData( NewVal : word ); override;
+    procedure CreateMemoryMap( pMemoryMap : tMemoryMap; var pCS : word ); override;
+  end;
+
+  tSVMBlockEnd = class( tSVMMessageElement )
+  protected
+  public
+    class function SaveID : string; override;
+    procedure SaveStart( var F : TextFile; var indent : integer ); override;
+    procedure SaveMiddle( var F : TextFile; var indent : integer ); override;
+    procedure SaveEnd( var F : TextFile; var indent : integer ); override;
+    function Text( UsingLibrary : tSVMLibrary ) : string; override;
+    procedure Load( var F : TextFile ); override;
+    procedure ExportAsCtec( var F : TextFile ); override;
+    function Copy : tSVMMessageElement; override;
+    procedure CreateMemoryMap( pMemoryMap : tMemoryMap; var pCS : word ); override;
+  end;
+
+  TSVMMessage = class( tPlayableList )
+  protected
+    iOnNotify : tSVMOnNotify;
+    iName : string;
+    iUsingLibrary : tSVMLibrary;
+    iNotifying : boolean;
+    iPlaying : boolean;
+    iDelayStop : boolean;
+    iUsed : boolean;
+    function fGetDirty : boolean;
+    function fGetItem( index : integer ) : tSVMMessageElement;
+    procedure fSetName( NewVal : string );
+    procedure fOnNotify( NewVal : tSVMNotifyStatus );
+    function fCheckBlocks : tSVMNotifyStatus;
+    procedure fSetDelayStop( NewVal : boolean );
+    function fGetDelayStop : boolean;
+    function fGetCurr : tSVMMessageElement;
+    procedure fSetCurr( NewVal : tSVMMessageElement );
+  public
+    constructor Create( pUsingLibrary : tSVMLibrary );
+    property IsDirty : boolean
+             read fGetDirty;
+    property Item[ index : integer ] : tSVMMessageElement
+             read fGetItem;
+    function Add( NewVal : tSVMMessageElement ) : integer; reintroduce;
+    procedure Insert(Index: Integer; NewVal: tSVMMessageElement); reintroduce;
+    procedure Load( var F : TextFile ); overload;
+    procedure Load( var F : TextFile; pMessageElement : tSVMMessageElement ); overload;
+    procedure Save( var F : TextFile; Indent : integer );
+    procedure ExportAsCtec( var F : TextFile );
+    function CreateFromImportText( NewVal : string ) : tSVMMessageElement;
+    procedure ImportAsCtec( iFirstLine : string; var F : TextFile );
+    property Name : string
+             read iName
+             write fSetName;
+    function Text( UsingLibrary : tSVMLibrary ) : string;
+    function GetIndexFromCaret( CaratPos : integer ) : integer;
+    // return the index from the carat position in text box
+    function GetStartOf( index : integer ) : integer;
+    function GetEndOf( index : integer ) : integer;
+    procedure Play; override;
+    procedure Stop; override;
+    property DelayStop : boolean
+             read fGetDelayStop
+             write fSetDelayStop;
+    property OnNotify : tSVMOnNotify
+             read iOnNotify
+             write iOnNotify;
+    procedure InsertBefore( NewVal : tSVMMessageElement );
+    procedure InsertAfter( NewVal : tSVMMessageElement );
+    procedure ReplaceCurr( NewVal : tSVMMessageElement );
+    property Curr : tSVMMessageElement
+             read fGetCurr
+             write fSetCurr;
+    property Used : boolean
+             read iUsed
+             write iUsed;
+    procedure AdjustMessageIndexDown( FromReference : integer );
+    procedure AdjustMessageIndexUp( FromReference : integer );
+    procedure SetUsed( UsingLibrary : tSVMLibrary );
+    function Copy( pUsingLibrary : TSVMLibrary ) : TSVMMessage;
+    procedure ResetUsed;
+    property Playing : boolean
+             read iPlaying; // read only property
+    procedure CreateMemoryMap( pMemoryMap : tMemoryMap );
+  end;
+
+  TSVMMessages = class( tPlayableList )
+  protected
+    iOnNotify : tSVMOnNotify;
+    iUsingLibrary : tSVMLibrary;
+    function fGetDirty : boolean;
+    function fGetItem( index : integer ) : tSVMMessage;
+    procedure fOnNotify( NewVal : tSVMNotifyStatus);
+    function fGetCurr : tSVMMessage;
+    procedure fSetCurr( NewVal : tSVMMessage );
+    procedure fSetActiveOption( NewVal : integer ); override;
+  public
+    constructor Create( pUsingLibrary : TSVMLibrary );
+    property Item[ index : integer ] : tSVMMessage
+             read fGetItem;
+    function Add( NewVal : tSVMMessage ) : integer; reintroduce;
+    procedure Load( var F : TextFile );
+    procedure Save( var F : TextFile; indent : integer );
+    procedure ExportAsCtec( var F : TextFile );
+    procedure ImportAsCtec( var F : TextFile );
+    procedure Play; override;
+    procedure Stop; override;
+    property OnNotify : tSVMOnNotify
+             read iOnNotify
+             write iOnNotify;
+    property Curr : tSVMMessage
+             read fGetCurr
+             write fSetCurr;
+    function Copy( pUsingLibrary : TSVMLIbrary ) : tSVMMessages;
+    procedure ResetUsed;
+    procedure AdjustMessageIndexDown( FromReference : integer );
+    procedure AdjustMessageIndexUp( FromReference : integer );
+    function CreateBlocked : tSVMMessage;
+    procedure AddBefore;
+    procedure AddAfter;
+    property IsDirty : boolean
+             read fGetDirty;
+    procedure CreateMemoryMap( pMemoryMap : tMemoryMap );
+  end;
+
+  tMatrixEntryPlayState = ( psActivation, psUnactivation );
+
+  TMessageMatrixEntry = class
+  protected
+    iIsDirty : boolean;
+    iTriggerActivation : array[ 0..3 ] of integer;
+    iTriggerUnactivation : array[ 0..3 ] of integer;
+    iActiveMessage : integer;
+    function fGetDirty : boolean;
+    function fGetTriggerActivation( index : integer ) : integer;
+    function fGetTriggerUnactivation( index : integer ) : integer;
+    procedure fSetTriggerActivation( index : integer; NewVal : integer );
+    procedure fSetTriggerUnactivation( index : integer; NewVal : integer );
+  public
+    constructor Create;
+    destructor Destroy; override;
+    procedure Save( var F : TextFile; indent : integer );
+    property IsDirty : boolean
+             read fGetDirty;
+    procedure Load( var F : TextFile );
+    property TriggerActivation[ index : integer ] : integer
+             read fGetTriggerActivation
+             write fSetTriggerActivation;
+    property TriggerUnactivation[ index : integer ] : integer
+             read fGetTriggerUnactivation
+             write fSetTriggerUnactivation;
+    procedure ExportAsCtec( var F : TextFile );
+    procedure AdjustMessageIndexDown( FromReference : integer );
+    procedure AdjustMessageIndexUp( FromReference : integer );
+    function Copy : TMessageMatrixEntry;
+  end;
+
+  TMessageMatrix = class( tPlayableList )
+  protected
+    function fGetDirty : boolean;
+    function fGetItem( index : integer ) : TMessageMatrixEntry;
+  public
+    constructor Create;
+    property Item[ index : integer ] : tMessageMatrixEntry
+             read fGetItem;
+    function Add( NewVal : tMessageMatrixEntry ) : integer; reintroduce;
+    procedure Load( var F : TextFile );
+    procedure Save( var F : TextFile; indent : integer );
+    procedure ExportAsCtec( var F : TextFile );
+    procedure ImportAsCtec( var F : TextFile );
+    function Copy : tMessageMatrix;
+    procedure AdjustMessageIndexDown( FromReference : integer );
+    procedure AdjustMessageIndexUp( FromReference : integer );
+    property IsDirty : boolean
+             read fGetDirty;
+    procedure CreateMemoryMap( pMemoryMap : tMemoryMap );
+  end;
+
+  TFlashSize = (fsUnknown, fs1Mbit, fs2MBit, fs4Mbit, fs8Mbit, fs16Mbit, fs32Mbit, fs64Mbit, fs128Mbit, fs256Mbit, fs512Mbit );
+
+  TFlash = class
+  protected
+//    iFlashSize : TFlashSize;
+//    iPageSize : integer;
+//    iPageCount : integer;
+    iSVMLibrary : tSVMLibrary;
+    iMessageMatrix : tMessageMatrix;
+    iMessages : TSVMMessages;
+    iIsDirty : boolean;
+    iOptimised : boolean;
+    iMemoryMap : tMemoryMap;
+    iSaveDirectory : string;
+    function fGetDirty : boolean;
+//    procedure fSetFlashSize( NewVal : TFlashSize );
+    procedure fSetOptimised( NewVal : boolean );
+    procedure fSetTriggerUsed( Index : integer );
+  public
+    property IsDirty : boolean
+             read fGetDirty;
+//    property FlashSize : tFlashSize
+//             read iFlashSize
+//             write fSetFlashSize;
+//    property PageSize : integer
+//             read iPageSize; // written by Flashsize
+    property SVMLibrary : tSVMLibrary
+             read iSVMLibrary;
+    property MessageMatrix : tMessageMatrix
+             read iMessageMatrix;
+    property Messages : tSVMMessages
+             read iMessages;
+//    property PageCount : integer
+//             read iPageCount;
+    constructor Create;
+    destructor Destroy; override;
+    procedure Load( var F : TextFile );
+    procedure Save( var F : TextFile; indent : integer );
+    procedure SaveLibrary( var F : TextFile; indent : integer );
+    procedure ExportAsCtec( var F : TextFile );
+    procedure ImportAsCtec( var F : TextFile );
+    function Copy : tFlash; // creates a copy of self
+    property Optimised : boolean
+             read iOptimised
+             write fSetOptimised;
+    procedure MoveLibraryEntryUp; // moves currently active entry up one place
+    procedure MoveLibraryEntryDown; // moves currently active entry up one place
+    procedure MoveMessageEntryUp; // moves currently active entry up one place
+    procedure MoveMessageEntryDown; // moves currently active entry up one place
+    function IsCurrMessageUsed : boolean;
+    function IsCurrMessageEntryUsed( var iLink : integer;
+                                     var iEntry : integer;
+                                     var iIsActivation : boolean ) : boolean;
+    procedure SetMessageToCurrentLibraryEntry;
+    procedure DeleteCurrentLibraryEntry;
+    procedure DeleteCurrentMessageEntry;
+    procedure InsertLibraryEntryBeforeCurrent;
+    procedure InsertLibraryEntryAfterCurrent;
+    procedure StartLoadFromModule( pFlashSize : tFlashSize; pSaveDirectory : string );
+    procedure LoadPageFromModule( pPage : integer; pData : string );
+    procedure EndLoadFromModule;
+    procedure GenerateMemoryMap( iPageSize : integer );
+    property MemoryMap : tMemoryMap
+             read iMemoryMap;
+  end;
+
+  tNotes = class( TStringList )
+  protected
+    iIsDirty : boolean;
+  public
+    constructor Create;
+    property IsDirty : boolean
+             read iIsDirty;
+    procedure Load( var F : TextFile );
+    procedure Save( var F : TextFile; indent : integer );
+    procedure Clear; override;
+    function Add(const S: string): Integer; override;
+    procedure Assign(Source: TPersistent); override;
+  end;
+
+  tModuleType = (mtAVAC, mtIntegrity, mtSS2N, mtNone );
+
+  TSVMFile = class
+  protected
+    iIsDirty : boolean;
+    iFlashFull : tFlash;
+    iFlashOptimised : tFlash;
+    iModuleType : tModuleType; //affects flash!
+    iNotes : tNotes;
+    iFileName : string;
+    iOptimised : boolean;
+    function fGetDirty : boolean;
+    procedure fSetModuleType( NewVal : tModuleType );
+    procedure Load( var F : TextFile ); overload;
+    procedure Save( var F : TextFile ); overload;
+    procedure SaveLibrary( var F : TextFile ); overload;
+    procedure ExportAsCtec( var F : TextFile ); overload;
+    procedure ImportAsCtec( var F : TextFile ); overload;
+    function fGetFlash : tFlash;
+    procedure fSetOptimised( NewVal : boolean );
+  public
+    constructor Create;
+    destructor Destroy; override;
+    property IsDirty : boolean
+             read fGetDirty;
+    property ModuleType : tModuleType
+             read iModuleType
+             write fSetModuleType;
+    procedure Load( pFileName : string ); overload;
+    procedure Save( pFileName : string ); overload;
+    procedure SaveLibrary( pFileName : string ); overload;
+    procedure ExportAsCtec( pFileName : string ); overload;
+    procedure ImportAsCtec( pFileName : string ); overload;
+    property Flash : tFlash
+             read fGetFlash; // read only - is pointer!
+    procedure RegisterMediaPlayer( NewVal : TMediaPlayer );
+    procedure RegisterTimer( NewVal : TTimer );
+    property FileName : string
+             read iFileName
+             write iFileName;
+    property Notes : tNotes
+             read iNotes;
+    property Optimised : boolean
+             read iOptimised
+             write fSetOptimised;
+  end;
+
+function PageSize( iFlashSize : TFlashSize ) : integer;
+function PageCount( iFlashSize : TFlashSize ) : integer;
+
+implementation
+
+var
+  iMediaPlayer : tMediaPlayer;
+  iTimer : tTimer;
+  BlockStack : array [ 1..16 ] of integer;
+  BlockCounter : array [ 1..16 ] of integer;
+  BlockPtr : integer;
+
+const
+
+  cModuleType : array [ mtAVAC .. mtSS2N ] of string
+              = ('AVAC', 'Integrity', 'Message Player' );
+
+  cFlashSize  : array [ fsUnknown .. fs512Mbit ] of string
+              = ( 'Unknown', '1Mbit', '2Mbit', '4Mbit', '8Mbit', '16Mbit', '32Mbit', '64Mbit', '128Mbit', '256Mbit', '512Mbit' );
+
+//------------------------ global ----------------------
+
+function ReadDOS( var F : TextFile ) : string;
+var
+  iEnd : integer;
+begin
+  ReadLn( F, Result );
+  // strip comments
+  iEnd := Pos( '//', Result );
+  if iEnd > 0 then
+  begin
+    Result := Copy( Result, 1, iEnd - 1 );
+  end;
+  Result := Trim( Result );
+end;
+
+//------------------------ TSVMElement -----------------
+
+constructor TSVMElement.Create;
+begin
+  inherited Create;
+  iIsDirty := TRUE; // by default this is true.
+                    // If it is created as the result of
+                    // File load then it will be set to FALSE
+end;
+
+{
+class function TSVMElement.CreateFromFile( var F : TextFile ) : tSVMElement;
+begin
+  Result := nil; // to do
+  Result.IsDirty := FALSE;
+end;
+}
+
+//------------- tSVMMessageElement ----------------
+
+constructor tSVMMessageElement.Create;
+begin
+    iLength := 0;
+    iOnNotify := nil;
+    iPlaying := FALSE;
+    iUsed := FALSE;
+end;
+
+procedure tSVMMessageElement.Save( var F : TextFile; var indent : integer );
+begin
+  SaveStart( F, Indent );
+  SaveMiddle( F, Indent );
+  SaveEnd( F, Indent );
+  iIsDirty := FALSE;
+end;
+
+procedure tSVMMessageElement.SaveStart( var F : TextFile; var indent : integer );
+begin
+  WriteLn( F, StringOfChar( ' ', Indent ) + SaveID );
+  Inc( Indent, 2 );
+end;
+
+procedure tSVMMessageElement.SaveMiddle( var F : TextFile; var indent : integer );
+begin
+  // currently no general properties to save
+end;
+
+procedure tSVMMessageElement.SaveEnd( var F : TextFile; var indent : integer );
+begin
+  Dec( Indent, 2 );
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'End ' + SaveID );
+end;
+
+procedure tSVMMessageElement.Stop;
+begin
+  if iPlaying then
+  begin
+    iPlaying := FALSE;
+    if assigned( iOnNotify ) then iOnNotify( nsStop );
+  end;
+end;
+
+procedure tSVMMessageElement.Play( UsingLibrary : tSVMLibrary );
+begin
+  iPlaying := TRUE;
+end;
+
+procedure tSVMMessageElement.SetUsed( UsingLibrary : tSVMLibrary );
+begin
+  iUsed := TRUE; // for all except Play
+end;
+
+procedure tSVMMessageElement.AdjustMessageIndexDown( FromReference : integer );
+begin
+  // ignore, except for play
+end;
+
+procedure tSVMMessageElement.AdjustMessageIndexUp( FromReference : integer );
+begin
+  // ignore, except for play
+end;
+
+//---------------- tSVMTimedMessageElement ----------------
+
+constructor tSVMTimedMessageElement.Create;
+begin
+  inherited Create;
+  iMessageTime := 0;
+end;
+
+procedure tSVMTimedMessageElement.fSetMessageTime( NewVal : integer );
+begin
+  if iMessageTime <> NewVal then
+  begin
+    iMessageTime := NewVal;
+    iIsDirty := TRUE;
+  end
+end;
+
+procedure tSVMTimedMessageElement.LoadData(NewVal: word);
+begin
+  inherited;
+  MessageTime := NewVal;
+end;
+
+procedure tSVMTimedMessageElement.SaveMiddle( var F : TextFile; var indent : integer );
+begin
+  inherited;
+  if iMessageTime <> 0 then
+  begin
+    WriteLn( F, StringOfChar( ' ', Indent ) + 'Time = ' + IntToStr( iMessageTime ));
+  end;
+end;
+
+//----------------- tSVMPlay --------------------
+
+constructor tSVMPlay.Create;
+begin
+  inherited Create;
+  iMessageNo := -1;
+  iFade := FALSE;
+end;
+
+class function tSVMPlay.SaveID : string;
+begin
+  Result := 'Play';
+end;
+
+procedure tSVMPlay.Load( var F : TextFile );
+var
+  iSigLine : string;
+  iSigProperty, iSigIndex, iSigValue, iSigComment : string;
+begin
+  while not EOF( F ) do
+  begin
+    ReadLn( F, iSigLine );
+    if SigNETParse( iSigLine, iSigProperty, iSigIndex, iSigValue, iSigComment ) then
+    begin
+      if SameText( iSigProperty, 'End Play' ) then
+      begin
+        // done
+        iIsDirty := FALSE;
+        Exit;
+      end
+      else if SameText( iSigProperty, 'Message No' ) then
+      begin
+        MessageNo := StrToInt( iSigValue );
+      end
+      else if SameText( iSigProperty, 'Fade' ) then
+      begin
+        Fade := TRUE;
+      end
+      else if SameText( iSigProperty, 'No Fade' ) then
+      begin
+        Fade := FALSE;
+      end
+      else if SameText( iSigProperty, 'Time' ) then
+      begin
+        MessageTime := StrToInt( iSigValue );
+      end
+      else
+      begin
+        // ignore errors for now
+      end;
+    end;
+  end;
+end;
+
+procedure tSVMPlay.SaveMiddle( var F : TextFile; var indent : integer );
+begin
+  inherited;
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'Message No = ' + IntToStr( iMessageNo ));
+  if Fade then WriteLn( F, StringOfChar( ' ', Indent ) + 'Fade')
+  else WriteLn( F, StringOfChar( ' ', Indent ) + 'No Fade')
+end;
+
+function tSVMPlay.Text( UsingLibrary : tSVMLibrary ) : string;
+var
+  i : integer;
+begin
+  Result := '';
+  if iMessageNo >= 0 then
+  begin
+    try
+      with UsingLibrary.Item[ iMessageNo ].LongText do
+      begin
+        for i := 0 to Count-1 do
+        begin
+          Result := Result + Strings[ i ];
+          // strip off carriage return // line feed
+          if Length( Result ) > 0 then
+          begin
+            case Result[ Length( Result ) ] of
+              #10, #13: Result := System.Copy( Result, 1, Length( Result ) - 1 );
+            end;
+          end;
+          if Length( Result ) > 0 then
+          begin
+            case Result[ Length( Result ) ] of
+              #10, #13: Result := System.Copy( Result, 1, Length( Result ) - 1 );
+            end;
+          end;
+        end;
+      end;
+    except
+      Result := '<error - message deleted>';
+    end;
+  end;
+  iLength := Length( Result );
+end;
+
+procedure tSVMPlay.fSetMessageNo( NewVal : integer );
+begin
+  if iMessageNo <> NewVal then
+  begin
+    iMessageNo := NewVal;
+    iIsDirty := TRUE;
+  end;
+end;
+
+procedure tSVMPlay.fSetFade( NewVal : boolean );
+begin
+  if iFade <> NewVal then
+  begin
+    iFade := NewVal;
+    iIsDirty := TRUE;
+  end;
+end;
+
+procedure tSVMPlay.Play( UsingLibrary : tSVMLibrary );
+begin
+  inherited;
+  iMediaPlayer.OnNotify := fOnNotify;
+  iMediaPlayer.FileName := UsingLibrary.Item[ iMessageNo ].FileName;
+  iMediaPlayer.Open;
+  iMediaPlayer.Notify := TRUE;
+  iMediaPlayer.Play;
+end;
+
+procedure tSVMPlay.Stop;
+begin
+  try
+    iMediaPlayer.Stop;
+    iMediaPlayer.Close;
+    iMediaPlayer.OnNotify := nil;
+  except
+  end;
+  inherited;
+end;
+
+procedure tSVMPlay.fOnNotify(Sender: TObject);
+begin
+  case iMediaPlayer.Mode of
+    mpPlaying:
+    begin
+      Stop;
+    end;
+  else
+    iMediaPlayer.Notify := TRUE;
+  end;
+end;
+
+procedure tSVMPlay.ExportAsCtec( var F : TextFile );
+begin
+  if Fade then
+  begin
+    WriteLn( F, 'PLY+WF +' + IntToStr( MessageNo )
+                + '+' + IntToStr( MessageTime div 10 ));
+  end
+  else
+  begin
+    WriteLn( F, 'PLY+WS +' + IntToStr( MessageNo )
+                + '+' + IntToStr( MessageTime div 10 ));
+  end;
+end;
+
+procedure tSVMPlay.SetUsed( UsingLibrary : tSVMLibrary );
+begin
+  inherited;
+  UsingLibrary.Item[ MessageNo ].Used := TRUE;
+end;
+
+procedure tSVMPlay.AdjustMessageIndexDown( FromReference : integer );
+begin
+  if iMessageNo > FromReference then
+  begin
+    dec( iMessageNo );
+    iIsDirty := TRUE;
+  end;
+end;
+
+procedure tSVMPlay.AdjustMessageIndexUp( FromReference : integer );
+begin
+  if iMessageNo >= FromReference then
+  begin
+    inc( iMessageNo );
+    iIsDirty := TRUE;
+  end;
+end;
+
+function tSVMPlay.Copy : tSVMMessageElement;
+var
+  iResult : tSVMPlay;
+begin
+  iResult := tSVMPlay.Create;
+  iResult.iMessageNo := iMessageNo;
+  iResult.iFade := iFade;
+  iResult.iMessageTime := iMessageTime;
+  iResult.iLength := iLength;
+// iOnNotify is part of the the owner.
+// The copy has a different owner, so do not copy iOnNotify
+// If something goes wrong it is better that it is nil than
+// the copied value
+  iResult.iPlaying := iPlaying;
+  iResult.iUsed := FALSE;
+  iResult.iIsDirty := TRUE;
+  Result := iResult;
+end;
+
+procedure tSVMPlay.LoadData(NewVal: word);
+begin
+  MessageNo := NewVal mod $400;
+  Fade := (NewVal and $400) <> 0;
+end;
+
+procedure tSVMPlay.LoadExtraData(NewVal: word);
+begin
+  inherited;
+  MessageTime :=  NewVal;
+end;
+
+procedure tSVMPlay.CreateMemoryMap(pMemoryMap: tMemoryMap; var pCS : word);
+var
+  iValue : word;
+begin
+  iValue := MessageNo shl 4;
+  if Fade then
+  begin
+    iValue := iValue or $4000;
+  end
+  else
+  begin
+    iValue := iValue or $8000;
+  end;
+  pMemoryMap.AddPlayListData( iValue );
+  inc( pCS, iValue div 256 );
+  inc( pCS, iValue mod 256 );
+  iValue := MessageTime;
+  pMemoryMap.AddPlayListData( iValue );
+  inc( pCS, iValue div 256 );
+  inc( pCS, iValue mod 256 );
+end;
+
+//------------------ tSVMSilence ------------------
+
+class function tSVMSilence.SaveID : string;
+begin
+  Result := 'Silence';
+end;
+
+procedure tSVMSilence.SaveMiddle( var F : TextFile; var indent : integer );
+begin
+  inherited;
+end;
+
+procedure tSVMSilence.Load( var F : TextFile );
+var
+  iSigLine : string;
+  iSigProperty, iSigIndex, iSigValue, iSigComment : string;
+begin
+  while not EOF( F ) do
+  begin
+    ReadLn( F, iSigLine );
+    if SigNETParse( iSigLine, iSigProperty, iSigIndex, iSigValue, iSigComment ) then
+    begin
+      if SameText( iSigProperty, 'End Silence' ) then
+      begin
+        // done
+        iIsDirty := FALSE;
+        Exit;
+      end
+      else if SameText( iSigProperty, 'Time' ) then
+      begin
+        iMessageTime := StrToInt( iSigValue );
+      end
+      else
+      begin
+        // ignore Errors for now
+      end;
+    end;
+  end;
+end;
+
+function tSVMSilence.Text( UsingLibrary : tSVMLibrary ) : string;
+begin
+  Result := '<' + IntToStr( iMessageTime ) + ' ms silence>';
+  iLength := Length( Result );
+end;
+
+procedure tSVMSilence.Play( UsingLibrary : tSVMLibrary );
+begin
+  inherited;
+  iTimer.OnTimer := fOnNotify;
+  iTimer.Interval := iMessageTime;
+  iTimer.Enabled := TRUE;
+end;
+
+procedure tSVMSilence.Stop;
+begin
+  iTimer.Enabled := FALSE;
+  inherited;
+end;
+
+procedure tSVMSilence.fOnNotify(Sender: TObject);
+begin
+  Stop;
+end;
+
+procedure tSVMSilence.ExportAsCtec( var F : TextFile );
+begin
+  WriteLn( F, 'SIL+' + IntToStr( MessageTime div 10 ));
+end;
+
+function tSVMSilence.Copy :tSVMMessageElement;
+var
+  iResult : tSVMSilence;
+begin
+  iResult := tSVMSilence.Create;
+  iResult.iMessageTime := iMessageTime;
+  iResult.iLength := iLength;
+// iOnNotify is part of the the owner.
+// The copy has a different owner, so do not copy iOnNotify
+// If something goes wrong it is better that it is nil than
+// the copied value
+  iResult.iPlaying := iPlaying;
+  iResult.iUsed := FALSE;
+  iResult.iIsDirty := TRUE;
+  Result := iResult;
+end;
+
+procedure tSVMSilence.CreateMemoryMap(pMemoryMap: tMemoryMap; var pCS : word);
+var
+  iValue : word;
+begin
+  iValue := (MessageTime shl 4) + 2;
+  pMemoryMap.AddPlayListData( iValue );
+  inc( pCS, iValue div 256 );
+  inc( pCS, iValue mod 256 );
+end;
+
+
+//-------------------- tSVMStop ------------------
+
+class function tSVMStop.SaveID : string;
+begin
+  Result := 'Stop';
+end;
+
+procedure tSVMStop.SaveMiddle( var F : TextFile; var indent : integer );
+begin
+  // no middle
+end;
+
+procedure tSVMStop.SaveEnd( var F : TextFile; var indent : integer );
+begin
+  // no end
+end;
+
+procedure tSVMStop.Load( var F : TextFile );
+begin
+  iIsDirty := FALSE;
+  // nothing to load
+end;
+
+
+function tSVMStop.Text( UsingLibrary : tSVMLibrary ) : string;
+begin
+  Result := '<Stop>';
+  iLength := Length( Result );
+end;
+
+procedure tSVMStop.Play( UsingLibrary : tSVMLibrary );
+begin
+  inherited;
+  Stop; // !
+end;
+
+procedure tSVMStop.ExportAsCtec( var F : TextFile );
+begin
+  WriteLn( F, 'STP' );
+end;
+
+function tSVMStop.Copy :tSVMMessageElement;
+var
+  iResult : tSVMStop;
+begin
+  iResult := tSVMStop.Create;
+  iResult.iLength := iLength;
+// iOnNotify is part of the the owner.
+// The copy has a different owner, so do not copy iOnNotify
+// If something goes wrong it is better that it is nil than
+// the copied value
+  iResult.iPlaying := iPlaying;
+  iResult.iUsed := FALSE;
+  iResult.iIsDirty := TRUE;
+  Result := iResult;
+end;
+
+//-------------------- tSVMIdle ------------------
+
+class function tSVMIdle.SaveID : string;
+begin
+  Result := 'Idle';
+end;
+
+procedure tSVMIdle.Load( var F : TextFile );
+var
+  iSigLine : string;
+  iSigProperty, iSigIndex, iSigValue, iSigComment : string;
+begin
+  while not EOF( F ) do
+  begin
+    ReadLn( F, iSigLine );
+    if SigNETParse( iSigLine, iSigProperty, iSigIndex, iSigValue, iSigComment ) then
+    begin
+      if SameText( iSigProperty, 'End Idle' ) then
+      begin
+        // done
+        iIsDirty := FALSE;
+        Exit;
+      end
+      else if SameText( iSigProperty, 'Time' ) then
+      begin
+        iMessageTime := StrToInt( iSigValue );
+      end
+      else
+      begin
+        // ignore Errors for now
+      end;
+    end;
+  end;
+end;
+
+procedure tSVMIdle.SaveMiddle( var F : TextFile; var indent : integer );
+begin
+  inherited;
+end;
+
+function tSVMIdle.Text( UsingLibrary : tSVMLibrary ) : string;
+begin
+  Result := '<' + IntToStr( iMessageTime ) + ' ms idle>';
+  iLength := Length( Result );
+end;
+
+procedure tSVMIdle.Play( UsingLibrary : tSVMLibrary );
+begin
+  inherited;
+  iTimer.OnTimer := fOnNotify;
+  iTimer.Interval := iMessageTime;
+  iTimer.Enabled := TRUE;
+end;
+
+procedure tSVMIdle.Stop;
+begin
+  iTimer.Enabled := FALSE;
+  inherited;
+end;
+
+procedure tSVMIdle.fOnNotify(Sender: TObject);
+begin
+  Stop;
+end;
+
+procedure tSVMIdle.ExportAsCtec( var F : TextFile );
+begin
+  WriteLn( F, 'IDL+' + IntToStr( MessageTime div 10 ));
+end;
+
+function tSVMIdle.Copy :tSVMMessageElement;
+var
+  iResult : tSVMIdle;
+begin
+  iResult := tSVMIdle.Create;
+  iResult.iMessageTime := iMessageTime;
+  iResult.iLength := iLength;
+// iOnNotify is part of the the owner.
+// The copy has a different owner, so do not copy iOnNotify
+// If something goes wrong it is better that it is nil than
+// the copied value
+  iResult.iPlaying := iPlaying;
+  iResult.iUsed := FALSE;
+  iResult.iIsDirty := TRUE;
+  Result := iResult;
+end;
+
+//------------------ tSVMBlockBegin -----------------
+
+class function tSVMBlockBegin.SaveID : string;
+begin
+  Result := 'Block Begin';
+end;
+
+procedure tSVMBlockBegin.Load( var F : TextFile );
+var
+  iSigLine : string;
+  iSigProperty, iSigIndex, iSigValue, iSigComment : string;
+begin
+  while not EOF( F ) do
+  begin
+    ReadLn( F, iSigLine );
+    if SigNETParse( iSigLine, iSigProperty, iSigIndex, iSigValue, iSigComment ) then
+    begin
+      if SameText( iSigProperty, 'Cycle' ) then
+      begin
+        BlockCount := 255;
+        iIsDirty := FALSE;
+        Exit; // acts as an end to this object
+      end
+      else if SameText( iSigProperty, 'Repeat' ) then
+      begin
+        BlockCount := StrToInt( iSigValue );
+        iIsDirty := FALSE;
+        Exit; // acts as an end to this object
+      end
+      else
+      begin
+        // ignore errors for now
+      end;
+    end;
+  end;
+end;
+
+procedure tSVMBlockBegin.SaveMiddle( var F : TextFile; var indent : integer );
+begin
+  inherited;
+  if iBlockCount = 255 then
+  begin
+    WriteLn( F, StringOfChar( ' ', Indent ) + 'Cycle')
+  end
+  else
+  begin
+    WriteLn( F, StringOfChar( ' ', Indent ) + 'Repeat = ' + IntToStr( iBlockCount ));
+  end;
+end;
+
+procedure tSVMBlockBegin.SaveEnd( var F : TextFile; var indent : integer );
+begin
+  // for a block, SaveEnd does nothing. This forces an indent
+  // for following lines, removed by an End Block.
+  // For readability, although the internal structure
+  // is flat, not hierarchical
+end;
+
+constructor tSVMBlockBegin.Create;
+begin
+  inherited Create;
+  iBlockCount := 255;
+end;
+
+procedure tSVMBlockBegin.fSetBlockCount( NewVal : integer );
+begin
+  if iBlockCount <> NewVal then
+  begin
+    iBlockCount := NewVal;
+    iIsDirty := TRUE;
+  end;
+end;
+
+function tSVMBlockBegin.Text( UsingLibrary : tSVMLibrary ) : string;
+begin
+  case iBlockCount of
+    255: Result := '<Repeat indefinitely>'
+    else Result := '<Repeat ' + IntToStr( iBlockCount ) + '>';
+  end;
+  iLength := Length( Result );
+end;
+
+procedure tSVMBlockBegin.ExportAsCtec( var F : TextFile );
+begin
+  WriteLn( F, 'BKB+' + IntToStr( BlockCount ));
+end;
+
+function tSVMBlockBegin.Copy :tSVMMessageElement;
+var
+  iResult : tSVMBlockBegin;
+begin
+  iResult := tSVMBlockBegin.Create;
+  iResult.iBlockCount := iBlockCount;
+  iResult.iLength := iLength;
+// iOnNotify is part of the the owner.
+// The copy has a different owner, so do not copy iOnNotify
+// If something goes wrong it is better that it is nil than
+// the copied value
+  iResult.iPlaying := iPlaying;
+  iResult.iUsed := FALSE;
+  iResult.iIsDirty := TRUE;
+  Result := iResult;
+end;
+
+//-------------- tSVMBlockEnd ----------------------
+
+class function tSVMBlockEnd.SaveID : string;
+begin
+  Result := 'End Block';
+end;
+
+procedure tSVMBlockEnd.SaveStart( var F : TextFile; var indent : integer );
+begin
+  if Indent > 2 then
+  begin
+    Dec( Indent, 2);
+  end;
+  inherited; // for an end block we move indent out to
+             // match corresponding block statement
+  if Indent > 2 then
+  begin
+    Dec( Indent, 2);
+  end;
+end;
+
+procedure tSVMBlockEnd.SaveMiddle( var F : TextFile; var indent : integer );
+begin
+  // no middle
+end;
+
+procedure tSVMBlockEnd.SaveEnd( var F : TextFile; var indent : integer );
+begin
+  //  Dec( Indent, 2 ); // not the inherited!
+end;
+
+procedure tSVMBlockEnd.Load( var F : TextFile );
+begin
+  // nothing to load
+end;
+
+function tSVMBlockEnd.Text( UsingLibrary : tSVMLibrary ) : string;
+begin
+  Result := '<End Repeat>';
+  iLength := Length( Result );
+end;
+
+procedure tSVMBlockEnd.ExportAsCtec( var F : TextFile );
+begin
+  WriteLn( F, 'BKE' );
+end;
+
+function tSVMBlockEnd.Copy :tSVMMessageElement;
+var
+  iResult : tSVMBlockEnd;
+begin
+  iResult := tSVMBlockEnd.Create;
+  iResult.iLength := iLength;
+// iOnNotify is part of the the owner.
+// The copy has a different owner, so do not copy iOnNotify
+// If something goes wrong it is better that it is nil than
+// the copied value
+  iResult.iPlaying := iPlaying;
+  iResult.iUsed := FALSE;
+  iResult.iIsDirty := TRUE;
+  Result := iResult;
+end;
+
+//------------------ TSVMMessage ------------------
+
+constructor TSVMMessage.Create( pUsingLibrary : TSVMLibrary );
+begin
+  inherited Create;
+  iIsDirty := FALSE;
+  iNotifying := FALSE;
+  iPlaying := FALSE;
+  iUsingLibrary := pUsingLibrary;
+end;
+
+function TSVMMessage.CreateFromImportText( NewVal : string ) : tSVMMessageElement;
+var
+  iItems : tStringList;
+  TestVal : string;
+begin
+  Result := nil;
+  iItems := tStringList.Create;
+  try
+    ExtractStrings( ['+'], [], PChar( NewVal ), iItems );
+    if SameText( iItems[ 0 ], 'PLY' ) then
+    begin
+      Result := tSVMPlay.Create;
+      with Result as tSVMPlay do
+      begin
+        TestVal := Trim(iItems[ 1 ]);
+        Fade := SameText( TestVal, 'WF' );
+        MessageNo := StrToInt( iItems[ 2 ] );
+        MessageTime := StrToInt( iItems[ 3 ] ) * 10;
+      end;
+    end
+    else if SameText( iItems[ 0 ], 'SIL' ) then
+    begin
+      Result := tSVMSilence.Create;
+      with Result as tSVMSilence do
+      begin
+        MessageTime := StrToInt( iItems[ 1 ] ) * 10;
+      end;
+    end
+    else if SameText( iItems[ 0 ], 'STP' ) then
+    begin
+      Result := tSVMStop.Create;
+    end
+    else if SameText( iItems[ 0 ], 'IDL' ) then
+    begin
+      Result := tSVMIdle.Create;
+      with Result as tSVMIdle do
+      begin
+        MessageTime := StrToInt( iItems[ 1 ] ) * 10;
+      end;
+    end
+    else if SameText( iItems[ 0 ], 'BKB' ) then
+    begin
+      Result := tSVMBlockBegin.Create;
+      with Result as tSVMBlockBegin do
+      begin
+        BlockCount := StrToInt( iItems[ 1 ] );
+      end;
+    end
+    else if SameText( iItems[ 0 ], 'BKE' ) then
+    begin
+      Result := tSVMBlockEnd.Create;
+    end
+    else
+    begin
+      raise exception.Create( 'Illegal construct in import file : ' + NewVal);
+    end;
+  finally
+    iItems.Free;
+  end;
+end;
+
+function TSVMMessage.fGetDirty : boolean;
+var
+  i : integer;
+begin
+  Result := TRUE;
+  if iIsDirty then exit;
+  for i := 0 to count - 1 do
+  begin
+    if Item[ i ].IsDirty then exit;
+  end;
+  // else
+  Result := FALSE;
+end;
+
+function TSVMMessage.fGetItem( index : integer ) : tSVMMessageElement;
+begin
+  result := tSVMMessageElement( Items[ index ] );
+end;
+
+function TSVMMessage.fGetCurr : tSVMMessageElement;
+begin
+  Result := Item[ ActiveOption ];
+end;
+
+procedure TSVMMessage.fSetCurr( NewVal : tSVMMessageElement );
+begin
+  NewVal.OnNotify := fOnNotify;
+  Items[ ActiveOption ] := NewVal;
+  iIsDirty := TRUE;
+end;
+
+function TSVMMessage.Add( NewVal : tSVMMessageElement ) : integer;
+begin
+  NewVal.OnNotify := fOnNotify;
+  result := inherited Add( NewVal );
+  iIsDirty := TRUE;
+end;
+
+procedure TSVMMessage.Insert( Index: Integer; NewVal: tSVMMessageElement);
+begin
+  NewVal.OnNotify := fOnNotify;
+  inherited Insert( Index, NewVal );
+  iIsDirty := TRUE;
+end;
+
+procedure TSVMMessage.Load( var F : TextFile; pMessageElement : tSVMMessageElement );
+begin
+  pMessageElement.Load( F );
+  Add( pMessageElement );
+end;
+
+procedure TSVMMessage.Load( var F : TextFile );
+var
+  iSigLine : string;
+  iSigProperty, iSigIndex, iSigValue, iSigComment : string;
+begin
+  while not EOF( F ) do
+  begin
+    ReadLn( F, iSigLine );
+    if SigNETParse( iSigLine, iSigProperty, iSigIndex, iSigValue, iSigComment ) then
+    begin
+      if SameText( iSigProperty, 'End Message' ) then
+      begin
+        // done
+        iIsDirty := FALSE;
+        Exit;
+      end
+      else if SameText( iSigProperty, tSVMBlockBegin.SaveID ) then
+      begin
+        Load( F, tSVMBlockBegin.Create );
+      end
+      else if SameText( iSigProperty, tSVMBlockEnd.SaveID ) then
+      begin
+        Load( F, tSVMBlockEnd.Create );
+      end
+      else if SameText( iSigProperty, tSVMIdle.SaveID ) then
+      begin
+        Load( F, tSVMIdle.Create );
+      end
+      else if SameText( iSigProperty, tSVMPlay.SaveID ) then
+      begin
+        Load( F, tSVMPlay.Create );
+      end
+      else if SameText( iSigProperty, tSVMSilence.SaveID ) then
+      begin
+        Load( F, tSVMSilence.Create );
+      end
+      else if SameText( iSigProperty, tSVMStop.SaveID ) then
+      begin
+        Load( F, tSVMStop.Create );
+      end
+      else
+      begin
+        // ignore errors for now
+      end
+    end;
+  end;
+end;
+
+procedure TSVMMessage.Save( var F : TextFile; Indent : integer );
+var
+  i : integer;
+begin
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'Message = ' + Name );
+  Inc( Indent, 2 );
+  for i := 0 to Count - 1 do
+  begin
+    Item[ i ].Save( F, Indent );
+  end;
+  Dec( Indent, 2 );
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'End Message' );
+  iIsDirty := FALSE;
+end;
+
+procedure TSVMMessage.ExportAsCtec( var F : TextFile );
+var
+  i : integer;
+begin
+  // A is created from its elements and ends with an 'ME'
+  for i := 0 to Count - 1 do
+  begin
+    Item[ i ].ExportAsCtec( F );
+  end;
+  WriteLn( F, 'ME' );
+end;
+
+procedure TSVMMessage.ImportAsCtec( iFirstLine : string; var F : TextFile );
+var
+  iLine : string;
+begin
+  Add( CreateFromImportText( iFirstLine ));
+  while not EOF( F ) do
+  begin
+    iLine := ReadDOS( F );
+    // ignore blank lines and comments
+    if iLine<> '' then
+    begin
+      // done?
+      if SameText( iLine, 'ME' ) then exit;
+      // else add new entry
+      // note that a failure will cause an abort of this
+      // message and create a new one with what is left of
+      // the sequence
+      Add( CreateFromImportText( iLine ));
+    end;
+  end;
+end;
+
+procedure TSVMMessage.fSetName( NewVal : string );
+begin
+  if iName <> NewVal then
+  begin
+    iName := NewVal;
+    iIsDirty := TRUE;
+  end;
+end;
+
+function TSVMMessage.Text( UsingLibrary : tSVMLibrary ) : string;
+var
+  i : integer;
+begin
+  if Count > 0 then
+  begin
+    Result := Item[ 0 ].Text( UsingLibrary );
+    for i := 1 to Count - 1 do
+    begin
+      Result := Result + ' ' + Item[ i ].Text( UsingLibrary );
+    end;
+  end
+  else
+  begin
+    Result := '';
+  end;
+//  iLength := Length( Result );
+end;
+
+function TSVMMessage.GetIndexFromCaret( CaratPos : integer ) : integer;
+var
+  i : integer;
+begin
+  Result := -1;
+  if CaratPos <= 0 then
+  begin
+    exit;
+  end;
+  // return the index from the carat position in text box
+  for i := 0 to Count - 1 do
+  begin
+    Result := i;
+    dec( CaratPos, Item[ i ].TextLength );
+    // allow for space
+    dec( CaratPos );
+    if CaratPos <= 0 then
+    begin
+      exit;
+    end;
+  end;
+end;
+
+function TSVMMessage.GetStartOf( index : integer ) : integer;
+var
+  i : integer;
+begin
+  Result := 0;
+  for i := 0 to Index - 1 do
+  begin
+    inc( Result, Item[ i ].TextLength );
+    inc( Result ); // allow for space
+  end;
+end;
+
+function TSVMMessage.GetEndOf( index : integer ) : integer;
+begin
+  Result := GetStartOf( index ) + Item[ index ].TextLength - 1;
+end;
+
+function TSVMMessage.fCheckBlocks : tSVMNotifyStatus;
+var
+  Done : boolean;
+  ActionCount : integer; // avoid infinite empty blocks
+begin
+  Result := nsChange; // usually
+  Done := FALSE;
+  ActionCount := 16 * 254; // biggest legitimate value
+  while not Done do
+  begin
+    Done := TRUE; // assume finished
+    dec( ActionCount );
+    if ActionCount < 0 then
+    begin
+      raise Exception.Create( 'Error - infinite closed blocks will cause SVM to lock' );
+    end;
+    if Item[ ActiveOption ] is tSVMBlockBegin then
+    begin
+      Done := FALSE;
+      inc( BlockPtr );
+      if BlockPtr > 16 then
+      begin
+        raise exception.Create( 'Repeats nested too deep!' );
+      end
+      else
+      begin
+        BlockCounter[ BlockPtr ] := (Item[ ActiveOption ] as tSVMBlockBegin).BlockCount;
+        inc( iActiveOption ); // none of associated garbage required
+        if ActiveOption >= Count then
+        begin
+          raise Exception.Create( 'Repeat with no matching End Repeat' );
+        end
+        else
+        begin
+          BlockStack[ BlockPtr ] := ActiveOption;
+        end;
+      end;
+    end;
+    if Item[ ActiveOption ] is tSVMBlockEnd then
+    begin
+      Done := FALSE;
+      case BlockCounter[ BlockPtr ] of
+        255:
+        begin
+          // a count of 255 means forever
+          if iDelayStop then // trigger removed
+          begin
+            inherited Stop;
+            iPlaying := FALSE;
+            iActiveOption := 0;
+            Done := TRUE; // truly finished
+            Result := nsStop;
+            if assigned( iOnNotify ) then
+            begin
+              iOnNotify( nsStop );
+            end;
+            iDelayStop := FALSE;
+          end
+          else
+          begin
+            iActiveOption := BlockStack[ BlockPtr ];
+          end;
+        end;
+        else
+        begin
+          if BlockCounter[ BlockPtr ] > 1 then
+          begin
+            Dec( BlockCounter[ BlockPtr ] );
+            iActiveOption := BlockStack[ BlockPtr ];
+          end
+          else if BlockPtr > 0 then
+          begin
+            Dec( BlockPtr );
+            iActiveOption := ActiveOption + 1;
+            if ActiveOption >= Count then
+            begin
+              if BlockPtr = 0 then
+              begin
+                inherited Stop;
+                iPlaying := FALSE;
+                iActiveOption := 0;
+                Done := TRUE; // truly finished
+                Result := nsStop;
+                if assigned( iOnNotify ) then
+                begin
+                  iOnNotify( nsStop );
+                end;
+              end
+              else
+              begin
+                raise Exception.Create( 'Repeat with no matching End Repeat' );
+              end;
+            end;
+          end
+          else
+          begin
+            // end block with no begin block
+            raise Exception.Create( 'End Repeat with no matching repeat' );
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TSVMMessage.Play;
+begin
+  // this is rather different to the rest.
+  // there are no separate controls
+  iDelayStop := FALSE;
+  BlockPtr := 0;
+  ActiveOption := 0;
+  iPlaying := TRUE;
+  if fCheckBlocks = nsChange then
+  begin
+    if assigned( iOnNotify ) then
+    begin
+      iOnNotify( nsChange );
+    end;
+    Item[ ActiveOption ].Play( iUsingLibrary );
+    // should never be anything else
+  end;
+end;
+
+procedure TSVMMessage.fSetDelayStop( NewVal : boolean );
+begin
+  iDelayStop := NewVal;
+end;
+
+function TSVMMessage.fGetDelayStop : boolean;
+begin
+  if not iPlaying then
+  begin
+    iDelayStop := FALSE;
+  end;
+  Result := iDelayStop;
+end;
+
+procedure TSVMMessage.Stop;
+begin
+  if iPlaying then
+  begin
+    iPlaying := FALSE;
+    iNotifying := TRUE;
+    // we are forcibly stopping, so prevent transient actions
+    Item[ ActiveOption ].Stop;
+    iNotifying := FALSE;
+    if assigned( iOnNotify ) then
+    begin
+      iOnNotify( nsStop );
+    end;
+  end;
+end;
+
+procedure TSVMMessage.fOnNotify( NewVal : tSVMNotifyStatus );
+begin
+  if not iNotifying then
+  begin
+    try
+      iNotifying := TRUE;
+      if Item[ ActiveOption ] is tSVMStop then
+      begin
+        inherited Stop;
+        iActiveOption := 0;
+        if assigned( iOnNotify ) then
+        begin
+          iOnNotify( nsStop );
+        end;
+      end
+      else
+      begin
+        iActiveOption := ActiveOption + 1;
+        if ActiveOption >= Count then
+        begin
+          iActiveOption := 0;
+          if assigned( iOnNotify ) then
+          begin
+            iOnNotify( nsStop );
+          end;
+        end
+        else
+        begin
+          if fCheckBlocks = nsChange then
+          begin
+            if assigned( iOnNotify ) then
+            begin
+              iOnNotify( nsChange );
+            end;
+            Item[ ActiveOption ].Play( iUsingLibrary );
+          end; // already notified if nsStop
+        end;
+      end;
+    finally
+      iNotifying := FALSE;
+    end;
+  end;
+end;
+
+procedure TSVMMessage.InsertBefore( NewVal : tSVMMessageElement );
+begin
+  Insert( ActiveOption, NewVal );
+  iIsDirty := TRUE;
+end;
+
+procedure TSVMMessage.InsertAfter( NewVal : tSVMMessageElement );
+begin
+  if (ActiveOption < 0) or (ActiveOption >= Count - 1) then
+  begin
+    ActiveOption := Add( NewVal );
+  end
+  else
+  begin
+    ActiveOption := ActiveOption + 1;
+    Insert( ActiveOption, NewVal );
+  end;
+  iIsDirty := TRUE;
+end;
+
+procedure TSVMMessage.ReplaceCurr( NewVal : tSVMMessageElement );
+begin
+  Items[ ActiveOption ] := NewVal;
+  iIsDirty := TRUE;
+end;
+
+procedure TSVMMessage.SetUsed( UsingLibrary : tSVMLibrary );
+
+var
+  i : integer;
+begin
+  iUsed := TRUE;
+  for i := 0 to Count - 1 do
+  begin
+    Item[ i ].SetUsed( UsingLibrary );
+  end;
+end;
+
+procedure TSVMMessage.AdjustMessageIndexDown( FromReference : integer );
+var
+  i : integer;
+begin
+  for i := 0 to Count - 1 do
+  begin
+    Item[ i ].AdjustMessageIndexDown( FromReference );
+  end;
+end;
+
+procedure TSVMMessage.AdjustMessageIndexUp( FromReference : integer );
+var
+  i : integer;
+begin
+  for i := 0 to Count - 1 do
+  begin
+    Item[ i ].AdjustMessageIndexUp( FromReference );
+  end;
+end;
+
+function TSVMMessage.Copy( pUsingLibrary : tSVMLibrary ) : TSVMMessage;
+var
+  i : integer;
+begin
+  Result := TSVMMessage.Create( pUsingLibrary );
+// iOnNotify is part of the the owner.
+// The copy has a different owner, so do not copy iOnNotify
+// If something goes wrong it is better that it is nil than
+// the copied value
+  Result.iName := iName;
+  Result.iIsDirty := iIsDirty;
+  Result.iNotifying := iNotifying;
+  Result.iPlaying := iPlaying;
+  Result.iDelayStop := iDelayStop;
+  Result.iUsed := FALSE;
+  for i := 0 to Count - 1 do
+  begin
+    Result.Add( Item[ i ].Copy );
+  end;
+end;
+
+procedure TSVMMessage.ResetUsed;
+var
+  i : integer;
+begin
+  iUsed := FALSE;
+  for i := 0 to Count - 1 do
+  begin
+    iTem[ i ].Used := FALSE;
+  end;
+end;
+
+procedure TSVMMessage.CreateMemoryMap(pMemoryMap: tMemoryMap);
+var
+  i : integer;
+  iCS : word;
+begin
+  iCS := $FF + $FE; // to include message end token
+  for i := 0 to Count - 1 do
+  begin
+    Item[ i ].CreateMemoryMap( pMemoryMap, iCS );
+  end;
+  // must add message end at end of list
+  pMemoryMap.AddPlayListData( $FFFE );
+  // and checksum
+  pMemoryMap.AddPlayListData( iCS );
+end;
+
+//-------------------- TSVMMessages --------------
+
+constructor TSVMMessages.Create( pUsingLibrary : TSVMLibrary );
+begin
+  inherited Create;
+  iIsDirty := FALSE;
+  iUsingLibrary := pUsingLibrary;
+end;
+
+function TSVMMessages.fGetDirty : boolean;
+var
+  i : integer;
+begin
+  Result := TRUE;
+  if iIsDirty then exit;
+  for i := 0 to Count - 1 do
+  begin
+    if Item[ i ].IsDirty then exit;
+  end;
+  // else
+  Result := FALSE;
+end;
+
+function TSVMMessages.fGetItem( index : integer ) : tSVMMessage;
+begin
+  result := tSVMMessage( Items[ index ] );
+end;
+
+function TSVMMessages.fGetCurr : tSVMMessage;
+begin
+  if (iActiveOption >= 0) and (iActiveOption < Count ) then
+  begin
+    Result := Item[ ActiveOption ];
+  end
+  else
+  begin
+    Result := nil;
+  end;
+end;
+
+procedure TSVMMessages.fSetCurr( NewVal : tSVMMessage );
+begin
+  Items[ ActiveOption ] := NewVal;
+  iIsDirty := TRUE;
+end;
+
+function TSVMMessages.Add( NewVal : tSVMMessage ) : integer;
+begin
+  iIsDirty := TRUE;
+  Result := inherited Add( NewVal );
+  if NewVal.Name = '' then
+  begin
+    NewVal.Name := 'Message ' + IntToStr( Result );
+  end;
+end;
+
+procedure TSVMMessages.Load( var F : TextFile );
+var
+  iSigLine : string;
+  iSigProperty, iSigIndex, iSigValue, iSigComment : string;
+  iSVMMessage : tSVMMessage;
+begin
+  while not EOF( F ) do
+  begin
+    ReadLn( F, iSigLine );
+    if SigNETParse( iSigLine, iSigProperty, iSigIndex, iSigValue, iSigComment ) then
+    begin
+      if SameText( iSigProperty, 'Message' ) then
+      begin
+        iSVMMessage := tSVMMessage.Create( iUsingLibrary );
+        iSVMMessage.Name := iSigValue;
+        iSVMMessage.Load( F );
+        Add( iSVMMessage );
+      end
+      else if SameText( iSigProperty, 'End Messages' ) then
+      begin
+        // done
+        iIsDirty := FALSE;
+        Exit;
+      end
+      else
+      begin
+        // ignore errors for now
+      end;
+    end;
+  end;
+end;
+
+procedure TSVMMessages.Save( var F : TextFile; Indent : integer );
+var
+  i : integer;
+begin
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'Messages' );
+  for i := 0 to Count - 1 do
+  begin
+    Item[ i ].Save( F, Indent + 2 );
+  end;
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'End Messages' );
+  iIsDirty := FALSE;
+end;
+
+procedure TSVMMessages.ExportAsCtec( var F : TextFile );
+var
+  i : integer;
+begin
+  for i := 0 to Count - 1 do
+  begin
+    Item[ i ].ExportAsCtec( F );
+  end;
+  WriteLn( F, 'LE' );
+end;
+
+procedure TSVMMessages.ImportAsCtec( var F : TextFile );
+var
+  iLine : string;
+  NewVal : tSVMMessage;
+begin
+  while not EOF( F ) do
+  begin
+    iLine := ReadDos( F );
+    // ignore blanks and comments
+    if iLine <> '' then
+    begin
+      // done?
+      if SameText( iLine, 'MC' ) then; // ignore CS
+      if SameText( iLine, 'LE' ) then exit;
+      NewVal := tSVMMessage.Create( iUsingLibrary );
+      NewVal.ImportAsCtec( iLine, F );
+      Add( NewVal );
+    end;
+  end;
+end;
+
+procedure TSVMMessages.Play;
+begin
+  inherited Play;
+  if Count > 0 then
+  begin
+    Item[ ActiveOption ].OnNotify := fOnNotify;
+    Item[ ActiveOption ].Play;
+  end;
+end;
+
+procedure TSVMMessages.Stop;
+begin
+  inherited;
+  if (ActiveOption >= 0) and (ActiveOption < Count ) then
+  begin
+    Item[ ActiveOption ].Stop;
+  end;
+end;
+
+procedure TSVMMessages.fOnNotify( NewVal : tSVMNotifyStatus );
+begin
+  if assigned( iOnNotify ) then
+  begin
+    iOnNotify( NewVal );
+  end;
+  case NewVal of
+    nsChange:
+    begin
+    end;
+    nsStop:
+    begin
+      inherited Stop;
+    end;
+  end;
+end;
+
+procedure TSVMMessages.fSetActiveOption( NewVal : integer );
+begin
+  if iActiveOption <> NewVal then
+  begin
+    inherited fSetActiveOption( NewVal );
+    if Curr.Count > 0 then
+    begin
+      Curr.ActiveOption := 0;
+    end;
+  end;
+end;
+
+function tSVMMessages.Copy( pUsingLibrary : TSVMLibrary ) : tSVMMessages;
+var
+  i : integer;
+begin
+  Result := tSVMMessages.Create( pUsingLibrary );
+  Result.iOnNotify := iOnNotify;
+  Result.iPlay := iPlay;
+  Result.iStop := iStop;
+  Result.iNext := iNext;
+  Result.iPrev := iPrev;
+  for i := 0 to Count - 1 do
+  begin
+    Result.Add( Item[ i ].Copy( pUsingLibrary ) );
+  end;
+end;
+
+procedure tSVMMessages.ResetUsed;
+var
+  i : integer;
+begin
+  for i := 0 to Count - 1 do
+  begin
+    Item[ i ].ResetUsed;
+  end;
+end;
+
+procedure tSVMMessages.AdjustMessageIndexDown( FromReference : integer );
+var
+  i : integer;
+begin
+  for i := 0 to Count - 1 do
+  begin
+    Item[ i ].AdjustMessageIndexDown( FromReference );
+  end;
+end;
+
+procedure tSVMMessages.AdjustMessageIndexUp( FromReference : integer );
+var
+  i : integer;
+begin
+  for i := 0 to Count - 1 do
+  begin
+    Item[ i ].AdjustMessageIndexUp( FromReference );
+  end;
+end;
+
+function tSVMMessages.CreateBlocked : tSVMMessage;
+begin
+  Result := tSVMMessage.Create( iUsingLibrary );
+  Result.InsertAfter( tSVMBlockBegin.Create );
+  Result.InsertAfter( tSVMBlockEnd.Create );
+  Result.ActiveOption := 0;
+end;
+
+procedure tSVMMessages.AddBefore;
+begin
+  Insert( ActiveOption, CreateBlocked );
+  iIsDirty := TRUE;
+end;
+
+procedure tSVMMessages.AddAfter;
+begin
+  if (ActiveOption < 0) or (ActiveOption >= Count - 1) then
+  begin
+    ActiveOption := Add( CreateBlocked );
+  end
+  else
+  begin
+    ActiveOption := ActiveOption + 1;
+    Insert( ActiveOption, CreateBlocked );
+  end;
+  iIsDirty := TRUE;
+end;
+
+//----------------- TMessageMatrixEntry --------------
+
+constructor TMessageMatrixEntry.Create;
+var
+  i : integer;
+begin
+  inherited Create;
+  iIsDirty := FALSE;
+  for i := 0 to 3 do
+  begin
+    iTriggerActivation[ i ] := -1;
+    iTriggerUnactivation[ i ] := -1;
+    // note when importing these values, they need to be offset by one
+  end;
+  iActiveMessage := -1; // no message to stop!
+end;
+
+procedure TMessageMatrixEntry.Load( var F : TextFile );
+var
+  iSigLine : string;
+  iSigProperty, iSigIndex, iSigValue, iSigComment : string;
+begin
+  while not EOF( F ) do
+  begin
+    ReadLn( F, iSigLine );
+    if SigNETParse( iSigLine, iSigProperty, iSigIndex, iSigValue, iSigComment ) then
+    begin
+      if SameText( iSigProperty, 'End Message Matrix Entry' ) then
+      begin
+        // done
+        iIsDirty := FALSE;
+        exit;
+      end
+      else if SameText( iSigProperty, 'Activation' ) then
+      begin
+        iTriggerActivation[ StrToInt( iSigIndex ) ] := StrToInt( iSigValue );
+      end
+      else if SameText( iSigProperty, 'Removal' ) then
+      begin
+        iTriggerUnactivation[ StrToInt( iSigIndex ) ] := StrToInt( iSigValue );
+      end
+      else
+      begin
+        // ignore Errors for now
+      end;
+    end;
+  end;
+end;
+
+procedure TMessageMatrixEntry.Save( var F : TextFile; indent : integer );
+var
+  i : integer;
+begin
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'Message Matrix Entry' );
+  inc( Indent, 2 );
+  for i := 0 to 3 do
+  begin
+    WriteLn( F, StringOfChar( ' ', Indent ) + 'Activation(' + IntToStr( i ) + ') = ' + IntToStr( iTriggerActivation[ i ] ));
+    WriteLn( F, StringOfChar( ' ', Indent ) + 'Removal(' + IntToStr( i ) + ') = ' + IntToStr( iTriggerUnactivation[ i ] ));
+  end;
+  dec( Indent, 2 );
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'End Message Matrix Entry' );
+  iIsDirty := FALSE;
+end;
+
+destructor TMessageMatrixEntry.Destroy;
+begin
+  inherited Destroy;
+end;
+
+function TMessageMatrixEntry.fGetDirty : boolean;
+begin
+  Result := iIsDirty;
+end;
+
+function TMessageMatrixEntry.fGetTriggerActivation( index : integer ) : integer;
+begin
+  Result := iTriggerActivation[ index ];
+end;
+
+function TMessageMatrixEntry.fGetTriggerUnactivation( index : integer ) : integer;
+begin
+  Result := iTriggerUnactivation[ index ];
+end;
+
+procedure TMessageMatrixEntry.fSetTriggerActivation( index : integer; NewVal : integer );
+begin
+  if iTriggerActivation[ index ] <> NewVal then
+  begin
+    iTriggerActivation[ index ] := NewVal;
+    iIsDirty := TRUE;
+  end;
+end;
+
+procedure TMessageMatrixEntry.fSetTriggerUnactivation( index : integer; NewVal : integer );
+begin
+  if iTriggerUnactivation[ index ] <> NewVal then
+  begin
+    iTriggerUnactivation[ index ] := NewVal;
+    iIsDirty := TRUE;
+  end;
+end;
+
+procedure TMessageMatrixEntry.ExportAsCtec( var F : TextFile );
+var
+  i : integer;
+begin
+  for i := 0 to 3 do
+  begin
+    // remember to offset messages by 1 for export
+    Write( F, IntToStr(TriggerActivation[ i ] + 1 ), ' ' );
+  end;
+  for i := 0 to 3 do
+  begin
+    // remember to offset messages by 1 for export
+    Write( F, IntToStr(TriggerUnactivation[ i ] + 1 ), ' ' );
+  end;
+  WriteLn( F );
+end;
+
+procedure TMessageMatrixEntry.AdjustMessageIndexDown( FromReference : integer );
+var
+  i : integer;
+begin
+  for i := 0 to 3 do
+  begin
+    if TriggerActivation [ i ] > FromReference then
+    begin
+      TriggerActivation [ i ] := TriggerActivation[ i ] - 1;
+    end;
+    if TriggerUnactivation [ i ] > FromReference then
+    begin
+      TriggerUnactivation [ i ] := TriggerUnactivation[ i ] - 1;
+    end;
+  end;
+  if iActiveMessage > FromReference then
+  begin
+    dec( iActiveMessage );
+  end;
+end;
+
+procedure TMessageMatrixEntry.AdjustMessageIndexUp( FromReference : integer );
+var
+  i : integer;
+begin
+  for i := 0 to 3 do
+  begin
+    if TriggerActivation [ i ] >= FromReference then
+    begin
+      TriggerActivation [ i ] := TriggerActivation[ i ] + 1;
+    end;
+    if TriggerUnactivation [ i ] >= FromReference then
+    begin
+      TriggerUnactivation [ i ] := TriggerUnactivation[ i ] + 1;
+    end;
+  end;
+  if iActiveMessage >= FromReference then
+  begin
+    Inc( iActiveMessage );
+  end;
+end;
+
+function TMessageMatrixEntry.Copy : TMessageMatrixEntry;
+var
+  i : integer;
+begin
+  Result := TMessageMatrixEntry.Create;
+  Result.iIsDirty := iIsDirty;
+  Result.iActiveMessage := iActiveMessage;
+  for i := 0 to 3 do
+  begin
+    Result.iTriggerActivation [ i ] := iTriggerActivation[ i ];
+    Result.iTriggerUnactivation [ i ] := iTriggerUnactivation[ i ];
+  end;
+end;
+
+//----------------- TMessageMatrix --------------
+
+constructor TMessageMatrix.Create;
+begin
+  inherited Create;
+  iIsDirty := FALSE;
+end;
+
+function TMessageMatrix.Add( NewVal : tMessageMatrixEntry ) : integer;
+begin
+  Result := inherited Add( NewVal );
+  iIsDirty := TRUE;
+end;
+
+function TMessageMatrix.fGetDirty : boolean;
+var
+  i : integer;
+begin
+  Result := TRUE;
+  if iIsDirty then exit;
+  for i := 0 to Count - 1 do
+  begin
+    if Item[ i ].IsDirty then exit;
+  end;
+  // else
+  Result := FALSE;
+end;
+
+function TMessageMatrix.fGetItem( index : integer ) : TMessageMatrixEntry;
+begin
+  while index >= Count do
+  begin
+    Add( TMessageMatrixEntry.Create );
+    iIsDirty := TRUE;
+  end;
+  Result := TMessageMatrixEntry( Items[ index ] );
+end;
+
+procedure TMessageMatrix.Load( var F : TextFile );
+var
+  iSigLine : string;
+  iSigProperty, iSigIndex, iSigValue, iSigComment : string;
+  iMessageMatrixEntry : tMessageMatrixEntry;
+begin
+  while not EOF( F ) do
+  begin
+    ReadLn( F, iSigLine );
+    if SigNETParse( iSigLine, iSigProperty, iSigIndex, iSigValue, iSigComment ) then
+    begin
+      if SameText( iSigProperty, 'End Message Matrix' ) then
+      begin
+        iIsDirty := FALSE;
+        Exit;
+      end
+      else if SameText( iSigProperty, 'Message Matrix Entry' ) then
+      begin
+        iMessageMatrixEntry := tMessageMatrixEntry.Create;
+        iMessageMatrixEntry.Load( F );
+        Add( iMessageMatrixEntry );
+      end;
+    end;
+  end;
+end;
+
+procedure TMessageMatrix.Save( var F : TextFile; Indent : integer );
+var
+  i : integer;
+begin
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'Message Matrix' );
+  for i := 0 to Count - 1 do
+  begin
+    Item[ i ].Save( F, Indent + 2 );
+  end;
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'End Message Matrix' );
+  iIsDirty := FALSE;
+end;
+
+procedure TMessageMatrix.ExportAsCtec( var F : TextFile );
+var
+  i : integer;
+begin
+  for i := 0 to Count - 1 do
+  begin
+    Item[ i ].ExportAsCtec( F );
+  end;
+  WriteLn( F, 'end' );
+end;
+
+procedure TMessageMatrix.ImportAsCtec( var F : TextFile );
+var
+  iLine : string;
+  iItems : TStringList;
+  i : integer;
+  NewVal : tMessageMatrixEntry;
+begin
+  iItems := TStringList.Create;
+  try
+    while not EOF( F ) do
+    begin
+      iLine := ReadDOS( F );
+      // ignore blanks and comments
+      if iLine <> '' then begin
+        // done?
+        if SameText( iLine, 'end' ) then exit;
+        iItems.Clear;
+        ExtractStrings( [' '], [], PChar( iLine ), iItems );
+        NewVal := tMessageMatrixEntry.Create;
+        // values are offset by 1 from imported values!
+        for i := 0 to 3 do
+        begin
+          try
+            NewVal.iTriggerActivation[ i ] := StrToInt( iItems [ i ] ) - 1;
+          except
+            NewVal.iTriggerActivation[ i ] := -1;
+          end;
+          try
+            NewVal.iTriggerUnactivation[ i ] := StrToInt( iItems[ 4 + i ] ) - 1;
+          except
+            NewVal.iTriggerUnactivation[ i ] := -1;
+          end;
+        end;
+        Add( NewVal );
+      end;
+    end;
+  finally
+    iItems.Free;
+  end;
+end;
+
+function TMessageMatrix.Copy : tMessageMatrix;
+var
+  i : integer;
+begin
+  Result := TMessageMatrix.Create;
+  Result.iPlay := iPlay;
+  Result.iStop := iStop;
+  Result.iNext := iNext;
+  Result.iPrev := iPrev;
+  for i := 0 to Count - 1 do
+  begin
+    Result.Add( Item[ i ].Copy );
+  end;
+end;
+
+procedure TMessageMatrix.AdjustMessageIndexDown( FromReference : integer );
+var
+  i : integer;
+begin
+  for i := 0  to Count - 1 do
+  begin
+    Item[ i ].AdjustMessageIndexDown( FromReference );
+  end;
+end;
+
+procedure TMessageMatrix.AdjustMessageIndexUp( FromReference : integer );
+var
+  i : integer;
+begin
+  for i := 0  to Count - 1 do
+  begin
+    Item[ i ].AdjustMessageIndexUp( FromReference );
+  end;
+end;
+
+//----------------- tSVMLibraryElement --------
+
+constructor tSVMLibraryElement.Create;
+begin
+  inherited Create;
+  iFileName := '';
+  iFileLength := 0;
+  iIgnoreFileError := FALSE;
+  iLongText := tStringList.Create;
+  iShortText := '';
+end;
+
+procedure tSVMLibraryElement.Load( var F : TextFile );
+var
+  iSigLine : string;
+  iSigProperty, iSigIndex, iSigValue, iSigComment : string;
+begin
+  while not EOF( F ) do
+  begin
+    ReadLn( F, iSigLine );
+    if SigNETParse( iSigLine, iSigProperty, iSigIndex, iSigValue, iSigComment ) then
+    begin
+      if SameText( iSigProperty, 'End MP3 File' ) then
+      begin
+        // done
+        iIsDirty := FALSE;
+        Exit;
+      end
+      else if SameText( iSigProperty, 'Name' ) then
+      begin
+        ShortText := iSigValue;
+      end
+      else if SameText( iSigProperty, 'Text' ) then
+      begin
+        LoadText( F );
+      end
+      else
+      begin
+        // ignore errors for now
+      end;
+    end;
+  end;
+end;
+
+procedure tSVMLibraryElement.LoadText( var F : TextFile );
+var
+  iSigLine : string;
+  iSigProperty, iSigIndex, iSigValue, iSigComment : string;
+begin
+  iLongText.Clear;
+  while not EOF( F ) do
+  begin
+    ReadLn( F, iSigLine );
+    if SigNETParse( iSigLine, iSigProperty, iSigIndex, iSigValue, iSigComment ) then
+    begin
+      if SameText( iSigProperty, 'End Text' ) then
+      begin
+        // done
+        Exit;
+      end
+      else if SameText( iSigProperty, '' ) then
+      begin
+        // comment
+        iLongText.Add( iSigComment );
+      end
+      else
+      begin
+        // ignore errors for now
+      end;
+    end;
+  end;
+end;
+
+procedure tSVMLibraryElement.Save( var F : TextFile; indent : integer );
+var
+  i : integer;
+begin
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'MP3 File = ' + iFileName );
+  WriteLn( F, StringOfChar( ' ', Indent + 2) + 'Name = ' + iShortText );
+  WriteLn( F, StringOfChar( ' ', Indent + 2 ) + 'Text' );
+  for i := 0 to iLongText.Count - 1 do
+  begin
+    WriteLn( F, StringOfChar( ' ', Indent + 4 ) + '//' + iLongText.Strings[ i ] );
+  end;
+  WriteLn( F, StringOfChar( ' ', Indent + 2 ) + 'End Text' );
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'End MP3 File' );
+  iIsDirty := FALSE;
+end;
+
+function tSVMLibraryElement.ExpandFileName : boolean; // attempts to expand the dos file name to the full windows path
+var
+  F : TSearchRec;
+  TestName1, TestName2 : string;
+begin
+  Result := FALSE;
+  if FindFirst( Path + '*.*', 0, F ) = 0 then
+  begin
+    TestName1 := ExtractFileName( iFileName );
+    repeat
+      TestName2 := ExtractShortPathName( ExtractFileName( F.Name ));
+      if SameText( TestName2, TestName1 ) then
+      begin
+        Result := TRUE;
+        FileName := Path + F.Name;
+        break;
+      end;
+    until FindNext( F ) <> 0;
+    FindClose( F );
+  end;
+end;
+
+procedure tSVMLibraryElement.fSetFileName( pFileName : tFileName );
+var
+  F : file of byte;
+begin
+  if iFileName <> pFileName then
+  begin
+    iIgnoreFileError := FALSE;
+    iFileName := pFileName;
+    iIsDirty := TRUE;
+    // see if we can get the file size
+    iFileLength := 0; // assume no file exists
+    if FileExists( pFileName ) then
+    begin
+      AssignFile( F, pFileName );
+      Reset( F );
+      try
+        iFileLength := FileSize( F );
+      finally
+        CloseFile( F );
+      end;
+    end;
+  end;
+end;
+
+procedure tSVMLibraryElement.fSetLongText( NewVal : tStringList );
+begin
+  if iLongText.Text <> NewVal.Text then
+  begin
+    iLongText.Text := NewVal.Text;
+    iIsDirty := TRUE;
+  end;
+end;
+
+function tSVMLibraryElement.AbbreviatedLongText : string;
+begin
+  case iLongText.Count of
+  0: Result := '';
+  1: Result := iLongText.Strings[ 0 ];
+  else Result := iLongText.Strings[ 0 ] + '...';
+  end;
+end;
+
+procedure tSVMLibraryElement.fSetShortText( NewVal : string );
+begin
+  if iShortText <> NewVal then
+  begin
+    iShortText := NewVal;
+    iIsDirty := TRUE;
+  end;
+end;
+
+function tSVMLibraryElement.fGetPath : string;
+begin
+  Result := ExtractFilePath( iFileName );
+end;
+
+procedure tSVMLibraryElement.fSetPath( NewVal : string );
+begin
+  if Path <> NewVal then
+  begin
+    iFileName := NewVal + ExtractFileName( iFileName );
+    iIsDirty := True;
+  end;
+end;
+
+function tSVMLibraryElement.Copy : TSVMLibraryElement;
+begin
+  Result := tSVMLibraryElement.Create;
+  Result.iFileLength := iFileLength;
+  Result.iFileName := iFileName;
+  Result.iLongText := iLongText;
+  Result.iShortText := iShortText;
+  Result.iIgnoreFileError := iIgnoreFileError;
+  Result.iUsed := FALSE;
+end;
+
+//----------------- tPlayableList ------------
+
+constructor tPlayableList.Create;
+begin
+  inherited Create( TRUE );
+  iActiveOption := -1;
+  iPlay := TManagedControlList.Create;
+  iStop := TManagedControlList.Create;
+  iPrev := TManagedControlList.Create;
+  iNext := TManagedControlList.Create;
+end;
+
+procedure tPlayableList.Play;
+begin
+  // all descendants should call inherited to action buttons
+  Stop;
+  if assigned( iPlay ) then iPlay.Enabled := FALSE;
+  if assigned( iStop ) then iStop.Enabled := TRUE;
+end;
+
+procedure tPlayableList.Stop;
+begin
+  // all descendants should call inherited to action buttons
+  if assigned( iPlay ) then iPlay.Enabled := TRUE;
+  if assigned( iStop ) then iStop.Enabled := FALSE;
+end;
+
+procedure tPlayableList.Next;
+begin
+  Stop;
+  if ActiveOption < Count - 1 then
+  begin
+    ActiveOption := ActiveOption + 1;
+    if assigned( iOnChange ) then
+    begin
+      iOnChange( self, ActiveOption );
+    end;
+  end;
+end;
+
+procedure tPlayableList.Prev;
+begin
+  Stop;
+  if ActiveOption > 0 then
+  begin
+    ActiveOption := ActiveOption - 1;
+    if assigned( iOnChange ) then
+    begin
+      iOnChange( self, ActiveOption );
+    end;
+  end;
+end;
+
+function tPlayableList.Add( NewVal : tObject ) : integer;
+begin
+  Result := inherited Add( NewVal );
+  ActiveOption := ActiveOption; // recalculate button status
+end;
+
+procedure tPlayableList.RegisterButtons( pPlay, pStop, pNext, pPrev : TControl );
+begin
+  iPlay.Add( pPlay );
+  iStop.Add( pStop );
+  iNext.Add( pNext );
+  iPrev.Add( pPrev );
+  ActiveOption := -1;
+end;
+
+procedure tPlayableList.fSetActiveOption( NewVal : integer );
+begin
+  Stop;
+  iActiveOption := NewVal;
+  if (iActiveOption < 0) or (iActiveOption >= Count ) then
+  begin
+    if assigned( iPlay ) then iPlay.Enabled := FALSE;
+    if assigned( iStop ) then iStop.Enabled := FALSE;
+    if assigned( iPrev ) then iPrev.Enabled := FALSE;
+    if assigned( iNext ) then iNext.Enabled := (Count > 0);
+  end
+  else
+  begin
+    if assigned( iPlay ) then iPlay.Enabled := TRUE;
+    if assigned( iStop ) then iStop.Enabled := FALSE;
+    if assigned( iPrev ) then iPrev.Enabled := (NewVal > 0 );
+    if assigned( iNext ) then iNext.Enabled := (NewVal < Count - 1);
+  end;
+end;
+
+procedure tPlayableList.MoveUp;
+begin
+  if ActiveOption > 0 then
+  begin
+    Exchange( ActiveOption, ActiveOption - 1);
+    ActiveOption := ActiveOption - 1;
+    iIsDirty := TRUE;
+  end;
+end;
+
+procedure tPlayableList.MoveDown;
+begin
+  if (ActiveOption < Count - 1) and (ActiveOption >= 0) then
+  begin
+    Exchange( ActiveOption, ActiveOption + 1 );
+    ActiveOption := ActiveOption + 1;
+    iIsDirty := TRUE;
+  end;
+end;
+
+procedure tPlayableList.DeleteCurr;
+begin
+  Remove( Items[ ActiveOption ] );
+  if ActiveOption = Count then
+  begin
+    ActiveOption := ActiveOption - 1;
+  end;
+  iIsDirty := TRUE;
+end;
+
+procedure tPlayableList.fSetPlay( NewVal : TControl );
+begin
+  iPlay.Add( NewVal );
+end;
+
+procedure tPlayableList.fSetStop( NewVal : TControl );
+begin
+  iStop.Add( NewVal );
+end;
+
+procedure tPlayableList.fSetNext( NewVal : TControl );
+begin
+  iNext.Add( NewVal );
+end;
+
+procedure tPlayableList.fSetPrev( NewVal : TControl );
+begin
+  iPrev.Add( NewVal );
+end;
+
+
+//----------------- tSVMLibrary -------------
+
+constructor tSVMLibrary.Create;
+begin
+  inherited Create;
+  iMaxEntries := 0; // max no entries in library
+  iIsDirty := FALSE;
+end;
+
+function tSVMLibrary.fGetDirty : boolean;
+var
+  i : integer;
+begin
+  Result := TRUE;
+  if iIsDirty then
+  begin
+    Exit;
+  end;
+  for i := 0 to count - 1 do
+  begin
+    if Item[ i ].IsDirty then exit;
+  end;
+  // else
+  Result := FALSE;
+end;
+
+function tSVMLibrary.fGetItem( index : integer ) : TSVMLibraryElement;
+begin
+  Result := TSVMLibraryElement( Items[ index ] );
+end;
+
+function tSVMLibrary.Add( NewVal : tSVMLibraryElement ) : integer;
+begin
+  Result := inherited Add( NewVal );
+  iIsDirty := TRUE;
+end;
+
+procedure tSVMLibrary.Load( var F : TextFile );
+var
+  iSigLine : string;
+  iSigProperty, iSigIndex, iSigValue, iSigComment : string;
+  iSVMLibraryElement : tSVMLibraryElement;
+begin
+  while not EOF( F ) do
+  begin
+    ReadLn( F, iSigLine );
+    if SigNETParse( iSigLine, iSigProperty, iSigIndex, iSigValue, iSigComment ) then
+    begin
+      if SameText( iSigProperty, 'End Library' ) then
+      begin
+        // done
+        iIsDirty := FALSE;
+        Exit;
+      end
+      else if SameText( iSigProperty, 'MP3 File' ) then
+      begin
+        iSVMLibraryElement := tSVMLibraryElement.Create;
+        iSVMLibraryElement.FileName := iSigValue;
+        iSVMLibraryElement.Load( F );
+        Add( iSVMLibraryElement );
+      end
+      else
+      begin
+        // ignore Errors for now
+      end;
+    end;
+  end;
+end;
+
+procedure tSVMLibrary.Save( var F : TextFile; Indent : integer );
+var
+  i : integer;
+begin
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'Library' );
+  for i := 0 to Count - 1 do
+  begin
+    Item[ i ].Save( F, Indent + 2 );
+  end;
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'End Library' );
+end;
+
+procedure tSVMLibrary.ExportAsCtec( var F : TextFile );
+var
+  i : integer;
+begin
+  // this is a list of file names in DOS 8.3 format, followed by 'end'
+  for i := 0 to Count - 1 do
+  begin
+    WriteLn( F, ExtractShortPathName( Item[ i ].FileName ) );
+  end;
+  WriteLn( F, 'end' );
+end;
+
+procedure tSVMLibrary.ImportAsCtec( var F : TextFile );
+var
+  iLine : string;
+  NewElement : tSVMLibraryElement;
+begin
+  while not EOF( F ) do
+  begin
+    iLine := ReadDOS( F );
+    // ignore comments and blank lines
+    if iLine <> '' then
+    begin
+      // Done?
+      if SameText( iLine, 'end' ) then exit;
+      // otherwise is file name in 8.3 format
+      NewElement := tSVMLibraryElement.Create;
+      NewElement.FileName := iLine;
+      NewElement.ShortText := ChangeFileExt( ExtractFileName( iLine ), '' );
+      NewElement.LongText.Text := NewElement.ShortText;
+      Add( NewElement );
+    end;
+  end;
+end;
+
+procedure tSVMLibrary.SubstitutePath( const OldPath : string; const NewPath : string );
+var
+  i : integer;
+begin
+  for i := 0 to Count - 1 do
+  begin
+    if SameText( Item[ i ].Path, OldPath ) then
+    begin
+      Item[ i ].Path := NewPath;
+      Item[ i ].ExpandFileName;
+    end;
+  end
+end;
+
+procedure tSVMLibrary.IgnoreFileErrorsForPath( OldPath : string );
+var
+  i : integer;
+begin
+  for i := 0 to Count - 1 do
+  begin
+    if SameText( Item[ i ].Path, OldPath ) then
+    begin
+      Item[ i ].IgnoreFileError := TRUE;
+    end;
+  end
+end;
+
+procedure tSVMLibrary.fOnNotify( Sender : tObject );
+begin
+  case iMediaPlayer.Mode of
+    mpPlaying:
+    begin
+      Stop;
+    end;
+  else
+    iMediaPlayer.Notify := TRUE;
+  end;
+end;
+
+procedure tSVMLibrary.Play;
+begin
+  inherited;
+  iMediaPlayer.OnNotify := fOnNotify;
+  iMediaPlayer.FileName := Item[ ActiveOption ].FileName;
+  iMediaPlayer.Open;
+  iMediaPlayer.Notify := TRUE;
+  iMediaPlayer.Play;
+end;
+
+procedure tSVMLibrary.Stop;
+begin
+  inherited;
+  try
+    iMediaPlayer.Stop;
+    iMediaPlayer.Close;
+    iMediaPlayer.OnNotify := nil;
+  except
+  end;
+end;
+
+function tSVMLibrary.Copy: tSVMLibrary;
+var
+  i : integer;
+begin
+  Result := tSVMLibrary.Create;
+  Result.iPlay := iPlay;
+  Result.iStop := iStop;
+  Result.iNext := iNext;
+  Result.iPrev := iPrev;
+  Result.iMaxEntries := iMaxEntries;
+  for i := 0 to Count - 1 do
+  begin
+    Result.Add( Item[ i ].Copy );
+  end;
+end;
+
+procedure tSVMLibrary.ResetUsed;
+var
+  i : integer;
+begin
+  for i := 0 to Count - 1 do
+  begin
+    Item[ i ].Used := FALSE;
+  end;
+end;
+
+procedure tSVMLibrary.Delete(Index: Integer);
+begin
+  inherited Delete( Index );
+  if self.ActiveOption >= Count then
+  begin
+    ActiveOption := Count - 1;
+  end;
+end;
+
+function tSVMLibrary.fGetCurr : tSVMLibraryElement;
+begin
+  if ActiveOption >= 0 then
+  begin
+    Result := Item[ ActiveOption ];
+  end
+  else
+  begin
+    Result := nil;
+  end;
+end;
+
+procedure tSVMLibrary.fSetCurr( NewVal : tSVMLibraryElement );
+begin
+  Items[ ActiveOption ] := NewVal;
+  iIsDirty := TRUE;
+end;
+
+function tSVMLibrary.FileExists( TestVal : string ) : boolean;
+var
+  i : integer;
+begin
+  for i := 0 to Count - 1 do
+  begin
+    if SameText( TestVal, Item[ i ].FileName ) then
+    begin
+      Result := TRUE;
+      exit;
+    end;
+  end;
+  // else
+  Result := FALSE;
+end;
+
+//------------------------  TFlash -----------------
+
+constructor TFlash.Create;
+begin
+  inherited Create;
+//  iFlashSize := fsUnknown;
+//  iPageSize := 264; // check
+  iSVMLibrary := tSVMLibrary.Create;
+  iMessageMatrix := tMessageMatrix.Create;
+  iMessages := tSVMMessages.Create( iSVMLibrary );
+  iIsDirty := FALSE;
+  iOptimised := FALSE;
+  iMemoryMap := nil;
+end;
+
+destructor TFlash.Destroy;
+begin
+  iSVMLibrary.Free;
+  iMessageMatrix.Free;
+  inherited Destroy;
+end;
+
+function TFlash.fGetDirty : boolean;
+begin
+  if iIsDirty then Result := TRUE
+  else if iSVMLibrary.IsDirty then Result := TRUE
+  else if iMessageMatrix.IsDirty then Result := TRUE
+  else if iMessages.IsDirty then Result := TRUE
+  else Result := FALSE;
+end;
+
+{
+procedure TFlash.fSetFlashSize( NewVal : TFlashSize );
+begin
+  if iFlashSize <> NewVal then
+  begin
+    iFlashSize := NewVal;
+    iIsDirty := TRUE;
+    case NewVal of
+      fsUnknown, fs1Mbit, fs2Mbit,
+      fs4Mbit, fs8Mbit: iPageSize := 264;
+      fs16Mbit, fs32Mbit: iPageSize := 528;
+      fs64Mbit, fs128Mbit, fs256MBit, fs512Mbit: iPageSize := 1056;
+    end;
+    case NewVal of
+      fsUnknown: iPageCount := 0;
+      fs1Mbit: iPageCount := 512;
+      fs2Mbit: iPageCount := 1024;
+      fs4Mbit: iPageCount := 2048;
+      fs8Mbit, fs16Mbit: iPageCount := 4096;
+      fs32Mbit, fs64Mbit: iPageCount := 8192;
+      fs128Mbit, fs256MBit, fs512Mbit: iPageSize := 16384;
+    end;
+  end;
+end;
+}
+
+procedure TFlash.Load( var F : TextFile );
+var
+  iSigLine : string;
+  iSigProperty, iSigIndex, iSigValue, iSigComment : string;
+begin
+  iSVMLibrary.Clear;
+  iMessages.Clear;
+  iMessageMatrix.Clear;
+  while not EOF( F ) do
+  begin
+    ReadLn( F, iSigLine );
+    if SigNETParse( iSigLine, iSigProperty, iSigIndex, iSigValue, iSigComment ) then
+    begin
+      if SameText( iSigProperty, 'End Flash' ) then
+      begin
+        // done
+        iIsDirty := FALSE;
+        Exit;
+      end
+      else if SameText( iSigProperty, 'Library' ) then
+      begin
+        iSVMLibrary.Load( F );
+      end
+      else if SameText( iSigProperty, 'Messages' ) then
+      begin
+        iMessages.Load( F );
+      end
+      else if SameText( iSigProperty, 'Message Matrix' ) then
+      begin
+        iMessageMatrix.Load( F );
+      end;
+    end;
+  end;
+end;
+
+procedure TFlash.Save( var F : TextFile; Indent : integer );
+begin
+//  WriteLn( F, StringOfChar( ' ', Indent ) + 'Flash = ' + cFlashSize[ FlashSize ] );
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'Flash' );
+  iSVMLibrary.Save( F, Indent + 2 );
+  iMessages.Save( F, Indent + 2 );
+  iMessageMatrix.Save( F, Indent + 2);
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'End Flash' );
+  iIsDirty := FALSE;
+end;
+
+procedure TFlash.SaveLibrary( var F : TextFile; Indent : integer );
+begin
+  iSVMLibrary.Save( F, Indent );
+end;
+
+procedure TFlash.ExportAsCtec( var F : TextFile );
+begin
+  SVMLibrary.ExportAsCtec( F );
+  MessageMatrix.ExportAsCtec( F );
+  Messages.ExportAsCtec( F );
+end;
+
+procedure TFlash.ImportAsCtec( var F : TextFile );
+begin
+//  // assume 4 MBit
+
+//  FlashSize := fs4MBit;
+
+  // first section is Library
+  iSVMLibrary.ImportAsCtec( F );
+
+  // next comes the message matrix
+  iMessageMatrix.ImportAsCtec( F );
+
+  // and finally the play list data
+  iMessages.ImportAsCtec( F );
+
+end;
+
+function TFlash.Copy : tFlash; // creates a copy of self
+begin
+  Result := tFlash.Create;
+//  Result.iFlashSize := iFlashSize;
+//  Result.iPageSize := iPageSize;
+  Result.iSVMLibrary.Free;
+  Result.iMessageMatrix.Free;
+  Result.iMessages.Free;
+  Result.iSVMLibrary := iSVMLibrary.Copy;
+  Result.iMessageMatrix := iMessageMatrix.Copy;
+  Result.iMessages := iMessages.Copy( Result.iSVMLibrary );
+end;
+
+procedure TFlash.fSetTriggerUsed( Index : integer );
+var
+  i : integer;
+begin
+  if Index >= 0 then
+  begin
+    with iMessages.Item[ index ] do
+    begin
+      Used := TRUE;
+      for i := 0 to Count - 1 do
+      begin
+        Item[ i ].SetUsed( iSVMLibrary );
+      end;
+    end;
+  end;
+end;
+
+procedure TFlash.fSetOptimised( NewVal : boolean );
+var
+  i, j : integer;
+begin
+  iOptimised := NewVal;
+  iSVMLibrary.ResetUsed;
+  iMessages.ResetUsed;
+  // for AVAC, message 0 is always used
+  fSetTriggerUsed( 0 );
+  for i := 0 to iMessageMatrix.Count - 1 do
+  begin
+    for j := 0 to 3 do
+    begin
+      fSetTriggerUsed( iMessageMatrix.Item[ i ].TriggerActivation[ j ] );
+      fSetTriggerUsed( iMessageMatrix.Item[ i ].TriggerUnactivation[ j ] );
+    end;
+  end;
+  i := 0;
+  while i < iMessages.Count - 1 do
+  begin
+    if iMessages.Item[ i ].Used then
+    begin
+      inc( i );
+    end
+    else
+    begin
+      iMessageMatrix.AdjustMessageIndexDown( i );
+      iMessages.Delete( i );
+    end;
+  end;
+  i := 0;
+  while i < iSVMLibrary.Count - 1 do
+  begin
+    if iSVMLibrary.Item[ i ].Used then
+    begin
+      inc( i );
+    end
+    else
+    begin
+      iMessages.AdjustMessageIndexDown( i );
+      iSVMLibrary.Delete( i );
+    end;
+  end;
+end;
+
+procedure tFlash.MoveLibraryEntryUp; // moves currently active entry up one place
+var
+  i, j : integer;
+  iCurrEntry : integer;
+begin
+  iCurrEntry := SVMLibrary.ActiveOption;
+  if iCurrEntry > 0 then
+  begin
+    SVMLibrary.Exchange( iCurrEntry, iCurrEntry - 1 );
+    for i := 0 to iMessages.Count - 1 do
+    begin
+      with iMessages.Item[ i ] do
+      begin
+        for j := 0 to Count - 1 do
+        begin
+          if Item[ j ] is tSVMPlay then
+          begin
+            with Item[ j ] as tSVMPlay do
+            begin
+              if MessageNo = iCurrEntry then
+              begin
+                MessageNo := iCurrEntry - 1;
+              end
+              else if MessageNo = (iCurrEntry - 1) then
+              begin
+                MessageNo := iCurrEntry;
+              end;
+            end;
+          end;
+        end;
+      end;
+    end;
+    SVMLibrary.ActiveOption := iCurrEntry - 1;
+  end;
+end;
+
+procedure tFlash.MoveLibraryEntryDown; // moves currently active entry down one place
+var
+  i, j : integer;
+  iCurrEntry : integer;
+begin
+  iCurrEntry := SVMLibrary.ActiveOption;
+  if iCurrEntry < (SVMLibrary.Count - 1) then
+  begin
+    SVMLibrary.Exchange( iCurrEntry, iCurrEntry + 1 );
+    for i := 0 to iMessages.Count - 1 do
+    begin
+      with iMessages.Item[ i ] do
+      begin
+        for j := 0 to Count - 1 do
+        begin
+          if Item[ j ] is tSVMPlay then
+          begin
+            with Item[ j ] as tSVMPlay do
+            begin
+              if MessageNo = iCurrEntry then
+              begin
+                MessageNo := iCurrEntry + 1;
+              end
+              else if MessageNo = (iCurrEntry + 1) then
+              begin
+                MessageNo := iCurrEntry;
+              end;
+            end;
+          end;
+        end;
+      end;
+    end;
+    SVMLibrary.ActiveOption := iCurrEntry + 1;
+  end;
+end;
+
+procedure tFlash.MoveMessageEntryUp; // moves currently active entry up one place
+var
+  i, j : integer;
+  iCurrEntry : integer;
+begin
+  iCurrEntry := Messages.ActiveOption;
+  if iCurrEntry > 0 then
+  begin
+    Messages.Exchange( iCurrEntry, iCurrEntry - 1 );
+    for i := 0 to iMessageMatrix.Count - 1 do
+    begin
+      with iMessageMatrix.Item[ i ] do
+      begin
+        for j := 0 to 3 do
+        begin
+          if TriggerActivation[ j ] = iCurrEntry then
+          begin
+            TriggerActivation[ j ] := iCurrEntry - 1;
+          end
+          else if TriggerActivation[ j ] = iCurrEntry - 1 then
+          begin
+            TriggerActivation[ j ] := iCurrEntry;
+          end;
+          if TriggerUnactivation[ j ] = iCurrEntry then
+          begin
+            TriggerUnactivation[ j ] := iCurrEntry - 1;
+          end
+          else if TriggerUnactivation[ j ] = iCurrEntry - 1 then
+          begin
+            TriggerUnactivation[ j ] := iCurrEntry;
+          end;
+        end;
+      end;
+    end;
+    Messages.ActiveOption := iCurrEntry - 1;
+  end;
+end;
+
+procedure tFlash.MoveMessageEntryDown; // moves currently active entry down one place
+var
+  i, j : integer;
+  iCurrEntry : integer;
+begin
+  iCurrEntry := Messages.ActiveOption;
+  if iCurrEntry < Messages.Count - 1 then
+  begin
+    Messages.Exchange( iCurrEntry, iCurrEntry + 1 );
+    for i := 0 to iMessageMatrix.Count - 1 do
+    begin
+      with iMessageMatrix.Item[ i ] do
+      begin
+        for j := 0 to 3 do
+        begin
+          if TriggerActivation[ j ] = iCurrEntry then
+          begin
+            TriggerActivation[ j ] := iCurrEntry + 1;
+          end
+          else if TriggerActivation[ j ] = iCurrEntry + 1 then
+          begin
+            TriggerActivation[ j ] := iCurrEntry;
+          end;
+          if TriggerUnactivation[ j ] = iCurrEntry then
+          begin
+            TriggerUnactivation[ j ] := iCurrEntry + 1;
+          end
+          else if TriggerUnactivation[ j ] = iCurrEntry + 1 then
+          begin
+            TriggerUnactivation[ j ] := iCurrEntry;
+          end;
+        end;
+      end;
+    end;
+    Messages.ActiveOption := iCurrEntry + 1;
+  end;
+end;
+
+function tFlash.IsCurrMessageUsed : boolean;
+var
+  i, j : integer;
+  iCurrEntry : integer;
+begin
+  Result := TRUE; // assume find
+  // used to determine if a message can be deleted
+  // so non-existant messages are assumed to be used
+  iCurrEntry := SVMLibrary.ActiveOption;
+  if iCurrEntry >= 0 then  // if message not current then cannot delete
+  begin
+    for i := 0 to iMessages.Count - 1 do
+    begin
+      with iMessages.Item[ i ] do
+      begin
+        for j := 0 to Count - 1 do
+        begin
+          if Item[ j ] is tSVMPlay then
+          begin
+            with Item[ j ] as tSVMPlay do
+            begin
+              if MessageNo = iCurrEntry then
+              begin
+                exit; // done
+              end;
+            end;
+          end;
+        end;
+      end;
+    end;
+    // if we get here, message not found, so can be deleted
+    Result := FALSE;
+  end;
+end;
+
+function tFlash.IsCurrMessageEntryUsed( var iLink : integer;
+                                     var iEntry : integer;
+                                     var iIsActivation : boolean ) : boolean;
+var
+  i, j : integer;
+  iCurrEntry : integer;
+begin
+  Result := TRUE; // assume find
+  iLink := -1;
+  iEntry := -1;
+  iIsActivation := FALSE;
+  // used to determine if a message can be deleted
+  // so non-existant messages are assumed to be used
+  iCurrEntry := Messages.ActiveOption;
+  if iCurrEntry >= 0 then  // if message not current then cannot delete
+  begin
+    for i := 0 to MessageMatrix.Count - 1 do
+    begin
+      with MessageMatrix.Item[ i ] do
+      begin
+        for j := 0 to 3 do
+        begin
+          if TriggerActivation[ j ] = iCurrEntry then
+          begin
+            iLink := i;
+            iEntry := j;
+            iIsActivation := TRUE;
+            exit; // done
+          end;
+          if TriggerUnactivation[ j ] = iCurrEntry then
+          begin
+            iLink := i;
+            iEntry := j;
+            iIsActivation := FALSE;
+            exit; // done
+          end;
+        end;
+      end;
+    end;
+    // if we get here, message not found, so can be deleted
+    Result := FALSE;
+  end;
+end;
+
+procedure tFlash.SetMessageToCurrentLibraryEntry;
+var
+  i, j : integer;
+  iCurrEntry : integer;
+begin
+  // used to set the current message options to
+  // first message that uses the library entry
+  iCurrEntry := SVMLibrary.ActiveOption;
+  if iCurrEntry >= 0 then  // if message not current then cannot delete
+  begin
+    for i := 0 to iMessages.Count - 1 do
+    begin
+      with iMessages.Item[ i ] do
+      begin
+        for j := 0 to Count - 1 do
+        begin
+          if Item[ j ] is tSVMPlay then
+          begin
+            with Item[ j ] as tSVMPlay do
+            begin
+              if MessageNo = iCurrEntry then
+              begin
+                iMessages.Item[ i ].ActiveOption := j;
+                iMessages.ActiveOption := i;
+                exit; // done
+              end;
+            end;
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure tFlash.DeleteCurrentLibraryEntry;
+var
+  iCurrEntry : integer;
+begin
+  iCurrEntry := SVMLibrary.ActiveOption;
+  iMessages.AdjustMessageIndexDown( iCurrEntry );
+  iSVMLibrary.Delete( iCurrEntry );
+end;
+
+procedure tFlash.DeleteCurrentMessageEntry;
+var
+  iCurrEntry : integer;
+begin
+  iCurrEntry := Messages.ActiveOption;
+  MessageMatrix.AdjustMessageIndexDown( iCurrEntry );
+  Messages.Delete( iCurrEntry );
+end;
+
+procedure tFlash.InsertLibraryEntryBeforeCurrent;
+var
+  iCurrEntry : integer;
+begin
+  iCurrEntry := SVMLibrary.ActiveOption;
+  iMessages.AdjustMessageIndexUp( iCurrEntry );
+  iSVMLibrary.Insert( iCurrEntry, tSVMLibraryElement.Create );
+end;
+
+procedure tFlash.InsertLibraryEntryAfterCurrent;
+var
+  iCurrEntry : integer;
+begin
+  iCurrEntry := SVMLibrary.ActiveOption;
+  if iCurrEntry < (SVMLibrary.Count - 1 ) then
+  begin
+    // same as inserting before next
+    SVMLibrary.ActiveOption := iCurrEntry + 1;
+    InsertLibraryEntryBeforeCurrent;
+  end
+  else
+  begin
+    // inserting at end
+    SVMLibrary.ActiveOption := SVMLibrary.Add( tSVMLibraryElement.Create );
+    // no message adjustment requird
+  end;
+end;
+
+
+
+//--------------------- tNotes ---------------------
+
+constructor tNotes.Create;
+begin
+  inherited Create;
+  iIsDirty := FALSE;
+end;
+
+procedure tNotes.Clear;
+begin
+  inherited;
+  iIsDirty := TRUE;
+end;
+
+function tNotes.Add(const S: string): Integer;
+begin
+  Result := inherited Add( S );
+  iIsDirty := TRUE;
+end;
+
+procedure tNotes.Assign(Source: TPersistent);
+begin
+  inherited;
+  iIsDirty := TRUE;
+end;
+
+procedure tNotes.Load( var F : TextFile );
+var
+  SigText : string;
+  SigProperty, SigIndex, SigValue, iSigComment : string;
+begin
+
+  Clear;
+  while not EOF( F) do
+  begin
+    ReadLn( F, SigText );
+    if SigNETParse( SigText, SigProperty, SigIndex, SigValue, iSigComment ) then
+    begin
+      if SigProperty = 'End Notes' then
+      begin
+        // done
+        iIsDirty := FALSE;
+        Exit;
+      end
+      else
+      begin
+        Add( iSigComment );
+      end;
+    end;
+  end;
+end;
+
+procedure tNotes.Save( var F : TextFile; Indent : integer );
+var
+  i : integer;
+begin
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'Notes');
+  inc( Indent, 2 );
+  for i := 0 to Count - 1 do
+  begin
+    WriteLn( F, StringOfChar( ' ', Indent ) + '//' + Strings[ i ] );
+  end;
+  Dec( Indent, 2 );
+  WriteLn( F, StringOfChar( ' ', Indent ) + 'End Notes');
+  iIsDirty := FALSE;
+end;
+
+//------------------------ TSVMFile -------------------
+
+constructor TSVMFile.Create;
+begin
+  inherited Create;
+  iIsDirty := FALSE;
+  iModuleType := mtAVAC;
+  iFlashFull := tFlash.Create;
+  iFlashOptimised := nil;
+  iNotes := tNotes.Create;
+  iFileName := '';
+  iOptimised := FALSE;
+end;
+
+destructor TSVMFile.Destroy;
+begin
+  iFlashFull.Free;
+  iFlashOptimised.Free;
+  iNotes.Free;
+  inherited Destroy;
+end;
+
+function TSVMFile.fGetDirty : boolean;
+begin
+  result := iIsDirty or iFlashFull.IsDirty or iNotes.IsDirty;
+end;
+
+procedure TSVMFile.fSetModuleType( NewVal : tModuleType );
+begin
+  if iModuleType <> NewVal then
+  begin
+    iModuleType := NewVal;
+    iIsDirty := TRUE;
+  end;
+end;
+
+procedure TSVMFile.Load( pFileName : string );
+var
+  F : TextFile;
+  SigText : string;
+  SigProperty, SigIndex, SigValue, iSigComment : string;
+begin
+
+  iFileName := pFileName;
+  AssignFile(F, pFileName);
+  Reset( F ); // Go to start
+  try
+    while not EOF( F) do
+    begin
+      ReadLn( F, SigText );
+      if SigNETParse( SigText, SigProperty, SigIndex, SigValue, iSigComment ) then
+      begin
+        if SameText( SigProperty, 'File' ) then
+        begin
+          Load( F );
+        end;
+      end;
+    end;
+    // And finally close it
+  finally
+    CloseFile( F );
+    iIsDirty := FALSE;
+  end;
+end;
+
+procedure TSVMFile.Load( var F : TextFile );
+var
+  SigText : string;
+  SigProperty, SigIndex, SigValue, iSigComment : string;
+  i : tModuleType;
+//  j : tFlashSize;
+begin
+
+  iOptimised := FALSE;
+  while not EOF( F) do
+  begin
+    ReadLn( F, SigText );
+    if SigNETParse( SigText, SigProperty, SigIndex, SigValue, iSigComment ) then
+    begin
+      if SigProperty = '' then
+      begin
+        // ignore comments except in the Notes section
+      end
+      else if SameText( SigProperty, 'End File' ) then
+      begin
+        // done
+        iIsDirty := FALSE;
+        Exit;
+      end
+      else if SameText( SigProperty, 'Module Type' ) then
+      begin
+        for i := mtAVAC to mtSS2N do
+        begin
+          if SameText( SigValue, cModuleType[ i ] )then
+          begin
+            ModuleType := i;
+            break;
+          end;
+        end;
+      end
+      else if SameText (SigProperty, 'Flash' ) then
+      begin
+        // don't update the flash size - this should be controlled by unit
+{
+        for j := fsUnknown to fs512Mbit do
+        begin
+          if SameText( SigValue, cFlashSize[ j ] ) then
+          begin
+            iFlashFull.FlashSize := j;
+            iFlashFull.Load( F );
+            break;
+          end;
+        end;
+}
+        iFlashFull.Load( F );
+      end
+      else if SameText (SigProperty, 'Notes' ) then
+      begin
+        iNotes.Load( F );
+      end;
+    end;
+  end;
+end;
+
+procedure TSVMFile.Save( pFileName : string );
+var
+  F : TextFile;
+begin
+  iFileName := pFileName;
+  AssignFile(F, pFileName);
+  Rewrite( F ); // Go to start
+  try
+    Save( F );
+
+    // And finally close it
+  finally
+    CloseFile( F );
+    iIsDirty := FALSE;
+  end;
+end;
+
+procedure TSVMFile.Save( var F : TextFile );
+begin
+  WriteLn( F, 'File' );
+  WriteLn( F, '  Module Type = ' + cModuleType[ iModuleType ] );
+  iFlashFull.Save( F, 2 );
+  iNotes.Save( F, 2 );
+  WriteLn( F, 'End File' );
+  iIsDirty := FALSE;
+end;
+
+procedure TSVMFile.SaveLibrary( pFileName : string );
+var
+  F : TextFile;
+begin
+  AssignFile(F, pFileName);
+  Rewrite( F ); // Go to start
+  try
+    SaveLibrary( F );
+
+    // And finally close it
+  finally
+    CloseFile( F );
+  end;
+end;
+
+procedure TSVMFile.SaveLibrary( var F : TextFile );
+begin
+  iFlashFull.SaveLibrary( F, 0 );
+end;
+
+procedure TSVMFile.ExportAsCtec( pFileName : string );
+var
+  F : TextFile;
+begin
+  AssignFile(F, pFileName);
+  Rewrite( F ); // Go to start
+  try
+    ExportAsCtec( F );
+
+    // And finally close it
+  finally
+    CloseFile( F );
+  end;
+end;
+
+procedure TSVMFile.ExportAsCtec( var F : TextFile );
+begin
+  if Optimised then
+  begin
+    iFlashOptimised.ExportAsCtec( F );
+  end
+  else
+  begin
+    Optimised := TRUE;
+    iFlashOptimised.ExportAsCtec( F );
+    Optimised := FALSE;
+  end;
+end;
+
+procedure TSVMFile.ImportAsCtec( pFileName : string );
+var
+  F : TextFile;
+begin
+  AssignFile(F, pFileName);
+  Reset( F ); // Go to start
+  try
+    ImportAsCtec( F );
+
+    // And finally close it
+  finally
+    CloseFile( F );
+    iIsDirty := TRUE; // will be anyway! This is not treated as a file load
+                      // which would set IsDirty to false
+                      // because the file has not be saved in standard format
+  end;
+end;
+
+procedure TSVMFile.ImportAsCtec( var F : TextFile );
+begin
+  // must be AVAC - no import for any other unit type
+  ModuleType := mtAVAC;
+
+  // File is read by Flash Object
+  iFlashFull.ImportAsCtec( F );
+  iOptimised := FALSE;
+
+  // and set dirty flag
+  iIsDirty := TRUE;
+end;
+
+procedure TSVMFile.RegisterMediaPlayer( NewVal : TMediaPlayer );
+begin
+  iMediaPlayer := NewVal; // note - global value
+end;
+
+procedure TSVMFile.RegisterTimer( NewVal : TTimer );
+begin
+  iTimer := NewVal; // note - global value
+end;
+
+procedure TSVMFile.fSetOptimised( NewVal : boolean );
+begin
+  if iOptimised <> NewVal then
+  begin
+    iOptimised := NewVal;
+    if NewVal then
+    begin
+      iFlashOptimised.Free;
+      iFlashOptimised := iFlashFull.Copy;
+      iFlashOptimised.Optimised := TRUE;
+    end;
+  end;
+end;
+
+function TSVMFile.fGetFlash : tFlash;
+begin
+  if iOptimised then Result := iFlashOptimised
+  else Result := iFlashFull;
+end;
+
+procedure TFlash.StartLoadFromModule(pFlashSize: tFlashSize; pSaveDirectory : string );
+begin
+  iMemoryMap.Free;
+//  FlashSize := pFlashSize;
+  iMemoryMap := tMemoryMap.Create( PageSize( pFlashSize ) );
+  iSaveDirectory := pSaveDirectory;
+end;
+
+procedure TFlash.LoadPageFromModule(pPage: integer; pData: string);
+begin
+  iMemoryMap.Load( pPage, pData );
+end;
+
+procedure TFlash.EndLoadFromModule;
+var
+  i, j : integer;
+  iMessageFile : tFileStream;
+  iFileSize : integer;
+  iSaveFileSize : integer;
+  iBlockLen : integer;
+  iPage : integer;
+  iMessageFileName : string;
+  iLibraryElement : tSVMLibraryElement;
+  iMessageMatrixEntry : tMessageMatrixEntry;
+  iSVMMessageElement : tSVMMessageElement;
+  iSVMMessage : tSVMMessage;
+  iXtraField : boolean;
+begin
+
+  iSVMLibrary.Free;
+  iSVMLibrary := tSVMLibrary.Create;
+
+  iMessageMatrix.Free;
+  iMessageMatrix := tMessageMatrix.Create;
+
+  iMessages.Free;
+  iMessages := TSVMMessages.Create( iSVMLibrary );
+
+  for i := 0 to iMemoryMap.Directory.Count - 1 do
+  begin
+    if iMemoryMap.Directory.Entry[ i ].Exists then
+    begin
+      iLibraryElement := tSVMLibraryElement.Create;
+      iSVMLibrary.Add( iLibraryElement );
+      iMessageFileName := iSaveDirectory + '\messsage segment ' + IntToStr( i ) + '.mp3';
+      iMessageFile := tFileStream.Create( iMessageFileName, fmCreate );
+      iFileSize := iMemoryMap.Directory.Entry[ i ].FileLength;
+      iSaveFileSize := iFileSize;
+      iPage := iMemoryMap.Directory.Entry[ i ].PageNo;
+      while iFileSize > 0 do
+      begin
+        iBlockLen := iMemoryMap.DataSize( iPage );
+        iMessageFile.WriteBuffer( iMemoryMap.DataPage[ iPage ].Data[ 1 ], iBlockLen );
+        Dec( iFileSize, iBlockLen );
+        inc( iPage );
+      end;
+      iMessageFile.Free;
+      iLibraryElement.SetFile( iMessageFileName, iSaveFileSize );
+    end;
+  end;
+
+  for i := 0 to 15 do
+  begin
+    iMessageMatrixEntry := tMessageMatrixEntry.Create;
+    with iMemoryMap.MemoryMatrix.Entry[ i ] do
+    begin
+      iMessageMatrixEntry.iTriggerActivation[ 0 ] := GenericMessageSilence - 1;
+      iMessageMatrixEntry.iTriggerActivation[ 1 ] := GenericMessageTest - 1;
+      iMessageMatrixEntry.iTriggerActivation[ 2 ] := GenericMessageAlert - 1;
+      iMessageMatrixEntry.iTriggerActivation[ 3 ] := GenericMessageEvac - 1;
+      iMessageMatrixEntry.iTriggerUnactivation[ 0 ] := NormaliseMessageSilence - 1;
+      iMessageMatrixEntry.iTriggerUnactivation[ 1 ] := NormaliseMessageTest - 1;
+      iMessageMatrixEntry.iTriggerUnactivation[ 2 ] := NormaliseMessageAlert - 1;
+      iMessageMatrixEntry.iTriggerUnactivation[ 3 ] := NormaliseMessageEvac - 1;
+    end;
+    iMessageMatrix.Add( iMessageMatrixEntry );
+  end;
+
+  // and finally the play list
+  // This starts on page 1 and may continue on pages 2 and 3
+  // iSVMMessageElement : tSVMMessageElement;
+  iSVMMessage := tSVMMessage.Create( iSVMLibrary );
+  iSVMMessageElement := nil;
+  iXtraField := FALSE;
+  for i := 1 to 3 do
+  begin
+    for j := 0 to iMemoryMap.PlayListPage[ i ].PlayList.Count - 1 do
+    begin
+      with iMemoryMap.PlayListPage[ i ].PlayList.Item[ j ] do
+      begin
+        if iXtraField then
+        begin
+          iSVMMessageElement.LoadExtraData( Value );
+          iSVMMessage.Add( iSVMMessageElement );
+          iXtraField := FALSE;
+        end
+        else
+        begin
+          case Token of
+            $00:
+            begin
+              iSVMMessageElement := tSVMPlay.Create;
+              iSVMMessageElement.LoadData( Parm );
+              iXtraField := TRUE;
+            end;
+            $02:
+            begin
+              iSVMMessageElement := tSVMSilence.Create;
+              iSVMMessageElement.LoadData( Parm );
+              iSVMMessage.Add( iSVMMessageElement );
+            end;
+            $03:
+            begin
+              iSVMMessageElement := tSVMStop.Create;
+              iSVMMessage.Add( iSVMMessageElement );
+            end;
+            $06:
+            begin
+              iSVMMessageElement := tSVMIdle.Create;
+              iSVMMessageElement.LoadData( Parm );
+              iSVMMessage.Add( iSVMMessageElement );
+            end;
+            $0E:
+            begin
+              if Parm = $0FFF then
+              begin
+                // message end
+                iMessages.Add( iSVMMessage );
+                iSVMMessage := tSVMMessage.Create( iSVMLibrary );
+              end
+              else
+              begin
+                iSVMMessageElement := tSVMBlockBegin.Create;
+                iSVMMessageElement.LoadData( Parm );
+                iSVMMessage.Add( iSVMMessageElement );
+              end;
+            end;
+            $0F:
+            begin
+              if Parm = 0 then
+              begin
+                iSVMMessageElement := tSVMBlockEnd.Create;
+                iSVMMessage.Add( iSVMMessageElement );
+              end
+              else
+              begin
+                // list end
+                if iSVMMessage.Count = 0 then
+                begin
+                  iSVMMessage.Free; // not needed
+                end
+                else
+                begin
+                  // should NOT get here, but...
+                  iMessages.Add( iSVMMessage );
+                end;
+                // done
+                exit;
+              end;
+            end;
+            // ignore rest, including message checksum
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure tSVMBlockBegin.LoadData(NewVal: word);
+begin
+  inherited;
+  BlockCount := NewVal;
+end;
+
+procedure tSVMMessageElement.LoadData(NewVal: word);
+begin
+  // nothing to do by default
+end;
+
+procedure tSVMMessageElement.LoadExtraData(NewVal: word);
+begin
+  // nothing by default
+end;
+
+procedure TSVMLibraryElement.SetFile(pFileName: string;
+  pFileSize: integer);
+begin
+  iFileName := pFileName;
+  iFileLength := pFileSize;
+  iShortText := ChangeFileExt( ExtractFileName( pFileName ), '' );
+  iLongText.Text := iShortText;
+end;
+
+procedure TFlash.GenerateMemoryMap( iPageSize : integer );
+begin
+  iMemoryMap.Free;
+  iMemoryMap := tMemoryMap.Create( iPageSize );
+  // Pages 0-3 created implicitly
+
+  // Page 0 - Directory ; Also creates file data
+  iSVMLibrary.CreateMemoryMap( iMemoryMap, iPageSize );
+  iMessageMatrix.CreateMemoryMap( iMemoryMap );
+
+  // pages 1..3 PlayList
+  iMessages.CreateMemoryMap( iMemoryMap );
+end;
+
+procedure tSVMLibrary.CreateMemoryMap(pMemoryMap: tMemoryMap; pPageSize : integer);
+var
+  i, iCS : integer;
+  iNextAvailPage : integer;
+  iBytesLeft : integer;
+  iMessageFile : tFileStream;
+  iBuffer : array of byte;
+  iMPData : tMPData;
+begin
+  iNextAvailPage := pMemoryMap.Count;
+  SetLength( iBuffer, pPageSize );
+  for i := 0 to Count - 1 do
+  begin
+    if Item[ i ].FileLength = 0 then
+    begin
+      // a blank entry - leave as all $FF. This is the default, so do nothing
+    end
+    else
+    begin
+      iMessageFile := tFileStream.Create( Item[ i ].FileName, fmOpenRead );
+      iBytesLeft := Item[ i ].FileLength;
+      pMemoryMap.Directory.Entry[ i ].FileLength := iBytesLeft;
+      pMemoryMap.Directory.Entry[ i ].PageNo := iNextAvailPage;
+      iCS := 0;
+      while iBytesLeft > 0 do
+      begin
+        iMessageFile.Read( iBuffer[ 0 ], pPageSize );
+        iMPData := tMPData.Create( iNextAvailPage, pPageSize );
+        iMPData.LoadBinary( iBuffer, iBytesLeft );
+        inc( iCS, iMPData.Checksum );
+        pMemoryMap.Add( iMPData );
+        inc( iNextAvailPage );
+      end;
+      iMessageFile.Free;
+      pMemoryMap.Directory.Entry[ i ].CheckSum := iCS;
+    end;
+  end;
+end;
+
+procedure TMessageMatrix.CreateMemoryMap(pMemoryMap: tMemoryMap);
+var
+  i : integer;
+begin
+  // message matrix is all on Page 1
+  for i := 0 to Count - 1 do
+  begin
+    with pMemoryMap.MemoryMatrix.Entry[ i ], Item[ i ] do
+    begin
+      GenericMessageSilence := TriggerActivation[ 0 ] + 1;
+      GenericMessageTest := iTriggerActivation[ 1 ] + 1;
+      GenericMessageAlert := iTriggerActivation[ 2 ] + 1;
+      GenericMessageEvac := iTriggerActivation[ 3 ] + 1;
+      NormaliseMessageSilence := iTriggerUnactivation[ 0 ] + 1;
+      NormaliseMessageTest := iTriggerUnactivation[ 1 ] + 1;
+      NormaliseMessageAlert := iTriggerUnactivation[ 2 ] + 1;
+      NormaliseMessageEvac := iTriggerUnactivation[ 3 ] + 1;
+    end;
+  end;
+end;
+
+procedure TSVMMessages.CreateMemoryMap(pMemoryMap: tMemoryMap);
+var
+  i: integer;
+begin
+  // pages 1..3 PlayList
+  for i := 0 to Count - 1 do
+  begin
+    Item[ i ].CreateMemoryMap( pMemoryMap );
+  end;
+  // need to add list end
+  pMemoryMap.AddPlayListData( $FFFF );
+end;
+
+procedure tSVMStop.CreateMemoryMap(pMemoryMap: tMemoryMap; var pCS : word);
+begin
+  pMemoryMap.AddPlayListData( 3 );
+  inc( pCS, 3 );
+end;
+
+procedure tSVMIdle.CreateMemoryMap(pMemoryMap: tMemoryMap; var pCS : word);
+var
+  iValue : word;
+begin
+  iValue := (MessageTime shl 4) + 6;
+  pMemoryMap.AddPlayListData( iValue );
+  inc( pCS, iValue div 256 );
+  inc( pCS, iValue mod 256 );
+end;
+
+procedure tSVMBlockBegin.CreateMemoryMap(pMemoryMap: tMemoryMap; var pCS : word);
+var
+  iValue : word;
+begin
+  iValue := (BlockCount shl 4) + $0E;
+  pMemoryMap.AddPlayListData( iValue );
+  inc( pCS, iValue div 256 );
+  inc( pCS, iValue mod 256 );
+end;
+
+procedure tSVMBlockEnd.CreateMemoryMap(pMemoryMap: tMemoryMap; var pCS : word);
+begin
+  pMemoryMap.AddPlayListData( $0F );
+  inc( pCS, $0F );
+end;
+
+function PageSize( iFlashSize : TFlashSize ) : integer;
+begin
+  case iFlashSize of
+    fsUnknown, fs1Mbit, fs2Mbit, fs4Mbit, fs8Mbit: Result := 264;
+    fs16Mbit, fs32Mbit:                            Result := 528;
+    fs64Mbit, fs128Mbit, fs256MBit, fs512Mbit:     Result := 1056;
+    else                                           Result := 264;
+  end;
+end;
+
+function PageCount( iFlashSize : TFlashSize ) : integer;
+begin
+  case iFlashSize of
+    fsUnknown:                       Result := 0;
+    fs1Mbit:                         Result := 512;
+    fs2Mbit:                         Result := 1024;
+    fs4Mbit:                         Result := 2048;
+    fs8Mbit, fs16Mbit:               Result := 4096;
+    fs32Mbit, fs64Mbit:              Result := 8192;
+    fs128Mbit, fs256MBit, fs512Mbit: Result := 16384;
+    else                             Result := 0;
+  end;
+end;
+
+end.
+

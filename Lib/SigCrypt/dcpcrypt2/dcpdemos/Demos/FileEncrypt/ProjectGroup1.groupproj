@@ -1,0 +1,36 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{0BB12B81-5744-44EB-8EE2-48138E0FFC6D}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="..\..\..\..\UserGateway.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="UserGateway">
+			<MSBuild Projects="..\..\..\..\UserGateway.dproj"/>
+		</Target>
+		<Target Name="UserGateway:Clean">
+			<MSBuild Targets="Clean" Projects="..\..\..\..\UserGateway.dproj"/>
+		</Target>
+		<Target Name="UserGateway:Make">
+			<MSBuild Targets="Make" Projects="..\..\..\..\UserGateway.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="UserGateway"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="UserGateway:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="UserGateway:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

@@ -1,0 +1,87 @@
+package SigNET;
+
+{$R *.res}
+{$R 'Comms\ComDrv32.dcr'}
+{$R 'Comms\comm32.dcr'}
+{$R 'TimeSpinButton\TimeSpinButton.dcr'}
+{$R 'SigTime32\SigTime32.dcr'}
+{$R 'SigImage\SigImage.dcr'}
+{$R 'USB\USBPanel.dcr'}
+{$R 'MemoMessage\MemoMessage.dcr'}
+{$R 'Printer\FormSettings.dcr'}
+{$R 'Comms\iComPort.dcr'}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  VclSmp,
+  vclx,
+  dbrtl,
+  vcldb,
+  designide,
+  xmlrtl,
+  vclactnband;
+
+contains
+  SigSpinEdit in 'SigSpinEdit\SigSpinEdit.pas',
+  companel in 'Comms\companel.pas',
+  ComDrv32 in 'Comms\ComDrv32.pas',
+  comm32 in 'Comms\comm32.pas',
+  SigComPort in 'SigComPort\SigComPort.pas',
+  Common in 'Common\Common.pas',
+  misc in 'Comms\misc.pas',
+  TimeSpinButton in 'TimeSpinButton\TimeSpinButton.pas',
+  SigNETStringGrid in 'SigStringGrid\SigNETStringGrid.pas',
+  SigImage in 'SigImage\SigImage.pas',
+  USBPanel in 'USB\USBPanel.pas',
+  RichEditLog in 'RichEditLog\RichEditLog.pas',
+  MemoMessage in 'MemoMessage\MemoMessage.pas',
+  UnitMessageFile in 'MemoMessage\UnitMessageFile.pas',
+  UnitManagedControlList in 'ManagedControlList\UnitManagedControlList.pas',
+  sigparse in 'sigparse.pas',
+  UnitMemoryMap in 'MemoMessage\UnitMemoryMap.pas',
+  FormSettings in 'Printer\FormSettings.pas',
+  PageSetupDlg in 'Printer\PageSetupDlg.pas' {PageSetupForm},
+  PrevPrinter in 'Printer\PrevPrinter.pas',
+  PrevForm in 'Printer\PrevForm.pas' {PreviewForm},
+  Gopage in 'Printer\Gopage.pas' {GoPageForm},
+  PanelComms in 'Comms\PanelComms.pas',
+  SigSaveDialog in 'SigSave\SigSaveDialog.pas',
+  SigRegistry in 'SigRegistry\SigRegistry.pas',
+  UnitFileNotSaved in 'FileNotSaved\UnitFileNotSaved.pas' {FormFileNotSaved},
+  iComPort in 'Comms\iComPort.pas',
+  UnitTransferInterface in 'TransferInterface\UnitTransferInterface.pas',
+  WinIOCtl in 'WinIOCtl\WinIOCtl.pas',
+  SigGeneralGrid in 'SigStringGrid\SigGeneralGrid.pas',
+  UnitSigFileGUI in 'Wizards\SigFile\UnitSigFileGUI.pas' {FormSigFileGUI},
+  UnitSigFileAnalyser in 'Wizards\SigFile\UnitSigFileAnalyser.pas',
+  SigFile in 'SigFile\SigFile.pas',
+  SelectableEdit in 'SelectableEdit\SelectableEdit.pas',
+  ErrorList in 'ErrorList\ErrorList.pas',
+  UnitProjectExportFile in 'Wizards\SigFile\UnitProjectExportFile.pas',
+  SigVariableEditor in 'SigVariableComponent\SigVariableEditor.pas',
+  SigVariableEditorList in 'SigVariableComponent\SigVariableEditorList.pas';
+
+end.

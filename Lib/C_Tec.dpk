@@ -1,0 +1,61 @@
+package C_Tec;
+
+{$R *.res}
+{$R 'Printer\FormSettings.dcr'}
+{$R 'USB\USBPanel.dcr'}
+{$R 'SigImage\SigImage.dcr'}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl,
+  VclSmp,
+  vclx;
+
+contains
+  Objects in 'Quantec\Objects.pas',
+  Constants in 'Constants.pas',
+  SigComPort in 'Comms\SigComPort.pas',
+  CommsPanel in 'Comms\CommsPanel.pas',
+  PanelComms in 'Comms\PanelComms.pas',
+  ComDrv32 in 'Comms\ComDrv32.pas',
+  Common in 'Common.pas',
+  PageSetupDlg in 'Printer\PageSetupDlg.pas',
+  PrevForm in 'Printer\PrevForm.pas',
+  PrevPrinter in 'Printer\PrevPrinter.pas',
+  Gopage in 'Printer\Gopage.pas',
+  FormSettings in 'Printer\FormSettings.pas',
+  USBPanel in 'USB\USBPanel.pas',
+  SigSpinEdit in 'SigSpinEdit\SigSpinEdit.pas',
+  SigImage in 'SigImage\SigImage.pas',
+  SigRegistry in 'SigRegistry\SigRegistry.pas',
+  TimeSpinButton in 'SigSpinEdit\TimeSpinButton.pas',
+  XFPPanelComms in 'Comms\XFPPanelComms.pas',
+  CTecspin in 'SigSpinEdit\CTecspin.pas',
+  QObjects in 'Quantec\QObjects.pas';
+
+end.

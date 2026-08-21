@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{7E633AD9-0295-46EF-A9A6-40382CD218E4}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="SigNET.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="..\Integrity\IntegrityEditor.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="SigNET">
+			<MSBuild Projects="SigNET.dproj"/>
+		</Target>
+		<Target Name="SigNET:Clean">
+			<MSBuild Targets="Clean" Projects="SigNET.dproj"/>
+		</Target>
+		<Target Name="SigNET:Make">
+			<MSBuild Targets="Make" Projects="SigNET.dproj"/>
+		</Target>
+		<Target Name="IntegrityEditor">
+			<MSBuild Projects="..\Integrity\IntegrityEditor.dproj"/>
+		</Target>
+		<Target Name="IntegrityEditor:Clean">
+			<MSBuild Targets="Clean" Projects="..\Integrity\IntegrityEditor.dproj"/>
+		</Target>
+		<Target Name="IntegrityEditor:Make">
+			<MSBuild Targets="Make" Projects="..\Integrity\IntegrityEditor.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="SigNET;IntegrityEditor"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="SigNET:Clean;IntegrityEditor:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="SigNET:Make;IntegrityEditor:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

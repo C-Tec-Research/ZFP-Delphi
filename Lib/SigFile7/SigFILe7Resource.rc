@@ -1,0 +1,7 @@
+TSigFile7File BITMAP "TSigFile7File.bmp"
+TSigFile7IntegerProperty BITMAP "TSigFile7IntegerProperty.bmp"
+TSigFile7List BITMAP "TSigFile7List.bmp"
+TSigFile7SingleProperty BITMAP "TSigFile7SingleProperty.bmp"
+TSigFile7TextProperty BITMAP "TSigFile7TextProperty.bmp"
+TSigFile7BooleanProperty BITMAP "TSigFile7BooleanProperty.bmp"
+TSigFile7DateTimeProperty BITMAP "TSigFile7DateTimeProperty.bmp"

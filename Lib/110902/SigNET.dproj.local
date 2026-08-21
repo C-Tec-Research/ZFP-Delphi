@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2009/08/07 15:03:31.359.dproj,C:\Documents and Settings\Dave Mear\My Documents\RAD Studio\Projects\Package1.dproj=C:\Delphi Projects\Lib\SigNET.dproj</Transaction>
+    <Transaction>2009/08/07 15:16:27.109.pas,C:\Delphi Projects\Lib\Comms\QueryMsg.pas=</Transaction>
+    <Transaction>2009/08/07 15:16:47.562.pas,C:\Delphi Projects\Lib\Comms\SS2NMsg.pas=</Transaction>
+    <Transaction>2009/08/07 16:36:55.500.pas,C:\Delphi Projects\Lib\SigTime32\SigTime32.pas=</Transaction>
+    <Transaction>2009/08/07 16:37:04.625.dcr,C:\Delphi Projects\Lib\SigTime32\SigTime32.dcr=</Transaction>
+    <Transaction>2009/08/07 16:50:27.609.dproj,C:\Delphi Projects\Lib\SigNET.dproj=C:\Delphi Projects\Lib\SigNET.dproj</Transaction>
+    <Transaction>2009/08/10 12:46:48.015.pas,C:\Delphi Projects\Lib\Printer\PageSetupDlg.pas=</Transaction>
+    <Transaction>2009/08/10 12:46:48.015.dfm,C:\Delphi Projects\Lib\Printer\PageSetupDlg.dfm=</Transaction>
+    <Transaction>2009/08/10 12:46:55.359.pas,C:\Delphi Projects\Lib\Printer\PrevForm.pas=</Transaction>
+    <Transaction>2009/08/10 12:46:55.359.dfm,C:\Delphi Projects\Lib\Printer\PrevForm.dfm=</Transaction>
+    <Transaction>2009/08/10 12:47:01.546.pas,C:\Delphi Projects\Lib\Printer\PrevPrinter.pas=</Transaction>
+    <Transaction>2009/08/10 12:55:22.140.pas,C:\Delphi Projects\Lib\Printer\AppendNavigator.pas=</Transaction>
+    <Transaction>2009/08/10 13:01:50.265.pas,C:\Delphi Projects\Lib\Comms\PanelComms.pas=</Transaction>
+    <Transaction>2009/08/13 21:19:35.578.pas,C:\Delphi Projects\Lib\SigOpenDialog.pas=</Transaction>
+    <Transaction>2009/08/17 11:44:50.671.pas,C:\Delphi Projects\Lib\SigOpen\SigOpenDialog.pas=</Transaction>
+    <Transaction>2010/04/02 21:27:29.218.pas,C:\Delphi Projects\Lib\USB\UnitBulkTransfer.pas=</Transaction>
+    <Transaction>2010/04/20 10:28:48.609.pas,C:\Delphi Projects\Lib\USB\BulkUSBPanel.pas=</Transaction>
+    <Transaction>2010/04/20 10:45:04.734.pas,C:\Delphi Projects\Lib\SetupAPI\SetupAPI.pas=</Transaction>
+    <Transaction>2010/04/20 10:45:34.593.pas,C:\Delphi Projects\Lib\USB\USBBulkTransferMode.pas=</Transaction>
+    <Transaction>2011/01/06 16:31:55.765.pas,C:\Delphi Projects\Lib\Unit1.pas=C:\Delphi Projects\Lib\Wizards\Hello World\UnitHelloWorld.pas</Transaction>
+    <Transaction>2011/01/06 16:36:24.562.pas,C:\Delphi Projects\Lib\Wizards\ToolsAPI\ExptIntf.pas=</Transaction>
+    <Transaction>2011/01/06 17:03:11.281.pas,C:\Delphi Projects\Lib\Unit1.pas=C:\Delphi Projects\Lib\Wizards\SigFile\UnitSigFileGUI.pas</Transaction>
+    <Transaction>2011/01/06 17:03:11.281.dfm,C:\Delphi Projects\Lib\Unit1.dfm=C:\Delphi Projects\Lib\Wizards\SigFile\UnitSigFileGUI.dfm</Transaction>
+    <Transaction>2011/01/13 10:27:52.468.pas,C:\Delphi Projects\Lib\Unit1.pas=C:\Delphi Projects\Lib\SigStringGrid\UnitEditorsProperties.pas</Transaction>
+    <Transaction>2011/01/13 10:27:52.468.dfm,C:\Delphi Projects\Lib\Unit1.dfm=C:\Delphi Projects\Lib\SigStringGrid\UnitEditorsProperties.dfm</Transaction>
+    <Transaction>2011/01/14 17:12:11.203.pas,C:\Delphi Projects\Lib\SigStringGrid\UnitEditorsProperties.pas=</Transaction>
+    <Transaction>2011/01/14 17:12:11.203.dfm,C:\Delphi Projects\Lib\SigStringGrid\UnitEditorsProperties.dfm=</Transaction>
+    <Transaction>2011/01/14 17:12:52.078.pas,C:\Delphi Projects\Lib\Wizards\Hello World\UnitHelloWorld.pas=</Transaction>
+    <Transaction>2011/01/24 13:43:53.421.pas,C:\Delphi Projects\Lib\Unit1.pas=C:\Delphi Projects\Lib\Wizards\SigFile\UnitSigFileAnalyser.pas</Transaction>
+    <Transaction>2011/02/11 14:05:13.000.pas,C:\Delphi Projects\Lib\Unit1.pas=C:\Delphi Projects\Lib\Wizards\SigFile\UnitProjectExportFile.pas</Transaction>
+  </Transactions>
+</BorlandProject>

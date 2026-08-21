@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2014/10/02 15:06:56.000.610,=rtl.dcp</Transaction>
+    <Transaction>2014/10/02 15:07:32.000.973,C:\Users\Dave Mear\Documents\Embarcadero\Studio\Projects\Package1.dproj=C:\Users\Dave Mear\Documents\Embarcadero\Studio\Projects\SigFile7PropertyEditors.dproj</Transaction>
+    <Transaction>2014/10/02 15:08:54.000.593,=C:\Users\Dave Mear\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2014/10/02 15:10:46.000.421,C:\Users\Dave Mear\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Delphi Projects\Lib\SigFile\SigFile7PropertyEditors.pas</Transaction>
+    <Transaction>2014/10/02 15:10:46.000.421,C:\Users\Dave Mear\Documents\Embarcadero\Studio\Projects\Unit2.dfm=C:\Delphi Projects\Lib\SigFile\SigFile7PropertyEditors.dfm</Transaction>
+    <Transaction>2014/10/02 15:12:02.000.377,C:\Users\Dave Mear\Documents\Embarcadero\Studio\Projects\SigFile7PropertyEditors.dproj=C:\Delphi Projects\Lib\SigFile\SigFile7PropertyEditor.dproj</Transaction>
+    <Transaction>2014/10/02 15:28:03.000.136,=vcl.dcp</Transaction>
+    <Transaction>2015/08/13 15:40:58.000.404,=\\psf\Home\Delphi Projects\Lib\SigFile\PropertyEditor\DlgLinkedComponents.pas</Transaction>
+    <Transaction>2015/08/13 15:41:05.000.320,=\\psf\Home\Delphi Projects\Lib\SigFile\PropertyEditor\UnitSigFile7LinkedComponentsPropertyEditor.pas</Transaction>
+    <Transaction>2015/08/13 15:42:20.000.260,=SigNET.dcp</Transaction>
+    <Transaction>2015/08/13 15:42:20.000.250,=VclSmp.dcp</Transaction>
+    <Transaction>2015/08/13 15:42:20.000.241,=fmx.dcp</Transaction>
+    <Transaction>2015/08/13 15:43:56.000.145,\\psf\Home\Delphi Projects\Lib\SigFile\SigFile7PropertyEditors.pas=</Transaction>
+    <Transaction>2015/08/13 15:45:25.000.103,\\psf\Home\Delphi Projects\Lib\SigFile\PropertyEditor\DlgLinkedComponents.pas=</Transaction>
+    <Transaction>2015/08/13 15:46:22.000.359,=\\psf\Home\Delphi Projects\Lib\SigFile\PropertyEditor\DlgLinkedComponents.pas</Transaction>
+    <Transaction>2015/08/13 15:46:36.000.681,\\psf\Home\Delphi Projects\Lib\SigFile\PropertyEditor\DlgLinkedComponents.pas=</Transaction>
+    <Transaction>2015/08/13 15:49:50.000.235,=\\psf\Home\Delphi Projects\Lib\SigFile\PropertyEditor\DlgLinkedComponents.pas</Transaction>
+    <Transaction>2015/08/13 15:50:19.000.496,=Y:\Delphi Projects\Lib\SigPanel\SigPanel.pas</Transaction>
+    <Transaction>2015/08/13 15:50:57.000.703,=\\psf\Home\Delphi Projects\Lib\SigStringGrid\UnitEditorsProperties.pas</Transaction>
+    <Transaction>2015/08/13 15:50:57.000.640,=\\psf\Home\Delphi Projects\Lib\SigStringGrid\SigGeneralGrid.pas</Transaction>
+  </Transactions>
+</BorlandProject>

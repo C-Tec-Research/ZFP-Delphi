@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{481D1B09-E938-4B06-94D9-BD3D3D31DD24}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="SigFile7Test.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SigFILe7.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="C:\Users\Dave Mear\Documents\Embarcadero\Studio\Projects\CBB Price Calculator\CBBPriceCalculator.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SigFile7PropertyEditor.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SigFile7Test">
+        <MSBuild Projects="SigFile7Test.dproj"/>
+    </Target>
+    <Target Name="SigFile7Test:Clean">
+        <MSBuild Projects="SigFile7Test.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SigFile7Test:Make">
+        <MSBuild Projects="SigFile7Test.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SigFILe7">
+        <MSBuild Projects="SigFILe7.dproj"/>
+    </Target>
+    <Target Name="SigFILe7:Clean">
+        <MSBuild Projects="SigFILe7.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SigFILe7:Make">
+        <MSBuild Projects="SigFILe7.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CBBPriceCalculator">
+        <MSBuild Projects="C:\Users\Dave Mear\Documents\Embarcadero\Studio\Projects\CBB Price Calculator\CBBPriceCalculator.dproj"/>
+    </Target>
+    <Target Name="CBBPriceCalculator:Clean">
+        <MSBuild Projects="C:\Users\Dave Mear\Documents\Embarcadero\Studio\Projects\CBB Price Calculator\CBBPriceCalculator.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CBBPriceCalculator:Make">
+        <MSBuild Projects="C:\Users\Dave Mear\Documents\Embarcadero\Studio\Projects\CBB Price Calculator\CBBPriceCalculator.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SigFile7PropertyEditor">
+        <MSBuild Projects="SigFile7PropertyEditor.dproj"/>
+    </Target>
+    <Target Name="SigFile7PropertyEditor:Clean">
+        <MSBuild Projects="SigFile7PropertyEditor.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SigFile7PropertyEditor:Make">
+        <MSBuild Projects="SigFile7PropertyEditor.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SigFile7Test;SigFILe7;CBBPriceCalculator;SigFile7PropertyEditor"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SigFile7Test:Clean;SigFILe7:Clean;CBBPriceCalculator:Clean;SigFile7PropertyEditor:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SigFile7Test:Make;SigFILe7:Make;CBBPriceCalculator:Make;SigFile7PropertyEditor:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -1,0 +1,19 @@
+
+{*******************************************************}
+{                                                       }
+{       Delphi Runtime Library                          }
+{       SigNET Messages Interface Unit                  }
+{                                                       }
+{       Copyright (c) 1996,1997 SigNET (AC) Ltd.        }
+{                                                       }
+{*******************************************************}
+
+unit Sigmsgs;
+
+interface
+
+const
+  SigNET_MSG          = $6000;
+
+  LOG_FAULT           = SigNET_MSG + 1;
+

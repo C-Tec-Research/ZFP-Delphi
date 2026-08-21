@@ -1,0 +1,41 @@
+object FormFileNotSaved: TFormFileNotSaved
+  Left = 0
+  Top = 0
+  Caption = 'File not Saved'
+  ClientHeight = 147
+  ClientWidth = 354
+  Visible = False
+  StyleLookup = 'backgroundstyle'
+  object LabelNotSavedWarning: TLabel
+    Position.Point = '(48,40)'
+    Width = 241.000000000000000000
+    Height = 15.000000000000000000
+    TabOrder = 1
+    Font.Style = [fsBold]
+    Text = 'The file has not been saved. Save Now?'
+  end
+  object ButtonYes: TButton
+    Position.Point = '(32,80)'
+    Width = 80.000000000000000000
+    Height = 22.000000000000000000
+    TabOrder = 10
+    ModalResult = 6
+    Text = 'Yes'
+  end
+  object ButtonNo: TButton
+    Position.Point = '(144,80)'
+    Width = 80.000000000000000000
+    Height = 22.000000000000000000
+    TabOrder = 11
+    ModalResult = 7
+    Text = 'No'
+  end
+  object ButtonCancel: TButton
+    Position.Point = '(256,80)'
+    Width = 80.000000000000000000
+    Height = 22.000000000000000000
+    TabOrder = 12
+    ModalResult = 2
+    Text = 'Cancel'
+  end
+end

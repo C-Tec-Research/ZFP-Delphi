@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2012/09/11 13:23:35.714,=rtl.dcp</Transaction>
+    <Transaction>2012/09/11 13:24:44.365,C:\Delphi Projects\Lib\SigNETXE3.dproj=C:\Users\Dave Mear\Documents\RAD Studio\Projects\Package1.dproj</Transaction>
+    <Transaction>2012/09/11 13:25:39.325,=C:\Delphi Projects\Lib\Common\Common.pas</Transaction>
+    <Transaction>2012/09/11 13:26:38.526,=C:\Delphi Projects\Lib\Comms\ComDrv32.pas</Transaction>
+    <Transaction>2012/09/11 13:26:38.584,=C:\Delphi Projects\Lib\Comms\comm32.pas</Transaction>
+    <Transaction>2012/09/11 13:26:38.593,=C:\Delphi Projects\Lib\Comms\companel.pas</Transaction>
+    <Transaction>2012/09/11 13:26:38.608,=C:\Delphi Projects\Lib\Comms\iComPort.pas</Transaction>
+    <Transaction>2012/09/11 13:26:38.616,=C:\Delphi Projects\Lib\Comms\misc.pas</Transaction>
+    <Transaction>2012/09/11 13:26:38.626,=C:\Delphi Projects\Lib\Comms\PanelComms.pas</Transaction>
+    <Transaction>2012/09/11 13:27:25.244,=C:\Delphi Projects\Lib\ErrorList\ErrorList.pas</Transaction>
+    <Transaction>2012/09/11 13:28:08.231,=C:\Delphi Projects\Lib\FileNotSaved\UnitFileNotSaved.pas</Transaction>
+    <Transaction>2012/09/11 13:28:38.495,=C:\Delphi Projects\Lib\ManagedControlList\UnitManagedControlList.pas</Transaction>
+    <Transaction>2012/09/11 13:29:10.952,=C:\Delphi Projects\Lib\MemoMessage\MemoMessage.pas</Transaction>
+    <Transaction>2012/09/11 13:29:10.963,=C:\Delphi Projects\Lib\MemoMessage\UnitMemoryMap.pas</Transaction>
+    <Transaction>2012/09/11 13:29:10.982,=C:\Delphi Projects\Lib\MemoMessage\UnitMessageFile.pas</Transaction>
+    <Transaction>2012/09/11 13:30:17.715,=C:\Delphi Projects\Lib\Printer\FormSettings.pas</Transaction>
+    <Transaction>2012/09/11 13:30:17.748,=C:\Delphi Projects\Lib\Printer\Gopage.pas</Transaction>
+    <Transaction>2012/09/11 13:30:42.656,=C:\Delphi Projects\Lib\Printer\PageSetupDlg.pas</Transaction>
+    <Transaction>2012/09/11 13:30:42.719,=C:\Delphi Projects\Lib\Printer\PrevForm.pas</Transaction>
+    <Transaction>2012/09/11 13:30:42.739,=C:\Delphi Projects\Lib\Printer\PrevPrinter.pas</Transaction>
+    <Transaction>2012/09/11 13:31:27.285,=C:\Delphi Projects\Lib\RichEditLog\RichEditLog.pas</Transaction>
+    <Transaction>2012/09/11 13:32:05.471,=C:\Delphi Projects\Lib\SelectableEdit\SelectableEdit.pas</Transaction>
+    <Transaction>2012/09/11 13:32:31.522,=C:\Delphi Projects\Lib\SigFile\SigFile.pas</Transaction>
+    <Transaction>2012/09/11 13:33:04.609,=C:\Delphi Projects\Lib\SigImage\SigImage.pas</Transaction>
+    <Transaction>2012/09/11 13:33:33.553,=C:\Delphi Projects\Lib\SigRegistry\SigRegistry.pas</Transaction>
+    <Transaction>2012/09/11 13:34:03.192,=C:\Delphi Projects\Lib\SigSave\SigSaveDialog.pas</Transaction>
+    <Transaction>2012/09/11 13:34:36.338,=C:\Delphi Projects\Lib\SigSpinEdit\SigSpinEdit.pas</Transaction>
+    <Transaction>2012/09/11 13:35:26.732,=C:\Delphi Projects\Lib\SigStringGrid\SigGeneralGrid.pas</Transaction>
+    <Transaction>2012/09/11 13:35:26.744,=C:\Delphi Projects\Lib\SigStringGrid\SigNETStringGrid.pas</Transaction>
+    <Transaction>2012/09/11 13:35:52.547,=C:\Delphi Projects\Lib\SigTime32\SigTime32.pas</Transaction>
+    <Transaction>2012/09/11 13:36:26.223,C:\Delphi Projects\Lib\SigTime32\SigTime32.pas=</Transaction>
+    <Transaction>2012/09/11 13:37:00.460,=C:\Delphi Projects\Lib\SigVariableComponent\SigVariableEditor.pas</Transaction>
+    <Transaction>2012/09/11 13:37:00.473,=C:\Delphi Projects\Lib\SigVariableComponent\SigVariableEditorList.pas</Transaction>
+    <Transaction>2012/09/11 13:37:42.805,=C:\Delphi Projects\Lib\TimeSpinButton\TimeSpinButton.pas</Transaction>
+    <Transaction>2012/09/11 13:38:17.538,=C:\Delphi Projects\Lib\TransferInterface\UnitTransferInterface.pas</Transaction>
+    <Transaction>2012/09/11 13:39:11.887,=C:\Delphi Projects\Lib\USB\USBPanel.pas</Transaction>
+    <Transaction>2012/09/11 13:39:35.365,=C:\Delphi Projects\Lib\sigparse.pas</Transaction>
+    <Transaction>2012/09/11 13:44:17.561,=C:\Delphi Projects\Lib\SigComPort\SigComPort.pas</Transaction>
+    <Transaction>2012/09/11 13:44:50.223,=vcl.dcp</Transaction>
+    <Transaction>2012/09/11 13:44:50.243,=vclx.dcp</Transaction>
+    <Transaction>2012/09/11 13:44:50.262,=VclSmp.dcp</Transaction>
+  </Transactions>
+</BorlandProject>

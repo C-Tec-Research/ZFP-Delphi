@@ -1,0 +1,1512 @@
+﻿[Closed Files]
+File_0=TSourceModule,'C:\Delphi Projects\Lib\Wizards\SigFile\UnitSigFileGUI.pas',0,1,1,16,9,0,0,,
+File_1=TSourceModule,'C:\Delphi Projects\Lib\WinIOCtl\WinIOCtl.pas',0,1,52,36,61,0,0,,
+File_2=TSourceModule,'C:\Delphi Projects\Lib\WinIOCtl\jwawintype.pas',0,1,1,1,1,0,0,,
+File_3=TSourceModule,'C:\Delphi Projects\Lib\WinIOCtl\jwawinnt.pas',0,1,1,1,1,0,0,,
+File_4=TSourceModule,'C:\Transfer\Delphi 5 Projects\Lib\Common.pas',0,1,262,1,290,0,0,,
+File_5=TSourceModule,'C:\Delphi Projects\Quantec\PCTools\Main.pas',0,1,6414,1,6418,0,0,,{1
+File_6=TSourceModule,'C:\Delphi Projects\Quantec\PCTools\NewReports.pas',0,1,1848,66,1895,0,0,,{1
+File_7=TSourceModule,'C:\Delphi Projects\Quantec\PCTools\PrintSel.pas',0,1,133,1,157,0,0,,{1
+File_8=TSourceModule,'C:\Delphi Projects\Quantec\PCTools\LoopFrame.pas',0,1,328,15,354,0,0,,
+File_9=TSourceModule,'C:\Delphi Projects\Quantec\PCTools\DeviceEquation.pas',0,1,46,11,70,0,0,,
+File_10=TSourceModule,'C:\Delphi Projects\Quantec\PCTools\ImgData.pas',0,1,227,3,251,0,0,,{1
+File_11=TSourceModule,'C:\Delphi Projects\Quantec\PCTools\Devconfig.pas',0,1,225,2,249,0,0,,
+
+[Modules]
+Module0=C:\Delphi Projects\Lib\SigStringGrid\SigGeneralGrid.pas
+Module1=
+Module2=C:\Delphi Projects\Lib\SigNET.dproj
+Module3=C:\Delphi Projects\Lib\SigVariableComponent\SigVariableEditor.pas
+Module4=C:\Delphi Projects\Lib\SigSpinEdit\SigSpinEdit.pas
+Module5=c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.Samples.Spin.pas
+Module6=C:\Delphi Projects\Lib\TransferInterface\UnitTransferInterface.pas
+Module7=C:\Delphi Projects\Lib\SigImage\SigImage.pas
+Module8=c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.ExtCtrls.pas
+Module9=c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.Controls.pas
+Module10=C:\Delphi Projects\Lib\SigVariableComponent\SigVariableEditorList.pas
+Module11=C:\Delphi Projects\Lib\SigFile\SigFile.pas
+Module12=C:\Delphi Projects\Lib\ErrorList\ErrorList.pas
+Module13=C:\Delphi Projects\Lib\SelectableEdit\SelectableEdit.pas
+Module14=C:\Delphi Projects\Lib\Comms\companel.pas
+Module15=C:\Delphi Projects\Lib\SigComPort\SigComPort.pas
+Module16=C:\Delphi Projects\Lib\Comms\ComDrv32.pas
+Module17=C:\Delphi Projects\Lib\Comms\comm32.pas
+Module18=C:\Delphi Projects\Lib\MemoMessage\UnitMessageFile.pas
+Module19=C:\Delphi Projects\Lib\Common\Common.pas
+Module20=C:\Delphi Projects\Lib\RichEditLog\RichEditLog.pas
+Module21=C:\Delphi Projects\Lib\MemoMessage\MemoMessage.pas
+Module22=C:\Delphi Projects\Lib\Printer\PageSetupDlg.pas
+Module23=C:\Delphi Projects\Lib\Printer\FormSettings.pas
+Module24=C:\Delphi Projects\Lib\ManagedControlList\UnitManagedControlList.pas
+Module25=C:\Delphi Projects\Lib\Printer\PrevPrinter.pas
+Module26=C:\Delphi Projects\Lib\Comms\PanelComms.pas
+Module27=C:\Delphi Projects\Lib\Printer\PrevForm.pas
+Module28=C:\Delphi Projects\Lib\SigSave\SigSaveDialog.pas
+Module29=C:\Delphi Projects\Lib\SigRegistry\SigRegistry.pas
+Module30=C:\Delphi Projects\Lib\FileNotSaved\UnitFileNotSaved.pas
+Module31=C:\Delphi Projects\Lib\Comms\iComPort.pas
+Module32=C:\Delphi Projects\Lib\Printer\Gopage.pas
+Module33=C:\Delphi Projects\Integrity\Main.pas
+Module34=C:\Delphi Projects\Integrity\CPUMemoryMap.pas
+Module35=C:\Delphi Projects\Integrity\Slot.pas
+Module36=C:\Delphi Projects\Lib\SpecDraw.pas
+Module37=C:\Delphi Projects\Integrity\Options.pas
+Count=38
+EditWindowCount=1
+
+[C:\Delphi Projects\Lib\SigStringGrid\SigGeneralGrid.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[]
+ModuleType=TURLModule
+
+[C:\Delphi Projects\Lib\SigNET.dproj]
+ModuleType=TBaseProject
+
+[C:\Delphi Projects\Lib\SigVariableComponent\SigVariableEditor.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\SigSpinEdit\SigSpinEdit.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.Samples.Spin.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\TransferInterface\UnitTransferInterface.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\SigImage\SigImage.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.ExtCtrls.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.Controls.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\SigVariableComponent\SigVariableEditorList.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\SigFile\SigFile.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\ErrorList\ErrorList.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\SelectableEdit\SelectableEdit.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\Comms\companel.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\SigComPort\SigComPort.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\Comms\ComDrv32.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\Comms\comm32.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\MemoMessage\UnitMessageFile.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\Common\Common.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\RichEditLog\RichEditLog.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\MemoMessage\MemoMessage.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\Printer\PageSetupDlg.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\Printer\FormSettings.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\ManagedControlList\UnitManagedControlList.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\Printer\PrevPrinter.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\Comms\PanelComms.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\Printer\PrevForm.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\SigSave\SigSaveDialog.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\SigRegistry\SigRegistry.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\FileNotSaved\UnitFileNotSaved.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\Comms\iComPort.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\Printer\Gopage.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Integrity\Main.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Integrity\CPUMemoryMap.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Integrity\Slot.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\SpecDraw.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Integrity\Options.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[EditWindow0]
+ViewCount=38
+CurrentEditView=C:\Delphi Projects\Lib\SigStringGrid\SigGeneralGrid.pas
+View0=0
+View1=1
+View2=2
+View3=3
+View4=4
+View5=5
+View6=6
+View7=7
+View8=8
+View9=9
+View10=10
+View11=11
+View12=12
+View13=13
+View14=14
+View15=15
+View16=16
+View17=17
+View18=18
+View19=19
+View20=20
+View21=21
+View22=22
+View23=23
+View24=24
+View25=25
+View26=26
+View27=27
+View28=28
+View29=29
+View30=30
+View31=31
+View32=32
+View33=33
+View34=34
+View35=35
+View36=36
+View37=37
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=10000
+Height=9156
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=10000
+ClientHeight=9156
+DockedToMainForm=1
+BorlandEditorCodeExplorer=BorlandEditorCodeExplorer@EditWindow0
+TopPanelSize=0
+LeftPanelSize=1894
+LeftPanelClients=DockSite2,PropertyInspector
+LeftPanelData=0000080001010100000009000000446F636B536974653287100000000000000166070000000000000100000000621D00001100000050726F7065727479496E73706563746F72FFFFFFFF
+RightPanelSize=2000
+RightPanelClients=DockSite1,DockSite3
+RightPanelData=00000800010100000000871000000000000001D00700000000000001000000004612000009000000446F636B53697465310100000000621D000009000000446F636B5369746533FFFFFFFF
+BottomPanelSize=1600
+BottomPanelClients=DockSite0,DockSite4
+BottomPanelData=0000080001020100000009000000446F636B5369746530724500000000000002400600000000000001000000007245000009000000446F636B5369746534FFFFFFFF
+BottomMiddlePanelSize=0
+
+[View0]
+CustomEditViewType=TWelcomePageView
+WelcomePageURL=http://docs.codegear.com/products/er_studio/
+
+[View1]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SigFile\SigFile.pas
+CursorX=3
+CursorY=100
+TopLine=77
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SigFile\SigFile.pas
+
+[View2]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SelectableEdit\SelectableEdit.pas
+CursorX=3
+CursorY=15
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SelectableEdit\SelectableEdit.pas
+
+[View3]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\ErrorList\ErrorList.pas
+CursorX=3
+CursorY=8
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\ErrorList\ErrorList.pas
+
+[View4]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\Comms\comm32.pas
+CursorX=3
+CursorY=39
+TopLine=5
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\Comms\comm32.pas
+
+[View5]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\Comms\ComDrv32.pas
+CursorX=3
+CursorY=109
+TopLine=91
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\Comms\ComDrv32.pas
+
+[View6]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SigComPort\SigComPort.pas
+CursorX=3
+CursorY=132
+TopLine=113
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SigComPort\SigComPort.pas
+
+[View7]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\Comms\companel.pas
+CursorX=3
+CursorY=30
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\Comms\companel.pas
+
+[View8]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\Printer\PrevForm.pas
+CursorX=3
+CursorY=29
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\Printer\PrevForm.pas
+
+[View9]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\Printer\PrevPrinter.pas
+CursorX=3
+CursorY=182
+TopLine=163
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\Printer\PrevPrinter.pas
+
+[View10]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\Printer\FormSettings.pas
+CursorX=3
+CursorY=15
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\Printer\FormSettings.pas
+
+[View11]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\ManagedControlList\UnitManagedControlList.pas
+CursorX=3
+CursorY=15
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\ManagedControlList\UnitManagedControlList.pas
+
+[View12]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\Printer\PageSetupDlg.pas
+CursorX=3
+CursorY=18
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\Printer\PageSetupDlg.pas
+
+[View13]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\MemoMessage\MemoMessage.pas
+CursorX=3
+CursorY=14
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\MemoMessage\MemoMessage.pas
+
+[View14]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\RichEditLog\RichEditLog.pas
+CursorX=3
+CursorY=13
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\RichEditLog\RichEditLog.pas
+
+[View15]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\Comms\PanelComms.pas
+CursorX=3
+CursorY=11
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\Comms\PanelComms.pas
+
+[View16]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Integrity\Main.pas
+CursorX=3
+CursorY=3551
+TopLine=3527
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Integrity\Main.pas
+
+[View17]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\TransferInterface\UnitTransferInterface.pas
+CursorX=43
+CursorY=419
+TopLine=401
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\TransferInterface\UnitTransferInterface.pas
+
+[View18]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SigStringGrid\SigGeneralGrid.pas
+CursorX=26
+CursorY=1607
+TopLine=1589
+LeftCol=1
+Elisions=
+Bookmarks={1,1590,19}
+EditViewName=C:\Delphi Projects\Lib\SigStringGrid\SigGeneralGrid.pas
+
+[View19]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SigNET.dpk
+CursorX=49
+CursorY=85
+TopLine=21
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SigNET.dpk
+
+[View20]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SpecDraw.pas
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=4
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SpecDraw.pas
+
+[View21]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Integrity\CPUMemoryMap.pas
+CursorX=21
+CursorY=824
+TopLine=802
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Integrity\CPUMemoryMap.pas
+
+[View22]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Integrity\Slot.pas
+CursorX=1
+CursorY=8454
+TopLine=8427
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Integrity\Slot.pas
+
+[View23]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\Common\Common.pas
+CursorX=8
+CursorY=8
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\Common\Common.pas
+
+[View24]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\MemoMessage\UnitMessageFile.pas
+CursorX=3
+CursorY=16
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\MemoMessage\UnitMessageFile.pas
+
+[View25]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SigSpinEdit\SigSpinEdit.pas
+CursorX=30
+CursorY=196
+TopLine=180
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SigSpinEdit\SigSpinEdit.pas
+
+[View26]
+CustomEditViewType=TEditView
+Module=c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.Samples.Spin.pas
+CursorX=1
+CursorY=153
+TopLine=124
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.Samples.Spin.pas
+
+[View27]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SigVariableComponent\SigVariableEditor.pas
+CursorX=14
+CursorY=171
+TopLine=154
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SigVariableComponent\SigVariableEditor.pas
+
+[View28]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SigImage\SigImage.pas
+CursorX=1
+CursorY=24
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SigImage\SigImage.pas
+
+[View29]
+CustomEditViewType=TEditView
+Module=c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.ExtCtrls.pas
+CursorX=1
+CursorY=117
+TopLine=99
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.ExtCtrls.pas
+
+[View30]
+CustomEditViewType=TEditView
+Module=c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.Controls.pas
+CursorX=1
+CursorY=2572
+TopLine=2554
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.Controls.pas
+
+[View31]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SigVariableComponent\SigVariableEditorList.pas
+CursorX=1
+CursorY=11
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SigVariableComponent\SigVariableEditorList.pas
+
+[View32]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\Printer\Gopage.pas
+CursorX=3
+CursorY=12
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\Printer\Gopage.pas
+
+[View33]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\Comms\iComPort.pas
+CursorX=3
+CursorY=13
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\Comms\iComPort.pas
+
+[View34]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\FileNotSaved\UnitFileNotSaved.pas
+CursorX=3
+CursorY=26
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\FileNotSaved\UnitFileNotSaved.pas
+
+[View35]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SigRegistry\SigRegistry.pas
+CursorX=3
+CursorY=14
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SigRegistry\SigRegistry.pas
+
+[View36]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SigSave\SigSaveDialog.pas
+CursorX=3
+CursorY=10
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SigSave\SigSaveDialog.pas
+
+[View37]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Integrity\Options.pas
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Integrity\Options.pas
+
+[Watches]
+Count=0
+
+[WatchWindow]
+WatchColumnWidth=120
+WatchShowColumnHeaders=1
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=1156
+Height=456
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1156
+ClientHeight=456
+TBDockHeight=211
+LRDockWidth=13600
+Dockable=1
+StayOnTop=0
+
+[Breakpoints]
+Count=0
+
+[EmbarcaderoWin64Debugger_AddressBreakpoints]
+Count=0
+
+[EmbarcaderoWin32Debugger_AddressBreakpoints]
+Count=0
+
+[EmbarcaderoOSXDebugger_AddressBreakpoints]
+Count=0
+
+[Main Window]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=0
+State=2
+Left=144
+Top=278
+Width=8931
+Height=8522
+MaxLeft=-6
+MaxTop=-11
+MaxWidth=8931
+MaxHeight=8522
+ClientWidth=10000
+ClientHeight=9756
+BottomPanelSize=9156
+BottomPanelClients=EditWindow0
+BottomPanelData=0000080000000000000000000000000000000000000000000000000100000000000000000C0000004564697457696E646F775F30FFFFFFFF
+
+[ProjectManager]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=2000
+Height=4100
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2000
+ClientHeight=4100
+TBDockHeight=5900
+LRDockWidth=2350
+Dockable=1
+StayOnTop=0
+
+[MessageView]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=10000
+Height=1067
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=10000
+ClientHeight=1067
+TBDockHeight=1067
+LRDockWidth=2769
+Dockable=1
+StayOnTop=0
+
+[ToolForm]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=2000
+Height=2589
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2000
+ClientHeight=2589
+TBDockHeight=7156
+LRDockWidth=2000
+Dockable=1
+StayOnTop=0
+
+[TFileExplorerForm]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=1
+State=0
+Left=-1182
+Top=-727
+Width=2844
+Height=6200
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2844
+ClientHeight=6200
+TBDockHeight=6200
+LRDockWidth=2844
+Dockable=1
+StayOnTop=0
+
+[TemplateView]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=1
+State=0
+Left=-1280
+Top=220
+Width=275
+Height=356
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=275
+ClientHeight=356
+TBDockHeight=356
+LRDockWidth=275
+Dockable=1
+StayOnTop=0
+Name=120
+Description=334
+filter=1
+
+[DebugLogView]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=3825
+Height=1067
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=3825
+ClientHeight=1067
+TBDockHeight=411
+LRDockWidth=4950
+Dockable=1
+StayOnTop=0
+
+[ThreadStatusWindow]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=1156
+Height=456
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1156
+ClientHeight=456
+TBDockHeight=211
+LRDockWidth=7406
+Dockable=1
+StayOnTop=0
+Column0Width=145
+Column1Width=100
+Column2Width=115
+Column3Width=250
+
+[LocalVarsWindow]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=1156
+Height=456
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1156
+ClientHeight=456
+TBDockHeight=1533
+LRDockWidth=3481
+Dockable=1
+StayOnTop=0
+
+[CallStackWindow]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=1156
+Height=456
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1156
+ClientHeight=456
+TBDockHeight=2056
+LRDockWidth=3481
+Dockable=1
+StayOnTop=0
+
+[PropertyInspector]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=23
+Width=1894
+Height=7267
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1894
+ClientHeight=7267
+TBDockHeight=6944
+LRDockWidth=1894
+Dockable=1
+StayOnTop=0
+SplitPos=111
+
+[FindReferencsForm]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=1
+State=0
+Left=0
+Top=0
+Width=10000
+Height=1067
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=10000
+ClientHeight=1067
+TBDockHeight=2311
+LRDockWidth=2825
+Dockable=1
+StayOnTop=0
+
+[RefactoringForm]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=1
+State=0
+Left=0
+Top=0
+Width=10000
+Height=1067
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=10000
+ClientHeight=1067
+TBDockHeight=3200
+LRDockWidth=2825
+Dockable=1
+StayOnTop=0
+
+[ToDo List]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=10000
+Height=1067
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=10000
+ClientHeight=1067
+TBDockHeight=1156
+LRDockWidth=3675
+Dockable=1
+StayOnTop=0
+Column0Width=359
+Column1Width=30
+Column2Width=150
+Column3Width=172
+Column4Width=129
+SortOrder=4
+ShowHints=1
+ShowChecked=1
+
+[DataExplorer]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=10000
+Height=1489
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=10000
+ClientHeight=1489
+TBDockHeight=4878
+LRDockWidth=7150
+Dockable=1
+StayOnTop=0
+
+[CppChecks]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=0
+State=0
+Left=2919
+Top=4044
+Width=2338
+Height=1200
+MaxLeft=-6
+MaxTop=-11
+ClientWidth=2238
+ClientHeight=822
+TBDockHeight=2222
+LRDockWidth=3700
+Dockable=1
+StayOnTop=0
+
+[ModelViewTool]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=10000
+Height=1489
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=10000
+ClientHeight=1489
+TBDockHeight=4878
+LRDockWidth=5306
+Dockable=1
+StayOnTop=0
+
+[ClassBrowserTool]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=1
+State=0
+Left=-1280
+Top=-152
+Width=1844
+Height=3144
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1844
+ClientHeight=3144
+TBDockHeight=3144
+LRDockWidth=1844
+Dockable=1
+StayOnTop=0
+
+[MetricsView]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=0
+State=0
+Left=3781
+Top=3500
+Width=2338
+Height=1200
+MaxLeft=-6
+MaxTop=-11
+ClientWidth=2238
+ClientHeight=822
+TBDockHeight=4833
+LRDockWidth=3562
+Dockable=1
+StayOnTop=0
+
+[QAView]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=0
+State=0
+Left=4012
+Top=3733
+Width=2338
+Height=1200
+MaxLeft=-6
+MaxTop=-11
+ClientWidth=2238
+ClientHeight=822
+TBDockHeight=4833
+LRDockWidth=3562
+Dockable=1
+StayOnTop=0
+
+[BreakpointWindow]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=1156
+Height=456
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1156
+ClientHeight=456
+TBDockHeight=1544
+LRDockWidth=8744
+Dockable=1
+StayOnTop=0
+Column0Width=200
+Column1Width=75
+Column2Width=200
+Column3Width=200
+Column4Width=200
+Column5Width=75
+Column6Width=75
+
+[StructureView]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=1894
+Height=6944
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1894
+ClientHeight=6944
+TBDockHeight=3678
+LRDockWidth=1894
+Dockable=1
+StayOnTop=0
+
+[Item__6A6C0F8B_01A1_4681_BE6C_415858C81E8F_]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=0
+State=0
+Left=0
+Top=0
+Width=3294
+Height=3378
+MaxLeft=-6
+MaxTop=-11
+ClientWidth=3194
+ClientHeight=3000
+TBDockHeight=3378
+LRDockWidth=3294
+Dockable=1
+StayOnTop=0
+
+[Item__AD1C156F_C9E5_40A1_876F_728CBC647D5D_]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=0
+State=0
+Left=0
+Top=0
+Width=3294
+Height=3378
+MaxLeft=-6
+MaxTop=-11
+ClientWidth=3194
+ClientHeight=3000
+TBDockHeight=3378
+LRDockWidth=3294
+Dockable=1
+StayOnTop=0
+
+[Item__0CA5EFB5_542C_498F_A410_F4A5076E35ED_]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=0
+State=0
+Left=0
+Top=0
+Width=3294
+Height=3378
+MaxLeft=-6
+MaxTop=-11
+ClientWidth=3194
+ClientHeight=3000
+TBDockHeight=3378
+LRDockWidth=3294
+Dockable=1
+StayOnTop=0
+
+[Item__010A724C_3C7B_480B_BF27_8192C32C9C0E_]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=0
+State=0
+Left=0
+Top=0
+Width=3294
+Height=3378
+MaxLeft=-6
+MaxTop=-11
+ClientWidth=3194
+ClientHeight=3000
+TBDockHeight=3378
+LRDockWidth=3294
+Dockable=1
+StayOnTop=0
+
+[Item__DE4BD091_1D08_4D00_B823_ABD09E9EBFCA_]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=0
+State=0
+Left=0
+Top=0
+Width=3294
+Height=3378
+MaxLeft=-6
+MaxTop=-11
+ClientWidth=3194
+ClientHeight=3000
+TBDockHeight=3378
+LRDockWidth=3294
+Dockable=1
+StayOnTop=0
+
+[Item__8A0AA136_D1EB_4684_92F3_417CDA72879A_]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=0
+State=0
+Left=0
+Top=0
+Width=3294
+Height=3378
+MaxLeft=-6
+MaxTop=-11
+ClientWidth=3194
+ClientHeight=3000
+TBDockHeight=3378
+LRDockWidth=3294
+Dockable=1
+StayOnTop=0
+
+[Item__75610DE4_BABE_42A4_930D_C40378349D63_]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=0
+State=0
+Left=0
+Top=0
+Width=3294
+Height=3378
+MaxLeft=-6
+MaxTop=-11
+ClientWidth=3194
+ClientHeight=3000
+TBDockHeight=3378
+LRDockWidth=3294
+Dockable=1
+StayOnTop=0
+
+[Item__C74C7DBB_4D99_4FF4_BABE_F02A005254E6_]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=0
+State=0
+Left=0
+Top=0
+Width=3294
+Height=3378
+MaxLeft=-6
+MaxTop=-11
+ClientWidth=3194
+ClientHeight=3000
+TBDockHeight=3378
+LRDockWidth=3294
+Dockable=1
+StayOnTop=0
+
+[Item__CE401FF6_F956_4BDB_9F54_088BD85F0CF4_]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=0
+State=0
+Left=0
+Top=0
+Width=3294
+Height=3378
+MaxLeft=-6
+MaxTop=-11
+ClientWidth=3194
+ClientHeight=3000
+TBDockHeight=3378
+LRDockWidth=3294
+Dockable=1
+StayOnTop=0
+
+[BorlandEditorCodeExplorer@EditWindow0]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=0
+State=0
+Left=0
+Top=0
+Width=1825
+Height=6178
+MaxLeft=-6
+MaxTop=-11
+ClientWidth=1725
+ClientHeight=5800
+TBDockHeight=6178
+LRDockWidth=1825
+Dockable=1
+StayOnTop=0
+
+[DockHosts]
+DockHostCount=5
+
+[DockSite0]
+HostDockSite=DockBottomPanel
+DockSiteType=1
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=1
+State=0
+Left=306
+Top=753
+Width=3825
+Height=1344
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=3825
+ClientHeight=1344
+TBDockHeight=1344
+LRDockWidth=3825
+Dockable=1
+StayOnTop=0
+TabPosition=1
+ActiveTabID=DebugLogView
+TabDockClients=DebugLogView,BreakpointWindow,ThreadStatusWindow,CallStackWindow,WatchWindow,LocalVarsWindow
+
+[DockSite1]
+HostDockSite=DockRightPanel
+DockSiteType=1
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=23
+Width=2000
+Height=4378
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2000
+ClientHeight=4378
+TBDockHeight=8878
+LRDockWidth=2000
+Dockable=1
+StayOnTop=0
+TabPosition=1
+ActiveTabID=ProjectManager
+TabDockClients=ProjectManager,ModelViewTool,DataExplorer,TFileExplorerForm
+
+[DockSite2]
+HostDockSite=DockLeftPanel
+DockSiteType=1
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=1
+State=0
+Left=1280
+Top=76
+Width=1894
+Height=6944
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1894
+ClientHeight=6944
+TBDockHeight=6944
+LRDockWidth=1894
+Dockable=1
+StayOnTop=0
+TabPosition=1
+ActiveTabID=StructureView
+TabDockClients=StructureView,ClassBrowserTool
+
+[DockSite3]
+HostDockSite=DockRightPanel
+DockSiteType=1
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=444
+Width=2000
+Height=2589
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2000
+ClientHeight=2589
+TBDockHeight=8878
+LRDockWidth=2000
+Dockable=1
+StayOnTop=0
+TabPosition=1
+ActiveTabID=ToolForm
+TabDockClients=ToolForm,TemplateView
+
+[DockSite4]
+HostDockSite=DockBottomPanel
+DockSiteType=1
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=23
+Width=10000
+Height=1344
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=10000
+ClientHeight=1344
+TBDockHeight=1344
+LRDockWidth=2806
+Dockable=1
+StayOnTop=0
+TabPosition=1
+ActiveTabID=MessageView
+TabDockClients=MessageView,ToDo List,RefactoringForm,FindReferencsForm
+

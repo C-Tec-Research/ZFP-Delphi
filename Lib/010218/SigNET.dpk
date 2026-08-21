@@ -1,0 +1,45 @@
+package SigNET;
+
+{$R *.RES}
+{$R '..\Comms\ComDrv32.dcr'}
+{$ALIGN ON}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE ON}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $00400000}
+{$IMPLICITBUILD OFF}
+
+requires
+  vcl40,
+  VCLSMP40;
+
+contains
+  Companel in '..\Comms\companel.pas',
+  ss2ncomm in '..\Comms\ss2ncomm.pas',
+  Comport in '..\Comms\ComPort.pas',
+  QueryMsg in '..\Comms\QueryMsg.pas',
+  SS2NMsg in '..\Comms\SS2NMsg.pas',
+  Common in '..\Common\Common.pas',
+  Sigload in '..\Common\Sigload.pas',
+  SigNETStringGrid in '..\Common\SigNETStringGrid.pas',
+  SigSpinEdit in 'SigSpinEdit.pas',
+  iComPort in '..\Comms\iComPort.pas',
+  ComDrv32 in '..\Comms\ComDrv32.pas';
+
+end.

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2008/07/28 08:59:32.750.bdsproj,C:\Documents and Settings\Dave Mear\My Documents\Borland Studio Projects\Package1.bdsproj=C:\Transfer\Delphi 5 Projects\Common\SigNET.bdsproj</Transaction>
+    <Transaction>2009/10/30 11:10:00.156.pas,c:\delphi projects\lib\ManagedControlList\UnitManagedControlList.pas=</Transaction>
+    <Transaction>2009/10/30 11:16:03.140.pas,C:\Program Files\Borland\Delphi7\Source\Rtl\Win\Ole2.pas=</Transaction>
+    <Transaction>2009/10/30 11:18:01.859.pas,c:\delphi projects\lib\common\Common.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

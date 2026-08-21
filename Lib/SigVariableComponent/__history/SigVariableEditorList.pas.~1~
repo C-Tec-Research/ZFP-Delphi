@@ -1,0 +1,198 @@
+unit SigVariableEditorList;
+
+interface
+
+uses
+  System.Contnrs,
+  SysUtils,
+  Classes,
+  Controls,
+  Forms,
+  SigVariableEditor;
+
+type
+  TSigVariableEditorList = class(TScrollBox)
+  private
+    fSigVariableEditors : TSigVariableEditors;
+    fDefaultEditorStyle: tSigVariableEditorStyle;
+    fTopMargin: integer;
+    fAutoPlaceComponents: boolean;
+    fLeftMargin: integer;
+    fComponentSpacing: integer;
+    fEditorWidth: integer;
+    function GetEditor(const i: integer): TSigVariableEditor;
+    procedure SetDefaultEditorStyle(const Value: tSigVariableEditorStyle);
+    procedure SetTopMargin(const Value: integer);
+    procedure SetAutoPlaceComponents(const Value: boolean);
+    procedure SetLeftMargin(const Value: integer);
+    procedure SetComponentSpacing(const Value: integer);
+    procedure SetEditorWidth(const Value: integer);
+    { Private declarations }
+  protected
+    { Protected declarations }
+  public
+    { Public declarations }
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+
+    function Add( pStyle : tSigVariableEditorStyle ) : TSigVariableEditor;
+    procedure Clear;
+    procedure ClearFromIndex( const pIndex : integer ); // pIndex is cleared!
+    procedure Remove( Value : TSigVariableEditor );
+
+    property Editor[ const i : integer ] : TSigVariableEditor
+             read GetEditor;
+
+
+  published
+    { Published declarations }
+    property AutoPlaceComponents : boolean
+             read fAutoPlaceComponents
+             write SetAutoPlaceComponents
+             default TRUE;
+    property DefaultEditorStyle : tSigVariableEditorStyle
+             read fDefaultEditorStyle
+             write SetDefaultEditorStyle
+             default vesMaskEdit;
+    property LeftMargin : integer
+             read fLeftMargin
+             write SetLeftMargin
+             default 21;
+    property TopMargin : integer
+             read fTopMargin
+             write SetTopMargin
+             default 21;
+    property ComponentSpacing : integer
+             read fComponentSpacing
+             write SetComponentSpacing
+             default 42;
+    property FixedEditorWidth : integer   // if non-zero makes editor widths fixed
+             read fEditorWidth
+             write SetEditorWidth
+             default 0;
+
+  end;
+
+{$IFDEF ALLOWINSTALL}
+procedure Register;
+{$ENDIF}
+
+implementation
+
+{$IFDEF ALLOWINSTALL}
+procedure Register;
+begin
+  RegisterComponents('SigNET', [TSigVariableEditorList]);
+end;
+{$ENDIF}
+
+{ TSigVariableEditorList }
+
+function TSigVariableEditorList.Add(
+  pStyle: tSigVariableEditorStyle): TSigVariableEditor;
+var
+  iIndex : integer;
+begin
+  Result := TSigVariableEditor.Create( self );
+  Result.Parent := self;
+  Result.EditorStyle := pStyle;
+  Result.Left := LeftMargin;
+  Result.Width := self.Width - 2 * LeftMargin;
+  Result.FixedEditorWidth := self.FixedEditorWidth;
+  iIndex := fSigVariableEditors.Add( Result );
+  if iIndex = 0 then
+  begin
+    Result.Top := TopMargin;
+  end
+  else
+  begin
+    Result.Top := Editor[ iIndex - 1 ].Top + ComponentSpacing;
+  end;
+end;
+
+procedure TSigVariableEditorList.Clear;
+begin
+  ClearFromIndex( 0 );
+end;
+
+procedure TSigVariableEditorList.ClearFromIndex(const pIndex: integer);
+begin
+  while fSigVariableEditors.Count > pIndex do
+  begin
+    fSigVariableEditors.Last.Free;
+  end;
+end;
+
+constructor TSigVariableEditorList.Create(AOwner: TComponent);
+begin
+  inherited;
+  fSigVariableEditors := TSigVariableEditors.Create;
+  fDefaultEditorStyle := vesMaskEdit;
+  fTopMargin := 21;
+  fLeftMargin := 21;
+  fComponentSpacing := 42;
+  fAutoPlaceComponents := TRUE;
+end;
+
+destructor TSigVariableEditorList.Destroy;
+begin
+  fSigVariableEditors.Free;
+  inherited;
+end;
+
+function TSigVariableEditorList.GetEditor(const i: integer): TSigVariableEditor;
+begin
+  if i < fSigVariableEditors.Count then
+  begin
+    Result := fSigVariableEditors.Item[ i ];
+  end
+  else
+  begin
+    Result := nil;
+  end;
+end;
+
+procedure TSigVariableEditorList.Remove(Value: TSigVariableEditor);
+begin
+  Value.Free;
+end;
+
+procedure TSigVariableEditorList.SetAutoPlaceComponents(const Value: boolean);
+begin
+  fAutoPlaceComponents := Value;
+end;
+
+procedure TSigVariableEditorList.SetComponentSpacing(const Value: integer);
+begin
+  fComponentSpacing := Value;
+end;
+
+procedure TSigVariableEditorList.SetDefaultEditorStyle(
+  const Value: tSigVariableEditorStyle);
+begin
+  fDefaultEditorStyle := Value;
+end;
+
+procedure TSigVariableEditorList.SetEditorWidth(const Value: integer);
+var
+  i : integer;
+begin
+  fEditorWidth := Value;
+  for i := 0 to fSigVariableEditors.Count - 1 do
+  begin
+    Editor[ i ].FixedEditorWidth := Value;
+    Editor[ i ].Invalidate;
+  end;
+end;
+
+procedure TSigVariableEditorList.SetLeftMargin(const Value: integer);
+begin
+  fLeftMargin := Value;
+end;
+
+procedure TSigVariableEditorList.SetTopMargin(const Value: integer);
+begin
+  fTopMargin := Value;
+end;
+
+end.

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2015/08/13 15:36:59.000.644,=Y:\Delphi Projects\Lib\SigFile\PropertyEditor\UnitSigFile7LinkedComponentsPropertyEditor.pas</Transaction>
+    <Transaction>2015/08/13 15:36:59.000.623,=Y:\Delphi Projects\Lib\SigFile\PropertyEditor\DlgLinkedComponents.pas</Transaction>
+    <Transaction>2015/08/13 15:39:48.000.678,Y:\Delphi Projects\Lib\SigFile\PropertyEditor\DlgLinkedComponents.pas=</Transaction>
+    <Transaction>2015/08/13 15:40:14.000.851,Y:\Delphi Projects\Lib\SigFile\PropertyEditor\UnitSigFile7LinkedComponentsPropertyEditor.pas=</Transaction>
+    <Transaction>2015/08/14 13:54:41.000.249,=\\psf\Home\Delphi Projects\Lib\SigFrameGrid\SigFrameGrid.pas</Transaction>
+  </Transactions>
+</BorlandProject>

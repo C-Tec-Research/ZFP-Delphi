@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2015/08/13 10:34:26.012,=\\psf\Home\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2015/08/13 10:36:30.177,Y:\Delphi Projects\Lib\SigFile\PropertyEditor\UnitSigFile7PropertyEditorMain.dfm=\\psf\Home\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>2015/08/13 10:36:30.177,Y:\Delphi Projects\Lib\SigFile\PropertyEditor\UnitSigFile7PropertyEditorMain.pas=\\psf\Home\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2015/08/13 10:36:49.182,Y:\Delphi Projects\Lib\SigFile\PropertyEditor\ProjectSigFile7PropertyEditor.dproj=\\psf\Home\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2015/08/13 10:37:36.089,=Y:\Delphi Projects\Lib\SigFile\PropertyEditor\Unit3.pas</Transaction>
+    <Transaction>2015/08/13 10:40:07.277,=Y:\Delphi Projects\Lib\SigPanel\SigPanel.pas</Transaction>
+    <Transaction>2015/08/13 10:41:09.175,Y:\Delphi Projects\Lib\SigFile\PropertyEditor\DlgLinkedComponents.pas=Y:\Delphi Projects\Lib\SigFile\PropertyEditor\Unit3.pas</Transaction>
+    <Transaction>2015/08/13 10:41:09.175,Y:\Delphi Projects\Lib\SigFile\PropertyEditor\DlgLinkedComponents.dfm=Y:\Delphi Projects\Lib\SigFile\PropertyEditor\Unit3.dfm</Transaction>
+    <Transaction>2015/08/13 12:42:12.078,=Y:\Delphi Projects\Lib\SigFile\PropertyEditor\Unit1.pas</Transaction>
+    <Transaction>2015/08/13 12:42:56.127,Y:\Delphi Projects\Lib\SigFile\PropertyEditor\UnitSigFile7LinkedComponentsPropertyEditor.pas=Y:\Delphi Projects\Lib\SigFile\PropertyEditor\Unit1.pas</Transaction>
+    <Transaction>2015/08/13 13:00:53.833,=\\psf\Home\Delphi Projects\Lib\SigFile\SigFile7.pas</Transaction>
+    <Transaction>2015/08/13 13:15:49.551,=\\psf\Home\Delphi Projects\Lib\SigFile\UnitListComponents.pas</Transaction>
+  </Transactions>
+</BorlandProject>

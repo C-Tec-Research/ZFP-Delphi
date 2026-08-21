@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet>
+  <view uin="jm720huktcwgzvg_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:SigNET:Objects.TGroup">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TGroup.Name[]" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TGroup.FName" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:SigNET:Objects.TZoneList">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TZoneList.Create(Classes.TComponent)" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TZoneList.Destroy()" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TZoneList.Zone" />
+      <reference referencedUin="delphi:l_ast:src:SigNET:Objects.TZoneList.Zone" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:SigNET:Objects.TSiteConfig">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.PanelLocation[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.SoundersPulsed[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.MaintenanceDate[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.MaintenanceString[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.AL2Code[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.AL3Code[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.CopyTime[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.ClientAddress1[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.DateEnabled[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.ClientAddress2[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.ClientAddress3[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.ClientAddress4[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.FaultLockout[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.ClientAddress5[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.ClientName[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.InstallerAddress1[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.PhasedDelay[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.InstallerAddress2[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.Loop2[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.InstallerAddress3[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.Engineer[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.InstallerAddress4[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.EngineerNo[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.InstallerAddress5[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.MainVersion[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.InstallerName[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.FrontPanel[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TSiteConfig.Loop1[]" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FAL2Code" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FAL3Code" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FClientAddress1" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FClientAddress2" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FClientAddress3" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FClientAddress4" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FClientAddress5" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FClientName" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FCopyTime" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FDateEnabled" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FEngineer" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FEngineerNo" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FFaultLockout" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FFrontPanel" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FInstaller" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FInstallerAddress1" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FInstallerAddress2" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FInstallerAddress3" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FInstallerAddress4" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FInstallerAddress5" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FLoop1" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TSiteConfig.Create(Classes.TComponent)" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FLoop2" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TSiteConfig.GetMainVersion()" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FMaintenanceDate" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FMaintenanceString" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FMainVersion" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FPanelLocation" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FPhasedDelay" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSiteConfig.FSoundersPulsed" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:SigNET:Objects.TGroupList">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TGroupList.Create(Classes.TComponent)" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TGroupList.Destroy()" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TGroupList.Group" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TGroupList.OutputSet" />
+      <reference referencedUin="delphi:l_ast:src:SigNET:Objects.TGroupList.Group" />
+      <reference referencedUin="delphi:l_ast:src:SigNET:Objects.TGroupList.OutputSet" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:SigNET:Objects.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.Register()" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:SigNET:Objects.TNetwork">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TNetwork.FName" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TNetwork.Fitted[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TNetwork.Name[]" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TNetwork.FBoolean" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:SigNET:Objects.TDeviceType">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TDeviceType.FName" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TDeviceType.Create()" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TDeviceType.GetHint()" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TDeviceType.Hint[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TDeviceType.DevType[]" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TDeviceType.FDevType" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TDeviceType.Group[]" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TDeviceType.FHint" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TDeviceType.Zone[]" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TDeviceType.FGroup" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TDeviceType.Name[]" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TDeviceType.FZone" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:SigNET:Objects.TAFPLoop">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TAFPLoop.ShortDeviceName(System.Int32)" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TAFPLoop.Device" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TAFPLoop.FSystemType" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TAFPLoop.FAsIOUnit" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TAFPLoop.FGroup" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TAFPLoop.NoLoopDevices[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TAFPLoop.AsIOUnit[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TAFPLoop.DevIndex[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TAFPLoop.Group[]" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TAFPLoop.FDevIndex" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TAFPLoop.SystemType[]" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TAFPLoop.Create(Classes.TComponent)" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TAFPLoop.Destroy()" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TAFPLoop.FullDeviceName(System.Int32)" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TAFPLoop.GetNoLoopDevices()" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TAFPLoop.IsGroup(System.Int32)" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TAFPLoop.IsSet(System.Int32)" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TAFPLoop.IsZoneSet(System.Int32)" />
+      <reference referencedUin="delphi:l_ast:src:SigNET:Objects.TAFPLoop.FSystemType" />
+      <reference referencedUin="delphi:l_ast:src:SigNET:Objects.TAFPLoop.Device" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:SigNET:Objects.TSystemType">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSystemType.stApolloLoop" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSystemType.stNittanLoop" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TSystemType.stSysSensorLoop" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:SigNET:Objects.TRepeaterList">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TRepeaterList.FSegment" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TRepeaterList.Output" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TRepeaterList.Repeater" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TRepeaterList.PanelName[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TRepeaterList.Segment[]" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TRepeaterList.Create(Classes.TComponent)" />
+      <reference referencedUin="delphi:e_method:src:SigNET:Objects.TRepeaterList.Destroy()" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TRepeaterList.FPanelName" />
+      <reference referencedUin="delphi:l_ast:src:SigNET:Objects.TRepeaterList.Output" />
+      <reference referencedUin="delphi:l_ast:src:SigNET:Objects.TRepeaterList.Repeater" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:SigNET:Objects.TZone">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TZone.MCP[]" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TZone.Name[]" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TZone.ZoneSet" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TZone.NonFire[]" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TZone.CCTS" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TZone.RemoteDelay[]" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TZone.FDetector" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TZone.SounderDelay[]" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TZone.FMCP" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TZone.FName" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TZone.FNonFire" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TZone.FRemoteDelay" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TZone.FSounderDelay" />
+      <reference referencedUin="delphi:e_field:src:SigNET:Objects.TZone.Group" />
+      <reference referencedUin="delphi:e_property:src:SigNET:Objects.TZone.Detector[]" />
+    </reference>
+  </view>
+</nodeSet>

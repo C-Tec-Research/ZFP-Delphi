@@ -1,0 +1,189 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{F6553D96-74C3-4986-A306-0559AF32253A}</ProjectGuid>
+			<MainSource>SigNET.dpk</MainSource>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_DependencyCheckOutputName>SigNET.bpl</DCC_DependencyCheckOutputName>
+			<DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
+			<DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_BplOutput>C:\Delphi Projects\Lib</DCC_BplOutput>
+			<DCC_UnitSearchPath>C:\Delphi Projects\Lib;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_Platform>x86</DCC_Platform>
+			<DCC_S>false</DCC_S>
+			<DCC_N>true</DCC_N>
+			<GenDll>true</GenDll>
+			<DCC_OutputNeverBuildDcps>true</DCC_OutputNeverBuildDcps>
+			<DCC_E>false</DCC_E>
+			<GenPackage>true</GenPackage>
+			<DCC_K>false</DCC_K>
+			<DCC_F>false</DCC_F>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="SigNET.dpk">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="Comms\ComDrv32.dcr"/>
+			<DCCReference Include="Comms\comm32.dcr"/>
+			<DCCReference Include="MemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="SigImage\SigImage.dcr"/>
+			<DCCReference Include="StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="USB\USBPanel.dcr"/>
+			<DCCReference Include="SigBrand\SigBrand.dcr"/>
+			<DCCReference Include="SigTime32\SigTime32.dcr"/>
+			<DCCReference Include="Comms\iComPort.dcr"/>
+			<DCCReference Include="Printer\FormSettings.dcr"/>
+			<None Include="ModelSupport_SigNET\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\SigImage\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\SigNETStringGrid\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\SigRegistry\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\SigBrand\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\SigComPort\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\ss2ncomm\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\ComDrv32\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\PanelComms\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\Ole2\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\QObjects\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\QueryMsg\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\SigSpinEdit\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\StdMainMenu\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\MemoMessage\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\Common\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\TimeSpinButton\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\UnitManagedControlList\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\Misc\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\SS2NMsg\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\UnitMessageFile\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\Sigparse\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\SigTime32\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\USBPanel\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\Comm32\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\Sigload\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\Companel\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\RichEditLog\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\default.txvpck"/>
+			<None Include="ModelSupport_SigNET\QObjects\default.txvpck"/>
+			<None Include="ModelSupport_SigNET\Objects\default.txaPackage"/>
+			<None Include="ModelSupport_SigNET\Objects\default.txvpck"/>
+			<DCCReference Include="rtl.dcp"/>
+			<DCCReference Include="vcl.dcp"/>
+			<DCCReference Include="VclSmp.dcp"/>
+			<DCCReference Include="vclx.dcp"/>
+			<DCCReference Include="dbrtl.dcp"/>
+			<DCCReference Include="vcldb.dcp"/>
+			<DCCReference Include="bdertl.dcp"/>
+			<DCCReference Include="vcldbx.dcp"/>
+			<DCCReference Include="tee.dcp"/>
+			<DCCReference Include="SigSpinEdit\SigSpinEdit.pas"/>
+			<DCCReference Include="Comms\ComDrv32.pas"/>
+			<DCCReference Include="Comms\comm32.pas"/>
+			<DCCReference Include="Comms\companel.pas"/>
+			<DCCReference Include="Comms\SS2NMsg.pas"/>
+			<DCCReference Include="Comms\misc.pas"/>
+			<DCCReference Include="Comms\QueryMsg.pas"/>
+			<DCCReference Include="Comms\ss2ncomm.pas"/>
+			<DCCReference Include="ManagedControlList\UnitManagedControlList.pas"/>
+			<DCCReference Include="MemoMessage\UnitMessageFile.pas"/>
+			<DCCReference Include="MemoMessage\MemoMessage.pas"/>
+			<DCCReference Include="SigImage\SigImage.pas"/>
+			<DCCReference Include="StdMainMenu\StdMainMenu.pas"/>
+			<DCCReference Include="TimeSpinButton\TimeSpinButton.pas"/>
+			<DCCReference Include="USB\USBPanel.pas"/>
+			<DCCReference Include="C:\Program Files\Borland\BDS\4.0\source\Win32\rtl\win\Ole2.pas"/>
+			<DCCReference Include="SigBrand\SigBrand.pas"/>
+			<DCCReference Include="Sigload.pas"/>
+			<DCCReference Include="SigStringGrid\SigNETStringGrid.pas"/>
+			<DCCReference Include="sigparse.pas"/>
+			<DCCReference Include="SigRegistry\SigRegistry.pas"/>
+			<DCCReference Include="SigTime32\SigTime32.pas"/>
+			<DCCReference Include="RichEditLog\RichEditLog.pas"/>
+			<DCCReference Include="Common\Common.pas"/>
+			<DCCReference Include="Comms\PanelComms.pas"/>
+			<DCCReference Include="SigComPort\SigComPort.pas"/>
+			<DCCReference Include="Quantec Objects\QObjects.pas"/>
+			<DCCReference Include="AFP Objects\Objects.pas"/>
+			<DCCReference Include="Comms\iComPort.pas"/>
+			<DCCReference Include="Printer\PrevPrinter.pas"/>
+			<DCCReference Include="Printer\AppendNavigator.pas"/>
+			<DCCReference Include="Printer\FormSettings.pas"/>
+			<DCCReference Include="Printer\Gopage.pas"/>
+			<DCCReference Include="Printer\PageSetupDlg.pas"/>
+			<DCCReference Include="Printer\PrevForm.pas"/>
+			<DCCReference Include="UnitMemoryMap.pas"/>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>Package</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">SigNET.dpk</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">2057</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

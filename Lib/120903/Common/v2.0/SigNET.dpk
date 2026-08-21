@@ -1,0 +1,54 @@
+package SigNET;
+
+{$R *.RES}
+{$R 'SigBrand.dcr'}
+{$R '..\Comms\comm32.dcr'}
+{$R '..\Comms\ComDrv32.dcr'}
+{$R '..\Comms\iComPort.dcr'}
+{$R 'SigTime32.dcr'}
+{$ALIGN ON}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE ON}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $00400000}
+{$IMPLICITBUILD OFF}
+
+requires
+  vcl40,
+  VCLSMP40;
+
+contains
+  Companel in '..\Comms\companel.pas',
+  ss2ncomm in '..\Comms\ss2ncomm.pas',
+  Comport in '..\Comms\ComPort.pas',
+  QueryMsg in '..\Comms\QueryMsg.pas',
+  SS2NMsg in '..\Comms\SS2NMsg.pas',
+  Common in 'Common.pas',
+  Sigload in 'Sigload.pas',
+  SigBrand in 'SigBrand.pas',
+  OLE2 in '..\..\Program Files\Borland\Delphi4\Source\Rtl\Win\ole2.pas',
+  Misc in '..\Comms\misc.pas',
+  Comm32 in '..\Comms\comm32.pas',
+  ComDrv32 in '..\Comms\ComDrv32.pas',
+  iComPort in '..\Comms\iComPort.pas',
+  SigTime32 in 'SigTime32.pas',
+  SigNETStringGrid in 'SigNETStringGrid.pas',
+  SigSpinEdit in '..\Lib\SigSpinEdit.pas';
+
+end.

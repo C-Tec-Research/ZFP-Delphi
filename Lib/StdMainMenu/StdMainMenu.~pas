@@ -1,0 +1,1460 @@
+unit StdMainMenu;
+
+interface
+
+uses
+  SysUtils,
+  Classes,
+  Menus,
+  SigRegistry,
+  Forms,
+  Dialogs,
+  Controls,
+  Contnrs,
+  SigParse;
+
+type
+  TCheckDirty = procedure( var IsDirty : boolean ) of object;
+  TOnFileAction = procedure( Sender : TObject; FileName : string; var Success : boolean ) of object;
+
+  TMenuLocation = (mlMain, mlFile, mlHelp);
+
+type
+  TCustomStdMainMenu = class(TComponent)
+  private
+    { Private declarations }
+  protected
+    { Protected declarations }
+    iMainMenu : TMainMenu;
+    iSigRegistry : tSigRegistry;
+    iFileMenu : tMenuItem;
+    iHelpMenu : tMenuItem;
+    iSaveAsMenu : tMenuItem;
+    iAboutMenu : tMenuItem;
+    iHistory : array [ 0..9 ] of tMenuItem;
+    iOwningForm : TForm;
+    iCheckDirty : TCheckDirty;
+    iChainClose : TCloseEvent;
+    iOnFileCreate : TOnFileAction;
+    iClearDirty : TNotifyEvent;
+    iOnAboutClick : TNotifyEvent;
+    iOnFileSave : TOnFileAction;
+    iOnFileLoad : TOnFileAction;
+    iAfterFileLoad : TNotifyEvent;
+    iSaveDialog : TSaveDialog;
+    iFileName : string;
+    iFilter : string;
+    iDefaultExt : string;
+    function fGetOnAbout : TNotifyEvent;
+    procedure fSetOnAbout( NewVal : TNotifyEvent );
+    procedure fExit( Sender : TObject );
+    procedure fOnHistoryClick( Sender : TObject );
+
+    procedure fClose( Sender : TObject; var Action : TCloseAction );
+
+    function fFileNewEx( Sender : TObject ) : TModalResult;
+
+    procedure fFileSave( Sender : TObject );
+    function fFileSaveEx( Sender : TObject ) : TModalResult;
+
+    procedure fFileSaveAs( Sender : TObject );
+    function fFileSaveAsEx( Sender : TObject ) : TModalResult;
+
+    function fGetFilter : string;
+    procedure fSetFilter( NewVal : string );
+
+    function fGetDefaultExt : string;
+    procedure fSetDefaultExt( NewVal : string );
+
+    function fSaveIfDirty( Sender : TObject ) : TModalResult;
+    function fSave( Sender : TObject ) : TModalResult; virtual;
+
+    function fGetDirty : boolean; virtual;
+    procedure fSetDirty( NewVal : boolean ); virtual;
+
+    function FileCreate( Sender : TObject; pWithName : string ) : TModalResult; virtual;
+    procedure FileLoad( Sender : TObject; pWithName : string ); virtual;
+  public
+    { Public declarations }
+    constructor Create(AOwner: TComponent); override;
+
+    procedure FileNew( Sender : TObject );
+    procedure ShowHistory;
+
+    procedure AddMenuEntry( pWhere : TMenuLocation; pNewVal : tMenuItem );
+             {
+               pWhere must be
+               TMenuLocation = (mlMain, mlFile, mlHelp);
+               if it it mlMain, then a new entry is added on the
+                 main menu bar just before the help menu
+             }
+    procedure AfterConstruction; override;
+  protected
+    property SigRegistry : tSigRegistry
+             read iSigRegistry
+             write iSigRegistry;
+    property CheckDirty : tCheckDirty
+             read iCheckDirty
+             write iCheckDirty;
+    property ClearDirty : tNotifyEvent
+             read iClearDirty
+             write iClearDirty;
+    property FileName : string
+             read iFileName
+             write iFileName;
+    property Filter : string
+             read fGetFilter
+             write fSetFilter;
+    property DefaultExt : string
+             read fGetDefaultExt
+             write fSetDefaultExt;
+    property OnFileSave : TOnFileAction
+             read iOnFileSave
+             write iOnFileSave;
+    property OnFileCreate : TOnFileAction
+             read iOnFileCreate
+             write iOnFileCreate;
+    property OnFileLoad : TOnFileAction
+             read iOnFileLoad
+             write iOnFileLoad;
+    property AfterFileLoad : TNotifyEvent
+             read iAfterFileLoad
+             write iAfterFileLoad;
+    property OnAboutClick : TNotifyEvent
+             read fGetOnAbout
+             write fSetOnAbout;
+    property MainMenu : TMainMenu
+             read iMainMenu; // read only!
+    property OnParentClose : TCloseEvent
+             read iChainClose
+             write iChainClose;
+    property IsDirty : boolean
+             read fGetDirty
+             write fSetDirty;
+  end;
+
+  TStdMainMenu = class(TCustomStdMainMenu)
+  public
+    property MainMenu;
+    property SigRegistry;
+  published
+    property CheckDirty;
+    property ClearDirty;
+    property FileName;
+    property Filter;
+    property DefaultExt;
+    property OnFileSave;
+    property OnAboutClick;
+    property OnParentClose;
+    property OnFileCreate;
+    property IsDirty;
+    property OnFileLoad;
+    property AfterFileLoad;
+  end;
+
+  TStdFileProperty = class
+  protected
+    iIsDirty : boolean;
+    iName : string;
+    iIndex : string;
+    iValue : string;
+    function fGetAsString : string; virtual;
+    procedure fSetAsString( NewVal : string); virtual;
+    function fGetIsDirty : boolean; virtual;
+    procedure fSetIsDirty( NewVal : boolean ); virtual;
+  public
+    constructor Create( pName : string; pIndex : string = '' ); virtual;
+    function Save( var F : TextFile; indent : integer ) : boolean; virtual;
+//    function Load( var F : TextFile ) : boolean; virtual;
+    property AsString : string
+             read fGetAsString
+             write fSetAsString;
+    property IsDirty : boolean
+             read fGetIsDirty
+             write fSetIsDirty;
+    property Name : string
+             read iName;
+    property Index : string
+             read iIndex;
+    class function GetPreferredForm( OfText : string ) : string; virtual;
+    class function IsFixedList : boolean; virtual;
+    class function IsLegalValue( TestVal : string ) : boolean; virtual; abstract;
+    class procedure FillLegalValues( TestList : TStrings ); virtual; abstract;
+  end;
+
+  TStdFileBooleanProperty = class( TStdFileProperty )
+  protected
+    function fGetAsBoolean : boolean;
+    procedure fSetAsBoolean( NewVal : boolean ); virtual;
+    procedure fSetAsString( NewVal : string); override;
+  public
+    class function GetPreferredForm( OfText : string ) : string; override;
+    class function IsFixedList : boolean; override;
+    class function IsLegalValue( TestVal : string ) : boolean; override;
+    class procedure FillLegalValues( TestList : TStrings ); override;
+    class function TextToBoolean( TestVal : string ) : boolean;
+    property AsBoolean : boolean
+             read fGetAsBoolean
+             write fSetAsBoolean;
+  end;
+
+  TStdFileYesNoProperty = class( TStdFileBooleanProperty )
+  protected
+  public
+    class function GetPreferredForm( OfText : string ) : string; override;
+    class procedure FillLegalValues( TestList : TStrings ); override;
+    procedure fSetAsBoolean( NewVal : boolean ); override;
+  end;
+
+  TStdFileStringProperty = class( TStdFileProperty )
+  protected
+  public
+    class function IsLegalValue( TestVal : string ) : boolean; override;
+    class procedure FillLegalValues( TestList : TStrings ); override;
+  end;
+
+  TStdFilePropertyList = class( TObjectList )
+  protected
+    iIsDirty : boolean;
+    function fGetPropertyByIndex( index : integer ) : TStdFileProperty;
+    function fGetPropertyByName( index : string ) : TStdFileProperty;
+    function fGetIndexedProperty( name : string; index : string ) : TStdFileProperty;
+    function fGetIsDirty : boolean;
+    procedure fSetIsDirty( NewVal : boolean );
+  public
+    constructor Create;
+    function Add( NewVal : TStdFileProperty ) : integer; reintroduce;
+    function Save( var F : TextFile; indent : integer ) : boolean;
+//    function Load( var F : TextFile ) : boolean;
+    property PropertyByIndex[ index : integer ] : TStdFileProperty
+             read fGetPropertyByIndex;
+    property PropertyByName[ index : string ] : TStdFileProperty
+             read fGetPropertyByName;
+    property IndexedProperty[ name : string; index : string ] : TStdFileProperty
+             read fGetIndexedProperty;
+    property IsDirty : boolean
+             read fGetIsDirty
+             write fSetIsDirty;
+  end;
+
+  TStdFileMultiLineProperty = class( TStdFileStringProperty )
+  protected
+  public
+    function Load( var F : TextFile ) : boolean; virtual; abstract;
+  end;
+
+  TStdFileMemoProperty = class( TStdFileMultiLineProperty)
+  protected
+    iData : TStringList;
+    procedure fOnChange( Sender : TObject );
+    function fGetAsString : string; override;
+    procedure fSetAsString( NewVal : string); override;
+  public
+    constructor Create( pName : string; pIndex : string = '' ); override;
+    destructor Destroy; override;
+    function Save( var F : TextFile; indent : integer ) : boolean; override;
+    function Load( var F : TextFile ) : boolean; override;
+    property Memo : TStringList
+             read iData; // read only property
+  end;
+
+  TStdFileObject = class( TStdFileMultiLineProperty )
+  protected
+    iProperties : TStdFilePropertyList;
+    function fGetIsDirty : boolean; override;
+    procedure fSetIsDirty( NewVal : boolean ); override;
+    function fGetPropertyCount : integer;
+    function fGetItem( Index : integer ) : TStdFileProperty;
+  public
+    constructor Create( pName : string; pIndex : string = '' ); override;
+    destructor Destroy; override;
+    function Save( var F : TextFile; indent : integer ) : boolean; override;
+    function Load( var F : TextFile ) : boolean; override;
+    function CreateObjectFromText( pText : string; pIndex : string ) : tStdFileProperty; virtual;
+    property PropertyCount : integer
+             read fGetPropertyCount;
+    property Properties : TStdFilePropertyList
+             read iProperties;
+    function Add( NewVal : TStdFileProperty ) : integer;
+    procedure Insert( AtIndex : integer; NewVal : TStdFileProperty );
+    property Item[ index : integer ] : TStdFileProperty
+             read fGetItem; default;
+  end;
+
+  TStdFile = class
+  protected
+    iProperties : TStdFilePropertyList;
+    procedure fSetDirty( NewVal : boolean );
+    function fGetDirty : boolean;
+    function fGetProperty( index : string ) : TStdFileProperty;
+    function fGetIndexedProperty( name : string; index : string ) : TStdFileProperty;
+  public
+    constructor Create;
+    destructor Destroy; override;
+    procedure Add( NewVal : TStdFileProperty );
+    property IsDirty : boolean
+             read fGetDirty
+             write fSetDirty;
+    function Save( var F : TextFile ) : boolean;
+    function Load( var F : TextFile ) : boolean;
+    function CreateObjectFromText( pText : string; pIndex : string ) : tStdFileProperty; virtual;
+    property StdProperty[ index : string ] : TStdFileProperty
+             read fGetProperty; default;
+    property IndexedProperty[ name : string; index : string ] : TStdFileProperty
+             read fGetIndexedProperty;
+  end;
+
+  TStdFileMenu = class(TCustomStdMainMenu)
+  {
+    Like StdMainMenu but also does all the file handling
+    internally
+  }
+  protected
+    iFile : tStdFile;
+    procedure fSetStdFile( NewVal : TStdFile );
+    function fGetPropertyByName( index : string ) : TStdFileProperty;
+    function fGetIndexedProperty( name : string; index : string ) : TStdFileProperty;
+    function fGetDirty : boolean; override;
+    procedure fSetDirty( NewVal : boolean ); override;
+    function fSave( Sender : TObject ) : TModalResult; override;
+    function FileCreate( Sender : TObject; pWithName : string ) : TModalResult; override;
+  public
+
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+
+    procedure FileLoad( Sender : TObject; pWithName : string ); override;
+
+    property MainMenu;
+    property SigRegistry;
+    property PropertyByName[ index : string ] : TStdFileProperty
+             read fGetPropertyByName; default;
+    property IndexedProperty[ name : string; index : string ] : TStdFileProperty
+             read fGetIndexedProperty;
+  published
+    property FileName;
+    property Filter;
+    property DefaultExt;
+    property OnAboutClick;
+    property OnParentClose;
+    property OnFileCreate;
+    property OnFileLoad;
+    property AfterFileLoad;
+    property StdFile : tStdFile
+             read iFile
+             write fSetStdFile;
+  end;
+
+procedure Register;
+
+implementation
+
+procedure Register;
+begin
+  RegisterComponents('SigNET', [TStdMainMenu, TStdFileMenu]);
+end;
+
+
+constructor TCustomStdMainMenu.Create( AOwner : TComponent );
+begin
+  inherited Create( AOwner );
+
+  iOwningForm := AOwner as TForm;
+
+end;
+
+procedure TCustomStdMainMenu.AfterConstruction;
+var
+  NewItem : TMenuItem;
+  i : integer;
+begin
+  if not (csDesigning in ComponentState) then
+  begin
+
+    iSigRegistry := TSigRegistry.Create( self );
+
+    iSigRegistry.Key := Application.ExeName;
+
+    iMainMenu := TMainMenu.Create( iOwningForm );
+
+    with iMainMenu do
+    begin
+      iFileMenu := TMenuItem.Create( iOwningForm );
+      Items.Add( iFileMenu );
+      iFileMenu.Caption := '&File';
+
+      iHelpMenu := TMenuItem.Create( iOwningForm );
+      Items.Add( iHelpMenu );
+      iHelpMenu.Caption := '&Help';
+
+      NewItem := TMenuItem.Create( iOwningForm );
+      iFileMenu.Add( NewItem );
+      NewItem.Caption := '&New';
+      NewItem.ShortCut := TextToShortCut( 'Ctrl+N' );
+      NewItem.Name := 'StdMenuNew';
+      NewItem.OnClick := FileNew;
+
+      NewItem := TMenuItem.Create( iOwningForm );
+      iFileMenu.Add( NewItem );
+      NewItem.Caption := '&Open';
+      NewItem.ShortCut := TextToShortCut( 'Ctrl+O' );
+      NewItem.Name := 'StdMenuOpen';
+
+      NewItem := TMenuItem.Create( iOwningForm );
+      iFileMenu.Add( NewItem );
+      NewItem.Caption := '&Save';
+      NewItem.ShortCut := TextToShortCut( 'Ctrl+S' );
+      NewItem.Name := 'StdMenuSave';
+      NewItem.OnClick := fFileSave;
+
+      iSaveAsMenu := TMenuItem.Create( iOwningForm );
+      iFileMenu.Add( iSaveAsMenu );
+      iSaveAsMenu.Caption := 'Save &As';
+      iSaveAsMenu.ShortCut := TextToShortCut( 'Ctrl+A' );
+      iSaveAsMenu.Name := 'StdMenuSaveAs';
+      iSaveAsMenu.OnClick := fFileSaveAs;
+
+      NewItem := TMenuItem.Create( iOwningForm );
+      iFileMenu.Add( NewItem );
+      NewItem.Caption := '-';
+
+      for i := 0 to 9 do
+      begin
+        iHistory[ i ] := TMenuItem.Create( iOwningForm );
+        iFileMenu.Add( iHistory[ i ] );
+        iHistory[ i ].Tag := i;
+        iHistory[ i ].Name := 'StdMenuHistory' + IntToStr( i );
+        iHistory[ i ].OnClick := fOnHistoryClick;
+      end;
+
+      NewItem := TMenuItem.Create( iOwningForm );
+      iFileMenu.Add( NewItem );
+      NewItem.Caption := '-';
+
+      NewItem := TMenuItem.Create( iOwningForm );
+      iFileMenu.Add( NewItem );
+      NewItem.Caption := 'E&xit';
+      NewItem.ShortCut := TextToShortCut( 'Alt+F4' );
+      NewItem.OnClick := fExit;
+
+      iAboutMenu := TMenuItem.Create( iOwningForm );
+      iHelpMenu.Add( iAboutMenu );
+      iAboutMenu.Caption := '&About';
+      iAboutMenu.Name := 'StdMenuAbout';
+
+    end;
+
+    ShowHistory;
+
+//    iChainClose := iOwningForm.OnClose;
+    iOwningForm.OnClose := fClose;
+
+    iSaveDialog := TSaveDialog.Create( iOwningForm );
+    iSaveDialog.Options := iSaveDialog.Options + [ ofOverwritePrompt ];
+
+    iOwningForm.Menu := iMainMenu;
+
+//    fFileNewEx( self );
+//    FileCreate( self, '' );
+  end;
+
+end;
+
+function TCustomStdMainMenu.fGetOnAbout : TNotifyEvent;
+begin
+  result := iOnAboutClick;
+end;
+
+procedure TCustomStdMainMenu.fSetOnAbout( NewVal : TNotifyEvent );
+begin
+  iOnAboutClick := NewVal;
+  if not (csDesigning in ComponentState) then
+  begin
+    iAboutMenu.OnClick := NewVal;
+  end;
+end;
+
+function TCustomStdMainMenu.fGetDirty : boolean;
+begin
+  Result := FALSE;
+  if assigned( iCheckDirty ) then iCheckDirty( result );
+end;
+
+procedure TCustomStdMainMenu.fSetDirty( NewVal : boolean );
+begin
+  // by default does nothing
+end;
+
+procedure TCustomStdMainMenu.fClose( Sender : TObject; var Action : TCloseAction );
+begin
+  if fSaveIfDirty( Sender ) = mrCancel then
+  begin
+    Action := caNone;
+  end
+  else if assigned( iChainClose ) then
+  begin
+    iChainClose( Sender, Action );
+  end;
+end;
+
+procedure TCustomStdMainMenu.fExit( Sender : TObject );
+begin
+  iOwningForm.Close;
+end;
+
+procedure TCustomStdMainMenu.ShowHistory;
+var
+  i : integer;
+  iCaption : string;
+begin
+  for i := 0 to 9 do
+  begin
+    iCaption := iSigRegistry.History[ i ];
+    if iCaption = '' then
+    begin
+      iHistory[ i ].Visible := FALSE;
+    end
+    else
+    begin
+      iHistory[ i ].Caption := iCaption;
+      iHistory[ i ].Visible := TRUE;
+    end;
+  end;
+end;
+
+procedure TCustomStdMainMenu.FileLoad( Sender : TObject; pWithName : string );
+var
+  iSuccess : boolean;
+begin
+  if assigned( iOnFileLoad ) then
+  begin
+    iSuccess := TRUE;
+    iOnFileLoad( Sender, pWithName, iSuccess );
+  end;
+  if iSuccess then
+  begin
+    if assigned( iAfterFileLoad ) then
+    begin
+      iAfterFileLoad( Sender );
+    end;
+  end;
+end;
+
+procedure TCustomStdMainMenu.fOnHistoryClick( Sender : TObject );
+begin
+  if fSaveIfDirty( Sender ) <> mrCancel then
+  begin
+    FileCreate( Sender, iSigRegistry.History[ TMenuItem( Sender ).Tag ] );
+    FileLoad( Sender, iSigRegistry.History[ TMenuItem( Sender ).Tag ] );
+  end;
+end;
+
+procedure TCustomStdMainMenu.FileNew( Sender : TObject );
+begin
+  fFileNewEx( Sender );
+end;
+
+function TCustomStdMainMenu.fSaveIfDirty( Sender : TObject ) : TModalResult;
+begin
+  if IsDirty then
+  begin
+    Result := MessageDlg( 'File has changed. Do you wish to save changes?', mtWarning, mbYesNoCancel, 0 );
+    case Result of
+      mrYes:
+      begin
+        Result := fFileSaveEx( Sender );
+      end;
+    end;
+  end
+  else
+  begin
+    Result := mrOK;
+  end;
+end;
+
+function TCustomStdMainMenu.FileCreate( Sender : TObject; pWithName : string ) : TModalResult;
+var
+  iSuccess : boolean;
+begin
+  Result := mrOK;
+  iSuccess := TRUE;
+  if assigned( iOnFileCreate ) then
+  begin
+    iOnFileCreate( Sender, pWithName, iSuccess );
+    if iSuccess then
+    begin
+      if assigned( iClearDirty ) then iClearDirty( Sender );
+    end
+    else
+    begin
+      Result := mrCancel;
+    end;
+  end;
+end;
+
+function TCustomStdMainMenu.fFileNewEx( Sender : TObject ) : tModalResult;
+begin
+  Result := fSaveIfDirty( Sender );
+  if Result <> mrCancel then
+  begin
+    Result := FileCreate( Sender, '' );
+  end;
+end;
+
+procedure TCustomStdMainMenu.fFileSave( Sender : TObject );
+begin
+  fFileSaveEx( Sender );
+end;
+
+function TCustomStdMainMenu.fSave( Sender : TObject ) : TModalResult;
+var
+  iSuccess : boolean;
+begin
+  Result := mrOK;
+  if assigned( iOnFileSave ) then
+  begin
+    iSuccess := TRUE;
+    iOnFileSave( self, iFileName, iSuccess );
+    if not iSuccess then
+    begin
+      Result := mrCancel;
+    end;
+  end;
+end;
+
+function TCustomStdMainMenu.fFileSaveEx( Sender : TObject ) : TModalResult;
+begin
+  if iFileName = '' then
+  begin
+    Result := fFileSaveAsEx( Sender );
+  end
+  else
+  begin
+    Result := fSave( Sender );
+    if assigned( iClearDirty ) then iClearDirty( Sender );
+    iSigRegistry.SetHistory( iFileName );
+  end;
+end;
+
+procedure TCustomStdMainMenu.fFileSaveAs( Sender : TObject );
+begin
+  fFileSaveAsEx( Sender );
+end;
+
+function TCustomStdMainMenu.fFileSaveAsEx( Sender : TObject ) : TModalResult;
+begin
+  if iFileName <> '' then
+  begin
+    iSaveDialog.InitialDir := ExtractFilePath( iFileName );
+  end;
+  iSaveDialog.FileName := ExtractFileName( iFileName );
+  if iSaveDialog.Execute then
+  begin
+    iFileName := iSaveDialog.FileName;
+    Result := fFileSaveEx( Sender );
+  end
+  else
+  begin
+    // cancelled
+    Result := mrCancel;
+  end;
+end;
+
+function TCustomStdMainMenu.fGetFilter : string;
+begin
+  Result := iFilter;
+end;
+
+procedure TCustomStdMainMenu.fSetFilter( NewVal : string );
+begin
+  iFilter := NewVal;
+  if not (csDesigning in ComponentState) then
+  begin
+    iSaveDialog.Filter := NewVal;
+  end;
+end;
+
+function TCustomStdMainMenu.fGetDefaultExt : string;
+begin
+  Result := iDefaultExt;
+end;
+
+procedure TCustomStdMainMenu.fSetDefaultExt( NewVal : string );
+begin
+  iDefaultExt := NewVal;
+  if not (csDesigning in ComponentState) then
+  begin
+    iSaveDialog.DefaultExt  := NewVal;
+  end;
+end;
+
+procedure TCustomStdMainMenu.AddMenuEntry( pWhere : TMenuLocation; pNewVal : tMenuItem );
+begin
+  case pWhere of
+    mlMain:
+    begin
+      iMainMenu.Items.Insert( 1, pNewVal );
+    end;
+    mlFile:
+    begin
+      iFileMenu.Insert( iFileMenu.IndexOf( iSaveAsMenu ) + 1, pNewVal );
+    end;
+    mlHelp:
+    begin
+      iHelpMenu.Insert( iHelpMenu.IndexOf( iSaveAsMenu ) + 1, pNewVal );
+    end;
+  end;
+end;
+
+//---------------------  TStdFileMenu -------------------
+
+
+procedure TStdFileMenu.fSetStdFile( NewVal : TStdFile );
+begin
+  iFile.Free;
+  iFile := NewVal;
+end;
+
+constructor TStdFileMenu.Create(AOwner: TComponent);
+begin
+  inherited Create( AOwner );
+end;
+
+destructor TStdFileMenu.Destroy;
+begin
+  iFile.Free;
+  inherited;
+end;
+
+function TStdFileMenu.fGetPropertyByName( index : string ) : TStdFileProperty;
+begin
+  Result := iFile.iProperties.PropertyByName[ index ];
+end;
+
+function TStdFileMenu.fGetIndexedProperty( name : string; index : string ) : TStdFileProperty;
+begin
+  Result := iFile.iProperties.IndexedProperty[ name, index ];
+end;
+
+function TStdFileMenu.fGetDirty : boolean;
+begin
+  Result := inherited fGetDirty;
+  if not Result then
+  begin
+    if assigned( iFile ) then
+    begin
+      Result := iFile.IsDirty;
+    end;
+  end;
+end;
+
+procedure TStdFileMenu.fSetDirty( NewVal : boolean );
+begin
+  inherited;
+  if assigned( iFile ) then
+  begin
+    iFile.IsDirty := NewVal;
+  end;
+end;
+
+procedure TStdFileMenu.FileLoad( Sender : TObject; pWithName : string );
+var
+  iSuccess : boolean;
+  F : TextFile;
+begin
+  if assigned( iOnFileLoad ) then
+  begin
+    iSuccess := TRUE;
+    iOnFileLoad( Sender, pWithName, iSuccess );
+    if iSuccess and assigned( iAfterFileLoad ) then
+    begin
+      iAfterFileLoad( Sender );
+    end;
+  end
+  else
+  begin
+
+    FileName := pWithName;
+
+    AssignFile( F, iFileName );
+    try
+      Reset( F );
+
+      if not iFile.Load( F ) then
+      begin
+        MessageDlg( 'File did not load correctly.', mtWarning, [ mbOK ], 0 );
+      end
+      else if assigned( iAfterFileLoad ) then
+      begin
+        iAfterFileLoad( Sender );
+      end;
+    finally
+      CloseFile( F );
+    end;
+
+  end;
+end;
+
+function TStdFileMenu.fSave( Sender : TObject ) : TModalResult;
+var
+  F : TextFile;
+begin
+  Result := mrOK;
+  AssignFile( F, iFileName );
+  try
+    Rewrite( F );
+
+    if not iFile.Save( F ) then
+    begin
+      Result := MessageDlg( 'File did not save correctly. Click OK to proceed anyway or Cancel to abort action.', mtWarning, mbOKCancel, 0 );
+    end;
+  finally
+    CloseFile( F );
+  end;
+end;
+
+function TStdFileMenu.FileCreate( Sender : TObject; pWithName : string ) : TModalResult;
+var
+  iSuccess : boolean;
+begin
+  Result := mrOK;
+  if assigned( iOnFileCreate ) then
+  begin
+    iSuccess := TRUE; // assume failure
+    iOnFileCreate( Sender, pWithName, iSuccess );
+    if not iSuccess then
+    begin
+      Result := mrCancel;
+      exit;
+    end;
+    if assigned( iClearDirty ) then iClearDirty( Sender );
+  end
+  else
+  begin
+    // user not taking responsibility, so auto create
+    StdFile := TStdFile.Create;
+    FileName := pWithName;
+  end;
+end;
+
+//---------------------- TStdFileProperty --------------
+
+constructor TStdFileProperty.Create( pName : string; pIndex : string );
+begin
+  inherited Create;
+  iIsDirty := FALSE;
+  iValue := '';
+  iName := pName;
+  iIndex := pIndex;
+end;
+
+class function TStdFileProperty.GetPreferredForm( OfText : string ) : string;
+begin
+  Result := OfText;
+end;
+
+class function TStdFileProperty.IsFixedList : boolean;
+begin
+  Result := FALSE;
+end;
+
+function TStdFileProperty.fGetAsString : string;
+begin
+  Result := iValue;
+end;
+
+procedure TStdFileProperty.fSetAsString( NewVal : string );
+begin
+  if iValue <> NewVal then
+  begin
+    iValue := NewVal;
+    iIsDirty := TRUE;
+  end;
+end;
+
+function TStdFileProperty.fGetIsDirty : boolean;
+begin
+  Result := iIsDirty;
+end;
+
+procedure TStdFileProperty.fSetIsDirty( NewVal : boolean );
+begin
+  iIsDirty := NewVal;
+  if NewVal <> iIsDirty then
+  begin
+    raise Exception.Create( 'Thr world has gone mad!' );
+  end;
+end;
+
+function TStdFileProperty.Save( var F : TextFile; indent : integer ) : boolean;
+begin
+  Write( F, StringOfChar( ' ', Indent ), iName );
+  if Index <> '' then
+  begin
+    Write( F, '( ', Index, ' )');
+  end;
+  if AsString = '' then
+  begin
+    WriteLn( F );
+  end
+  else
+  begin
+    WriteLn( F, ' = ', AsString );
+  end;
+  iIsDirty := FALSE;
+  Result := TRUE;
+end;
+
+//function TStdFileProperty.Load( var F : TextFile ) : boolean;
+//begin
+  // a property is loaded by its parent
+//end;
+
+//-------------- TStdFileObject -------------------
+
+constructor TStdFileObject.Create( pName : string; pIndex : string );
+begin
+  inherited;
+  iProperties := TStdFilePropertyList.Create;
+end;
+
+destructor TStdFileObject.Destroy;
+begin
+  iProperties.Free;
+  inherited;
+end;
+
+function TStdFileObject.Add( NewVal : TStdFileProperty ) : integer;
+begin
+  Result := iProperties.Add( NewVal );
+  iIsDirty := TRUE;
+end;
+
+procedure TStdFileObject.Insert( AtIndex : integer; NewVal : TStdFileProperty );
+begin
+  iProperties.Insert( AtIndex, NewVal );
+  iIsDirty := TRUE;
+end;
+
+function TStdFileObject.fGetItem( index : integer ) : TStdFileProperty;
+begin
+  Result := TStdFileProperty( iProperties.Items[ index ] );
+end;
+
+function TStdFileObject.fGetIsDirty : boolean;
+begin
+  Result := inherited fGetIsDirty;
+  if not Result then Result := iProperties.IsDirty;
+end;
+
+procedure TStdFileObject.fSetIsDirty( NewVal : boolean );
+begin
+  inherited;
+  if not NewVal then iProperties.IsDirty := NewVal;
+  // no need to bother if Newval is TRUE;
+end;
+
+function TStdFileObject.fGetPropertyCount : integer;
+begin
+  Result := iProperties.Count;
+end;
+
+function TStdFileObject.Save( var F : TextFile; indent : integer ) : boolean;
+begin
+  Result := inherited Save( F, indent )
+         and iProperties.Save( F, indent + 2 );
+  WriteLn ( F, StringOfChar( ' ', Indent ), 'End ', iName );
+end;
+
+function TStdFileObject.Load( var F : TextFile ) : boolean;
+var
+  iLine : string;
+  iUnrecognisedPropertyFound : boolean;
+  SigProperty : string;
+  SigIndex : string;
+  SigValue : string;
+  SigComment : string;
+  iToAdd : tStdFileProperty;
+  i : integer;
+begin
+  Result := FALSE; // assume no end of object
+  iUnrecognisedPropertyFound := FALSE;
+  while not EOF( F ) do
+  begin
+    ReadLn( F, iLine );
+    if SigNETParse( iLine, SigProperty, SigIndex, SigValue, SigComment ) then
+    begin
+      if SigProperty <> '' then
+      begin
+        // not a comment line
+        if SameText( SigProperty, 'End ' + iName ) then
+        begin
+          // done
+          if not iUnrecognisedPropertyFound then Result := TRUE;
+          exit;
+        end;
+        // see if in existing list
+        iToAdd := nil;
+        for i := 0 to iProperties.Count - 1 do
+        begin
+          if SameText( iProperties.PropertyByIndex[ i ].Name, SigProperty )
+          and SameText( iProperties.PropertyByIndex[ i ].iIndex, SigIndex ) then
+          begin
+            iToAdd := iProperties.PropertyByIndex[ i ];
+            break;
+          end;
+        end;
+        if not assigned( iToAdd ) then
+        begin
+          // else
+          iToAdd := CreateObjectFromText( SigProperty, SigIndex );
+        end;
+        if assigned( iToAdd ) then
+        begin
+          iProperties.Add( iToAdd );
+          iToAdd.AsString := SigValue;
+          if iToAdd is TStdFileMultiLineProperty then
+          begin
+            with iToAdd as TStdFileMultiLineProperty do
+            begin
+              Load( F );
+            end;
+          end;
+          iToAdd.IsDirty := FALSE;
+        end
+        else
+        begin
+          iUnrecognisedPropertyFound := TRUE;
+        end;
+      end;
+    end
+    else
+    begin
+      iUnrecognisedPropertyFound := TRUE;
+    end;
+  end;
+end;
+
+function TStdFileObject.CreateObjectFromText( pText : string; pIndex : string ) : tStdFileProperty;
+begin
+  // a generic file object allows any property to be created as a string property
+  Result := tStdFileStringProperty.Create( pText, pIndex );
+end;
+
+//-------------- TStdFileMemoProperty ---------------
+
+constructor TStdFileMemoProperty.Create( pName : string; pIndex : string = '' );
+begin
+  inherited Create( pName, pIndex );
+  iData := TStringList.Create;
+  iData.OnChange := fOnChange;
+end;
+
+destructor TStdFileMemoProperty.Destroy;
+begin
+  iData.Free;
+  inherited Destroy;
+end;
+
+procedure TStdFileMemoProperty.fOnChange( Sender : TObject );
+begin
+  iIsDirty := TRUE;
+end;
+
+function TStdFileMemoProperty.fGetAsString : string;
+begin
+  Result := iData.Text;
+end;
+
+procedure TStdFileMemoProperty.fSetAsString( NewVal : string);
+begin
+  if iData.Text <> NewVal then
+  begin
+    iData.Text := NewVal;
+    // dirty flag set by fOnChange
+  end;
+end;
+
+function TStdFileMemoProperty.Save( var F : TextFile; indent : integer ) : boolean;
+var
+  i : integer;
+begin
+  WriteLn( F, StringOfChar( ' ', indent ), iName );
+  inc( indent, 2);
+  for i := 0 to iData.Count - 1 do
+  begin
+    WriteLn( F, StringOfChar( ' ', indent ), '//', iData[ i ] );
+  end;
+  dec( indent, 2);
+  WriteLn( F, StringOfChar( ' ', Indent ), 'End ' + iName );
+  Result := TRUE;
+end;
+
+function TStdFileMemoProperty.Load( var F : TextFile ) : boolean;
+var
+  iLine : string;
+  SigProperty : string;
+  SigIndex : string;
+  SigValue : string;
+  SigComment : string;
+begin
+  Result := FALSE; // assume no end of object
+  iData.Clear;
+  while not EOF( F ) do
+  begin
+    ReadLn( F, iLine );
+    if SigNETParse( iLine, SigProperty, SigIndex, SigValue, SigComment ) then
+    begin
+      if SigProperty = '' then
+      begin
+        iData.Add( SigComment );
+      end
+      else
+      begin
+        // not a comment line
+        if SameText( SigProperty, 'End ' + iName ) then
+        begin
+          Result := TRUE;
+        end;
+        // else unexpected line - abort now in either case
+        exit;
+      end;
+    end
+    else
+    begin
+      // illegal format - abort
+      exit;
+    end;
+  end;
+end;
+
+//----------------------   TStdFile --------------
+
+constructor TStdFile.Create;
+begin
+  inherited Create;
+  iProperties := TStdFilePropertyList.Create;
+end;
+
+destructor TStdFile.Destroy;
+begin
+  iProperties.Free;
+  inherited Destroy;
+end;
+
+procedure TStdFile.Add( NewVal : TStdFileProperty );
+begin
+  iProperties.Add( NewVal );
+end;
+
+procedure TStdFile.fSetDirty( NewVal : boolean );
+begin
+  iProperties.IsDirty := NewVal;
+end;
+
+function TStdFile.fGetDirty : boolean;
+begin
+  Result := iProperties.IsDirty;
+end;
+
+function TStdFile.Save( var F : TextFile ) : boolean;
+begin
+  Result := iProperties.Save ( F, 0 );
+end;
+
+function TStdFile.Load( var F : TextFile ) : boolean;
+var
+  iLine : string;
+  SigProperty : string;
+  SigIndex : string;
+  SigValue : string;
+  SigComment : string;
+  iToAdd : tStdFileProperty;
+begin
+  Result := TRUE; // assume OK
+  while not EOF( F ) do
+  begin
+    ReadLn( F, iLine );
+    if SigNETParse( iLine, SigProperty, SigIndex, SigValue, SigComment ) then
+    begin
+      if SigProperty <> '' then
+      begin
+        // not a comment line; see if property exists
+        iToAdd := iProperties.IndexedProperty[ SigProperty, SigIndex ];
+        if not assigned( iToAdd ) then // try to create
+        begin
+          iToAdd := CreateObjectFromText( SigProperty, SigIndex );
+          if assigned( iToAdd ) then
+          begin
+            // successful - add it
+            iProperties.Add( iToAdd );
+            // we already know that this is not a duplicate
+            // entry, so value will point to correct entry
+          end;
+        end;
+        if assigned( iToAdd ) then
+        begin
+          iToAdd.AsString := SigValue;
+          if iToAdd is TStdFileStringProperty then
+          begin
+            with iToAdd as TStdFileStringProperty do
+            begin
+              if not Load( F ) then Result := FALSE;
+            end;
+          end;
+          iToAdd.IsDirty := FALSE;
+        end
+        else
+        begin
+          Result := FALSE;
+        end;
+      end;
+    end;
+  end;
+end;
+
+function TStdFile.CreateObjectFromText( pText : string; pIndex : string ) : tStdFileProperty;
+begin
+  // a generic file allows any property to be created as a string property
+  Result := tStdFileStringProperty.Create( pText, pIndex );
+end;
+
+function TStdFile.fGetProperty( index : string ) : TStdFileProperty;
+begin
+  Result := iProperties.PropertyByName[ index ];
+end;
+
+function TStdFile.fGetIndexedProperty( name : string; index : string ) : TStdFileProperty;
+begin
+  Result := iProperties.IndexedProperty[ name, index ];
+end;
+
+//--------------- TStdFilePropertyList -------------
+
+constructor TStdFilePropertyList.Create;
+begin
+  inherited Create( TRUE );
+  iIsDirty := FALSE;
+end;
+
+function TStdFilePropertyList.Add( NewVal : TStdFileProperty ) : integer;
+var
+  i : integer;
+begin
+  // do not allow duplicates
+  for i := 0 to Count - 1 do
+  begin
+    if SameText( PropertyByIndex[ i ].Name, NewVal.Name )
+    and SameText( PropertyByIndex[ i ].Index, NewVal.Index ) then
+    begin
+      Result := i;
+      exit;
+    end;
+  end;
+  Result := inherited Add( NewVal );
+  iIsDirty := TRUE;
+end;
+
+function TStdFilePropertyList.fGetPropertyByIndex( index : integer ) : TStdFileProperty;
+begin
+  result := Items[ index ] as TStdFileProperty;
+end;
+
+function TStdFilePropertyList.fGetPropertyByName( index : string ) : TStdFileProperty;
+var
+  i : integer;
+begin
+  Result := nil;
+  for i := 0 to Count - 1 do
+  begin
+    if SameText( PropertyByIndex[ i ].Name, index ) then
+    begin
+      Result := PropertyByIndex[ i ];
+      exit;
+    end;
+  end;
+end;
+
+function TStdFilePropertyList.fGetIndexedProperty( name : string; index : string ) : TStdFileProperty;
+var
+  i : integer;
+begin
+  Result := nil;
+  for i := 0 to Count - 1 do
+  begin
+    if SameText( PropertyByIndex[ i ].Name, name ) then
+    begin
+      if SameText( PropertyByIndex[ i ].Index, index ) then
+      begin
+        Result := PropertyByIndex[ i ];
+        exit;
+      end;
+    end;
+  end;
+end;
+
+function TStdFilePropertyList.fGetIsDirty : boolean;
+var
+  i : integer;
+begin
+  Result := iIsDirty;
+  if not Result then
+  begin
+    for i := 0 to Count - 1 do
+    begin
+      if PropertyByIndex[ i ].IsDirty then
+      begin
+        Result := TRUE;
+        exit;
+      end;
+    end;
+  end;
+end;
+
+procedure TStdFilePropertyList.fSetIsDirty( NewVal : boolean );
+var
+  i : integer;
+begin
+  // only allow to be reset, never set
+  if not NewVal then
+  begin
+    for i := 0 to Count - 1 do
+    begin
+      PropertyByIndex[ i ].IsDirty := NewVal;
+    end;
+    iIsDirty := NewVal;
+  end;
+end;
+
+function TStdFilePropertyList.Save( var F : TextFile; indent : integer ) : boolean;
+var
+  i : integer;
+begin
+  Result := TRUE;
+  for i := 0 to Count - 1 do
+  begin
+    if not PropertyByIndex[ i ].Save( F, indent ) then
+    begin
+      Result := FALSE;
+      // still try and save rest
+    end;
+  end;
+end;
+
+//----------------- TStdFileStringProperty -------------
+
+class function TStdFileStringProperty.IsLegalValue( TestVal : string ) : boolean;
+begin
+  Result := TRUE;
+end;
+
+class procedure TStdFileStringProperty.FillLegalValues( TestList : TStrings );
+begin
+  TestList.Clear;
+end;
+
+//-------------------- TStdFileBooleanProperty ---------------
+
+class function TStdFileBooleanProperty.IsLegalValue( TestVal : string ) : boolean;
+begin
+  if SameText( TestVal, 'yes' ) then Result := TRUE
+  else if SameText( TestVal, 'no' ) then Result := TRUE
+  else if SameText( TestVal, 'y' ) then Result := TRUE
+  else if SameText( TestVal, 'n' ) then Result := TRUE
+  else if SameText( TestVal, 'true' ) then Result := TRUE
+  else if SameText( TestVal, 'false' ) then Result := TRUE
+  else if SameText( TestVal, 't' ) then Result := TRUE
+  else if SameText( TestVal, 'f' ) then Result := TRUE
+  else if SameText( TestVal, '1' ) then Result := TRUE
+  else if SameText( TestVal, '0' ) then Result := TRUE
+  else result := FALSE;
+end;
+
+class procedure TStdFileBooleanProperty.FillLegalValues( TestList : TStrings );
+begin
+  TestList.Clear;
+  TestList.Add('True');
+  TestList.Add('False');
+end;
+
+class function TStdFileBooleanProperty.GetPreferredForm( OfText : string ) : string;
+begin
+  if SameText( OfText, 'yes' ) then Result := 'True'
+  else if SameText( OfText, 'no' ) then Result := 'False'
+  else if SameText( OfText, 'y' ) then Result := 'True'
+  else if SameText( OfText, 'n' ) then Result := 'False'
+  else if SameText( OfText, 'true' ) then Result := 'True'
+  else if SameText( OfText, 'false' ) then Result := 'False'
+  else if SameText( OfText, 't' ) then Result := 'True'
+  else if SameText( OfText, 'f' ) then Result := 'False'
+  else if SameText( OfText, '1' ) then Result := 'True'
+  else if SameText( OfText, '0' ) then Result := 'False'
+  else raise exception.Create( 'Invalid Value' );
+end;
+
+class function TStdFileBooleanProperty.IsFixedList : boolean;
+begin
+  Result := TRUE;
+end;
+
+function TStdFileBooleanProperty.fGetAsBoolean : boolean;
+begin
+  result := TextToBoolean( AsString );
+end;
+
+procedure TStdFileBooleanProperty.fSetAsBoolean( NewVal : boolean );
+begin
+  if NewVal then AsString := 'TRUE' else AsString := 'FALSE';
+end;
+
+procedure TStdFileBooleanProperty.fSetAsString( NewVal : string);
+begin
+  inherited fSetAsString( GetPreferredForm( NewVal ));
+end;
+
+class function TStdFileBooleanProperty.TextToBoolean( TestVal : string ) : boolean;
+begin
+  if SameText( TestVal, 'yes' ) then Result := TRUE
+  else if SameText( TestVal, 'no' ) then Result := FALSE
+  else if SameText( TestVal, 'y' ) then Result := TRUE
+  else if SameText( TestVal, 'n' ) then Result := FALSE
+  else if SameText( TestVal, 'true' ) then Result := TRUE
+  else if SameText( TestVal, 'false' ) then Result := FALSE
+  else if SameText( TestVal, 't' ) then Result := TRUE
+  else if SameText( TestVal, 'f' ) then Result := FALSE
+  else if SameText( TestVal, '1' ) then Result := TRUE
+  else if SameText( TestVal, '0' ) then Result := FALSE
+  else raise exception.Create( 'Invalid Value' );
+end;
+
+//--------------------- TStdFileYesNoProperty ------------
+
+class procedure TStdFileYesNoProperty.FillLegalValues( TestList : TStrings );
+begin
+  TestList.Clear;
+  TestList.Add('Yes');
+  TestList.Add('No');
+end;
+
+class function TStdFileYesNoProperty.GetPreferredForm( OfText : string ) : string;
+begin
+  if SameText( OfText, 'yes' ) then Result := 'Yes'
+  else if SameText( OfText, 'no' ) then Result := 'No'
+  else if SameText( OfText, 'y' ) then Result := 'Yes'
+  else if SameText( OfText, 'n' ) then Result := 'No'
+  else if SameText( OfText, 'true' ) then Result := 'Yes'
+  else if SameText( OfText, 'false' ) then Result := 'No'
+  else if SameText( OfText, 't' ) then Result := 'Yes'
+  else if SameText( OfText, 'f' ) then Result := 'No'
+  else if SameText( OfText, '1' ) then Result := 'Yes'
+  else if SameText( OfText, '0' ) then Result := 'No'
+  else raise exception.Create( 'Invalid Value' );
+end;
+
+procedure TStdFileYesNoProperty.fSetAsBoolean( NewVal : boolean );
+begin
+  if NewVal then AsString := 'YES' else AsString := 'NO';
+end;
+
+
+end.

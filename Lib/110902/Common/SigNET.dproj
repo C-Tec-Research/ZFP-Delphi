@@ -1,0 +1,278 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{05F3C288-AC7B-4613-9707-00F47584E59B}</ProjectGuid>
+			<MainSource>SigNET.dpk</MainSource>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.0</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
+			<GenPackage>true</GenPackage>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_Platform>x86</DCC_Platform>
+			<DCC_DependencyCheckOutputName>C:\Documents and Settings\All Users\Documents\RAD Studio\6.0\Bpl\SigNET.bpl</DCC_DependencyCheckOutputName>
+			<DCC_E>false</DCC_E>
+			<DCC_S>false</DCC_S>
+			<DCC_OutputNeverBuildDcps>true</DCC_OutputNeverBuildDcps>
+			<GenDll>true</GenDll>
+			<DCC_F>false</DCC_F>
+			<DCC_K>false</DCC_K>
+			<DCC_N>true</DCC_N>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="SigNET.dpk">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="..\Comms\ComDrv32.dcr"/>
+			<DCCReference Include="..\Comms\comm32.dcr"/>
+			<DCCReference Include="..\Comms\iComPort.dcr"/>
+			<DCCReference Include="SigTime32.dcr"/>
+			<DCCReference Include="SigBrand.dcr"/>
+			<DCCReference Include="..\MemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\SigTime32\SigTime32.dcr"/>
+			<DCCReference Include="rtl.dcp"/>
+			<DCCReference Include="vcl.dcp"/>
+			<DCCReference Include="VclSmp.dcp"/>
+			<DCCReference Include="vclx.dcp"/>
+			<DCCReference Include="..\Comms\SS2NMsg.pas"/>
+			<DCCReference Include="..\Comms\ComDrv32.pas"/>
+			<DCCReference Include="..\Comms\comm32.pas"/>
+			<DCCReference Include="..\Comms\companel.pas"/>
+			<DCCReference Include="..\Comms\ComPort.pas"/>
+			<DCCReference Include="..\Comms\iComPort.pas"/>
+			<DCCReference Include="..\Comms\misc.pas"/>
+			<DCCReference Include="..\Comms\QueryMsg.pas"/>
+			<DCCReference Include="..\Comms\ss2ncomm.pas"/>
+			<DCCReference Include="SigBrand.pas"/>
+			<DCCReference Include="Sigload.pas"/>
+			<DCCReference Include="sigparse.pas"/>
+			<DCCReference Include="..\ManagedControlList\UnitManagedControlList.pas"/>
+			<DCCReference Include="..\MemoMessage\UnitMessageFile.pas"/>
+			<DCCReference Include="..\MemoMessage\MemoMessage.pas"/>
+			<DCCReference Include="..\MemoMessage\UnitMemoryMap.pas"/>
+			<DCCReference Include="..\SigImage\SigImage.pas"/>
+			<DCCReference Include="..\StdMainMenu\StdMainMenu.pas"/>
+			<DCCReference Include="..\StdMainMenu\SigFileHandler.pas"/>
+			<DCCReference Include="..\TimeSpinButton\TimeSpinButton.pas"/>
+			<DCCReference Include="..\USB\USBPanel.pas"/>
+			<DCCReference Include="..\SigSpinEdit\SigSpinEdit.pas"/>
+			<DCCReference Include="Common.pas"/>
+			<DCCReference Include="..\SigStringGrid\SigNETStringGrid.pas"/>
+			<DCCReference Include="..\SigRegistry\SigRegistry.pas"/>
+			<DCCReference Include="..\SigTime32\SigTime32.pas"/>
+			<DCCReference Include="..\SigStringGrid\SigGeneralGrid.pas"/>
+			<DCCReference Include="..\SigSave\SigSaveDialog.pas"/>
+			<DCCReference Include="..\SigComPort\SigComPort.pas"/>
+			<DCCReference Include="..\FileNotSaved\UnitFileNotSaved.pas">
+				<Form>FormFileNotSaved</Form>
+			</DCCReference>
+			<DCCReference Include="..\Comms\ComDrv32.dcr"/>
+			<DCCReference Include="..\Comms\comm32.dcr"/>
+			<DCCReference Include="..\Comms\iComPort.dcr"/>
+			<DCCReference Include="SigTime32.dcr"/>
+			<DCCReference Include="SigBrand.dcr"/>
+			<DCCReference Include="..\MemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\SigTime32\SigTime32.dcr"/>
+			<DCCReference Include="..\L\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\Li\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\Lib\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\..\d\Lib\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\..\de\Lib\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\..\del\Lib\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\..\delp\Lib\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\..\delph\Lib\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\..\delphi\Lib\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\..\delphi \Lib\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\..\delphi p\Lib\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\..\delphi pro\Lib\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\..\delphi projec\Lib\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\..\delphi project\Lib\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\..\delphi projects\Lib\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\..\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\d\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\de\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\del\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\delp\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\delph\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\delphi\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\delphi \TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\delphi p\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\delphi pr\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\delphi pro\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\delphi proj\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\delphi projec\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\delphi projects\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\delphi projects\L\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\delphi projects\Li\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\delphi projects\Lib\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\d\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\de\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\del\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\delp\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\delph\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\delphi\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\delphi \StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\delphi p\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\delphi pr\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\delphi pro\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\delphi proj\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\delphi proje\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\delphi projects\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\delphi projects\L\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\delphi projects\Li\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\delphi projects\Lib\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\d\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\de\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\del\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\delp\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\delph\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\delphi\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\delphi \SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\delphi p\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\delphi pr\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\delphi pro\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\delphi proj\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\delphi proje\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\delphi projec\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\delphi projects\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\delphi projects\L\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\delphi projects\Li\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\delphi projects\Lib\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\.MemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..MemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\MemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\dMemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\deMemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\delMemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\delpMemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\delphMemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\delphiMemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\delphi MemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\delphi pMemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\delphi prMemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\delphi proMemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\delphi projMemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\delphi projeMemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\delphi projecMemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\delphi projectMemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\delphi projectsMemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\delphi projects\MemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\delphi projects\LiMemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\delphi projects\LibMemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\delphi projects\Lib\MemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\elphi projects\Lib\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\pelphi projects\Lib\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\delphi rojects\Lib\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\..\delphi rojects\Lib\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\delphi rojects\Lib\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\delphi rojects\Lib\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\delphi rojects\Lib\MemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\elphi Projects\Lib\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\..\elphi Projects\Lib\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\elphi Projects\Lib\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\elphi Projects\Lib\MemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\Delphi7 Projects\Lib\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\..\Delphi 7 Projects\Lib\USB\USBPanel.dcr"/>
+			<DCCReference Include="..\..\Delphi7 Projects\Lib\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\Delphi 7 Projects\Lib\TimeSpinButton\TimeSpinButton.dcr"/>
+			<DCCReference Include="..\..\Delphi7 Projects\Lib\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\Delphi 7 Projects\Lib\StdMainMenu\StdMainMenu.dcr"/>
+			<DCCReference Include="..\..\Delphi7 Projects\Lib\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\Delphi 7 Projects\Lib\SigImage\SigImage.dcr"/>
+			<DCCReference Include="..\..\Delphi  Projects\Lib\MemoMessage\MemoMessage.dcr"/>
+			<DCCReference Include="..\..\Delphi 7 Projects\Lib\MemoMessage\MemoMessage.dcr"/>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>Package</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">SigNET.dpk</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<Language>
+						<Language Name="ProjectLang">$00000809</Language>
+					</Language>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">2057</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>
