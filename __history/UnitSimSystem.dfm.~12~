@@ -1,0 +1,67 @@
+object FrameSimSystem: TFrameSimSystem
+  Left = 0
+  Top = 0
+  Width = 605
+  Height = 333
+  TabOrder = 0
+  object SigPanelMain: TSigPanel
+    Left = 0
+    Top = 0
+    Width = 605
+    Height = 333
+    Align = alClient
+    Caption = 'SigPanelMain'
+    TabOrder = 0
+    ExplicitLeft = 72
+    ExplicitTop = 120
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object SigGeneralGridSim: TSigGeneralGrid
+      Left = 1
+      Top = 1
+      Width = 603
+      Height = 331
+      Align = alClient
+      ColCount = 4
+      DefaultColWidth = 100
+      RowCount = 1
+      TabOrder = 0
+      Visible = False
+      NormalFont.Charset = DEFAULT_CHARSET
+      NormalFont.Color = clWindowText
+      NormalFont.Height = -11
+      NormalFont.Name = 'Tahoma'
+      NormalFont.Style = []
+      ErrorFont.Charset = DEFAULT_CHARSET
+      ErrorFont.Color = clWindowText
+      ErrorFont.Height = -11
+      ErrorFont.Name = 'Tahoma'
+      ErrorFont.Style = []
+      ExplicitLeft = 192
+      ExplicitTop = 160
+      ExplicitWidth = 320
+      ExplicitHeight = 120
+    end
+  end
+  object SigGridEditorPanelName: TSigGridEditor
+    SigGrid = SigGeneralGridSim
+    Style = esMaskEdit
+    Column = 1
+    Left = 88
+    Top = 272
+  end
+  object SigGridEditorPanelID: TSigGridEditor
+    SigGrid = SigGeneralGridSim
+    Style = esSpinEdit
+    Column = 2
+    Left = 216
+    Top = 288
+  end
+  object SigGridEditorFileID: TSigGridEditor
+    SigGrid = SigGeneralGridSim
+    Style = esSpinEdit
+    Column = 3
+    Left = 392
+    Top = 288
+  end
+end

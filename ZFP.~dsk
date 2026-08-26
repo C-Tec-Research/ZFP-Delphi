@@ -1,0 +1,1548 @@
+﻿[Closed Files]
+File_0=TSourceModule,'C:\Delphi Projects\Lib\USBPanel\USBPanel.pas',0,1,1,3,26,0,0,,
+File_1=TSourceModule,'C:\Delphi Projects\Lib\Common\Common.pas',0,1,231,1,258,0,0,,
+File_2=TSourceModule,'C:\Delphi Projects\Lib\SigVariableComponent\SigVariableEditor.pas',0,1,1,1,1,0,0,,
+File_3=TSourceModule,'C:\Delphi Projects\ZFP\Bugs\Tools Test 2\ST HELENS TEXT with DRAX.zfp',0,1,12,5,42,0,0,,
+File_4=TSourceModule,'C:\Delphi Projects\ZFP\Bugs\moi_hafeera1.1.zfp',0,1,5,3,24,0,0,,
+File_5=TSourceModule,'C:\Delphi Projects\ZFP\Bugs\hafeera test.zfp',0,1,8486,1,8503,0,0,,
+File_6=TSourceModule,'C:\Delphi Projects\ZFP\UnitFieldArray.pas',0,1,52,1,73,0,0,,
+File_7=TSourceModule,'C:\Delphi Projects\Lib\PendingActions\PendingActions.pas',0,1,169,3,187,0,0,,
+File_8=TSourceModule,'C:\Delphi Projects\Lib\SigFile\SigFilePgmStatus.pas',0,1,245,1,262,0,0,,
+File_9=TSourceModule,'C:\Delphi Projects\ZFP\UnitUpdateCommonDeviceFields.pas',0,1,40,13,42,0,0,,
+File_10=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.Grids.pas',0,1,576,1,594,0,0,,
+File_11=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.Controls.pas',0,1,7292,1,7310,0,0,,
+
+[Modules]
+Module0=C:\Delphi Projects\ZFP\Bugs\Epic\EPIC NEW TG Fixed 19 10 2015.zfp
+Module1=C:\Delphi Projects\ZFP\UnitFiles.pas
+Module2=C:\Delphi Projects\Lib\Comms\misc.pas
+Module3=C:\Delphi Projects\Lib\Comms\comm32.pas
+Module4=C:\Delphi Projects\ZFP\UnitMain.pas
+Module5=C:\Delphi Projects\ZFP\UnitFrameGlobalObjectEditor.pas
+Module6=C:\Delphi Projects\ZFP\UnitFrameZoneEditor.pas
+Module7=C:\Delphi Projects\ZFP\UnitFrameInputGroupEditor.pas
+Module8=C:\Delphi Projects\ZFP\UnitGlobalDevices.pas
+Module9=C:\Delphi Projects\ZFP\UnitASCIITransfer.pas
+Module10=C:\Delphi Projects\Lib\USB\USBPanel.pas
+Module11=C:\Delphi Projects\ZFP\UnitDongleInterface.pas
+Module12=C:\Delphi Projects\Lib\Common\UnitParseExpression.pas
+Module13=C:\Delphi Projects\ZFP\UnitLogFileCfg.pas
+Module14=C:\Delphi Projects\Lib\SigPanel\SigPanel.pas
+Module15=C:\Delphi Projects\Lib\SigImage\SigImage.pas
+Module16=C:\Delphi Projects\Lib\SigStringGrid\SigNETStringGrid.pas
+Module17=C:\Delphi Projects\XFP\PCTools\UnitPCCfgFile.pas
+Module18=C:\Delphi Projects\Lib\Common\sigparse.pas
+Module19=C:\Delphi Projects\Lib\ErrorList\ErrorList.pas
+Module20=C:\Delphi Projects\Lib\SelectableEdit\SelectableEdit.pas
+Module21=C:\Delphi Projects\Lib\SigSpinEdit\SigSpinEdit.pas
+Module22=C:\Delphi Projects\Lib\SigRegistry\SigRegistry.pas
+Module23=C:\Delphi Projects\Lib\USB\USBBulkTransferMode.pas
+Module24=C:\Delphi Projects\Lib\SigSave\SigSaveDialog.pas
+Module25=C:\Delphi Projects\XFP\PCToolsCFGEditor\UnitMain.pas
+Module26=C:\Delphi Projects\ZFP\UnitZFPDiskFile.pas
+Module27=C:\Delphi Projects\Lib\SigFile\SigFile.pas
+Module28=C:\Delphi Projects\ZFP\about.pas
+Module29=C:\Delphi Projects\Lib\Printer\UnitPrintColumns.pas
+Module30=C:\Delphi Projects\lib\sigstringgrid\SigGeneralGrid.pas
+Module31=c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.Graphics.pas
+Module32=C:\Delphi Projects\ZFP\UnitFrameGlobalObjectPanelEditor.pas
+Module33=C:\Delphi Projects\XFP\PCToolsCFGEditor\UnitAdvancedTransfer.pas
+Module34=C:\Delphi Projects\Lib\Common\TypedObjectList.pas
+Module35=C:\Delphi Projects\ZFP\Default.zft
+Module36=C:\Delphi Projects\ZFP\UnitChangeDefaultLogo.pas
+Module37=C:\Delphi Projects\ZFP\UnitFormLoadFile.pas
+Module38=C:\Delphi Projects\ZFP\UnitCEStructures.pas
+Module39=C:\Delphi Projects\ZFP\UnitZFPErrorObjects.pas
+Module40=C:\Delphi Projects\ZFP\UnitObjectEditorHelper.pas
+Module41=C:\Delphi Projects\ZFP\UnitDeviceEditorHelper.pas
+Module42=C:\Delphi Projects\ZFP\UnitFrameNodes.pas
+Module43=C:\Delphi Projects\Lib\UndoRedo\UnitUndoList.pas
+Module44=C:\Delphi Projects\ZFP\UnitSelectInputGroup.pas
+Module45=
+Count=46
+EditWindowCount=1
+
+[C:\Delphi Projects\ZFP\Bugs\Epic\EPIC NEW TG Fixed 19 10 2015.zfp]
+ModuleType=TSourceModule
+
+[C:\Delphi Projects\ZFP\UnitFiles.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\Comms\misc.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\Comms\comm32.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitMain.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitFrameGlobalObjectEditor.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitFrameZoneEditor.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitFrameInputGroupEditor.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitGlobalDevices.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitASCIITransfer.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\USB\USBPanel.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitDongleInterface.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\Common\UnitParseExpression.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitLogFileCfg.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\SigPanel\SigPanel.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\SigImage\SigImage.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\SigStringGrid\SigNETStringGrid.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\XFP\PCTools\UnitPCCfgFile.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\Common\sigparse.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\ErrorList\ErrorList.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\SelectableEdit\SelectableEdit.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\SigSpinEdit\SigSpinEdit.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\SigRegistry\SigRegistry.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\USB\USBBulkTransferMode.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\SigSave\SigSaveDialog.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\XFP\PCToolsCFGEditor\UnitMain.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitZFPDiskFile.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\SigFile\SigFile.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\about.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\Printer\UnitPrintColumns.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\lib\sigstringgrid\SigGeneralGrid.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.Graphics.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitFrameGlobalObjectPanelEditor.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[C:\Delphi Projects\XFP\PCToolsCFGEditor\UnitAdvancedTransfer.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\Common\TypedObjectList.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\Default.zft]
+ModuleType=TSourceModule
+
+[C:\Delphi Projects\ZFP\UnitChangeDefaultLogo.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitFormLoadFile.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitCEStructures.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitZFPErrorObjects.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitObjectEditorHelper.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitDeviceEditorHelper.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitFrameNodes.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[C:\Delphi Projects\Lib\UndoRedo\UnitUndoList.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitSelectInputGroup.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[]
+ModuleType=TURLModule
+
+[C:\Delphi Projects\Lib\ErrorList\UnitFrameErrorList.pas]
+FormState=1
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitFrameSupergroupEditor.pas]
+FormState=1
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitFrameOutputGroupEditor.pas]
+FormState=1
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitFrameSeqEditor.pas]
+FormState=1
+FormOnTop=0
+
+[C:\Delphi Projects\ZFP\UnitLogFiles.pas]
+FormState=1
+FormOnTop=0
+
+[EditWindow0]
+ViewCount=46
+CurrentEditView=C:\Delphi Projects\ZFP\Bugs\Epic\EPIC NEW TG Fixed 19 10 2015.zfp
+View0=0
+View1=1
+View2=2
+View3=3
+View4=4
+View5=5
+View6=6
+View7=7
+View8=8
+View9=9
+View10=10
+View11=11
+View12=12
+View13=13
+View14=14
+View15=15
+View16=16
+View17=17
+View18=18
+View19=19
+View20=20
+View21=21
+View22=22
+View23=23
+View24=24
+View25=25
+View26=26
+View27=27
+View28=28
+View29=29
+View30=30
+View31=31
+View32=32
+View33=33
+View34=34
+View35=35
+View36=36
+View37=37
+View38=38
+View39=39
+View40=40
+View41=41
+View42=42
+View43=43
+View44=44
+View45=45
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=10000
+Height=9156
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=10000
+ClientHeight=9156
+DockedToMainForm=1
+BorlandEditorCodeExplorer=BorlandEditorCodeExplorer@EditWindow0
+TopPanelSize=0
+LeftPanelSize=1894
+LeftPanelClients=PropertyInspector,DockSite3
+LeftPanelData=000008000101000000001E140000000000000166070000000000000100000000530E000009000000446F636B53697465330100000000C42300001100000050726F7065727479496E73706563746F72FFFFFFFF
+RightPanelSize=2000
+RightPanelClients=DockSite2,DockSite4
+RightPanelData=000008000101000000001E1400000000000001D00700000000000001000000004612000009000000446F636B53697465320100000000C423000009000000446F636B5369746534FFFFFFFF
+BottomPanelSize=0
+BottomPanelClients=DockSite1,MessageView
+BottomPanelData=0000080001020200000009000000446F636B53697465310F0000004D65737361676556696577466F726D1534000000000000021F06000000000000FFFFFFFF
+BottomMiddlePanelSize=0
+BottomMiddlePanelClients=DockSite0,GraphDrawingModel
+BottomMiddelPanelData=0000080001020200000009000000446F636B536974653010000000477261706844726177696E67566965779A1D00000000000002F206000000000000FFFFFFFF
+
+[View0]
+CustomEditViewType=TWelcomePageView
+WelcomePageURL=http://docs.codegear.com/products/er_studio/
+
+[View1]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitMain.pas
+CursorX=8
+CursorY=49
+TopLine=29
+LeftCol=1
+Elisions=
+Bookmarks={1,4133,1}{2,4574,4}
+EditViewName=C:\Delphi Projects\ZFP\UnitMain.pas
+
+[View2]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\Comms\comm32.pas
+CursorX=1
+CursorY=38
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\Comms\comm32.pas
+
+[View3]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\Comms\misc.pas
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\Comms\misc.pas
+
+[View4]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitDongleInterface.pas
+CursorX=15
+CursorY=11
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\UnitDongleInterface.pas
+
+[View5]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\USB\USBPanel.pas
+CursorX=4
+CursorY=1694
+TopLine=1674
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\USB\USBPanel.pas
+
+[View6]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\USB\USBBulkTransferMode.pas
+CursorX=4
+CursorY=720
+TopLine=701
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\USB\USBBulkTransferMode.pas
+
+[View7]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\Printer\UnitPrintColumns.pas
+CursorX=3
+CursorY=434
+TopLine=416
+LeftCol=1
+Elisions=
+Bookmarks={1,545,1}
+EditViewName=C:\Delphi Projects\Lib\Printer\UnitPrintColumns.pas
+
+[View8]
+CustomEditViewType=TEditView
+Module=c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.Graphics.pas
+CursorX=1
+CursorY=4057
+TopLine=4039
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\rad studio\9.0\SOURCE\VCL\Vcl.Graphics.pas
+
+[View9]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitASCIITransfer.pas
+CursorX=17
+CursorY=488
+TopLine=465
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\UnitASCIITransfer.pas
+
+[View10]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\Default.zft
+CursorX=1
+CursorY=1379
+TopLine=1366
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\Default.zft
+
+[View11]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitChangeDefaultLogo.pas
+CursorX=1
+CursorY=108
+TopLine=74
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\UnitChangeDefaultLogo.pas
+
+[View12]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitFormLoadFile.pas
+CursorX=8
+CursorY=26
+TopLine=25
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\UnitFormLoadFile.pas
+
+[View13]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitZFPErrorObjects.pas
+CursorX=52
+CursorY=12
+TopLine=7
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\UnitZFPErrorObjects.pas
+
+[View14]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitGlobalDevices.pas
+CursorX=42
+CursorY=33
+TopLine=16
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\UnitGlobalDevices.pas
+
+[View15]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitFiles.pas
+CursorX=3
+CursorY=6611
+TopLine=6591
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\UnitFiles.pas
+
+[View16]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\Bugs\Epic\EPIC NEW TG Fixed 19 10 2015.zfp
+CursorX=28
+CursorY=43271
+TopLine=43248
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\Bugs\Epic\EPIC NEW TG Fixed 19 10 2015.zfp
+
+[View17]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitLogFileCfg.pas
+CursorX=21
+CursorY=34
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\UnitLogFileCfg.pas
+
+[View18]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\Common\UnitParseExpression.pas
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\Common\UnitParseExpression.pas
+
+[View19]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SigImage\SigImage.pas
+CursorX=41
+CursorY=19
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SigImage\SigImage.pas
+
+[View20]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\XFP\PCToolsCFGEditor\UnitMain.pas
+CursorX=1
+CursorY=1226
+TopLine=1209
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=Borland.FormDesignerView
+
+[View21]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\Common\TypedObjectList.pas
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\Common\TypedObjectList.pas
+
+[View22]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitFrameInputGroupEditor.pas
+CursorX=10
+CursorY=15
+TopLine=9
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\UnitFrameInputGroupEditor.pas
+
+[View23]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SigPanel\SigPanel.pas
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SigPanel\SigPanel.pas
+
+[View24]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitFrameNodes.pas
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=Borland.FormDesignerView
+
+[View25]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitDeviceEditorHelper.pas
+CursorX=1
+CursorY=60
+TopLine=33
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\UnitDeviceEditorHelper.pas
+
+[View26]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitObjectEditorHelper.pas
+CursorX=3
+CursorY=305
+TopLine=34
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\UnitObjectEditorHelper.pas
+
+[View27]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitCEStructures.pas
+CursorX=1
+CursorY=462
+TopLine=445
+LeftCol=1
+Elisions=
+Bookmarks={1,170,5}
+EditViewName=C:\Delphi Projects\ZFP\UnitCEStructures.pas
+
+[View28]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\lib\sigstringgrid\SigGeneralGrid.pas
+CursorX=1
+CursorY=2071
+TopLine=2049
+LeftCol=1
+Elisions=
+Bookmarks={1,2391,1}{8,1908,5}
+EditViewName=C:\Delphi Projects\lib\sigstringgrid\SigGeneralGrid.pas
+
+[View29]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitFrameGlobalObjectEditor.pas
+CursorX=3
+CursorY=12
+TopLine=37
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\UnitFrameGlobalObjectEditor.pas
+
+[View30]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitFrameGlobalObjectPanelEditor.pas
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\UnitFrameGlobalObjectPanelEditor.pas
+
+[View31]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitFrameZoneEditor.pas
+CursorX=1
+CursorY=79
+TopLine=53
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\UnitFrameZoneEditor.pas
+
+[View32]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\XFP\PCTools\UnitPCCfgFile.pas
+CursorX=18
+CursorY=10
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\XFP\PCTools\UnitPCCfgFile.pas
+
+[View33]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\Common\sigparse.pas
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\Common\sigparse.pas
+
+[View34]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SelectableEdit\SelectableEdit.pas
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SelectableEdit\SelectableEdit.pas
+
+[View35]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SigSpinEdit\SigSpinEdit.pas
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SigSpinEdit\SigSpinEdit.pas
+
+[View36]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SigRegistry\SigRegistry.pas
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SigRegistry\SigRegistry.pas
+
+[View37]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SigSave\SigSaveDialog.pas
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SigSave\SigSaveDialog.pas
+
+[View38]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SigFile\SigFile.pas
+CursorX=57
+CursorY=1542
+TopLine=1524
+LeftCol=1
+Elisions=
+Bookmarks={1,2914,1}
+EditViewName=C:\Delphi Projects\Lib\SigFile\SigFile.pas
+
+[View39]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitZFPDiskFile.pas
+CursorX=1
+CursorY=366
+TopLine=348
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\UnitZFPDiskFile.pas
+
+[View40]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\SigStringGrid\SigNETStringGrid.pas
+CursorX=39
+CursorY=139
+TopLine=135
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\SigStringGrid\SigNETStringGrid.pas
+
+[View41]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\UndoRedo\UnitUndoList.pas
+CursorX=1
+CursorY=365
+TopLine=340
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\UndoRedo\UnitUndoList.pas
+
+[View42]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\about.pas
+CursorX=22
+CursorY=170
+TopLine=152
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\about.pas
+
+[View43]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\Lib\ErrorList\ErrorList.pas
+CursorX=45
+CursorY=84
+TopLine=66
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\Lib\ErrorList\ErrorList.pas
+
+[View44]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\ZFP\UnitSelectInputGroup.pas
+CursorX=5
+CursorY=175
+TopLine=143
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\ZFP\UnitSelectInputGroup.pas
+
+[View45]
+CustomEditViewType=TEditView
+Module=C:\Delphi Projects\XFP\PCToolsCFGEditor\UnitAdvancedTransfer.pas
+CursorX=14
+CursorY=167
+TopLine=151
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Delphi Projects\XFP\PCToolsCFGEditor\UnitAdvancedTransfer.pas
+
+[Watches]
+Count=8
+Watch0='iLoopAddress',256,0,18,1,0,'Watches',1
+Watch1='iLoopDevice',256,0,18,1,0,'Watches',1
+Watch2='iIndex',256,0,18,1,0,'Watches',1
+Watch3='iVal',256,0,18,1,0,'Watches',1
+Watch4='iObject',256,0,18,1,0,'Watches',1
+Watch5='Value',256,0,18,1,0,'Watches',1
+Watch6='HalfLineSpacing',256,0,18,1,0,'Watches',1
+Watch7='SkipCount',256,0,18,1,0,'Watches',1
+
+[WatchWindow]
+WatchColumnWidth=120
+WatchShowColumnHeaders=1
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=3825
+Height=1144
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=3825
+ClientHeight=1144
+TBDockHeight=211
+LRDockWidth=13600
+Dockable=1
+StayOnTop=0
+
+[Breakpoints]
+Count=26
+Breakpoint0='C:\Delphi Projects\ZFP\UnitFiles.pas',23115,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint1='C:\Delphi Projects\ZFP\UnitFiles.pas',24652,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint2='C:\Delphi Projects\ZFP\UnitFiles.pas',17968,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint3='C:\Delphi Projects\ZFP\UnitFiles.pas',16513,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint4='C:\Delphi Projects\ZFP\UnitFiles.pas',17676,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint5='C:\Delphi Projects\ZFP\UnitFiles.pas',19102,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint6='C:\Delphi Projects\ZFP\UnitFiles.pas',19200,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint7='C:\Delphi Projects\ZFP\UnitASCIITransfer.pas',3469,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint8='C:\Delphi Projects\ZFP\UnitFiles.pas',19593,'',0,0,'',1,0,0,'',1,'','','',0,''
+Breakpoint9='C:\Delphi Projects\ZFP\UnitFiles.pas',20362,'pSubDev=0',0,0,'',1,0,0,'',1,'','','',0,''
+Breakpoint10='C:\Delphi Projects\ZFP\UnitFiles.pas',33726,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint11='C:\Delphi Projects\ZFP\UnitFiles.pas',30012,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint12='C:\Delphi Projects\ZFP\UnitFiles.pas',29839,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint13='C:\Delphi Projects\ZFP\UnitFiles.pas',29818,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint14='C:\Delphi Projects\ZFP\UnitFiles.pas',21752,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint15='C:\Delphi Projects\ZFP\UnitFiles.pas',36239,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint16='C:\Delphi Projects\ZFP\UnitMain.pas',1213,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint17='C:\Delphi Projects\ZFP\UnitFiles.pas',21555,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint18='C:\Delphi Projects\Lib\SigFile\SigFile.pas',2914,'Value=TRUE',0,0,'',1,0,0,'',1,'','','',0,''
+Breakpoint19='C:\Delphi Projects\ZFP\UnitChangeDefaultLogo.pas',56,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint20='C:\Delphi Projects\ZFP\UnitChangeDefaultLogo.pas',74,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint21='C:\Delphi Projects\ZFP\UnitMain.pas',1835,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint22='C:\Delphi Projects\ZFP\UnitFiles.pas',34177,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint23='C:\Delphi Projects\lib\sigstringgrid\SigGeneralGrid.pas',1218,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint24='C:\Delphi Projects\lib\sigstringgrid\SigGeneralGrid.pas',1252,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint25='C:\Delphi Projects\ZFP\UnitMain.pas',4042,'',0,1,'',1,0,0,'',1,'','','',0,''
+
+[EmbarcaderoWin32Debugger_AddressBreakpoints]
+Count=0
+
+[EmbarcaderoIOSDeviceDebugger_AddressBreakpoints]
+Count=0
+
+[EmbarcaderoAndroidDebugger_AddressBreakpoints]
+Count=0
+
+[EmbarcaderoWin64Debugger_AddressBreakpoints]
+Count=0
+
+[EmbarcaderoOSXDebugger_AddressBreakpoints]
+Count=0
+
+[Main Window]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=0
+State=2
+Left=144
+Top=278
+Width=8931
+Height=8522
+MaxLeft=-6
+MaxTop=-11
+MaxWidth=8931
+MaxHeight=8522
+ClientWidth=10000
+ClientHeight=9756
+BottomPanelSize=9156
+BottomPanelClients=EditWindow0
+BottomPanelData=0000080000000000000000000000000000000000000000000000000100000000000000000C0000004564697457696E646F775F30FFFFFFFF
+
+[ProjectManager]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=2000
+Height=4100
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2000
+ClientHeight=4100
+TBDockHeight=5900
+LRDockWidth=2350
+Dockable=1
+StayOnTop=0
+
+[MessageView]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=1
+State=0
+Left=0
+Top=0
+Width=2769
+Height=1422
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2769
+ClientHeight=1422
+TBDockHeight=1422
+LRDockWidth=2769
+Dockable=1
+StayOnTop=0
+
+[ToolForm]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=2000
+Height=4222
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2000
+ClientHeight=4222
+TBDockHeight=7156
+LRDockWidth=2000
+Dockable=1
+StayOnTop=0
+
+[ModelViewTool]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=2000
+Height=8600
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2000
+ClientHeight=8600
+TBDockHeight=4878
+LRDockWidth=5306
+Dockable=1
+StayOnTop=0
+
+[ClassBrowserTool]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=1
+State=0
+Left=-151
+Top=-101
+Width=1844
+Height=3144
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1844
+ClientHeight=3144
+TBDockHeight=3144
+LRDockWidth=1844
+Dockable=1
+StayOnTop=0
+
+[MetricsView]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=2338
+Height=1200
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2338
+ClientHeight=1200
+TBDockHeight=4833
+LRDockWidth=3562
+Dockable=1
+StayOnTop=0
+
+[QAView]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=2338
+Height=1200
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2338
+ClientHeight=1200
+TBDockHeight=4833
+LRDockWidth=3562
+Dockable=1
+StayOnTop=0
+
+[PropertyInspector]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=353
+Width=1894
+Height=5233
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1894
+ClientHeight=5233
+TBDockHeight=8878
+LRDockWidth=1894
+Dockable=1
+StayOnTop=0
+SplitPos=111
+
+[TFileExplorerForm]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=1
+State=0
+Left=-1280
+Top=-101
+Width=2844
+Height=6200
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2844
+ClientHeight=6200
+TBDockHeight=6200
+LRDockWidth=2844
+Dockable=1
+StayOnTop=0
+
+[TemplateView]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=1
+State=0
+Left=-1440
+Top=-101
+Width=275
+Height=356
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=275
+ClientHeight=356
+TBDockHeight=356
+LRDockWidth=275
+Dockable=1
+StayOnTop=0
+Name=120
+Description=334
+filter=1
+
+[DebugLogView]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=3825
+Height=1144
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=3825
+ClientHeight=1144
+TBDockHeight=411
+LRDockWidth=4950
+Dockable=1
+StayOnTop=0
+
+[ThreadStatusWindow]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=3825
+Height=1144
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=3825
+ClientHeight=1144
+TBDockHeight=211
+LRDockWidth=7406
+Dockable=1
+StayOnTop=0
+Column0Width=145
+Column1Width=100
+Column2Width=115
+Column3Width=250
+
+[LocalVarsWindow]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=3825
+Height=1144
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=3825
+ClientHeight=1144
+TBDockHeight=1533
+LRDockWidth=3481
+Dockable=1
+StayOnTop=0
+
+[CallStackWindow]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=3825
+Height=1144
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=3825
+ClientHeight=1144
+TBDockHeight=2056
+LRDockWidth=3481
+Dockable=1
+StayOnTop=0
+
+[FindReferencsForm]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=2338
+Height=1200
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2338
+ClientHeight=1200
+TBDockHeight=2311
+LRDockWidth=2825
+Dockable=1
+StayOnTop=0
+
+[RefactoringForm]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=2338
+Height=1200
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2338
+ClientHeight=1200
+TBDockHeight=3200
+LRDockWidth=2825
+Dockable=1
+StayOnTop=0
+
+[ToDo List]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=2338
+Height=1200
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2338
+ClientHeight=1200
+TBDockHeight=1156
+LRDockWidth=3675
+Dockable=1
+StayOnTop=0
+Column0Width=314
+Column1Width=30
+Column2Width=150
+Column3Width=172
+Column4Width=129
+SortOrder=4
+ShowHints=1
+ShowChecked=1
+
+[DataExplorerContainer]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=2000
+Height=8600
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2000
+ClientHeight=8600
+TBDockHeight=4878
+LRDockWidth=7150
+Dockable=1
+StayOnTop=0
+
+[GraphDrawingModel]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=1
+State=0
+Left=0
+Top=0
+Width=2856
+Height=3211
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2856
+ClientHeight=3211
+TBDockHeight=3211
+LRDockWidth=2856
+Dockable=1
+StayOnTop=0
+
+[BreakpointWindow]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=3825
+Height=1144
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=3825
+ClientHeight=1144
+TBDockHeight=1544
+LRDockWidth=8744
+Dockable=1
+StayOnTop=0
+Column0Width=200
+Column1Width=75
+Column2Width=200
+Column3Width=200
+Column4Width=200
+Column5Width=75
+Column6Width=75
+
+[StructureView]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=1894
+Height=3367
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1894
+ClientHeight=3367
+TBDockHeight=3678
+LRDockWidth=1894
+Dockable=1
+StayOnTop=0
+
+[BorlandEditorCodeExplorer@EditWindow0]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=0
+State=0
+Left=0
+Top=0
+Width=1825
+Height=6178
+MaxLeft=-6
+MaxTop=-11
+ClientWidth=1725
+ClientHeight=5800
+TBDockHeight=6178
+LRDockWidth=1825
+Dockable=1
+StayOnTop=0
+
+[DockHosts]
+DockHostCount=5
+
+[DockSite0]
+HostDockSite=DockBottomCenterPanel
+DockSiteType=1
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=1
+State=0
+Left=0
+Top=0
+Width=2338
+Height=1478
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2338
+ClientHeight=1478
+TBDockHeight=1478
+LRDockWidth=2338
+Dockable=1
+StayOnTop=0
+TabPosition=1
+ActiveTabID=RefactoringForm
+TabDockClients=RefactoringForm,FindReferencsForm,ToDo List,MetricsView,QAView
+
+[DockSite1]
+HostDockSite=DockBottomPanel
+DockSiteType=1
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=1
+State=0
+Left=0
+Top=0
+Width=3825
+Height=1422
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=3825
+ClientHeight=1422
+TBDockHeight=1422
+LRDockWidth=3825
+Dockable=1
+StayOnTop=0
+TabPosition=1
+ActiveTabID=DebugLogView
+TabDockClients=DebugLogView,BreakpointWindow,ThreadStatusWindow,CallStackWindow,WatchWindow,LocalVarsWindow
+
+[DockSite2]
+HostDockSite=DockRightPanel
+DockSiteType=1
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=23
+Width=2000
+Height=4378
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2000
+ClientHeight=4378
+TBDockHeight=8878
+LRDockWidth=2000
+Dockable=1
+StayOnTop=0
+TabPosition=1
+ActiveTabID=ProjectManager
+TabDockClients=ProjectManager,ModelViewTool,DataExplorerContainer,TFileExplorerForm
+
+[DockSite3]
+HostDockSite=DockLeftPanel
+DockSiteType=1
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=23
+Width=1894
+Height=3367
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1894
+ClientHeight=3367
+TBDockHeight=8878
+LRDockWidth=1894
+Dockable=1
+StayOnTop=0
+TabPosition=1
+ActiveTabID=StructureView
+TabDockClients=StructureView,ClassBrowserTool
+
+[DockSite4]
+HostDockSite=DockRightPanel
+DockSiteType=1
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=444
+Width=2000
+Height=4222
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2000
+ClientHeight=4222
+TBDockHeight=8878
+LRDockWidth=2000
+Dockable=1
+StayOnTop=0
+TabPosition=1
+ActiveTabID=ToolForm
+TabDockClients=ToolForm,TemplateView
+
+[ActiveProject]
+ActiveProject=1
+

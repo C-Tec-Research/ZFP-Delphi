@@ -1,0 +1,110 @@
+unit UnitReplace;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes,
+  System.UITypes,
+  Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, SigImage, Vcl.StdCtrls,
+  Vcl.Buttons;
+
+type
+  TFormReplace = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    CheckBoxRememberAnswer: TCheckBox;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    SigImageReplace: TSigImage;
+    SigImageReplaceBy: TSigImage;
+    LabelAddress: TLabel;
+    Label5: TLabel;
+  private
+    fSigImageList: tImageList;
+    fLastAnswer: boolean;
+    function GetRememberAnswer: boolean;
+    procedure SetRememberAnswer(const Value: boolean);
+    procedure SetSigImageList(const Value: tImageList);
+    { Private declarations }
+  public
+    { Public declarations }
+    property RememberAnswer : boolean
+             read GetRememberAnswer
+             write SetRememberAnswer;
+    property ImageList : tImageList
+             read fSigImageList
+             write SetSigImageList;
+    property LastAnswer : boolean
+             read fLastAnswer
+             write fLastAnswer;
+
+    function Execute( const pFrom, pTo : integer; const pAddress : string; const HideRememberAnswer : boolean ) : boolean; // TRUE = replace
+
+  end;
+
+var
+  FormReplace: TFormReplace;
+
+implementation
+
+uses UnitMain;
+
+{$R *.dfm}
+
+{ TFormReplace }
+
+function TFormReplace.Execute(const pFrom, pTo: integer; const pAddress : string; const HideRememberAnswer : boolean): boolean;
+begin
+  CheckBoxRememberAnswer.Visible := not HideRememberAnswer;
+  if pFrom = pTo then
+  begin
+    // Replacing a device by itself - not necessary and could reset values
+    // even if both are empty!
+    Result := FALSE;
+  end
+  else if pFrom = 0 then
+  begin
+    // not fitted - can always replace
+    Result := TRUE;
+  end
+  else if RememberAnswer then
+  begin
+    Result := LastAnswer;
+  end
+  else
+  begin
+    SigImageReplace.ImageIndex := pFrom;
+    SigImageReplaceBy.ImageIndex := pTo;
+    LabelAddress.Caption := pAddress;
+    LastAnswer := ShowModal = mrYes;
+    Result := LastAnswer;
+    if Result then
+    begin
+      MessageDlg( FormMain.Translate('Please check all device properties to ensure that the new device operates as expected'),
+                  mtWarning, [mbOK], 0 );
+    end;
+  end;
+end;
+
+function TFormReplace.GetRememberAnswer: boolean;
+begin
+  Result := CheckBoxRememberAnswer.Checked;
+end;
+
+procedure TFormReplace.SetRememberAnswer(const Value: boolean);
+begin
+  CheckBoxRememberAnswer.Checked := Value;
+end;
+
+procedure TFormReplace.SetSigImageList(const Value: tImageList);
+begin
+  fSigImageList := Value;
+  SigImageReplace.ImageList := Value;
+  SigImageReplaceBy.ImageList := Value;
+end;
+
+end.

@@ -1,0 +1,4945 @@
+unit UnitASCIITransfer;
+
+interface
+
+uses
+  Windows, Messages,
+  SysUtils, Variants,
+  Classes, Graphics,
+  Controls, Forms,
+  About,
+  UnitASCIITransportLayer,
+  //USBBulkTransferMode,
+  //UnitTransferInterface,
+  UnitRecordTypes,
+  Common,
+  Dialogs, StdCtrls,
+  Buttons, ExtCtrls,
+  CheckLst, Spin, SigSpinEdit, ComCtrls,
+  Contnrs,
+  UnitParseZFPRec,
+  UnitExpertModes,
+  UnitFiles,
+  UnitAdvancedTransfer,
+  Vcl.ImgList,
+  ErrorList,
+  UnitPCCfgFile,
+  UnitZFPDiskFile,
+  Vcl.Samples.Gauges,
+  UnitSigStrings,
+  UnitCTecVersion,
+  UnitPanelLogIn,
+  UnitRemoteLoginNotSupported,
+  UnitAdvancedTransferSelector,
+  UnitLogFileCfg, System.ImageList,
+  USBBulkDLL;
+
+type
+  //tTransferMode = (tmIdle, tmReceivingHeader, tmReceiving );
+  tTransferMode = (tmIdle, tmReceivingHeader, tmReceiving, tmReceivingBegin, tmReceivingBeginHeader );
+
+type
+  tWHORUState = (wru_Pending, wru_Timeout, wru_Blank, wru_WrongPIN, wru_CorrectPIN );
+  // if a timeout occurs it means remote PIN is required or ancient code - assume former
+  // Blank means PIN not supported, but logged in so treat as logged in
+  // Others are self explanatory
+
+type
+  tASCIIRequest = class
+  private
+    fFileName: string;
+    fRequestString: string;
+  public
+    property FileName : string
+             read fFileName
+             write fFileName;
+    property RequestString : string
+             read fRequestString
+             write fRequestString;
+  end;
+
+  tASCIIRequestList = class( tObjectList )
+  private
+    fTransferStrings: tStringList;
+    fTransferredCount: integer;
+    //fProgressBar: tProgressBar;
+    fProgressLabel: tLabel;
+    function GetASCIIRequest(const i: integer): tASCIIRequest;
+    function GetToTransferCount: integer;
+    //procedure SetProgressBar(const Value: tProgressBar);
+    procedure UpdateProgressBar;
+    procedure SetProgressLabel(const Value: tLabel);
+  public
+    constructor Create; reintroduce;
+    destructor Destroy; override;
+    function Add( const pFileName, pRequest : string ) : integer; reintroduce;
+    property ASCIIRequest[ const i : integer ] : tASCIIRequest
+             read GetASCIIRequest; default;
+    procedure Clear; override;
+    procedure ClearStrings;
+    property TransferStrings : tStringList
+             read fTransferStrings;
+    procedure AppendStrings(const pStrings : tStrings );
+    procedure AppendString(const pString : string );
+    property ToTransferCount : integer
+             read GetToTransferCount;
+    property TransferredCount : integer
+             read fTransferredCount;
+    function FirstString : string;
+    function NextString : string;
+    function CurrentString : string;
+    //function FirstReqString : string;
+    //function NextReqString : string;
+    //function CurrentReqString : string;
+    function TransferComplete : boolean;
+
+    {
+    property ProgressBar : tProgressBar
+             read fProgressBar
+             write SetProgressBar;
+    }
+    property ProgressLabel : tLabel
+             read fProgressLabel
+             write SetProgressLabel;
+  end;
+
+type
+  tWhoAreYouAction = procedure( pPanel : integer; pVersion : string ) of object;
+
+type
+  TFormASCIITransfer = class(TForm)
+    PanelBottom: TPanel;
+    BitBtnOK: TBitBtn;
+    OpenDialogASCII: TOpenDialog;
+    Panel3: TPanel;
+    GroupBoxDevicesConnected: TGroupBox;
+    SpeedButtonCheckDevices: TSpeedButton;
+    LabelNoDevicesFound: TLabel;
+    RadioGroupDevicesConnected: TRadioGroup;
+    TimerTransfer: TTimer;
+    PanelXferExpertMode: TPanel;
+    PageControlASCIIEdit: TPageControl;
+    TabSheetTransfer: TTabSheet;
+    TabSheetEdit: TTabSheet;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    Panel7: TPanel;
+    LabelTransferSendTimeout: TLabel;
+    SigSpinEditTimeOut: TSigSpinEdit;
+    PanelEditArea: TPanel;
+    SpeedButtonLoadASCIIFile: TSpeedButton;
+    MemoData: TMemo;
+    LabelResult: TLabel;
+    SpeedButtonSaveASCII: TSpeedButton;
+    SaveDialogASCII: TSaveDialog;
+    RadioGroupASCIIFiles: TRadioGroup;
+    SpeedButtonClearList: TSpeedButton;
+    TabSheetRetrieveData: TTabSheet;
+    Panel1: TPanel;
+    Panel8: TPanel;
+    Panel9: TPanel;
+    GroupBox2: TGroupBox;
+    CheckListBoxToRetrieve: TCheckListBox;
+    Panel10: TPanel;
+    Label2: TLabel;
+    LabelRetrieveResult: TLabel;
+    SigSpinEditRetrieveTimeout: TSigSpinEdit;
+    TimerRetrieve : TTimer;
+    MemoRetrieve: TMemo;
+    TabSheetDebug: TTabSheet;
+    Panel11: TPanel;
+    EditDebugText: TEdit;
+    BitBtnTest: TBitBtn;
+    RadioGroupDebugResult: TRadioGroup;
+    MemoDebugResult: TMemo;
+    EditDebugID: TEdit;
+    Label3: TLabel;
+    Label4: TLabel;
+    EditDebugCS: TEdit;
+    EditDebugPanel: TEdit;
+    Label5: TLabel;
+    PanelXFerSimpleMode: TPanel;
+    ImageListTrafficLights: TImageList;
+    LabelProgress: TLabel;
+    GroupBox1: TGroupBox;
+    CheckListBoxToSend: TCheckListBox;
+    BitBtnStartXFER: TBitBtn;
+    LabelTicks: TLabel;
+    LabelChars: TLabel;
+    LabelRecords: TLabel;
+    BitBtnAbortXFER: TBitBtn;
+    GaugeWait: TGauge;
+    LabelWaiting: TLabel;
+    LabelRetryCountLabel: TLabel;
+    LabelRetryCount: TLabel;
+    TimerCommon: TTimer;
+    TimerGetWhoAMI: TTimer;
+    TimerEnableAbort: TTimer;
+    SpeedButtonSelectAllSend: TSpeedButton;
+    SpeedButtonClearAllSend: TSpeedButton;
+    SpeedButtonClearAllRcv: TSpeedButton;
+    SpeedButtonSelectAllRcv: TSpeedButton;
+    Panel2: TPanel;
+    SpeedButtonStartRetrieve: TSpeedButton;
+    Panel4: TPanel;
+    SpeedButtonStartTransfer: TSpeedButton;
+    procedure SpeedButtonLoadASCIIFileClick(Sender: TObject);
+    procedure SpeedButtonCheckDevicesClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure SpeedButtonStartTransferClick(Sender: TObject);
+    procedure SpeedButtonStartSimpleTransferClick(Sender: TObject);
+    procedure SpeedButtonStartAdvancedTransferClick(Sender: TObject);
+    procedure SpeedButtonStartSimpleTransferRcvClick(Sender: TObject);
+    procedure SpeedButtonStartAdvancedTransferRcvClick(Sender: TObject);
+    procedure TimerTransferTimer(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure SpeedButtonSaveASCIIClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure RadioGroupASCIIFilesClick(Sender: TObject);
+    procedure PanelBottomResize(Sender: TObject);
+    procedure SpeedButtonClearListClick(Sender: TObject);
+    procedure SpeedButtonStartRetrieveClick(Sender: TObject);
+    procedure TimerRetrieveTimer(Sender: TObject);
+    procedure BitBtnTestClick(Sender: TObject);
+    procedure BitBtnAbortXFERClick(Sender: TObject);
+    procedure FormHide(Sender: TObject);
+    procedure PanelXFerSimpleModeResize(Sender: TObject);
+    procedure TimerCommonTimer(Sender: TObject);
+    procedure TimerGetWhoAMITimer(Sender: TObject);
+    procedure TimerEnableAbortTimer(Sender: TObject);
+    procedure SpeedButtonSelectAllSendClick(Sender: TObject);
+    procedure SpeedButtonClearAllSendClick(Sender: TObject);
+    procedure SpeedButtonSelectAllRcvClick(Sender: TObject);
+    procedure SpeedButtonClearAllRcvClick(Sender: TObject);
+  private
+    { Private declarations }
+    //fBytesWritten : DWord;
+    //fBytesRead : DWord;
+    fTimeOut : Integer;
+    fRepeatTimeOut : integer;
+    fBeginReceived : boolean;
+    fStartTime : TDateTime;
+    //fASCIIFiles: TStringList;
+    fASCIIRequests: tASCIIRequestList;
+    fASCIISend: tASCIIRequestList;
+    fParsedRec : tStringList;
+    fPanel : integer;
+    fCurrPanel : tZFPNode;
+    //fBytesToWrite : DWord;
+    //fBytesToRead : DWord;
+    fCSFile : tStringList;
+    fWHORUFile : tStringList;
+    fPartCSFile : tStringList;
+    fErrorCount: integer;
+    fHintCount: integer;
+    fWarningCount: integer;
+    fList : tInfiniteStringList;
+    //fLastRecSent : string;
+    fErrors: tErrorList; // we don't own this
+    fASCIIExtraInfo : tASCIIExtraInfo;
+    fTicks : integer;
+    fChars : integer;
+    fRecCount : integer;
+    fExitOnCompletion : boolean;
+    fWhoAreYouAction : tWhoAreYouAction;
+    fWHORUState : tWHORUState;
+    fLog : tLogReport;
+    //procedure SetActivePortIndex(const Value: integer);
+    fVerifying : boolean;
+    function GetRcvStrings: tStrings;
+  private
+    //fCERcvErrors: tErrorList;
+    fRetryCount: integer;
+    fPCFileName, fPanelFileName : string;
+    procedure ProcessRcvRec( const pRec : string; const pStatus : tASCIIXIRxObject );
+    procedure ProcessSndRecAck( const pRec : string; const pStatus : tASCIIXIRxObject );
+    procedure ProcessWhoAreYouRecAck( const pRec : string; const pStatus : tASCIIXIRxObject );
+    procedure SendNextSendRec;
+    procedure SendNextRcvRec;
+    //procedure HandleRcvRecTimeout;
+    //procedure HandleSendRecTimeout;
+    procedure OnSendWhoAreYouFail( const ReasonCode : DWord );
+    procedure OnSendSendFail( const ReasonCode : DWord );
+    procedure OnSendWhoAreYouRcvFail( const ReasonCode : DWord );
+    procedure OnSendRcvFail( const ReasonCode : DWord );
+    procedure OnSendFail( const pMode : string; const ReasonCode : DWord );
+    procedure SetRetryCount(const Value: integer);    // Common
+    procedure StopTimers;
+    function GetAbortButtonVisible: boolean;
+    procedure SetAbortButtonVisible(const Value: boolean);
+  public
+    { Public declarations }
+    //function Execute : boolean;
+
+    procedure CheckForDevices;
+
+    property ErrorCount : integer
+             read fErrorCount;
+    property WarningCount : integer
+             read fWarningCount;
+    property HintCount : integer
+             read fHintCount;
+    procedure SetupRadioGroupASCIIFiles;
+    procedure SetupCheckboxesRetrieveASCIIFiles( pChecked : boolean );
+    procedure ClearASCIIRetrieveFileList;
+    procedure ClearASCIISendFileList;
+    procedure ExportASCIIFile( const pBaseName : string; const pPanelIndex : integer; const pDataName : string; const pCSVData : tStrings );
+    procedure ImportASCIIFile( const pBaseName : string; const pPanelIndex : integer;
+              const pDataName : string; const pCSVReq : string );
+
+    procedure SetupVisualInterface;
+    procedure SetupVisualInterfaceSimple;
+    procedure SetupVisualInterfaceExpert;
+    procedure SetupVisualSDCardPrep;
+    procedure AskWhoAreYou;
+    procedure SendFile( const pPCFileName, pPanelFileName : string; const pErrors : tErrorList );
+    procedure SendFile2( const pPCFileName, pPanelFileName : string; const pErrors : tErrorList );
+    procedure SendFile3(  pPanel : integer; pVersion : string );
+    //procedure GetFile( const pPCFileName, pPanelFileName : string; const pErrors : tErrorList );
+    procedure GetFile2( const pPCFileName, pPanelFileName : string; const pErrors : tErrorList );
+    procedure GetFile3(  pPanel : integer; pVersion : string );
+    procedure BuildSDCardFiles( const pPanel : tZFPNode; const pErrors : tErrorList );
+    procedure AdvancedSendData( const pErrors : tErrorList );
+    procedure AdvancedSendData2( xPanel : integer; pVersion : string ); // panel not used but required for param list
+    function AdvancedSendData2HasRecType( const pRecType : integer ) : boolean;
+    function AdvancedSendData2HasType( const pType : tAdvancedTransferType ) : boolean;
+    procedure SendAllData(const pPanel: tZFPNode; const pErrors: tErrorList; const pVerifying: boolean);
+    procedure SendAllData2( pPanel : integer; pVersion : string );
+    procedure RcvAllData( const pPanel : tZFPNode; const pErrors : tErrorList );
+    procedure RcvAllData2( pPanel : integer; pVersion : string );
+    procedure AdvancedRcvData( const pErrors : tErrorList );
+    procedure AdvancedRcvData2( xPanel : integer; pVersion : string );
+    procedure RcvDeviceData( const pPanel : tZFPNode; const pErrors : tErrorList );
+    procedure RcvDeviceData2( pPanel : integer; pVersion : string );
+    procedure RcvLogFile( const pPanel : tZFPNode; pLog : tLogReport; const pErrors : tErrorList );
+    procedure RcvLogFile2( pPanelConnect : integer; pVersion : string );
+    procedure StartLogTransfer;
+    //procedure RcvLogFile( const pPanel : tZFPNode; const pBaseName, pRecID : string; const pErrors : tErrorList );
+
+    function InitFileRcv( const pErrors : tErrorList ) : boolean;  // used currently for log files. Later may be used for simple mode transfers
+    procedure AddFileRcvRequest( const pPanel : tZFPNode; const pBaseName, pRecID : string ); overload;
+    procedure AddFileRcvRequest( const pPanel : tZFPNode; const pBaseName : string; pRecIDs : tStringList ); overload;
+    procedure ExecuteRcvRequest;
+
+    property RcvStrings : tStrings
+             read GetRcvStrings;
+
+    property RetryCount : integer
+             read fRetryCount
+             write SetRetryCount;
+
+    property AbortButtonVisible : boolean
+             read GetAbortButtonVisible
+             write SetAbortButtonVisible;
+
+    class function Translate(const pString: string): string;
+  end;
+
+type
+  ExceptionUSB = class( Exception )
+  public
+    constructor Create( ErrorIndex : integer );
+  end;
+
+  ExceptionZFP = class( Exception )
+
+  end;
+
+  ExceptionZFPTransfer = class( ExceptionZFP )
+  public
+  end;
+
+  TExceptionZFPErrorsFailMode = ( fm_Verify, fm_Transfer, fm_FileCreate, fm_Verified );
+
+  ExceptionZFPErrors = class( ExceptionZFP )
+  public
+    constructor Create( const pMode : TExceptionZFPErrorsFailMode );
+  end;
+
+var
+  FormASCIITransfer: TFormASCIITransfer;
+
+implementation
+
+{$R *.dfm}
+
+{ TFormASCIITransfer }
+
+procedure TFormASCIITransfer.AddFileRcvRequest(const pPanel: tZFPNode;
+  const pBaseName, pRecID: string);
+var
+  iFileName : string;
+begin
+  with pPanel do
+  begin
+    //PageControlASCIIEdit.ActivePage := TabSheetRetrieveData;
+    iFileName := ZFPFile.FileName;
+
+    ImportASCIIFile( iFileName, ID, pBaseName, pRecID + ',REQUEST,' + IntToStr( pPanel.ID ) );
+  end;
+end;
+
+procedure TFormASCIITransfer.AddFileRcvRequest(const pPanel: tZFPNode;
+  const pBaseName: string; pRecIDs: tStringList);
+var
+  i: Integer;
+begin
+  for i := 0 to pRecIDs.Count - 1 do
+  begin
+    AddFileRcvRequest( pPanel, pBaseName, pRecIDs[ i ] );
+  end;
+end;
+
+procedure TFormASCIITransfer.AskWhoAreYou;
+begin
+  RetryCount := 0;
+  fErrors.Clear;
+  fRecCount := 0;
+  fASCIIExtraInfo.UseWaitForSingleObject := em_Check_USB_Status in ExpertModes;
+  fASCIIExtraInfo.UseThreading := em_Use_Threading in ExpertModes;;
+
+  ClearASCIISendFileList;
+  // WHORU record
+  fWHORUFile.Clear;
+  fWHORUFile.Add( '200,WHORU,0,' + FormLogin.Password+','+ IntToStr( AboutBox.Major )
+                  + ',' + IntToStr( AboutBox.Minor ) + ',' + IntToStr( AboutBox.Release )
+                  + ',' + IntToStr( AboutBox.Build ) );
+  fASCIISend.AppendStrings( fWHORUFile );
+
+end;
+
+procedure TFormASCIITransfer.BitBtnAbortXFERClick(Sender: TObject);
+begin
+  if Visible then
+  begin
+    StopTimers;
+    GaugeWait.Visible := FALSE;
+    LabelWaiting.Visible := FALSE;
+    fASCIIExtraInfo.Stop;
+    AbortButtonVisible := FALSE;
+    LabelRecords.Visible := FALSE;
+    BitBtnOK.Visible := TRUE;
+    SetupVisualInterface;
+    //Hide;
+    raise ExceptionZFPTransfer.Create(Translate('Transfer Aborted by user'));
+  end;
+end;
+
+procedure TFormASCIITransfer.BitBtnTestClick(Sender: TObject);
+var
+  iID, iChecksum : integer;
+  iResult : tRecvRecType;
+begin
+  iID := -1;
+  iChecksum := -1;
+  iResult := ParseZFPRec( EditDebugText.Text, MemoDebugResult.Lines, iID, fPanel, iChecksum );
+  case iResult of
+    rrt_ACK,
+    rrt_REQUEST,
+    rrt_END,
+    rrt_Other,
+    rrt_BEGIN,
+    rrt_NAK,
+    rrt_CSFAIL,
+    rrt_TIMEOUT,
+    rrt_Error:
+    begin
+      RadioGroupDebugResult.ItemIndex := Ord( iResult );
+    end;
+    else
+    begin
+      RadioGroupDebugResult.ItemIndex := RadioGroupDebugResult.Items.Count - 1;
+    end;
+  end;
+  EditDebugID.Text := IntToStr( iID );
+  EditDebugCS.Text := IntToStr( iChecksum );
+  EditDebugPanel.Text := IntToStr( fPanel );
+end;
+
+procedure TFormASCIITransfer.BuildSDCardFiles(const pPanel: tZFPNode;
+  const pErrors: tErrorList);
+var
+  iStrings : tStringList;
+  iTempFile : tZFPTempTextFile;
+  iFileName : string;
+begin
+  fErrors := pErrors;
+  fErrors.Clear;
+  fPanel := pPanel.ID;
+  fCurrPanel := pPanel;
+  fRecCount := 0;
+  SetupVisualSDCardPrep;
+  with pPanel do
+  begin
+    PageControlASCIIEdit.ActivePage := TabSheetEdit;
+
+    if not ZFPFile.SaveAs( 'd.zft' ) then
+    begin
+      // we save in the SDCard subdirectory of the main file, so we NEED a file name
+      exit;
+    end;
+    iStrings := tStringList.Create;
+    iFileName := ExtractFilePath( ZFPFile.FileName ) + 'SD Card';
+    ForceDirectories( iFileName );
+    iFileName := iFileName + '\d';
+    try
+
+      //--------------- Phase 1 - shares and name data
+      //   2 – Device Names
+      ExportNamesFile( iStrings, fErrors );
+      ExportASCIIFile( iFileName, ID, 'Names', iStrings );
+
+      //---------------- Phase 2 ----------------------
+
+      //  80 – Panel data
+      GeneralProperties.ExportFile( iStrings );
+      ExportASCIIFile( iFileName, ID, 'Panel Config', iStrings );
+
+      //  17 – Input Group and Trigger Share Data
+      with ZFPFile.CauseAndEffects.InputGroups do
+      begin
+        //ExportShareFile( pPanel, ExportShareStrings );
+        ZFPFile.ExportInputGroupsShareFile( pPanel, iStrings );
+        ExportASCIIFile( iFileName, ID, 'IG Shares', iStrings );
+      end;
+
+      //  18 – Output Group Share Data
+      with ZFPFile.CauseAndEffects.OutputGroups do
+      begin
+        iStrings.Clear;
+        ExportShareFile( pPanel, iStrings );
+        ExportASCIIFile( iFileName, ID, 'OG Shares', iStrings );
+      end;
+
+      //  19 – Output Supergroups Share Data
+      with ZFPFile.SuperGroupList do
+      begin
+        iStrings.Clear;
+        ExportShareFile( pPanel, iStrings );
+        ExportASCIIFile( iFileName, ID, 'OSG Shares', iStrings );
+      end;
+
+      //  81 – Mode Share Data
+      with ZFPFile.ModeList do
+      begin
+        iStrings.Clear;
+        ExportShareFile( pPanel, iStrings );
+        ExportASCIIFile( iFileName, ID, 'Mode Shares', iStrings );
+      end;
+
+      // 151 – Input Supergroup Share Data
+      with ZFPFile.InputSuperGroupList do
+      begin
+        iStrings.Clear;
+        ExportShareFile( pPanel, iStrings );
+        ExportASCIIFile( iFileName, ID, 'ISG Shares', iStrings );
+      end;
+
+      // 152 – Sequence Share Data
+      with ZFPFile.SequenceList do
+      begin
+        iStrings.Clear;
+        ExportShareFile( pPanel, iStrings );
+        ExportASCIIFile( iFileName, ID, 'Seq Shares', iStrings );
+      end;
+
+      // 153 – Pulse Pattern Share Data
+      with ZFPFile.PulsePatternList do
+      begin
+        iStrings.Clear;
+        ExportShareFile( pPanel, iStrings );
+        ExportASCIIFile( iFileName, ID, 'Pulse Patt Shares', iStrings );
+      end;
+
+      // 160 – Group Action Share Data
+      with ZFPFile.GroupActionList do
+      begin
+        iStrings.Clear;
+        ExportShareFile( pPanel, iStrings );
+        ExportASCIIFile( iFileName, ID, 'Group Action Shares', iStrings );
+      end;
+
+      //--------------- Phase 3 - other data
+      //  14 – Input Group and Trigger Data
+      iStrings.Clear;
+      ZFPFile.ExportInputGroupsConfigFile( pPanel, iStrings );
+      ExportASCIIFile( iFileName, ID, 'Input Groups', iStrings );
+
+      //  15 – Output Groups
+      iStrings.Clear;
+      ZFPFile.ExportOutputGroupsConfigFile( pPanel, iStrings );
+      ExportASCIIFile( iFileName, ID, 'Output Groups', iStrings );
+
+      //  16 – Output Supergroup
+      iStrings.Clear;
+      ZFPFile.ExportSuperGroupsConfigFile( pPanel, iStrings );
+      ExportASCIIFile( iFileName, ID, 'Supergroups', iStrings );
+
+      //  20 – Device Data
+      ExportDeviceFieldsFile( iStrings, fErrors );
+      ExportASCIIFile( iFileName, ID, 'Device Fields', iStrings );
+
+      //  30 – Cause and Effects Matrix (not used by PC)
+      iStrings.Clear;
+      ZFPFile.ExportCausesFile( pPanel, iStrings, fErrors ); // nil for now
+      ExportASCIIFile( iFileName, ID, 'CE Matrix', iStrings );
+
+      //  40 – Sequences
+      ZFPFile.ExportEffectsFile( pPanel, iStrings );
+      ExportASCIIFile( iFileName, ID, 'Sequences', iStrings );
+
+      //  60 – Pulse Patterns
+      ZFPFile.ExportPulseSeqFile( pPanel, iStrings );
+      ExportASCIIFile( iFileName, ID, 'Pulse Pattern', iStrings );
+
+      //  161 – Group Actions
+      ZFPFile.ExportGroupActionFile( pPanel, iStrings );
+      ExportASCIIFile( iFileName, ID, 'Group Actions', iStrings );
+
+      //  90 – Comments
+      iStrings.Clear;
+      PanelNotes.ExportFile( iStrings );
+      ExportASCIIFile( iFileName, ID, 'Comments', iStrings );
+
+      // 100 – Zone Data
+      with ZonesFile do
+      begin
+        iStrings.Clear;
+        ExportFile( iStrings );
+        ExportASCIIFile( iFileName, ID, 'Zones', iStrings );
+      end;
+
+      // 120 - Network data
+      iStrings.Clear;
+      ZFPFile.ExportNetworkCfgFile( pPanel, iStrings, fErrors );
+      ExportASCIIFile( iFileName, ID, 'Network File', iStrings );
+
+      // 150 – Cause and Effects Tree (not used by panel)
+      with ZFPFile.CauseAndEffects do
+      begin
+        iStrings.Clear;
+        ExportTreeFile( pPanel, iStrings );
+        ExportASCIIFile( iFileName, ID, 'Tree File', iStrings );
+      end;
+
+      // 154 – Input Supergroups
+      with ZFPFile.InputSuperGroupList do
+      begin
+        iStrings.Clear;
+        ExportConfigFile( pPanel, iStrings );
+        ExportASCIIFile( iFileName, ID, 'Input Supergroups', iStrings );
+      end;
+
+      iTempFile := tZFPTempTextFile.Create;
+      try
+        ZFPFile.Client.Save( iTempFile );
+        iTempFile.FileName := '\Client.txt';
+        iTempFile.ExportFile( fPanel, iStrings );
+        ExportASCIIFile( iFileName, ID, 'Client', iStrings );
+      finally
+        iTempFile.Free;
+      end;
+
+      iTempFile := tZFPTempTextFile.Create;
+      try
+        ZFPFile.Installer.Save( iTempFile );
+        iTempFile.FileName := '\Installr.txt';
+        iTempFile.ExportFile( fPanel, iStrings );
+        ExportASCIIFile( iFileName, ID, 'Installer', iStrings );
+      finally
+        iTempFile.Free;
+      end;
+
+      iTempFile := tZFPTempTextFile.Create;
+      try
+        ZFPFile.SiteNotes.Save( iTempFile );
+        iTempFile.FileName := '\SNotes.txt';
+        iTempFile.ExportFile( fPanel, iStrings );
+        ExportASCIIFile( iFileName, ID, 'SiteNotes', iStrings );
+      finally
+        iTempFile.Free;
+      end;
+
+      SetupRadioGroupASCIIFiles;
+    finally
+      iStrings.Free;
+    end;
+    if (fErrors.ErrorCount = 0) or (em_Show_Advanced_Send_Rcv in ExpertModes) or (ErrorReportingLevel = el_None) then
+    begin
+      ShowModal;
+      exit;
+    end;
+    //Hide;
+    raise ExceptionZFPErrors.Create( fm_FileCreate );
+  end;
+end;
+
+procedure OnDevNotification(pContext: Pointer; Index: Cardinal; Event: USBBULK_DEVICE_EVENT); stdcall;
+begin
+end;
+
+procedure TFormASCIITransfer.CheckForDevices;
+var
+  BulkInfo : USBBULK_DEV_INFO;
+  hBulk    : USB_BULK_HANDLE;
+begin
+  RadioGroupDevicesConnected.Items.Clear;
+  LabelNoDevicesFound.Visible := FALSE;
+  USBBulkDll.USBBULK_Init(@OnDevNotification, @Self);
+  USBBULK_AddAllowedDeviceItem($283D, $1234);
+  hBulk := USBBULK_Open(0);
+  if hBULK <> 0 then
+  begin
+    USBBULK_GetDevInfo(hBulk, BulkInfo);
+    USBBULK_Close(hBulk);
+    RadioGroupDevicesConnected.Items.Add('VendorId ' + '$' + IntToHex(BulkInfo.VendorId, 4) +
+                                         ' & ProductId ' + '$' + IntToHex(BulkInfo.ProductId, 4));
+    fASCIIExtraInfo.ActivePortIndex := RadioGroupDevicesConnected.ItemIndex;
+  end;
+end;
+
+{procedure TFormASCIITransfer.CheckForDevices;
+var
+  i: Integer;
+  iCount : integer;
+begin
+  RadioGroupDevicesConnected.Items.Clear;
+  LabelNoDevicesFound.Visible := FALSE;
+  iCount := fASCIIExtraInfo.CheckForDevices;
+  for i := 0 to iCount - 1 do
+  begin
+    RadioGroupDevicesConnected.Items.Add( fASCIIExtraInfo.ConnectionName[ i ] );
+  end;
+  if iCount > 0 then
+  begin
+    RadioGroupDevicesConnected.ItemIndex := 0;
+    fASCIIExtraInfo.ActivePortIndex := RadioGroupDevicesConnected.ItemIndex;
+ end
+  else
+  begin
+    LabelNoDevicesFound.Visible := TRUE;
+    fASCIIExtraInfo.ActivePortIndex := -1;
+  end;
+end;}
+
+procedure TFormASCIITransfer.ClearASCIIRetrieveFileList;
+begin
+  fASCIIRequests.Clear;
+end;
+
+procedure TFormASCIITransfer.ClearASCIISendFileList;
+begin
+  fASCIISend.Clear;
+end;
+
+procedure TFormASCIITransfer.ExecuteRcvRequest;
+begin
+  SetupCheckboxesRetrieveASCIIFiles( TRUE );
+  SpeedButtonStartRetrieveClick( self );
+  if ShowModal = mrOK then
+  begin
+  end;
+end;
+
+procedure TFormASCIITransfer.ExportASCIIFile( const pBaseName: string;
+  const pPanelIndex: integer; const pDataName: string;
+  const pCSVData: tStrings);
+var
+  pFileName : string;
+begin
+  pFilename := ChangeFileExt( pBaseName, '' );
+  pFileName := pFileName + '(' + IntToStr( pPanelIndex ) + ')' + pDataName + '.csv';
+  pCSVData.SaveToFile( pFileName );
+  //fASCIISend.AppendStrings( pCSVData );
+  fASCIISend.Add( pFileName, '' );
+  //fASCIIFiles.Add( pFileName );
+end;
+
+procedure TFormASCIITransfer.FormCreate(Sender: TObject);
+begin
+  //fASCIIFiles := TStringList.Create;
+  fCSFile := tStringList.Create;
+  fWHORUFile := tStringList.Create;
+  fPartCSFile := tStringList.Create;
+  fASCIIRequests := tASCIIRequestList.Create;
+  fASCIISend := tASCIIRequestList.Create;
+  fParsedRec := tStringList.Create;
+  fList := tInfiniteStringList.Create;
+  fASCIIExtraInfo := tASCIIExtraInfo.Create;
+
+end;
+
+procedure TFormASCIITransfer.FormDestroy(Sender: TObject);
+begin
+  //fASCIIFiles.Free;
+  fWHORUFile.Free;
+  fCSFile.Free;
+  fPartCSFile.Free;
+  fASCIIRequests.Free;
+  fASCIISend.Free;
+  fParsedRec.Free;
+  fList.Free;
+  fASCIIExtraInfo.Free;
+
+end;
+
+procedure TFormASCIITransfer.FormHide(Sender: TObject);
+begin
+  // stop the timers
+  StopTimers;
+  fASCIIExtraInfo.Stop;
+end;
+
+procedure TFormASCIITransfer.FormShow(Sender: TObject);
+begin
+  CheckForDevices;
+end;
+
+function TFormASCIITransfer.GetAbortButtonVisible: boolean;
+begin
+  Result := BitBtnAbortXFER.Visible;
+end;
+
+{
+procedure TFormASCIITransfer.GetFile(const pPCFileName, pPanelFileName: string;
+  const pErrors: tErrorList);
+begin
+  RetryCount := 0;
+  CheckForDevices;
+  fASCIIExtraInfo.UseWaitForSingleObject := em_Check_USB_Status in ExpertModes;
+  fASCIIExtraInfo.UseThreading := em_Use_Threading in ExpertModes;;
+  fPanel := 0;
+  fCurrPanel := nil;
+  fRecCount := 0;
+  fErrors := pErrors;
+  fErrors.Clear;
+  SetupVisualInterfaceSimple;
+  if not FormLogin.Execute then
+  begin
+    exit;
+  end;
+
+  AbortButtonVisible := FALSE;
+  LabelRecords.Visible := FALSE;
+  LabelProgress.Visible := FALSE;
+  //SpeedButtonStartSimpleTransferClick( self );
+  GetFile2( pPCFileName, pPanelFileName, pErrors );
+
+  if fErrors.ErrorCount = 0 then
+  begin
+    ShowModal;
+    exit;
+  end;
+  //Hide;
+  raise ExceptionZFPErrors.Create( Translate('Errors found - transfer aborted'));
+end;
+}
+procedure TFormASCIITransfer.GetFile2(const pPCFileName, pPanelFileName: string;
+  const pErrors: tErrorList);
+begin
+  if RadioGroupDevicesConnected.Items.Count > 0 then
+  begin
+    // send WHORU record
+    fPanelFileName := pPanelFileName;
+    fPCFileName := pPCFileName;
+    AskWhoAreYou;
+    fWhoAreYouAction := GetFile3;
+    fASCIIExtraInfo.OnRcvRec := ProcessWhoAreYouRecAck;
+    fASCIIExtraInfo.OnSendFail := OnSendWhoAreYouFail;
+    fASCIIExtraInfo.OnRcvFail := OnSendWhoAreYouRcvFail;
+    RcvStrings.Clear;
+    if fASCIIExtraInfo.Start then
+    begin
+      // start first transfer
+      fStartTime := Now;
+      AbortButtonVisible := TRUE;
+      LabelProgress.Visible := TRUE;
+      LabelRecords.Visible := TRUE;
+      with fASCIIRequests do
+      begin
+        //ProgressBar := nil;
+        ProgressLabel := nil;
+      end;
+      with fASCIISend do
+      begin
+        //ProgressBar := self.ProgressBar;
+        ProgressLabel := self.LabelProgress;
+        if fASCIIExtraInfo.SendString( fASCIISend.FirstString ) then
+        begin
+          fTimeout := SigSpinEditTimeOut.Value div integer(TimerGetWhoAMI.Interval);
+          fRepeatTimeout := fTimeout;
+          //fTimeout := cWhoRUTimeout div TimerGetWhoAMI.Interval;
+          TimerGetWhoAMI.Enabled := TRUE;
+          TimerCommon.Enabled := TRUE;
+          GaugeWait.Visible := FALSE;
+          LabelWaiting.Visible := FALSE;
+          // errors handled separately
+        end;
+      end;
+      PanelXferExpertMode.Visible := FALSE;
+      PanelXFerSimpleMode.Align := alClient;
+      PanelXFerSimpleMode.Visible := TRUE;
+    end;
+  end
+  else
+  begin
+    //Hide;
+    if assigned( XFP4PgmCfg ) then
+    begin
+      raise ExceptionZFP.Create(Translate('No Panels Found'));
+    end
+    else
+    begin
+      raise ExceptionZFP.Create('No Panels Found');
+    end;
+  end;
+end;
+
+procedure TFormASCIITransfer.GetFile3(pPanel: integer; pVersion: string);
+var
+  iStrings : tStringList;
+  iVersion : tCTecVersion;
+  iTempFile : tZFPDiskFile;
+begin
+  // performed as result of WHORU request.
+  iStrings := tStringList.Create;
+  //StopTimers;
+  iVersion := pVersion;
+  case fWHORUState of
+    wru_Pending,
+    wru_Timeout:
+    begin
+      // should not get these results
+      fErrors.Add( es_Error, 0, 0, 'Internal Transfer Error 001 - Transfer aborted');
+      ModalResult := mrCancel;
+      StopTimers;
+      exit;
+    end;
+    wru_WrongPIN:
+    begin
+      if not FormLogin.Execute( TRUE ) then
+      begin
+        ModalResult := mrCancel;
+        exit;
+      end;
+      // else
+      AbortButtonVisible := FALSE;
+      LabelRecords.Visible := FALSE;
+      LabelProgress.Visible := FALSE;
+      SpeedButtonStartSimpleTransferRcvClick( self );
+      exit;
+    end;
+    wru_Blank,
+    wru_CorrectPIN: ; // carry on
+  end;
+  begin
+    try
+      ClearASCIIRetrieveFileList;
+
+      fASCIIRequests.TransferStrings.Clear;
+
+      if iVersion >= '9A28' then
+      begin
+        iTempFile := tZFPDiskFile.Create( 'Temp File', nil );
+        try
+          fASCIIRequests.AppendString( iTempFile.ImportFileRequest( pPanel, fPanelFileName ));
+        finally
+          iTempFile.Free;
+        end;
+      end;
+      with fASCIISend do
+      begin
+        //ProgressBar := nil;
+        ProgressLabel := nil;
+      end;
+      with fASCIIRequests do
+      begin
+        //ProgressBar := self.ProgressBar;
+        ProgressLabel := self.LabelProgress;
+        if fASCIIExtraInfo.SendString( FirstString ) then
+        begin
+          fASCIIExtraInfo.OnRcvRec := ProcessRcvRec;     //<<<<<<<<<<<<<<<<<<<<<<<<<<<
+          fTimeout := SigSpinEditRetrieveTimeout.Value div integer(TimerRetrieve.Interval);
+          fRepeatTimeout := fTimeout;
+          TimerRetrieve.Enabled := TRUE;
+          TimerCommon.Enabled := TRUE;
+          // errors handled separately
+        end;
+      end;
+      PanelXferExpertMode.Visible := FALSE;
+      PanelXFerSimpleMode.Align := alClient;
+      PanelXFerSimpleMode.Visible := TRUE;
+
+    finally
+      iStrings.Free;
+    end;
+  end;
+end;
+
+function TFormASCIITransfer.GetRcvStrings: tStrings;
+begin
+  Result := fASCIIExtraInfo.RcvHistory;
+  //Result := fASCIIRequests.TransferStrings;
+end;
+
+procedure TFormASCIITransfer.ImportASCIIFile( const pBaseName: string;
+  const pPanelIndex: integer; const pDataName, pCSVReq: string );
+var
+  pFileName : string;
+begin
+  if pBaseName <> '' then
+  begin
+    // save a copy!
+    pFilename := ChangeFileExt( pBaseName, '' );
+    pFileName := pFileName + ' Rcv(' + IntToStr( pPanelIndex ) + ')' + pDataName + '.csv';
+  end;
+  fASCIIRequests.Add( pFileName, pCSVReq );
+end;
+
+function TFormASCIITransfer.InitFileRcv( const pErrors : tErrorList ) : boolean;
+begin
+  fErrors := pErrors;
+  fErrors.Clear;
+  CheckForDevices;
+  PanelXferExpertMode.Visible := FALSE;
+  PanelXFerSimpleMode.Align := alClient;
+  PanelXFerSimpleMode.Visible := TRUE;
+  ClearASCIIRetrieveFileList;
+  RcvStrings.Clear;
+  fRecCount := 0;
+  fExitOnCompletion := TRUE;
+  //Result := FormLogin.Execute;
+  Result := TRUE;
+end;
+
+procedure TFormASCIITransfer.OnSendFail( const pMode : string; const ReasonCode: DWord);
+var
+  iFailText : string;
+begin
+  if Visible then
+  begin
+    iFailText := Translate( pMode ) +' - ';
+    case ReasonCode of
+      ERROR_INVALID_HANDLE: // 6
+      begin
+        iFailText := iFailText + Translate( 'Invalid Handle' );
+      end;
+      ERROR_BAD_COMMAND:
+      begin
+        iFailText := iFailText + Translate( 'Bad Command' );
+      end;
+      ERROR_GEN_FAILURE:  // 31
+      begin
+        iFailText := iFailText + Translate( 'General Failure' );
+      end;
+      WAIT_TIMEOUT:
+      begin
+        iFailText := iFailText + Translate( 'USB Timeout' );
+      end;
+      ERROR_INVALID_PARAMETER:
+      begin
+        iFailText := iFailText + Translate( 'ReadFile Invalid Parameter' );
+      end;
+      ERROR_ACCESS_DENIED:
+      begin
+        iFailText := iFailText + Translate( 'USB Access Denied' );
+      end;
+      ERROR_IO_INCOMPLETE:
+      begin
+        iFailText := iFailText + Translate( 'USB IO Incomplete' );
+      end;
+      else
+      begin
+        iFailText := iFailText + IntToStr( ReasonCode );
+      end;
+    end;
+    StopTimers;
+    fASCIIExtraInfo.Stop;
+    AbortButtonVisible := FALSE;
+    fErrors.Add( es_Error, 0, 0, iFailText );
+    //Hide;
+    raise ExceptionZFPTransfer.Create( iFailText );
+  end;
+end;
+
+procedure TFormASCIITransfer.OnSendRcvFail(const ReasonCode: DWord);
+begin
+  case ReasonCode of
+    NO_ERROR:
+    begin
+      exit;
+    end;
+    ERROR_BAD_COMMAND:
+    begin
+      // if retry count is less than three try reselecting
+      if fASCIIExtraInfo.CurrentSendStatus.RetryCount < 3 then
+      begin
+        fASCIIExtraInfo.Stop;
+        CheckForDevices;
+        fASCIIExtraInfo.Start;
+        RetryCount := RetryCount + 1;
+        //fASCIIExtraInfo.ResendLastRec;
+      end
+      else
+      begin
+        // otherwise give up - abort transmission
+        OnSendFail( 'Rcv Failed', ReasonCode );
+      end;
+    end;
+    ERROR_IO_INCOMPLETE:
+    begin
+      // ignore and wait for further time out
+    end;
+    ERROR_ACCESS_DENIED:
+    begin
+      if fASCIIExtraInfo.CurrentSendStatus.RetryCount < 3 then
+      begin
+        fASCIIExtraInfo.CurrentSendStatus.RetryCount := fASCIIExtraInfo.CurrentSendStatus.RetryCount + 1;
+        RetryCount := RetryCount + 1;
+      end
+      else
+      begin
+        // otherwise give up - abort transmission
+        OnSendFail( 'Rcv Failed', ReasonCode );
+      end;
+    end;
+    else
+    begin
+      OnSendFail( 'Rcv Failed', ReasonCode );
+    end;
+  end;
+end;
+
+procedure TFormASCIITransfer.OnSendSendFail(const ReasonCode: DWord);
+begin
+  case ReasonCode of
+    ERROR_BAD_COMMAND:
+    begin
+      // if retry count is less than three try reselecting
+      if fASCIIExtraInfo.CurrentSendStatus.RetryCount < 3 then
+      begin
+        fASCIIExtraInfo.Stop;
+        CheckForDevices;
+        fASCIIExtraInfo.Start;
+        //fASCIIExtraInfo.ResendLastRec;
+        fASCIIExtraInfo.CurrentSendStatus.RetryCount := fASCIIExtraInfo.CurrentSendStatus.RetryCount + 1;
+        RetryCount := RetryCount + 1;
+      end
+      else
+      begin
+        // otherwise give up - abort transmission
+        OnSendFail( 'Send Failed', ReasonCode );
+      end;
+    end;
+    ERROR_ACCESS_DENIED:
+    begin
+      if fASCIIExtraInfo.CurrentSendStatus.RetryCount < 3 then
+      begin
+        fASCIIExtraInfo.CurrentSendStatus.RetryCount := fASCIIExtraInfo.CurrentSendStatus.RetryCount + 1;
+        RetryCount := RetryCount + 1;
+      end
+      else
+      begin
+        // otherwise give up - abort transmission
+        OnSendFail( 'Send Failed', ReasonCode );
+      end;
+    end;
+    else
+    begin
+      OnSendFail( 'Send Failed', ReasonCode );
+    end;
+  end;
+end;
+
+procedure TFormASCIITransfer.OnSendWhoAreYouFail(const ReasonCode: DWord);
+begin
+  case ReasonCode of
+    ERROR_BAD_COMMAND:
+    begin
+      // if retry count is less than three try reselecting
+      if fASCIIExtraInfo.CurrentSendStatus.RetryCount < 3 then
+      begin
+        fASCIIExtraInfo.Stop;
+        CheckForDevices;
+        fASCIIExtraInfo.Start;
+        //fASCIIExtraInfo.ResendLastRec;
+        fASCIIExtraInfo.CurrentSendStatus.RetryCount := fASCIIExtraInfo.CurrentSendStatus.RetryCount + 1;
+        RetryCount := RetryCount + 1;
+      end
+      else
+      begin
+        // otherwise give up - abort transmission
+        OnSendFail( 'Who Are You Request Failed', ReasonCode );
+      end;
+    end;
+    ERROR_ACCESS_DENIED:
+    begin
+      if fASCIIExtraInfo.CurrentSendStatus.RetryCount < 3 then
+      begin
+        fASCIIExtraInfo.CurrentSendStatus.RetryCount := fASCIIExtraInfo.CurrentSendStatus.RetryCount + 1;
+        RetryCount := RetryCount + 1;
+      end
+      else
+      begin
+        // otherwise give up - abort transmission
+        OnSendFail( 'Who Are You Request Failed', ReasonCode );
+      end;
+    end;
+    else
+    begin
+      OnSendFail( 'Send Failed', ReasonCode );
+    end;
+  end;
+end;
+
+procedure TFormASCIITransfer.OnSendWhoAreYouRcvFail(const ReasonCode: DWord);
+begin
+  case ReasonCode of
+    NO_ERROR:
+    begin
+      exit;
+    end;
+    ERROR_BAD_COMMAND:
+    begin
+      // if retry count is less than three try reselecting
+      if fASCIIExtraInfo.CurrentSendStatus.RetryCount < 3 then
+      begin
+        fASCIIExtraInfo.Stop;
+        CheckForDevices;
+        fASCIIExtraInfo.Start;
+        RetryCount := RetryCount + 1;
+        //fASCIIExtraInfo.ResendLastRec;
+      end
+      else
+      begin
+        // otherwise give up - abort transmission
+        OnSendFail( 'Who Are You Rcv Failed', ReasonCode );
+      end;
+    end;
+    ERROR_IO_INCOMPLETE:
+    begin
+      // ignore and wait for further time out
+    end;
+    ERROR_ACCESS_DENIED:
+    begin
+      if fASCIIExtraInfo.CurrentSendStatus.RetryCount < 3 then
+      begin
+        fASCIIExtraInfo.CurrentSendStatus.RetryCount := fASCIIExtraInfo.CurrentSendStatus.RetryCount + 1;
+        RetryCount := RetryCount + 1;
+      end
+      else
+      begin
+        // otherwise give up - abort transmission
+        OnSendFail( 'WHO Are You Failed', ReasonCode );
+      end;
+    end;
+    else
+    begin
+      OnSendFail( 'Who Are You Rcv Failed', ReasonCode );
+    end;
+  end;
+end;
+
+procedure TFormASCIITransfer.PanelBottomResize(Sender: TObject);
+begin
+  BitBtnOK.Left := (PanelBottom.ClientWidth - BitBtnOK.Width ) div 2;
+end;
+
+procedure TFormASCIITransfer.PanelXFerSimpleModeResize(Sender: TObject);
+begin
+  GaugeWait.Left := (ClientWidth - GaugeWait.Width) div 2;
+end;
+
+procedure TFormASCIITransfer.ProcessRcvRec(const pRec: string;
+  const pStatus: tASCIIXIRxObject);
+var
+  iID, iPanel, iChecksum : integer;
+  iText : string;
+begin
+  if Visible then
+  begin
+    // start parsing
+    if not pStatus.ChecksumOK then
+    begin
+      // can't trust answer, ask to resend
+      if fASCIIExtraInfo.CurrentSendStatus.RetryCount < 3 then
+      begin
+        fASCIIExtraInfo.SendNotification( 'CSFAIL' );
+        RetryCount := RetryCount + 1;
+      end
+      else
+      begin
+        // otherwise give up - abort transmission
+        iText := Translate( 'Retry Count Exceeded' );
+        fErrors.Add( es_Error, 0, 0, iText, nil);
+        StopTimers;
+        fASCIIExtraInfo.Stop;
+        //Hide;
+        raise ExceptionZFPTransfer.Create(iText );
+      end;
+    end
+    else
+    begin
+      // Is this data?
+      case ParseZFPRec( pRec, fList, iID, iPanel, iChecksum ) of
+        rrt_ACK, rrt_Error, rrt_REQUEST:
+        begin
+          // Unexpected - ignore and wait for timeout
+          exit;
+        end;
+        rrt_WAIT:
+        begin
+          fTimeout := iChecksum div integer(TimerRetrieve.Interval);
+          GaugeWait.MaxValue := fTimeout; // in this case a delay
+          GaugeWait.Progress := fTimeout;
+          GaugeWait.Visible := TRUE;
+          LabelWaiting.Visible := TRUE;
+          exit;
+        end;
+        rrt_NAK, rrt_CSFAIL, rrt_TIMEOUT:
+        begin
+          // resend request
+          if fASCIIExtraInfo.CurrentSendStatus.RetryCount < 3 then
+          begin
+            RetryCount := RetryCount + 1;
+            fASCIIExtraInfo.ResendLastRec;
+          end
+          else
+          begin
+            // otherwise give up - abort transmission
+            iText := Translate( 'Retry Count Exceeded' );
+            fErrors.Add( es_Error, 0, 0, iText, nil);
+            raise ExceptionZFPTransfer.Create(iText );
+          end;
+        end;
+        rrt_BEGIN:
+        begin
+          // Save record and send ACK
+          MemoRetrieve.Lines.Add( pRec );
+          fASCIIExtraInfo.SendNotification( 'ACK' );
+          fASCIIExtraInfo.CurrentSendStatus.RetryCount := 0;
+          inc( fRecCount );
+          fBeginReceived := TRUE;
+          fTimeout := fRepeatTimeout;
+        end;
+        rrt_Other:
+        begin
+          if fBeginReceived then
+          begin
+            // Save record and send ACK
+            MemoRetrieve.Lines.Add( pRec );
+            fASCIIExtraInfo.SendNotification( 'ACK' );
+            fASCIIExtraInfo.CurrentSendStatus.RetryCount := 0;
+            inc( fRecCount );
+            fTimeout := fRepeatTimeout;
+          end;
+        end;
+        rrt_IAM:
+        begin
+          if not fBeginReceived then  // probably valid
+          begin
+            MemoRetrieve.Lines.Add( pRec );
+            iPanel := StrToIntDef( fList[ 2], -1);
+            //iVersion := fList[ 3 ];
+            if fList[ 4 ] = '0' then
+            begin
+              fWHORUState := wru_WrongPIN;
+            end
+            else if fList[ 4 ] = '1' then
+            begin
+              fWHORUState := wru_CorrectPIN;
+            end
+            else if fList[ 4 ] = '' then
+            begin
+              fWHORUState := wru_Blank;
+            end
+            else
+            begin
+              // should no get here but treat as Wrong Pin
+              fWHORUState := wru_WrongPIN;
+            end;
+            case fWHORUState of
+              wru_Pending,
+              wru_Timeout:
+              begin
+                // should not get these results
+                ModalResult := mrCancel;
+                StopTimers;
+                raise ExceptionZFP.Create(Translate('Internal Transfer Error 001 - Transfer aborted'));
+              end;
+              wru_WrongPIN:
+              begin
+                ModalResult := mrCancel;
+                StopTimers;
+                raise ExceptionZFPTransfer.Create(Translate('Wrong PIN - Transfer aborted'));
+              end;
+              wru_Blank,
+              wru_CorrectPIN: ; // carry on
+            end;
+            if StrToIntDef( fList[ 2], -1) = fPanel then
+            begin
+              // go on to next record
+              SendNextRcvRec;
+              fASCIIExtraInfo.CurrentSendStatus.RetryCount := 0;
+              inc( fRecCount );
+              fTimeout := fRepeatTimeout;
+            end
+            else if em_Allow_Cfg_from_remote_panels in ExpertModes then
+            begin
+              // go on to next record
+              SendNextRcvRec;
+              fASCIIExtraInfo.CurrentSendStatus.RetryCount := 0;
+              inc( fRecCount );
+              fTimeout := fRepeatTimeout;
+            end
+            else
+            begin
+              // otherwise give up - abort transmission
+              iText := Translate('Wrong panel') + ' (' + fList[ 2] + ') ' + Translate( 'Detected' );
+              fErrors.Add( es_Error, 0, 0, iText, nil);
+              raise ExceptionZFP.Create(iText );
+            end;
+            // Ask for next entry, if any
+          end;
+        end;
+        rrt_END:
+        begin
+          if fBeginReceived then
+          begin
+            MemoRetrieve.Lines.Add( pRec );
+            // Ask for next entry, if any
+            SendNextRcvRec;
+            fASCIIExtraInfo.CurrentSendStatus.RetryCount := 0;
+            fBeginReceived := FALSE;
+            inc( fRecCount );
+            fTimeout := fRepeatTimeout;
+          end;
+        end;
+      end;
+    end;
+  end;
+  //fTimeout := SigSpinEditRetrieveTimeout.Value div TimerRetrieve.Interval;
+  //fTimeout := fRepeatTimeout;
+end;
+
+procedure TFormASCIITransfer.ProcessSndRecAck(const pRec: string;
+  const pStatus: tASCIIXIRxObject);
+var
+  iID, iPanel, iChecksum : integer;
+  iSendRecStatus : tASCIIXITxObject;
+  iText : string;
+begin
+  if Visible then
+  begin
+    if not pStatus.ChecksumOK then
+    begin
+      // can't trust answer, ask to retry
+      if fASCIIExtraInfo.CurrentSendStatus.RetryCount < 3 then
+      begin
+        RetryCount := RetryCount + 1;
+        fASCIIExtraInfo.ResendLastRec;
+      end
+      else
+      begin
+        // otherwise give up - abort transmission
+        iText := Translate( 'Retry Count Exceeded' );
+        fErrors.Add( es_Error, 0, 0, iText, nil);
+        //Hide;
+        raise ExceptionZFPTransfer.Create(iText);
+      end;
+    end
+    else
+    begin
+      // Is this the answer to our current send?
+      iSendRecStatus := fASCIIExtraInfo.CurrentSendStatus;
+      case ParseZFPRec( pRec, fList, iID, iPanel, iChecksum ) of
+        rrt_IAM:
+        begin
+          if not fBeginReceived then  // probably valid
+          begin
+            //iVersion := fList[ 3 ];
+            if fList[ 4 ] = '0' then
+            begin
+              fWHORUState := wru_WrongPIN;
+            end
+            else if fList[ 4 ] = '1' then
+            begin
+              fWHORUState := wru_CorrectPIN;
+            end
+            else if fList[ 4 ] = '' then
+            begin
+              fWHORUState := wru_Blank;
+            end
+            else
+            begin
+              // should no get here but treat as Wrong Pin
+              fWHORUState := wru_WrongPIN;
+            end;
+            case fWHORUState of
+              wru_Pending,
+              wru_Timeout:
+              begin
+                // should not get these results
+                ModalResult := mrCancel;
+                StopTimers;
+                raise ExceptionZFP.Create(Translate('Internal Transfer Error 001 - Transfer aborted'));
+              end;
+              wru_WrongPIN:
+              begin
+                ModalResult := mrCancel;
+                StopTimers;
+                raise ExceptionZFP.Create(Translate('Wrong PIN - Transfer aborted'));
+              end;
+              wru_Blank,
+              wru_CorrectPIN: ; // carry on
+            end;
+            if (StrToIntDef( fList[ 2], -1) = fPanel)  or ( em_Allow_Cfg_from_remote_panels in ExpertModes ) then
+            begin
+              // go on to next record
+              SendNextSendRec;
+              inc( fRecCount );
+            end
+            else
+            begin
+              // otherwise give up - abort transmission
+              iText := Translate( 'Attempting to send data over network - aborted' );
+              fErrors.Add( es_Error, 0, 0, iText, nil);
+              //Hide;
+              raise ExceptionZFP.Create(iText);
+            end;
+          end;
+          // Otherwise wait for next record or time out
+        end;
+        rrt_WAIT:
+        begin
+          fTimeout := iChecksum div integer(TimerTransfer.Interval);
+          GaugeWait.MaxValue := fTimeout; // in this case a delay
+          GaugeWait.Progress := fTimeout;
+          GaugeWait.Visible := TRUE;
+          LabelWaiting.Visible := TRUE;
+          exit;
+        end;
+        rrt_ACK:
+        begin
+          if iSendRecStatus.Checksum = DWord(iChecksum) then
+          begin
+            // go on to next record
+            SendNextSendRec;
+            inc( fRecCount );
+          end;
+          // Otherwise wait for next record or time out
+        end;
+        rrt_NAK, rrt_CSFAIL, rrt_TIMEOUT:
+        begin
+          if iSendRecStatus.Checksum = DWord(iChecksum) then
+          begin
+            // Retry
+            if iSendRecStatus.RetryCount < 3 then
+            begin
+              RetryCount := RetryCount + 1;
+              fASCIIExtraInfo.ResendLastRec;
+            end
+            else
+            begin
+              // otherwise give up - abort transmission
+              iText := Translate( 'Retry Count Exceeded' );
+              fErrors.Add( es_Error, 0, 0, iText, nil);
+              //Hide;
+              raise ExceptionZFPTransfer.Create( iText );
+            end;
+          end;
+          // Otherwise wait for next record or time out
+        end;
+        rrt_Other, rrt_BEGIN, rrt_END, rrt_REQUEST, rrt_Error:
+        begin
+          // cannot be a valid response. Wait for next record or timeout
+        end;
+      end;
+    end;
+  end;
+  //fTimeout := fRepeatTimeout;
+end;
+
+procedure TFormASCIITransfer.ProcessWhoAreYouRecAck(const pRec: string;
+  const pStatus: tASCIIXIRxObject);
+var
+  iID, iPanel, iChecksum : integer;
+  iSendRecStatus : tASCIIXITxObject;
+  iVersion : string;
+  iText : string;
+begin
+  if Visible then
+  begin
+    if not pStatus.ChecksumOK then
+    begin
+      // can't trust answer, ask to retry
+      if fASCIIExtraInfo.CurrentSendStatus.RetryCount < 3 then
+      begin
+        RetryCount := RetryCount + 1;
+        fASCIIExtraInfo.ResendLastRec;
+      end
+      else
+      begin
+        // otherwise give up - abort transmission
+        iText := Translate( 'Retry Count Exceeded' );
+        fErrors.Add( es_Error, 0, 0, iText, nil);
+        //Hide;
+        raise ExceptionZFPTransfer.Create(iText);
+      end;
+    end
+    else
+    begin
+      // Is this the answer to our current send?
+      iSendRecStatus := fASCIIExtraInfo.CurrentSendStatus;
+      case ParseZFPRec( pRec, fList, iID, iPanel, iChecksum ) of
+        rrt_IAM:
+        begin
+          iPanel := StrToIntDef( fList[ 2], -1);
+          iVersion := fList[ 3 ];
+          if fList[ 4 ] = '0' then
+          begin
+            fWHORUState := wru_WrongPIN;
+          end
+          else if fList[ 4 ] = '1' then
+          begin
+            fWHORUState := wru_CorrectPIN;
+          end
+          else if fList[ 4 ] = '' then
+          begin
+            fWHORUState := wru_Blank;
+            {
+            // debug
+            if FormLogin.Password = '4444' then
+            begin
+              fWHORUState := wru_CorrectPIN;
+            end
+            else
+            begin
+              fWHORUState := wru_WrongPIN;
+            end;
+            // end debug
+            }
+          end
+          else
+          begin
+            // should no get here but treat as Wrong Pin
+            fWHORUState := wru_WrongPIN;
+          end;
+          if (iPanel = fPanel) or ( em_Allow_Cfg_from_remote_panels in ExpertModes ) or (fPanel = 0) then
+          begin
+            // go on to next record
+            inc( fRecCount );
+            TimerGetWhoAMI.Enabled := FALSE;
+            if assigned( fWhoAreYouAction ) then
+            begin
+              if FormRemoteLoginNotSupported.Visible then
+              begin
+                FormRemoteLoginNotSupported.ModalResult := mrOK;
+              end;
+              fWhoAreYouAction( iPanel, iVersion );
+              if fWHORUState <> wru_WrongPIN then
+              begin
+                fWhoAreYouAction := nil;
+              end;
+            end
+            else
+            begin
+              iText := Translate( 'Unexpected internal WHORU record handled - aborted' );
+              fErrors.Add( es_Error, 0, 0, iText, nil);
+              //Hide;
+              raise ExceptionZFPTransfer.Create(iText);
+            end;
+          end
+          else
+          begin
+            // otherwise give up - abort transmission
+            iText := Translate( 'Attempting to send data over network - aborted' );
+            fErrors.Add( es_Error, 0, 0, iText, nil);
+            //Hide;
+            raise ExceptionZFPTransfer.Create(iText);
+          end;
+          // Otherwise wait for next record or time out
+        end;
+        rrt_WAIT:
+        begin
+          fTimeout := iChecksum div integer(TimerRetrieve.Interval);
+          GaugeWait.MaxValue := fTimeout; // in this case a delay
+          GaugeWait.Progress := fTimeout;
+          GaugeWait.Visible := TRUE;
+          LabelWaiting.Visible := TRUE;
+          exit;
+        end;
+        rrt_ACK:
+        begin
+          // wait for next record or time out
+        end;
+        rrt_NAK, rrt_CSFAIL, rrt_TIMEOUT:
+        begin
+          if iSendRecStatus.Checksum = DWord(iChecksum) then
+          begin
+            // Retry
+            if iSendRecStatus.RetryCount < 3 then
+            begin
+              RetryCount := RetryCount + 1;
+              fASCIIExtraInfo.ResendLastRec;
+            end
+            else
+            begin
+              // otherwise give up - abort transmission
+              iText := Translate( 'Retry Count Exceeded' );
+              fErrors.Add( es_Error, 0, 0, iText, nil);
+              //Hide;
+              raise ExceptionZFPTransfer.Create(iText);
+            end;
+          end;
+          // Otherwise wait for next record or time out
+        end;
+        rrt_Other, rrt_BEGIN, rrt_END, rrt_REQUEST, rrt_Error:
+        begin
+          // cannot be a valid response. Wait for next record or timeout
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TFormASCIITransfer.RadioGroupASCIIFilesClick(Sender: TObject);
+begin
+  if assigned( fASCIISend ) then
+  begin
+    case fASCIISend.Count of
+      0: MemoData.Lines.Clear;
+      1: MemoData.Lines.LoadFromFile( fASCIISend.ASCIIRequest[ 0 ].FileName);
+      else MemoData.Lines.LoadFromFile( fASCIISend.ASCIIRequest[ RadioGroupASCIIFiles.ItemIndex ].FileName);
+    end;
+  end;
+end;
+
+procedure TFormASCIITransfer.RcvAllData(const pPanel: tZFPNode; const pErrors : tErrorList);
+var
+  iFileName : string;
+  iTempFile : tZFPTempTextFile;
+begin
+  RetryCount := 0;
+  CheckForDevices;
+  fASCIIExtraInfo.UseWaitForSingleObject := em_Check_USB_Status in ExpertModes;
+  fASCIIExtraInfo.UseThreading := em_Use_Threading in ExpertModes;;
+  fCurrPanel := pPanel;
+  fPanel := pPanel.ID;
+  fRecCount := 0;
+  fErrors := pErrors;
+  fErrors.Clear;
+  SetupVisualInterface;
+  if not FormLogin.Execute then
+  begin
+    exit;
+  end;
+  if em_Show_Advanced_Send_Rcv in ExpertModes then
+  begin
+    if pPanel.ZFPFile.FileName = '' then
+    begin
+      if not pPanel.ZFPFile.Save then
+      begin
+        // we save in same directory as main file, so we NEED a file name
+        exit;
+      end;
+    end;
+    ClearASCIIRetrieveFileList;
+    with pPanel do
+    begin
+      fPanel := ID;
+      PageControlASCIIEdit.ActivePage := TabSheetRetrieveData;
+      iFileName := ZFPFile.FileName;
+      // WHORU record
+      ImportASCIIFile( iFileName, ID, 'WHORU', '200,WHORU,0,' + FormLogin.Password + ',' + IntToStr( AboutBox.Major )
+                  + ',' + IntToStr( AboutBox.Minor ) + ',' + IntToStr( AboutBox.Release )
+                  + ',' + IntToStr( AboutBox.Build ) );
+      // 120 - Network File
+      ImportASCIIFile( iFileName, ID, 'Network File', ImportNetworkCfgRequest );
+      //  80 - Panel Data
+      ImportASCIIFile( iFileName, ID, 'Panel Config', GeneralProperties.ImportRequest );
+      //  17 Shared input groups and triggers
+      ImportASCIIFile( iFileName, ID, 'Shared Input Groups', ImportSharedInputGroupsRequest );
+      //  18 - Shared Output Groups
+      ImportASCIIFile( iFileName, ID, 'Shared Output Groups', ImportSharedOutputGroupsRequest );
+      //  19 - Shared Output Super Groups
+      ImportASCIIFile( iFileName, ID, 'Shared Output Supergroups', ImportSharedSuperGroupsRequest );
+      //  81 - Mode Share Data
+      ImportASCIIFile( iFileName, ID, 'Shared Modes', ImportSharedModesRequest );
+      //  90 - comments
+      ImportASCIIFile( iFileName, ID, 'Comments', PanelNotes.ImportRequest );
+      // 100 - Zone Data
+      ImportASCIIFile( iFileName, ID, 'Zones', ZonesFile.ImportRequest );
+      // 151 - Input Supergroup Share Data
+      ImportASCIIFile( iFileName, ID, 'Shared Input Supergroups', ZFPFile.InputSuperGroupList.ImportShareRequest( pPanel ) );
+      // 152 - Sequence Share Data
+      ImportASCIIFile( iFileName, ID, 'Shared Sequences', ZFPFile.SequenceList.ImportShareRequest( pPanel ) );
+      // 153 - Pulse Pattern Share Data
+      ImportASCIIFile( iFileName, ID, 'Shared Pulse Patterns', ZFPFile.PulsePatternList.ImportShareRequest( pPanel ) );
+      // 160 - Group Action Share Data
+      ImportASCIIFile( iFileName, ID, 'Shared Group Actions', ZFPFile.GroupActionList.ImportShareRequest( pPanel ) );
+      //  20 - Device Data
+      ImportASCIIFile( iFileName, ID, 'Device Fields', ImportDeviceFieldsRequest );
+      ////  30 - C & E Matrix - not required in simple mode
+      //ImportASCIIFile( iPhase, ZFPFile.FileName, ID, 'CE Matrix', ImportCausesFileRequest, ImportCausesFileStrings, ProcessImportCausesStrings );
+      //  14 - Input groups and triggers
+      ImportASCIIFile( iFileName, ID, 'Input Groups', ImportInputGroupsRequest );
+      //  15 - Output Groups
+      ImportASCIIFile( iFileName, ID, 'Output Groups', ImportOutputGroupsRequest );
+      //  16 - Output supergroups
+      ImportASCIIFile( iFileName, ID, 'Supergroups', ImportSuperGroupsRequest );
+      //  40 - Sequences
+      ImportASCIIFile( ZFPFile.FileName, ID, 'Sequences', ImportEffectsFileRequest );
+      //  60 - Pulse sequences
+      ImportASCIIFile( ZFPFile.FileName, ID, 'Pulse Seq', ImportPulseSeqFileRequest );
+      //  161 - Group Actions
+      ImportASCIIFile( ZFPFile.FileName, ID, 'Group Action', ImportGroupActionFileRequest );
+      // 154 - Input supergroups
+      ImportASCIIFile( iFileName, ID, 'Input Supergroups', ImportInputSuperGroupsRequest );
+      //   2 - Device Names
+      ImportASCIIFile( iFileName, ID, 'Device Names', ImportNamesFileRequest );
+      // 150 - CE Tree
+      ImportASCIIFile( iFileName, ID, 'CE Tree', ZFPFile.ImportCETreeRequest( ID ) );
+      // 300 - logo file
+      ImportASCIIFile( iFileName, ID, 'Logo', ZFPFile.Logo.ImportFileRequest( ID, '\images\logo.gif' ) );
+      //
+      iTempFile := tZFPTempTextFile.Create;
+      try
+        //ZFPFile.Client.Save( iTempFile );
+        iTempFile.FileName := '\Client.txt';
+        ImportASCIIFile( iFileName, ID, 'Client', iTempFile.ImportFileRequest( fPanel ));
+      finally
+        iTempFile.Free;
+      end;
+      iTempFile := tZFPTempTextFile.Create;
+      try
+        //ZFPFile.Client.Save( iTempFile );
+        iTempFile.FileName := '\Installr.txt';
+        ImportASCIIFile( iFileName, ID, 'Installer', iTempFile.ImportFileRequest( fPanel ));
+      finally
+        iTempFile.Free;
+      end;
+      iTempFile := tZFPTempTextFile.Create;
+      try
+        //ZFPFile.Client.Save( iTempFile );
+        iTempFile.FileName := '\SNotes.txt';
+        ImportASCIIFile( iFileName, ID, 'SiteNotes', iTempFile.ImportFileRequest( fPanel ));
+      finally
+        iTempFile.Free;
+      end;
+      {
+      iTempFile := tZFPTempTextFile.Create;
+      try
+        //ZFPFile.Client.Save( iTempFile );
+        iTempFile.FileName := '\User.dta';
+        ImportASCIIFile( iFileName, ID, 'User', iTempFile.ImportFileRequest( fPanel ));
+      finally
+        iTempFile.Free;
+      end;
+      }
+    end;
+    SetupCheckboxesRetrieveASCIIFiles( TRUE );
+  end
+  else
+  begin
+    AbortButtonVisible := FALSE;
+    LabelProgress.Visible := FALSE;
+    LabelRecords.Visible := FALSE;
+    SpeedButtonStartSimpleTransferRcvClick( self );
+  end;
+  if ShowModal = mrOK then
+  begin
+  end;
+end;
+
+procedure TFormASCIITransfer.RcvAllData2(pPanel: integer; pVersion: string);
+var
+  iVersion : tCTecVersion;
+  iTempFile : tZFPTempTextFile;
+begin
+  // performed as result of WHORU request.
+  //StopTimers;
+  iVersion := pVersion;
+  case fWHORUState of
+    wru_Pending,
+    wru_Timeout:
+    begin
+      // should not get these results
+      fErrors.Add( es_Error, 0, 0, 'Internal Transfer Error 001 - Transfer aborted');
+      ModalResult := mrCancel;
+      StopTimers;
+      exit;
+    end;
+    wru_WrongPIN:
+    begin
+      if not FormLogin.Execute( TRUE ) then
+      begin
+        ModalResult := mrCancel;
+        exit;
+      end;
+      // else
+      AbortButtonVisible := FALSE;
+      LabelRecords.Visible := FALSE;
+      LabelProgress.Visible := FALSE;
+      SpeedButtonStartSimpleTransferRcvClick( self );
+      exit;
+    end;
+    wru_Blank,
+    wru_CorrectPIN: ; // carry on
+  end;
+  with fCurrPanel do
+  begin
+    ClearASCIIRetrieveFileList;
+
+    fASCIIRequests.TransferStrings.Clear;
+
+    //fASCIIRequests.Add( '', ImportNetworkCfgRequest );
+    fASCIIRequests.AppendString( ImportNetworkCfgRequest );
+    //  80 - Panel Data
+    //fASCIIRequests.Add( '', GeneralProperties.ImportRequest );
+    fASCIIRequests.AppendString( GeneralProperties.ImportRequest );
+    //  17 Shared input groups and triggers
+    //fASCIIRequests.Add( '', ImportSharedInputGroupsRequest );
+    fASCIIRequests.AppendString( ImportSharedInputGroupsRequest );
+    //  18 - Shared Output Groups
+    //fASCIIRequests.Add( '', ImportSharedOutputGroupsRequest );
+    fASCIIRequests.AppendString( ImportSharedOutputGroupsRequest );
+    //  19 - Shared Output Super Groups
+    //fASCIIRequests.Add( '', ImportSharedSuperGroupsRequest );
+    fASCIIRequests.AppendString( ImportSharedSuperGroupsRequest );
+    //  81 - Mode Share Data
+    //fASCIIRequests.Add( '', ImportSharedModesRequest );
+    fASCIIRequests.AppendString( ImportSharedModesRequest );
+    //  90 - comments
+    //fASCIIRequests.Add( '', PanelNotes.ImportRequest );
+    fASCIIRequests.AppendString( PanelNotes.ImportRequest );
+    // 100 - Zone Data
+    //fASCIIRequests.Add( '', ZonesFile.ImportRequest );
+    fASCIIRequests.AppendString( ZonesFile.ImportRequest );
+    // 151 - Input Supergroup Share Data
+    //fASCIIRequests.Add( '', ZFPFile.InputSuperGroupList.ImportShareRequest( fCurrPanel ) );
+    fASCIIRequests.AppendString( ZFPFile.InputSuperGroupList.ImportShareRequest( fCurrPanel ) );
+    // 152 - Sequence Share Data
+    //fASCIIRequests.Add( '', ZFPFile.SequenceList.ImportShareRequest( fCurrPanel ) );
+    fASCIIRequests.AppendString( ZFPFile.SequenceList.ImportShareRequest( fCurrPanel ) );
+    // 153 - Pulse Pattern Share Data
+    //fASCIIRequests.Add( '', ZFPFile.PulsePatternList.ImportShareRequest( fCurrPanel ) );
+    fASCIIRequests.AppendString( ZFPFile.PulsePatternList.ImportShareRequest( fCurrPanel ) );
+    // 160 - Group Action share Data
+    //fASCIIRequests.Add( '', ZFPFile.GroupActionList.ImportShareRequest( fCurrPanel ) );
+    fASCIIRequests.AppendString( ZFPFile.GroupActionList.ImportShareRequest( fCurrPanel ) );
+    //  20 - Device Data
+    //fASCIIRequests.Add( '', ImportDeviceFieldsRequest );
+    fASCIIRequests.AppendString( ImportDeviceFieldsRequest );
+    ////  30 - C & E Matrix - not required in simple mode
+    //ImportASCIIFile( iPhase, ZFPFile.FileName, ID, 'CE Matrix', ImportCausesFileRequest, ImportCausesFileStrings, ProcessImportCausesStrings );
+    //  14 - Input groups and triggers
+    //fASCIIRequests.Add( '', ImportInputGroupsRequest );
+    fASCIIRequests.AppendString( ImportInputGroupsRequest );
+    //  15 - Output Groups
+    //fASCIIRequests.Add( '', ImportOutputGroupsRequest );
+    fASCIIRequests.AppendString( ImportOutputGroupsRequest );
+    //  16 - Output supergroups
+    //fASCIIRequests.Add( '', ImportSuperGroupsRequest );
+    fASCIIRequests.AppendString( ImportSuperGroupsRequest );
+    //  40 - Sequences
+    //fASCIIRequests.Add( '', ImportEffectsFileRequest );
+    fASCIIRequests.AppendString( ImportEffectsFileRequest );
+    //  60 - Pulse sequences
+    //fASCIIRequests.Add( '', ImportPulseSeqFileRequest );
+    fASCIIRequests.AppendString( ImportPulseSeqFileRequest );
+    //  161 - Group Actions
+    //fASCIIRequests.Add( '', ImportGroupActionFileRequest );
+    fASCIIRequests.AppendString( ImportGroupActionFileRequest );
+    // 154 - Input supergroups
+    //fASCIIRequests.Add( '', ImportInputSuperGroupsRequest );
+    fASCIIRequests.AppendString( ImportInputSuperGroupsRequest );
+    //   2 - Device Names
+    //fASCIIRequests.Add( '', ImportNamesFileRequest );
+    fASCIIRequests.AppendString( ImportNamesFileRequest );
+    // 150 - CE Tree
+    //fASCIIRequests.Add( '', ZFPFile.ImportCETreeRequest( pPanel ) );
+    fASCIIRequests.AppendString( ZFPFile.ImportCETreeRequest( pPanel ) );
+    // 300 - Logo file
+    {
+    if iVersion >= '9A28' then
+    begin
+      fASCIIRequests.Add( '', ZFPFile.Logo.ImportFileRequest( pPanel, '\images\logo.gif' ));
+      fASCIIRequests.AppendString( ImportSharedModesRequest );
+    end;
+    }
+    if iVersion >= '9A28' then
+    begin
+      iTempFile := tZFPTempTextFile.Create;
+      try
+        iTempFile.FileName := '\Client.txt';
+        fASCIIRequests.AppendString( iTempFile.ImportFileRequest( pPanel ));
+        iTempFile.FileName := '\Installr.txt';
+        fASCIIRequests.AppendString( iTempFile.ImportFileRequest( pPanel ));
+        iTempFile.FileName := '\SNotes.txt';
+        fASCIIRequests.AppendString( iTempFile.ImportFileRequest( pPanel ));
+      finally
+        iTempFile.Free;
+      end;
+      fASCIIRequests.AppendString( ZFPFile.Logo.ImportFileRequest( pPanel, '\images\logo.gif' ));
+      fASCIIRequests.AppendString( ImportSharedModesRequest );
+    end;
+    with fASCIISend do
+    begin
+      //ProgressBar := nil;
+      ProgressLabel := nil;
+    end;
+    with fASCIIRequests do
+    begin
+      //ProgressBar := self.ProgressBar;
+      ProgressLabel := self.LabelProgress;
+      if fASCIIExtraInfo.SendString( FirstString ) then
+      begin
+        fASCIIExtraInfo.OnRcvRec := ProcessRcvRec;
+        fTimeout := SigSpinEditRetrieveTimeout.Value div integer(TimerRetrieve.Interval);
+        fRepeatTimeout := fTimeout;
+        TimerRetrieve.Enabled := TRUE;
+        TimerCommon.Enabled := TRUE;
+        // errors handled separately
+      end;
+    end;
+    PanelXferExpertMode.Visible := FALSE;
+    PanelXFerSimpleMode.Align := alClient;
+    PanelXFerSimpleMode.Visible := TRUE;
+
+  end;
+end;
+
+procedure TFormASCIITransfer.AdvancedRcvData( const pErrors : tErrorList);
+begin
+  RetryCount := 0;
+  CheckForDevices;
+  fASCIIExtraInfo.UseWaitForSingleObject := em_Check_USB_Status in ExpertModes;
+  fASCIIExtraInfo.UseThreading := em_Use_Threading in ExpertModes;;
+  fCurrPanel := nil;
+  fPanel := 0;
+  fRecCount := 0;
+  fErrors := pErrors;
+  fErrors.Clear;
+  SetupVisualInterface;
+  if not FormLogin.Execute then
+  begin
+    exit;
+  end;
+  AbortButtonVisible := FALSE;
+  LabelProgress.Visible := FALSE;
+  LabelRecords.Visible := FALSE;
+  SpeedButtonStartAdvancedTransferRcvClick( self );
+  if ShowModal = mrOK then
+  begin
+  end;
+end;
+
+procedure TFormASCIITransfer.AdvancedRcvData2(xPanel: integer; pVersion: string);
+var
+  iVersion : tCTecVersion;
+  iTempFile : tZFPTempTextFile;
+  iZFPFile : tZFPFile;
+  i : integer;
+  i300Requested : boolean;
+begin
+  // performed as result of WHORU request.
+  i300Requested := FALSE;
+  //StopTimers;
+  iVersion := pVersion;
+  case fWHORUState of
+    wru_Pending,
+    wru_Timeout:
+    begin
+      // should not get these results
+      fErrors.Add( es_Error, 0, 0, 'Internal Transfer Error 001 - Transfer aborted');
+      ModalResult := mrCancel;
+      StopTimers;
+      exit;
+    end;
+    wru_WrongPIN:
+    begin
+      if not FormLogin.Execute( TRUE ) then
+      begin
+        ModalResult := mrCancel;
+        exit;
+      end;
+      // else
+      AbortButtonVisible := FALSE;
+      LabelRecords.Visible := FALSE;
+      LabelProgress.Visible := FALSE;
+      SpeedButtonStartAdvancedTransferRcvClick( self );
+      exit;
+    end;
+    wru_Blank,
+    wru_CorrectPIN: ; // carry on
+  end;
+
+  ClearASCIIRetrieveFileList;
+  fASCIIRequests.TransferStrings.Clear;
+
+  with FormAdvancedTransferSelector do
+  begin
+    with CheckListBoxAMNodes do
+    begin
+      for i := 0 to Items.Count - 1 do
+      begin
+        if Checked[ i ] then
+        begin
+          fCurrPanel := Items.Objects[ i ] as tZFPNode;
+          fPanel := fCurrPanel.ID;
+          iZFPFile := fCurrPanel.ZFPFile;
+
+          //  120 - Network Data
+          if AdvancedSendData2HasRecType( 120 ) then
+          begin
+            fASCIIRequests.AppendString( fCurrPanel.ImportNetworkCfgRequest );
+          end;
+
+          //  80 - Panel Data
+          if AdvancedSendData2HasRecType( 80 ) then
+          begin
+            fASCIIRequests.AppendString( fCurrPanel.GeneralProperties.ImportRequest );
+          end;
+
+          //  17 Shared input groups and triggers
+          if AdvancedSendData2HasRecType( 17 ) then
+          begin
+            fASCIIRequests.AppendString( fCurrPanel.ImportSharedInputGroupsRequest );
+          end;
+
+          //  18 - Shared Output Groups
+          if AdvancedSendData2HasRecType( 18 ) then
+          begin
+            fASCIIRequests.AppendString( fCurrPanel.ImportSharedOutputGroupsRequest );
+          end;
+
+          //  19 - Shared Output Super Groups
+          if AdvancedSendData2HasRecType( 19 ) then
+          begin
+            fASCIIRequests.AppendString( fCurrPanel.ImportSharedSuperGroupsRequest );
+          end;
+
+          //  81 - Mode Share Data
+          if AdvancedSendData2HasRecType( 81 ) then
+          begin
+            fASCIIRequests.AppendString( fCurrPanel.ImportSharedModesRequest );
+          end;
+
+          //  90 - comments
+          if AdvancedSendData2HasRecType( 90 ) then
+          begin
+            fASCIIRequests.AppendString( fCurrPanel.PanelNotes.ImportRequest );
+          end;
+
+          // 100 - Zone Data
+          if AdvancedSendData2HasRecType( 100 ) then
+          begin
+            fASCIIRequests.AppendString( fCurrPanel.ZonesFile.ImportRequest );
+          end;
+
+          // 151 - Input Supergroup Share Data
+          if AdvancedSendData2HasRecType( 151 ) then
+          begin
+            fASCIIRequests.AppendString( iZFPFile.InputSuperGroupList.ImportShareRequest( fCurrPanel ) );
+          end;
+
+          // 152 - Sequence Share Data
+          if AdvancedSendData2HasRecType( 152 ) then
+          begin
+            fASCIIRequests.AppendString( iZFPFile.SequenceList.ImportShareRequest( fCurrPanel ) );
+          end;
+
+          // 153 - Pulse Pattern Share Data
+          if AdvancedSendData2HasRecType( 153 ) then
+          begin
+             fASCIIRequests.AppendString( iZFPFile.PulsePatternList.ImportShareRequest( fCurrPanel ) );
+          end;
+
+          // 160 - Group Action Share Data
+          if AdvancedSendData2HasRecType( 160 ) then
+          begin
+            fASCIIRequests.AppendString( iZFPFile.GroupActionList.ImportShareRequest( fCurrPanel ) );
+          end;
+
+          //  20 - Device Data
+          if AdvancedSendData2HasRecType( 20 ) then
+          begin
+            fASCIIRequests.AppendString( fCurrPanel.ImportDeviceFieldsRequest );
+          end;
+
+          //  14 - Input groups and triggers
+          if AdvancedSendData2HasRecType( 14 ) then
+          begin
+            fASCIIRequests.AppendString( fCurrPanel.ImportInputGroupsRequest );
+          end;
+
+          //  15 - Output Groups
+          if AdvancedSendData2HasRecType( 15 ) then
+          begin
+            fASCIIRequests.AppendString( fCurrPanel.ImportOutputGroupsRequest );
+          end;
+
+          //  16 - Output supergroups
+          if AdvancedSendData2HasRecType( 16 ) then
+          begin
+            fASCIIRequests.AppendString( fCurrPanel.ImportSuperGroupsRequest );
+          end;
+
+          //  40 - Sequences
+          if AdvancedSendData2HasRecType( 40 ) then
+          begin
+            fASCIIRequests.AppendString( fCurrPanel.ImportEffectsFileRequest );
+          end;
+
+          //  60 - Pulse sequences
+          if AdvancedSendData2HasRecType( 60 ) then
+          begin
+            fASCIIRequests.AppendString( fCurrPanel.ImportPulseSeqFileRequest );
+          end;
+
+          //  161 - Group Action
+          if AdvancedSendData2HasRecType( 161 ) then
+          begin
+            fASCIIRequests.AppendString( fCurrPanel.ImportGroupActionFileRequest );
+          end;
+
+          // 154 - Input supergroups
+          if AdvancedSendData2HasRecType( 154 ) then
+          begin
+            fASCIIRequests.AppendString( fCurrPanel.ImportInputSuperGroupsRequest );
+          end;
+
+          //   2 - Device Names
+          if AdvancedSendData2HasRecType( 2 ) then
+          begin
+            fASCIIRequests.AppendString( fCurrPanel.ImportNamesFileRequest );
+          end;
+
+          // 150 - CE Tree
+          if AdvancedSendData2HasRecType( 150 ) then
+          begin
+            fASCIIRequests.AppendString( iZFPFile.ImportCETreeRequest( fPanel ) );
+          end;
+
+          // 300 - Logo file etc
+          if not i300Requested then
+          begin
+            i300Requested := TRUE;  // only get from first panel
+            if iVersion >= '9A28' then
+            begin
+              iTempFile := tZFPTempTextFile.Create;
+              try
+                if AdvancedSendData2HasType( at_Client ) then
+                begin
+                  iTempFile.FileName := '\Client.txt';
+                  fASCIIRequests.AppendString( iTempFile.ImportFileRequest( fPanel ));
+                end;
+                if AdvancedSendData2HasType( at_Installer ) then
+                begin
+                  iTempFile.FileName := '\Installr.txt';
+                  fASCIIRequests.AppendString( iTempFile.ImportFileRequest( fPanel ));
+                end;
+                if AdvancedSendData2HasType( at_Site_Notes ) then
+                begin
+                  iTempFile.FileName := '\SNotes.txt';
+                  fASCIIRequests.AppendString( iTempFile.ImportFileRequest( fPanel ));
+                end;
+              finally
+                iTempFile.Free;
+              end;
+              if AdvancedSendData2HasType( at_Logo ) then
+              begin
+                fASCIIRequests.AppendString( iZFPFile.Logo.ImportFileRequest( fPanel, '\images\logo.gif' ));
+              end;
+              // 81 Share Modes
+              if AdvancedSendData2HasRecType( 81 ) then
+              begin
+                fASCIIRequests.AppendString( fCurrPanel.ImportSharedModesRequest );
+              end;
+            end;
+          end;
+        end;
+      end;
+
+      fExitOnCompletion := TRUE;
+      with fASCIISend do
+      begin
+        //ProgressBar := nil;
+        ProgressLabel := nil;
+      end;
+      with fASCIIRequests do
+      begin
+        //ProgressBar := self.ProgressBar;
+        ProgressLabel := self.LabelProgress;
+        if fASCIIExtraInfo.SendString( FirstString ) then
+        begin
+          fASCIIExtraInfo.OnRcvRec := ProcessRcvRec;
+          fTimeout := SigSpinEditRetrieveTimeout.Value div integer(TimerRetrieve.Interval);
+          fRepeatTimeout := fTimeout;
+          TimerRetrieve.Enabled := TRUE;
+          TimerCommon.Enabled := TRUE;
+          // errors handled separately
+        end;
+      end;
+      PanelXferExpertMode.Visible := FALSE;
+      PanelXFerSimpleMode.Align := alClient;
+      PanelXFerSimpleMode.Visible := TRUE;
+    end;
+  end;
+end;
+
+procedure TFormASCIITransfer.RcvDeviceData(const pPanel: tZFPNode; const pErrors : tErrorList);
+begin
+  RetryCount := 0;
+  CheckForDevices;
+  fASCIIExtraInfo.UseWaitForSingleObject := em_Check_USB_Status in ExpertModes;
+  fASCIIExtraInfo.UseThreading := em_Use_Threading in ExpertModes;
+  fCurrPanel := pPanel;
+  fPanel := pPanel.ID;
+  fRecCount := 0;
+  fErrors := pErrors;
+  fErrors.Clear;
+  fExitOnCompletion := TRUE;
+  PanelXferExpertMode.Visible := FALSE;
+  PanelXFerSimpleMode.Align := alClient;
+  PanelXFerSimpleMode.Visible := TRUE;
+  ClearASCIIRetrieveFileList;
+  RcvStrings.Clear;
+  if not FormLogin.Execute then
+  begin
+    exit;
+  end;
+  if RadioGroupDevicesConnected.Items.Count > 0 then
+  begin
+    // send WHORU record
+    fWhoAreYouAction := RcvDeviceData2;
+    fASCIIExtraInfo.OnRcvRec := ProcessWhoAreYouRecAck;
+    fASCIIExtraInfo.OnSendFail := OnSendWhoAreYouFail;
+    fASCIIExtraInfo.OnRcvFail := OnSendWhoAreYouRcvFail;
+    AskWhoAreYou;
+    RcvStrings.Clear;
+    if fASCIIExtraInfo.Start then
+    begin
+      // start first transfer
+      fStartTime := Now;
+      AbortButtonVisible := TRUE;
+      LabelProgress.Visible := TRUE;
+      LabelRecords.Visible := TRUE;
+      with fASCIIRequests do
+      begin
+        //ProgressBar := nil;
+        ProgressLabel := nil;
+      end;
+      with fASCIISend do
+      begin
+        //ProgressBar := self.ProgressBar;
+        ProgressLabel := self.LabelProgress;
+        if fASCIIExtraInfo.SendString( fASCIISend.FirstString ) then
+        begin
+          fTimeout := SigSpinEditTimeOut.Value div integer(TimerGetWhoAMI.Interval);
+          fRepeatTimeout := fTimeout;
+          //fTimeout := cWhoRUTimeout div TimerGetWhoAMI.Interval;
+          TimerGetWhoAMI.Enabled := TRUE;
+          TimerCommon.Enabled := TRUE;
+          GaugeWait.Visible := FALSE;
+          LabelWaiting.Visible := FALSE;
+          // errors handled separately
+        end;
+      end;
+      PanelXferExpertMode.Visible := FALSE;
+      PanelXFerSimpleMode.Align := alClient;
+      PanelXFerSimpleMode.Visible := TRUE;
+    end;
+  end
+  else
+  begin
+    //Hide;
+    raise ExceptionZFP.Create(Translate('No Panels Found'));
+  end;
+  if ShowModal = mrOK then
+  begin
+  end;
+end;
+
+procedure TFormASCIITransfer.RcvDeviceData2(pPanel: integer; pVersion: string);
+var
+  iStrings : tStringList;
+  iVersion : tCTecVersion;
+begin
+  // performed as result of WHORU request.
+  iStrings := tStringList.Create;
+  //StopTimers;
+  iVersion := pVersion;
+  case fWHORUState of
+    wru_Pending,
+    wru_Timeout:
+    begin
+      // should not get these results
+      fErrors.Add( es_Error, 0, 0, 'Internal Transfer Error 001 - Transfer aborted');
+      ModalResult := mrCancel;
+      StopTimers;
+      exit;
+    end;
+    wru_WrongPIN:
+    begin
+      if not FormLogin.Execute( TRUE ) then
+      begin
+        ModalResult := mrCancel;
+        exit;
+      end;
+      // else
+      AbortButtonVisible := FALSE;
+      LabelRecords.Visible := FALSE;
+      LabelProgress.Visible := FALSE;
+      SpeedButtonStartSimpleTransferRcvClick( self );
+      exit;
+    end;
+    wru_Blank,
+    wru_CorrectPIN: ; // carry on
+  end;
+  with fCurrPanel do
+  begin
+    try
+      ClearASCIIRetrieveFileList;
+
+      fASCIIRequests.TransferStrings.Clear;
+
+      //fASCIIRequests.Add( '', ImportNetworkCfgRequest );
+      // 120 network file
+      fASCIIRequests.AppendString( ImportNetworkCfgRequest );
+      //  80 - Panel Data
+      //fASCIIRequests.Add( '', GeneralProperties.ImportRequest );
+      fASCIIRequests.AppendString( GeneralProperties.ImportRequest );
+      //  20 - Device Data
+      //fASCIIRequests.Add( '', ImportDeviceFieldsRequest );
+      fASCIIRequests.AppendString( ImportDeviceFieldsRequest );
+      //   2 - Device Names
+      //fASCIIRequests.Add( '', ImportNamesFileRequest );
+      fASCIIRequests.AppendString( ImportNamesFileRequest );
+      with fASCIISend do
+      begin
+        //ProgressBar := nil;
+        ProgressLabel := nil;
+      end;
+      with fASCIIRequests do
+      begin
+        //ProgressBar := self.ProgressBar;
+        ProgressLabel := self.LabelProgress;
+        if fASCIIExtraInfo.SendString( FirstString ) then
+        begin
+          fASCIIExtraInfo.OnRcvRec := ProcessRcvRec;
+          fTimeout := SigSpinEditRetrieveTimeout.Value div integer(TimerRetrieve.Interval);
+          fRepeatTimeout := fTimeout;
+          TimerRetrieve.Enabled := TRUE;
+          TimerCommon.Enabled := TRUE;
+          // errors handled separately
+        end;
+      end;
+      PanelXferExpertMode.Visible := FALSE;
+      PanelXFerSimpleMode.Align := alClient;
+      PanelXFerSimpleMode.Visible := TRUE;
+
+    finally
+      iStrings.Free;
+    end;
+  end;
+end;
+
+procedure TFormASCIITransfer.RcvLogFile(const pPanel : tZFPNode; pLog: tLogReport;
+  const pErrors: tErrorList);
+begin
+  RetryCount := 0;
+  CheckForDevices;
+  fASCIIExtraInfo.UseWaitForSingleObject := em_Check_USB_Status in ExpertModes;
+  fASCIIExtraInfo.UseThreading := em_Use_Threading in ExpertModes;
+  fCurrPanel := pPanel;
+  fPanel := pPanel.ID;
+  fRecCount := 0;
+  fErrors := pErrors;
+  fErrors.Clear;
+  fExitOnCompletion := TRUE;
+  fLog := pLog;
+  PanelXferExpertMode.Visible := FALSE;
+  PanelXFerSimpleMode.Align := alClient;
+  PanelXFerSimpleMode.Visible := TRUE;
+  ClearASCIIRetrieveFileList;
+  RcvStrings.Clear;
+  if not FormLogin.Execute then
+  begin
+    exit;
+  end;
+  StartLogTransfer;
+  if ShowModal = mrOK then
+  begin
+  end;
+end;
+
+procedure TFormASCIITransfer.RcvLogFile2(pPanelConnect : integer; pVersion: string);
+var
+  iStrings : tStringList;
+  iVersion : tCTecVersion;
+  i : integer;
+begin
+  // performed as result of WHORU request.
+  iStrings := tStringList.Create;
+  //StopTimers;
+  iVersion := pVersion;
+  case fWHORUState of
+    wru_Pending,
+    wru_Timeout:
+    begin
+      // should not get these results
+      fErrors.Add( es_Error, 0, 0, 'Internal Transfer Error 001 - Transfer aborted');
+      ModalResult := mrCancel;
+      StopTimers;
+      exit;
+    end;
+    wru_WrongPIN:
+    begin
+      if not FormLogin.Execute( TRUE ) then
+      begin
+        ModalResult := mrCancel;
+        exit;
+      end;
+      // else
+      AbortButtonVisible := FALSE;
+      LabelRecords.Visible := FALSE;
+      LabelProgress.Visible := FALSE;
+      StartLogTransfer;
+      exit;
+    end;
+    wru_Blank,
+    wru_CorrectPIN: ; // carry on
+  end;
+  with fCurrPanel do
+  begin
+    try
+      ClearASCIIRetrieveFileList;
+
+      fASCIIRequests.TransferStrings.Clear;
+
+      //fLog.BuildRequestList( iStrings, ',REQUEST,' + IntToStr( pPanel ) );
+      fLog.BuildRequestList( iStrings, ',REQUEST,' + IntToStr( ID ) );
+      //AddFileRcvRequest( fCurrPanel, fCurrPanel.Name1.Value + '-' + fLog.Name, iStrings );
+
+      with fASCIISend do
+      begin
+        //ProgressBar := nil;
+        ProgressLabel := nil;
+      end;
+      with fASCIIRequests do
+      begin
+        //ProgressBar := self.ProgressBar;
+        for i := 0 to iStrings.Count - 1 do
+        begin
+          AppendString( iStrings[ i ] );
+        end;
+        ProgressLabel := self.LabelProgress;
+        if fASCIIExtraInfo.SendString( FirstString ) then
+        begin
+          fASCIIExtraInfo.OnRcvRec := ProcessRcvRec;
+          fTimeout := SigSpinEditRetrieveTimeout.Value div integer(TimerRetrieve.Interval);
+          fRepeatTimeout := fTimeout;
+          TimerRetrieve.Enabled := TRUE;
+          TimerCommon.Enabled := TRUE;
+          // errors handled separately
+        end;
+      end;
+      PanelXferExpertMode.Visible := FALSE;
+      PanelXFerSimpleMode.Align := alClient;
+      PanelXFerSimpleMode.Visible := TRUE;
+
+    finally
+      iStrings.Free;
+    end;
+  end;
+end;
+
+procedure TFormASCIITransfer.StartLogTransfer;
+begin
+  if RadioGroupDevicesConnected.Items.Count > 0 then
+  begin
+    // send WHORU record
+    fWhoAreYouAction := RcvLogFile2;
+    fASCIIExtraInfo.OnRcvRec := ProcessWhoAreYouRecAck;
+    fASCIIExtraInfo.OnSendFail := OnSendWhoAreYouFail;
+    fASCIIExtraInfo.OnRcvFail := OnSendWhoAreYouRcvFail;
+    AskWhoAreYou;
+    RcvStrings.Clear;
+    if fASCIIExtraInfo.Start then
+    begin
+      // start first transfer
+      fStartTime := Now;
+      AbortButtonVisible := TRUE;
+      LabelProgress.Visible := FALSE;
+      LabelRecords.Visible := TRUE;
+      with fASCIIRequests do
+      begin
+        //ProgressBar := nil;
+        ProgressLabel := nil;
+      end;
+      with fASCIISend do
+      begin
+        //ProgressBar := self.ProgressBar;
+        ProgressLabel := self.LabelProgress;
+        if fASCIIExtraInfo.SendString( fASCIISend.FirstString ) then
+        begin
+          fTimeout := SigSpinEditTimeOut.Value div integer(TimerGetWhoAMI.Interval);
+          fRepeatTimeout := fTimeout;
+          //fTimeout := cWhoRUTimeout div TimerGetWhoAMI.Interval;
+          TimerGetWhoAMI.Enabled := TRUE;
+          TimerCommon.Enabled := TRUE;
+          GaugeWait.Visible := FALSE;
+          LabelWaiting.Visible := FALSE;
+          // errors handled separately
+        end;
+      end;
+      PanelXferExpertMode.Visible := FALSE;
+      PanelXFerSimpleMode.Align := alClient;
+      PanelXFerSimpleMode.Visible := TRUE;
+    end;
+  end
+  else
+  begin
+    //Hide;
+    raise ExceptionZFP.Create(Translate('No Panels Found'));
+  end;
+end;
+
+procedure TFormASCIITransfer.SendAllData(const pPanel: tZFPNode; const pErrors : tErrorList;
+          const pVerifying: boolean);
+var
+  iStrings : tStringList;
+  iTempFile : tZFPTempTextFile;
+  iFailMode : TExceptionZFPErrorsFailMode;
+begin
+  RetryCount := 0;
+  fErrors := pErrors;
+  //fErrors.Clear;
+  fPanel := pPanel.ID;
+  fCurrPanel := pPanel;
+  CheckForDevices;
+  fASCIIExtraInfo.UseWaitForSingleObject := em_Check_USB_Status in ExpertModes;
+  fASCIIExtraInfo.UseThreading := em_Use_Threading in ExpertModes;;
+  fRecCount := 0;
+  SetupVisualInterface;
+  fVerifying := pVerifying;
+  if pVerifying then
+  begin
+    SpeedButtonStartTransfer.Visible := FALSE;
+    iFailMode := fm_Verify;
+  end
+  else
+  begin
+    iFailMode := fm_Transfer;
+    if not FormLogin.Execute then
+    begin
+      exit;
+    end;
+    SpeedButtonStartTransfer.Visible := TRUE;
+  end;
+  with pPanel do
+  begin
+    if em_Show_Advanced_Send_Rcv in ExpertModes then
+    begin
+
+      PageControlASCIIEdit.ActivePage := TabSheetTransfer;
+
+      if ZFPFile.FileName = '' then
+      begin
+        if not ZFPFile.Save then
+        begin
+          // we save in same directory as main file, so we NEED a file name
+          exit;
+        end;
+      end;
+      iStrings := tStringList.Create;
+      try
+
+        ClearASCIISendFileList;
+        // WHORU record
+        fWHORUFile.Clear;
+        fWHORUFile.Add( '200,WHORU,0,' + FormLogin.Password + ','+ IntToStr( AboutBox.Major )
+                  + ',' + IntToStr( AboutBox.Minor ) + ',' + IntToStr( AboutBox.Release )
+                  + ',' + IntToStr( AboutBox.Build ) );
+        ExportASCIIFile( ZFPFile.FileName, ID, 'WHORU', fWHORUFile );
+
+        //--------------- Phase 1 - shares and name data
+        //   2 – Device Names
+        ExportNamesFile( iStrings, fErrors );
+        ExportASCIIFile( ZFPFile.FileName, ID, 'Names', iStrings );
+
+        //---------------- Phase 2 ----------------------
+
+        //  80 – Panel data
+        GeneralProperties.ExportFile( iStrings );
+        ExportASCIIFile( ZFPFile.FileName, ID, 'Panel Config', iStrings );
+
+        //  17 – Input Group and Trigger Share Data
+        with ZFPFile.CauseAndEffects.InputGroups do
+        begin
+          //ExportShareFile( pPanel, ExportShareStrings );
+          ZFPFile.ExportInputGroupsShareFile( pPanel, iStrings );
+          ExportASCIIFile( ZFPFile.FileName, ID, 'IG Shares', iStrings );
+        end;
+
+        //  18 – Output Group Share Data
+        with ZFPFile.CauseAndEffects.OutputGroups do
+        begin
+          iStrings.Clear;
+          ExportShareFile( pPanel, iStrings );
+          ExportASCIIFile( ZFPFile.FileName, ID, 'OG Shares', iStrings );
+        end;
+
+        //  19 – Output Supergroups Share Data
+        with ZFPFile.SuperGroupList do
+        begin
+          iStrings.Clear;
+          ExportShareFile( pPanel, iStrings );
+          ExportASCIIFile( ZFPFile.FileName, ID, 'OSG Shares', iStrings );
+        end;
+
+        //  81 – Mode Share Data
+        with ZFPFile.ModeList do
+        begin
+          iStrings.Clear;
+          ExportShareFile( pPanel, iStrings );
+          ExportASCIIFile( ZFPFile.FileName, ID, 'Mode Shares', iStrings );
+        end;
+
+        // 151 – Input Supergroup Share Data
+        with ZFPFile.InputSuperGroupList do
+        begin
+          iStrings.Clear;
+          ExportShareFile( pPanel, iStrings );
+          ExportASCIIFile( ZFPFile.FileName, ID, 'ISG Shares', iStrings );
+        end;
+
+        // 152 – Sequence Share Data
+        with ZFPFile.SequenceList do
+        begin
+          iStrings.Clear;
+          ExportShareFile( pPanel, iStrings );
+          ExportASCIIFile( ZFPFile.FileName, ID, 'Seq Shares', iStrings );
+        end;
+
+        // 153 – Pulse Pattern Share Data
+        with ZFPFile.PulsePatternList do
+        begin
+          iStrings.Clear;
+          ExportShareFile( pPanel, iStrings );
+          ExportASCIIFile( ZFPFile.FileName, ID, 'Pulse Patt Shares', iStrings );
+        end;
+
+        // 160 – Group Action Share Data
+        with ZFPFile.GroupActionList do
+        begin
+          iStrings.Clear;
+          ExportShareFile( pPanel, iStrings );
+          ExportASCIIFile( ZFPFile.FileName, ID, 'Group Action Shares', iStrings );
+        end;
+
+        //--------------- Phase 3 - other data
+        //  14 – Input Group and Trigger Data
+        iStrings.Clear;
+        ZFPFile.ExportInputGroupsConfigFile( pPanel, iStrings );
+        ExportASCIIFile( ZFPFile.FileName, ID, 'Input Groups', iStrings );
+
+        //  15 – Output Groups
+        iStrings.Clear;
+        ZFPFile.ExportOutputGroupsConfigFile( pPanel, iStrings );
+        ExportASCIIFile( ZFPFile.FileName, ID, 'Output Groups', iStrings );
+
+        //  16 – Output Supergroup
+        iStrings.Clear;
+        ZFPFile.ExportSuperGroupsConfigFile( pPanel, iStrings );
+        ExportASCIIFile( ZFPFile.FileName, ID, 'Supergroups', iStrings );
+
+        //  20 – Device Data
+        ExportDeviceFieldsFile( iStrings, fErrors );
+        ExportASCIIFile( ZFPFile.FileName, ID, 'Device Fields', iStrings );
+
+        //  30 – Cause and Effects Matrix (not used by PC)
+        iStrings.Clear;
+        ZFPFile.ExportCausesFile( pPanel, iStrings, fErrors );
+        ExportASCIIFile( ZFPFile.FileName, ID, 'CE Matrix', iStrings );
+
+        //  40 – Sequences
+        ZFPFile.ExportEffectsFile( pPanel, iStrings );
+        ExportASCIIFile( ZFPFile.FileName, ID, 'Sequences', iStrings );
+
+        //  60 – Pulse Patterns
+        ZFPFile.ExportPulseSeqFile( pPanel, iStrings );
+        ExportASCIIFile( ZFPFile.FileName, ID, 'Pulse Pattern', iStrings );
+
+        //  161 – Group Actions
+        ZFPFile.ExportGroupActionFile( pPanel, iStrings );
+        ExportASCIIFile( ZFPFile.FileName, ID, 'Group Actions', iStrings );
+
+        //  90 – Comments
+        iStrings.Clear;
+        PanelNotes.ExportFile( iStrings );
+        ExportASCIIFile( ZFPFile.FileName, ID, 'Comments', iStrings );
+
+        // 100 – Zone Data
+        with ZonesFile do
+        begin
+          iStrings.Clear;
+          ExportFile( iStrings );
+          ExportASCIIFile( ZFPFile.FileName, ID, 'Zones', iStrings );
+        end;
+
+        // 120 - Network data
+        iStrings.Clear;
+        ZFPFile.ExportNetworkCfgFile( pPanel, iStrings, fErrors );
+        ExportASCIIFile( ZFPFile.FileName, ID, 'Network File', iStrings );
+
+        // 150 – Cause and Effects Tree (not used by panel)
+        with ZFPFile.CauseAndEffects do
+        begin
+          iStrings.Clear;
+          ExportTreeFile( pPanel, iStrings );
+          ExportASCIIFile( ZFPFile.FileName, ID, 'Tree File', iStrings );
+        end;
+
+        // 154 – Input Supergroups
+        with ZFPFile.InputSuperGroupList do
+        begin
+          iStrings.Clear;
+          ExportConfigFile( pPanel, iStrings );
+          ExportASCIIFile( ZFPFile.FileName, ID, 'Input Supergroups', iStrings );
+        end;
+
+        // 300 - Logo
+
+        if ZFPFile.LogoOversized.ValueAsBool then
+        begin
+          fErrors.Add( es_Warning, 0, Translate( 'Logo Oversized - not sent to panel' ), ZFPFile.Logo );
+        end
+        else
+        begin
+          with ZFPFile.Logo do
+          begin
+            ExportFile( ID, iStrings, '\Images\Logo.gif' );
+            if iStrings.Count < 1 then
+            begin
+              fErrors.Add( es_Warning, 0, Translate( 'Logo not found - not sent to panel' ), ZFPFile.Logo );
+            end
+            else
+            begin
+              ExportASCIIFile( ZFPFile.FileName, ID, 'Logo', iStrings );
+            end;
+          end;
+        end;
+
+        iTempFile := tZFPTempTextFile.Create;
+        try
+          ZFPFile.Client.Save( iTempFile );
+          iTempFile.FileName := '\Client.txt';
+          //iTempFile.Add( 'Fred' );
+          iTempFile.ExportFile( fPanel, iStrings );
+          ExportASCIIFile( ZFPFile.FileName, ID, 'Client', iStrings );
+        finally
+          iTempFile.Free;
+        end;
+
+        iTempFile := tZFPTempTextFile.Create;
+        try
+          ZFPFile.Installer.Save( iTempFile );
+          iTempFile.FileName := '\Installr.txt';
+          //iTempFile.Add( 'Fred' );
+          iTempFile.ExportFile( fPanel, iStrings );
+          ExportASCIIFile( ZFPFile.FileName, ID, 'Installer', iStrings );
+        finally
+          iTempFile.Free;
+        end;
+
+        iTempFile := tZFPTempTextFile.Create;
+        try
+          ZFPFile.SiteNotes.Save( iTempFile );
+          iTempFile.FileName := '\SNotes.txt';
+          //iTempFile.Add( 'Fred' );
+          iTempFile.ExportFile( fPanel, iStrings );
+          ExportASCIIFile( ZFPFile.FileName, ID, 'SiteNotes', iStrings );
+        finally
+          iTempFile.Free;
+        end;
+
+        fCSFile.Clear;
+        fCSFile.Add( '9998,BEGIN,' + IntToStr( ID ) );
+        ExportASCIIFile( ZFPFile.FileName, ID, 'Complete Checksum', fCSFile );
+
+        {
+        fPartCSFile.Clear;
+        fPartCSFile.Add( '9999,BEGIN,' + IntToStr( ID ) );
+        ExportASCIIFile( ZFPFile.FileName, ID, 'Update Checksum', fPartCSFile );
+        }
+
+        SetupRadioGroupASCIIFiles;
+      finally
+        iStrings.Free;
+      end;
+    end
+    else if pVerifying then
+    begin
+      SendAllData2( fPanel, '' );
+    end
+    else
+    begin
+//      BitBtnStartXFER.OnClick := SpeedButtonStartSimpleTransferClick;
+      AbortButtonVisible := FALSE;
+      LabelRecords.Visible := FALSE;
+      LabelProgress.Visible := FALSE;
+      SpeedButtonStartSimpleTransferClick( self );
+    end;
+    if (fErrors.ErrorCount = 0) or (em_Show_Advanced_Send_Rcv in ExpertModes) or (ErrorReportingLevel = el_None) then
+    begin
+      ShowModal;
+      exit;
+    end;
+    //Hide;
+    raise ExceptionZFPErrors.Create( iFailMode );
+  end;
+end;
+
+procedure TFormASCIITransfer.AdvancedSendData( const pErrors : tErrorList);
+begin
+  RetryCount := 0;
+  fErrors := pErrors;
+  fErrors.Clear;
+  fPanel := 0;
+  fCurrPanel := nil;
+  CheckForDevices;
+  fASCIIExtraInfo.UseWaitForSingleObject := em_Check_USB_Status in ExpertModes;
+  fASCIIExtraInfo.UseThreading := em_Use_Threading in ExpertModes;;
+  fRecCount := 0;
+  SetupVisualInterfaceSimple;
+  if not FormLogin.Execute then
+  begin
+    exit;
+  end;
+  AbortButtonVisible := FALSE;
+  LabelRecords.Visible := FALSE;
+  LabelProgress.Visible := FALSE;
+  if RadioGroupDevicesConnected.Items.Count > 0 then
+  begin
+    // send WHORU record
+    AskWhoAreYou;
+    fWhoAreYouAction := AdvancedSendData2;
+    fASCIIExtraInfo.OnRcvRec := ProcessWhoAreYouRecAck;
+    fASCIIExtraInfo.OnSendFail := OnSendWhoAreYouFail;
+    fASCIIExtraInfo.OnRcvFail := OnSendWhoAreYouRcvFail;
+    RcvStrings.Clear;
+    if fASCIIExtraInfo.Start then
+    begin
+      // start first transfer
+      fStartTime := Now;
+      AbortButtonVisible := TRUE;
+      LabelProgress.Visible := TRUE;
+      LabelRecords.Visible := TRUE;
+      with fASCIIRequests do
+      begin
+        //ProgressBar := nil;
+        ProgressLabel := nil;
+      end;
+      with fASCIISend do
+      begin
+        //ProgressBar := self.ProgressBar;
+        ProgressLabel := self.LabelProgress;
+        if fASCIIExtraInfo.SendString( fASCIISend.FirstString ) then
+        begin
+          fTimeout := SigSpinEditTimeOut.Value div integer(TimerGetWhoAMI.Interval);
+          fRepeatTimeout := fTimeout;
+          //fTimeout := cWhoRUTimeout div TimerGetWhoAMI.Interval;
+          TimerGetWhoAMI.Enabled := TRUE;
+          TimerCommon.Enabled := TRUE;
+          GaugeWait.Visible := FALSE;
+          LabelWaiting.Visible := FALSE;
+          // errors handled separately
+        end;
+      end;
+      PanelXferExpertMode.Visible := FALSE;
+      PanelXFerSimpleMode.Align := alClient;
+      PanelXFerSimpleMode.Visible := TRUE;
+    end;
+  end
+  else
+  begin
+    //Hide;
+    raise ExceptionZFP.Create(Translate('No Panels Found'));
+  end;
+    if (fErrors.ErrorCount = 0) or (em_Show_Advanced_Send_Rcv in ExpertModes) or (ErrorReportingLevel = el_None) then
+  begin
+    ShowModal;
+    exit;
+  end;
+  //Hide;
+  raise ExceptionZFPErrors.Create( fm_Transfer );
+end;
+
+procedure TFormASCIITransfer.SendAllData2(pPanel: integer; pVersion: string);
+var
+  iStrings : tStringList;
+  iTempFile : tZFPTempTextFile;
+begin
+  // performed as result of WHORU request, unless verifying
+  // first check WHORU result
+  if not fVerifying then
+  begin
+    case fWHORUState of
+      wru_Pending,
+      wru_Timeout:
+      begin
+        // should not get these results
+        fErrors.Add( es_Error, 0, 0, 'Internal Transfer Error 001 - Transfer aborted');
+        ModalResult := mrCancel;
+        StopTimers;
+        exit;
+      end;
+      wru_WrongPIN:
+      begin
+        if not FormLogin.Execute( TRUE ) then
+        begin
+          ModalResult := mrCancel;
+          exit;
+        end;
+        // else
+        AbortButtonVisible := FALSE;
+        LabelRecords.Visible := FALSE;
+        LabelProgress.Visible := FALSE;
+        SpeedButtonStartSimpleTransferClick( self );
+        exit;
+      end;
+      wru_Blank,
+      wru_CorrectPIN: ; // carry on
+    end;
+  end;
+  iStrings := tStringList.Create;
+  with fCurrPanel do
+  begin
+    try
+      ClearASCIISendFileList;
+      //--------------- Phase 1 - shares and name data
+
+      //   2 – Device Names
+      iStrings.Clear;
+      ExportNamesFile( iStrings, fErrors );
+      fASCIISend.AppendStrings( iStrings );
+
+      //  80 – Panel data
+      iStrings.Clear;
+      GeneralProperties.ExportFile( iStrings );
+      fASCIISend.AppendStrings( iStrings );
+
+      //  17 – Input Group and Trigger Share Data
+      iStrings.Clear;
+      with ZFPFile.CauseAndEffects.InputGroups do
+      begin
+        //ExportShareFile( pPanel, ExportShareStrings );
+        ZFPFile.ExportInputGroupsShareFile( fCurrPanel, iStrings );
+        fASCIISend.AppendStrings( iStrings );
+      end;
+
+      //  18 – Output Group Share Data
+      iStrings.Clear;
+      with ZFPFile.CauseAndEffects.OutputGroups do
+      begin
+        ExportShareFile( fCurrPanel, iStrings );
+        fASCIISend.AppendStrings( iStrings );
+      end;
+
+      //  19 – Output Supergroups Share Data
+      iStrings.Clear;
+      with ZFPFile.SuperGroupList do
+      begin
+        ExportShareFile( fCurrPanel, iStrings );
+        fASCIISend.AppendStrings( iStrings );
+      end;
+
+      //  81 – Mode Share Data
+      iStrings.Clear;
+      with ZFPFile.ModeList do
+      begin
+        ExportShareFile( fCurrPanel, iStrings );
+        fASCIISend.AppendStrings( iStrings );
+      end;
+
+      // 151 – Input Supergroup Share Data
+      iStrings.Clear;
+      with ZFPFile.InputSuperGroupList do
+      begin
+        ExportShareFile( fCurrPanel, iStrings );
+        fASCIISend.AppendStrings( iStrings );
+      end;
+
+      // 152 – Sequence Share Data
+      iStrings.Clear;
+      with ZFPFile.SequenceList do
+      begin
+        ExportShareFile( fCurrPanel, iStrings );
+        fASCIISend.AppendStrings( iStrings );
+      end;
+
+      // 153 – Pulse Pattern Share Data
+      iStrings.Clear;
+      with ZFPFile.PulsePatternList do
+      begin
+        ExportShareFile( fCurrPanel, iStrings );
+        fASCIISend.AppendStrings( iStrings );
+      end;
+
+      // 160 – Group Action Share Data
+      iStrings.Clear;
+      with ZFPFile.GroupActionList do
+      begin
+        ExportShareFile( fCurrPanel, iStrings );
+        fASCIISend.AppendStrings( iStrings );
+      end;
+
+      //--------------- Phase 2 - other data
+      //  14 – Input Group and Trigger Data
+      iStrings.Clear;
+      ZFPFile.ExportInputGroupsConfigFile( fCurrPanel, iStrings );
+      fASCIISend.AppendStrings( iStrings );
+
+      //  15 – Output Groups
+      iStrings.Clear;
+      ZFPFile.ExportOutputGroupsConfigFile( fCurrPanel, iStrings );
+      fASCIISend.AppendStrings( iStrings );
+
+      //  16 – Output Supergroup
+      iStrings.Clear;
+      ZFPFile.ExportSuperGroupsConfigFile( fCurrPanel, iStrings );
+      fASCIISend.AppendStrings( iStrings );
+
+      //  20 – Device Data
+      ExportDeviceFieldsFile( iStrings, fErrors );
+      fASCIISend.AppendStrings( iStrings );
+
+      //  30 – Cause and Effects Matrix (not used by PC)
+      iStrings.Clear;
+      ZFPFile.ExportCausesFile( fCurrPanel, iStrings, fErrors );
+      fASCIISend.AppendStrings( iStrings );
+
+      //  40 – Sequences
+      iStrings.Clear;
+      ZFPFile.ExportEffectsFile( fCurrPanel, iStrings );
+      fASCIISend.AppendStrings( iStrings );
+
+      //  60 – Pulse Patterns
+      iStrings.Clear;
+      ZFPFile.ExportPulseSeqFile( fCurrPanel, iStrings );
+      fASCIISend.AppendStrings( iStrings );
+
+      // 161 – Group Action Data
+      iStrings.Clear;
+      ZFPFile.ExportGroupActionFile( fCurrPanel, iStrings );
+      fASCIISend.AppendStrings( iStrings );
+
+      //  90 – Comments
+      iStrings.Clear;
+      PanelNotes.ExportFile( iStrings );
+      fASCIISend.AppendStrings( iStrings );
+
+      // 100 – Zone Data
+      iStrings.Clear;
+      ZonesFile.ExportFile( iStrings );
+      fASCIISend.AppendStrings( iStrings );
+
+      // 120 - Network data
+      iStrings.Clear;
+      ZFPFile.ExportNetworkCfgFile( fCurrPanel, iStrings, fErrors );
+      fASCIISend.AppendStrings( iStrings );
+
+      // 150 – Cause and Effects Tree (not used by panel)
+      iStrings.Clear;
+      with ZFPFile.CauseAndEffects do
+      begin
+        ExportTreeFile( fCurrPanel, iStrings );
+        fASCIISend.AppendStrings( iStrings );
+      end;
+
+      // 154 – Input Supergroups
+      with ZFPFile.InputSuperGroupList do
+      begin
+        iStrings.Clear;
+        ExportConfigFile( fCurrPanel, iStrings );
+        fASCIISend.AppendStrings( iStrings );
+      end;
+
+      // 300 - Logo
+
+      if pVersion <> '' then
+      begin
+        if ZFPFile.LogoOversized.ValueAsBool then
+        begin
+          fErrors.Add( es_Error, 0, Translate( 'Logo Oversized - not sent to panel' ), ZFPFile.Logo );
+        end
+        else
+        begin
+          with ZFPFile.Logo do
+          begin
+            ExportFile( ID, iStrings, '\Images\Logo.gif' );
+            fASCIISend.AppendStrings( iStrings );
+          end;
+        end;
+      end;
+
+      if not fVerifying then
+      begin
+        if pVersion >= '9A28' then
+        begin
+          // 301 Site data
+          iTempFile := tZFPTempTextFile.Create;
+          try
+            ZFPFile.Client.Save( iTempFile );
+            iTempFile.FileName := '\Client.txt';
+            //iTempFile.Add( 'Fred' );
+            iTempFile.ExportFile( fPanel, iStrings );
+            //ExportASCIIFile( ZFPFile.FileName, ID, 'Client', iStrings );
+            fASCIISend.AppendStrings( iStrings );
+          finally
+            iTempFile.Free;
+          end;
+
+          iTempFile := TZFPTempTextFile.Create;
+          try
+            ZFPFile.Installer.Save( iTempFile );
+            iTempFile.FileName := '\Installr.txt';
+            //iTempFile.Add( 'Fred' );
+            iTempFile.ExportFile( fPanel, iStrings );
+            //ExportASCIIFile( ZFPFile.FileName, ID, 'Installer', iStrings );
+            fASCIISend.AppendStrings( iStrings );
+          finally
+            iTempFile.Free;
+          end;
+
+          iTempFile := TZFPTempTextFile.Create;
+          try
+            ZFPFile.SiteNotes.Save( iTempFile );
+            iTempFile.FileName := '\SNotes.txt';
+            //iTempFile.Add( 'Fred' );
+            iTempFile.ExportFile( fPanel, iStrings );
+            //ExportASCIIFile( ZFPFile.FileName, ID, 'SiteNotes', iStrings );
+            fASCIISend.AppendStrings( iStrings );
+          finally
+            iTempFile.Free;
+          end;
+        end;
+      end;
+
+      //--------- Phase 3 - done
+      if not fVerifying then
+      begin
+        fCSFile.Clear;
+        fCSFile.Add( '9998,BEGIN,' + IntToStr( ID ) );
+        fASCIISend.AppendStrings( fCSFile );
+      end;
+    finally
+      iStrings.Free;
+    end;
+    fASCIIExtraInfo.OnRcvRec := ProcessSndRecAck;
+    fASCIIExtraInfo.OnSendFail := OnSendSendFail;
+    fASCIIExtraInfo.OnRcvFail := OnSendRcvFail;
+    RcvStrings.Clear;
+    if (fErrors.ErrorCount > 0) and (ErrorReportingLevel <> el_None) then
+    begin
+      if fVerifying then
+      begin
+        raise ExceptionZFPErrors.Create( fm_Verify );
+      end
+      else
+      begin
+        raise ExceptionZFPErrors.Create( fm_Transfer );
+      end;
+    end
+    else if fVerifying then
+    begin
+      raise ExceptionZFPErrors.Create( fm_Verified );
+    end
+    else if fASCIIExtraInfo.Start then
+    begin
+      // start first transfer
+      fStartTime := Now;
+      AbortButtonVisible := TRUE;
+      LabelProgress.Visible := TRUE;
+      LabelRecords.Visible := TRUE;
+      with fASCIIRequests do
+      begin
+        //ProgressBar := nil;
+        ProgressLabel := nil;
+      end;
+      with fASCIISend do
+      begin
+        //ProgressBar := self.ProgressBar;
+        ProgressLabel := self.LabelProgress;
+        if fASCIIExtraInfo.SendString( fASCIISend.FirstString ) then
+        begin
+          fTimeout := SigSpinEditTimeOut.Value div integer(TimerTransfer.Interval);
+          TimerTransfer.Enabled := TRUE;
+          TimerCommon.Enabled := TRUE;
+          GaugeWait.Visible := FALSE;
+          LabelWaiting.Visible := FALSE;
+          // errors handled separately
+        end;
+      end;
+      PanelXferExpertMode.Visible := FALSE;
+      PanelXFerSimpleMode.Align := alClient;
+      PanelXFerSimpleMode.Visible := TRUE;
+    end;
+  end;
+end;
+
+procedure TFormASCIITransfer.AdvancedSendData2(xPanel: integer; pVersion: string);
+var
+  iStrings : tStringList;
+  iTempFile : tZFPTempTextFile;
+  i, iPhase : integer;
+begin
+  // performed as result of WHORU request.
+  // first check WHORU result
+  case fWHORUState of
+    wru_Pending,
+    wru_Timeout:
+    begin
+      // should not get these results
+      fErrors.Add( es_Error, 0, 0, 'Internal Transfer Error 001 - Transfer aborted');
+      ModalResult := mrCancel;
+      StopTimers;
+      exit;
+    end;
+    wru_WrongPIN:
+    begin
+      if not FormLogin.Execute( TRUE ) then
+      begin
+        ModalResult := mrCancel;
+        exit;
+      end;
+      // else
+      AbortButtonVisible := FALSE;
+      LabelRecords.Visible := FALSE;
+      LabelProgress.Visible := FALSE;
+      SpeedButtonStartAdvancedTransferClick( self );
+      exit;
+    end;
+    wru_Blank,
+    wru_CorrectPIN: ; // carry on
+  end;
+  iStrings := tStringList.Create;
+
+  try
+    fExitOnCompletion := TRUE;
+    ClearASCIISendFileList;
+    with FormAdvancedTransferSelector do
+    begin
+      with CheckListBoxAMNodes do
+      begin
+        for iPhase := 0 to 1 do
+        begin
+          for i := 0 to Items.Count - 1 do
+          begin
+            if Checked[ i ] then
+            begin
+              fCurrPanel := Items.Objects[ i ] as tZFPNode;
+              fPanel := fCurrPanel.ID;
+              if (( iPhase = 0 ) and (fPanel <> xPanel )) or (( iPhase <> 0 ) and (fPanel = xPanel )) then
+              begin
+
+                //   2 – Device Names
+                if AdvancedSendData2HasRecType( 2 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ExportNamesFile( iStrings, fErrors );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                //  80 – Panel data
+                if AdvancedSendData2HasRecType( 80 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.GeneralProperties.ExportFile( iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                //  17 – Input Group and Trigger Share Data
+                if AdvancedSendData2HasRecType( 17 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.ExportInputGroupsShareFile( fCurrPanel, iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                //  18 – Output Group Share Data
+                if AdvancedSendData2HasRecType( 18 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.CauseAndEffects.OutputGroups.ExportShareFile( fCurrPanel, iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                //  19 – Output Supergroups Share Data
+                if AdvancedSendData2HasRecType( 19 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.SuperGroupList.ExportShareFile( fCurrPanel, iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                //  81 – Mode Share Data
+                if AdvancedSendData2HasRecType( 81 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.ModeList.ExportShareFile( fCurrPanel, iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                // 151 – Input Supergroup Share Data
+                if AdvancedSendData2HasRecType( 151 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.InputSuperGroupList.ExportShareFile( fCurrPanel, iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                // 152 – Sequence Share Data
+                if AdvancedSendData2HasRecType( 152 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.SequenceList.ExportShareFile( fCurrPanel, iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                // 153 – Pulse Pattern Share Data
+                if AdvancedSendData2HasRecType( 152 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.PulsePatternList.ExportShareFile( fCurrPanel, iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                // 160 – Group Action Share Data
+                if AdvancedSendData2HasRecType( 160 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.GroupActionList.ExportShareFile( fCurrPanel, iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                //--------------- Phase 2 - other data
+                //  14 – Input Group and Trigger Data
+                if AdvancedSendData2HasRecType( 14 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.ExportInputGroupsConfigFile( fCurrPanel, iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                //  15 – Output Groups
+                if AdvancedSendData2HasRecType( 15 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.ExportOutputGroupsConfigFile( fCurrPanel, iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                //  16 – Output Supergroup
+                if AdvancedSendData2HasRecType( 16 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.ExportSuperGroupsConfigFile( fCurrPanel, iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                //  20 – Device Data
+                if AdvancedSendData2HasRecType( 20 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ExportDeviceFieldsFile( iStrings, fErrors );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                //  30 – Cause and Effects Matrix (not used by PC)
+                if AdvancedSendData2HasRecType( 30 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.ExportCausesFile( fCurrPanel, iStrings, fErrors );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                //  40 – Sequences
+                if AdvancedSendData2HasRecType( 40 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.ExportEffectsFile( fCurrPanel, iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                //  60 – Sequences
+                if AdvancedSendData2HasRecType( 60 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.ExportPulseSeqFile( fCurrPanel, iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                if AdvancedSendData2HasRecType( 160 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.GroupActionList.ExportConfigFile( fCurrPanel, iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                //  90 – Comments
+                if AdvancedSendData2HasRecType( 90 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.PanelNotes.ExportFile( iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                // 100 – Zone Data
+                if AdvancedSendData2HasRecType( 100 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZonesFile.ExportFile( iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                // 120 - Network data
+                if AdvancedSendData2HasRecType( 120 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.ExportNetworkCfgFile( fCurrPanel, iStrings, fErrors );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                // 150 – Cause and Effects Tree (not used by panel)
+                if AdvancedSendData2HasRecType( 150 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.CauseAndEffects.ExportTreeFile( fCurrPanel, iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                // 154 – Input Supergroups
+                if AdvancedSendData2HasRecType( 154 ) then
+                begin
+                  iStrings.Clear;
+                  fCurrPanel.ZFPFile.InputSuperGroupList.ExportConfigFile( fCurrPanel, iStrings );
+                  fASCIISend.AppendStrings( iStrings );
+                end;
+
+                // 300 - Logo
+                if pVersion <> '' then
+                begin
+                  if AdvancedSendData2HasType( at_Logo ) then
+                  begin
+                    if fCurrPanel.ZFPFile.LogoOversized.ValueAsBool then
+                    begin
+                      fErrors.Add( es_Error, 0, Translate( 'Logo Oversized - not sent to panel' ) + ' ' + fCurrPanel.Name1.Value, fCurrPanel.ZFPFile.Logo );
+                    end
+                    else
+                    begin
+                      iStrings.Clear;
+                      fCurrPanel.ZFPFile.Logo.ExportFile( fCurrPanel.ID, iStrings, '\Images\Logo.gif' );
+                      fASCIISend.AppendStrings( iStrings );
+                    end;
+                  end;
+                end;
+
+                if pVersion >= '9A28' then
+                begin
+                  // 301 Site data
+                  // Client
+                  if AdvancedSendData2HasType( at_Client ) then
+                  begin
+                    iTempFile := tZFPTempTextFile.Create;
+                    try
+                      fCurrPanel.ZFPFile.Client.Save( iTempFile );
+                      iTempFile.FileName := '\Client.txt';
+                      iTempFile.ExportFile( fPanel, iStrings );
+                      fASCIISend.AppendStrings( iStrings );
+                    finally
+                      iTempFile.Free;
+                    end;
+                  end;
+
+                  // Installer
+                  if AdvancedSendData2HasType( at_Installer ) then
+                  begin
+                    iTempFile := tZFPTempTextFile.Create;
+                    try
+                      fCurrPanel.ZFPFile.Installer.Save( iTempFile );
+                      iTempFile.FileName := '\Installr.txt';
+                      iTempFile.ExportFile( fPanel, iStrings );
+                      fASCIISend.AppendStrings( iStrings );
+                    finally
+                      iTempFile.Free;
+                    end;
+                  end;
+
+                  // Site Notes
+                  if AdvancedSendData2HasType( at_Site_Notes ) then
+                  begin
+                    iTempFile := tZFPTempTextFile.Create;
+                    try
+                      fCurrPanel.ZFPFile.SiteNotes.Save( iTempFile );
+                      iTempFile.FileName := '\SNotes.txt';
+                      iTempFile.ExportFile( fPanel, iStrings );
+                      fASCIISend.AppendStrings( iStrings );
+                    finally
+                      iTempFile.Free;
+                    end;
+                  end;
+
+                end;
+
+                //--------- Phase 3 - done
+                if AdvancedSendData2HasType( at_Full_Update ) then
+                begin
+                  fCSFile.Clear;
+                  fCSFile.Add( '9998,BEGIN,' + IntToStr( fCurrPanel.ID ) );
+                  fASCIISend.AppendStrings( fCSFile );
+                end
+                else if AdvancedSendData2HasType( at_Partial_Update ) then
+                begin
+                  fCSFile.Clear;
+                  fCSFile.Add( '9999,BEGIN,' + IntToStr( fCurrPanel.ID ) );
+                  fASCIISend.AppendStrings( fCSFile );
+                end
+                else if AdvancedSendData2HasType( at_No_Update ) then
+                begin
+                  // nothing to add
+                end
+                else
+                begin
+                  fCSFile.Clear;
+                  fCSFile.Add( '9998,BEGIN,' + IntToStr( fCurrPanel.ID ) );
+                  fASCIISend.AppendStrings( fCSFile );
+                end
+              end;
+            end;
+          end;
+        end;
+      end;
+    end;
+  finally
+    iStrings.Free;
+  end;
+
+  fASCIIExtraInfo.OnRcvRec := ProcessSndRecAck;
+  fASCIIExtraInfo.OnSendFail := OnSendSendFail;
+  fASCIIExtraInfo.OnRcvFail := OnSendRcvFail;
+  RcvStrings.Clear;
+  if (fErrors.ErrorCount > 0) and (ErrorReportingLevel <> el_None) then
+  begin
+    raise ExceptionZFPErrors.Create( fm_Transfer );
+  end
+  else if fASCIIExtraInfo.Start then
+  begin
+    // start first transfer
+    fExitOnCompletion := TRUE;
+    fStartTime := Now;
+    AbortButtonVisible := TRUE;
+    LabelProgress.Visible := TRUE;
+    LabelRecords.Visible := TRUE;
+    with fASCIIRequests do
+    begin
+      //ProgressBar := nil;
+      ProgressLabel := nil;
+    end;
+    with fASCIISend do
+    begin
+      //ProgressBar := self.ProgressBar;
+      ProgressLabel := self.LabelProgress;
+      if fASCIIExtraInfo.SendString( fASCIISend.FirstString ) then
+      begin
+        fTimeout := SigSpinEditTimeOut.Value div integer(TimerTransfer.Interval);
+        TimerTransfer.Enabled := TRUE;
+        TimerCommon.Enabled := TRUE;
+        GaugeWait.Visible := FALSE;
+        LabelWaiting.Visible := FALSE;
+        // errors handled separately
+      end;
+    end;
+    PanelXferExpertMode.Visible := FALSE;
+    PanelXFerSimpleMode.Align := alClient;
+    PanelXFerSimpleMode.Visible := TRUE;
+  end;
+end;
+
+function TFormASCIITransfer.AdvancedSendData2HasRecType( const pRecType: integer) : boolean;
+var
+  j, k : integer;
+  iAdvancedTransfer : tAdvancedTransfer;
+  iAdvancedTransferItem : tAdvancedTransferItem;
+begin
+  with FormAdvancedTransferSelector.CheckListBoxAMFileSets do
+  begin
+    for j := 0 to Items.Count - 1 do
+    begin
+      if Checked[ j ] then
+      begin
+        iAdvancedTransfer := Items.Objects[ j ] as tAdvancedTransfer;
+        for k := 0 to iAdvancedTransfer.TransferItems.Max do
+        begin
+          iAdvancedTransferItem := iAdvancedTransfer.TransferItems.AdvancedTransferItem[ k ];
+          if iAdvancedTransferItem.TransferType = at_Internal then
+          begin
+            if iAdvancedTransferItem.ItemType.ValueAsInt = pRecType then
+            begin
+              Result := TRUE;
+              exit;
+            end;
+          end;
+        end;
+      end;
+    end;
+  end;
+  // else
+  Result := FALSE;
+end;
+
+function TFormASCIITransfer.AdvancedSendData2HasType(
+  const pType: tAdvancedTransferType): boolean;
+var
+  j, k : integer;
+  iAdvancedTransfer : tAdvancedTransfer;
+  iAdvancedTransferItem : tAdvancedTransferItem;
+begin
+  with FormAdvancedTransferSelector.CheckListBoxAMFileSets do
+  begin
+    for j := 0 to Items.Count - 1 do
+    begin
+      if Checked[ j ] then
+      begin
+        iAdvancedTransfer := Items.Objects[ j ] as tAdvancedTransfer;
+        for k := 0 to iAdvancedTransfer.TransferItems.Max do
+        begin
+          iAdvancedTransferItem := iAdvancedTransfer.TransferItems.AdvancedTransferItem[ k ];
+          if iAdvancedTransferItem.TransferType = pType then
+          begin
+            Result := TRUE;
+            exit;
+          end;
+        end;
+      end;
+    end;
+  end;
+  // else
+  Result := FALSE;
+end;
+
+procedure TFormASCIITransfer.SendFile(const pPCFileName, pPanelFileName : string;
+  const pErrors: tErrorList);
+begin
+  RetryCount := 0;
+  fErrors := pErrors;
+  fErrors.Clear;
+  fPanel := 0;
+  fCurrPanel := nil;
+  CheckForDevices;
+  fASCIIExtraInfo.UseWaitForSingleObject := em_Check_USB_Status in ExpertModes;
+  fASCIIExtraInfo.UseThreading := em_Use_Threading in ExpertModes;;
+  fRecCount := 0;
+  SetupVisualInterfaceSimple;
+  if not FormLogin.Execute then
+  begin
+    exit;
+  end;
+  AbortButtonVisible := FALSE;
+  LabelRecords.Visible := FALSE;
+  LabelProgress.Visible := FALSE;
+  //SpeedButtonStartSimpleTransferClick( self );
+  SendFile2( pPCFileName, pPanelFileName, pErrors );
+
+  if (fErrors.ErrorCount = 0) or (ErrorReportingLevel = el_None) then
+  begin
+    ShowModal;
+    exit;
+  end;
+  //Hide;
+  raise ExceptionZFPErrors.Create( fm_Transfer );
+end;
+
+procedure TFormASCIITransfer.SendFile2(const pPCFileName, pPanelFileName : string;
+  const pErrors: tErrorList);
+begin
+  if RadioGroupDevicesConnected.Items.Count > 0 then
+  begin
+    // send WHORU record
+    fPanelFileName := pPanelFileName;
+    fPCFileName := pPCFileName;
+    AskWhoAreYou;
+    fWhoAreYouAction := SendFile3;
+    fASCIIExtraInfo.OnRcvRec := ProcessWhoAreYouRecAck;
+    fASCIIExtraInfo.OnSendFail := OnSendWhoAreYouFail;
+    fASCIIExtraInfo.OnRcvFail := OnSendWhoAreYouRcvFail;
+    RcvStrings.Clear;
+    if fASCIIExtraInfo.Start then
+    begin
+      // start first transfer
+      fStartTime := Now;
+      AbortButtonVisible := TRUE;
+      LabelProgress.Visible := TRUE;
+      LabelRecords.Visible := TRUE;
+      with fASCIIRequests do
+      begin
+        //ProgressBar := nil;
+        ProgressLabel := nil;
+      end;
+      with fASCIISend do
+      begin
+        //ProgressBar := self.ProgressBar;
+        ProgressLabel := self.LabelProgress;
+        if fASCIIExtraInfo.SendString( fASCIISend.FirstString ) then
+        begin
+          fTimeout := SigSpinEditTimeOut.Value div integer(TimerGetWhoAMI.Interval);
+          fRepeatTimeout := fTimeout;
+          //fTimeout := cWhoRUTimeout div TimerGetWhoAMI.Interval;
+          TimerGetWhoAMI.Enabled := TRUE;
+          TimerCommon.Enabled := TRUE;
+          GaugeWait.Visible := FALSE;
+          LabelWaiting.Visible := FALSE;
+          // errors handled separately
+        end;
+      end;
+      PanelXferExpertMode.Visible := FALSE;
+      PanelXFerSimpleMode.Align := alClient;
+      PanelXFerSimpleMode.Visible := TRUE;
+    end;
+  end
+  else
+  begin
+    //Hide;
+    if assigned( XFP4PgmCfg ) then
+    begin
+      raise ExceptionZFP.Create(Translate('No Panels Found'));
+    end
+    else
+    begin
+      raise ExceptionZFP.Create('No Panels Found');
+    end;
+  end;
+end;
+
+procedure TFormASCIITransfer.SendFile3(pPanel: integer; pVersion: string);
+var
+  iStrings : tStringList;
+  iTempFile : tZFPDiskFile;
+begin
+  // performed as result of WHORU request.
+  // first check WHORU result
+  case fWHORUState of
+    wru_Pending,
+    wru_Timeout:
+    begin
+      // should not get these results
+      fErrors.Add( es_Error, 0, 0, 'Internal Transfer Error 001 - Transfer aborted');
+      ModalResult := mrCancel;
+      StopTimers;
+      exit;
+    end;
+    wru_WrongPIN:
+    begin
+      if not FormLogin.Execute( TRUE ) then
+      begin
+        ModalResult := mrCancel;
+        exit;
+      end;
+      // else
+      AbortButtonVisible := FALSE;
+      LabelRecords.Visible := FALSE;
+      LabelProgress.Visible := FALSE;
+      SpeedButtonStartSimpleTransferClick( self );
+      exit;
+    end;
+    wru_Blank,
+    wru_CorrectPIN: ; // carry on
+  end;
+  iStrings := tStringList.Create;
+  try
+    ClearASCIISendFileList;
+
+    // 300 - File
+
+    if pVersion <> '' then
+    begin
+      iTempFile := tZFPDiskFile.Create( '', nil );
+      iTempFile.Value := fPCFileName;
+
+      if not iTempFile.FileExists then
+      begin
+        fErrors.Add( es_Error, 0, Translate( 'File not found - not sent to panel' ) );
+      end
+      else
+      begin
+        with iTempFile do
+        begin
+          ExportFile( pPanel, iStrings, fPanelFileName );
+          fASCIISend.AppendStrings( iStrings );
+        end;
+      end;
+    end;
+
+  finally
+    iStrings.Free;
+  end;
+  fASCIIExtraInfo.OnRcvRec := ProcessSndRecAck;
+  fASCIIExtraInfo.OnSendFail := OnSendSendFail;
+  fASCIIExtraInfo.OnRcvFail := OnSendRcvFail;
+  RcvStrings.Clear;
+  if fASCIIExtraInfo.Start then
+  begin
+    // start first transfer
+    fStartTime := Now;
+    AbortButtonVisible := TRUE;
+    LabelProgress.Visible := TRUE;
+    LabelRecords.Visible := TRUE;
+    with fASCIIRequests do
+    begin
+      //ProgressBar := nil;
+      ProgressLabel := nil;
+    end;
+    with fASCIISend do
+    begin
+      //ProgressBar := self.ProgressBar;
+      ProgressLabel := self.LabelProgress;
+      if fASCIIExtraInfo.SendString( fASCIISend.FirstString ) then
+      begin
+        fTimeout := SigSpinEditTimeOut.Value div integer(TimerTransfer.Interval);
+        TimerTransfer.Enabled := TRUE;
+        TimerCommon.Enabled := TRUE;
+        GaugeWait.Visible := FALSE;
+        LabelWaiting.Visible := FALSE;
+        // errors handled separately
+      end;
+    end;
+    PanelXferExpertMode.Visible := FALSE;
+    PanelXFerSimpleMode.Align := alClient;
+    PanelXFerSimpleMode.Visible := TRUE;
+  end;
+  if (fErrors.ErrorCount > 0) and (ErrorReportingLevel <> el_None) then
+  begin
+    //Hide;
+    raise ExceptionZFPErrors.Create( fm_Transfer );
+  end;
+end;
+
+procedure TFormASCIITransfer.SendNextRcvRec;
+var
+  iTime : string;
+begin
+  if fASCIIRequests.TransferComplete then
+  begin
+    TimerRetrieve.Enabled := FALSE;
+    TimerCommon.Enabled := FALSE;
+    DateTimeToString( iTime, 'n:ss.zzz', fStartTime - Now );
+    LabelRetrieveResult.Caption := 'Transfer complete in ' + iTime + ' seconds';
+    LabelRetrieveResult.Visible := TRUE;
+    fASCIIExtraInfo.Stop;
+    SetupVisualInterface;
+    if fExitOnCompletion then
+    begin
+      fExitOnCompletion := FALSE;
+      ModalResult := mrOK;
+      exit;
+    end;
+    if not (em_Show_Advanced_Send_Rcv in ExpertModes) then
+    begin
+      ModalResult := mrOK;
+      exit;
+    end;
+  end
+  else if fASCIIExtraInfo.SendString( fASCIIRequests.NextString ) then
+  begin
+    fTimeout := SigSpinEditRetrieveTimeout.Value div integer(TimerRetrieve.Interval);
+    fRepeatTimeout := fTimeout;
+    GaugeWait.Visible := FALSE;
+    LabelWaiting.Visible := FALSE;
+  end;
+end;
+
+procedure TFormASCIITransfer.SendNextSendRec;
+var
+  iTime : string;
+begin
+  if fASCIISend.TransferComplete then
+  begin
+    TimerTransfer.Enabled := FALSE;
+    TimerCommon.Enabled := FALSE;
+    DateTimeToString( iTime, 'n:ss.zzz', fStartTime - Now );
+    LabelResult.Caption := 'Transfer complete in ' + iTime + ' seconds';
+    LabelResult.Visible := TRUE;
+    SetupVisualInterface;
+    fASCIIExtraInfo.Stop;
+    AbortButtonVisible := FALSE;
+    LabelProgress.Caption := 'Complete';
+    LabelRecords.Visible := FALSE;
+    if not (em_Show_Advanced_Send_Rcv in ExpertModes) or (fPanel = 0) or (fExitOnCompletion ) then
+    begin
+      ModalResult := mrOK;
+      fExitOnCompletion := FALSE;
+    end;
+  end
+  else if fASCIIExtraInfo.SendString( fASCIISend.NextString ) then
+  begin
+    fTimeout := SigSpinEditTimeOut.Value div integer(TimerTransfer.Interval);
+    fRepeatTimeout := fTimeout;
+  end;
+  GaugeWait.Visible := FALSE;
+  LabelWaiting.Visible := FALSE;
+end;
+
+procedure TFormASCIITransfer.SetAbortButtonVisible(const Value: boolean);
+begin
+  if BitBtnAbortXFER.Visible <> Value then
+  begin
+    BitBtnAbortXFER.Visible := Value;
+    if Value then
+    begin
+      BitBtnAbortXFER.Enabled := FALSE;
+      TimerEnableAbort.Enabled := TRUE;
+    end
+    else
+    begin
+      StopTimers;
+    end;
+  end;
+end;
+
+{
+procedure TFormASCIITransfer.SetActivePortIndex(const Value: integer);
+begin
+  fASCIIExtraInfo.ActivePortIndex := Value;
+  RadioGroupDevicesConnected.ItemIndex := Value;
+end;
+}
+
+procedure TFormASCIITransfer.SetRetryCount(const Value: integer);
+begin
+  fRetryCount := Value;
+  LabelRetryCount.Caption := IntToStr( Value );
+end;
+
+procedure TFormASCIITransfer.SetupCheckboxesRetrieveASCIIFiles( pChecked : boolean );
+var
+  i: Integer;
+begin
+  //CheckListBoxRetrieveASCIIIn.Clear;
+  RadioGroupASCIIFiles.Items.Clear;
+  MemoRetrieve.Clear;
+  CheckListBoxToRetrieve.Clear;
+  for i := 0 to fASCIIRequests.Count - 1 do
+  begin
+    with CheckListBoxToRetrieve do
+    begin
+      Checked[ Items.AddObject( ExtractFileName( fASCIIRequests.ASCIIRequest[ i ].FileName), fASCIIRequests.ASCIIRequest[ i ] )] := pChecked;
+    end;
+    //RadioGroupASCIIFiles.Items.AddObject( ExtractFileName( fASCIIRequests.ASCIIRequest[ i ].FileName, fASCIIRequests.ASCIIRequest[ i ] );
+  end;
+end;
+
+procedure TFormASCIITransfer.SetupRadioGroupASCIIFiles;
+var
+  i: Integer;
+  iName : string;
+begin
+  if assigned( fASCIISend ) then
+  begin
+    if fASCIISend.Count < 1 then
+    begin
+      RadioGroupASCIIFiles.Visible := FALSE;
+    end
+    else
+    begin
+      RadioGroupASCIIFiles.Visible := TRUE;
+      RadioGroupASCIIFiles.Items.Clear;
+      CheckListBoxToSend.Items.Clear;
+      for i := 0 to fASCIISend.Count - 1 do
+      begin
+        iName := ExtractFileName( fASCIISend[ i ].FileName);
+        CheckListBoxToSend.Items.Add( iName );
+        RadioGroupASCIIFiles.Items.Add( iName );
+        CheckListBoxToSend.Checked[ i ] := TRUE;
+      end;
+      RadioGroupASCIIFiles.ItemIndex := 0;
+    end;
+  end
+  else
+  begin
+    RadioGroupASCIIFiles.Visible := FALSE;
+  end;
+  RadioGroupASCIIFilesClick( self );
+end;
+
+procedure TFormASCIITransfer.SetupVisualInterface;
+begin
+  if em_Show_Advanced_Send_Rcv in ExpertModes then
+  begin
+    SetupVisualInterfaceExpert;
+  end
+  else
+  begin
+    SetupVisualInterfaceSimple;
+  end;
+end;
+
+procedure TFormASCIITransfer.SetupVisualInterfaceExpert;
+begin
+  PanelXFerSimpleMode.Visible := FALSE;
+  PanelXferExpertMode.Align := alClient;
+  PanelXferExpertMode.Visible := TRUE;
+  LabelRetryCountLabel.Visible := TRUE;
+  LabelRetryCount.Visible := TRUE;
+  TabSheetTransfer.TabVisible := TRUE;
+  TabSheetRetrieveData.TabVisible := TRUE;
+end;
+
+procedure TFormASCIITransfer.SetupVisualInterfaceSimple;
+begin
+  PanelXferExpertMode.Visible := FALSE;
+  PanelXFerSimpleMode.Align := alClient;
+  PanelXFerSimpleMode.Visible := TRUE;
+  LabelRetryCountLabel.Visible := FALSE;
+  LabelRetryCount.Visible := FALSE;
+end;
+
+procedure TFormASCIITransfer.SetupVisualSDCardPrep;
+begin
+  PanelXFerSimpleMode.Visible := FALSE;
+  PanelXferExpertMode.Align := alClient;
+  PanelXferExpertMode.Visible := TRUE;
+  LabelRetryCountLabel.Visible := FALSE;
+  LabelRetryCount.Visible := FALSE;
+  TabSheetTransfer.TabVisible := FALSE;
+  TabSheetRetrieveData.TabVisible := FALSE;
+end;
+
+procedure TFormASCIITransfer.SpeedButtonClearAllRcvClick(Sender: TObject);
+begin
+  CheckListBoxToRetrieve.CheckAll( cbUnchecked );
+end;
+
+procedure TFormASCIITransfer.SpeedButtonClearAllSendClick(Sender: TObject);
+begin
+  CheckListBoxToSend.CheckAll( cbUnchecked );
+end;
+
+procedure TFormASCIITransfer.SpeedButtonClearListClick(Sender: TObject);
+begin
+  fASCIISend.Clear;
+  SetupRadioGroupASCIIFiles;
+end;
+
+procedure TFormASCIITransfer.SpeedButtonCheckDevicesClick(Sender: TObject);
+begin
+  CheckForDevices;
+end;
+
+procedure TFormASCIITransfer.SpeedButtonLoadASCIIFileClick(Sender: TObject);
+var
+  i: integer;
+begin
+  with OpenDialogASCII do
+  begin
+    if Execute then
+    begin
+      //fASCIIFiles.Assign( OpenDialogASCII.Files );
+      for i := 0 to Files.Count - 1 do
+      begin
+        fASCIISend.Add( Files[ i ], '' );
+      end;
+      SetupRadioGroupASCIIFiles;
+    end;
+  end;
+end;
+
+procedure TFormASCIITransfer.SpeedButtonSaveASCIIClick(Sender: TObject);
+begin
+  if SaveDialogASCII.Execute then
+  begin
+    MemoData.Lines.SaveToFile( SaveDialogASCII.FileName );
+  end;
+
+end;
+
+procedure TFormASCIITransfer.SpeedButtonSelectAllRcvClick(Sender: TObject);
+begin
+  CheckListBoxToRetrieve.CheckAll( cbChecked );
+end;
+
+procedure TFormASCIITransfer.SpeedButtonSelectAllSendClick(Sender: TObject);
+begin
+  CheckListBoxToSend.CheckAll( cbChecked );
+end;
+
+procedure TFormASCIITransfer.SpeedButtonStartRetrieveClick(Sender: TObject);
+var
+  i : integer;
+begin
+  if RadioGroupDevicesConnected.Items.Count > 0 then
+  begin
+    fASCIIRequests.TransferStrings.Clear;
+    with CheckListBoxToRetrieve do
+    begin
+      for i := 0 to Items.Count - 1 do
+      begin
+        if Checked[ i ] then
+        begin
+          fASCIIRequests.AppendString( fASCIIRequests[ i ].RequestString );
+        end;
+      end;
+    end;
+    if fASCIIRequests.TransferStrings.Count > 0 then
+    begin
+      fASCIIExtraInfo.OnRcvRec := ProcessRcvRec;
+      fASCIIExtraInfo.OnSendFail := OnSendSendFail;
+      fASCIIExtraInfo.OnRcvFail := OnSendRcvFail;
+      RcvStrings.Clear;
+      if fASCIIExtraInfo.Start then
+      begin
+        AbortButtonVisible := TRUE;
+        LabelProgress.Visible := TRUE;
+        LabelRecords.Visible := TRUE;
+        // start first transfer
+        fStartTime := Now;
+        with fASCIISend do
+        begin
+          //ProgressBar := nil;
+          ProgressLabel := nil;
+        end;
+        with fASCIIRequests do
+        begin
+          //ProgressBar := self.ProgressBar;
+          ProgressLabel := self.LabelProgress;
+          if fASCIIExtraInfo.SendString( FirstString ) then
+          begin
+            fTimeout := SigSpinEditRetrieveTimeout.Value div integer(TimerRetrieve.Interval);
+            fRepeatTimeout := fTimeout;
+            TimerRetrieve.Enabled := TRUE;
+            TimerCommon.Enabled := TRUE;
+            // errors handled separately
+          end;
+        end;
+        PanelXferExpertMode.Visible := FALSE;
+        PanelXFerSimpleMode.Align := alClient;
+        PanelXFerSimpleMode.Visible := TRUE;
+      end;
+    end;
+  end
+  else
+  begin
+    raise ExceptionZFP.Create(Translate('No Panels Found'));
+  end;
+end;
+
+procedure TFormASCIITransfer.SpeedButtonStartSimpleTransferClick(
+  Sender: TObject);
+begin
+  if RadioGroupDevicesConnected.Items.Count > 0 then
+  begin
+    // send WHORU record
+    AskWhoAreYou;
+    fWhoAreYouAction := SendAllData2;
+    fASCIIExtraInfo.OnRcvRec := ProcessWhoAreYouRecAck;
+    fASCIIExtraInfo.OnSendFail := OnSendWhoAreYouFail;
+    fASCIIExtraInfo.OnRcvFail := OnSendWhoAreYouRcvFail;
+    RcvStrings.Clear;
+    if fASCIIExtraInfo.Start then
+    begin
+      // start first transfer
+      fStartTime := Now;
+      AbortButtonVisible := TRUE;
+      LabelProgress.Visible := TRUE;
+      LabelRecords.Visible := TRUE;
+      with fASCIIRequests do
+      begin
+        //ProgressBar := nil;
+        ProgressLabel := nil;
+      end;
+      with fASCIISend do
+      begin
+        //ProgressBar := self.ProgressBar;
+        ProgressLabel := self.LabelProgress;
+        if fASCIIExtraInfo.SendString( fASCIISend.FirstString ) then
+        begin
+          fTimeout := SigSpinEditTimeOut.Value div integer(TimerGetWhoAMI.Interval);
+          fRepeatTimeout := fTimeout;
+          //fTimeout := cWhoRUTimeout div TimerGetWhoAMI.Interval;
+          TimerGetWhoAMI.Enabled := TRUE;
+          TimerCommon.Enabled := TRUE;
+          GaugeWait.Visible := FALSE;
+          LabelWaiting.Visible := FALSE;
+          // errors handled separately
+        end;
+      end;
+      PanelXferExpertMode.Visible := FALSE;
+      PanelXFerSimpleMode.Align := alClient;
+      PanelXFerSimpleMode.Visible := TRUE;
+    end;
+  end
+  else
+  begin
+    //Hide;
+    raise ExceptionZFP.Create(Translate('No Panels Found'));
+  end;
+end;
+
+procedure TFormASCIITransfer.SpeedButtonStartAdvancedTransferClick(
+  Sender: TObject);
+begin
+  if RadioGroupDevicesConnected.Items.Count > 0 then
+  begin
+    // send WHORU record
+    AskWhoAreYou;
+    fWhoAreYouAction := AdvancedSendData2;
+    fASCIIExtraInfo.OnRcvRec := ProcessWhoAreYouRecAck;
+    fASCIIExtraInfo.OnSendFail := OnSendWhoAreYouFail;
+    fASCIIExtraInfo.OnRcvFail := OnSendWhoAreYouRcvFail;
+    RcvStrings.Clear;
+    if fASCIIExtraInfo.Start then
+    begin
+      // start first transfer
+      fStartTime := Now;
+      AbortButtonVisible := TRUE;
+      LabelProgress.Visible := TRUE;
+      LabelRecords.Visible := TRUE;
+      with fASCIIRequests do
+      begin
+        //ProgressBar := nil;
+        ProgressLabel := nil;
+      end;
+      with fASCIISend do
+      begin
+        //ProgressBar := self.ProgressBar;
+        ProgressLabel := self.LabelProgress;
+        if fASCIIExtraInfo.SendString( fASCIISend.FirstString ) then
+        begin
+          fTimeout := SigSpinEditTimeOut.Value div integer(TimerGetWhoAMI.Interval);
+          fRepeatTimeout := fTimeout;
+          //fTimeout := cWhoRUTimeout div TimerGetWhoAMI.Interval;
+          TimerGetWhoAMI.Enabled := TRUE;
+          TimerCommon.Enabled := TRUE;
+          GaugeWait.Visible := FALSE;
+          LabelWaiting.Visible := FALSE;
+          // errors handled separately
+        end;
+      end;
+      PanelXferExpertMode.Visible := FALSE;
+      PanelXFerSimpleMode.Align := alClient;
+      PanelXFerSimpleMode.Visible := TRUE;
+    end;
+  end
+  else
+  begin
+    //Hide;
+    raise ExceptionZFP.Create(Translate('No Panels Found'));
+  end;
+end;
+
+procedure TFormASCIITransfer.SpeedButtonStartSimpleTransferRcvClick(
+  Sender: TObject);
+begin
+  if RadioGroupDevicesConnected.Items.Count > 0 then
+  begin
+    // send WHORU record
+    fWhoAreYouAction := RcvAllData2;
+    fASCIIExtraInfo.OnRcvRec := ProcessWhoAreYouRecAck;
+    fASCIIExtraInfo.OnSendFail := OnSendWhoAreYouFail;
+    fASCIIExtraInfo.OnRcvFail := OnSendWhoAreYouRcvFail;
+    AskWhoAreYou;
+    RcvStrings.Clear;
+    if fASCIIExtraInfo.Start then
+    begin
+      // start first transfer
+      fStartTime := Now;
+      AbortButtonVisible := TRUE;
+      LabelProgress.Visible := TRUE;
+      LabelRecords.Visible := TRUE;
+      with fASCIIRequests do
+      begin
+        //ProgressBar := nil;
+        ProgressLabel := nil;
+      end;
+//      {
+      with fASCIISend do
+      begin
+        //ProgressBar := self.ProgressBar;
+        ProgressLabel := self.LabelProgress;
+        if fASCIIExtraInfo.SendString( fASCIISend.FirstString ) then
+        begin
+          fTimeout := SigSpinEditTimeOut.Value div integer(TimerGetWhoAMI.Interval);
+          fRepeatTimeout := fTimeout;
+          //fTimeout := cWhoRUTimeout div TimerGetWhoAMI.Interval;
+          TimerGetWhoAMI.Enabled := TRUE;
+          TimerCommon.Enabled := TRUE;
+          GaugeWait.Visible := FALSE;
+          LabelWaiting.Visible := FALSE;
+          // errors handled separately
+        end;
+      end;
+//      }
+      PanelXferExpertMode.Visible := FALSE;
+      PanelXFerSimpleMode.Align := alClient;
+      PanelXFerSimpleMode.Visible := TRUE;
+    end;
+  end
+  else
+  begin
+    //Hide;
+    raise ExceptionZFP.Create(Translate('No Panels Found'));
+  end;
+end;
+
+procedure TFormASCIITransfer.SpeedButtonStartAdvancedTransferRcvClick(
+  Sender: TObject);
+begin
+  if RadioGroupDevicesConnected.Items.Count > 0 then
+  begin
+    // send WHORU record
+    fWhoAreYouAction := AdvancedRcvData2;
+    fASCIIExtraInfo.OnRcvRec := ProcessWhoAreYouRecAck;
+    fASCIIExtraInfo.OnSendFail := OnSendWhoAreYouFail;
+    fASCIIExtraInfo.OnRcvFail := OnSendWhoAreYouRcvFail;
+    AskWhoAreYou;
+    RcvStrings.Clear;
+    if fASCIIExtraInfo.Start then
+    begin
+      // start first transfer
+      fStartTime := Now;
+      AbortButtonVisible := TRUE;
+      LabelProgress.Visible := TRUE;
+      LabelRecords.Visible := TRUE;
+      with fASCIIRequests do
+      begin
+        //ProgressBar := nil;
+        ProgressLabel := nil;
+      end;
+//      {
+      with fASCIISend do
+      begin
+        //ProgressBar := self.ProgressBar;
+        ProgressLabel := self.LabelProgress;
+        if fASCIIExtraInfo.SendString( fASCIISend.FirstString ) then
+        begin
+          fTimeout := SigSpinEditTimeOut.Value div integer(TimerGetWhoAMI.Interval);
+          fRepeatTimeout := fTimeout;
+          //fTimeout := cWhoRUTimeout div TimerGetWhoAMI.Interval;
+          TimerGetWhoAMI.Enabled := TRUE;
+          TimerCommon.Enabled := TRUE;
+          GaugeWait.Visible := FALSE;
+          LabelWaiting.Visible := FALSE;
+          // errors handled separately
+        end;
+      end;
+//      }
+      PanelXferExpertMode.Visible := FALSE;
+      PanelXFerSimpleMode.Align := alClient;
+      PanelXFerSimpleMode.Visible := TRUE;
+    end;
+  end
+  else
+  begin
+    //Hide;
+    raise ExceptionZFP.Create(Translate('No Panels Found'));
+  end;
+end;
+
+procedure TFormASCIITransfer.SpeedButtonStartTransferClick(Sender: TObject);
+var
+  i : integer;
+  iStrings : tStringList;
+begin
+  if RadioGroupDevicesConnected.Items.Count > 0 then
+  begin
+    iStrings := tStringList.Create;
+    try
+      with CheckListBoxToSend do
+      begin
+        for i := 0 to Items.Count - 1 do
+        begin
+          if Checked[ i ] then
+          begin
+            iStrings.LoadFromFile( fASCIISend[ i ].FileName );
+            fASCIISend.AppendStrings( iStrings );
+          end;
+        end;
+      end;
+    finally
+      iStrings.Free;
+    end;
+    if (fErrors.ErrorCount > 0) and (ErrorReportingLevel <> el_None) then
+    begin
+      raise ExceptionZFPErrors.Create( fm_Transfer );
+    end
+    else if fASCIISend.ToTransferCount > 0 then
+    begin
+      fASCIIExtraInfo.OnRcvRec := ProcessSndRecAck;
+      fASCIIExtraInfo.OnSendFail := OnSendSendFail;
+      fASCIIExtraInfo.OnRcvFail := OnSendRcvFail;
+      RcvStrings.Clear;
+      if fASCIIExtraInfo.Start then
+      begin
+        // start first transfer
+        fStartTime := Now;
+        AbortButtonVisible := TRUE;
+        LabelProgress.Visible := TRUE;
+        LabelRecords.Visible := TRUE;
+        with fASCIIRequests do
+        begin
+          //ProgressBar := nil;
+          ProgressLabel := nil;
+        end;
+        with fASCIISend do
+        begin
+          //ProgressBar := self.ProgressBar;
+          ProgressLabel := self.LabelProgress;
+          if fASCIIExtraInfo.SendString( fASCIISend.FirstString ) then
+          begin
+            fTimeout := SigSpinEditTimeOut.Value div integer(TimerTransfer.Interval);
+            fRepeatTimeout := fTimeout;
+            TimerTransfer.Enabled := TRUE;
+            TimerCommon.Enabled := TRUE;
+            GaugeWait.Visible := FALSE;
+            LabelWaiting.Visible := FALSE;
+            // errors handled separately
+          end;
+        end;
+        PanelXferExpertMode.Visible := FALSE;
+        PanelXFerSimpleMode.Align := alClient;
+        PanelXFerSimpleMode.Visible := TRUE;
+      end;
+    end;
+  end
+  else
+  begin
+    //Hide;
+    raise ExceptionZFP.Create(Translate('No Panels Found'));
+  end;
+end;
+
+procedure TFormASCIITransfer.StopTimers;
+begin
+  TimerTransfer.Enabled := FALSE;
+  TimerRetrieve.Enabled := FALSE;
+  TimerCommon.Enabled := FALSE;
+  TimerGetWhoAMI.Enabled := FALSE;
+end;
+
+procedure TFormASCIITransfer.TimerCommonTimer(Sender: TObject);
+begin
+  inc( fChars, fASCIIExtraInfo.Execute );
+end;
+
+procedure TFormASCIITransfer.TimerEnableAbortTimer(Sender: TObject);
+begin
+  TimerEnableAbort.Enabled := FALSE;
+  BitBtnAbortXFER.Enabled := TRUE;
+end;
+
+procedure TFormASCIITransfer.TimerGetWhoAMITimer(Sender: TObject);
+begin
+  if Visible then
+  begin
+    Application.ProcessMessages;
+    inc( fTicks );
+    LabelTicks.Caption := IntToStr( fTicks ) + ' ticks';
+    LabelChars.Caption := IntToStr( fChars ) + ' chars';
+    LabelRecords.Caption := IntToStr( fRecCount ) + ' records';
+
+    dec( fTimeout );
+    if fTimeout <= 0 then
+    begin
+      GaugeWait.Visible := FALSE;
+      LabelWaiting.Visible := FALSE;
+      if fWHORUState <> wru_Timeout then
+      begin
+        fWHORUState := wru_Timeout;
+        TimerGetWhoAMI.Enabled := FALSE;
+        //TimerCommon.Enabled := FALSE;
+        if FormRemoteLoginNotSupported.Execute then
+        begin
+          fTimeOut := fRepeatTimeout;
+          TimerGetWhoAMI.Enabled := TRUE;
+          TimerCommon.Enabled := TRUE;
+          exit;
+        end
+        else
+        begin
+          StopTimers;
+          ModalResult := mrCancel;
+          exit;
+        end;
+      end
+      else if fASCIIExtraInfo.CurrentSendStatus.RetryCount < 3 then
+      begin
+        RetryCount := RetryCount + 1;
+        if fASCIIExtraInfo.ResendLastRec then
+        begin
+          fTimeOut := fRepeatTimeout;
+          exit; // OK
+        end
+      end;
+      // if either retry count exceded or a failure then
+      // abort info
+      fASCIIExtraInfo.Stop;
+      TimerGetWhoAMI.Enabled := FALSE;
+      TimerCommon.Enabled := FALSE;
+      AbortButtonVisible := FALSE;
+      //Hide;
+      raise ExceptionZFPTransfer.Create(Translate('Timed out'));
+    end
+    else if GaugeWait.Visible then
+    begin
+      GaugeWait.Progress := fTimeout;
+    end;
+  end
+  else
+  begin
+    StopTimers;
+  end;
+
+end;
+
+procedure TFormASCIITransfer.TimerRetrieveTimer(Sender: TObject);
+begin
+  if Visible then
+  begin
+    Application.ProcessMessages;
+    inc( fTicks );
+    LabelTicks.Caption := IntToStr( fTicks ) + ' ticks';
+    LabelChars.Caption := IntToStr( fChars ) + ' chars';
+    LabelRecords.Caption := IntToStr( fRecCount ) + ' records';
+
+    dec( fTimeout );
+    if fTimeout <= 0 then
+    begin
+      GaugeWait.Visible := FALSE;
+      LabelWaiting.Visible := FALSE;
+      if fASCIIExtraInfo.CurrentSendStatus.RetryCount < 3 then
+      begin
+        if fBeginReceived then
+          begin
+          if fASCIIExtraInfo.SendNotification('TIMEOUT') then
+          begin
+            fTimeout := fRepeatTimeout;
+            exit; // OK
+          end;
+        end
+        else
+        begin
+          RetryCount := RetryCount + 1;
+          if fASCIIExtraInfo.ResendLastRec then
+          begin
+            exit; // OK
+          end;
+        end;
+      end;
+      // if either retry count exceded or a failure then
+      // abort info
+      fASCIIExtraInfo.Stop;
+      TimerRetrieve.Enabled := FALSE;
+      TimerCommon.Enabled := FALSE;
+      raise ExceptionZFPTransfer.Create(Translate('Timed out'));
+    end
+    else if GaugeWait.Visible then
+    begin
+      GaugeWait.Progress := fTimeout;
+    end;
+  end
+  else
+  begin
+    StopTimers;
+  end;
+end;
+
+procedure TFormASCIITransfer.TimerTransferTimer(Sender: TObject);
+begin
+  if Visible then
+  begin
+    Application.ProcessMessages;
+    inc( fTicks );
+    LabelTicks.Caption := IntToStr( fTicks ) + ' ticks';
+    LabelChars.Caption := IntToStr( fChars ) + ' chars';
+    LabelRecords.Caption := IntToStr( fRecCount ) + ' records';
+
+    dec( fTimeout );
+    if fTimeout <= 0 then
+    begin
+      GaugeWait.Visible := FALSE;
+      LabelWaiting.Visible := FALSE;
+      if fASCIIExtraInfo.CurrentSendStatus.RetryCount < 3 then
+      begin
+        RetryCount := RetryCount + 1;
+        if fASCIIExtraInfo.ResendLastRec then
+        begin
+          fTimeout := fRepeatTimeout;
+          exit; // OK
+        end;
+      end;
+      // if either retry count exceded or a failure then
+      // abort info
+      fASCIIExtraInfo.Stop;
+      TimerTransfer.Enabled := FALSE;
+      TimerCommon.Enabled := FALSE;
+      raise ExceptionZFPTransfer.Create(Translate('Timed out'));
+    end
+    else if GaugeWait.Visible then
+    begin
+      GaugeWait.Progress := fTimeout;
+    end;
+  end
+  else
+  begin
+    StopTimers;
+  end;
+end;
+
+class function TFormASCIITransfer.Translate(const pString: string): string;
+begin
+  if assigned( XFP4PgmCfg ) then
+  begin
+    Result := XFP4PgmCfg.Translate( pString );
+  end
+  else
+  begin
+    Result := pString;
+  end;
+end;
+
+{ tASCIIRequestList }
+
+function tASCIIRequestList.Add( const pFileName, pRequest: string) : integer;
+var
+  iASCIIRequest : tASCIIRequest;
+begin
+  iASCIIRequest := tASCIIRequest.Create;
+  iASCIIRequest.FileName := pFileName;
+  iASCIIRequest.RequestString := pRequest;
+  Result := inherited Add( iASCIIRequest );
+end;
+
+procedure tASCIIRequestList.AppendString(const pString: string);
+begin
+  fTransferStrings.Add( pString );
+end;
+
+procedure tASCIIRequestList.AppendStrings(const pStrings: tStrings);
+var
+  i: Integer;
+begin
+  for i := 0 to pStrings.Count - 1 do
+  begin
+    fTransferStrings.Add( pStrings[ i ]);
+  end;
+end;
+
+procedure tASCIIRequestList.Clear;
+begin
+  inherited;
+  ClearStrings;
+end;
+
+procedure tASCIIRequestList.ClearStrings;
+begin
+  if assigned( fTransferStrings ) then
+  begin
+    fTransferStrings.Clear;
+  end
+  else
+  begin
+    fTransferStrings := tStringList.Create;
+  end;
+  fTransferredCount := 0;
+end;
+
+constructor tASCIIRequestList.Create;
+begin
+  inherited Create( TRUE );
+end;
+
+{
+function tASCIIRequestList.CurrentReqString: string;
+begin
+  if Count > 0 then
+  begin
+    Result := ASCIIRequest[ TransferredCount ].RequestString;
+  end
+  else
+  begin
+    Result := '';
+  end;
+  UpdateProgressBar;
+end;
+}
+
+function tASCIIRequestList.CurrentString: string;
+begin
+  if TransferStrings.Count > 0 then
+  begin
+    Result := TransferStrings[ TransferredCount ];
+  end
+  else
+  begin
+    Result := '';
+  end;
+  UpdateProgressBar;
+end;
+
+destructor tASCIIRequestList.Destroy;
+begin
+  fTransferStrings.Free;
+  inherited;
+end;
+
+function tASCIIRequestList.GetASCIIRequest(const i: integer): tASCIIRequest;
+begin
+  Result := Items[ i ] as tASCIIRequest;
+end;
+
+function tASCIIRequestList.GetToTransferCount: integer;
+begin
+  Result := TransferStrings.Count;
+  if Result = 0 then
+  begin
+    Result := Count;
+  end;
+end;
+
+{
+function tASCIIRequestList.FirstReqString: string;
+begin
+  fTransferredCount := 0;
+  Result := CurrentReqString;
+end;
+}
+
+function tASCIIRequestList.FirstString: string;
+begin
+  fTransferredCount := 0;
+  Result := CurrentString;
+end;
+
+{
+function tASCIIRequestList.NextReqString: string;
+begin
+  inc( fTransferredCount );
+  Result := CurrentReqString;
+end;
+}
+
+function tASCIIRequestList.NextString: string;
+begin
+  inc( fTransferredCount );
+  Result := CurrentString;
+end;
+
+{
+procedure tASCIIRequestList.SetProgressBar(const Value: tProgressBar);
+begin
+  fProgressBar := Value;
+  UpdateProgressBar;
+end;
+}
+
+procedure tASCIIRequestList.SetProgressLabel(const Value: tLabel);
+begin
+  fProgressLabel := Value;
+  UpdateProgressBar;
+end;
+
+function tASCIIRequestList.TransferComplete: boolean;
+begin
+  Result := ToTransferCount = TransferredCount + 1;
+end;
+
+procedure tASCIIRequestList.UpdateProgressBar;
+begin
+  {
+  if assigned( fProgressBar ) then
+  begin
+    with fProgressBar do
+    begin
+      Min := 0;
+      if ToTransferCount > 0 then
+      begin
+        Max := ToTransferCount;
+      end
+      else
+      begin
+        Max := 100;
+      end;
+      Position := TransferredCount;
+  }
+      if assigned( fProgressLabel ) then
+      begin
+        fProgressLabel.Caption := IntToStr((TransferredCount * 100) div ToTransferCount) + '%';
+      end;
+  {
+    end;
+
+  end
+  else if assigned( fProgressLabel ) then
+  begin
+    fProgressLabel.Caption := '';
+  end;
+  }
+end;
+
+{ ExceptionUSB }
+
+constructor ExceptionUSB.Create(ErrorIndex: integer);
+var
+  iText : string;
+begin
+  case ErrorIndex of
+  ERROR_BAD_COMMAND:
+    iText := 'ENVision USB Transfer Error Code: BAD COMMAND (' + IntToStr( ErrorIndex ) + ')';
+  ERROR_GEN_FAILURE:
+    iText := 'ENVision USB Transfer Error Code: GENERAL FAILURE (' + IntToStr( ErrorIndex ) + ')';
+  else
+    iText := 'ENVision USB Transfer Error Code: ' + IntToStr( ErrorIndex )
+  end;
+  inherited Create( iText );
+end;
+
+{ tASCIIRequest }
+
+{ ExceptionZFPErrors }
+
+constructor ExceptionZFPErrors.Create( const pMode : TExceptionZFPErrorsFailMode );
+var
+  iErrorText : string;
+begin
+  iErrorText := TFormASCIITransfer.Translate('Errors found' );
+
+  case pMode of
+    fm_Verify:
+    begin
+      iErrorText := iErrorText + ' - ' + TFormASCIITransfer.Translate('verification failed');
+    end;
+    fm_Transfer:
+    begin
+      iErrorText := iErrorText + ' - ' + TFormASCIITransfer.Translate('transfer aborted');
+    end;
+    fm_FileCreate:
+    begin
+      iErrorText := iErrorText + ' - ' + TFormASCIITransfer.Translate('file creation aborted');
+    end;
+    fm_Verified:
+    begin
+      iErrorText := TFormASCIITransfer.Translate('Verification succeeded');
+    end;
+  end;
+
+  inherited Create( iErrorText );
+end;
+
+end.
+
+
+
+
+

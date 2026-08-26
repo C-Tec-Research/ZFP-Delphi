@@ -1,0 +1,5115 @@
+unit UnitMain;
+
+interface
+
+{
+  To use this, create from repository - will copy to new file.
+  Update version info.
+  Change exe project name in project group window.
+}
+
+uses
+  Windows,
+  Messages,
+  SysUtils,
+  Variants,
+  Classes,
+  Graphics,
+  Controls,
+  Forms,
+  Dialogs,
+  Menus,
+  about,
+  ExtCtrls,
+  UnitPCCfgFile,
+  SigSaveDialog,
+  SigRegistry,
+  UnitUndoList,
+  Buttons,
+  SigFile,
+  SigFileClipboard,
+  ImgList,
+  UnitFiles,
+  PrevPrinter,
+  //UnitPingTest,
+  UnitASCIITransfer,
+  UnitAdvancedTransferSelector,
+  ComCtrls,
+  StdCtrls,
+  Spin,
+  SigSpinEdit,
+  Grids,
+  Calendar,
+  SigGeneralGrid,
+  CheckLst,
+  //SigNETStringGrid,
+  ButtonGroup,
+  SigImageList,
+  SigVariableEditorList,
+  Comm32,
+  UnitExpertModes,
+  UnitLoadErrors,
+  SigFilePgmStatus,
+  Contnrs,
+  Common,
+  UnitFrameGlobalObjectEditor,
+  UnitFrameSeqEditor,
+  UnitFrameSupergroupEditor,
+  UnitFrameInputGroupEditor,
+  UnitFrameOutputGroupEditor,
+  UnitPrintColumns,
+  UnitErrorObjects,
+  ErrorList,
+  UnitFrameErrorList,
+  DSMList,
+  UnitGlobalDevices,
+  SigVariableEditor,
+  UnitLogFiles,
+  UnitLogFileCfg,
+  UnitFrameZoneEditor,
+  UnitFileTransfer,
+  UnitNodeChangeProblems,
+  UnitSigFileBindings,
+  Vcl.ExtDlgs,
+  VCL.Imaging.GIFImg,
+  SigImage,
+  USBPanel,
+  Vcl.Imaging.pngimage,
+  UnitReplace,
+  UnitZFPErrorObjects,
+  //StringGridHelper,
+  SigNET.TStringGrid,
+  SigPanel,
+  System.UITypes,
+  System.ImageList,
+  UnitSimSystem;
+type
+
+  TFormMain = class(TForm)
+    MainMenu: TMainMenu;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    SigRegistry: TSigRegistry;
+    SigSaveDialogMain: TSigSaveDialog;
+    SpeedButtonUndo: TSpeedButton;
+    SpeedButtonRedo: TSpeedButton;
+    ImageListUndoRedo: TImageList;
+    PreviewPrinterMain: TPreviewPrinter;
+    PrintDialog: TPrintDialog;
+    PrinterSetupDialog: TPrinterSetupDialog;
+    SpeedButtonPrint: TSpeedButton;
+    SpeedButtonPrintPreview: TSpeedButton;
+    SpeedButtonPrintSetup: TSpeedButton;
+    SpeedButtonNew: TSpeedButton;
+    SpeedButtonOpen: TSpeedButton;
+    SpeedButtonSave: TSpeedButton;
+    SpeedButtonSaveAs: TSpeedButton;
+    ools1: TMenuItem;
+    PageControlMain: TPageControl;
+    TabSheetNetworkView: TTabSheet;
+    TabSheetPanelView: TTabSheet;
+    TabSheetSiteDetails: TTabSheet;
+    TabControlPanels: TTabControl;
+    Panel5: TPanel;
+    LabelPanelName: TLabel;
+    EditPanelName: TEdit;
+    PageControlPanelView: TPageControl;
+    TabSheetGlobalProperties: TTabSheet;
+    Panel6: TPanel;
+    Export1: TMenuItem;
+    GroupBoxVerificationTimes: TGroupBox;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    SigSpinEditVerificationDet: TSigSpinEdit;
+    SigSpinEditVerificationMCP: TSigSpinEdit;
+    SigSpinEditVerificationIO: TSigSpinEdit;
+    Label25: TLabel;
+    Label26: TLabel;
+    Label27: TLabel;
+    GroupBoxPanelRecalibrationTime: TGroupBox;
+    LabelPanelRecalibrationTime: TLabel;
+    ComboBoxPanelRecalibrationTime: TComboBox;
+    TabSheetPanelBasicCfg: TTabSheet;
+    Panel11: TPanel;
+    SpeedButtonSendAllToPanel: TSpeedButton;
+    TabSheetPanelNotes: TTabSheet;
+    Panel12: TPanel;
+    MemoPanelNotes: TMemo;
+    GroupBox5: TGroupBox;
+    Label39: TLabel;
+    SigSpinEditPanelAutoDimTime: TSigSpinEdit;
+    GroupBoxPanelNetworkProperties: TGroupBox;
+    LabelPanelSegment: TLabel;
+    LabelPanelSegmentAddress: TLabel;
+    SigSpinEditAddress: TSigSpinEdit;
+    PageControlNetworkView: TPageControl;
+    TabSheetGlobalZoning: TTabSheet;
+    tSigGridEditorPanelZoneName: tSigGridEditor;
+    TabSheetLoops: TTabSheet;
+    TabControlLoopDevices: TTabControl;
+    Panel13: TPanel;
+    PanelDevices: TPanel;
+    PanelDeviceProperties: TPanel;
+    PanelComponentPalette: TPanel;
+    Panel19: TPanel;
+    Panel20: TPanel;
+    Panel21: TPanel;
+    SpeedButtonShowComponentPalette: TSpeedButton;
+    SpeedButtonEditDevices: TSpeedButton;
+    ImageListComponentPalette: TImageList;
+    TabControlDevicePalette: TTabControl;
+    ButtonGroupDevicePalette: TButtonGroup;
+    Comm321: TComm32;
+    TabControlSubDevices: TTabControl;
+    SigVariableEditorListDeviceProperties: TSigVariableEditorList;
+    Panel14: TPanel;
+    LabelSubDeviceName: TLabel;
+    EditSubDeviceName: TEdit;
+    PopupMenuSplitterLines: TPopupMenu;
+    MenuSplitterRed: TMenuItem;
+    ImageListSplitterLines: TImageList;
+    MenuSplitterGreen: TMenuItem;
+    MenuSplitterFuschia: TMenuItem;
+    MenuSplitterBlue: TMenuItem;
+    LabelIOType: TLabel;
+    ComboBoxSubDeviceType: TComboBox;
+    ImageListSpecial: TImageList;
+    TabSheetConfiguration: TTabSheet;
+    Panel22: TPanel;
+    RadioGroupEditMode: TRadioGroup;
+    GroupBoxCustomSettings: TGroupBox;
+    LabelDeviceType: TLabel;
+    EditSubDeviceType: TEdit;
+    TabSheetGlobalInputGroups: TTabSheet;
+    TabSheetGlobalOutputGroups: TTabSheet;
+    tSigGridEditorPanelZoneNo: tSigGridEditor;
+    TabSheetPanelLoops: TTabSheet;
+    Panel31: TPanel;
+    GroupBoxLoopsFitted: TGroupBox;
+    Label30: TLabel;
+    SigSpinEditLoopsFitted: TSigSpinEdit;
+    SigGeneralGridLoopDetails: TSigGeneralGrid;
+    SigGridEditorLoopName: tSigGridEditor;
+    SpeedButtonRetrieveAllData: TSpeedButton;
+    GroupBox6: TGroupBox;
+    CheckBoxReportsIncludeSecurityInformation: TCheckBox;
+    ImageListCE: TImageList;
+    Import1: TMenuItem;
+    OpenDialogCSV: TOpenDialog;
+    TabSheetGlobalModes: TTabSheet;
+    TabSheetSuperGroups: TTabSheet;
+    TabSheetSequences: TTabSheet;
+    TabSheetPulsePatterns: TTabSheet;
+    FrameGlobalObjectEditorPulsePatterns: TFrameGlobalObjectEditor;
+    FrameGlobalObjectEditorModes: TFrameGlobalObjectEditor;
+    TabSheetPanelNetworkFilters: TTabSheet;
+    FramePanelNetworkFilters: TFrameGlobalObjectEditor;
+    Label11: TLabel;
+    SigSpinEditVerificationFaults: TSigSpinEdit;
+    Label13: TLabel;
+    SigGridEditorLoopID: tSigGridEditor;
+    FrameSupergroupEditor: TFrameSupergroupEditor;
+    FrameInputGroupEditor: TFrameInputGroupEditor;
+    FrameOutputGroupEditor: TFrameOutputGroupEditor;
+    TabSheetInputSuperGroups: TTabSheet;
+    FrameInputSupergroupEditor: TFrameSupergroupEditor;
+    TabSheetDebug: TTabSheet;
+    BitBtn1: TBitBtn;
+    MemoDebug: TMemo;
+    CheckBoxFullXferOptions: TCheckBox;
+    TabSheetErrors: TTabSheet;
+    Panel17: TPanel;
+    CheckBoxErrors: TCheckBox;
+    CheckBoxWarnings: TCheckBox;
+    CheckBoxHints: TCheckBox;
+    Panel18: TPanel;
+    TabControlImportedFiles: TTabControl;
+    MemoImportedFiles: TMemo;
+    FrameErrorListSystem: TFrameErrorList;
+    FrameErrorListCE: TFrameErrorList;
+    TabSheetPanelLogs: TTabSheet;
+    SpeedButtonRetrieveDeviceData: TSpeedButton;
+    CheckBoxUseThreads: TCheckBox;
+    CheckBoxCheckUSBStatus: TCheckBox;
+    CheckBoxUseFullDictionaries: TCheckBox;
+    TabSheetDeviceSummary: TTabSheet;
+    Label32: TLabel;
+    ComboBoxPanelLoopProtocol: TComboBox;
+    SpeedButtonCopyPanelOperationToAll: TSpeedButton;
+    SpeedButtonCopyVerificationTimes: TSpeedButton;
+    SpeedButtonCopyRecalTimeToAllPanels: TSpeedButton;
+    PanelSiteDetails: TPanel;
+    GroupBoxClient: TGroupBox;
+    Label2: TLabel;
+    Label3: TLabel;
+    LabelClientPostCode: TLabel;
+    LabelClientTelephone: TLabel;
+    EditClientName: TEdit;
+    MemoClientAddress: TMemo;
+    EditClientPostCode: TEdit;
+    EditClientTelephone: TEdit;
+    GroupBoxInstaller: TGroupBox;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    EditInstallerName: TEdit;
+    MemoInstallerAddress: TMemo;
+    EditInstallerPostCode: TEdit;
+    EditInstallerTelephone: TEdit;
+    GroupBoxGeneral: TGroupBox;
+    CheckBoxDaylightSaving: TCheckBox;
+    CheckBoxSiteUsesPagerTexts: TCheckBox;
+    CheckBoxSynchroniseDateTimeToPC: TCheckBox;
+    GroupBoxSiteNotes: TGroupBox;
+    MemoSiteNotes: TMemo;
+    GroupBoxPanelMaintenance: TGroupBox;
+    LabelPanelMaintenanceDate: TLabel;
+    LabelPanelMaintenanceString: TLabel;
+    SpeedButtonCopyMaintenanceDataToAllPanels: TSpeedButton;
+    SpeedButtonMaintenanceDateToAll: TSpeedButton;
+    ComboBoxMaintenanceMonth: TComboBox;
+    SigSpinEditMaintenanceYear: TSigSpinEdit;
+    CalendarMaintenanceDate: TCalendar;
+    EditPanelMaintenanceString: TEdit;
+    FrameErrorListDevices: TFrameErrorList;
+    GroupBoxSecurity: TGroupBox;
+    LabelPanelAL2Code: TLabel;
+    LabelPanelAL3Code: TLabel;
+    SpeedButtonCopySecurity: TSpeedButton;
+    CheckBoxKeyswitchEntry: TCheckBox;
+    EditPanelAL2Code: TEdit;
+    EditPanelAL3Code: TEdit;
+    GroupBoxFirmwareVersions: TGroupBox;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label17: TLabel;
+    EditMainBoardVersion: TEdit;
+    EditLoopDriver1Version: TEdit;
+    EditLoopDriver2Version: TEdit;
+    CheckBoxCfgAcrossNetwork: TCheckBox;
+    TabSheetGroupActions: TTabSheet;
+    FrameGlobalObjectEditorGroupActions: TFrameGlobalObjectEditor;
+    FrameLogFiles1: TFrameLogFiles;
+    CheckBoxViewLogAsTable: TCheckBox;
+    ShowConfigPage1: TMenuItem;
+    SaveDialogCSV: TSaveDialog;
+    CheckBoxUnlockSystemDevices: TCheckBox;
+    TabSheetCauseAndEffects: TTabSheet;
+    Panel34: TPanel;
+    Panel35: TPanel;
+    GroupBox8: TGroupBox;
+    SpeedButtonCETreeAdd1: TSpeedButton;
+    SpeedButtonCETreeAdd2: TSpeedButton;
+    SpeedButtonCETreeAdd3: TSpeedButton;
+    SpeedButtonCETreeInsertBefore1: TSpeedButton;
+    SpeedButtonCETreeInsertAfter1: TSpeedButton;
+    SpeedButtonCETreeInsertBefore2: TSpeedButton;
+    SpeedButtonCETreeInsertAfter2: TSpeedButton;
+    SigVariableEditorListCETree: TSigVariableEditorList;
+    GroupBox9: TGroupBox;
+    SpeedButtonCETreeCut: TSpeedButton;
+    SpeedButtonCETreeCopy: TSpeedButton;
+    SpeedButtonCETreePaste: TSpeedButton;
+    SpeedButtonCETreeDelete: TSpeedButton;
+    SpeedButtonCETreePasteSpecial: TSpeedButton;
+    Panel36: TPanel;
+    TreeViewCE1: TTreeView;
+    FrameZoneEditor: TFrameZoneEditor;
+    GroupBoxLogo: TGroupBox;
+    ImageLogo: TImage;
+    OpenPictureDialogLogo: TOpenPictureDialog;
+    N1: TMenuItem;
+    ChangeDefaultLogo1: TMenuItem;
+    SendFiletoPanel1: TMenuItem;
+    CheckBoxAllFileTransfersToPanel: TCheckBox;
+    GetFileFromPanel1: TMenuItem;
+    TabSheetNetworkOverview: TTabSheet;
+    PanelNodeTypePalette: TPanel;
+    Panel4: TPanel;
+    Panel7: TPanel;
+    TabControlNodeTypePalette: TTabControl;
+    ButtonGroupNodeTypePalette: TButtonGroup;
+    Panel1: TPanel;
+    Panel8: TPanel;
+    FrameErrorListOverview: TFrameErrorList;
+    SigImageNetworkProperties: TSigImage;
+    tSigGridEditorPanelZonePresent: tSigGridEditor;
+    N2: TMenuItem;
+    BuildSDCardfiles1: TMenuItem;
+    GroupBox7: TGroupBox;
+    SigGeneralGridPanelZones: TSigGeneralGrid;
+    GroupBoxPrintOptions: TGroupBox;
+    SpeedButtonCopyPrintOptionsToAll: TSpeedButton;
+    CheckListBoxPanelPrintOptions: TCheckListBox;
+    FrameErrorListGeneralProperties: TFrameErrorList;
+    SigSpinEditSegment: TSigSpinEdit;
+    FrameSequenceEditor: TFrameSequenceEditor;
+    AdvancedTransfer1: TMenuItem;
+    N3: TMenuItem;
+    CheckBoxAllowImportExport: TCheckBox;
+    FrameGlobalDevices: TFrameGlobalDevices;
+    TabSheetOptions: TTabSheet;
+    SigPanel1: TSigPanel;
+    CheckBoxAutoReload: TCheckBox;
+    CheckBoxShowValidationButtons: TCheckBox;
+    RadioGroupErrorsAndWarning: TRadioGroup;
+    SpeedButtonVerify: TSpeedButton;
+    Panel9: TPanel;
+    SpeedButtonSendAllToAll: TSpeedButton;
+    SpeedButtonVerifyAll: TSpeedButton;
+    StringGridNodes: TStringGrid;
+    GroupBoxSimSystem: TGroupBox;
+    SigPanelSimLower: TSigPanel;
+    SigPanelSimMain: TSigPanel;
+    FrameSimSystem: TFrameSimSystem;
+    ButtonSimConvert: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure SpeedButtonUndoClick(Sender: TObject);
+    procedure SpeedButtonRedoClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure SpeedButtonPrintClick(Sender: TObject);
+    procedure SpeedButtonPrintPreviewClick(Sender: TObject);
+    procedure SpeedButtonPrintSetupClick(Sender: TObject);
+    procedure SpeedButtonNewClick(Sender: TObject);
+    procedure SpeedButtonOpenClick(Sender: TObject);
+    procedure SpeedButtonSaveClick(Sender: TObject);
+    procedure SpeedButtonSaveAsClick(Sender: TObject);
+    procedure PanelSiteDetailsResize(Sender: TObject);
+    procedure PageControlMainChange(Sender: TObject);
+    procedure TabControlPanelsChange(Sender: TObject);
+    procedure Export1Click(Sender: TObject);
+    procedure CalendarMaintenanceDateChange(Sender: TObject);
+    procedure SigSpinEditMaintenanceYearChange(Sender: TObject);
+    procedure ComboBoxMaintenanceMonthChange(Sender: TObject);
+    procedure CheckBoxSameDateAllPanelsClick(Sender: TObject);
+    procedure CheckBoxSameServiceAllPanelsClick(Sender: TObject);
+    procedure PageControlSiteDetailsChange(Sender: TObject);
+    procedure SpeedButtonSendAllToPanelClick(Sender: TObject);
+    procedure PanelDevicesResize(Sender: TObject);
+    procedure RadioGroupEditModeClick(Sender: TObject);
+    procedure SpeedButtonRetrieveAllDataClick(Sender: TObject);
+    procedure Import1Click(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure SpeedButtonRetrieveLogClick(Sender: TObject);
+    procedure PageControlPanelViewChange(Sender: TObject);
+    procedure SpeedButtonEraseLogClick(Sender: TObject);
+    procedure SpeedButtonRetrieveDeviceDataClick(Sender: TObject);
+    procedure CheckBoxCheckUSBStatusClick(Sender: TObject);
+    procedure CheckBoxFullXferOptionsClick(Sender: TObject);
+    procedure CheckBoxUseThreadsClick(Sender: TObject);
+    procedure CheckBoxUseFullDictionariesClick(Sender: TObject);
+    procedure FrameGlobalDevicesSigGeneralGridGlobalDevicesKeyPress(
+      Sender: TObject; var Key: Char);
+    procedure FrameGlobalDevicesSigGeneralGridZonalSummaryKeyPress(
+      Sender: TObject; var Key: Char);
+    procedure SpeedButtonCopyPanelOperationToAllClick(Sender: TObject);
+    procedure SpeedButtonCopySecurityClick(Sender: TObject);
+    procedure SpeedButtonCopyVerificationTimesClick(Sender: TObject);
+    procedure SpeedButtonCopyPrintOptionsToAllClick(Sender: TObject);
+    procedure SpeedButtonCopyRecalTimeToAllPanelsClick(Sender: TObject);
+    procedure SpeedButtonCopyMaintenanceDataToAllPanelsClick(Sender: TObject);
+    procedure SpeedButtonMaintenanceDateToAllClick(Sender: TObject);
+    procedure CheckBoxCfgAcrossNetworkClick(Sender: TObject);
+    procedure CheckBoxViewLogAsTableClick(Sender: TObject);
+    procedure ShowConfigPage1Click(Sender: TObject);
+    procedure CheckBoxUnlockSystemDevicesClick(Sender: TObject);
+    procedure ImageLogoClick(Sender: TObject);
+    procedure ChangeDefaultLogo1Click(Sender: TObject);
+    procedure FrameLogFiles1TabControlLogsChange(Sender: TObject);
+    procedure PageControlNetworkViewChange(Sender: TObject);
+    procedure SendFiletoPanel1Click(Sender: TObject);
+    procedure GetFileFromPanel1Click(Sender: TObject);
+    procedure CheckBoxAllFileTransfersToPanelClick(Sender: TObject);
+    procedure SigNETStringGridNodesDrawCell(Sender: TObject; ACol,
+      ARow: Integer; Rect: TRect; State: TGridDrawState);
+    procedure SigNETStringGridNodesMouseDown(Sender: TObject;
+      Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+    procedure SigNETStringGridNodesMouseMove(Sender: TObject;
+      Shift: TShiftState; X, Y: Integer);
+    procedure SigNETStringGridNodesMouseUp(Sender: TObject;
+      Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+    procedure SigNETStringGridNodesEndDrag(Sender, Target: TObject; X,
+      Y: Integer);
+    procedure SigNETStringGridNodesStartDrag(Sender: TObject;
+      var DragObject: TDragObject);
+    procedure SigNETStringGridNodesDragOver(Sender, Source: TObject; X,
+      Y: Integer; State: TDragState; var Accept: Boolean);
+    procedure FrameGlobalDevicesSigGeneralGridGlobalDevicesCellEditChange(
+      const Sender: TObject; const Col, Row: Integer; const Value: string);
+    procedure FrameGlobalDevicesSigGeneralGridZonalSummaryCellEditChange(
+      const Sender: TObject; const Col, Row: Integer; const Value: string);
+    procedure BuildSDCardfiles1Click(Sender: TObject);
+    procedure AdvancedTransfer1Click(Sender: TObject);
+    procedure CheckBoxAllowImportExportClick(Sender: TObject);
+    procedure FrameGlobalDevicesSigGridEditorDevZoneClick(Sender: TObject);
+    procedure FrameGlobalDevicesSigGridEditorDevIGClick(Sender: TObject);
+    procedure FrameGlobalDevicesSigGridEditorDevOGClick(Sender: TObject);
+    procedure FrameGlobalDevicesSigGridEditorDevDisablementClick(
+      Sender: TObject);
+    procedure FrameGlobalDevicesSigGridEditorFaultGroupClick(Sender: TObject);
+    procedure SpeedButtonVerifyClick(Sender: TObject);
+    procedure CheckBoxAutoReloadClick(Sender: TObject);
+    procedure PrevError1Click(Sender: TObject);
+    procedure NextError1Click(Sender: TObject);
+    procedure RemoveCurrentError1Click(Sender: TObject);
+    procedure SpeedButtonVerifyAllClick(Sender: TObject);
+    procedure SpeedButtonSendAllToAllClick(Sender: TObject);
+    procedure FrameGlobalDevicesSigGeneralGridGlobalDevicesSelectCell(
+      Sender: TObject; ACol, ARow: Integer; var CanSelect: Boolean);
+    procedure CheckBoxShowValidationButtonsClick(Sender: TObject);
+    procedure RadioGroupErrorsAndWarningClick(Sender: TObject);
+    procedure ButtonSimConvertClick(Sender: TObject);
+  private
+    { Private declarations }
+    fUndoRedo : tUndoRedo;
+    {!MyFile = tZFPFile}
+    fSigFile: tZFPFile;
+    fUsesPrinter: boolean;
+    fVisibleNode: tZFPNode;
+    fHandleEditorsByPageActive : boolean;
+    fPrintCols : TPrintColumns;
+    //fBuildSDCardFilesMenuVisible : boolean;
+    StringGridDevices: TStringGrid;
+    fFirstTime : boolean;
+    procedure RefreshCurrentPage;
+    procedure OnRedoableChange(const pObject: tSigBaseProperty;
+      const pUndoAction: tSigFileUndoAction; const pUndoString: string);
+    procedure OnRedoChange(NewVal: boolean);
+    procedure OnUndoableChange(const pObject: tSigBaseProperty;
+      const pUndoAction: tSigFileUndoAction; const pUndoString: string);
+    procedure OnUndoChange(NewVal: boolean);
+    procedure PrintNode(const pNode: integer);
+    procedure PrintNetwork;
+    procedure ShowNode(const pNode: tZFPNode);
+    procedure SetVisibleNode(const Value: tZFPNode);
+    procedure HandleEditorsByPage;
+    procedure OnLoad(Sender: tObject; var pOK: boolean;
+      const pFileName: string);
+    procedure OnNew(Sender: tObject);
+    procedure PanelBuildSDCardFiles(const pSender: integer);
+    procedure OnPanelSendAll(const pSender: integer; const pVerify, pIsSingle: boolean);
+    procedure OnPanelRetrieveAll(const pSender: integer);
+    procedure OnPanelRetrieveDeviceData(const pSender: integer);
+    procedure GetCurrentLog( const pSender : integer );
+    procedure PrintClient;
+    procedure PrintNameAddress(const pLeft: integer; const Title: string;
+      const AddressDetails: tAddressDetails);
+    procedure PrintInstaller;
+    procedure SetupDevicePalette;
+    procedure OnFrameErrorList1DblClick( const Sender : tObject; const pErrorObject : tError );
+    procedure OnFrameErrorList2DblClick( const Sender : tObject; const pErrorObject : tError );
+    // procedure OnFrameErrorList2Close( Sender : tObject );
+    procedure ShowLogo;
+public
+    procedure LoadPanelView;
+  private
+    fErrors : tErrorList;
+    fErrorLists : TFrameErrorLists;
+    function GetErrors: tErrorList;
+    procedure AssignErrorLists;
+    property Errors : TErrorList
+             read GetErrors;
+    procedure OnErrorDblClick( const Sender : TObject; const pError : tError );
+    procedure RefreshPanelView( Sender : tObject );
+    procedure ShowOGTab( Sender : tObject );
+
+    procedure PanelSendFile;
+    procedure PanelGetFile;
+    procedure OnNodeClassChange(  const Sender : tSigCompoundProperty; const pNewChild : integer );
+    procedure UpdateMenuVisibilty;
+    procedure ExecuteNotify( const pNotify : TNotifyEvent; const pSender : TObject );
+  private
+    fDragStart : integer;
+    fDragEnd : integer;
+    fNodeEditPending : tDSMRange;
+    fNodeEditRemoving : boolean;
+    fNodeEditCurrent : tDSMList;
+    fSigNETStringGridNodesMouseIsDown : boolean;
+    fSigNETStringGridNodesDragging : boolean;
+  private
+    fCETreeScaleFactor : integer;
+    fCETreeRowHeight : integer;
+    fCETreeImageWidth : integer;
+    fCETreeImageHeight : integer;
+    fCETreeIndent : integer;
+    fCETreeTextIndent : integer;
+
+    fLogRect : tRect;
+    fLogGridWidth : integer;
+    function GetUndoRedoNavigationHelper: tSigFilePgmStatus;
+  const
+    cColLoopName = 0;
+    cColLoopID = cColLoopName + 1;
+    cColDevAddress = cColLoopID + 1;
+    cColDevType = cColDevAddress + 1;
+    cColDevImage = cColDevType + 1;
+    cColDevName = cColDevImage + 1;
+    cColZoneMain = cColDevName + 1;
+    cColIGMain  = cColZoneMain + 1;
+    cColOGMain  = cColIGMain + 1;
+    cColDisablement = cColOGMain + 1;
+    cColFault = cColDisablement + 1;
+  public
+    { Public declarations }
+    property SigFile : tZFPFile
+             read fSigFile;
+    property UndoRedo : tUndoRedo
+             read fUndoRedo;
+    property UndoRedoNavigationHelper : tSigFilePgmStatus
+             read GetUndoRedoNavigationHelper;
+    property UsesPrinter : boolean
+             read fUsesPrinter
+             write fUsesPrinter;
+
+    procedure ImportLines( const pLines : tStrings; fErrorList : tErrorList );
+    procedure ExportLines( const pLines : tStrings );
+
+    procedure PrintCalculateCols;
+    procedure PrintPrintPages;
+    procedure PrintCalculateCurrentDevicePages;
+    procedure PrintPrintCurrentDevicePages;
+    procedure PrintPages;
+
+    procedure PrintCurrentDevicePages;
+    procedure PrintSetup;
+    procedure PrintSetupFooter;
+    procedure PrintPreparePages;
+    procedure PrintPrepareCurrentDevicePages;
+
+    procedure PrintCETree;
+    function PrintFindCETreeLogicalWidth( const pCanvas : tCanvas; const pTree : tTreeView ) : integer;
+    procedure PrintCalculateCETree;
+    procedure PrintPrintCETree;
+    procedure PrintPrepareCETreePages;
+
+    procedure PrintCurrentLogPages;
+    procedure PrintPrintCurrentLogPages;
+    procedure PrintCalculateCurrentLogPages;
+    procedure PrintPrepareCurrentLogPages;
+
+    function MoreChildrenAtLevel( const pTree : tTreeView; const pAtLevel, pStartingNode : integer ) : boolean;
+
+    procedure SetEditors;
+
+    procedure MakeNodeVisible( const pNode : TZFPNode );
+
+    procedure ShowExpertModes;
+    procedure ShowExpertCheckBoxes( const iCustomMode : boolean );
+
+    function Translate( const pText : string ) : string;
+
+    property VisibleNode : tZFPNode
+             read fVisibleNode
+             write SetVisibleNode;
+
+    procedure LocateDevices( const pPanel, pLoop: integer );
+
+    {
+    property UndoRedoTag : integer
+             read GetUndoRedoTag
+             write SetUndoRedoTag;
+    }
+
+    procedure ShowDeviceSummary;
+    procedure ShowZoneDeviceSummary;
+
+    function LogPageVisible : integer; // -1 if TabSheetPanelLogs not visible, otherwise TabSheetPanelLogs TabIndex
+
+    procedure ClearErrorLists;
+    procedure OnClearErrorLists( Sender : tObject );
+
+    //procedure ShowObject( const pObject : TSigCompoundProperty; const pOriginalObject : TSigCompoundProperty = nil );
+
+  end;
+
+var
+  FormMain: TFormMain;
+
+implementation
+
+{$R *.dfm}
+
+uses UnitFormLoadFile, UnitChangeDefaultLogo;
+
+procedure TFormMain.AdvancedTransfer1Click(Sender: TObject);
+begin
+  case FormAdvancedTransferSelector.Execute( fSigFile, XFP4PgmCfg ) of
+    mrSend:
+    begin
+      fErrorLists.ErrorList := nil;
+      try
+        FormASCIITransfer.AdvancedSendData( Errors );
+      finally
+        if Errors.Count > 0 then
+        begin
+          fErrorLists.ErrorList := Errors;
+        end;
+      end;
+    end;
+    mrRcv:
+    begin
+      FormASCIITransfer.AdvancedRcvData( Errors );
+      if FormASCIITransfer.ModalResult = mrOK then
+      begin
+        ImportLines( FormASCIITransfer.RcvStrings, Errors );
+      end;
+    end;
+  end;
+end;
+
+procedure TFormMain.BitBtn1Click(Sender: TObject);
+begin
+  MemoDebug.Lines.Clear;
+  fSigFile.ListIfDirty( MemoDebug.Lines );
+end;
+
+procedure TFormMain.BuildSDCardfiles1Click(Sender: TObject);
+var
+  i : integer;
+begin
+  i := TabControlPanels.Tabs.Count;
+  if i = 1 then
+  begin
+    i := 0;
+  end
+  else
+  begin
+    if PageControlMain.ActivePage = TabSheetPanelView then
+    begin
+      i := TabControlPanels.TabIndex;
+    end
+    else
+    begin
+      exit;
+    end;
+  end;
+  if i <> -1 then
+  begin
+    PanelBuildSDCardFiles( i );
+  end;
+end;
+
+procedure TFormMain.ButtonSimConvertClick(Sender: TObject);
+begin
+  FrameSimSystem.SimConversion(fSigFile);
+end;
+
+procedure TFormMain.CalendarMaintenanceDateChange(Sender: TObject);
+begin
+  if ComboBoxMaintenanceMonth.ItemIndex <> (CalendarMaintenanceDate.Month - 1) then
+  begin
+    ComboBoxMaintenanceMonth.ItemIndex := CalendarMaintenanceDate.Month - 1;
+  end;
+  if SigSpinEditMaintenanceYear.Value <> CalendarMaintenanceDate.Year then
+  begin
+    SigSpinEditMaintenanceYear.Value := CalendarMaintenanceDate.Year;
+  end;
+end;
+
+procedure TFormMain.ChangeDefaultLogo1Click(Sender: TObject);
+begin
+  with FormChangeDefaultLogo do
+  begin
+    if Execute then
+    begin
+      ImageLogo.Picture.SaveToFile( 'Images\Logo.gif' );
+      ShowLogo;
+    end;
+  end;
+end;
+
+procedure TFormMain.CheckBoxAllFileTransfersToPanelClick(Sender: TObject);
+begin
+  if CheckBoxAllFileTransfersToPanel.Checked then
+  begin
+    ExpertModes := ExpertModes + [em_Allow_File_Transfer];
+    GetFileFromPanel1.Visible := TRUE;
+    SendFiletoPanel1.Visible := TRUE;
+  end
+  else
+  begin
+    ExpertModes := ExpertModes - [em_Allow_File_Transfer];
+    GetFileFromPanel1.Visible := FALSE;
+    SendFiletoPanel1.Visible := FALSE;
+  end;
+end;
+
+procedure TFormMain.CheckBoxAllowImportExportClick(Sender: TObject);
+begin
+  if CheckBoxAllowImportExport.Checked then
+  begin
+    ExpertModes := ExpertModes + [em_Show_Import_Export];
+    Import1.Visible := TRUE;
+    Export1.Visible := TRUE;
+  end
+  else
+  begin
+    ExpertModes := ExpertModes - [em_Show_Import_Export];
+    Import1.Visible := FALSE;
+    Export1.Visible := FALSE;
+  end;
+end;
+
+procedure TFormMain.CheckBoxAutoReloadClick(Sender: TObject);
+begin
+  if CheckBoxAutoReload.Checked then
+  begin
+    ExpertModes := ExpertModes + [em_Auto_Reload_Last_Saved_File];
+  end
+  else
+  begin
+    ExpertModes := ExpertModes - [em_Auto_Reload_Last_Saved_File];
+  end;
+end;
+
+procedure TFormMain.CheckBoxCfgAcrossNetworkClick(Sender: TObject);
+begin
+  if CheckBoxCfgAcrossNetwork.Checked then
+  begin
+    ExpertModes := ExpertModes + [em_Allow_Cfg_from_remote_panels];
+  end
+  else
+  begin
+    ExpertModes := ExpertModes - [em_Allow_Cfg_from_remote_panels];
+  end;
+end;
+
+procedure TFormMain.CheckBoxCheckUSBStatusClick(Sender: TObject);
+begin
+  if CheckBoxCheckUSBStatus.Checked then
+  begin
+    ExpertModes := ExpertModes + [em_Check_USB_Status];
+  end
+  else
+  begin
+    ExpertModes := ExpertModes - [em_Check_USB_Status];
+  end;
+end;
+
+procedure TFormMain.CheckBoxFullXferOptionsClick(Sender: TObject);
+begin
+  if CheckBoxFullXferOptions.Checked then
+  begin
+    ExpertModes := ExpertModes + [em_Show_Advanced_Send_Rcv];
+  end
+  else
+  begin
+    ExpertModes := ExpertModes - [em_Show_Advanced_Send_Rcv];
+  end;
+end;
+
+procedure TFormMain.CheckBoxSameDateAllPanelsClick(Sender: TObject);
+begin
+  //HandleEditorsByPage;
+  try
+    fSigFile.NodeList.ActiveNode.GeneralProperties.RefreshEditors;
+  except
+
+  end;
+end;
+
+procedure TFormMain.CheckBoxSameServiceAllPanelsClick(Sender: TObject);
+begin
+  //HandleEditorsByPage;
+  try
+    fSigFile.NodeList.ActiveNode.GeneralProperties.RefreshEditors;
+  except
+
+  end;
+end;
+
+procedure TFormMain.CheckBoxShowValidationButtonsClick(Sender: TObject);
+begin
+  if CheckBoxShowValidationButtons.Checked then
+  begin
+    ExpertModes := ExpertModes + [em_Show_ValidationButtons];
+    SpeedButtonVerifyAll.Visible := TRUE;
+    SpeedButtonVerify.Visible := TRUE;
+    if ErrorReportingLevel = el_None then
+    begin
+      RadioGroupErrorsAndWarning.ItemIndex := Ord( el_Errors );
+      RadioGroupErrorsAndWarningClick( Sender );
+    end;
+  end
+  else
+  begin
+    ExpertModes := ExpertModes - [em_Show_ValidationButtons];
+    SpeedButtonVerifyAll.Visible := FALSE;
+    SpeedButtonVerify.Visible := FALSE;
+  end;
+
+end;
+
+procedure TFormMain.CheckBoxUnlockSystemDevicesClick(Sender: TObject);
+begin
+  if CheckBoxUnlockSystemDevices.Checked then
+  begin
+    ExpertModes := ExpertModes + [em_Unlock_System_Devices];
+  end
+  else
+  begin
+    ExpertModes := ExpertModes - [em_Unlock_System_Devices];
+  end;
+end;
+
+procedure TFormMain.CheckBoxUseFullDictionariesClick(Sender: TObject);
+begin
+  if CheckBoxUseFullDictionaries.Checked then
+  begin
+    ExpertModes := ExpertModes + [em_Use_Full_Dictionaries];
+  end
+  else
+  begin
+    ExpertModes := ExpertModes - [em_Use_Full_Dictionaries];
+  end;
+end;
+
+procedure TFormMain.CheckBoxUseThreadsClick(Sender: TObject);
+begin
+  if CheckBoxUseThreads.Checked then
+  begin
+    ExpertModes := ExpertModes + [em_Use_Threading];
+  end
+  else
+  begin
+    ExpertModes := ExpertModes - [em_Use_Threading];
+  end;
+end;
+
+procedure TFormMain.CheckBoxViewLogAsTableClick(Sender: TObject);
+begin
+  if CheckBoxViewLogAsTable.Checked then
+  begin
+    ExpertModes := ExpertModes + [em_View_Log_as_Table];
+  end
+  else
+  begin
+    ExpertModes := ExpertModes - [em_View_Log_as_Table];
+  end;
+  fSigFile.RefreshLog;
+end;
+
+procedure TFormMain.ClearErrorLists;
+begin
+  fSigFile.ClearErrorList;
+end;
+
+procedure TFormMain.ComboBoxMaintenanceMonthChange(Sender: TObject);
+begin
+  if ComboBoxMaintenanceMonth.ItemIndex <> -1 then
+  begin
+    if ComboBoxMaintenanceMonth.ItemIndex <> CalendarMaintenanceDate.Month-1 then
+    begin
+      try
+        CalendarMaintenanceDate.Month := ComboBoxMaintenanceMonth.ItemIndex + 1;
+      except
+        // probably invalid day - set day to 1
+        CalendarMaintenanceDate.Day := 1;
+        CalendarMaintenanceDate.Month := ComboBoxMaintenanceMonth.ItemIndex + 1;
+      end;
+    end;
+  end;
+end;
+
+procedure TFormMain.ExecuteNotify(const pNotify: TNotifyEvent;
+  const pSender: TObject);
+begin
+  if Assigned( pNotify ) then
+  begin
+    pNotify( pSender );
+  end;
+end;
+
+procedure TFormMain.Export1Click(Sender: TObject);
+var
+  iLines : tStringList;
+begin
+  iLines := tStringList.Create;
+  try
+    ExportLines( iLines );
+  finally
+    iLines.Free;
+  end;
+end;
+
+procedure TFormMain.ExportLines(const pLines: tStrings);
+var
+  iLogPageVisible : integer;
+  iLogReport : tLogReport;
+begin
+  // Only export log files for now
+  if PageControlMain.ActivePage = TabSheetPanelView then
+  begin
+    iLogPageVisible := LogPageVisible;
+    if iLogPageVisible >= 0 then
+    begin
+      iLogReport := FrameLogFiles1.TabControlLogs.Tabs.Objects[ iLogPageVisible ] as tLogReport;
+      iLogReport.ExportFile( pLines );
+      if pLines.Count > 0 then
+      begin
+        with SaveDialogCSV do
+        begin
+          if Execute then
+          begin
+            pLines.SaveToFile( FileName );
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TFormMain.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  SigRegistry.StoreMainWindowParms;
+end;
+
+procedure TFormMain.FormCreate(Sender: TObject);
+begin
+
+  StringGridDevices := TStringGrid.Create( self );
+  StringGridDevices.Parent := PanelDevices;
+  StringGridDevices.DefaultColWidth := 32;
+  StringGridDevices.DefaultRowHeight := 48;
+  StringGridDevices.FixedRows := 0;
+  StringGridDevices.FixedCols := 0;
+  StringGridDevices.TabOrder := 2;
+  StringGridDevices.Align := alClient;
+
+  fErrors := tErrorList.Create;
+  fErrorLists := TFrameErrorLists.Create;
+  AssignErrorLists;
+
+  Application.ShowHint := TRUE;
+
+  fUndoRedo := tUndoRedo.Create;
+  fFirstTime := TRUE;
+
+  ExpertModes := [];
+  if SigRegistry.ReadBoolean( 'em_Show_Advanced_Send_Rcv', em_Show_Advanced_Send_Rcv in em_Simple ) then
+  begin
+    ExpertModes := ExpertModes + [ em_Show_Advanced_Send_Rcv ];
+  end;
+  if SigRegistry.ReadBoolean( 'em_Use_Full_Dictionaries', em_Use_Full_Dictionaries in em_Simple ) then
+  begin
+    ExpertModes := ExpertModes + [ em_Use_Full_Dictionaries ];
+  end;
+  if SigRegistry.ReadBoolean( 'em_Allow_Cfg_from_remote_panels', em_Allow_Cfg_from_remote_panels in em_Simple ) then
+  begin
+    ExpertModes := ExpertModes + [ em_Allow_Cfg_from_remote_panels ];
+  end;
+
+  if SigRegistry.ReadBoolean( 'em_View_Log_as_Table', em_View_Log_as_Table in em_Simple ) then
+  begin
+    ExpertModes := ExpertModes + [ em_View_Log_as_Table ];
+  end;
+  if SigRegistry.ReadBoolean( 'em_Show_Import_Export', em_Show_Import_Export in em_Simple ) then
+  begin
+    ExpertModes := ExpertModes + [ em_Show_Import_Export ];
+    Import1.Visible := TRUE;
+    Export1.Visible := TRUE;
+  end
+  else
+  begin
+    Import1.Visible := FALSE;
+    Export1.Visible := FALSE;
+  end;
+  if SigRegistry.ReadBoolean( 'em_Allow_File_Transfer', em_Allow_File_Transfer in em_Simple ) then
+  begin
+    ExpertModes := ExpertModes + [ em_Allow_File_Transfer ];
+    GetFileFromPanel1.Visible := TRUE;
+    SendFiletoPanel1.Visible := TRUE;
+  end
+  else
+  begin
+    GetFileFromPanel1.Visible := FALSE;
+    SendFiletoPanel1.Visible := FALSE;
+  end;
+  if SigRegistry.ReadBoolean( 'em_Auto_Reload_Last_Saved_File', em_Auto_Reload_Last_Saved_File in em_Simple) then
+  begin
+    ExpertModes := ExpertModes + [em_Auto_Reload_Last_Saved_File];
+  end
+  else
+  begin
+    ExpertModes := ExpertModes - [em_Auto_Reload_Last_Saved_File];
+  end;
+  if SigRegistry.ReadBoolean( 'em_Show_ValidationButtons', em_Show_ValidationButtons in em_Simple) then
+  begin
+    ExpertModes := ExpertModes + [em_Show_ValidationButtons];
+    SpeedButtonVerifyAll.Visible := TRUE;
+    SpeedButtonVerify.Visible := TRUE;
+    CheckBoxShowValidationButtons.Checked := TRUE;
+  end
+  else
+  begin
+    ExpertModes := ExpertModes - [em_Show_ValidationButtons];
+    SpeedButtonVerifyAll.Visible := FALSE;
+    SpeedButtonVerify.Visible := FALSE;
+    CheckBoxShowValidationButtons.Checked := FALSE;
+  end;
+  ErrorReportingLevel := TErrorReportingLevel( SigRegistry.ReadInteger( 'Error Reporting Level', Ord( el_Errors ) ));
+  RadioGroupErrorsAndWarning.ItemIndex := Ord( ErrorReportingLevel );
+  {
+    here you create your descendant of tSigFileProperty
+  }
+
+  XFP4PgmCfg := tXFP4PgmCfg.Create;
+  XFP4PgmCfg.Condensed := not (em_Use_Full_Dictionaries in ExpertModes);
+
+  XFP4PgmCfg.Load();
+
+  XFP4PgmCfg.ImageListSpecial := ImageListSpecial;
+
+  EditPanelMaintenanceString.MaxLength := XFP4PGMCfg.MaxMaintenanceStringLen.ValueAsInt;
+  EditPanelName.MaxLength := XFP4PgmCfg.MaxNodeNameLen.ValueAsInt;
+  FrameGlobalObjectEditorModes.SigGridEditorNames.MaxLength := XFP4PgmCfg.MaxModeDescriptionLen.ValueAsInt;
+  EditSubDeviceName.MaxLength := XFP4PgmCfg.MaxDeviceDescriptionLen.ValueAsInt;
+  FrameGlobalDevices.MaxDevNameLen := XFP4PgmCfg.MaxDeviceDescriptionLen.ValueAsInt;
+  FrameZoneEditor.SigGridEditorNames.MaxLength := XFP4PgmCfg.MaxZoneDescriptionLen.ValueAsInt;
+  FrameInputGroupEditor.SigGridEditorNames.MaxLength := XFP4PgmCfg.MaxGroupDescriptionLen.ValueAsInt;
+  FrameOutputGroupEditor.SigGridEditorNames.MaxLength := XFP4PgmCfg.MaxGroupDescriptionLen.ValueAsInt;
+  FrameInputSupergroupEditor.SigGridEditorNames.MaxLength := XFP4PgmCfg.MaxGroupDescriptionLen.ValueAsInt;
+  FrameSupergroupEditor.SigGridEditorNames.MaxLength := XFP4PgmCfg.MaxGroupDescriptionLen.ValueAsInt;
+  FrameSequenceEditor.SigGridEditorNames.MaxLength := XFP4PgmCfg.MaxOPSeqDescriptionLen.ValueAsInt;
+  SigGridEditorLoopName.MaxLength := XFP4PgmCfg.MaxLoopNameLen.ValueAsInt;
+  FrameSequenceEditor.SigGridEditorSeqPredelay.MaxVal := XFP4PgmCfg.MaxPreSeqDelay.ValueAsInt;
+
+  fSigFile := tZFPFile.Create( 'ZFP File', fUndoRedo );
+  fSigFile.OnUndoClick := SpeedButtonUndoClick;
+  fSigFile.OnRedoClick := SpeedButtonRedoClick;
+  fSigFile.TemplateFile := XFP4PgmCfg.DefaultTemplateFile.Value;
+  //fSigFile.UndoRedo := fUndoRedo;
+  fSigFile.TemplateIndex := 2;
+  fSigFile.DefaultExtension := 'zfp';
+  fSigFile.TemplateExtension := 'zft';
+  fSigFile.OnClearErrorList := OnClearErrorLists;
+
+  fUndoRedo.Owner := fSigFile;
+  fUndoRedo.OnUndoChange := self.OnUndoChange;
+  fUndoRedo.OnRedoChange := self.OnRedoChange;
+
+  // change the SigRegistry to current application unless set manually
+  if SigRegistry.Key = '' then
+  begin
+    SigRegistry.Key := ExtractFileName( Application.ExeName );
+  end;
+
+  {
+    Additional start up actions
+  }
+
+  FrameGlobalDevices.PageControlPanelDevices.ActivePage := FrameGlobalDevices.TabSheetDeviceSummary;
+
+  fPrintCols := TPrintColumns.Create;
+  fPrintCols.OnTranslate := self.Translate;
+end;
+
+procedure TFormMain.FormDestroy(Sender: TObject);
+begin
+  SigRegistry.WriteBoolean( 'Security Info In Reports', CheckBoxReportsIncludeSecurityInformation.Checked );
+  SigRegistry.WriteBoolean( 'Show Config Tab', TabSheetConfiguration.TabVisible );
+  SigRegistry.WriteBoolean( 'em_Show_Advanced_Send_Rcv', em_Show_Advanced_Send_Rcv in ExpertModes );
+  SigRegistry.WriteBoolean( 'em_Use_Full_Dictionaries', em_Use_Full_Dictionaries in ExpertModes );
+  SigRegistry.WriteBoolean( 'em_Allow_Cfg_from_remote_panels', em_Allow_Cfg_from_remote_panels in ExpertModes );
+  SigRegistry.WriteBoolean( 'em_View_Log_as_Table', em_View_Log_as_Table in ExpertModes );
+  SigRegistry.WriteBoolean( 'em_Allow_File_Transfer', em_Allow_File_Transfer in ExpertModes );
+  SigRegistry.WriteBoolean( 'em_Show_Import_Export', em_Show_Import_Export in ExpertModes );
+  SigRegistry.WriteBoolean( 'em_Auto_Reload_Last_Saved_File', em_Auto_Reload_Last_Saved_File in ExpertModes );
+  SigRegistry.WriteBoolean( 'em_Show_ValidationButtons', em_Show_ValidationButtons in ExpertModes );
+  SigRegistry.WriteInteger( 'Error Reporting Level', Ord( ErrorReportingLevel ));
+
+  XFP4PgmCfg.SaveIfDirty();
+  XFP4PgmCfg.Free;
+
+  fUndoRedo.Free;
+
+  fErrors.Free;
+  fErrorLists.Free;
+
+  //FreeAndNil( fSigFile );
+  FreeAndNil( fPrintCols );
+end;
+
+procedure TFormMain.FormShow(Sender: TObject);
+begin
+  if fFirstTime then
+  begin
+    fFirstTime := FALSE;
+
+    //XFP4PgmCfg.Load();
+    // make sure SigGrid events are kooked up - they seem to get lost sometimes
+    FrameGlobalDevices.SigGeneralGridGlobalDevices.OnCellEditChange := FrameGlobalDevicesSigGeneralGridGlobalDevicesCellEditChange;
+    FrameGlobalDevices.SigGeneralGridGlobalDevices.OnKeyPress := FrameGlobalDevicesSigGeneralGridGlobalDevicesKeyPress;
+    FrameGlobalDevices.SigGeneralGridGlobalDevices.OnSelectCell := FrameGlobalDevicesSigGeneralGridGlobalDevicesSelectCell;
+
+    FrameGlobalDevices.SigGeneralGridZonalSummary.OnCellEditChange := FrameGlobalDevicesSigGeneralGridZonalSummaryCellEditChange;
+    FrameGlobalDevices.SigGeneralGridZonalSummary.OnKeyPress := FrameGlobalDevicesSigGeneralGridZonalSummaryKeyPress;
+
+    if not FileExists( XFP4PgmCfg.FileName ) then
+    begin
+      MessageDlg( XFP4PgmCfg.FileName + ' not found. Program aborted.', mtError, [mbAbort], 0);
+      Close;
+    end;
+
+    //fSigFile.BlockEditorUpdate := TRUE;
+    TabSheetDebug.TabVisible := FALSE;
+    TabSheetErrors.TabVisible := FALSE;
+    TabSheetConfiguration.TabVisible := SigRegistry.ReadBoolean( 'Show Config Tab', FALSE );
+
+    CheckBoxReportsIncludeSecurityInformation.Checked := SigRegistry.ReadBoolean( 'Security Info In Reports', TRUE );
+
+    ShowExpertModes;
+
+    XFP4PgmCfg.SigTranslation.TranslateWinComponent( self );
+
+    SetupDevicePalette;
+    FrameOutputGroupEditor.Setup;
+
+    {
+      Remove the following line if you don't want SigRegistry to remember widows last status
+    }
+    SigRegistry.RestoreMainWindowParms;
+
+    {
+      here you set up your file interactions
+    }
+    fSigFile.Editor := self;
+    fSigFile.SaveDialog := SigSaveDialogMain;
+    fSigFile.AboutForm := AboutBox;
+    fSigFile.MainMenu := MainMenu;
+
+    // set up Undo/Redo
+    fSigFile.OnPrepareUndoableAction := fUndoRedo.PrepareUndoableActionTag;
+    fSigFile.OnUndoableAction := self.OnUndoableChange;
+    fSigFile.OnCompleteUndoableAction := fUndoRedo.CompleteUndoableActionTag;
+    fSigFile.OnRedoableAction := self.OnRedoableChange;
+    fSigFile.OnUndoClick := self.SpeedButtonUndoClick;
+    fSigFile.OnRedoClick := self.SpeedButtonRedoClick;
+    fSigFile.UndoRedoImageList := self.ImageListUndoRedo;
+    fSigFile.OnLoadLine := FormLoadFile.OnLoadLine;
+    fSigFile.CETreeErrorFrame := FrameErrorListCE;
+    //fSigFile.OnErrorDblClick := self.OnErrorDblClick;
+    fSigFile.OnErrorDblClick := self.OnFrameErrorList2DblClick; // unite 2 methods
+
+    fSigFile.ShowOGTab := self.ShowOGTab;
+
+    {
+      if you use the printer set UsesPrinter to TRUE, else set it to FALSE
+    }
+    UsesPrinter := TRUE; // or false
+    {
+      you can fine tune printer usage here
+    }
+    if UsesPrinter then
+    begin
+      fSigFile.OnPrint := SpeedButtonPrintClick;
+      fSigFile.OnPrintPreview := SpeedButtonPrintPreviewClick;
+      fSigFile.OnPrinterSetup := SpeedButtonPrintSetupClick;
+    end
+    else
+    begin
+      SpeedButtonPrint.Visible := FALSE;
+      SpeedButtonPrintPreview.Visible := FALSE;
+      SpeedButtonPrintSetup.Visible := FALSE;
+    end;
+
+    {
+      Here we add the temporary navigation objects to the file
+    }
+
+    UndoRedoNavigationHelper.RegisterObject( self );
+
+    fSigFile.IsDirty := FALSE;
+    fSigfile.OnLoad := OnLoad;
+    fSigFile.OnNew := OnNew;
+    // if parameter is passed, load it, otherwise create New file
+    if ParamCount = 0 then
+    begin
+      if em_Auto_Reload_Last_Saved_File in ExpertModes then
+      begin
+        if SigRegistry.History[ 0 ] = '' then
+        begin
+          fSigFile.New;
+        end
+        else
+        begin
+          fSigFile.Load( SigRegistry.History[ 0 ] );
+        end;
+      end
+      else
+      begin
+        fSigFile.New;
+      end;
+    end
+    else
+    begin
+      fSigFile.Load( ParamStr( 1 ) );
+    end;
+
+    SetEditors;
+
+    fUndoRedo.Clear;
+
+    // Set up the Log screen tabs
+
+    fSigFile.DeviceErrorFrame := FrameErrorListDevices;
+    fSigFile.ObjectsImageList := ImageListCE;
+
+    ErrorObjectList.ObjectTabList := TabControlImportedFiles;
+    ErrorObjectList.SourceStrings := MemoImportedFiles.Lines;
+
+    FrameErrorListSystem.ErrorList := nil;
+    //FrameErrorList2.ErrorList := nil;
+    //FrameErrorListOverview.ErrorList := nil;
+    //FrameErrorListGeneralProperties.ErrorList := nil;
+
+    PageControlPanelViewChange( self );
+
+    FrameGlobalDevices.DeviceImageList := ImageListComponentPalette;
+
+    //fSigFile.BlockEditorUpdate := FALSE;
+    //FrameNetworkMain.NodeCount := fSigFile.NodeList.Max;
+    fSigFile.RebuildEditors;
+
+    FrameGlobalDevices.OnResize( self );
+  end;
+end;
+
+procedure TFormMain.FrameGlobalDevicesSigGeneralGridGlobalDevicesCellEditChange(
+  const Sender: TObject; const Col, Row: Integer; const Value: string);
+var
+  iDevice : tLoopDevice;
+begin
+  if Col = cColDevName then
+  begin
+    iDevice := FrameGlobalDevices.SigGeneralGridGlobalDevices.CellObject[ cColDevName, Row ] as tLoopDevice;
+    if assigned( iDevice ) then
+    begin
+      iDevice.Name := Value;
+    end;
+  end;
+end;
+
+procedure TFormMain.FrameGlobalDevicesSigGeneralGridGlobalDevicesKeyPress(
+  Sender: TObject; var Key: Char);
+var
+  iSel : tGridRect;
+begin
+  if Key = #13 then
+  begin
+    // CR - move selection down, if it exists
+    iSel := FrameGlobalDevices.SigGeneralGridGlobalDevices.Selection;
+    if iSel.Top < FrameGlobalDevices.SigGeneralGridGlobalDevices.RowCount - 1 then
+    begin
+      iSel.Top := iSel.Top + 1;
+      iSel.Bottom := iSel.Top;
+      FrameGlobalDevices.SigGeneralGridGlobalDevices.Selection := iSel;
+      FrameGlobalDevices.SigGeneralGridGlobalDevices.SetFocus;
+      //FrameGlobalDevices.SigGeneralGridGlobalDevices.Invalidate;
+    end;
+    Key := #0; // avoid 'beep'
+  end;
+end;
+
+procedure TFormMain.FrameGlobalDevicesSigGeneralGridGlobalDevicesSelectCell(
+  Sender: TObject; ACol, ARow: Integer; var CanSelect: Boolean);
+var
+  iDevice : tLoopDevice;
+  iSubDevice : TLoopSubDevice;
+  iNode : tZFPNode;
+begin
+  if ACol = cColDevImage then
+  begin
+    iDevice := FrameGlobalDevices.SigGeneralGridGlobalDevices.CellObject[ cColDevName, ARow ] as tLoopDevice;
+    if assigned( iDevice ) then
+    begin
+      iSubDevice := iDevice.SubDevice[ 0 ];
+      PageControlMain.ActivePage := TabSheetPanelView;
+      PageControlPanelView.ActivePage := TabSheetLoops;
+      iNode := iSubDevice.GetOwnerOfType( TZFPNode ) as TZFPNode;
+      MakeNodeVisible( iNode );
+      if PageControlPanelView.ActivePage <> TabSheetLoops then
+      begin
+        PageControlPanelView.ActivePage := TabSheetLoops;
+        PageControlPanelViewChange( self );
+      end;
+      fSigFile.ShowSubDevice( iSubdevice );
+    end;
+  end;
+end;
+
+procedure TFormMain.FrameGlobalDevicesSigGeneralGridZonalSummaryCellEditChange(
+  const Sender: TObject; const Col, Row: Integer; const Value: string);
+var
+  iDevice : tLoopDevice;
+begin
+  iDevice := FrameGlobalDevices.SigGeneralGridZonalSummary.CellObject[ Col, Row ] as tLoopDevice;
+  if assigned( iDevice ) then
+  begin
+    iDevice.Name := Value;
+  end;
+end;
+
+procedure TFormMain.FrameGlobalDevicesSigGeneralGridZonalSummaryKeyPress(
+  Sender: TObject; var Key: Char);
+var
+  iSel : tGridRect;
+begin
+  if Key = #13 then
+  begin
+    // CR - move selection down, if it exists
+    iSel := FrameGlobalDevices.SigGeneralGridZonalSummary.Selection;
+    if iSel.Top < FrameGlobalDevices.SigGeneralGridZonalSummary.RowCount - 1 then
+    begin
+      iSel.Top := iSel.Top + 1;
+      iSel.Bottom := iSel.Top;
+      FrameGlobalDevices.SigGeneralGridZonalSummary.Selection := iSel;
+      FrameGlobalDevices.SigGeneralGridZonalSummary.SetFocus;
+      FrameGlobalDevices.SigGeneralGridZonalSummary.Invalidate;
+    end;
+    Key := #0; // avoid 'beep'
+  end;
+end;
+
+procedure TFormMain.FrameGlobalDevicesSigGridEditorDevDisablementClick(
+  Sender: TObject);
+var
+  iRow : integer;
+  iObject : tZFPGlobalObject;
+  iDevice : tLoopDevice;
+begin
+  with Sender as TSigGridEditor do
+  begin
+    iRow := CellRowBeingEdited;
+  end;
+  iDevice := FrameGlobalDevices.SigGeneralGridGlobalDevices.CellObject[ cColDevName, iRow ] as tLoopDevice;
+  if assigned( iDevice ) then
+  begin
+    if iDevice.SupportsDisablementGroups then
+    begin
+      if not iDevice.HasMultipleDisablementGroups then
+      begin
+        iObject := iDevice.FirstDisablementGroup;
+        iObject := fSigFile.CauseAndEffects.InputGroups.SelectFromList( TRUE, iObject, iDevice.OwnerPanel );
+        iDevice.FirstDisablementGroup := iObject as tInputGroup;
+        with FrameGlobalDevices.SigGeneralGridGlobalDevices do
+        begin
+          if assigned( iObject ) then
+          begin
+            Cell[ cColDisablement, iRow ] := iObject.Name;
+          end
+          else
+          begin
+            Cell[ cColDisablement, iRow ] := '';
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TFormMain.FrameGlobalDevicesSigGridEditorDevIGClick(Sender: TObject);
+var
+  iRow : integer;
+  iObject : tZFPGlobalObject;
+  iDevice : tLoopDevice;
+begin
+  with Sender as TSigGridEditor do
+  begin
+    iRow := CellRowBeingEdited;
+  end;
+  iDevice := FrameGlobalDevices.SigGeneralGridGlobalDevices.CellObject[ cColDevName, iRow ] as tLoopDevice;
+  if assigned( iDevice ) then
+  begin
+    if iDevice.SupportsInputGroups then
+    begin
+      if not iDevice.HasMultipleInputGroups then
+      begin
+        iObject := iDevice.FirstInputGroup;
+        iObject := fSigFile.CauseAndEffects.InputGroups.SelectFromList( TRUE, iObject, iDevice.OwnerPanel );
+        iDevice.FirstInputGroup := iObject as tInputGroup;
+        with FrameGlobalDevices.SigGeneralGridGlobalDevices do
+        begin
+          if assigned( iObject ) then
+          begin
+            if iDevice.HasMultipleInputGroups then
+            begin
+              Cell[ cColIGMain, iRow ] := iObject.Name + '...';
+            end
+            else
+            begin
+              Cell[ cColIGMain, iRow ] := iObject.Name;
+            end;
+          end
+          else
+          begin
+            Cell[ cColIGMain, iRow ] := '';
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TFormMain.FrameGlobalDevicesSigGridEditorDevOGClick(Sender: TObject);
+var
+  iRow : integer;
+  iObject : tZFPGlobalObject;
+  iDevice : tLoopDevice;
+begin
+  with Sender as TSigGridEditor do
+  begin
+    iRow := CellRowBeingEdited;
+  end;
+  iDevice := FrameGlobalDevices.SigGeneralGridGlobalDevices.CellObject[ cColDevName, iRow ] as tLoopDevice;
+  if assigned( iDevice ) then
+  begin
+    if not iDevice.HasMultipleOutputGroups then
+    begin
+      if iDevice.SupportsOutputGroups then
+      begin
+        iObject := iDevice.FirstOutputGroup;
+        iObject := fSigFile.CauseAndEffects.OutputGroups.SelectFromList( TRUE, iObject, iDevice.OwnerPanel );
+        iDevice.FirstOutputGroup := iObject as tOutputGroup;
+        with FrameGlobalDevices.SigGeneralGridGlobalDevices do
+        begin
+          if assigned( iObject ) then
+          begin
+            if iDevice.HasMultipleOutputGroups then
+            begin
+              Cell[ cColOGMain, iRow ] := iObject.Name + '...';
+            end
+            else
+            begin
+              Cell[ cColOGMain, iRow ] := iObject.Name;
+            end;
+          end
+          else
+          begin
+            Cell[ cColOGMain, iRow ] := '';
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TFormMain.FrameGlobalDevicesSigGridEditorDevZoneClick(
+  Sender: TObject);
+var
+  iRow : integer;
+  iObject : tZFPGlobalObject;
+  iDevice : tLoopDevice;
+begin
+  with Sender as TSigGridEditor do
+  begin
+    iRow := CellRowBeingEdited;
+  end;
+  iDevice := FrameGlobalDevices.SigGeneralGridGlobalDevices.CellObject[ cColDevName, iRow ] as tLoopDevice;
+  if assigned( iDevice ) then
+  begin
+    if not iDevice.HasMultipleZones then
+    begin
+      if iDevice.SupportsZones then
+      begin
+        iObject := iDevice.FirstZone;
+        iObject := fSigFile.ZoneList.SelectFromList( TRUE, iObject, iDevice.OwnerPanel );
+        iDevice.FirstZone := iObject as tZFPZone;
+        with FrameGlobalDevices.SigGeneralGridGlobalDevices do
+        begin
+          if assigned( iObject ) then
+          begin
+            if iDevice.HasMultipleZones then
+            begin
+              Cell[ cColZoneMain, iRow ] := iObject.Name + '...';
+            end
+            else
+            begin
+              Cell[ cColZoneMain, iRow ] := iObject.Name;
+            end;
+          end
+          else
+          begin
+            Cell[ cColZoneMain, iRow ] := '';
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TFormMain.FrameGlobalDevicesSigGridEditorFaultGroupClick(
+  Sender: TObject);
+var
+  iRow : integer;
+  iObject : tZFPGlobalObject;
+  iDevice : tLoopDevice;
+begin
+  with Sender as TSigGridEditor do
+  begin
+    iRow := CellRowBeingEdited;
+  end;
+  iDevice := FrameGlobalDevices.SigGeneralGridGlobalDevices.CellObject[ cColDevName, iRow ] as tLoopDevice;
+  if assigned( iDevice ) then
+  begin
+    if iDevice.SupportsFaultGroups then
+    begin
+      if not iDevice.HasMultipleFaultGroups then
+      begin
+        iObject := iDevice.FirstFaultGroup;
+        iObject := fSigFile.CauseAndEffects.InputGroups.SelectFromList( TRUE, iObject, iDevice.OwnerPanel );
+        iDevice.FirstFaultGroup := iObject as tInputGroup;
+        with FrameGlobalDevices.SigGeneralGridGlobalDevices do
+        begin
+          if assigned( iObject ) then
+          begin
+            if iDevice.HasMultipleFaultGroups then
+            begin
+              Cell[ cColFault, iRow ] := iObject.Name + '...';
+            end
+            else
+            begin
+              Cell[ cColFault, iRow ] := iObject.Name;
+            end;
+          end
+          else
+          begin
+            Cell[ cColFault, iRow ] := '';
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TFormMain.FrameLogFiles1TabControlLogsChange(Sender: TObject);
+begin
+  PageControlPanelViewChange( Sender );
+end;
+
+procedure TFormMain.GetCurrentLog(const pSender: integer);
+var
+  iLog : tLogReport;
+  //iStrings : tStringList;
+  iNode : tZFPNode;
+begin
+  iNode := fSigFile.NodeList.ActiveNode;
+  if assigned( iNode ) then
+  begin
+    iLog := iNode.CurrentLogReport;
+    if assigned( iLog ) then
+    begin
+      FormASCIITransfer.RcvLogFile( iNode, iLog, Errors );
+      {
+      if FormASCIITransfer.InitFileRcv( Errors ) then
+      begin
+        iStrings := tStringList.Create;
+        try
+          iLog.BuildRequestList( iStrings );
+          FormASCIITransfer.AddFileRcvRequest( iNode, iNode.Name1.Value + '-' + iLog.Name, iStrings );
+        finally
+          iStrings.Free;
+        end;
+        FormASCIITransfer.ExecuteRcvRequest;
+        iLog.CopyLog( FormASCIITransfer.RcvStrings, TRUE );
+      end;
+      }
+      iLog.CopyLog( FormASCIITransfer.RcvStrings, TRUE );
+    end;
+  end;
+
+end;
+
+function TFormMain.GetErrors: tErrorList;
+begin
+  if not assigned( fErrors ) then
+  begin
+    fErrors := tErrorList.Create;
+    fErrors.OnTranslate := self.Translate;
+  end;
+  Result := fErrors;
+end;
+
+procedure TFormMain.GetFileFromPanel1Click(Sender: TObject);
+begin
+  PanelGetFile;
+end;
+
+function TFormMain.GetUndoRedoNavigationHelper: tSigFilePgmStatus;
+begin
+  Result := fSigFile.UndoRedoNavigationHelper;
+end;
+
+procedure TFormMain.OnPanelRetrieveAll(const pSender: integer);
+begin
+  FormASCIITransfer.RcvAllData( fSigFile.NodeList.Node[ pSender ], Errors );
+  if FormASCIITransfer.ModalResult = mrOK then
+  begin
+    ImportLines( FormASCIITransfer.RcvStrings, Errors );
+  end;
+end;
+
+procedure TFormMain.OnPanelRetrieveDeviceData(const pSender: integer);
+begin
+  fErrorLists.ErrorList := nil;
+  try
+    FormASCIITransfer.RcvDeviceData( fSigFile.NodeList.Node[ pSender ], Errors );
+    ImportLines( FormASCIITransfer.RcvStrings, Errors );
+  finally
+    if Errors.Count > 0 then
+    begin
+      fErrorLists.ErrorList := Errors;
+    end;
+  end;
+end;
+
+procedure TFormMain.OnPanelSendAll(const pSender: integer; const pVerify, pIsSingle: boolean);
+begin
+  fErrorLists.ErrorList := nil;
+  try
+    if pIsSingle or (pSender = 0) then
+    begin
+      fSigFile.ClearReportedErrorFlags;
+      Errors.Clear;
+    end;
+    try
+      FormASCIITransfer.SendAllData( fSigFile.NodeList.Node[ pSender ], Errors, pVerify );
+    except
+      case ErrorReportingLevel of
+        elErrors_Warnings_Hints:; //
+        el_Errors_Warnings:
+        begin
+          Errors.ClearHints;
+        end;
+        el_Errors:
+        begin
+          Errors.ClearWarningsAndHints;
+        end;
+        el_None:
+        begin
+          Errors.Clear;
+        end;
+      end;
+      {
+      if pIsSingle and not (ErrorReportingLevel = el_None) then
+      begin
+        raise;
+      end;
+      // else ignore
+      }
+    end;
+  finally
+    if pIsSingle or (pSender = fSigFile.NodeList.Max) then
+    begin
+      if Errors.Count > 0 then
+      begin
+        fErrorLists.ErrorList := Errors;
+      end;
+      if Errors.ErrorCount > 0 then
+      begin
+        raise Exception.Create( Translate( 'Errors Found'));
+      end
+      else if Errors.WarningCount > 0 then
+      begin
+        MessageDlg( Translate('Warnings Found'), mtWarning, [mbOK], 0 );
+      end
+      else if Errors.HintCount > 0 then
+      begin
+        MessageDlg( Translate('Hints Found'), mtInformation, [mbOK], 0 );
+      end
+      else if pVerify then
+      begin
+        MessageDlg( Translate('Verification Complete'), mtInformation, [mbOK], 0 );
+      end
+      else
+      begin
+        MessageDlg( Translate('Transmission Complete'), mtInformation, [mbOK], 0 );
+      end;
+    end;
+  end;
+end;
+
+procedure TFormMain.AssignErrorLists;
+begin
+  fErrorLists.OnErrorDblClick := OnFrameErrorList2DblClick;
+  fErrorLists.Add( FrameErrorListSystem );
+  fErrorLists.Add( FrameErrorListOverview );
+  fErrorLists.Add( FrameGlobalObjectEditorModes.FrameErrorList );
+  fErrorLists.Add( FrameZoneEditor.FrameErrorList );
+  fErrorLists.Add( FrameInputGroupEditor.FrameErrorList );
+  fErrorLists.Add( FrameInputSupergroupEditor.FrameErrorList );
+  fErrorLists.Add( FrameOutputGroupEditor.FrameErrorList );
+  fErrorLists.Add( FrameSupergroupEditor.FrameErrorList );
+  fErrorLists.Add( FrameSequenceEditor.FrameErrorList );
+  fErrorLists.Add( FrameGlobalObjectEditorPulsePatterns.FrameErrorList );
+  fErrorLists.Add( FrameGlobalObjectEditorGroupActions.FrameErrorList );
+  fErrorLists.Add( FrameErrorListGeneralProperties );
+  fErrorLists.Add( FrameErrorListDevices );
+  fErrorLists.Add( FramePanelNetworkFilters.FrameErrorList );
+  fErrorLists.Add( FrameErrorListCE );
+end;
+
+procedure TFormMain.OnClearErrorLists(Sender: tObject);
+begin
+  FrameErrorListSystem.ErrorList := nil;
+  FrameErrorListCE.ErrorList := nil;
+  FrameErrorListOverview.ErrorList := nil;
+  FrameErrorListDevices.ErrorList := nil;
+  Errors.Clear;
+end;
+
+procedure TFormMain.OnErrorDblClick(const Sender: TObject;
+  const pError: tError);
+var
+  iOwner : tSigCompoundProperty;
+  iNode : tZFPNode;
+  iLoopDevice : tLoopDevice;
+  iLoopSubDevice : tLoopSubDevice;
+  pErrorObject : tObject;
+  iLoop : tLoop;
+  iGlobalObject : tZFPGlobalObject;
+  iGlobalArray : tZFPGlobalArray;
+begin
+  if Sender is TFrameErrorList then
+  begin
+    fSigFile.SetHighlightedErrors( (Sender as TFrameErrorList).Highlighted );
+    // Sender can also be TFrameErrorLists
+  end;
+  fUndoRedo.GroupUndoActive := TRUE;
+  try
+    pErrorObject := pError.ErrorObject;
+    // locate the object through its owner list
+    if assigned( pErrorObject ) then
+    begin
+      if pErrorObject is tSigCompoundProperty then
+      begin
+        iOwner := (pErrorObject as tSigCompoundProperty );
+      end
+      else if pErrorObject is tSigBaseProperty then
+      begin
+        iOwner := (pErrorObject as tSigBaseProperty).Owner;
+      end
+      else
+      begin
+        exit;
+      end;
+      while assigned( iOwner ) do
+      begin
+        if iOwner is tCETreeProperty then
+        begin
+          // go to tree view
+          PageControlMain.ActivePage := TabSheetCauseAndEffects;
+          with (iOwner as tCETreeProperty) do
+          begin
+            TreeNode1.Selected := TRUE;
+          end;
+          exit;
+        end
+        else if iOwner is tLoopDevice then
+        begin
+          PageControlMain.ActivePage := TabSheetPanelView;
+          iLoopDevice := iOwner as tLoopDevice;
+          iNode := iLoopDevice.OwnerPanel;
+          fSigFile.NodeList.ActiveNode := iNode;
+          PageControlPanelView.ActivePage := TabSheetLoops;
+          iLoop := iLoopDevice.OwnerLoop;
+          iNode.LoopList.ActiveLoop := iLoop;
+          iLoop.LoopDevices.DeviceEditMode := demDeviceEntries;
+          // we are now showing the right loop. Select the right device.
+          iLoop.LoopDevices.SetErrorObject( iLoopDevice, nil );
+          exit;
+        end
+        else if iOwner is tLoopSubDevice then
+        begin
+          PageControlMain.ActivePage := TabSheetPanelView;
+          iLoopSubDevice := (iOwner as tLoopSubDevice);
+          iLoopDevice := iLoopSubdevice.Device;
+          iNode := iLoopDevice.OwnerPanel;
+          fSigFile.NodeList.ActiveNode := iNode;
+          PageControlPanelView.ActivePage := TabSheetLoops;
+          iLoop := iLoopDevice.OwnerLoop;
+          iNode.LoopList.ActiveLoop := iLoop;
+          iLoop.LoopDevices.DeviceEditMode := demDeviceEntries;
+          // we are now showing the right loop. Select the right device.
+          iLoop.LoopDevices.SetErrorObject( iLoopDevice, iLoopSubdevice );
+          exit;
+        end
+        else if iOwner is tZFPGlobalObject then
+        begin
+          PageControlMain.ActivePage := TabSheetNetworkView;
+          iGlobalObject := iOwner as tZFPGlobalObject;
+          iGlobalArray := iGlobalObject.OwnerAsZFPGlobalArray;
+          if iGlobalArray.EditorFrame = FrameGlobalObjectEditorModes then
+          begin
+            PageControlNetworkView.ActivePage := TabSheetGlobalModes;
+          end
+          else if iGlobalArray.EditorFrame = FrameZoneEditor then
+          begin
+            PageControlNetworkView.ActivePage := TabSheetGlobalZoning;
+          end
+          else if iGlobalArray.EditorFrame = FrameInputGroupEditor then
+          begin
+            PageControlNetworkView.ActivePage := TabSheetGlobalInputGroups;
+          end
+          else if iGlobalArray.EditorFrame = FrameInputSupergroupEditor then
+          begin
+            PageControlNetworkView.ActivePage := TabSheetInputSuperGroups;
+            FrameInputSupergroupEditor.PageControlProperties.ActivePage := FrameInputSupergroupEditor.TabSheetComponentGroups;
+          end
+          else if iGlobalArray.EditorFrame = FrameOutputGroupEditor then
+          begin
+            PageControlNetworkView.ActivePage := TabSheetGlobalOutputGroups;
+          end
+          else if iGlobalArray.EditorFrame = FrameSupergroupEditor then
+          begin
+            PageControlNetworkView.ActivePage := TabSheetSuperGroups;
+            FrameSupergroupEditor.PageControlProperties.ActivePage := FrameSupergroupEditor.TabSheetComponentGroups;
+          end
+          else if iGlobalArray.EditorFrame = FrameSequenceEditor then
+          begin
+            PageControlNetworkView.ActivePage := TabSheetSequences;
+          end
+          else if iGlobalArray.EditorFrame = FrameGlobalObjectEditorPulsePatterns then
+          begin
+            PageControlNetworkView.ActivePage := TabSheetPulsePatterns;
+          end
+          else if iGlobalArray.EditorFrame = FrameGlobalObjectEditorGroupActions then
+          begin
+            PageControlNetworkView.ActivePage := TabSheetGroupActions;
+          end;
+          iGlobalArray.SetActiveChildObject( iGlobalObject );
+          exit;
+        end;
+        iOwner := iOwner.Owner;
+      end;
+      raise Exception.Create('Internal Error 002');
+    end;
+  finally
+    UndoRedoNavigationHelper.CheckStatus;
+    UndoRedo.GroupUndoActive := FALSE;
+  end;
+end;
+
+procedure TFormMain.OnFrameErrorList1DblClick(const Sender: tObject;
+  const pErrorObject: tError);
+var
+  i, iPos, iX, iY : integer;
+  iPoint : tPoint;
+  iLine : string;
+begin
+  iY := pErrorObject.ErrorLine;
+  iX := 0;
+  iLine := MemoImportedFiles.Lines[ iY ];
+  for i := 1 to pErrorObject.ErrorPos do
+  begin
+    iPos := Pos( ',', iLine );
+    inc( iX, iPos );
+    iLine := Copy( iLine, iPos + 1, Length( iLine ));
+  end;
+  iPoint.X := iX;
+  iPoint.Y := iY;
+  MemoImportedFiles.SetFocus;
+  MemoImportedFiles.CaretPos := iPoint;
+  SendMessage( MemoImportedFiles.Handle, EM_SCROLLCARET, 0, 0 );
+end;
+
+{
+procedure TFormMain.OnFrameErrorList2Close(Sender: tObject);
+begin
+  FrameErrorList2.ErrorList := nil;
+  FrameErrorListGeneralProperties.ErrorList := nil;
+end;
+}
+
+procedure TFormMain.OnFrameErrorList2DblClick(const Sender: tObject;
+  const pErrorObject: tError);
+var
+  iCETreeProperty : tCETreeProperty;
+  iSubDevice : TLoopSubDevice;
+  iSubDeviceError : TLoopSubdeviceError;
+  iNode : tZFPNode;
+  iErrorObject : TObject;
+begin
+  iErrorObject := pErrorObject.ErrorObject;
+  if assigned( iErrorObject ) then
+  begin
+    if Sender is TFrameErrorList then
+    begin
+      // sender can also be TFrameErrorLists when no sync is required
+      fErrorLists.SyncHighlightWith( sender as TFrameErrorList );
+    end;
+    if iErrorObject is TZFPCandEError then
+    begin
+      PageControlMain.ActivePage := TabSheetCauseAndEffects;
+      iCETreeProperty := (pErrorObject.ErrorObject as tZFPCandEError).CETreeProperty;
+      iCETreeProperty.TreeNode1.Selected := TRUE;
+    end
+    else if iErrorObject is TLoopSubdeviceError then
+    begin
+      iSubDeviceError := pErrorObject.ErrorObject as TLoopSubdeviceError;
+      iSubDevice := iSubDeviceError.SubDevice;
+      PageControlMain.ActivePage := TabSheetPanelView;
+      PageControlPanelView.ActivePage := TabSheetLoops;
+      iNode := iSubDevice.GetOwnerOfType( TZFPNode ) as TZFPNode;
+      MakeNodeVisible( iNode );
+      if PageControlPanelView.ActivePage <> TabSheetLoops then
+      begin
+        PageControlPanelView.ActivePage := TabSheetLoops;
+        PageControlPanelViewChange( self );
+      end;
+      fSigFile.ShowSubDeviceError( pErrorObject.ErrorObject as TLoopSubdeviceError );
+    end
+    else if iErrorObject = fSigFile.Logo then
+    begin
+      PageControlMain.ActivePage := TabSheetSiteDetails;
+    end
+    else if iErrorObject is TBaseInputGroup then
+    begin
+      PageControlMain.ActivePage := TabSheetNetworkView;
+      ExecuteNotify( PageControlMain.OnChange, Sender );
+      PageControlNetworkView.ActivePage := TabSheetGlobalInputGroups;
+      ExecuteNotify( PageControlNetworkView.OnChange, sender );
+      FrameInputGroupEditor.PageControlProperties.ActivePage :=  FrameInputGroupEditor.TabSheetDevices;
+      ExecuteNotify( FrameInputGroupEditor.PageControlProperties.OnChange, sender );
+      fSigFile.CauseAndEffects.InputGroups.ActiveChildObject := iErrorObject as TBaseInputGroup;
+      //FrameOutputGroupEditor.TabSheetDevices
+    end
+    else if iErrorObject is tZFPSuperGroup then  // MUST be done before TOutputGroup!
+    begin
+      PageControlMain.ActivePage := TabSheetNetworkView;
+      ExecuteNotify( PageControlMain.OnChange, Sender );
+      PageControlNetworkView.ActivePage := TabSheetSuperGroups;
+      ExecuteNotify( PageControlNetworkView.OnChange, sender );
+      FrameSupergroupEditor.PageControlProperties.ActivePage := FrameSupergroupEditor.TabSheetComponentGroups;
+      ExecuteNotify( FrameSupergroupEditor.PageControlProperties.OnChange, sender );
+      fSigFile.CauseAndEffects.OutputGroups.ActiveChildObject := iErrorObject as tZFPSuperGroup;
+    end
+    else if iErrorObject is TOutputGroup then
+    begin
+      PageControlMain.ActivePage := TabSheetNetworkView;
+      ExecuteNotify( PageControlMain.OnChange, Sender );
+      PageControlNetworkView.ActivePage := TabSheetGlobalOutputGroups;
+      ExecuteNotify( PageControlNetworkView.OnChange, sender );
+      FrameOutputGroupEditor.PageControlProperties.ActivePage :=  FrameOutputGroupEditor.TabSheetDevices;
+      ExecuteNotify( FrameOutputGroupEditor.PageControlProperties.OnChange, sender );
+      fSigFile.CauseAndEffects.OutputGroups.ActiveChildObject := iErrorObject as TOutputGroup;
+    end
+    else if iErrorObject is TZFPSegmentError then
+    begin
+      PageControlMain.ActivePage := TabSheetPanelView;
+      SigSpinEditSegment.SetFocus;
+    end
+    else
+    begin
+      OnErrorDblClick( Sender, pErrorObject );
+    end;
+  end;
+end;
+
+procedure TFormMain.OnLoad(Sender : tObject; var pOK : boolean; const pFileName : string );
+begin
+  //if not pOK then
+  if fSigFile.ErrorList.Count <> 0 then
+  begin
+    fSigFile.ErrorList.Assign( FormLoadErrors.MemoLoadErrors );
+    if not FormLoadErrors.Execute( Translate( 'Load Errors'), Translate( 'The following error(s) were found when loading file:' )) then
+    begin
+      fSigFile.New;
+    end;
+  end;
+  fSigFile.PurgeABusSubLoops;
+  LoadPanelView;
+  StringGridDevices.Invalidate;
+  fSigFile.RebuildEditors;
+  ShowDeviceSummary;
+  ShowZoneDeviceSummary;
+  ShowLogo;
+  FormLoadFile.OnLoadLine( 100, 100 );
+end;
+
+procedure TFormMain.OnNew(Sender: tObject);
+begin
+  // set pages
+  fErrorLists.ErrorList := nil;
+  PageControlMain.ActivePage := TabSheetSiteDetails;
+  PageControlPanelView.ActivePage := TabSheetGlobalProperties;
+  PageControlNetworkView.ActivePage := TabSheetNetworkOverview;
+  FrameGlobalObjectEditorModes.PageControlProperties.ActivePage := FrameGlobalObjectEditorModes.TabSheetProperties;
+  FrameZoneEditor.PageControlProperties.ActivePage := FrameZoneEditor.TabSheetProperties;
+  FrameInputGroupEditor.PageControlProperties.ActivePage := FrameInputGroupEditor.TabSheetProperties;
+  FrameInputSupergroupEditor.PageControlProperties.ActivePage := FrameInputSupergroupEditor.TabSheetProperties;
+  FrameOutputGroupEditor.PageControlProperties.ActivePage := FrameOutputGroupEditor.TabSheetProperties;
+  FrameSupergroupEditor.PageControlProperties.ActivePage := FrameSupergroupEditor.TabSheetProperties;
+  FrameSequenceEditor.PageControlProperties.ActivePage := FrameSequenceEditor.TabSheetProperties;
+  FrameGlobalObjectEditorPulsePatterns.PageControlProperties.ActivePage := FrameGlobalObjectEditorPulsePatterns.TabSheetProperties;
+  FrameGlobalObjectEditorGroupActions.PageControlProperties.ActivePage := FrameGlobalObjectEditorGroupActions.TabSheetProperties;
+  if not fSigFile.LoadingFromFile then
+  begin
+    // if loading from file these will be executed in the OnLoad procedure
+    LoadPanelView;
+    StringGridDevices.Invalidate;
+    ShowDeviceSummary;
+    ShowZoneDeviceSummary;
+  end;
+  //fSigFile.RebuildEditors;
+  UndoRedoNavigationHelper.CheckStatus;
+  //ShowLogo;
+end;
+
+procedure TFormMain.OnNodeClassChange(const Sender: tSigCompoundProperty;
+  const pNewChild: integer);
+var
+  iClass : tNodalClass;
+  iType : tNodalType;
+  i : integer;
+  iButtonGroupItem : tGrpButtonItem;
+begin
+  iClass := XFP4PgmCfg.NodalInfo.NodalClassList.NodalClass[ pNewChild ];
+  with ButtonGroupNodeTypePalette do
+  begin
+    if assigned( iClass ) then
+    begin
+      Visible := TRUE;
+      with Items do
+      begin
+        Clear;
+        for i := 0 to iClass.Max do
+        begin
+          iType := iClass.NodeType[ i ];
+          if iType.ImageIndex >= 0 then
+          begin
+            iButtonGroupItem := ButtonGroup.Items.Add;
+            iButtonGroupItem.Caption := iType.TypeDescription.Value;
+            iButtonGroupItem.ImageIndex := iType.ImageIndex;
+            iButtonGroupItem.Data := iType;
+          end;
+        end;
+      end;
+    end
+    else
+    begin
+      Visible := FALSE;
+    end;
+  end;
+end;
+
+procedure TFormMain.HandleEditorsByPage;
+begin
+  { some fields have multiple editors so they can be maintained either on the site pages or
+    panel pages. This sets up editors depending on visible page
+  }
+  // avoid reentrancy
+  if not fHandleEditorsByPageActive then
+  begin
+    fHandleEditorsByPageActive := TRUE;
+
+    // refresh editors showing default values.
+    fSigFile.RefreshEditors;
+
+    fHandleEditorsByPageActive := FALSE;
+  end;
+end;
+
+procedure TFormMain.ImageLogoClick(Sender: TObject);
+var
+  iLogo : string;
+  iInitDir : string;
+  iFile : file of byte;
+  iError : string;
+begin
+  with OpenPictureDialogLogo do
+  begin
+    iLogo := fSigFile.Logo.Value;
+    iInitDir := ExtractFilePath( iLogo );
+    InitialDir := iInitDir;
+    FileName := ExtractFileName( iLogo );
+    if Execute then
+    begin
+      fSigFile.Logo.LoadImage( FileName );
+      ShowLogo;
+      if assigned( ImageLogo.Picture ) then
+      begin
+        if (ImageLogo.Picture.Width > 150) or (ImageLogo.Picture.Height > 150) then
+        begin
+          fSigFile.LogoOversized.ValueAsBool := TRUE;
+          raise Exception.Create('Warning - Logo exceeds specified dimensions of 150 x 150 pixels and will not be sent to panels');
+        end
+        else
+        begin
+          AssignFile( iFile, FileName );
+          Reset( iFile );
+          try
+            if FileSize( iFile ) > 8192 then
+            begin
+              fSigFile.LogoOversized.ValueAsBool := TRUE;
+              iError := Translate( 'Error' ) + ' - ' + Translate( 'Logo exceeds maximum file size of 8192 bytes and will not be sent to panels.' ) + ' '
+                        + Translate( 'Try reducing size or number of colours.');
+              raise Exception.Create( iError );
+            end;
+          finally
+            CloseFile( iFile );
+          end;
+          fSigFile.LogoOversized.ValueAsBool := FALSE;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TFormMain.Import1Click(Sender: TObject);
+var
+  iStrings : tStringList;
+begin
+  if OpenDialogCSV.Execute then
+  begin
+    iStrings := tStringList.Create;
+    ClearErrorLists;
+    iStrings.LoadFromFile( OpenDialogCSV.Filename );
+    Errors.Clear;
+    ImportLines( iStrings, Errors );
+
+    iStrings.Free;
+  end;
+end;
+
+procedure TFormMain.ImportLines(const pLines: tStrings; fErrorList : tErrorList);
+var
+  iIndex : integer;
+  iRecType : integer;
+  iDataFound : boolean;
+  iColumns : tStringList;
+  iPanel : integer;
+  iErrText : string;
+  iLineCount : integer;
+  iNode : tZFPNode;
+  iErrorObject : tErrorObject;
+begin
+  iErrorObject := tErrorObject.Create;
+  iColumns := tStringList.Create;
+  try
+    // open the file to see what panel and record type we are dealing with
+
+    iIndex := 0;
+    iDataFound := FALSE;
+    iErrorObject.FileName := OpenDialogCSV.Filename;
+    iLineCount := pLines.Count;
+    while iIndex < iLineCount do
+    begin
+      FormLoadFile.OnLoadLine( iIndex, iLineCount );
+      CommaListToStringList( pLines[ iIndex ], iColumns, TRUE );
+      if ( iColumns.Count > 2 ) and SameText( iColumns[ 1 ], 'BEGIN')  then
+      begin
+        iDataFound := TRUE;
+        iPanel := fSigFile.NodeList.IndexOfNodeWithID( StrToInt( iColumns[ 2 ] ) );
+        if iPanel < 0  then
+        begin
+          iPanel := fSigFile.NodeList.Max + 1;
+          fSigFile.NodeList.Max := iPanel;
+          fSigFile.NodeList.Node[ iPanel ].NetworkFile.PanelAddress.Address.ValueAsInt := StrToInt( iColumns[ 2 ] );
+        end;
+        iRecType := StrToInt( iColumns[ 0 ] );
+        iNode := fSigFile.NodeList.Node[ iPanel ];
+        case iRecType of
+          // ------------ Phase 1 ------------
+          // 120 - Network File
+          120: iNode.ImportNetworkFile( pLines, iIndex, Errors, iErrorObject );
+          // ------------ Phase 2 ------------
+          //  80 - Panel Data
+          80:  iNode.GeneralProperties.ImportFile( pLines, iIndex, Errors, iErrorObject );
+          //  17 Shared input groups and triggers
+          17:  iNode.ImportSharedInputGroups( pLines, iIndex, Errors, iErrorObject );
+          //  18 - Shared Output Groups
+          18:  iNode.ImportSharedOutputGroups( pLines, iIndex, Errors, iErrorObject );
+          //  19 - Shared Output Super Groups
+          19:  iNode.ImportSharedSuperGroups( pLines, iIndex, Errors, iErrorObject );
+          //  81 - Mode Share Data
+          81:  iNode.ImportSharedModes( pLines, iIndex, Errors, iErrorObject );
+          //  90 - comments
+          90:  iNode.PanelNotes.ImportFile( pLines, iIndex, Errors, iErrorObject );
+          // 100 - Zone Data
+          100: iNode.ImportZones( pLines, iIndex, Errors, iErrorObject );
+          // 151 - Input Supergroup Share Data
+          151: iNode.ImportSharedInputSuperGroups( pLines, iIndex, Errors, iErrorObject );
+          // 152 - Sequence Share Data
+          152: iNode.ImportSharedSequences( pLines, iIndex, Errors, iErrorObject );
+          // 153 - Pulse Pattern Share Data
+          153: iNode.ImportSharedPulsePatterns( pLines, iIndex, Errors, iErrorObject );
+          // 160 - Group Action Share Data
+          160: iNode.ImportSharedGroupActions( pLines, iIndex, Errors, iErrorObject );
+
+          //  20 - Device Data
+          20:  iNode.ImportDeviceFieldsFile( pLines, iIndex, Errors, iErrorObject );
+          //  14 - Input groups and triggers
+          14:  iNode.ImportInputGroups( pLines, iIndex, Errors, iErrorObject );
+          //  15 - Output Groups
+          15:  iNode.ImportOutputGroups( pLines, iIndex, Errors, iErrorObject );
+          //  16 - Output supergroups
+          16:  iNode.ImportOutputSuperGroups( pLines, iIndex, Errors, iErrorObject );
+          //  40 - Sequences
+          40:  iNode.ImportSequences( pLines, iIndex, Errors, iErrorObject );
+          //  60 - Pulse sequences
+          60:  iNode.ImportPulseSequences( pLines, iIndex, Errors, iErrorObject );
+          //  161 - Group ACtions
+          161: iNode.ImportGroupActions(  pLines, iIndex, Errors, iErrorObject );
+          // 154 - Input supergroups
+          154: iNode.ImportInputSuperGroups( pLines, iIndex, Errors, iErrorObject );
+          //   2 - Device Names
+          2:   iNode.ImportNamesFile( pLines, iIndex, Errors, iErrorObject );
+          // 150 - CE Tree
+          150: fSigFile.ImportCETree( pLines, iIndex, Errors, iErrorObject );
+          // 300 - binary file - Logo?
+          300:
+          begin
+            fSigFile.ImportBinaryFile( pLines, iIndex, Errors, iErrorObject );
+            ShowLogo;
+          end;
+          301:
+          begin
+            fSigFile.ImportTextFile( pLines, iIndex, Errors, iErrorObject );
+          end
+          else
+          begin
+            if iNode.ImportLogFile( iRecType, pLines, iIndex, Errors, iErrorObject ) then
+            begin
+              PageControlMain.ActivePage := TabSheetPanelView;
+              PageControlPanelView.ActivePage := TabSheetPanelLogs;
+            end
+            else
+            begin
+              iErrText := Translate( 'Unrecognised Record Type') + ' "' + iColumns[ 0 ] + '"';
+              Errors.Add( tErrorSeverity.es_Error, iIndex, iErrText, self);
+            end;
+          end;
+        end;
+      end;
+      inc( iIndex );
+    end;
+    if iDataFound then
+    begin
+      SigFile.ExecuteAfterLoadActions;
+    end
+    else
+    begin
+      // if we get here, no BEGIN record was found
+      {
+      iErrText := Translate( 'EOF before "BEGIN" found');
+      Errors.Add( tErrorSeverity.es_Error, pLines.Count - 1, iErrText, self);
+      }
+    end;
+    // update editors
+    LoadPanelView;
+  finally
+    FormLoadFile.OnLoadLine( 100, 100 );
+    if Errors.Count = 0 then
+    begin
+      FrameErrorListSystem.ErrorList := nil;
+      iErrorObject.Free;
+    end
+    else
+    begin
+      if em_Show_Errors_Tab in ExpertModes then
+      begin
+        TabSheetErrors.TabVisible := TRUE;
+        PageControlMain.ActivePage := TabSheetErrors;
+        FrameErrorListSystem.ErrorList := Errors;
+        FrameErrorListSystem.OnErrorDblClick := OnFrameErrorList1DblClick;
+        //FrameErrorListDevices.OnErrorDblClick := self.OnErrorDblClick;
+        iErrorObject.SourceStrings := pLines;
+        ErrorObjectList.TabIndex := iErrorObject.TabIndex;
+      end;
+    end;
+    iColumns.Free;
+    ShowDeviceSummary;
+    ShowZoneDeviceSummary;
+    UndoRedoNavigationHelper.CheckStatus;
+    fUndoRedo.Clear;  // cannot undo an import
+  end;
+end;
+
+procedure TFormMain.SendFiletoPanel1Click(Sender: TObject);
+begin
+  PanelSendFile;
+end;
+
+procedure TFormMain.SetEditors;
+begin
+  {
+    here you assign any editors to your SigFileFields
+  }
+  with fSigFile do
+  begin
+    //BlockEditorUpdate := TRUE;
+    with NodeList do
+    begin
+      OnNodeNameChange := RefreshPanelView;
+      NodeNameEditor := EditPanelName;
+      PanelRecalTimeEditor := ComboBoxPanelRecalibrationTime;
+      MaintenanceDateEditor := CalendarMaintenanceDate;
+      //NonCompliantImage := ImageNonCompliant;
+      VerificationDetEditor := SigSpinEditVerificationDet;
+      VerificationMCPEditor := SigSpinEditVerificationMCP;
+      VerificationIOEditor := SigSpinEditVerificationIO;
+      VerificationFaultsEditor := SigSpinEditVerificationFaults;
+      //UseGlobalDefaultLanguageEditor := CheckBoxUseGlobalDefaultLanguage;
+      //LanguageEditor := ComboBoxPanelLanguage;
+      KeyswitchEntryEditor := CheckBoxKeyswitchEntry;
+      LoopsFittedTabSheet := TabSheetPanelLoops;
+      LoopsFittedEditor := SigSpinEditLoopsFitted;
+      LoopDetailsEditor := SigGeneralGridLoopDetails;
+      PrintOptionsEditor := CheckListBoxPanelPrintOptions;
+      LoopProtocolEditor := ComboBoxPanelLoopProtocol;
+      AL2CodeEditor := EditPanelAL2Code;
+      AL3CodeEditor := EditPanelAL3Code;
+      SynchroniseToPCDateTimeEditor := CheckBoxSynchroniseDateTimeToPC;
+      PanelNotesEditor := MemoPanelNotes;
+      SegmentEditor := SigSpinEditSegment;
+      SegmentEditorLabel := LabelPanelSegment;
+      AddressEditor := SigSpinEditAddress;
+      PanelImageEditor := SigImageNetworkProperties;
+      PanelZoneEditor := SigGeneralGridPanelZones;
+      LoopListEditor := TabControlLoopDevices;
+      //fUndoRedoNavigationHelper.UnregisterObject( TabControlLoopDevices );
+      DeviceClassesEditor := TabControlDevicePalette;
+      //fUndoRedoNavigationHelper.UnregisterObject( TabControlDevicePalette );
+      DeviceTypeEditor := ButtonGroupDevicePalette;
+      DeviceGrid := StringGridDevices;
+      SubDeviceEditor := TabControlSubDevices;
+      //fUndoRedoNavigationHelper.UnregisterObject( TabControlSubDevices );
+      SubDeviceNameEditor := EditSubDeviceName;
+      SubDeviceNameLabel := LabelSubDeviceName;
+      SubDeviceTypeEditor := EditSubDeviceType;
+      SubDeviceTypeLabel := LabelDeviceType;
+      SubDeviceIOTypeLabel := LabelIOType;
+      SubDeviceIOTypeEditor := ComboBoxSubDeviceType;
+      SubDeviceFieldEditor := SigVariableEditorListDeviceProperties;
+      SpeedButtonShowComponentPalette := self.SpeedButtonShowComponentPalette;
+      SpeedButtonEditDevices := self.SpeedButtonEditDevices;
+      PanelComponentPalette := self.PanelComponentPalette;  // self required here
+      PanelDeviceProperties := self.PanelDeviceProperties;  // self required here
+      FilterEditorFrame := FramePanelNetworkFilters;
+      LCDDimmingEditor := SigSpinEditPanelAutoDimTime;
+      MaintenanceDateEditor := CalendarMaintenanceDate;
+      MaintenanceStringEditor := EditPanelMaintenanceString;
+      MainBoardVersionEditor := EditMainBoardVersion;
+      LoopDriver1VersionEditor := EditLoopDriver1Version;
+      LoopDriver2VersionEditor := EditLoopDriver2Version;
+      LogFileFrame := FrameLogFiles1;
+
+    end;
+
+    with Client do
+    begin
+      Name.Editor := EditClientName;
+      Address.Editor := MemoClientAddress;
+      Postcode.Editor := EditClientPostCode;
+      TelNo.Editor := EditClientTelephone;
+    end;
+
+    with Installer do
+    begin
+      Name.Editor := EditInstallerName;
+      Address.Editor := MemoInstallerAddress;
+      Postcode.Editor := EditInstallerPostCode;
+      TelNo.Editor := EditInstallerTelephone;
+    end;
+
+    with GlobalDefaults do
+    begin
+      //Language.Editor := RadioGroupDefaultLanguages;
+      DefaultAutoAdjustDST.Editor := CheckBoxDaylightSaving;
+    end;
+
+    SiteNotes.Editor := MemoSiteNotes;
+    ZoneList.EditorFrame := FrameZoneEditor;
+    ModeList.EditorFrame := FrameGlobalObjectEditorModes;
+    PulsePatternList.EditorFrame := FrameGlobalObjectEditorPulsePatterns;
+    GroupActionList.EditorFrame := FrameGlobalObjectEditorGroupActions;
+    SuperGroupList.EditorFrame := FrameSupergroupEditor;
+    InputSuperGroupList.EditorFrame := FrameInputSupergroupEditor;
+    SequenceList.EditorFrame := FrameSequenceEditor;
+
+    with CauseAndEffects do
+    begin
+      OutputGroups.EditorFrame := FrameOutputGroupEditor;
+      InputGroups.EditorFrame := FrameInputGroupEditor;
+      TreeView1 := TreeViewCE1;
+      CEAddChildButton[ 1 ] := SpeedButtonCETreeAdd1;
+      CEAddChildButton[ 2 ] := SpeedButtonCETreeAdd2;
+      CEAddChildButton[ 3 ] := SpeedButtonCETreeAdd3;
+      CEAddSibling1BeforeButton := SpeedButtonCETreeInsertBefore1;
+      CEAddSibling1AfterButton := SpeedButtonCETreeInsertAfter1;
+      CEAddSibling2BeforeButton := SpeedButtonCETreeInsertBefore2;
+      CEAddSibling2AfterButton := SpeedButtonCETreeInsertAfter2;
+      CECutButton := SpeedButtonCETreeCut;
+      CECopyButton := SpeedButtonCETreeCopy;
+      CEPasteButton := SpeedButtonCETreePaste;
+      CEPasteSpecialButton := SpeedButtonCETreePasteSpecial;
+      CEDeleteButton := SpeedButtonCETreeDelete;
+      CEVariableEditor := SigVariableEditorListCETree;
+    end;
+    //BlockEditorUpdate := FALSE;
+  end;
+  with XFP4PGMCfg do
+  begin
+    TransferTimeout.Editor := FormASCIITransfer.SigSpinEditTimeOut;
+    TranferReadTimeout.Editor := FormASCIITransfer.SigSpinEditRetrieveTimeout;
+  end;
+  { We are using UnitSigFileBindings for later development }
+  with XFP4PGMCfg do
+  begin
+    SigFileBindingObjectList.Add( NodalInfo.NodalClassList, tNodalClass.cClassDescription,
+                                  TabControlNodeTypePalette );
+
+    SigFileBindingObjectList.Add( NodalInfo.NodalClassList, OnNodeClassChange );
+    OnNodeClassChange( NodalInfo.NodalClassList, NodalInfo.NodalClassList.ActiveChild );
+  end;
+end;
+
+procedure TFormMain.SetupDevicePalette;
+begin
+  XFP4PgmCfg.ImageListComponentPalette := ImageListComponentPalette;
+  FormReplace.ImageList := ImageListComponentPalette;
+end;
+
+procedure TFormMain.SetVisibleNode(const Value: tZFPNode);
+begin
+  fVisibleNode := Value;
+  fSigFile.NodeList.ChangeActiveChild( Value );
+end;
+
+procedure TFormMain.SpeedButtonCopyPrintOptionsToAllClick(Sender: TObject);
+begin
+  fSigFile.NodeList.CopyCurrentPrintOptionsToAll;
+end;
+
+procedure TFormMain.SpeedButtonCopyRecalTimeToAllPanelsClick(Sender: TObject);
+begin
+  fSigFile.NodeList.CopyCurrentRecalTimeToAll;
+end;
+
+procedure TFormMain.SpeedButtonCopyMaintenanceDataToAllPanelsClick(
+  Sender: TObject);
+begin
+  fSigFile.NodeList.CopyCurrentMaintenanceDataToAll;
+end;
+
+procedure TFormMain.SpeedButtonCopyPanelOperationToAllClick(Sender: TObject);
+begin
+  fSigFile.NodeList.CopyCurrentPanelOpToAll;
+end;
+
+procedure TFormMain.SpeedButtonCopySecurityClick(Sender: TObject);
+begin
+  fSigFile.NodeList.CopyCurrentSecurityToAll;
+end;
+
+procedure TFormMain.SpeedButtonCopyVerificationTimesClick(Sender: TObject);
+begin
+  fSigFile.NodeList.CopyCurrentVerificationTimesToAll;
+end;
+
+procedure TFormMain.SpeedButtonEraseLogClick(Sender: TObject);
+begin
+  with self.FrameLogFiles1 do
+  begin
+    MemoLog.Clear;
+  end;
+end;
+
+procedure TFormMain.SpeedButtonMaintenanceDateToAllClick(Sender: TObject);
+begin
+  fSigFile.NodeList.CopyCurrentMaintenanceDateToAll;
+end;
+
+procedure TFormMain.SpeedButtonNewClick(Sender: TObject);
+begin
+  fSigFile.New(); // can add short format if desired
+end;
+
+procedure TFormMain.SpeedButtonOpenClick(Sender: TObject);
+begin
+  fSigFile.Load();
+
+  FormLoadFile.OnLoadLine( 100, 100 );
+
+  if fSigFile.ErrorList.Count = 0 then
+  begin
+    FrameErrorListSystem.ErrorList := nil;
+  end
+  else
+  begin
+    if em_Show_Errors_Tab in ExpertModes then
+    begin
+      TabSheetErrors.TabVisible := TRUE;
+      FrameErrorListSystem.ErrorList := fSigFile.ErrorList;
+      FrameErrorListSystem.OnErrorDblClick := OnFrameErrorList1DblClick;
+      MemoImportedFiles.Lines.LoadFromFile( fSigFile.FileName);
+      PageControlMain.ActivePage := TabSheetErrors;
+    end;
+  end;
+end;
+
+procedure TFormMain.SpeedButtonPrintClick(Sender: TObject);
+begin
+  if PageControlMain.ActivePage = TabSheetPanelView then
+  begin
+    if PageControlPanelView.ActivePage = TabSheetDeviceSummary then
+    begin
+      with PreviewPrinterMain do
+      begin
+        BeginDoc;
+        Canvas.Lock;
+        with self.PrintDialog do
+        begin
+          {
+            setup min, max pages etc here
+          }
+          PrintCalculateCurrentDevicePages;
+          MinPage := 1;
+          MaxPage := fPrintCols.PageCount;
+          if Execute then
+          begin
+            PrintPrintCurrentDevicePages;
+            EndDoc;
+            Print;
+          end
+          else
+          begin
+            Abort;
+          end;
+        end;
+      end;
+      exit;
+    end
+    else if PageControlPanelView.ActivePage = TabSheetPanelLogs then
+    begin
+      with PreviewPrinterMain do
+      begin
+        BeginDoc;
+        Canvas.Lock;
+        with self.PrintDialog do
+        begin
+          {
+            setup min, max pages etc here
+          }
+          PrintCalculateCurrentLogPages;
+          MinPage := 1;
+          MaxPage := fPrintCols.PageCount;
+          if Execute then
+          begin
+            PrintPrintCurrentLogPages;
+            EndDoc;
+            Print;
+          end
+          else
+          begin
+            Abort;
+          end;
+        end;
+      end;
+      exit;
+    end;
+  end
+  else if PageControlMain.ActivePage = TabSheetCauseAndEffects then
+  begin
+    with PreviewPrinterMain do
+    begin
+      BeginDoc;
+      Canvas.Lock;
+      try
+        with self.PrintDialog do
+        begin
+          {
+            setup min, max pages etc here
+          }
+          PrintCalculateCETree;
+          MinPage := 1;
+          MaxPage := fPrintCols.PageCount;
+          if Execute then
+          begin
+            PrintPrintCETree;
+            EndDoc;
+            Print;
+          end
+          else
+          begin
+            Abort;
+          end;
+        end;
+      finally
+        Canvas.Unlock;
+      end;
+      EndDoc;
+      Preview;
+    end;
+    exit;
+  end;
+  // else
+  with PreviewPrinterMain do
+  begin
+    BeginDoc;
+    with self.PrintDialog do
+    begin
+      {
+        setup min, max pages etc here
+      }
+      PrintCalculateCols;
+      fPrintCols.CalculatingPageCount := TRUE;
+      PrintPreparePages;
+      MinPage := 1;
+      MaxPage := fPrintCols.PageCount;
+      if Execute then
+      begin
+        PrintCalculateCols;
+        fPrintCols.CalculatingPageCount := TRUE;
+        PrintPreparePages;
+        //PrintPrintPages;
+        EndDoc;
+        Print;
+      end
+      else
+      begin
+        Abort;
+      end;
+    end;
+  end;
+end;
+
+procedure TFormMain.SpeedButtonPrintPreviewClick(Sender: TObject);
+begin
+  if PageControlMain.ActivePage = TabSheetPanelView then
+  begin
+    if PageControlPanelView.ActivePage = TabSheetDeviceSummary then
+    begin
+      with PreviewPrinterMain do
+      begin
+        BeginDoc;
+        Canvas.Lock;
+        try
+          PrintCurrentDevicePages;
+        finally
+          Canvas.Unlock;
+        end;
+        EndDoc;
+        Preview;
+      end;
+      exit;
+    end
+    else if PageControlPanelView.ActivePage = TabSheetPanelLogs then
+    begin
+      with PreviewPrinterMain do
+      begin
+        BeginDoc;
+        Canvas.Lock;
+        try
+          PrintCurrentLogPages;
+        finally
+          Canvas.Unlock;
+        end;
+        EndDoc;
+        Preview;
+      end;
+      exit;
+    end;
+  end
+  else if PageControlMain.ActivePage = TabSheetCauseAndEffects then
+  begin
+    with PreviewPrinterMain do
+    begin
+      BeginDoc;
+      Canvas.Lock;
+      try
+        PrintCETree;
+      finally
+        Canvas.Unlock;
+      end;
+      EndDoc;
+      Preview;
+    end;
+    exit;
+  end;
+  // else
+  with PreviewPrinterMain do
+  begin
+    BeginDoc;
+    PrintPages;
+    EndDoc;
+    Preview;
+  end;
+end;
+
+procedure TFormMain.SpeedButtonPrintSetupClick(Sender: TObject);
+begin
+  PrinterSetupDialog.Execute();
+end;
+
+procedure TFormMain.SpeedButtonRedoClick(Sender: TObject);
+begin
+  UndoRedo.Redo;
+  RefreshCurrentPage;
+end;
+
+procedure TFormMain.SpeedButtonRetrieveAllDataClick(Sender: TObject);
+var
+  i : integer;
+begin
+  i := TabControlPanels.TabIndex;
+  if i <> -1 then
+  begin
+    OnPanelRetrieveAll( i );
+  end;
+end;
+
+procedure TFormMain.SpeedButtonRetrieveDeviceDataClick(Sender: TObject);
+var
+  i : integer;
+begin
+  i := TabControlPanels.TabIndex;
+  if i <> -1 then
+  begin
+    OnPanelRetrieveDeviceData( i );
+  end;
+end;
+
+procedure TFormMain.SpeedButtonRetrieveLogClick(Sender: TObject);
+var
+  i : integer;
+begin
+  i := TabControlPanels.TabIndex;
+  if i <> -1 then
+  begin
+    GetCurrentLog( i );
+  end;
+end;
+
+procedure TFormMain.SpeedButtonSaveAsClick(Sender: TObject);
+var
+  iLogPageVisible : integer;
+begin
+  iLogPageVisible := LogPageVisible;
+  if iLogPageVisible = -1 then
+  begin
+    fSigFile.SaveAs();
+  end
+  else
+  begin
+    Export1Click( Sender );
+  end;
+end;
+
+procedure TFormMain.SpeedButtonSaveClick(Sender: TObject);
+var
+  iLogPageVisible : integer;
+begin
+  iLogPageVisible := LogPageVisible;
+  if iLogPageVisible = -1 then
+  begin
+    fSigFile.Save(); // can add shortform if desired
+  end
+  else
+  begin
+    Export1Click( Sender );
+  end;
+end;
+
+procedure TFormMain.SpeedButtonSendAllToAllClick(Sender: TObject);
+var
+  i : integer;
+begin
+  for i := 0 to fSigFile.NodeList.Max do
+  begin
+    OnPanelSendAll( i, FALSE, FALSE );
+  end;
+end;
+
+procedure TFormMain.SpeedButtonSendAllToPanelClick(Sender: TObject);
+var
+  i : integer;
+begin
+  i := TabControlPanels.TabIndex;
+  if i <> -1 then
+  begin
+    OnPanelSendAll( i, FALSE, TRUE );
+  end;
+end;
+
+procedure TFormMain.SpeedButtonUndoClick(Sender: TObject);
+begin
+  UndoRedo.Undo;
+  RefreshCurrentPage;
+end;
+
+procedure TFormMain.SpeedButtonVerifyAllClick(Sender: TObject);
+var
+  i : integer;
+begin
+  for i := 0 to fSigFile.NodeList.Max do
+  begin
+    OnPanelSendAll( i, TRUE, FALSE );
+  end;
+end;
+
+procedure TFormMain.SpeedButtonVerifyClick(Sender: TObject);
+var
+  i : integer;
+begin
+  i := TabControlPanels.TabIndex;
+  if i <> -1 then
+  begin
+    OnPanelSendAll( i, TRUE, TRUE );
+  end;
+end;
+
+procedure TFormMain.ShowConfigPage1Click(Sender: TObject);
+begin
+  TabSheetConfiguration.TabVisible := not TabSheetConfiguration.TabVisible;
+end;
+
+procedure TFormMain.ShowDeviceSummary;
+var
+  i, j, iRow : integer;
+  iPanel : tZFPNode;
+  iLoop : tLoop;
+  iDevice : tLoopDevice;
+  iCanRetry : boolean;
+  iIG : tInputGroup;
+  iOG : tOutputGroup;
+  iZone : tZFPZone;
+{
+const
+  cColLoopName = 0;
+  cColLoopID = cColLoopName + 1;
+  cColDevAddress = cColLoopID + 1;
+  cColDevType = cColDevAddress + 1;
+  cColDevImage = cColDevType + 1;
+  cColDevName = cColDevImage + 1;
+  cColZoneMain = cColDevName + 1;
+  cColIGMain  = cColZoneMain + 1;
+  cColOGMain  = cColIGMain + 1;
+  cColDisablement = cColOGMain + 1;
+  cColFault = cColDisablement + 1;
+}
+label
+  Retry;
+begin
+  iCanRetry := TRUE;
+Retry:
+  with FrameGlobalDevices.SigGeneralGridGlobalDevices do
+  begin
+    ClearCells;
+    iRow := 1;
+    i := TabControlPanels.TabIndex;
+    if i = -1 then
+    begin
+      Visible := FALSE;
+    end
+    else if not assigned( TabControlPanels.Tabs.Objects[ i ] ) then
+    begin
+      Visible := FALSE;
+    end
+    else
+    begin
+      //iPanel := TabControlPanels.Tabs.Objects[ i ] as tZFPNode;
+      iPanel := fSigFile.NodeList.Node[ i ];
+      if assigned( iPanel ) then
+      begin
+        for i := 0 to iPanel.LoopList.Max do
+        begin
+          iLoop := iPanel.LoopList.Loop[ i ];
+          for j := 0 to iLoop.LoopDevices.Max do
+          begin
+            iDevice := iLoop.LoopDevices.LoopDevice[ j ];
+            if iDevice.IOType <> sdt_Not_Fitted then
+            begin
+              inc( iRow );
+              Cell[ cColLoopName, iRow ] := iLoop.VisibleName;
+              Cell[ cColLoopID, iRow ] := iLoop.LoopAddress.Value;
+              Cell[ cColDevAddress, iRow ] := IntToStr( j + 1 );
+              Cell[ cColDevType, iRow ] := iDevice.DeviceMap.ValueAsText;
+              Cell[ cColDevImage, iRow ] := IntToStr( iDevice.DeviceImage );
+              Cell[ cColDevName, iRow ] := iDevice.Name;
+              CellObject[ cColDevName, iRow ] := iDevice;
+              iZone := iDevice.FirstZone;
+              if assigned( iZone ) then
+              begin
+                if iDevice.HasMultipleZones then
+                begin
+                  Cell[ cColZoneMain, iRow ] := iZone.Name + '...';
+                end
+                else
+                begin
+                  Cell[ cColZoneMain, iRow ] := iZone.Name;
+                end;
+              end
+              else
+              begin
+                Cell[ cColZoneMain, iRow ] := '';
+              end;
+              iIG := iDevice.FirstInputGroup;
+              if assigned( iIG ) then
+              begin
+                if iDevice.HasMultipleInputGroups then
+                begin
+                  Cell[ cColIGMain, iRow ] := iIG.Name + '...';
+                end
+                else
+                begin
+                  Cell[ cColIGMain, iRow ] := iIG.Name;
+                end;
+              end
+              else
+              begin
+                Cell[ cColIGMain, iRow ] := '';
+              end;
+              iOG := iDevice.FirstOutputGroup;
+              if assigned( iOG ) then
+              begin
+                if iDevice.HasMultipleOutputGroups then
+                begin
+                  Cell[ cColOGMain, iRow ] := iOG.Name + '...';
+                end
+                else
+                begin
+                  Cell[ cColOGMain, iRow ] := iOG.Name;
+                end;
+              end
+              else
+              begin
+                Cell[ cColOGMain, iRow ] := '';
+              end;
+              iIG := iDevice.FirstDisablementGroup;
+              if assigned( iIG ) then
+              begin
+                if iDevice.HasMultipleDisablementGroups then
+                begin
+                  Cell[ cColDisablement, iRow ] := iIG.Name + '...';
+                end
+                else
+                begin
+                  Cell[ cColDisablement, iRow ] := iIG.Name;
+                end;
+              end
+              else
+              begin
+                Cell[ cColDisablement, iRow ] := '';
+              end;
+              iIG := iDevice.FirstFaultGroup;
+              if assigned( iIG ) then
+              begin
+                if iDevice.HasMultipleFaultGroups then
+                begin
+                  Cell[ cColFault, iRow ] := iIG.Name + '...';
+                end
+                else
+                begin
+                  Cell[ cColFault, iRow ] := iIG.Name;
+                end;
+              end
+              else
+              begin
+                Cell[ cColFault, iRow ] := '';
+              end;
+            end;
+          end;
+        end;
+        if iRow > 1 then
+        begin
+          Visible := TRUE;
+          RowCount := iRow + 1;
+        end
+        else
+        begin
+          Visible := FALSE;
+        end;
+      end
+      else if iCanRetry then
+      begin
+        iCanRetry := FALSE;
+        LoadPanelView;
+        goto Retry;
+      end
+      else
+      begin
+        Visible := FALSE;
+      end;
+    end;
+
+  end;
+end;
+
+procedure TFormMain.ShowExpertCheckBoxes(const iCustomMode: boolean);
+begin
+  CheckBoxFullXferOptions.Checked := em_Show_Advanced_Send_Rcv in ExpertModes;
+  CheckBoxFullXferOptions.Enabled := iCustomMode;
+  CheckBoxUseThreads.Checked := em_Use_Threading in ExpertModes;
+  CheckBoxUseThreads.Enabled := iCustomMode;
+  CheckBoxCheckUSBStatus.Checked := em_Check_USB_Status in ExpertModes;
+  CheckBoxCheckUSBStatus.Enabled := iCustomMode;
+  CheckBoxUseFullDictionaries.Checked := em_Use_Full_Dictionaries in ExpertModes;
+  CheckBoxCfgAcrossNetwork.Checked := em_Allow_Cfg_from_remote_panels in ExpertModes;
+  CheckBoxViewLogAsTable.Checked := em_View_Log_as_Table in ExpertModes;
+  CheckBoxUseFullDictionaries.Enabled := iCustomMode;
+  CheckBoxAllFileTransfersToPanel.Checked :=  em_Allow_File_Transfer in ExpertModes;
+  CheckBoxAllFileTransfersToPanel.Enabled := iCustomMode;
+  CheckBoxAllowImportExport.Checked := em_Show_Import_Export in ExpertModes;
+  CheckBoxAllowImportExport.Enabled := iCustomMode;
+  CheckBoxAutoReload.Checked := em_Auto_Reload_Last_Saved_File in ExpertModes;
+  CheckBoxAllowImportExport.Enabled := TRUE; // always available even when not in custom mode
+end;
+
+procedure TFormMain.ShowExpertModes;
+var
+  iCustomMode : boolean;
+begin
+  if ExpertModes = em_Simple then
+  begin
+    RadioGroupEditMode.ItemIndex := 0;
+    iCustomMode := FALSE;
+  end
+  else if ExpertModes = em_Expert then
+  begin
+    RadioGroupEditMode.ItemIndex := 1;
+    iCustomMode := FALSE;
+  end
+  else
+  begin
+    RadioGroupEditMode.ItemIndex := 2;
+    iCustomMode := TRUE;
+  end;
+  ShowExpertCheckBoxes( iCustomMode );
+end;
+
+procedure TFormMain.ShowLogo;
+begin
+  fSigFile.Logo.ShowLogo( ImageLogo.Picture );
+end;
+
+procedure TFormMain.ShowNode( const pNode : tZFPNode );
+begin
+  VisibleNode := pNode;
+  //pNode.LoopList.SetupTabs;
+end;
+
+(*
+procedure TFormMain.ShowObject(const pObject, pOriginalObject: TSigCompoundProperty);
+begin
+  if assigned( pObject ) then
+  begin
+    // locate an object in an editable area
+    // first locate main page. This will be either
+    // System view or Node view.
+    if pObject is tZFPNode then
+    begin
+      if assigned( pOriginalObject ) then
+      begin
+        // is not a panel so go to panel page and then work from there
+      end
+      else
+      begin
+        // is a panel so go to node page on networks
+        PageControlMain.ActivePage := TabSheetNetworkOverview;
+        SigFile.NodeList.ActiveNode := pObject as TZFPNode;
+      end;
+    end
+    else if pObject is TZFPMode then
+    begin
+      iIsNetworkObject := TRUE;
+    end
+    else if pObject is tZFPZone then
+    begin
+      iIsNetworkObject := TRUE;
+    end
+    else if pObject is tZFPSuperGroup then
+    begin
+      iIsNetworkObject := TRUE;
+    end
+    else if pObject is tInputSuperGroup then
+    begin
+      iIsNetworkObject := TRUE;
+    end
+    else if pObject is tInputGroup then
+    begin
+      iIsNetworkObject := TRUE;
+    end
+    else if pObject is tOutputGroup then
+    begin
+      iIsNetworkObject := TRUE;
+    end
+    else
+    begin
+      if assigned( pOriginalObject ) then
+      begin
+        ShowObject( pObject.Owner, pOriginalObject );
+      end
+      else
+      begin
+        ShowObject( pObject.Owner, pObject );
+      end;
+    end;
+  end;
+end;
+*)
+
+procedure TFormMain.ShowOGTab(Sender: tObject);
+begin
+  PageControlNetworkView.ActivePage := TabSheetGlobalOutputGroups;
+end;
+
+procedure TFormMain.ShowZoneDeviceSummary;
+var
+  i, j, z, s, f, iRow : integer;
+  iPanel : tZFPNode;
+  iLoop : tLoop;
+  iDevice : tLoopDevice;
+  iZone, sZone : tZFPZone;
+  iSubDevices : string;
+  iSubDevice : tLoopSubDevice;
+  iField : tLoopSubDeviceField;
+  iLastSD : integer;
+  iFirstSD : integer;
+const
+  cColZoneName = 0;
+  cColZoneID = cColZoneName + 1;
+  cColLoopName = cColZoneID + 1;
+  cColLoopID = cColLoopName + 1;
+  cColDevAddress = cColLoopID + 1;
+  cColDevSubAddresses = cColDevAddress + 1;
+  cColDevType = cColDevSubAddresses + 1;
+  cColDevImage = cColDevType + 1;
+  cColDevName = cColDevImage + 1;
+begin
+  with FrameGlobalDevices.SigGeneralGridZonalSummary do
+  begin
+    ClearCells;
+    iRow := 1;
+    i := TabControlPanels.TabIndex;
+    if i = -1 then
+    begin
+      if EditPanelName.Text <> '' then
+      begin
+        EditPanelName.Text := '';
+      end;
+      Visible := FALSE;
+    end
+    else
+    begin
+      //iPanel := TabControlPanels.Tabs.Objects[ i ] as tZFPNode;
+      iPanel := fSigFile.NodeList.Node[ i ];
+      for z := 0 to fSigFile.ZoneList.Max do
+      begin
+        iZone := fSigFile.ZoneList.Zone[ z ];
+        for i := 0 to iPanel.LoopList.Max do
+        begin
+          iLoop := iPanel.LoopList.Loop[ i ];
+          for j := 0 to iLoop.LoopDevices.Max do
+          begin
+            iDevice := iLoop.LoopDevices.LoopDevice[ j ];
+            if iDevice.IOType <> sdt_Not_Fitted then
+            begin
+              iSubDevices := '';
+              iLastSD := 0;
+              iFirstSD := 0;
+              for s := 1 to iDevice.SubDevices.Max do // ignore device
+              begin
+                iSubDevice := iDevice.SubDevices.SubDevice[ s ];
+                sZone := nil;
+                for f := 0 to iSubDevice.Fields.Max do
+                begin
+                  iField := iSubDevice.Fields.Field[ f ];
+                  if iField.FieldDescriptor.DeviceFieldEditorStyle = es_Zone then
+                  begin
+                    sZone := iSubDevice.Field[ f ].Zone;
+                    if not assigned( sZone ) then
+                    begin
+                      sZone := fSigFile.ZoneList.ObjectWithID(StrToIntDef( iSubDevice.Field[ f ].Value, 0 )) as tZFPZone;
+                      iSubDevice.Field[ f ].Zone := sZone;
+                    end
+                    else
+                    begin
+                      iSubDevice.Field[ f ].PointerType1.PointerType := lf_Zone;
+                    end;
+                    break;
+                  end;
+                end;
+
+                if sZone = iZone then
+                begin
+                  if iLastSD = 0 then
+                  begin
+                    iFirstSD := s;
+                    iLastSD := s;
+                  end
+                  else if s = (iLastSD + 1 ) then
+                  begin
+                    iLastSD := s;
+                  end
+                  else
+                  begin
+                    if iSubDevices <> '' then
+                    begin
+                      iSubDevices := iSubDevices + ','
+                    end;
+                    iSubDevices := iSubDevices + IntToStr( iFirstSD );
+                    if iLastSD <> iFirstSD then
+                    begin
+                      iSubDevices := iSubDevices + '-' + IntToStr( iLastSD );
+                    end;
+                    iFirstSD := s;
+                    iLastSD := s;
+                  end;
+                end;
+              end;
+              // final flourish
+              if iFirstSD <> 0 then
+              begin
+                if iSubDevices <> '' then
+                begin
+                  iSubDevices := iSubDevices + ','
+                end;
+                iSubDevices := iSubDevices + IntToStr( iFirstSD );
+                if iLastSD <> iFirstSD then
+                begin
+                  iSubDevices := iSubDevices + '-' + IntToStr( iLastSD );
+                end;
+              end;
+              if iSubDevices <> '' then
+              begin
+                inc( iRow );
+                Cell[ cColZoneName, iRow ] := iZone.ExpandedName;
+                Cell[ cColZoneID, iRow ] := IntToStr( iZone.ID.ValueAsInt );
+                Cell[ cColLoopName, iRow ] := iLoop.VisibleName;
+                Cell[ cColLoopID, iRow ] := iLoop.LoopAddress.Value;
+                Cell[ cColDevAddress, iRow ] := IntToStr( j + 1 );
+                Cell[ cColDevSubAddresses, iRow ] := iSubDevices;
+                Cell[ cColDevType, iRow ] := iDevice.DeviceMap.ValueAsText;
+                Cell[ cColDevImage, iRow ] := IntToStr( iDevice.DeviceImage );
+                Cell[ cColDevName, iRow ] := iDevice.Name;
+                CellObject[ cColDevName, iRow ] := iDevice;
+              end;
+            end;
+          end;
+        end;
+      end;
+      if iRow > 1 then
+      begin
+        Visible := TRUE;
+        RowCount := iRow + 1;
+      end
+      else
+      begin
+        Visible := FALSE;
+      end;
+    end;
+
+  end;
+end;
+
+procedure TFormMain.SigNETStringGridNodesDragOver(Sender, Source: TObject; X,
+  Y: Integer; State: TDragState; var Accept: Boolean);
+var
+  iCellIndex, ACol, ARow, iCellIndex2, ACol2, ARow2 : integer;
+begin
+  with StringGridNodes do
+  begin
+    MouseToCell( X, Y, ACol, ARow );
+    iCellIndex := ARow * ColCount + ACol + 1;
+    Accept := (iCellIndex <> fDragStart );
+    if iCellIndex <> fDragEnd then
+    begin
+      if fDragEnd <> -1 then
+      begin
+        iCellIndex2 := fDragEnd - 1;
+        ARow2 := iCellIndex2 div ColCount;
+        ACol2 := iCellIndex2 mod ColCount;
+        InvalidateCell( ACol2, ARow2 );
+      end;
+      if Accept then
+      begin
+        fDragEnd := iCellIndex;
+        InvalidateCell( ACol, ARow );
+      end
+      else
+      begin
+        fDragEnd := -1;
+      end;
+    end;
+  end;
+end;
+
+procedure TFormMain.SigNETStringGridNodesDrawCell(Sender: TObject; ACol,
+  ARow: Integer; Rect: TRect; State: TGridDrawState);
+var
+  iImageIndex, iCellIndex : integer;
+  iSaveColour, iSavePenColour, iSaveFontColour : tColor;
+  //iTextHt, iTextWidth : integer;
+  iText : string;
+  iX, iY : integer;
+begin
+  with StringGridNodes do
+  begin
+    iCellIndex := ARow * ColCount + ACol + 1; // Cell index refers to address on loop, not entry
+    iImageIndex := fSigFile.NodeImage( iCellIndex );
+    //if iCellIndex > Loop.MaxDevicesOnCurrentLoop then
+    if iImageIndex = -1 then
+    begin
+      iSaveColour := Canvas.Brush.Color;
+      iSavePenColour := Canvas.Pen.Color;
+      Canvas.Brush.Color := clWhite;
+      Canvas.Pen.Color := clWhite;
+      Canvas.Rectangle( Rect.Left, Rect.Top, Rect.Right+1, Rect.Bottom+1 );
+      Canvas.Brush.Color := iSaveColour;
+      Canvas.Pen.Color := iSavePenColour;
+    end
+    else
+    begin
+      if iImageIndex < ImageListComponentPalette.Count then
+      begin
+        ImageListComponentPalette.Draw( Canvas, Rect.Left, Rect.Top, iImageIndex );
+      end
+      else
+      begin
+        iSaveColour := Canvas.Brush.Color;
+        Canvas.Brush.Color := clSilver;
+        Canvas.Rectangle( Rect.Left, Rect.Top, Rect.Right, Rect.Bottom );
+        Canvas.Brush.Color := iSaveColour;
+      end;
+      iSaveColour := Canvas.Brush.Color;
+      iSaveFontColour := Canvas.Font.Color;
+      //if gdSelected in State then
+      if iCellIndex = fDragStart then
+      begin
+        Canvas.Brush.Color := clGreen;
+        Canvas.Font.Color := clWhite;
+      end
+      else if iCellIndex = fDragEnd then
+      begin
+        Canvas.Brush.Color := clBlue;
+        Canvas.Font.Color := clWhite;
+      end
+      else if iCellIndex <= fNodeEditPending then
+      begin
+        if fNodeEditRemoving then
+        begin
+          Canvas.Brush.Color := clWhite;
+          Canvas.Font.Color := clBlack;
+        end
+        else
+        begin
+          Canvas.Brush.Color := clBlack;
+          Canvas.Font.Color := clWhite;
+        end;
+      end
+      else if iCellIndex <= fNodeEditCurrent then
+      begin
+        Canvas.Brush.Color := clBlack;
+        Canvas.Font.Color := clWhite;
+      end
+      else
+      begin
+        Canvas.Brush.Color := clWhite;
+        Canvas.Font.Color := clBlack;
+      end;
+      iText := IntToStr( iCellIndex );
+      Canvas.Rectangle( Rect.Left, Rect.Top + ImageListComponentPalette.Height, Rect.Right, Rect.Bottom);
+      iY := (Rect.Top + ImageListComponentPalette.Height + Rect.Bottom - Canvas.TextHeight( iText )) div 2;
+      iX := (Rect.Left + Rect.Right - Canvas.TextWidth( iText )) div 2;
+      Canvas.TextOut( iX, iY, iText );
+      Canvas.Brush.Color := iSaveColour;
+      Canvas.Font.Color := iSaveFontColour;
+    end;
+  end;
+end;
+
+procedure TFormMain.SigNETStringGridNodesEndDrag(Sender, Target: TObject; X,
+  Y: Integer);
+var
+  ARow, ACol : integer;
+begin
+  // swap values if drag successful
+  if assigned( Target ) then
+  begin
+    with StringGridNodes do
+    begin
+      MouseToCell( X, Y, ACol, ARow );
+      fDragEnd := ARow * ColCount + ACol + 1;
+    end;
+    if (fDragStart >= 0) and (fDragEnd >= 0) then
+    begin
+      if (fDragStart <> fDragEnd) then
+      begin
+        fSigFile.NodeList.Swap( fDragStart, fDragEnd );
+      end;
+    end;
+  end;
+  if fDragEnd <> -1 then
+  begin
+    fNodeEditCurrent := IntToStr( fDragEnd );
+  end
+  else if fDragStart <> -1 then
+  begin
+    fNodeEditCurrent := IntToStr( fDragStart );
+  end;
+  fDragStart := -1;
+  fDragEnd := -1;
+  fSigNETStringGridNodesDragging := FALSE;
+  StringGridNodes.Invalidate;
+end;
+
+procedure TFormMain.SigNETStringGridNodesMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+var
+  ACol, ARow : integer;
+  iCellIndex : integer;
+begin
+  with StringGridNodes do
+  begin
+    MouseToCell( X, Y, ACol, ARow );
+    iCellIndex := ARow * ColCount + ACol + 1;
+    // If the Alt key (but not shift or Ctrl) and Left Mouse button
+    // held down then we start the drag process to swap devices
+    if Shift = [ ssAlt, ssLeft ] then
+    begin
+      fDragStart := iCellIndex;
+      BeginDrag( TRUE );
+    end
+    else
+    begin
+      fNodeEditPending := iCellIndex;
+      if not (ssCtrl in Shift) then
+      begin
+        // not adding
+        if fNodeEditCurrent <> -1 then
+        begin
+          fNodeEditCurrent := '';
+          fNodeEditRemoving := FALSE;
+          Invalidate;
+        end;
+      end
+      else
+      begin
+        fNodeEditRemoving := iCellIndex <= fNodeEditCurrent;
+      end;
+      fSigNETStringGridNodesMouseIsDown := TRUE;
+    end;
+  end;
+end;
+
+procedure TFormMain.SigNETStringGridNodesMouseMove(Sender: TObject;
+  Shift: TShiftState; X, Y: Integer);
+var
+  ACol, ARow : integer;
+  iCellIndex : integer;
+  i: integer;
+begin
+  with StringGridNodes do
+  begin
+    MouseToCell( X, Y, ACol, ARow );
+    iCellIndex := ARow * ColCount + ACol + 1;
+    if fSigNETStringGridNodesDragging then
+    begin
+    end
+    else if fSigNETStringGridNodesMouseIsDown then
+    begin
+      if fNodeEditPending.Finish > iCellIndex then
+      begin
+        for i := fNodeEditPending.Finish - 1 downto iCellIndex - 1 do
+        begin
+          ARow := i div ColCount;
+          ACol := i mod ColCount;
+          InvalidateCell( ACol, ARow );
+        end;
+        fNodeEditPending.Finish := iCellIndex;
+      end
+      else if fNodeEditPending.Finish < iCellIndex then
+      begin
+        for i := fNodeEditPending.Finish - 1 to iCellIndex - 1 do
+        begin
+          ARow := i div ColCount;
+          ACol := i mod ColCount;
+          InvalidateCell( ACol, ARow );
+        end;
+        fNodeEditPending.Finish := iCellIndex;
+      end;
+    end;
+  end;
+end;
+
+procedure TFormMain.SigNETStringGridNodesMouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+var
+  i: Integer;
+  iStart, iEnd : integer;
+  iNodeEditPending : tDSMList;
+  iCellIndex : integer;
+  ARow, ACol : integer;
+  iType : tNodalType;
+  iNode : tZFPNode;
+begin
+  fSigFile.UndoRedo.GroupUndoActive := TRUE;
+  try
+    if fSigNETStringGridNodesDragging then
+    begin
+      with StringGridNodes do
+      begin
+        MouseToCell( X, Y, ACol, ARow );
+        iCellIndex := ARow * ColCount + ACol + 1;
+        fDragEnd := iCellIndex;
+        if fDragStart = fDragEnd then
+        begin
+          EndDrag( FALSE );
+        end
+        else
+        begin
+          EndDrag( TRUE );
+        end;
+      end;
+    end
+    else
+    begin
+      fSigNETStringGridNodesMouseIsDown := FALSE;
+      if (ssCtrl in Shift) then
+      begin
+        if fNodeEditRemoving then
+        begin
+          fNodeEditCurrent := fNodeEditCurrent - fNodeEditPending;
+        end
+        else
+        begin
+          fNodeEditCurrent := fNodeEditCurrent + fNodeEditPending;
+        end;
+      end
+      else
+      begin
+        if fNodeEditCurrent <> fNodeEditPending then
+        begin
+          iNodeEditPending := fNodeEditPending;
+          fNodeEditCurrent := iNodeEditPending;
+          Invalidate;
+        end;
+      end;
+      if ButtonGroupNodeTypePalette.ItemIndex >= 0 then
+      begin
+        iType := tNodalType( ButtonGroupNodeTypePalette.Items[ ButtonGroupNodeTypePalette.ItemIndex ].Data );
+        if fNodeEditPending.Start >= 0 then
+        begin
+          if fNodeEditPending.Start <= fNodeEditPending.Finish then
+          begin
+            iStart := fNodeEditPending.Start;
+            iEnd := fNodeEditPending.Finish;
+          end
+          else
+          begin
+            iStart := fNodeEditPending.Finish;
+            iEnd := fNodeEditPending.Start;
+          end;
+          FormNodeChangeProblems.ClearIgnoredIncompatibilities;
+          for i := iStart to iEnd do
+          begin
+            iNode := fSigFile.NodeList.NodeWithID( i );
+            if not assigned( iNode ) then
+            begin
+              try
+                iNode := fSigFile.NodeList.CreateNode( i, iType );
+              except
+                fNodeEditPending := -1;
+                raise;
+              end;
+              fSigFile.OnAddNodeFull( iNode );
+              //iNode.Name1.Value := Translate('Node ') + IntToStr( i );
+            end
+            else if FormNodeChangeProblems.Execute( iNode, iType ) then
+            begin
+              iNode.NodalType := iType;
+            end
+            else
+            begin
+              break; // abort sequence - there were problems and the user clicked cancel
+            end;
+          end;
+        end;
+      end;
+      fNodeEditPending := -1;
+    end;
+  finally
+    //UndoRedoNavigationHelper.CheckStatus;
+    fSigFile.UndoRedo.GroupUndoActive := FALSE;
+    StringGridNodes.Invalidate;
+  end;
+end;
+
+procedure TFormMain.SigNETStringGridNodesStartDrag(Sender: TObject;
+  var DragObject: TDragObject);
+begin
+  DragObject := TDragControlObjectEx.Create( StringGridNodes );
+  StringGridNodes.DragCursor := crSizeWE;
+  fSigNETStringGridNodesDragging := TRUE;
+end;
+
+procedure TFormMain.SigSpinEditMaintenanceYearChange(Sender: TObject);
+begin
+  if SigSpinEditMaintenanceYear.IsValid then
+  begin
+    if SigSpinEditMaintenanceYear.Value <> CalendarMaintenanceDate.Year then
+    begin
+      CalendarMaintenanceDate.Year := SigSpinEditMaintenanceYear.Value;
+    end;
+  end;
+end;
+
+procedure TFormMain.TabControlPanelsChange(Sender: TObject);
+begin
+  {UndoRedo.Tag := UndoRedoTag;}
+  if TabControlPanels.TabIndex >= 0 then
+  begin
+    //ShowNode( TabControlPanels.Tabs.Objects[ TabControlPanels.TabIndex ] as tZFPNode );
+    ShowNode( fSigFile.NodeList.Node[ TabControlPanels.TabIndex ] );
+  end;
+  ShowDeviceSummary;
+  ShowZoneDeviceSummary;
+end;
+
+function TFormMain.Translate(const pText: string): string;
+begin
+  Result := XFP4PgmCfg.SigTranslation.Translate( pText );
+end;
+
+procedure TFormMain.UpdateMenuVisibilty;
+begin
+  if em_Allow_File_Transfer in ExpertModes then
+  begin
+    GetFileFromPanel1.Visible := TRUE;
+    SendFiletoPanel1.Visible := TRUE;
+  end
+  else
+  begin
+    GetFileFromPanel1.Visible := FALSE;
+    SendFiletoPanel1.Visible := FALSE;
+  end;
+  if em_Show_Import_Export in ExpertModes then
+  begin
+    Import1.Visible := TRUE;
+    Export1.Visible := TRUE;
+  end
+  else
+  begin
+    Import1.Visible := FALSE;
+    Export1.Visible := FALSE;
+  end;
+end;
+
+procedure TFormMain.OnRedoableChange(const pObject: tSigBaseProperty;
+  const pUndoAction: tSigFileUndoAction; const pUndoString: string);
+begin
+  fUndoRedo.RedoableAction( pObject, pUndoAction, pUndoString );
+end;
+
+procedure TFormMain.OnRedoChange(NewVal: boolean);
+begin
+  if SpeedButtonRedo.Enabled <> NewVal then
+  begin
+    SpeedButtonRedo.Enabled := NewVal;
+    fSigFile.RedoEnabled := NewVal;
+  end;
+end;
+
+procedure TFormMain.OnUndoableChange(const pObject: tSigBaseProperty;
+  const pUndoAction: tSigFileUndoAction; const pUndoString: string);
+begin
+  {
+    Here you do special undo redo actions. You can set UndoRedo.Tag
+    separately, e.g. when page changes, or use the value directly here
+  }
+  case pUndoAction of
+    undoClearUndoList:
+    begin
+      fUndoRedo.Clear;
+    end;
+    else
+    begin
+      fUndoRedo.UndoableAction( fUndoRedo.Tag, pObject, pUndoAction, pUndoString );
+    end;
+  end;
+end;
+
+procedure TFormMain.OnUndoChange(NewVal: boolean);
+begin
+  if SpeedButtonUndo.Enabled <> NewVal then
+  begin
+    SpeedButtonUndo.Enabled := NewVal;
+    fSigFile.UndoEnabled := NewVal;
+  end;
+end;
+
+procedure TFormMain.LoadPanelView;
+var
+  i, iSaveIndex : integer;
+  iNode : tZFPNode;
+begin
+  iSaveIndex := TabControlPanels.TabIndex;
+  with TabControlPanels.Tabs do
+  begin
+    if fSigFile.NodeList.Max < (Count - 1) then
+    begin
+      Clear;
+    end;
+    for i := 0 to fSigFile.NodeList.Max do
+    begin
+      iNode := fSigFile.NodeList.Node[ i ];
+      if assigned( iNode.NodeType ) then
+      begin
+        if i >= Count then
+        begin
+        AddObject( '[' + IntToStr( iNode.ID ) + ']' + iNode.Name1.Value, iNode);
+        end
+        else
+        begin
+          Strings[ i ] := '[' + IntToStr( iNode.ID ) + ']' + iNode.Name1.Value;
+          Objects[ i ] := iNode;
+        end;
+      end;
+    end;
+    if Count = 0 then
+    begin
+      TabControlPanels.Visible := FALSE;
+    end
+    else
+    begin
+      TabControlPanels.Visible := TRUE;
+      if (iSaveIndex < 0) or (iSaveIndex >= Count) then
+      begin
+        TabControlPanels.TabIndex := 0;
+      end
+      else
+      begin
+        TabControlPanels.TabIndex := iSaveIndex;
+      end;
+      //VisibleNode := TabControlPanels.Tabs.Objects[ TabControlPanels.TabIndex ] as tZFPNode;
+      VisibleNode := fSigFile.NodeList.Node[ TabControlPanels.TabIndex ];
+      //VisibleNode.RefreshEditors; Not required. Done in SigFile.RefreshEditors
+    end;
+  end;
+  SigFile.RefreshEditors;
+  //SigFile.CauseAndEffects.RefreshEditors;
+end;
+
+procedure TFormMain.LocateDevices(const pPanel, pLoop: integer);
+begin
+  // first switch to panel view
+  PageControlMain.ActivePage := TabSheetPanelView;
+  // and on to the devices view
+  PageControlPanelView.ActivePage := TabSheetLoops;
+  // now set the active devices
+  with fSigFile.NodeList do
+  begin
+    //DeviceEditMode := demSubDeviceEntries;
+    DeviceEditMode := demDeviceEntries;
+    ActiveChild := IndexOfNodeWithID( pPanel );
+    if ActiveChild <> -1 then
+    begin
+      TabControlPanels.TabIndex := ActiveChild;
+      with Node[ ActiveChild ].LoopList do
+      begin
+        ActiveChild := IndexOfLoopWithID( pLoop );
+      end;
+    end;
+  end;
+  UndoRedoNavigationHelper.CheckStatus;
+end;
+
+function TFormMain.LogPageVisible: integer;
+begin
+  Result := -1;
+  if PageControlMain.ActivePage = TabSheetPanelView then
+  begin
+    if PageControlPanelView.ActivePage = TabSheetPanelLogs then
+    begin
+      Result := FrameLogFiles1.TabControlLogs.TabIndex;
+    end;
+  end;
+end;
+
+procedure TFormMain.MakeNodeVisible(const pNode: TZFPNode);
+var
+  i: Integer;
+begin
+  if assigned (pNode ) then
+  begin
+    if TabControlPanels.TabIndex >= 0 then
+    begin
+      if TabControlPanels.Tabs.Objects[ TabControlPanels.TabIndex ] = pNode then
+      begin
+        // (if same, then nothing to do!
+        exit;
+      end;
+    end;
+    for i := 0 to TabControlPanels.Tabs.Count - 1 do
+    begin
+      if TabControlPanels.Tabs.Objects[ i ] = pNode then
+      begin
+        TabControlPanels.TabIndex := i;
+        TabControlPanelsChange( self );
+        exit;
+      end;
+    end;
+  end;
+end;
+
+function TFormMain.MoreChildrenAtLevel(const pTree: tTreeView; const pAtLevel,
+  pStartingNode: integer): boolean;
+var
+  i: Integer;
+  iLevel : integer;
+begin
+  Result := FALSE;
+  for i := pStartingNode + 1 to pTree.Items.Count - 1 do
+  begin
+    iLevel := pTree.Items[ i ].Level;
+    if iLevel = pAtLevel then
+    begin
+      Result := TRUE;
+      exit;
+    end;
+    if iLevel < pAtLevel then
+    begin
+      // no
+      exit;
+    end;
+  end;
+end;
+
+procedure TFormMain.NextError1Click(Sender: TObject);
+begin
+  fErrorLists.Next1Click( Sender );
+end;
+
+procedure TFormMain.PageControlMainChange(Sender: TObject);
+var
+  i : integer;
+begin
+  PageControlPanelViewChange( self );
+  HandleEditorsByPage; // for the rest
+  {UndoRedo.Tag := UndoRedoTag;}
+  if PageControlMain.ActivePage = TabSheetPanelView then
+  begin
+    if TabControlPanels.Tabs.Count <> fSigFile.NodeList.Count then
+    begin
+      LoadPanelView;
+    end
+    else if Sender = VisibleNode then
+    begin
+      TabControlPanelsChange( self );
+    end
+    else
+    begin
+      i := TabControlPanels.TabIndex;
+      if i = -1 then
+      begin
+        if EditPanelName.Text <> '' then
+        begin
+          EditPanelName.Text := '';
+        end;
+      end
+      else
+      begin
+        if PageControlPanelView.ActivePage = TabSheetDeviceSummary then
+        begin
+          ShowDeviceSummary;
+          ShowZoneDeviceSummary;
+        end;
+      end;
+    end;
+    fSigFile.ResetSelectedDevice;
+
+  end
+  else if PageControlMain.ActivePage = TabSheetNetworkView then
+  begin
+    fSigFile.ZoneList.UpdateEditors;
+    fSigFile.CauseAndEffects.InputGroups.UpdateEditors;
+    if PageControlNetworkView.ActivePage = TabSheetGlobalModes then
+    begin
+      FrameGlobalObjectEditorModes.PageControlProperties.OnChange( self );
+    end
+    else if PageControlNetworkView.ActivePage = TabSheetGlobalZoning then
+    begin
+      FrameZoneEditor.PageControlProperties.OnChange( self );
+    end
+    else if PageControlNetworkView.ActivePage = TabSheetGlobalInputGroups then
+    begin
+      FrameInputGroupEditor.PageControlProperties.OnChange( self );
+    end
+    else if PageControlNetworkView.ActivePage = TabSheetInputSuperGroups then
+    begin
+      FrameInputSuperGroupEditor.PageControlProperties.OnChange( self );
+    end
+    else if PageControlNetworkView.ActivePage = TabSheetGlobalOutputGroups then
+    begin
+      FrameOutputGroupEditor.PageControlProperties.OnChange( self );
+    end
+    else if PageControlNetworkView.ActivePage = TabSheetSuperGroups then
+    begin
+      FrameSuperGroupEditor.PageControlProperties.OnChange( self );
+    end
+    else if PageControlNetworkView.ActivePage = TabSheetSequences then
+    begin
+      FrameSequenceEditor.PageControlProperties.OnChange( self );
+    end
+    else if PageControlNetworkView.ActivePage = TabSheetPulsePatterns then
+    begin
+      FrameGlobalObjectEditorPulsePatterns.PageControlProperties.OnChange( self );
+    end;
+  end
+  else if PageControlMain.ActivePage = TabSheetConfiguration then
+  begin
+    FrameSimSystem.RefreshPanelTable(fSigFile);
+  end;
+end;
+
+procedure TFormMain.PageControlNetworkViewChange(Sender: TObject);
+begin
+  fSigFile.ZoneList.UpdateEditors;
+  fSigFile.CauseAndEffects.InputGroups.UpdateEditors;
+  if PageControlNetworkView.ActivePage = TabSheetNetworkOverview then
+  begin
+  end
+  else if PageControlNetworkView.ActivePage = TabSheetGlobalModes then
+  begin
+    FrameGlobalObjectEditorModes.PageControlProperties.OnChange( self );
+  end
+  else if PageControlNetworkView.ActivePage = TabSheetGlobalZoning then
+  begin
+    FrameZoneEditor.PageControlProperties.OnChange( self );
+  end
+  else if PageControlNetworkView.ActivePage = TabSheetGlobalInputGroups then
+  begin
+    FrameInputGroupEditor.PageControlProperties.OnChange( self );
+  end
+  else if PageControlNetworkView.ActivePage = TabSheetInputSuperGroups then
+  begin
+    FrameInputSuperGroupEditor.PageControlProperties.OnChange( self );
+  end
+  else if PageControlNetworkView.ActivePage = TabSheetGlobalOutputGroups then
+  begin
+    FrameOutputGroupEditor.PageControlProperties.OnChange( self );
+  end
+  else if PageControlNetworkView.ActivePage = TabSheetSuperGroups then
+  begin
+    FrameSuperGroupEditor.PageControlProperties.OnChange( self );
+  end
+  else if PageControlNetworkView.ActivePage = TabSheetSequences then
+  begin
+    FrameSequenceEditor.PageControlProperties.OnChange( self );
+  end
+  else if PageControlNetworkView.ActivePage = TabSheetPulsePatterns then
+  begin
+    FrameGlobalObjectEditorPulsePatterns.PageControlProperties.OnChange( self );
+  end;
+end;
+
+procedure TFormMain.PageControlPanelViewChange(Sender: TObject);
+begin
+  with PageControlPanelView do
+  begin
+    if (PageControlMain.ActivePage = TabSheetPanelView) and (ActivePage = TabSheetPanelLogs) then
+    begin
+      SpeedButtonRetrieveAllData.Caption := Translate( 'Retrieve Log' );
+      SpeedButtonRetrieveAllData.OnClick := SpeedButtonRetrieveLogClick;
+      SpeedButtonSendAllToPanel.Visible := FALSE;
+      SpeedButtonRetrieveDeviceData.Visible := FALSE;
+      SpeedButtonNew.OnClick := SpeedButtonEraseLogClick;
+      SpeedButtonOpen.OnClick := Import1Click;
+    end
+    else
+    begin
+      SpeedButtonRetrieveAllData.Caption := Translate( 'Retrieve All Data' );
+      SpeedButtonRetrieveAllData.OnClick := SpeedButtonRetrieveAllDataClick;
+      SpeedButtonSendAllToPanel.Visible := TRUE;
+      SpeedButtonRetrieveDeviceData.Visible := TRUE;
+      SpeedButtonNew.OnClick := SpeedButtonNewClick;
+      SpeedButtonOpen.OnClick := SpeedButtonOpenClick;
+    end;
+    if ActivePage = TabSheetDeviceSummary then
+    begin
+      ShowDeviceSummary;
+      ShowZoneDeviceSummary;
+    end
+    else if ActivePage = TabSheetLoops then
+    begin
+      fSigFile.ResetSelectedDevice;
+      fSigFile.NodeList.ActiveNode.RefreshEditors;
+    end
+    else if ActivePage = TabSheetNetworkView then
+    begin
+      PageControlNetworkViewChange( Sender );
+    end
+    else if ActivePage = TabSheetGlobalProperties then
+    begin
+      fSigFile.NodeList.RefreshEditors;
+    end;
+  end;
+end;
+
+procedure TFormMain.PageControlSiteDetailsChange(Sender: TObject);
+begin
+  HandleEditorsByPage;
+end;
+
+procedure TFormMain.PanelBuildSDCardFiles(const pSender: integer);
+begin
+  fErrorLists.ErrorList := nil;
+  try
+    FormASCIITransfer.BuildSDCardFiles( fSigFile.NodeList.Node[ pSender ], Errors );
+  finally
+    if Errors.Count > 0 then
+    begin
+      fErrorLists.ErrorList := Errors;
+    end;
+  end;
+end;
+
+procedure TFormMain.PanelDevicesResize(Sender: TObject);
+begin
+  fSigFile.ResizeDeviceGrid;
+end;
+
+procedure TFormMain.PanelGetFile;
+begin
+  if FormFileTransfer.Execute( Translate( 'Get File From Panel' )) then
+  begin
+
+  end;
+end;
+
+procedure TFormMain.PanelSendFile;
+begin
+  if FormFileTransfer.Execute( Translate( 'Send File To Panel' )) then
+  begin
+    ClearErrorLists;
+    FormASCIITransfer.SendFile( FormFileTransfer.PCFileName, FormFileTransfer.PanelFileName, Errors );
+  end;
+end;
+
+procedure TFormMain.PanelSiteDetailsResize(Sender: TObject);
+var
+  iWidth : integer;
+begin
+  iWidth := ( PanelSiteDetails.ClientWidth - GroupBoxLogo.Width - (4 * GroupBoxClient.Left )) div 2;
+  GroupBoxClient.Width := iWidth;
+  GroupBoxInstaller.Width := iWidth;
+  GroupBoxInstaller.Left := (2 * GroupBoxClient.Left) + iWidth;
+  GroupBoxLogo.Left := GroupBoxInstaller.Left + iWidth + GroupBoxClient.Left;
+  GroupBoxGeneral.Width := GroupBoxInstaller.Width;
+  GroupBoxSiteNotes.Left := GroupBoxInstaller.Left;
+  GroupBoxSiteNotes.Width := GroupBoxLogo.Left + GroupBoxLogo.Width - GroupBoxInstaller.Left;
+end;
+
+procedure TFormMain.PrevError1Click(Sender: TObject);
+begin
+  fErrorLists.Prev1Click( Sender );
+end;
+
+procedure TFormMain.PrintCalculateCETree;
+var
+  iLogicalWidth, iPhysicalWidth : integer;
+  iPrinterTextHeight, iScreenTextHeight : integer;
+  iCETreeScaleFactor : integer;
+  iSaveFont : tFont;
+begin
+  with fPrintCols do
+  begin
+    Printer := PreviewPrinterMain;
+    ColumnCount := 1;
+    PageCount := 0;
+    CurrPageNo := 0;
+    CalculatingPageCount := TRUE;
+    with Column[ 0 ] do
+    begin
+      Wrap := TRUE;
+      HangingIndent := (Right - Left) div 6;
+    end;
+  end;
+  PrintSetup;
+  iLogicalWidth := PrintFindCETreeLogicalWidth( TreeViewCE1.Canvas, TreeViewCE1 );
+  iPhysicalWidth := PreviewPrinterMain.PageWidth;
+  if iLogicalWidth = 0 then
+  begin
+    raise Exception.Create(Translate('Nothing to print'));
+  end;
+  // else
+  fCETreeScaleFactor := iPhysicalWidth div iLogicalWidth;
+  // update other factors
+  // see if the text ratio version is smaller;
+  iSaveFont := tFont.Create;
+  iSaveFont.Assign( PreviewPrinterMain.Canvas.Font );
+  PreviewPrinterMain.Canvas.Font.Assign( TreeViewCE1.Canvas.Font );
+  iPrinterTextHeight := PreviewPrinterMain.Canvas.TextHeight( 'XX' );
+  iScreenTextHeight := TreeViewCE1.Canvas.TextHeight( 'XX' );
+  iCETreeScaleFactor := iPrinterTextHeight div iScreenTextHeight;
+  PreviewPrinterMain.Canvas.Font.Assign( iSaveFont );
+  iSaveFont.Free;
+  if iCETreeScaleFactor < fCETreeScaleFactor then
+  begin
+    fCETreeScaleFactor := iCETreeScaleFactor;
+  end;
+  fCETreeRowHeight := fCETreeScaleFactor * fCETreeRowHeight;
+  fCETreeImageWidth := fCETreeScaleFactor * fCETreeImageWidth;
+  fCETreeImageHeight := fCETreeScaleFactor * fCETreeImageHeight;
+  fCETreeIndent := fCETreeScaleFactor * fCETreeIndent;
+  fCETreeTextIndent := fCETreeScaleFactor * fCETreeTextIndent;
+  PrintPrepareCETreePages;
+end;
+
+procedure TFormMain.PrintCalculateCurrentDevicePages;
+begin
+  with fPrintCols do
+  begin
+    Printer := PreviewPrinterMain;
+    ColumnCount := 1;
+    PageCount := 0;
+    CurrPageNo := 0;
+    with Column[ 0 ] do
+    begin
+      Wrap := TRUE;
+      HangingIndent := (Right - Left) div 6;
+    end;
+    PrintSetup;
+    CalculatingPageCount := TRUE;
+    PrintPrepareCurrentDevicePages;
+  end;
+end;
+
+procedure TFormMain.PrintCalculateCurrentLogPages;
+var
+  iPrintSize, iScreenSize : integer;
+  iCurrentLog : tLogReport;
+  iSaveFont : tFont;
+begin
+  iSaveFont := tFont.Create;
+  iSaveFont.Assign( PreviewPrinterMain.Canvas.Font );
+  try
+    with fPrintCols do
+    begin
+      Printer := PreviewPrinterMain;
+      Printer.Canvas.Font.Assign( FrameLogFiles1.StringGridLog.Canvas.Font );
+      ColumnCount := 1;
+      PageCount := 0;
+      CurrPageNo := 0;
+      PrintSetup;
+      fLogGridWidth := FrameLogFiles1.StringGridLog.GridLineWidth;
+      iCurrentLog := FrameLogFiles1.TabControlLogs.Tabs.Objects[ LogPageVisible ] as tLogReport;
+      iScreenSize := iCurrentLog.PrintFindLogFileLogicalWidth( FrameLogFiles1.StringGridLog.Canvas, fLogGridWidth );
+      iPrintSize :=  iCurrentLog.PrintFindLogFileLogicalWidth( Printer.Canvas, fLogGridWidth );
+      fLogGridWidth := (fLogGridWidth * iPrintSize ) div iScreenSize;
+      iCurrentLog.PrintFindLogFileLogicalWidth( Printer.Canvas, fLogGridWidth ); // set up properly with correct grid width
+      CalculatingPageCount := TRUE;
+      PrintPrepareCurrentLogPages;
+    end;
+  finally
+    PreviewPrinterMain.Canvas.Font.Assign( iSaveFont );
+    iSaveFont.Free;
+  end;
+end;
+
+procedure TFormMain.PrintCalculateCols;
+begin
+  with fPrintCols do
+  begin
+    Printer := PreviewPrinterMain;
+    ColumnCount := 1;
+    PageCount := 0;
+    CurrPageNo := 0;
+    with Column[ 0 ] do
+    begin
+      Wrap := TRUE;
+      HangingIndent := (Right - Left) div 6;
+    end;
+    PrintSetup;
+  end;
+end;
+
+procedure TFormMain.PrintCETree;
+begin
+  PrintCalculateCETree;
+  PrintPrintCETree;
+end;
+
+procedure TFormMain.PrintPages;
+begin
+  PrintCalculateCols;
+  fPrintCols.CalculatingPageCount := TRUE;
+  PrintPreparePages;
+
+  PrintCalculateCols;
+  fPrintCols.CalculatingPageCount := FALSE;
+  PrintPreparePages;
+
+  //PrintPrintPages;
+end;
+
+procedure TFormMain.PrintNode( const pNode : integer );
+var
+  iKeyswitchOnly : boolean;
+  iAL2, iAL3 : string;
+begin
+  with fPrintCols do
+  begin
+    Printer := PreviewPrinterMain;
+    ColumnCount := 2;
+    PrintFooter;
+    PrintHeader( Translate( 'Details for Node' ) + ' ' + IntToStr( pNode + 1 ) );
+    with fSigFile.NodeList.Node[ pNode ] do
+    begin
+      TextOut( Translate('Device Type') + ' : ' + Translate( NodeType.ValueAsText ));
+      SkipHalfLine;
+      TextOut( LabelPanelName.Caption + ' : ' + Name1.Value );
+      SkipHalfLine( 3 );
+      Font.Style := [fsUnderline];
+      TextOut( Translate( GroupBoxPanelNetworkProperties.Caption ) );
+      Font.Style := [];
+      TextOut( [LabelPanelSegment.Caption + ':', NetworkFile.PanelAddress.Segment.Value ] );
+      TextOut( [LabelPanelSegmentAddress.Caption + ':', NetworkFile.PanelAddress.Address.Value ] );
+      SkipHalfLine;
+      if ( GeneralProperties.PanelMaintenanceDate.MaintenanceDate.ValueAsDateTime <> tZFPPanelMaintenanceDate.NoDateTime)
+      or ( GeneralProperties.MaintenanceString.MaintenanceString.Value <> '') then
+      begin
+        Font.Style := [fsUnderline];
+        TextOut( GroupBoxPanelMaintenance.Caption );
+        Font.Style := [];
+        if GeneralProperties.PanelMaintenanceDate.MaintenanceDate.ValueAsDateTime <> tZFPPanelMaintenanceDate.NoDateTime then
+        begin
+          TextOut( [LabelPanelMaintenanceDate.Caption + ':', GeneralProperties.PanelMaintenanceDate.MaintenanceDate.Value ] );
+        end;
+        if GeneralProperties.MaintenanceString.MaintenanceString.Value <> '' then
+        begin
+          TextOut( [ LabelPanelMaintenanceString.Caption + ':', GeneralProperties.MaintenanceString.MaintenanceString.Value ] );
+        end;
+      end;
+
+      if CheckBoxReportsIncludeSecurityInformation.Checked then
+      begin
+        Font.Style := [fsUnderline];
+        TextOut( GroupBoxSecurity.Caption );
+        Font.Style := [];
+        iKeyswitchOnly := GeneralProperties.KeyswitchEntryVersion.KeyswitchEntryOnly.ValueAsBool;
+        iAL2 := GeneralProperties.ALCodes.AL2Code.Value;
+        iAL3 := GeneralProperties.ALCodes.AL3Code.Value;
+        if iKeySwitchOnly then
+        begin
+          TextOut( CheckBoxKeyswitchEntry.Caption );
+        end;
+        TextOut( [ LabelPanelAL2Code.Caption + ':', iAL2 ] );
+        TextOut( [ LabelPanelAL3Code.Caption + ':', iAL3 ] );
+
+        SkipHalfLine;
+        TextOut( [ LabelPanelRecalibrationTime.Caption + ':', ComboBoxPanelRecalibrationTime.Text ] );
+      end;
+
+    end;
+  end;
+end;
+
+procedure TFormMain.PrintNameAddress( const pLeft : integer; const Title : string; const AddressDetails : tAddressDetails) ;
+var
+  iText : string;
+  iLeft, iLeft2 : integer;
+  i : integer;
+  iSaveFont : tFont;
+  iCanPrint : boolean;
+begin
+  iSaveFont := tFont.Create;
+  try
+    iCanPrint := FALSE;
+    if (AddressDetails.Name.Value <> '') then
+    begin
+      iCanPrint := TRUE;
+    end;
+    if AddressDetails.Address.Lines.Count <> 0 then
+    begin
+      iCanPrint := TRUE;
+    end;
+    if iCanPrint then
+    begin
+      with fPrintCols do
+      begin
+        ColumnCount := 1;
+        iSaveFont.Assign( Font );
+        Font.Size := (3 * Font.Size) div 2; ;
+        Font.Style := [ fsBold ];
+        iLeft := pLeft;
+        TextOut( iLeft, Title );
+        iLeft := iLeft + TextWidth( 'XXX' );
+        SkipHalfLine;
+        Font.Assign( iSaveFont );
+        TextOut( iLeft, AddressDetails.Name.Value );
+        with AddressDetails.Address do
+        begin
+          for i := 0 to Lines.Count - 1 do
+          begin
+            TextOut( iLeft, Lines[ i ] );
+          end;
+        end;
+        if AddressDetails.Postcode.Value <> '' then
+        begin
+          Font.Style := [ fsBold ];
+          iText := LabelClientPostCode.Caption + ': ';
+          iLeft2 := iLeft + TextWidth( iText );
+          TextOut( iLeft, iText, 0 );
+          Font.Style := [];
+          iText := AddressDetails.Postcode.Value;
+          TextOut( iLeft2, iText );
+        end;
+        if AddressDetails.TelNo.Value <> '' then
+        begin
+          Font.Style := [ fsBold ];
+          iText := LabelClientTelephone.Caption + ': ';
+          iLeft2 := iLeft + TextWidth( iText );
+          if not CalculatingPageCount then
+          begin
+            TextOut( iLeft, iText, 0 );
+          end;
+          Font.Style := [];
+          iText := AddressDetails.TelNo.Value;
+          TextOut( iLeft2, iText );
+        end;
+        SkipHalfLine( 2 );
+      end;
+    end;
+  finally
+    iSaveFont.Free;
+  end;
+end;
+
+procedure TFormMain.PrintNetwork;
+begin
+  with fPrintCols do
+  begin
+    Printer := PreviewPrinterMain;
+    ColumnCount := 1;
+    PrintFooter;
+    PrintHeader( TabSheetNetworkView.Caption );
+  end;
+end;
+
+procedure TFormMain.PrintClient;
+begin
+  PrintNameAddress( PreviewPrinterMain.OffsetX, GroupBoxClient.Caption, fSigFile.Client );
+end;
+
+procedure TFormMain.PrintCurrentDevicePages;
+begin
+  PrintCalculateCurrentDevicePages;
+  PrintPrintCurrentDevicePages;
+end;
+
+procedure TFormMain.PrintCurrentLogPages;
+begin
+  PrintCalculateCurrentLogPages;
+  PrintPrintCurrentLogPages;
+end;
+
+function TFormMain.PrintFindCETreeLogicalWidth( const pCanvas : tCanvas; const pTree : tTreeView ) : integer;
+var
+  iWidth : integer;
+  i: Integer;
+begin
+  fCETreeImageWidth := pTree.Images.Width;
+  fCETreeImageHeight := pTree.Images.Height;
+  fCETreeRowHeight := ( fCETreeImageHeight * 3) div 2;
+  fCETreeIndent := pTree.Indent;
+  fCETreeTextIndent := fCETreeIndent - fCETreeImageWidth;
+  if fCETreeTextIndent <= 4 then
+  begin
+    fCETreeTextIndent := fCETreeImageWidth div 2;
+  end;
+  fCETreeTextIndent := fCETreeIndent + fCETreeImageWidth;
+  Result := 0;
+  for i := 0 to pTree.Items.Count - 1 do
+  begin
+    with pTree.Items[ i ] do
+    begin
+      iWidth := (Level * fCETreeIndent) + fCETreeTextIndent + pCanvas.TextWidth( Text );
+      if iWidth > Result then
+      begin
+        Result := iWidth;
+      end;
+    end;
+  end;
+end;
+
+procedure TFormMain.PrintInstaller;
+begin
+  PrintNameAddress( PreviewPrinterMain.OffsetX, GroupBoxInstaller.Caption, fSigFile.Installer );
+end;
+
+procedure TFormMain.PrintPrepareCETreePages;
+var
+  iText : string;
+  iLeft : integer;
+  i, j : integer;
+  iSaveFont : tFont;
+  iRect : tRect;
+  iBarPos : integer;
+  iTempBMP : tBitmap;
+begin
+  // Front Page
+  iSaveFont := tFont.Create;
+  //iCanvas.Lock;
+  try
+    with fPrintCols do
+    begin
+      PrintFooter;
+      if not CalculatingPageCount then
+      begin
+        // Go one third way and print the title
+        PrintPos := ((PrintPos + FooterTop) div 3);
+        iSaveFont.Assign( Font );
+        Font.Size := 2 * Font.Size;
+        Font.Style := [ fsBold ];
+        iText := Translate( 'C-Tec ENVision network' );
+        iLeft := (PreviewPrinterMain.PageWidth - TextWidth( iText )) div 2;
+        TextOut( iLeft, PrintPos, iText );
+        PrintPos := PrintPos + ( 2 * TextHeight( iText ));
+        Font.Assign( iSaveFont );
+        iText := Translate('Printed') + ': ' + DateToStr( Now );
+        Font.Style := [ fsBold ];
+        iLeft := (PreviewPrinterMain.PageWidth - TextWidth( iText )) div 2;
+        TextOut( iLeft, PrintPos, iText );
+
+        {
+        PrintPos := PrintPos + ( 5 * TextHeight( iText ));
+        iW := PreviewPrinterMain.PageWidth div 3;
+        iH := (iW * ImageLogo.Height) div ImageLogo.Width;
+        iRect.Left := iW;
+        iRect.Width := iW;
+        iRect.Top := PrintPos;
+        iRect.Height := iW;
+        Printer.Canvas.StretchDraw( iRect, ImageLogo.Picture.Graphic);
+        }
+
+        Font.Assign( iSaveFont );
+
+      end;
+      // Now Summary Page
+      PrintFooter;
+      PrintHeader( Translate( 'Summary' ));
+      PrintClient;
+      PrintInstaller;
+      iText := Translate( 'Node Count' ) + ': ' + IntToStr( fSigFile.NodeList.Count );
+      SkipHalfLine;
+      if fSigFile.SiteNotes.Lines.Count > 0 then
+      begin
+        Font.Style := [fsUnderline];
+        TextOut( GroupBoxSiteNotes.Caption );
+        Font.Style := [];
+        for i := 0 to fSigFile.SiteNotes.Lines.Count - 1 do
+        begin
+          TextOut( fSigFile.SiteNotes.Lines[ i ] );
+        end;
+      end;
+      // Now Loop Details
+      ColumnCount := 1;
+      iRect.Left := PreviewPrinterMain.OffsetX;
+      iRect.Right := iRect.Left + PreviewPrinterMain.PageWidth;
+      PreviewPrinterMain.Canvas.Font.Size := TreeViewCE1.Canvas.Font.Size; // * fCETreeScaleFactor; // * iScaleFactor div iFontFactor;
+      PrintFooter;
+      PrintHeader( Translate( 'Cause and Effects Tree' ));
+      with TreeViewCE1.Items do
+      begin
+        for i := 0 to Count - 1 do
+        begin
+          if (PrintPos + fCETreeRowHeight  ) > FooterTop then
+          begin
+            PrintFooter;
+            PrintHeader( Translate( 'Cause and Effects Tree' ));
+          end;
+          if not CalculatingPageCount then
+          begin
+            // print Node i.
+            with TreeViewCE1.Items[ i ] do
+            begin
+              Printer.Canvas.Pen.Width := fCETreeScaleFactor;
+              for j := 0 to Level - 2 do
+              begin
+                if MoreChildrenAtLevel( TreeViewCE1, j + 1, i ) then
+                begin
+                  // draw a vertical line from the middle bottom of image placing
+                  iBarPos :=  Printer.OffsetX + (j*fCETreeIndent + (fCETreeImageWidth div 2)) - fCETreeScaleFactor div 2;
+                  Printer.Canvas.MoveTo( iBarPos, PrintPos );
+                  Printer.Canvas.LineTo( iBarPos, PrintPos + fCETreeRowHeight );
+                end;
+              end;
+              // Now current entry
+              if Level > 0 then
+              begin
+                iBarPos := Printer.OffsetX + ( (Level - 1) *fCETreeIndent + (fCETreeImageWidth div 2)) - fCETreeScaleFactor div 2;
+                Printer.Canvas.MoveTo( iBarPos, PrintPos );
+                if MoreChildrenAtLevel( TreeViewCE1, Level, i ) then
+                begin
+                  // full bar required
+                  Printer.Canvas.LineTo( iBarPos, PrintPos + fCETreeRowHeight );
+                end
+                else
+                begin
+                  // Part bar required
+                  Printer.Canvas.LineTo( iBarPos, PrintPos + fCETreeImageHeight div 2 );
+                end;
+                // Horizontal bar always required
+                Printer.Canvas.MoveTo( iBarPos, PrintPos + fCETreeImageHeight div 2 );
+                inc( iBarPos, fCETreeIndent - (fCETreeImageHeight div 2) );
+                Printer.Canvas.LineTo( iBarPos, PrintPos + fCETreeImageHeight div 2 );
+              end
+              else
+              begin
+                iBarPos := Printer.OffsetX;
+              end;
+              // now draw the image
+              if (ImageIndex >= 0) and (ImageIndex < TreeViewCE1.Images.Count ) then
+              begin
+                iTempBMP := tBitMap.Create;
+                try
+                  SetStretchBltMode( Printer.Canvas.Handle, HalfTone );
+                  TreeViewCE1.Images.GetBitmap( ImageIndex, iTempBMP );
+                  StretchBlt( Printer.Canvas.Handle, iBarPos, PrintPos, fCETreeImageWidth,
+                              fCETreeImageHeight, iTempBMP.Canvas.Handle, 0, 0, iTempBMP.Width,
+                              iTempBMP.Height, SRCCOPY );
+                finally
+                  iTempBMP.Free;
+                end;
+                // The text
+                iLeft := iBarPos + fCETreeTextIndent; // where the text will start
+                Printer.Canvas.TextOut( iLeft, PrintPos + (fCETreeImageHeight - Printer.Canvas.TextHeight( Text )) div 2, Text );
+                // Now the small line underneath if required
+                if HasChildren then
+                begin
+                  inc( iBarPos, (fCETreeImageWidth - fCETreeScaleFactor)  div 2 );
+                  Printer.Canvas.MoveTo( iBarPos, PrintPos + fCETreeImageHeight );
+                  Printer.Canvas.LineTo( iBarPos, PrintPos + fCETreeRowHeight );
+                end;
+              end
+            end;
+          end;
+          PrintPos := PrintPos + fCETreeRowHeight;
+        end;
+      end;
+
+      Font.Assign( iSaveFont );
+    end;
+  finally
+    iSaveFont.Free;
+    //iCanvas.Unlock;
+  end;
+end;
+
+procedure TFormMain.PrintPrepareCurrentDevicePages;
+var
+  iText : string;
+  iLeft, iMargin : integer;
+  i, j, k : integer;
+  iSaveFont : tFont;
+  iHeaderRowCount : integer;
+  iHeaderRowRequired : boolean;
+  iRowHeight : integer;
+  iCellWidth : integer;
+  iRect : tRect;
+  iDelta : integer;
+  iScaleFactor : integer;
+  iGrid : TSigGeneralGrid;
+  //iFontSize : integer;
+  //iW, iH : integer;
+begin
+  // Front Page
+  iSaveFont := tFont.Create;
+  //iCanvas.Lock;
+  if FrameGlobalDevices.PageControlPanelDevices.ActivePage = FrameGlobalDevices.TabSheetZonalSummary then
+  begin
+    iGrid := FrameGlobalDevices.SigGeneralGridZonalSummary;
+  end
+  else
+  begin
+    iGrid := FrameGlobalDevices.SigGeneralGridGlobalDevices;
+  end;
+  try
+    with fPrintCols do
+    begin
+      PrintFooter;
+      if not CalculatingPageCount then
+      begin
+        // Go one third way up and print the title
+        PrintPos := ((PrintPos + FooterTop) div 3);
+        iSaveFont.Assign( Font );
+        Font.Size := 2 * Font.Size;
+        Font.Style := [ fsBold ];
+        iText := Translate( 'C-Tec ENVision network' );
+        iLeft := (PreviewPrinterMain.PageWidth - TextWidth( iText )) div 2;
+        TextOut( iLeft, PrintPos, iText );
+        PrintPos := PrintPos + ( 2 * TextHeight( iText ));
+        Font.Assign( iSaveFont );
+        iText := Translate('Printed') + ': ' + DateToStr( Now );
+        Font.Style := [ fsBold ];
+        iLeft := (PreviewPrinterMain.PageWidth - TextWidth( iText )) div 2;
+        TextOut( iLeft, PrintPos, iText );
+
+        {
+        PrintPos := PrintPos + ( 5 * TextHeight( iText ));
+        iW := PreviewPrinterMain.PageWidth div 3;
+        iH := (iW * ImageLogo.Height) div ImageLogo.Width;
+        iRect.Left := iW;
+        iRect.Width := iW;
+        iRect.Top := PrintPos;
+        iRect.Height := iW;
+        Printer.Canvas.StretchDraw( iRect, ImageLogo.Picture.Graphic);
+        PrintPos := PrintPos + iH;
+        }
+
+        PrintPos := PrintPos + ( 5 * TextHeight( iText ));
+        iText := 'For ' + TabControlPanels.Tabs[ TabControlPanels.TabIndex ];
+        Font.Style := [ fsBold ];
+        iLeft := (PreviewPrinterMain.PageWidth - TextWidth( iText )) div 2;
+        TextOut( iLeft, PrintPos, iText );
+
+        Font.Assign( iSaveFont );
+      end;
+      // Now Summary Page
+      PrintFooter;
+      PrintHeader( Translate( 'Summary' ));
+      PrintClient;
+      PrintInstaller;
+      iText := Translate( 'Node Count' ) + ': ' + IntToStr( fSigFile.NodeList.Count );
+      SkipHalfLine;
+      if fSigFile.SiteNotes.Lines.Count > 0 then
+      begin
+        Font.Style := [fsUnderline];
+        TextOut( GroupBoxSiteNotes.Caption );
+        Font.Style := [];
+        SkipHalfLine;
+        for i := 0 to fSigFile.SiteNotes.Lines.Count - 1 do
+        begin
+          TextOut( fSigFile.SiteNotes.Lines[ i ] );
+        end;
+      end;
+      // Now Loop Details
+      ColumnCount := 1;
+      iHeaderRowCount := iGrid.FixedRows;
+      j := iHeaderRowCount;
+      iHeaderRowRequired := TRUE;
+      iRect.Left := PreviewPrinterMain.OffsetX;
+      iRect.Right := iRect.Left + PreviewPrinterMain.PageWidth;
+      iGrid.GetPrintParms( PreviewPrinterMain.Canvas, iRect, iScaleFactor, iMargin );
+      //PreviewPrinterMain.Canvas.Font.Size := Font.Size; // * iScaleFactor div iFontFactor;
+      while j < iGrid.RowCount do
+      begin
+        iRowHeight := iGrid.PrintLineHeight( j, PreviewPrinterMain.Canvas, iScaleFactor);
+        if (PrintPos + iRowHeight) > FooterTop then
+        begin
+          iHeaderRowRequired := TRUE;
+        end;
+        if iHeaderRowRequired then
+        begin
+          PrintFooter;
+          if FrameGlobalDevices.PageControlPanelDevices.ActivePage = FrameGlobalDevices.TabSheetZonalSummary then
+          begin
+            PrintHeader( Translate( 'Devices by Zone' ));
+          end
+          else
+          begin
+            PrintHeader( Translate( 'Device Details' ));
+          end;
+          PrintSubHeader( 'For ' + TabControlPanels.Tabs[ TabControlPanels.TabIndex ] );
+          PreviewPrinterMain.Canvas.Font.Assign( iGrid.Font );// * iScaleFactor div iFontFactor;
+          //iFontSize := iGrid.Font.Size;
+          //PreviewPrinterMain.Canvas.Font.Size := iFontSize;
+          //PreviewPrinterMain.Canvas.Font.Size := Font.Size * iScaleFactor div iFontFactor;
+          for i := 0 to iGrid.FixedRows - 1 do
+          begin
+            iRowHeight := iGrid.PrintLineHeight( i, PreviewPrinterMain.Canvas, iScaleFactor);
+            if not CalculatingPageCount then
+            begin
+              iLeft := iMargin;
+              for k := 0 to iGrid.ColCount - 1 do
+              begin
+                iCellWidth := iGrid.PrintColWidth( k, PreviewPrinterMain.Canvas, iScaleFactor);
+                with iGrid do
+                begin
+                  iDelta := GridLineWidth * iScaleFactor;
+                  iRect.Top := PrintPos;
+                  iRect.Bottom := PrintPos + iRowHeight;
+                  iRect.Left := iLeft;
+                  iRect.Right := iRect.Left + iCellWidth;
+                  PreviewPrinterMain.Canvas.Pen.Color := clBlack;
+                  PreviewPrinterMain.Canvas.Pen.Width := iDelta;
+                  PreviewPrinterMain.Canvas.Brush.Color := clSilver;
+                  PreviewPrinterMain.Canvas.Rectangle( iRect );
+                  inc( iRect.Top, iDelta );
+                  dec( iRect.Bottom, iDelta );
+                  inc( iRect.Left, iDelta );
+                  dec( iRect.Right, iDelta );
+                  iText := iGrid.Cell[ k, i ];
+                  iGrid.Editor[ k ].PrintCell( PreviewPrinterMain.Canvas, k, i, iRect, iText );
+                end;
+                inc( iLeft, iCellWidth );
+              end;
+            end;
+            PrintPos := PrintPos + iRowHeight;
+          end;
+          iHeaderRowRequired := FALSE;
+        end;
+        iRowHeight := iGrid.PrintLineHeight( j, PreviewPrinterMain.Canvas, iScaleFactor);
+        if not CalculatingPageCount then
+        begin
+          iLeft := iMargin;
+          for k := 0 to iGrid.ColCount - 1 do
+          begin
+            iCellWidth := iGrid.PrintColWidth( k, PreviewPrinterMain.Canvas, iScaleFactor);
+            with iGrid do
+            begin
+              //PrintCell( k, i, iCanvas, iLeft, PrintPos, iRowHeight, iCellWidth, 1  );
+              //iCanvas.Font.Assign( NormalFont );
+              iDelta := GridLineWidth * iScaleFactor;
+              iRect.Top := PrintPos;
+              iRect.Bottom := PrintPos + iRowHeight;
+              iRect.Left := iLeft;
+              iRect.Right := iRect.Left + iCellWidth;
+              PreviewPrinterMain.Canvas.Pen.Color := clBlack;
+              PreviewPrinterMain.Canvas.Pen.Width := iDelta;
+              PreviewPrinterMain.Canvas.Brush.Color := clWhite;
+              PreviewPrinterMain.Canvas.Rectangle( iRect );
+              inc( iRect.Top, iDelta );
+              dec( iRect.Bottom, iDelta );
+              inc( iRect.Left, iDelta );
+              dec( irect.Right, iDelta );
+              iText := iGrid.Cell[ k, j ];
+              iGrid.Editor[ k ].PrintCell( PreviewPrinterMain.Canvas, k, j, iRect, iText );
+            end;
+            inc( iLeft, iCellWidth );
+          end;
+        end;
+        PrintPos := PrintPos + iRowHeight;
+        inc( j );
+      end;
+      Font.Assign( iSaveFont );
+    end;
+  finally
+    iSaveFont.Free;
+    //iCanvas.Unlock;
+  end;
+end;
+
+procedure TFormMain.PrintPrepareCurrentLogPages;
+var
+  iText : string;
+  iLeft : integer;
+  i : integer;
+  iSaveFont : tFont;
+  iLogReport : tLogReport;
+begin
+  // Front Page
+  iSaveFont := tFont.Create;
+  try
+  with fPrintCols do
+  begin
+    PrintFooter;
+    if not CalculatingPageCount then
+    begin
+      // Go one third way and print the title
+      PrintPos := ((PrintPos + FooterTop) div 3);
+      iSaveFont.Assign( Font );
+      Font.Size := 2 * Font.Size;
+      Font.Style := [ fsBold ];
+      iText := Translate( 'C-Tec ENVision network' );
+      iLeft := (PreviewPrinterMain.PageWidth - TextWidth( iText )) div 2;
+      TextOut( iLeft, PrintPos, iText );
+      PrintPos := PrintPos + ( 2 * TextHeight( iText ));
+      Font.Assign( iSaveFont );
+      iText := Translate('Printed') + ': ' + DateToStr( Now );
+      Font.Style := [ fsBold ];
+      iLeft := (PreviewPrinterMain.PageWidth - TextWidth( iText )) div 2;
+      TextOut( iLeft, PrintPos, iText );
+
+      {
+      PrintPos := PrintPos + ( 5 * TextHeight( iText ));
+      iW := PreviewPrinterMain.PageWidth div 3;
+      iH := (iW * ImageLogo.Height) div ImageLogo.Width;
+      iRect.Left := iW;
+      iRect.Width := iW;
+      iRect.Top := PrintPos;
+      iRect.Height := iH;
+      Printer.Canvas.StretchDraw( iRect, ImageLogo.Picture.Graphic);
+      }
+
+      Font.Assign( iSaveFont );
+
+    end;
+    // Now print client details
+    // Now Summary Page
+    PrintFooter;
+    PrintHeader( Translate( 'Summary' ));
+    PrintClient;
+    PrintInstaller;
+    iText := Translate( 'Node Count' ) + ': ' + IntToStr( fSigFile.NodeList.Count );
+    Font.Style := [];
+    SkipHalfLine;
+    if fSigFile.SiteNotes.Lines.Count > 0 then
+    begin
+      Font.Style := [fsUnderline];
+      TextOut( GroupBoxSiteNotes.Caption );
+      Font.Style := [];
+      for i := 0 to fSigFile.SiteNotes.Lines.Count - 1 do
+      begin
+        TextOut( fSigFile.SiteNotes.Lines[ i ] );
+      end;
+    end;
+    // now the log pages
+    with FrameLogFiles1.TabControlLogs do
+    begin
+      iLogReport := Tabs.Objects[ TabIndex ] as tLogReport;
+    end;
+    with iLogReport do
+    begin
+      i := 0;
+      repeat
+        PrintFooter;
+        PrintHeader( Name );
+        Printer.Canvas.Font.Assign( FrameLogFiles1.StringGridLog.Canvas.Font );
+        fLogRect.Left := Printer.OffsetX;
+        fLogRect.Right := Printer.PageWidth;
+        fLogRect.Bottom := FooterTop;
+        fLogRect.Top := PrintPos;
+      until PrintPrepareLogFilePages( Printer.Canvas, fLogRect, fLogGridWidth, i, CalculatingPageCount );
+    end;
+  end;
+  finally
+    iSaveFont.Free;
+  end;
+end;
+
+procedure TFormMain.PrintPreparePages;
+var
+  iText : string;
+  iLeft : integer;
+  i : integer;
+  iSaveFont : tFont;
+begin
+  // Front Page
+  iSaveFont := tFont.Create;
+  try
+  with fPrintCols do
+  begin
+    PrintFooter;
+    if not CalculatingPageCount then
+    begin
+      // Go one third way and print the title
+      PrintPos := ((PrintPos + FooterTop) div 3);
+      iSaveFont.Assign( Font );
+      Font.Size := 2 * Font.Size;
+      Font.Style := [ fsBold ];
+      iText := Translate( 'C-Tec ENVision network' );
+      iLeft := (PreviewPrinterMain.PageWidth - TextWidth( iText )) div 2;
+      TextOut( iLeft, PrintPos, iText );
+      PrintPos := PrintPos + ( 2 * TextHeight( iText ));
+      Font.Assign( iSaveFont );
+      iText := Translate('Printed') + ': ' + DateToStr( Now );
+      Font.Style := [ fsBold ];
+      iLeft := (PreviewPrinterMain.PageWidth - TextWidth( iText )) div 2;
+      TextOut( iLeft, PrintPos, iText );
+
+      {
+      PrintPos := PrintPos + ( 5 * TextHeight( iText ));
+      iW := PreviewPrinterMain.PageWidth div 3;
+      iH := (iW * ImageLogo.Height) div ImageLogo.Width;
+      iRect.Left := iW;
+      iRect.Width := iW;
+      iRect.Top := PrintPos;
+      iRect.Height := iW;
+      Printer.Canvas.StretchDraw( iRect, ImageLogo.Picture.Graphic);
+
+      PrintPos := PrintPos + iH;
+      }
+
+      PrintPos := PrintPos + ( 5 * TextHeight( iText ));
+
+      Font.Assign( iSaveFont );
+    end;
+    // Now print client details
+    // Now Summary Page
+    PrintFooter;
+    PrintHeader( Translate( 'Summary' ));
+    PrintClient;
+    PrintInstaller;
+    iText := Translate( 'Node Count' ) + ': ' + IntToStr( fSigFile.NodeList.Count );
+    Font.Style := [];
+    SkipHalfLine;
+    if fSigFile.SiteNotes.Lines.Count > 0 then
+    begin
+      Font.Style := [fsUnderline];
+      TextOut( GroupBoxSiteNotes.Caption );
+      Font.Style := [];
+      for i := 0 to fSigFile.SiteNotes.Lines.Count - 1 do
+      begin
+        TextOut( fSigFile.SiteNotes.Lines[ i ] );
+      end;
+    end;
+  end;
+  // now the detail pages
+  for i := 0 to fSigFile.NodeList.Max do
+  begin
+    PrintNode( i );
+  end;
+  // now the network objects
+  PrintNetwork;
+  finally
+    iSaveFont.Free;
+  end;
+end;
+
+procedure TFormMain.PrintPrintCETree;
+begin
+  with fPrintCols do
+  begin
+    CurrPageNo := 0;
+    CalculatingPageCount := FALSE;
+    PrintPrepareCETreePages;
+  end;
+end;
+
+procedure TFormMain.PrintPrintCurrentDevicePages;
+begin
+  with fPrintCols do
+  begin
+    CurrPageNo := 0;
+    CalculatingPageCount := FALSE;
+    PrintPrepareCurrentDevicePages;
+  end;
+end;
+
+procedure TFormMain.PrintPrintCurrentLogPages;
+begin
+  with fPrintCols do
+  begin
+    CurrPageNo := 0;
+    CalculatingPageCount := FALSE;
+    PrintPrepareCurrentLogPages;
+  end;
+end;
+
+procedure TFormMain.PrintPrintPages;
+begin
+  with fPrintCols do
+  begin
+    CurrPageNo := 0;
+    CalculatingPageCount := FALSE;
+    PrintPreparePages;
+  end;
+end;
+
+procedure TFormMain.PrintSetup;
+begin
+  {
+    here you set up any required fonts etc. if they have not already
+    been set up. FooterFont is used as a font to print the footer.
+    It sets the printer font to its default, then sets its style to bold.
+    This also shows how to set fonts up.
+  }
+  with fPrintCols do
+  begin
+    FooterFont.Style := [fsBold];
+  end;
+  PrintSetupFooter;
+end;
+
+procedure TFormMain.PrintSetupFooter;
+begin
+  {
+    This is a default footer. You may want to change its settings
+  }
+  with fPrintCols do
+  begin
+    FooterTop := PreviewPrinterMain.PrintableHeight + PreviewPrinterMain.OffsetY
+               - 3 * PreviewPrinterMain.Canvas.TextHeight( 'XX' );
+  end;
+end;
+
+procedure TFormMain.RadioGroupEditModeClick(Sender: TObject);
+begin
+  case RadioGroupEditMode.ItemIndex of
+    0:
+    begin
+      ExpertModes := em_Simple;
+      ShowExpertCheckBoxes( FALSE );
+    end;
+    1:
+    begin
+      ExpertModes := em_Expert;
+      ShowExpertCheckBoxes( FALSE );
+    end;
+    2:
+    begin
+      ShowExpertCheckBoxes( TRUE );
+    end;
+  end;
+  UpdateMenuVisibilty;
+end;
+
+
+procedure TFormMain.RadioGroupErrorsAndWarningClick(Sender: TObject);
+begin
+  ErrorReportingLevel := TErrorReportingLevel( RadioGroupErrorsAndWarning.ItemIndex );
+  if ErrorReportingLevel = el_None then
+  begin
+    if CheckBoxShowValidationButtons.Checked then
+    begin
+      CheckBoxShowValidationButtons.Checked := FALSE;
+      CheckBoxShowValidationButtonsClick( Sender );
+    end;
+  end;
+end;
+
+procedure TFormMain.RefreshCurrentPage;
+begin
+  if PageControlMain.ActivePage = TabSheetNetworkView then
+  begin
+    if PageControlNetworkView.ActivePage = TabSheetNetworkOverview then
+    begin
+      StringGridNodes.Invalidate;
+    end;
+  end;
+end;
+
+procedure TFormMain.RefreshPanelView;
+var
+  i: integer;
+begin
+  if assigned( TabControlPanels ) then
+  begin
+    if fSigFile.NodeList.Count <> TabControlPanels.Tabs.Count then
+    begin
+      with TabControlPanels do
+      begin
+        Tabs.Clear;
+        for i := 0 to fSigFile.NodeList.Count - 1 do
+        begin
+          Tabs.Add( '[' + IntToStr( fSigFile.NodeList.Node[ i ].ID ) + ']' + fSigFile.NodeList.Node[ i ].Name1.Value );
+        end;
+      end;
+    end
+    else
+    begin
+      with TabControlPanels do
+      begin
+        for i := 0 to Tabs.Count - 1 do
+        begin
+          Tabs[ i ] := '[' + IntToStr( fSigFile.NodeList.Node[ i ].ID ) + ']' + fSigFile.NodeList.Node[ i ].Name1.Value;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TFormMain.RemoveCurrentError1Click(Sender: TObject);
+begin
+  fErrorLists.Remove1Click( Sender );
+end;
+
+end.

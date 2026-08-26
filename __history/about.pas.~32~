@@ -1,0 +1,394 @@
+unit About;
+
+interface
+
+uses Windows, SysUtils, Classes, Graphics, Forms, Controls, StdCtrls,
+  Buttons, ExtCtrls, UnitFiles;
+
+{
+  To Do
+
+  Project change History
+  v1.0.0.0 Simple csv file stransfer
+  v1.0.0.6 Create Panel Config file and allow download
+  v1.0.0.7 Download Panel Config file
+  v1.0.1.0 Comments file added
+  v1.0.1.1 Start of zoning.
+           record types 14 and 15 added.
+           Make timeout persistent on transfer screen
+  v1.0.1.2 Bug fixes
+  v1.0.1.3 Add address to 'BEGIN' and 'END'
+           Create network record but DO NOT send - only for PC use (allows panels to have independant addresses)
+           More work on zoning
+           Start to add 'jump-back' capability
+  v1.0.1.5 Zoning complete
+  v2.1.0.0 Triggers removed
+  v2.1.1.0 Start to handle templates
+  v2.4.1.0 Send logo to panel
+  v3.0.0.0 New Panel set up method that allows non-consecutive panels to be added on
+           a loop in exactly the same way as devices, etc.
+  v3.0.4.1 Bring Retrieve devices into line with retrieve all - i.e. require password (and actually check it!)
+  v3.0.4.2 Prevent deletion of non-editable objects
+  v3.0.4.3 Limit name length on adding objects in C&E Tree
+           Force LoopCount to send NormalLoopCount to Panel
+           Fix Rcv Device Data Bug
+           Set Limits and correct text on action sequences
+  v3.0.4.4 Check password in advanced mode too
+  v3.0.4.5 Bug fix when importing disablements
+  v3.0.4.6 Minor cosmetic changes
+  v3.0.4.7 Preliminary support for Advanced Transfer
+  v3.0.4.8 Cosmetic issue with SigGeneralGrid
+  v3.0.4.9 Ditto. Also added 'No Update' functionality to advanced send.
+  v3.1.0.0 First tested Advanced Send/Rcv version
+  v3.1.0.1 Requested change to down load 'connected to' panel last so that reboot does not
+           interrupt download to other panels (9998 or 9999 record)
+  v3.1.0.3 Limit device name length on Device Summary page
+           Select all on enter edit mode of mask edit
+           Fix bug when auto-adding lines to tSigGeneralGrid
+  v3.2.0.0 Resolve Locale issues with date/time storage
+  v3.2.1.0 Fix bug where repeater panels are shown as having 1 loop
+  v3.2.1.1 Fix gotcha with repeaters where it show a non-visible loop with no way to get to visible one
+  v3.2.1.2-4 Bug Fixes
+  v3.2.2.0-1 Fix Log File download issue
+  v3.2.2.2 Implement login screen for log files
+           Fix Limit for panel dim time
+           Fix Refresh issue when current panel is changed to Repeater
+  v3.2.2.3 Fix jump to end of text in editors for SigGeneralGrids
+           Various other cosmetic changes.
+  v3.2.2.4 Deselect active device type selection on page change
+           Refresh loops count page on load.
+           Reimplement Sort
+           Autoselect node into all global objects on node addition
+  v3.2.3.0 Bug Fix - getting Zone ID on transfer
+           Allow Import/Export menu options to be hidden
+           Hide unused propertied on supergroups
+  v3.2.3.1 Bug fix - double select on fault groups
+  v3.3.0.0 Add test and correction for disassociation of panels from zone
+  v3.3.1.0 Add test and correction for disassociation of panels from Input and Output Groups
+           Bug fixes and enhancements for ABus devices
+  v3.3.2.0 Enable Undo/Redo from menu.
+           Fix bug where changing name of panel removed Panel ID from Tab
+           Loop and zone lists on Loop & Zone tab of Node made bigger (resize with form)
+           Changed cosmetic appearance of Device and zone summary tables
+           Extensive changes (bug fixes) to Undo/Redo
+  v3.3.2.1 Fix zero issue on loops fitted
+  v3.3.2.2 Bug Fix - Getting Input/Output group ID on transfer.
+  v3.3.2.3 Bug Fix - Getting other versions of input group e.g. Disablement groups ID on transfer
+  v3.3.2.4 Bug Fix - Action Seq - group actions now treated as limited
+  v3.3.2.5 Bug Fix - Fixes 3.3.2.1 and 3.3.2.2 referred to device values, not field values.
+  v3.3.2.6 Limit timeout on Input Groups (2 devices)
+  v3.3.2.7 When replacing a device default all fields except Zone, InputGroup, OutputGroup, Fault Group and Disablement activates
+  v3.3.2.8 Make Input group does not become output group with same ID when changing devices
+  v3.3.2.9 More issues when changing devices
+           Improved warning if devices changed
+  v3.3.3.0 Fix Field handling for devices with separate I and O elements on A-Bus (i.e. where
+           each physical subunit is a mapped logical subunit)
+  v3.3.3.1 Above fix broke special case where every port could be I or O, not fixed sets of I and O
+  v3.3.4.0 Bug Fix on getting remote logs
+  v3.3.4.1 Refresh issue on logs
+  v3.3.4.2 Second attempt...
+  v3.3.4.3 Bug Fix - overzealous on applying defaults!
+  v3.3.4.4 Fix missing send of record type 161 in simple mode. Also correct text
+           descriptions for record types 160 and 161 which were wrong in various places
+  v3.3.4.5 Bug fix pulling back modal overrides for Input groups
+  v3.3.4.6 Allow recovery of pulled back modl override data from historical files
+           v3.3.4.5 reversed and slightly different method used that maintains historical
+           format to allow recovery to take place.
+           Break long lines in file transfer and reconstruct on return
+           New rules for modal defaults:
+           Default = Mode 0 (always)
+           if All active mode = Default then set all modes to default
+           if Any active mode <> default then no mode is set to default.
+  v3.3.5.0 Detector Inhibit time added to Dependency B options
+  v3.3.5.1 Bug fix - if Same Input Group checked, sets Reset Time to zero
+           Also current value not loaded back in.
+  v3.3.5.2 Fix bug with groups on A-Bus and system devices
+           Remove code that specifically ignores default values from cfg file
+           for A-Bus and system devices - this should be a cfg file decision,
+           not hard coded.
+  v3.3.5.3 Bug fix Some texts removed accidentally in v3.3.5.0
+  v3.3.5.4 Bug fix - supergroups (input or output) only loaded about the first 6 items when
+           pulled back from the panel or imported
+  v3.3.5.5-6 Bug Fix - ABus devices do not pull back values correctly
+  v3.3.5.7 Bug fixes Same Input Group not refreshed on Operation 2 devices
+           Pasting as sequence onto a sequence does not work properly
+  v3.4.0.0 Add Zone, Input Group and output group info on Device Summary Screen.
+  v3.4.1.0 Bug Fix - Nil input group did not work.
+           New check on transfer of C&E tree for missing branches
+  v3.4.1.1 Improve grid editor handling.
+  v3.4.2.0 Add disablements and fault groups to Device Summary Screen
+           Extend Input Groups editor to show activations via disablemenets or faults.
+  v3.4.3.0 Allow double spaced files
+  v3.4.3.1 Restrict logo file size to 8192 bytes.
+  v3.4.3.2 Change error message for oversize logo file to suggest reducing size or number of colours
+  v3.4.3.3 Bug Fix in record type 120,25 for panels that are not in sequence.
+  v3.4.3.4 Bug Fix - Fault field stored incorrectly
+  v3.4.4.0 Add new functionality to show disablement and fault activations
+  v3.4.4.2 Bug Fix - empty group corruption on send
+  v3.4.5.0 Bug Fix - show usage correctly on load without having to change lines
+           Cosmetic - change disable group to disablement activates and Fault Group
+           to Fault Activates.
+  v3.4.6.0 Bug Fix - Did not import 'MCP qualifies Depencencies' correctly (cut and paste error!)
+  v3.5.0.0 Increase Max Output Groups to 600; Add new output property 'Send to DRAX'
+  v3.6.0.0 Improvements to print-outs
+  v3.6.0.1 Logo removed from front page of print-outs
+  v3.6.2.0 Improved error checking on transfer
+           New Validation option.
+           New Option to remember last config and reload instead of default template
+  v3.6.2.1 Various bug fixes
+           Validation for all panels and send to all panels added
+  v3.6.2.2 Forcefully override fixed action sequences to handle corrupt file issues.
+  v3.6.2.3 Add goto device link from deice simmary screen if you click on device image
+  v3.6.2.4 Add user options page
+  v3.6.4.0 Version skipped due to temporary bug fix
+           Fix problems when zones etc are not global.
+  v3.6.4.1 Refresh node tabs on load after sort.
+  v3.6.4.2 remove dangling pointer in WhereUsed list if a blank panel is added.
+  v3.7.0.0 Increase Pulse patterns from 8 to 16.
+  v3.7.1.0 Remove ABus and loop tabs on repeaters
+  v3.7.2.0 Make predelay time delay configurable
+           Add new field type 'Target Group' (editor style es_Target_Group)
+  v3.7.2.1 Link events to event handlers manually for FrameGlobalDevices - they were lost again!
+  v3.7.4.0 Requests from Ant. Add 'fFirstTime' variable to fix OnShow issues
+  v3.7.5.0 Fixed printing issue when Site Details extended over 1 page.
+  v3.7.6.0 Added Exporting Loop Data out into the Apollo Sim System format, as much as is possible
+           all functions to do with this feature reside in the new UnitSimSystem.
+           Fixed some Access violations with the Device Grid when in/entering Edit Devices.
+           In tZFPLoopsFitted.Clear of UnitFiles, defaulted LoopsFitted to 2 instead of 1.
+           In TFormMain.PageControlMainChange of UnitMain, made it so LoadPanelView is always called.
+           This is to fix the issues with; Device Summary Page not showing and Node n data being mistakenly
+           shown while Node 1 Tab is active. Both of these found to occur after adding a new Node.
+           Added a new procedure tLoopDevices.UpdateSubDevices in UnitFiles. This when changing Device Types,
+           defaults SubDevice Fields >= 5 (Sensitivies in Detecors and Volumes/Tones in Sounders).
+           New procedure is called when a Device is changed manually and when using the SimSystem Conversion.
+           Restricted the maximum allowed steps in an Action Sequence to 8.
+           When selecting None in an Action Sequence clear line of all data.
+           Changed the string for 'Send to Drax' to 'Send Device Events to DRAX AMX1'.
+  v3.7.6.1 Changed default priorities on OFF/ON/Pulse to 255/254/253 respectively.
+  v3.7.6.2 Default LoopProtocol to 0. Problems remain with the config file and different protocols.
+           Until a solution has been found, need to use a different version of config file for each protocol.
+  v3.7.6.3 Added some error trapping when loading from a file. Some files would produce a multitude of
+           Access violation errors.
+  v3.7.6.4 Found the issue with having Apollo and CAST integrated tools. Issue was to do with the order in
+           which the objects in tZFPNode.Create were created, Loop List was done before General Properties.
+           Since General Properties is where the Loop Protcol is stored so when loading a file the device
+           would not use the correct Protocol as it was forced to use the default value of 0. Swapped the
+           order of Loop List and General Properties and removed the previous work around of defaulting
+           to Protcol 0 and using two different config files. This has also needed a change in the
+           template file as there was always a Device created at Address 1 on Loop 1 which would always
+           end up with an Apollo Type Description.
+           Made some changes when replacing a Device. The original method to test if the device was
+           swapped was based on the Device Image not anything useful like the Type Code. So in the
+           case of Devices that were different but used the same image then it would not treat the
+           device as swapped. Now the DeviceMaps are compared and if different then the FormReplace is
+           shown as before, but the test for replacing with the same device has been removed.
+  v3.7.6.5 Added two extra options to Output Groups, Limp Mode and Remote Control. Limp Mode has always existed
+           from a Panel point of view but never in the Tools, it is not used so the Checkbox is invisible but
+           all functions associated with it have been created. Remote Control allows an Output Group to be
+           controlled via the IoT. Note that because Limp Mode is expected by the Panel this flag must be
+           before Remote Control in the dats string sent to the Panel.
+           While adding the new options it was noticed that the tOutputGroup.ImportFile function was incorrect,
+           NormOnReset was set to test the 2nd flag in the string and Silenceable and SendToDRAX was both 3rd.
+           This has been corrected.
+           Made a change to accommodate longer strings in the Device Properties, had to change how the EditorLeft
+           is derived, this is what determines the starting position of the drop down box. Also added a small offset
+           to the Left property that determines the start position of the Label.
+  v3.7.6.6 No changes to source, up issued the version number to include a new config file that should be correct
+           for both Apollo and CAST variants.
+  v3.7.6.7 Adding Limp Mode and Remote Control would lead to a index out of bounds error when downloading from an
+           Apollo Panel. Added a check that will only test for those flags in the string if pList.Count > 5.
+           Changed Config File to include EACIE Status and EACIE Switch Devices to the System Loop.
+  v3.7.6.8 Fixed an issue with Cause and Effects and the field 'Relates to Panels', the logic here was upside down
+           the ValidonNodes function assumed TRUE and on any instance of a Node not being in the resticted list would
+           return FALSE. This worked for Cause and Effect elements that were only shared with 1 Node, however, if shared
+           with multiple Nodes and the Cause and Effect wasn't valid for all those Nodes these elements were considered
+           invalid and were not present.
+           Fixed an issue with the refreshing of Groups for EACIE switching when set to Inputs. When getting the group
+           iSubDevice.InputGroup was being used for all fields in that Sub Address and would result in all switches
+           being set to the same Group as the top switch. iSubDevice.Field[ i ].InputGroup1; should be used instead.
+  v3.7.6.9 Added the Database Version of the currently selected Protocol from the Config File to the About Form.
+           Version is updated in LoadPanelView when creating a new / opening an old file and also when changing to the
+           Devices Tab.
+  v3.7.7.0 Major changes to how the USB comms works. Segger Bulk Driver doesn't work for Windows 11, needs to be
+           WinUSB instead. Needs to use USBBulk.dll.
+           As a result of this change changes were required to how the Code Entry Form is shown. It would appear
+           without focus and would need to be clicked to be activate, changed to retain focus.
+           Fixed an issue with Sub Address Names on A-Bus Cards. Names were being shifted along by one address and
+           displayed the name of the 4th Sub Address instead of Sub Address 0.
+           CAST Icons don't fit properly as their size was increased to 34x34. Increased the Height and Width of
+           ImageListComponentPalette as well as the default column width of StringGridDevices.
+           As a consequence of fixing the logic of the ValidonNodes function in a previous update the Select Access
+           Level list would never be populated. The list has never been assigned to each Node on creation properly,
+           which combined with the incorrect logic masked the problem and made it appear to work. When it was fixed
+           it was not picked up at the time.
+           The fix is in the tZFPFile.OnAddNode where the Sequence List and Pulse Pattern List is assigned to
+           assign the Access Level List here too.
+  v3.7.8.0 When Exporting Device Names it would always create a record for 4 Sub-Addresses per Device, regardless of
+           how many Sub-Addresses a Device actually has. Changed this so the for loop in tLoopSubDevices.ExportNamesFile
+           from for i := 0 to 4 do, to for i := 0 to Max do.
+           When Node 1 was a Compact Controller there is an issue when loading the file, an Access Violation would occur.
+           This was due to the function that prints the Database Version on the About Form. The function would check Loop 1
+           of Node 1 to see what Protocol was set and print the current Database Version. when this is a Compact Controller
+           there is no Loop 1 and this would result in a null value and the Error message.
+           The function will now iteratively process each Node until it finds the first Panel with a valid Loop and use that
+           to determine the ProctolID.
+
+  Notes on setting up project.
+  1. Make sure that you set the 'Include version Information in project' checkbox
+     in the Version Info page of the project options dialog
+  2. Set the version number. This will display on the screen
+  3. Set the 'InternalName' field to be what should be displayed at the top of the screen
+  4. Set the 'LegalCopyright' field to something like (c) SigNET (AC) Ltd, 2010
+  5. Set 'FileDescription' to give a brief description of the application, e.g. 'Edits Remote WCTL'
+
+  MAKE SURE IT LOOKS RIGHT (i.e. none of the fields are too big.
+}
+
+type
+  TAboutBox = class(TForm)
+    Panel1: TPanel;
+    ProgramIcon: TImage;
+    ProductName: TLabel;
+    Version: TLabel;
+    Copyright: TLabel;
+    Comments: TLabel;
+    OKButton: TButton;
+    lblConfigVersion: TLabel;
+    procedure FormCreate(Sender: TObject);
+  private
+    fMinor: integer;
+    fRelease: integer;
+    fBuild: integer;
+    fMajor: integer;
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure ShowVersion(const iFile: tZFPFile);
+    function FindResourceString( const ResourceStream : TResourceStream; const pResource : string ) : string;
+    property Major : integer
+             read fMajor;
+    property Minor : integer
+             read fMinor;
+    property Release : integer
+             read fRelease;
+    property Build : integer
+             read fBuild;
+  end;
+
+var
+  AboutBox: TAboutBox;
+
+implementation
+
+{$R *.DFM}
+
+procedure TAboutBox.ShowVersion(const iFile: tZFPFile);
+var
+  iLoop : tLoop;
+  PanelID, ProtocolID : integer;
+  Version : string;
+  RC : boolean;
+begin
+  RC := FALSE;
+  PanelID := 0;
+  while (RC = FALSE) And (PanelID <= iFile.NodeList.Max) do
+  begin
+    iLoop := iFile.NodeList.Node[PanelID].LoopList.Loop[2];
+    if assigned(iLoop) then
+    begin
+      RC := TRUE;
+      ProtocolID := iLoop.Protocol.ProtocolMap.ValueAsInt;
+      Version := iLoop.Protocol.DeviceMapVersion.Value;
+      if ProtocolID = 0 then
+      begin
+        lblConfigVersion.Caption := 'Apollo Database Version: ' + Version.ToUpper;
+      end
+      else if ProtocolID = 1 then
+      begin
+        lblConfigVersion.Caption := 'CAST Database Version: ' + Version.ToUpper;
+      end
+      else
+      begin
+        lblConfigVersion.Caption := '';
+      end;
+    end
+    else
+    begin
+      PanelID := PanelID + 1;
+    end;
+  end;
+end;
+
+function TAboutBox.FindResourceString( const ResourceStream : TResourceStream; const pResource: string): string;
+var
+  NextChar : WideChar;
+  i, iMatchLen : integer;
+begin
+  iMatchLen := 1;
+  Result := '';
+  ResourceStream.Seek( 0,soFromBeginning );
+  for i := 1 to ResourceStream.size do
+  begin
+    ResourceStream.Read( NextChar, 2 );
+    if Nextchar = pResource[ iMatchLen ] then
+    begin
+      if iMatchLen = Length( pResource ) then
+      begin
+        ResourceStream.Read( NextChar, 2 );
+        while NextChar = WideChar(0) do
+          ResourceStream.Read( NextChar, 2 );
+        while NextChar <> WideChar(0) do
+        begin
+          Result := Result + NextChar;
+          ResourceStream.Read( NextChar, 2 );
+        end;
+      end
+      else
+      begin
+        iMatchLen := iMatchLen + 1;
+      end;
+    end
+    else
+    begin
+      iMatchLen := 1;
+    end;
+  end;
+end;
+
+procedure TAboutBox.FormCreate(Sender: TObject);
+var
+  ResourceStream : TResourceStream;
+  iVersion : string;
+  iPos : integer;
+begin
+  { update version info }
+  ResourceStream := TResourceStream.CreateFromID( HInstance, 1, RT_VERSION );
+  ProductName.Caption := FindResourceString( ResourceStream, 'InternalName' );
+  iVersion := FindResourceString( ResourceStream, 'FileVersion' );
+  Version.Caption := 'Version: ' + iVersion;
+  Copyright.Caption := FindResourceString( ResourceStream, 'LegalCopyright' );
+  Comments.Caption := FindResourceString( ResourceStream, 'FileDescription' );
+  ProgramIcon.Picture.Assign( Application.Icon );
+  ResourceStream.Free;
+  iPos := Pos( '.', iVersion );
+  if iPos > 0 then
+  begin
+    fMajor := StrToIntDef( Copy( iVersion, 1, iPos - 1 ), 0);
+    iVersion := Copy( iVersion, iPos + 1 );
+    iPos := Pos( '.', iVersion );
+    if iPos > 0 then
+    begin
+      fMinor := StrToIntDef( Copy( iVersion, 1, iPos - 1 ), 0 );
+      iVersion := Copy( iVersion, iPos + 1 );
+      iPos := Pos( '.', iVersion );
+      if iPos > 0 then
+      begin
+        fRelease := StrToIntDef( Copy( iVersion, 1, iPos - 1), 0 );
+        fBuild := StrToIntDef( Copy( iVersion, iPos + 1), 0 );
+      end;
+    end;
+  end;
+end;
+
+end.
+

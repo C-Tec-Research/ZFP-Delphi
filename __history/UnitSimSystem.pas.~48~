@@ -1,0 +1,476 @@
+unit UnitSimSystem;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UnitFiles, UnitPCCfgFile,
+  SigGeneralGrid, Vcl.Grids, Vcl.ExtCtrls, SigPanel, Vcl.StdCtrls;
+
+type
+  TFrameSimSystem = class(TFrame)
+    SigPanelMain: TSigPanel;
+    SigGeneralGridSimSystem: TSigGeneralGrid;
+    SigGridEditorPanelName: TSigGridEditor;
+    SigGridEditorPanelID: TSigGridEditor;
+    SigGridEditorFileID: TSigGridEditor;
+    SigPanelRight: TSigPanel;
+    RadioButtonDefault: TRadioButton;
+    RadioButtonSounders: TRadioButton;
+    RadioButtonAllDevices: TRadioButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure SimConversion(const iFile: tZFPFile);
+    procedure RefreshPanelTable(const iFile: tZFPFile);
+    procedure ExportFile(const BaseName : string ; const PanelID : integer ; const MergePanels : boolean ; const ASYData: tStrings);
+    procedure DoLoopHeader(const LoopID : integer ; const ASYData: tStrings);
+    procedure DoFileHeader(const ASYData: tStrings);
+    //function ChangeType(const DeviceType: integer): string;
+    function ChangeTypeDefault(const iDevice : tLoopDevice): string;
+    function ChangeTypeSounders(const iDevice : tLoopDevice): string;
+    function ChangeTypeAllDevices(const iDevice : tLoopDevice): string;
+  end;
+
+var
+  FrameSimSystem: TFrameSimSystem;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrameSimSystem.SimConversion(const iFile: tZFPFile);
+var
+  LoopID, DeviceAddress, iRow : integer;
+  iPanel: tZFPNode;
+  iLoop : tLoop;
+  iDevice : tLoopDevice;
+  iStrings : tStringList;
+  MergePanels : boolean;
+begin
+  MergePanels := FALSE;
+  for iRow := 1 to SigGeneralGridSimSystem.RowCount - 1 do
+  begin
+    iPanel := iFile.NodeList.Node[SigGeneralGridSimSystem.Cell[2, iRow].ToInteger - 1];
+    if SigGeneralGridSimSystem.Cell[3, iRow] <> '0' then //0 = No File required
+    begin
+      if MergePanels = FALSE then
+      begin
+        iStrings := tStringList.Create;
+        DoFileHeader(iStrings);
+      end;
+      for LoopID := 0 to iPanel.LoopList.Max do
+      begin
+        iLoop := iPanel.LoopList.Loop[LoopID];
+        if iLoop.LoopType = ltNormal then
+        begin
+          case MergePanels of
+            TRUE: //Merge is set when dealing with 2nd Panel in a 4+4. Add 4 to the Loop ID
+            begin
+              DoLoopHeader(iLoop.LoopAddress.ValueAsInt + 4, iStrings);
+            end;
+            FALSE:
+            begin
+              DoLoopHeader(iLoop.LoopAddress.ValueAsInt, iStrings);
+            end;
+          end;
+          for DeviceAddress := 0 to iLoop.LoopDevices.Max do
+          begin
+            iDevice := iLoop.LoopDevices.LoopDevice[DeviceAddress];
+            if iDevice.IOType <> sdt_Not_Fitted then
+            begin
+              if RadioButtonDefault.Checked then //Keep Typecodes as there are
+              begin
+                iStrings.Add('Device' + IntToStr(DeviceAddress + 1) + '=' +  ChangeTypeDefault(iDevice));
+              end
+              else if RadioButtonSounders.Checked then //Change Discovery Sounders to XP95 Sounders
+              begin
+                iStrings.Add('Device' + IntToStr(DeviceAddress + 1) + '=' +  ChangeTypeSounders(iDevice));
+              end
+              else if RadioButtonAllDevices.Checked then //Change all Discovery Devices to XP95 Devices
+              begin
+                iStrings.Add('Device' + IntToStr(DeviceAddress + 1) + '=' +  ChangeTypeAllDevices(iDevice));
+              end;
+            end;
+          end;
+        end;
+      end;
+      if SigGeneralGridSimSystem.Cell[3, iRow] <> SigGeneralGridSimSystem.Cell[3, iRow + 1] then //Check for 4+4 Panel
+      begin
+        ExportFile(iPanel.ZFPFile.FileName, iPanel.ID, MergePanels, iStrings);
+        MergePanels := FALSE;
+      end
+      else
+      begin
+        MergePanels := TRUE;
+      end;
+    end;
+  end;
+end;
+
+procedure TFrameSimSystem.RefreshPanelTable(const iFile: tZFPFile);
+var
+  PanelID, iRow : integer;
+  iPanel: tZFPNode;
+begin
+  with SigGeneralGridSimSystem do
+  begin
+    iRow := 0;
+    ClearCells;
+    for PanelID := 0 to iFile.NodeList.Max do
+    begin
+      inc( iRow );
+      iPanel := iFile.NodeList.Node[PanelID];
+      Cell[1, iRow] := iPanel.Name1.Value;
+      Cell[2, iRow] := iPanel.ID.ToString;
+      Cell[3, iRow] := '0';
+      RowCount := iRow + 1;
+    end;
+  end;
+end;
+
+procedure TFrameSimSystem.ExportFile(const BaseName : string ; const PanelID : integer ; const MergePanels : boolean ; const ASYData: tStrings);
+var
+  FileName : string;
+  FilePath : string;
+begin
+  FilePath := ChangeFileExt(BaseName, '');
+  case MergePanels of
+    TRUE: //Merge is set when dealing with 2nd Panel in a 4+4. Filename to include both Panel IDs
+    begin
+      FileName := FilePath + '(Panel ' + InttoStr(PanelID - 1) + '&' + InttoStr(PanelID) + ')' + '.ASY';
+    end;
+    FALSE:
+    begin
+      FileName := FilePath + '(Panel ' + InttoStr(PanelID) + ')' + '.ASY';
+    end;
+  end;
+  ASYData.SaveToFile(FileName);
+end;
+
+procedure TFrameSimSystem.DoLoopHeader(const LoopID : integer ; const ASYData: tStrings);
+begin
+  ASYData.Add('[Loop' + IntToStr(LoopID) + ']');
+  ASYData.Add('CableImpedance=1810');
+  ASYData.Add('CableFirstRun=0');
+  ASYData.Add('CableFirstLength=0');
+  ASYData.Add('CableMaxRun=0');
+  ASYData.Add('CableTotalLength=0');
+  ASYData.Add('Calculation=0');
+  ASYData.Add('MaxOutputs=126');
+  ASYData.Add('DINLEDsDisabled=False');
+  ASYData.Add('IgnoreIsolators=False');
+end;
+
+procedure TFrameSimSystem.DoFileHeader(const ASYData: tStrings);
+begin
+  ASYData.Add(';Configuration data for Apollo Discovery SimSystem');
+  ASYData.Add('[SimSys]');
+  ASYData.Add('DataFormat=1');
+  ASYData.Add('CreatedDate=' + DatetoStr(date));
+  ASYData.Add('ModifiedDate=' + DatetoStr(date));
+  ASYData.Add('PanelType="Unknown Panel"');
+end;
+
+function TFrameSimSystem.ChangeTypeDefault(const iDevice : tLoopDevice): string;
+begin
+  case iDevice.Device.TypeIDonLoop.ValueAsInt of
+    160: //Discovery Optical
+    begin
+      Result := '2';
+    end;
+    20: //XP95 Optical
+    begin
+      Result := '27';
+    end;
+    21: //Deam Detector
+    begin
+      Result := '82';
+    end;
+    22: //Flame Detector
+    begin
+      Result := '48';
+    end;
+    96: //Discovery Ionisation
+    begin
+      Result := '1';
+    end;
+    12: //XP95 Ionisation
+    begin
+      Result := '19';
+    end;
+    192: //Discovery Heat
+    begin
+      Result := '3';
+    end;
+    24: //XP95 Heat
+    begin
+      Result := '29';
+    end;
+    25: //XP95 High Temp
+    begin
+      Result := '30';
+    end;
+    48: //Discovery Sounder/Beacon
+    begin
+      Result := '90';
+    end;
+    4: //XP95 Sounder/Beacon
+    begin
+      Result := '94';
+    end;
+    52: //Discovery Voice Sounder/Beacon
+    begin
+      Result := '90';
+    end;
+    53: //Discovery Voice Sounder Only
+    begin
+      Result := '90';
+    end;
+    5: //Sounder Control Module
+    begin
+      Result := '7';
+    end;
+    184: //Discovery Multi Sensor
+    begin
+      Result := '4';
+    end;
+    23: //XP95 Multi Sensor
+    begin
+      Result := '58';
+    end;
+    16: //Zone Monitor
+    begin
+      Result := '22';
+    end;
+    105: //CO Detector
+    begin
+      Result := '66';
+    end;
+    31: //XP95 MCP
+    begin
+      Result := '33';
+    end;
+    248: //Discovery MCP
+    begin
+      Result := '37';
+    end;
+    8: //IO Unit
+    begin
+      Result := '13';
+    end;
+    17: //Switch Monitor
+    begin
+      Result := '24';
+    end;
+  end;
+end;
+
+function TFrameSimSystem.ChangeTypeSounders(const iDevice : tLoopDevice): string;
+var
+  LoopDevices : tLoopDevices;
+  TypeAsInt : integer;
+begin
+  case iDevice.Device.TypeIDonLoop.ValueAsInt of
+    160: //Discovery Optical
+    begin
+      Result := '2';
+    end;
+    20: //XP95 Optical
+    begin
+      Result := '27';
+    end;
+    21: //Deam Detector
+    begin
+      Result := '82';
+    end;
+    22: //Flame Detector
+    begin
+      Result := '48';
+    end;
+    96: //Discovery Ionisation
+    begin
+      Result := '1';
+    end;
+    12: //XP95 Ionisation
+    begin
+      Result := '19';
+    end;
+    192: //Discovery Heat
+    begin
+      Result := '3';
+    end;
+    24: //XP95 Heat
+    begin
+      Result := '29';
+    end;
+    25: //XP95 High Temp
+    begin
+      Result := '30';
+    end;
+    48: //Discovery Sounder/Beacon
+    begin
+      Result := '94';
+      TypeAsInt := 402;
+    end;
+    4: //XP95 Sounder/Beacon
+    begin
+      Result := '94';
+    end;
+    52: //Discovery Voice Sounder/Beacon
+    begin
+      Result := '94';
+      TypeAsInt := 402;
+    end;
+    53: //Discovery Voice Sounder Only
+    begin
+      Result := '94';
+      TypeAsInt := 402;
+    end;
+    5: //Sounder Control Module
+    begin
+      Result := '7';
+    end;
+    184: //Discovery Multi Sensor
+    begin
+      Result := '4';
+    end;
+    23: //XP95 Multi Sensor
+    begin
+      Result := '58';
+    end;
+    16: //Zone Monitor
+    begin
+      Result := '22';
+    end;
+    105: //CO Detector
+    begin
+      Result := '66';
+    end;
+    31: //XP95 MCP
+    begin
+      Result := '33';
+    end;
+    248: //Discovery MCP
+    begin
+      Result := '37';
+    end;
+    8: //IO Unit
+    begin
+      Result := '13';
+    end;
+    17: //Switch Monitor
+    begin
+      Result := '24';
+    end;
+  end;
+  LoopDevices.UpdateSubDevices(iDevice, TypeAsInt);
+end;
+
+function TFrameSimSystem.ChangeTypeAllDevices(const iDevice : tLoopDevice): string;
+var
+  LoopDevices : tLoopDevices;
+  TypeAsInt : integer;
+begin
+  case iDevice.Device.TypeIDonLoop.ValueAsInt of
+    160: //Discovery Optical
+    begin
+      Result := '27';
+      TypeAsInt := 102;
+    end;
+    20: //XP95 Optical
+    begin
+      Result := '27';
+    end;
+    21: //Deam Detector
+    begin
+      Result := '82';
+    end;
+    22: //Flame Detector
+    begin
+      Result := '48';
+    end;
+    96: //Discovery Ionisation
+    begin
+      Result := '19';
+      TypeAsInt := 202;
+    end;
+    12: //XP95 Ionisation
+    begin
+      Result := '19';
+    end;
+    192: //Discovery Heat
+    begin
+      Result := '29';
+      TypeAsInt := 302;
+    end;
+    24: //XP95 Heat
+    begin
+      Result := '29';
+    end;
+    25: //XP95 High Temp
+    begin
+      Result := '30';
+    end;
+    48: //Discovery Sounder/Beacon
+    begin
+      Result := '94';
+      TypeAsInt := 402;
+    end;
+    4: //XP95 Sounder/Beacon
+    begin
+      Result := '94';
+    end;
+    52: //Discovery Voice Sounder/Beacon
+    begin
+      Result := '94';
+      TypeAsInt := 402;
+    end;
+    53: //Discovery Voice Sounder Only
+    begin
+      Result := '94';
+      TypeAsInt := 402;
+    end;
+    5: //Sounder Control Module
+    begin
+      Result := '7';
+    end;
+    184: //Discovery Multi Sensor
+    begin
+      Result := '58';
+      TypeAsInt := 502;
+    end;
+    23: //XP95 Multi Sensor
+    begin
+      Result := '58';
+    end;
+    16: //Zone Monitor
+    begin
+      Result := '22';
+    end;
+    105: //CO Detector
+    begin
+      Result := '66';
+    end;
+    31: //XP95 MCP
+    begin
+      Result := '33';
+    end;
+    248: //Discovery MCP
+    begin
+      Result := '33';
+      TypeAsInt := 801;
+    end;
+    8: //IO Unit
+    begin
+      Result := '13';
+    end;
+    17: //Switch Monitor
+    begin
+      Result := '24';
+    end;
+  end;
+  LoopDevices.UpdateSubDevices(iDevice, TypeAsInt);
+end;
+end.
