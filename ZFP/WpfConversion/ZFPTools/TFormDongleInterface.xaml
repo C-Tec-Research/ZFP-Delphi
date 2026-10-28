@@ -1,0 +1,6 @@
+﻿<!-- Converted from UnitDongleInterface.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormDongleInterface" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="FormDongleInterface" Width="543" Height="282" WindowStartupLocation="Manual" Left="0" Top="0" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="527" rtl:Rtl.DesignHeight="243">
+        <Border x:Name="USBPanel_Host" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="144,56,0,0" Width="185" Height="121" />
+    </Grid>
+</Window>

@@ -1,0 +1,13 @@
+﻿<!-- Converted from UnitBlockAddition.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormBlockAddition" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="Block Addition" Width="543" Height="246" WindowStartupLocation="Manual" Left="0" Top="0" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="527" rtl:Rtl.DesignHeight="207">
+        <Label Padding="0" Content="Name Template" x:Name="Label1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,32,0,0" rtl:Rtl.DesignWidth="74" rtl:Rtl.DesignHeight="13" />
+        <Label Padding="0" Content="Replace &lt;n&gt; with numbers from" x:Name="Label2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,72,0,0" rtl:Rtl.DesignWidth="155" rtl:Rtl.DesignHeight="13" />
+        <Label Padding="0" Content="to" x:Name="Label3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="303,72,0,0" rtl:Rtl.DesignWidth="10" rtl:Rtl.DesignHeight="13" />
+        <TextBox Text="EditName" VerticalContentAlignment="Center" x:Name="EditName" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="224,29,0,0" Width="249" Height="21" />
+        <Border x:Name="SigSpinEditFrom_Host" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="224,69,0,0" Width="57" Height="22" />
+        <Border x:Name="SigSpinEditTo_Host" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="336,69,0,0" Width="57" Height="22" />
+        <Button IsDefault="True" Content="OK" x:Name="BitBtn1" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="144,128,0,0" Width="75" Height="25" />
+        <Button IsCancel="True" Content="Cancel" x:Name="BitBtn2" TabIndex="4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="304,128,0,0" Width="75" Height="25" />
+    </Grid>
+</Window>

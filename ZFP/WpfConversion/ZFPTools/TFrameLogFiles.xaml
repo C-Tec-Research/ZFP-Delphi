@@ -1,0 +1,21 @@
+﻿<!-- Converted from UnitLogFiles.dfm by Delphi to WPF Converter -->
+<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFrameLogFiles" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Width="839" Height="499">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="839" rtl:Rtl.DesignHeight="499">
+        <DockPanel LastChildFill="True">
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel2" rtl:Rtl.DesignWidth="839" rtl:Rtl.DesignHeight="499">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <DockPanel LastChildFill="True">
+                        <Grid rtl:Rtl.DesignWidth="837" rtl:Rtl.DesignHeight="497">
+                            <TabControl x:Name="TabControlLogs" TabIndex="0" />
+                            <Grid KeyboardNavigation.TabNavigation="Local" Margin="4,26,4,4">
+                                <DockPanel LastChildFill="True">
+                                    <Border x:Name="SigPanelLog_Host" rtl:Rtl.DesignWidth="829" rtl:Rtl.DesignHeight="487" />
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                    </DockPanel>
+                </Grid>
+            </Border>
+        </DockPanel>
+    </Grid>
+</UserControl>

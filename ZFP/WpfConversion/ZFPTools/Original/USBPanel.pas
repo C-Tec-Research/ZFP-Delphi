@@ -1,0 +1,3472 @@
+unit USBPanel;
+
+interface
+
+uses
+  SysUtils, Classes,
+  Controls, ExtCtrls,
+  Types,
+  WinTypes,
+  Dialogs,
+  ImgList,
+  Grids,
+  SigImage,
+  AnsiStrings,
+  System.UITypes;
+
+{
+  component version history
+  v1.3.2.0 Allow missing Image files - condition all access on non-nil pointers
+  v1.3.1.0
+           Add auto-open, auto-close and auto-program properties
+           with appropriate Onxxx events
+           Make Open property of panel public, but not published
+  v1.3.0.0 Add new variety to panel open style for Serial No check
+           Remove flicker on LEDs by using new SigImage components
+  v1.2.0.0
+  26/11/04 Add properties to grid to be able to set
+           default values to write to a blank EEPROM
+}
+
+const
+  cDefaultXON = 17;
+  cDefaultXOFF = 19;
+
+type
+  FT_PROGRAM_DATA = record
+    Vendor_ID      : word;     // $0403
+    Product_ID     : word;     // $6001
+    Manufacturer   : pAnsiChar;    // 'FTDI'
+    ManufacturerID : pAnsiChar;    // 'FT'
+    Description    : pAnsiChar;    // 'USB HS Serial Converter'
+    SerialNo       : pAnsiChar;    // 'FT000001' if fixed or nil
+    MaxPower       : word;     // 0 < MaxPower <= 500
+    PnP            : word;     // 0 = disabled, 1 = enabled
+    SelfPowered    : word;     // 0 = bus powered, 1 = self powered
+    RemoteWakeup   : word;     // 0 = not capable, 1 = capable
+    //
+    // Rev 4 extensions
+    //
+    Rev4           : boolean;  // True if rev4 chip, false otherwise
+    IsoIn          : boolean;  // true if endpoint is isosynchronous
+    IsoOut         : boolean;  // true if endpoint is isosynchronous
+    PullDownEnable : boolean;  // true if Pull Down enabled
+    SerNumEnable   : boolean;  // True if serial number to be used
+    USBVersion     : word;     // BCD (0x0200 => USB 2.0)
+  end;
+
+type
+  FT_Result = Integer;
+
+//  tFT_Open          = function (PVDevice : Integer; var ftHandle : dword ) : FT_Result ; stdcall;
+  tFT_Open          = function (PVDevice : Integer; ftHandle : pointer ) : FT_Result ; stdcall;
+  tFT_OpenEx        = function (pvArg1 : Pointer; dwFlags : dword; ftHandle : Pointer) : FT_Result ; stdcall ;
+  tFT_GetNumDevices = function (pvArg1 : Pointer; pvArg2 : Pointer; dwFlags : dword) : FT_Result ; stdcall ;
+  tFT_ListDevices   = function (pvArg1 : dword; pvArg2 : Pointer; dwFlags : Dword) : FT_Result ; stdcall ;
+  tFT_Close         = function (ftHandle : dword) : FT_Result ; stdcall ;
+
+  tFT_SetBaudRate   = function (ftHandle : dword; BaudRate : dword) : FT_Result ; stdcall ;
+  tFT_SetDataCharacteristics
+                    = function (ftHandle : dword; WordLength, StopBits, Parity : byte) : FT_Result ; stdcall ;
+  tFT_SetFlowControl
+                    = function (ftHandle : dword; FlowControl : word; XonChar,XoffChar : Byte) : FT_Result ; stdcall ;
+  tFT_SetDTR        = function (ftHandle : dword) : FT_Result ; stdcall ;
+  tFT_ClrDTR        = function (ftHandle : dword) : FT_Result ; stdcall ;
+  tFT_SetRTS        = function (ftHandle : dword) : FT_Result ; stdcall ;
+  tFT_ClrRTS        = function (ftHandle : dword) : FT_Result ; stdcall ;
+  tFT_SetBreakOff   = function (ftHandle : dword) : FT_Result ; stdcall ;
+  tFT_SetBreakOn    = function (ftHandle : dword) : FT_Result ; stdcall ;
+
+  tFT_Write         = function (ftHandle : dword; FTOutBuf : Pointer; BufferSize : LongInt; ResultPtr : Pointer ) : FT_Result ; stdcall ;
+  tFT_GetQueueStatus
+                    = function (ftHandle : dword; RxBytes:Pointer) : FT_Result ; stdcall ;
+  tFT_Read          = function (ftHandle : dword; FTInBuf : Pointer; BufferSize : LongInt; ResultPtr : Pointer ) : FT_Result ; stdcall ;
+  tFT_GetStatus     = function (ftHandle : dword; var DataSizeRx : dword; var DataSizeTx : dword; var EventStatus : dword ) : FT_Result; stdcall;
+  tFT_Purge         = function (ftHandle : dword; Mask : dword) : FT_Result ; stdcall;
+  tFT_SetTimeouts   = function (ftHandle : dword; ReadTimeout : dword; WriteTimeout : dword ) : FT_Result; stdcall;
+
+  // EE functions
+//  tFT_EE_Program    = function( FT_Handle : dword; var PFT_PROGRAM_DATA : FT_PROGRAM_DATA ) : FT_Result; stdcall;
+//  tFT_EE_Read = function( FT_Handle : dword; var PFT_PROGRAM_DATA : FT_PROGRAM_DATA ) : FT_RESULT; stdcall;
+//  tFT_EE_UASize = function( FT_Handle : dword; var Size : dword ) : FT_RESULT; stdcall;
+//  tFT_EE_UAWrite = function( FT_Handle : dword; pData : pointer; size : dword ) : FT_RESULT; stdcall;
+//  tFT_EE_UARead = function( FT_Handle : dword; pData : pointer; size : dword; var BytesRead : dword ) : FT_RESULT; stdcall;
+  tFT_EE_Program    = function( FT_Handle : dword; PFT_PROGRAM_DATA : pointer ) : FT_Result; stdcall;
+  tFT_EE_Read = function( FT_Handle : dword; PFT_PROGRAM_DATA : pointer ) : FT_RESULT; stdcall;
+  tFT_EE_UASize = function( FT_Handle : dword; Size : pointer ) : FT_RESULT; stdcall;
+  tFT_EE_UAWrite = function( FT_Handle : dword; pData : pointer; size : dword ) : FT_RESULT; stdcall;
+  tFT_EE_UARead = function( FT_Handle : dword; pData : pointer; size : dword; var BytesRead : dword ) : FT_RESULT; stdcall;
+
+type
+  tErrorStyle = ( esThrowErrors,
+                  esPopUpErrors,
+                  esHideErrors );
+
+  TDataLength = ( dl7Bits,
+                  dl8Bits );
+
+  TStopBits =   ( sb1Bit,
+                  sb2Bits );
+
+  TParity =     ( pNone,
+                  pOdd,
+                  pEven,
+                  pMark,
+                  pSpace );
+
+  tPnP =        ( PnP_disabled,
+                  PnP_enabled );
+
+  tSelfPowered =( spBusPowered,
+                  spSelfPowered );
+
+  tRemoteWakeUp=( rwuNotCapable,
+                  rwuCapable );
+
+  tLineState =  ( lsClr,
+                  lsSet );
+
+  TFTBaudRate = (   br___300 ,
+                    br___600 ,
+                    br__1200 ,
+                    br__2400 ,
+                    br__4800 ,
+                    br__9600 ,
+                    br_14400 ,
+                    br_19200 ,
+                    br_38400 ,
+                    br_57600 ,
+                    br115200 ,
+                    br230400 ,
+                    br460800 ,
+                    br921600
+                  );
+
+  TFlowControl = ( fcNone,
+                   fcRTS_CTS,
+                   fcDTR_DSR,
+                   fcXON_XOFF
+                   );
+
+  TUSB_OpenMethod = ( omByDevice,
+                      omByID,
+                      omBySerialNo );
+
+  TOnChar = procedure( Sender: TObject; iChar : AnsiChar ) of object;
+  TOnTimeOut = procedure( Sender: TObject ) of object;
+  TOnErr = procedure( Sender : TObject; pErrNo : integer; pErrText : string; var handled : boolean ) of object;
+  TOnTextChange = procedure( Sender : TObject; const pText : string ) of object;
+
+type
+  tFTError = ( errInvalidHandle, errDeviceNotFound, errDeviceNotOpenned,
+               errIOError, errInsufficientResources, errInvalidParameter,
+               errUnformattedEEPROM, errOther );
+  tFTErrors = set of tFTError;
+
+type
+  TUSBPanel = class(TPanel)
+  private
+    fOnSetText: TOnTextChange;
+    fOnGetText: TOnTextChange;
+    fFTErrorsShown : tFTErrors;
+    { Private declarations }
+  protected
+    { Protected declarations }
+    fTimer : TTimer;
+
+    fOpen : boolean;
+    fErrorStyle : tErrorStyle;
+
+    fFT_Handle : dword;
+
+//    iDevice_String : array[ 1..50 ] of char;
+
+    fBaudRate : dword;
+    fWordLength : byte;
+    fStopBits : byte;
+    fParity : TParity;
+
+{
+    // used to hold data assigned to any blank chip if AutoProgram is set to TRUE
+    // or if Program_EEPROM is called
+    fDefaultProgramData : FT_PROGRAM_DATA;
+    fDefaultManufacturer : array [ 0..50 ] of char;
+    fDefaultManufacturerID : array [ 0..50 ] of char;
+    fDefaultDescription : array [ 0..64 ] of char;
+    fDefaultSerialNo : array [ 0..50 ] of char;
+}
+
+    // Data actually read back from chip
+    fActualProgramData : FT_PROGRAM_DATA;
+    fActualManufacturer : array [ 0..50 ] of AnsiChar;
+    fActualManufacturerID : array [ 0..50 ] of AnsiChar;
+    fActualDescription : array [ 0..64 ] of AnsiChar;
+    fActualSerialNo : array [ 0..50 ] of AnsiChar;
+
+    // values set up by user - used for checking by open method
+    fProgramProgramData : FT_PROGRAM_DATA;
+    fProgramManufacturer : array [ 0..50 ] of AnsiChar;
+    fProgramManufacturerID : array [ 0..50 ] of AnsiChar;
+    fProgramDescription : array [ 0..64 ] of AnsiChar;
+    fProgramSerialNo : array [ 0..50 ] of AnsiChar;
+
+    fRcvUSBBufferCount : integer;
+    fReadBuffer : array of AnsiChar;
+    fWriteBuffer : array of AnsiChar;
+    fWriteBufferPending : integer;
+
+    fReadBufferSize : integer;
+    fWriteBufferSize : integer;
+
+    fOnChar : TOnChar;
+    fDelayCount : integer;
+    fTxStretch : integer;
+    fRxStretch : integer;
+    fTimeout : integer;
+    fTimeoutCountDown : integer;
+    fOnTimeOut : tOnTimeOut;
+
+    fFlowControl : word; // FT_FLOW_NONE = fcNone
+    fXON : byte;  // 17  = ^Q
+    fXOFF :byte; // 19  = ^S
+
+    fDTR : tLineState;
+    fRTS : tLineState;
+    fBreak : tLineState;
+
+    // Images
+    fOpenImage : TSigImage;
+    fSendBufferImage : TSigImage;
+    fRcvBufferImage  : TSigImage;
+
+    // Open
+    fOpenMethod : TUSB_OpenMethod;
+    fDeviceNo : dWord;
+
+    // Auto Open
+    fAutoOpen : boolean;
+    fOnOpen : tNotifyEvent;
+    fOnClose : tNotifyEvent;
+
+    // Auto program
+    fAutoProgram : boolean;
+    fOnBlankEEProm : tNotifyEvent; // occurs if blank EEPROM found, before programming
+    fOnProgram : tNotifyEvent; // occurs after programming
+    fDetectedDeviceCount : integer;
+
+    fOnErr : TOnErr;
+
+    procedure SetOpen( NewVal : boolean );
+    procedure SetTimeOut( NewVal : integer );
+
+//    procedure SetDevice_String( NewVal : string );
+//    function  GetDevice_String : string;
+
+    function FT_Error_Check(ErrStr: String; PortStatus : Integer) : boolean;
+
+    procedure SetBaudRate( NewVal : TFTBaudRate );
+    function  GetBaudRate : TFTBaudRate;
+
+    procedure SetDataLength( NewVal : TDataLength );
+    function  GetDataLength : TDataLength;
+    procedure SetStopBits( NewVal : TStopBits );
+    function GetStopBits : TStopBits;
+    procedure SetParity( NewVal : TParity );
+
+    procedure SetCurrentBaudRate;
+    procedure SetDataCharacteristics;
+
+    function  GetPnP : tPnP;
+    procedure SetPnP( NewVal : tPnP );
+
+    function GetDLLIsLoaded : boolean;
+
+    procedure SetReadBufferSize( NewVal : integer );
+    procedure SetWriteBufferSize( NewVal : integer );
+    procedure SetText( NewVal : string ); virtual;
+    function GetText : string; virtual;
+    procedure GetUSBBuffer;
+
+    procedure SetTickInterval( NewVal : integer );
+    function GetTickInterval : integer;
+    procedure fTimerAction (Sender: TObject); virtual;
+
+    function  GetVendorID : string;
+    procedure SetVendorID( NewVal : string );
+    function  GetProductID : string;
+    procedure SetProductID( NewVal : string );
+    function  GetManufacturer : string;
+    procedure SetManufacturer(NewVal : string );
+    function  GetManufacturerID : string;
+    procedure SetManufacturerID( NewVal : string );
+    function  GetDescription : string;
+    procedure SetDescription( newVal : string );
+    function  GetSerialNo : string;
+    procedure SetSerialNo( NewVal : string );
+    function  GetMaxPower : word;
+    procedure SetMaxPower( NewVal : word );
+    function  GetSelfPowered : tSelfPowered;
+    procedure SetSelfPowered( NewVal : tSelfPowered );
+    function  GetRemoteWakeup : tRemoteWakeUp;
+    procedure SetRemoteWakeup( NewVal : tRemoteWakeUp );
+    //
+    // Rev 4 extensions
+    //
+    function  GetRev4 : boolean;
+    procedure SetRev4( NewVal : boolean );
+    function  GetIsoIn : boolean;
+    procedure SetIsoIn( NewVal : boolean );
+    function  GetIsoOut : boolean;
+    procedure SetIsoOut( NewVal : boolean );
+    function  GetPullDownEnable : boolean;
+    procedure SetPullDownEnable( NewVal : boolean );
+    function  GetSerNumEnable : boolean;
+    procedure SetSerNumEnable( NewVal : boolean );
+    function  GetUSBVersion : string;
+    procedure SetUSBVersion( NewVal : string );
+
+    procedure SetFlowControl( NewVal : TFlowControl ); // FT_FLOW_NONE = fcNone
+    function  GetFlowControl : TFlowControl;
+    procedure SetXON( NewVal : byte );  // 17  = ^Q
+    procedure SetXOFF( NewVal : byte ); // 19  = ^S
+    procedure fWriteFlowControl;
+    procedure SetDTR( NewVal : tLineState );
+    procedure SetRTS( NewVal : tLineState );
+    procedure SetBreak( NewVal : tLineState );
+//    procedure SetImageList( NewVal : tImageList );
+
+//    procedure SetImage( pImage: TImage; pRangeMax : integer; pImageNo : integer );
+    procedure fShowOpenImage;
+
+    procedure SetOpenImage( NewVal : tSigImage );
+    procedure SetSendBufferImage( NewVal : tSigImage );
+    procedure SetRcvBufferImage( NewVal : tSigImage );
+
+    procedure SetAutoOpen( NewVal : boolean );
+    procedure SetAutoProgram( NewVal : boolean );
+
+    procedure SetDetectedDeviceCount( NewVal : integer );
+    procedure CheckStillOpen;
+
+{
+    // defaults to write to blank EEPROM
+    function GetDefaultVendorID : string;
+    procedure SetDefaultVendorID( NewVal : string );
+    function GetDefaultProductID : string;
+    procedure SetDefaultProductID( NewVal : string );
+    function GetDefaultManufacturer : string;
+    procedure SetDefaultManufacturer( NewVal : string );
+    function GetDefaultManufacturerID : string;
+    procedure SetDefaultManufacturerID( NewVal : string );
+    function GetDefaultDescription : string;
+    procedure SetDefaultDescription( NewVal : string );
+    function GetDefaultSerialNo : string;
+    procedure SetDefaultSerialNo( NewVal : string );
+    function GetDefaultMaxPower : word;
+    procedure SetDefaultMaxPower( NewVal : word );
+    function GetDefaultPnP : tPnP;
+    procedure SetDefaultPnP( NewVal : tPnP );
+    function GetDefaultSelfPowered : tSelfPowered;
+    procedure SetDefaultSelfPowered( NewVal : tSelfPowered );
+    function GetDefaultRemoteWakeup : tRemoteWakeUp;
+    procedure SetDefaultRemoteWakeup( NewVal : tRemoteWakeUp );
+    function GetDefaultRev4 : boolean;
+    procedure SetDefaultRev4( NewVal : boolean );
+    function GetDefaultIsoIn : boolean;
+    procedure SetDefaultIsoIn( NewVal : boolean );
+    function GetDefaultIsoOut : boolean;
+    procedure SetDefaultIsoOut( NewVal : boolean );
+    function GetDefaultPullDownEnable : boolean;
+    procedure SetDefaultPullDownEnable( NewVal : boolean );
+    function GetDefaultSerNumEnable : boolean;
+    procedure SetDefaultSerNumEnable( NewVal : boolean );
+    function GetDefaultUSBVersion : string;
+    procedure SetDefaultUSBVersion( NewVal : string );
+}
+
+  public
+    { Public declarations }
+
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+
+    property USB_Handle : dword
+             read fFT_Handle; // read only property
+
+    procedure Open_USB;
+    procedure Close_USB;
+
+    function GetFTDeviceCount : dword;
+    function GetFTDeviceDescription( DevNo : dword ) : string;
+
+    property DLLIsLoaded : boolean
+             read GetDLLIsLoaded; // read only property!
+
+    property Text : string
+             read GetText
+             write SetText;
+
+    property Delay : integer
+             read fDelayCount
+             write fDelayCount; // delay in ticks.
+    // EE Functions
+    function Program_Device : boolean;
+    function Read_Device : boolean;
+    function Get_User_Area_Size : dword;
+    function ReadUserArea( pUA : pointer; size : dword ) : dword; // returns bytes actually read
+    function WriteUserArea( pUA : pointer; size : dword ) : boolean;
+
+    // flow control
+    property DTR : tLineState
+             read fDTR
+             write SetDTR;
+    property RTS : tLineState
+             read fRTS
+             write SetRTS;
+    property BreakCondition : tLineState
+             read fBreak
+             write SetBreak;
+    property Open : boolean
+             read fOpen
+             write SetOpen;
+
+    property DetectedDeviceCount : integer
+             read fDetectedDeviceCount
+             write SetDetectedDeviceCount;
+
+    // others
+    procedure Purge( Mask : dword );
+
+    procedure SetTimeouts( ReadTimeOut : dword; WriteTimeOut : dword );
+
+    procedure Open_USB_ByID;
+    procedure Open_USB_ByDevice;
+
+  published
+    { Published declarations }
+    property VendorID : string
+             read GetVendorID
+             write SetVendorID;
+    property ProductID : string
+             read GetProductID
+             write SetProductID;
+    property Manufacturer : string
+             read GetManufacturer
+             write SetManufacturer;
+    property ManufacturerID : string
+             read GetManufacturerID
+             write SetManufacturerID;
+    property Description : string
+             read GetDescription
+             write SetDescription;
+    property SerialNo : string
+             read GetSerialNo
+             write SetSerialNo;
+    property MaxPower : word
+             read GetMaxPower
+             write SetMaxPower
+             default 44;
+
+    property ErrorStyle : tErrorStyle
+             read fErrorStyle
+             write fErrorStyle
+             default esThrowErrors;
+//    property Device_String : string
+//             read GetDevice_String
+//             write SetDevice_String;
+    property BaudRate : TFTBaudRate
+             read GetBaudRate
+             write SetBaudRate
+             default br__9600;
+    property DataBits : TDataLength
+             read GetDataLength
+             write SetDataLength
+             default dl8Bits;
+    property StopBits : TStopBits
+             read GetStopBits
+             write SetStopBits
+             default sb1Bit;
+    property Parity : TParity
+             read fParity
+             write SetParity
+             default pNone;
+    property PnP : tPnP
+             read GetPnP
+             write SetPnP
+             default PnP_enabled;
+    property WriteBufferSize : integer
+             read fWriteBufferSize
+             write SetWriteBufferSize
+             default 2048;
+    property ReadBufferSize : integer
+             read fReadBufferSize
+             write SetReadBufferSize
+             default 2048;
+    property OnChar : TOnChar
+             read fOnChar
+             write fOnChar;
+    property TimeOut : integer // in ticks
+             read fTimeout
+             write SetTimeOut
+             default 300;
+    property TickInterval : integer // in m/secs
+             read GetTickInterval
+             write SetTickInterval
+             default 10;
+    property SelfPowered : tSelfPowered
+             read GetSelfPowered
+             write SetSelfPowered
+             default spBusPowered;
+    property RemoteWakeup : tRemoteWakeUp
+             read GetRemoteWakeUp
+             write SetRemoteWakeup
+             default rwuCapable;     // 0 = not capable, 1 = capable
+    //
+    // Rev 4 extensions
+    //
+    property Rev4 : boolean
+             read GetRev4
+             write SetRev4
+             default FALSE;  // True if rev4 chip, false otherwise
+    property IsoIn : boolean
+             read GetIsoIn
+             write SetIsoIn
+             default FALSE;  // true if endpoint is isosynchronous
+    property IsoOut : boolean
+             read GetIsoOut
+             write SetIsoOut
+             default FALSE;  // true if endpoint is isosynchronous
+    property PullDownEnable : boolean
+             read GetPullDownEnable
+             write SetPullDownEnable
+             default FALSE;  // true if Pull Down enabled
+    property SerNumEnable : boolean
+             read GetSerNumEnable
+             write SetSerNumEnable
+             default FALSE;  // True if serial number to be used
+    property USBVersion : string
+             read GetUSBVersion
+             write SetUSBVersion;     // BCD (0200 => USB 2.0)
+    //
+    // Flow Control
+    //
+    property FlowControl : TFlowControl
+             read GetFlowControl
+             write SetFlowControl
+             default fcNone; // FT_FLOW_NONE = fcNone
+    property XON : byte
+             read fXON
+             write SetXON
+             default cDefaultXON;   // 17  = ^Q
+    property XOFF : byte
+             read fXOFF
+             write SetXOFF
+             default cDefaultXOFF; // 19  = ^S
+    //
+    // Images
+    //
+//    property ImageList : tImageList
+//             read iImageList
+//             write SetImageList;
+
+    property OpenMethod : TUSB_OpenMethod
+             read fOpenMethod
+             write fOpenMethod
+             default omBySerialNo;
+
+    property DeviceNo : dword
+             read fDeviceNo
+             write fDeviceNo
+             default 0;
+
+    property OpenImage : tSigImage
+             read fOpenImage
+             write SetOpenImage;
+
+    property SendBufferImage : tSigImage
+             read fSendBufferImage
+             write SetSendBufferImage;
+
+    property RcvBufferImage : tSigImage
+             read fRcvBufferImage
+             write SetRcvBufferImage;
+
+    property AutoOpen : boolean
+             read fAutoOpen
+             write SetAutoOpen
+             default FALSE;    // if false, AutoProgram must be false too
+
+    property AutoProgram : boolean
+             read fAutoProgram
+             write SetAutoProgram
+             default FALSE;   // requires AutoOpen to be set
+    //events
+
+    property OnTimeOut : tOnTimeout
+             read fOnTimeOut
+             write fOnTimeOut;
+    property OnOpen : tNotifyEvent
+             read fOnOpen
+             write fOnOpen;
+    property OnClose : tNotifyEvent
+             read fOnClose
+             write fOnClose;
+    property OnBlankEEPROM : tNotifyEvent
+             read fOnBlankEEProm
+             write fOnBlankEEProm;
+    property OnProgram : tNotifyEvent
+             read fOnProgram
+             write fOnProgram;
+    property OnErr : TOnErr
+             read fOnErr
+             write fOnErr;
+
+    property OnSetText : TOnTextChange
+             read fOnSetText
+             write fOnSetText;
+    property OnGetText : TOnTextChange
+             read fOnGetText
+             write fOnGetText;
+
+{
+    // defaults
+    // these properties are written to any blank chip
+    // if AutoProgram is set to TRUE
+    property DefaultVendorID : string
+             read GetDefaultVendorID
+             write SetDefaultVendorID;
+    property DefaultProductID : string
+             read GetDefaultProductID
+             write SetDefaultProductID;
+    property DefaultManufacturer : string
+             read GetDefaultManufacturer
+             write SetDefaultManufacturer;
+    property DefaultManufacturerID : string
+             read GetDefaultManufacturerID
+             write SetDefaultManufacturerID;
+    property DefaultDescription : string
+             read GetDefaultDescription
+             write SetDefaultDescription;
+    property DefaultSerialNo : string
+             read GetDefaultSerialNo
+             write SetDefaultSerialNo;
+    property DefaultMaxPower : word
+             read GetDefaultMaxPower
+             write SetDefaultMaxPower
+             default 44;
+    property DefaultPnP : tPnP
+             read GetDefaultPnP
+             write SetDefaultPnP
+             default PnP_enabled;
+    property DefaultSelfPowered : tSelfPowered
+             read GetDefaultSelfPowered
+             write SetDefaultSelfPowered
+             default spBusPowered;
+    property DefaultRev4 : boolean
+             read GetDefaultRev4
+             write SetDefaultRev4
+             default FALSE;  // True if rev4 chip, false otherwise
+    property DefaultIsoIn : boolean
+             read GetDefaultIsoIn
+             write SetDefaultIsoIn
+             default FALSE;
+    property DefaultRemoteWakeUp : tRemoteWakeUp
+             read GetDefaultRemoteWakeup
+             write SetDefaultRemoteWakeup
+             default rwuCapable;     // 0 = not capable, 1 = capable
+    property DefaultSerNumEnable : boolean
+             read GetDefaultSerNumEnable
+             write SetDefaultSerNumEnable
+             default FALSE;
+    property DefaultUSBVersion : string
+             read GetDefaultUSBVersion
+             write SetDefaultUSBVersion;
+}
+  end;
+
+// columns for TUSBGrid
+const
+  cIndex = 0;
+  cVendorID = 1;
+  cProductID = 2;
+  cManufacturer = 3;
+  cManufacturerID = 4;
+  cDescription = 5;
+  cSerialNo = 6;
+  cMaxPower = 7;
+  cPnP = 8;
+  cSelfPowered = 9;
+  cRemoteWakeup = 10;
+    //
+    // Rev 4 extensions
+    //
+  cRev4 = 11;
+  cIsoIn = 12;
+  cIsoOut = 13;
+  cPullDownEnable = 14;
+  cSerNumEnable = 15;
+  cUSBVersion = 16;
+
+  cUSBGridColCount = 17;
+
+type
+  TUSBGrid = class(TStringGrid)
+  protected
+    fTimer : TTimer;
+//    iAutoConnect : boolean;
+    fActiveMonitor : boolean;
+    fErrorStyle : tErrorStyle;
+    fOnErr : TOnErr;
+    fDeviceCount : integer;
+    fFTErrorsShown : tFTErrors;
+
+    fDefaultProgramData : FT_PROGRAM_DATA;
+    fActualProgramData : FT_PROGRAM_DATA;
+
+    fDefaultManufacturer : array [ 0..50 ] of AnsiChar;
+    fDefaultManufacturerID : array [ 0..50 ] of AnsiChar;
+    fDefaultDescription : array [ 0..64 ] of AnsiChar;
+    fDefaultSerialNo : array [ 0..50 ] of AnsiChar;
+
+    fActualManufacturer : array [ 0..50 ] of AnsiChar;
+    fActualManufacturerID : array [ 0..50 ] of AnsiChar;
+    fActualDescription : array [ 0..64 ] of AnsiChar;
+    fActualSerialNo : array [ 0..50 ] of AnsiChar;
+
+    procedure fTimerAction (Sender: TObject);
+    procedure fFillGrid;
+    procedure SetActiveMonitor( NewVal : boolean );
+
+    // defaults to write to blank EEPROM
+    function GetDefaultVendorID : string;
+    procedure SetDefaultVendorID( NewVal : string );
+    function GetDefaultProductID : string;
+    procedure SetDefaultProductID( NewVal : string );
+    function GetDefaultManufacturer : string;
+    procedure SetDefaultManufacturer( NewVal : string );
+    function GetDefaultManufacturerID : string;
+    procedure SetDefaultManufacturerID( NewVal : string );
+    function GetDefaultDescription : string;
+    procedure SetDefaultDescription( NewVal : string );
+    function GetDefaultSerialNo : string;
+    procedure SetDefaultSerialNo( NewVal : string );
+    function GetDefaultMaxPower : word;
+    procedure SetDefaultMaxPower( NewVal : word );
+    function GetDefaultPnP : tPnP;
+    procedure SetDefaultPnP( NewVal : tPnP );
+    function GetDefaultSelfPowered : tSelfPowered;
+    procedure SetDefaultSelfPowered( NewVal : tSelfPowered );
+    function GetDefaultRemoteWakeup : tRemoteWakeUp;
+    procedure SetDefaultRemoteWakeup( NewVal : tRemoteWakeUp );
+    function GetDefaultRev4 : boolean;
+    procedure SetDefaultRev4( NewVal : boolean );
+    function GetDefaultIsoIn : boolean;
+    procedure SetDefaultIsoIn( NewVal : boolean );
+    function GetDefaultIsoOut : boolean;
+    procedure SetDefaultIsoOut( NewVal : boolean );
+    function GetDefaultPullDownEnable : boolean;
+    procedure SetDefaultPullDownEnable( NewVal : boolean );
+    function GetDefaultSerNumEnable : boolean;
+    procedure SetDefaultSerNumEnable( NewVal : boolean );
+    function GetDefaultUSBVersion : string;
+    procedure SetDefaultUSBVersion( NewVal : string );
+  public
+    constructor Create( AOwner : TComponent ); override;
+    destructor Destroy; override;
+    function GetFTDeviceCount : dword;
+
+    function FT_Error_Check(ErrStr: String; PortStatus : Integer) : boolean;
+    property DeviceCount : integer
+             read fDeviceCount; // last read device count
+  published
+    property DefaultRowHeight
+             default 20;
+    property ColCount
+             default cUSBGridColCount;
+    property ErrorStyle : tErrorStyle
+             read fErrorStyle
+             write fErrorStyle
+             default esThrowErrors;
+    property ActiveMonitor : boolean
+             read fActiveMonitor
+             write SetActiveMonitor
+             default FALSE;
+    // defaults
+    // these properties are written to any blank chip
+    property DefaultVendorID : string
+             read GetDefaultVendorID
+             write SetDefaultVendorID;
+    property DefaultProductID : string
+             read GetDefaultProductID
+             write SetDefaultProductID;
+    property DefaultManufacturer : string
+             read GetDefaultManufacturer
+             write SetDefaultManufacturer;
+    property DefaultManufacturerID : string
+             read GetDefaultManufacturerID
+             write SetDefaultManufacturerID;
+    property DefaultDescription : string
+             read GetDefaultDescription
+             write SetDefaultDescription;
+    property DefaultSerialNo : string
+             read GetDefaultSerialNo
+             write SetDefaultSerialNo;
+    property DefaultMaxPower : word
+             read GetDefaultMaxPower
+             write SetDefaultMaxPower
+             default 44;
+    property DefaultPnP : tPnP
+             read GetDefaultPnP
+             write SetDefaultPnP
+             default PnP_enabled;
+    property DefaultSelfPowered : tSelfPowered
+             read GetDefaultSelfPowered
+             write SetDefaultSelfPowered
+             default spBusPowered;
+    property DefaultRev4 : boolean
+             read GetDefaultRev4
+             write SetDefaultRev4
+             default FALSE;  // True if rev4 chip, false otherwise
+    property DefaultIsoIn : boolean
+             read GetDefaultIsoIn
+             write SetDefaultIsoIn
+             default FALSE;
+    property DefaultRemoteWakeUp : tRemoteWakeUp
+             read GetDefaultRemoteWakeup
+             write SetDefaultRemoteWakeup
+             default rwuCapable;     // 0 = not capable, 1 = capable
+    property DefaultSerNumEnable : boolean
+             read GetDefaultSerNumEnable
+             write SetDefaultSerNumEnable
+             default FALSE;
+    property DefaultUSBVersion : string
+             read GetDefaultUSBVersion
+             write SetDefaultUSBVersion;
+    property OnErr : TOnErr
+             read fOnErr
+             write fOnErr;
+end;
+
+Const
+// FT_Result Values
+  FT_OK = 0;
+  FT_INVALID_HANDLE = 1;
+  FT_DEVICE_NOT_FOUND = 2;
+  FT_DEVICE_NOT_OPENED = 3;
+  FT_IO_ERROR = 4;
+  FT_INSUFFICIENT_RESOURCES = 5;
+  FT_INVALID_PARAMETER = 6;
+  FT_UNFORMATTED_EEPROM = 15; // deduced!
+  FT_SUCCESS = FT_OK;
+
+// FT_Open_Ex Flags
+  FT_OPEN_BY_SERIAL_NUMBER = 1;
+  FT_OPEN_BY_DESCRIPTION = 2;
+
+// FT_List_Devices Flags
+  FT_LIST_NUMBER_ONLY = $80000000;
+  FT_LIST_BY_INDEX = $40000000;
+  FT_LIST_ALL = $20000000;
+
+// Flow Control Selection
+  FT_FLOW_NONE = $0000;
+  FT_FLOW_RTS_CTS = $0100;
+  FT_FLOW_DTR_DSR = $0200;
+  FT_FLOW_XON_XOFF = $0400;
+
+// Purge Commands
+  FT_PURGE_RX = 1;
+  FT_PURGE_TX = 2;
+
+{$IFDEF ALLOWINSTALL}
+procedure Register;
+{$ENDIF}
+
+implementation
+
+{$IFDEF ALLOWINSTALL}
+procedure Register;
+begin
+  RegisterComponents('SigNET', [TUSBPanel, TUSBGrid]);
+end;
+{$ENDIF}
+
+//------------------ DLL Functions -------------------
+
+var
+  hUSB                      : THandle;
+  FT_Open                   : tFT_Open;
+  FT_OpenEx                 : tFT_OpenEx;
+  FT_GetNumDevices          : tFT_GetNumDevices;
+  FT_ListDevices            : tFT_ListDevices;
+  FT_Close                  : tFT_Close;
+  FT_SetBaudRate            : tFT_SetBaudRate;
+  FT_SetDataCharacteristics : tFT_SetDataCharacteristics;
+  FT_SetFlowControl         : tFT_SetFlowControl;
+  FT_SetDTR                 : tFT_SetDTR;
+  FT_ClrDTR                 : tFT_ClrDTR;
+  FT_SetRTS                 : tFT_SetRTS;
+  FT_ClrRTS                 : tFT_ClrRTS;
+  FT_SetBreakOff            : tFT_SetBreakOff;
+  FT_SetBreakOn             : tFT_SetBreakOn;
+
+  FT_Write                  : tFT_Write;
+  FT_GetQueueStatus         : tFT_GetQueueStatus;
+  FT_Read                   : tFT_Read;
+  FT_GetStatus              : tFT_GetStatus;
+  FT_Purge                  : tFT_Purge;
+  FT_SetTimeouts            : tFT_SetTimeouts;
+
+  FT_EE_Program             : tFT_EE_Program;
+  FT_EE_Read                : tFT_EE_Read;
+  FT_EE_UASize              : tFT_EE_UASize;
+  FT_EE_UAWrite             : tFT_EE_UAWrite;
+  FT_EE_UARead              : tFT_EE_UARead;
+
+  InstanceCount             : integer; // a count of how many instances there are.
+                                       // this is used to decide when and if to unload the DLL
+
+function BodgeGetProcAddress( hUSB : THandle; Name : PAnsiChar ) : pointer;
+begin
+  Result := GetProcAddress( hUSB, Name );
+end;
+
+procedure OpenUSBLib;
+begin
+  hUSB := LoadLibrary('ftd2xx.dll'); // gives HINSTANCE_ERROR if load fails
+  if hUSB > HINSTANCE_ERROR then
+  begin
+    FT_Open := GetProcAddress( hUSB, 'FT_Open' );
+    FT_Close := BodgeGetProcAddress( hUSB, 'FT_Close' );
+    FT_ListDevices := GetProcAddress( hUSB, 'FT_ListDevices' );
+    FT_GetNumDevices := GetProcAddress( hUSB, 'FT_ListDevices' );
+    FT_OpenEx := GetProcAddress( hUSB, 'FT_OpenEx' );
+    FT_SetBaudRate := GetProcAddress( hUSB, 'FT_SetBaudRate' );
+    FT_SetDataCharacteristics := GetProcAddress( hUSB, 'FT_SetDataCharacteristics' );
+    FT_SetFlowControl := GetProcAddress( hUSB, 'FT_SetFlowControl' );
+    FT_SetDTR := GetProcAddress( hUSB, 'FT_SetDTR' );
+    FT_ClrDTR := GetProcAddress( hUSB, 'FT_ClrDTR' );
+    FT_SetRTS := GetProcAddress( hUSB, 'FT_SetRTS' );
+    FT_ClrRTS := GetProcAddress( hUSB, 'FT_ClrRTS' );
+    FT_SetBreakOff := GetProcAddress( hUSB, 'FT_SetBreakOff' );
+    FT_SetBreakOn := GetProcAddress( hUSB, 'FT_SetBreakOn' );
+
+    FT_Write := GetProcAddress( hUSB, 'FT_Write' );
+    FT_GetQueueStatus := GetProcAddress( hUSB, 'FT_GetQueueStatus' );
+    FT_Read := GetProcAddress( hUSB, 'FT_Read' );
+    FT_GetStatus := GetProcAddress( hUSB, 'FT_GetStatus' );
+    FT_Purge := GetProcAddress( hUSB, 'FT_Purge' );
+    FT_SetTimeouts := GetProcAddress( hUSB, 'FT_SetTimeouts' );
+
+    FT_EE_Program := GetProcAddress( hUSB, 'FT_EE_Program' );
+//    FT_EE_Read := GetProcAddress( hUSB, 'FT_EE_Program' );          //??????
+    FT_EE_Read := GetProcAddress( hUSB, 'FT_EE_Read' );          //??????
+    FT_EE_UASize := GetProcAddress( hUSB, 'FT_EE_UASize' );
+    FT_EE_UAWrite := GetProcAddress( hUSB, 'FT_EE_UAWrite' );
+    FT_EE_UARead := GetProcAddress( hUSB, 'FT_EE_UARead' );
+
+  end
+  else
+  begin
+    FT_Open := nil;
+    FT_Close := nil;
+    FT_ListDevices := nil;
+    FT_GetNumDevices := nil;
+    FT_OpenEx := nil;
+    FT_SetBaudRate := nil;
+    FT_SetDataCharacteristics := nil;
+    FT_SetFlowControl := nil;
+    FT_SetDtr := nil;
+    FT_ClrDtr := nil;
+    FT_SetRts := nil;
+    FT_ClrRts := nil;
+
+    FT_Write := nil;
+    FT_GetQueueStatus := nil;
+    FT_Read := nil;
+    FT_GetStatus := nil;
+    FT_Purge := nil;
+    FT_SetTimeouts := nil;
+
+    FT_EE_Program := nil;
+    FT_EE_Read := nil;
+    FT_EE_UASize := nil;
+    FT_EE_UAWrite := nil;
+    FT_EE_UARead := nil;
+  end;
+end;
+
+procedure CloseUSBLib;
+begin
+  if hUSB > HINSTANCE_ERROR then
+  begin
+    FreeLibrary( hUSB );
+  end;
+end;
+
+//------------- TUSBGrid ----------------------------
+
+constructor TUSBGrid.Create( AOwner : TComponent );
+begin
+  inherited Create( AOwner );
+
+  // load library if required
+  if InstanceCount = 0 then
+  begin
+    OpenUSBLib;
+  end;
+  inc( InstanceCount );
+
+  DefaultRowHeight := 20;
+
+  ColCount := cUSBGridColCount;
+  RowCount := 2;
+  Cells[ cIndex, 0 ] := 'Index';
+  ColWidths[ cIndex ] := 32;
+  Cells[ cVendorID, 0 ] := 'Vendor ID';
+  ColWidths[ cVendorID ] := 40;
+  Cells[ cProductID, 0 ] := 'Product ID';
+  Colwidths[ cProductID ] := 40;
+  Cells[ cManufacturer, 0 ] := 'Manufacturer';
+  Colwidths[ cManufacturer ] := 80;
+  Cells[ cManufacturerID, 0 ] := 'Manuf. ID';
+  Cells[ cDescription, 0 ] := 'Description';
+  Cells[ cSerialNo, 0 ] := 'Serial No';
+  ColWidths[ cSerialNo ] := 48;
+  Cells[ cMaxPower, 0 ] := 'Max Power';
+  Cells[ cPnP, 0 ] := 'PnP';
+  ColWidths[ cPnP ] := 32;
+  Cells[ cSelfPowered, 0 ] := 'Self Powered';
+  Colwidths[ cSelfPowered ] := 72;
+  Cells[ cRemoteWakeup, 0 ] := 'Remote Wakeup';
+  Colwidths[ cRemoteWakeup ] := 88;
+    //
+    // Rev 4 extensions
+    //
+  Cells[ cRev4, 0 ] := 'Rev 4';
+  ColWidths[ cRev4 ] := 40;
+  Cells[ cIsoIn, 0 ] := 'Iso In';
+  ColWidths[ cIsoIn ] := 40;
+  Cells[ cIsoOut, 0 ] := 'Iso Out';
+  ColWidths[ cIsoOut ] := 40;
+  Cells[ cPullDownEnable, 0 ] := 'Pull Down';
+  ColWidths[ cPullDownEnable ] := 56;
+  Cells[ cSerNumEnable, 0 ] := 'Ser Num En';
+  ColWidths[ cSerNumEnable ] := 64;
+  Cells[ cUSBVersion, 0 ] := 'USB Ver.';
+  ColWidths[ cUSBVersion ] := 48;
+
+  fTimer := TTimer.Create( self );
+  fTimer.Enabled := FALSE;
+  fTimer.Interval := 10;
+  fTimer.OnTimer := fTimerAction;
+
+//  iAutoConnect := FALSE;
+  fActiveMonitor := FALSE;
+
+  fErrorStyle := esThrowErrors;
+
+  fDeviceCount := 0;
+
+  fDefaultProgramData.Vendor_ID      := $0403;
+  fDefaultProgramData.Product_ID     := $6001;
+  {$WARNINGS OFF}
+  fDefaultProgramData.Manufacturer   := @fDefaultManufacturer;
+  fActualProgramData.Manufacturer   := @fActualManufacturer;
+  StrCopy( @fDefaultManufacturer, 'SigNET' );
+  StrCopy( @fActualManufacturer, 'SigNET' );
+  fDefaultProgramData.ManufacturerID := @fDefaultManufacturerID;
+  StrCopy( @fDefaultManufacturerID, 'SigNET' );
+  StrCopy( @fActualManufacturerID, 'SigNET' );
+  fDefaultProgramData.Description    := @fDefaultDescription;
+  StrCopy( @fDefaultDescription, 'IR-RF Transmitter');
+  StrCopy( @fActualDescription, 'IR-RF Transmitter');
+  fDefaultProgramData.SerialNo       := @fDefaultSerialNo;
+  StrCopy( @fDefaultSerialNo, 'SIG00001' );
+  {$WARNINGS ON}
+  fDefaultProgramData.MaxPower       := 44;
+  fDefaultProgramData.PnP            := 1;
+  fDefaultProgramData.SelfPowered    := 0;
+  fDefaultProgramData.RemoteWakeup   := 1;
+    //
+    // Rev 4 extensions
+    //
+  fDefaultProgramData.Rev4           := FALSE;  // True if rev4 chip, false otherwise
+  fDefaultProgramData.IsoIn          := FALSE;  // true if endpoint is isosynchronous
+  fDefaultProgramData.IsoOut         := FALSE;  // true if endpoint is isosynchronous
+  fDefaultProgramData.PullDownEnable := FALSE;  // true if Pull Down enabled
+  fDefaultProgramData.SerNumEnable   := FALSE;  // True if serial number to be used
+  fDefaultProgramData.USBVersion     := $0200; // BCD (0x0200 => USB 2.0)
+
+end;
+
+destructor TUSBGrid.Destroy;
+begin
+  fTimer.Enabled := FALSE;
+{
+  fTimer.Free;
+  fTimer := nil;
+}
+  dec( InstanceCount );
+  if InstanceCount = 0 then
+  begin
+    CloseUSBLib;
+  end;
+  inherited Destroy;
+end;
+
+function TUSBGrid.GetDefaultVendorID : string;
+begin
+  Result := IntToHex( fDefaultProgramData.Vendor_ID, 4 );
+end;
+
+procedure TUSBGrid.SetDefaultVendorID( NewVal : string );
+begin
+  fDefaultProgramData.Vendor_ID := StrToInt( '$' + NewVal );
+end;
+
+function TUSBGrid.GetDefaultProductID : string;
+begin
+  Result := IntToHex( fDefaultProgramData.Product_ID, 4 );
+end;
+
+procedure TUSBGrid.SetDefaultProductID( NewVal : string );
+begin
+  fDefaultProgramData.Product_ID := StrToInt( '$' + NewVal );
+end;
+
+function  TUSBGrid.GetDefaultManufacturer : string;
+var
+  i : integer;
+begin
+  Result := '';
+  for i := 0 to sizeof( fDefaultManufacturer ) do
+  begin
+    if fDefaultManufacturer[ i ] = #0 then
+    begin
+      break;
+    end
+    else
+    begin
+      Result := Result + char(fDefaultManufacturer[ i ]);
+    end;
+  end;
+end;
+
+procedure TUSBGrid.SetDefaultManufacturer(NewVal : string );
+var
+  i : integer;
+begin
+  // should check size - to do
+  for i := 1 to length( NewVal ) do
+  begin
+    fDefaultProgramData.Manufacturer[ i - 1 ] := AnsiChar( NewVal[ i ] );
+  end;
+  fDefaultProgramData.Manufacturer[ length( NewVal ) ] := #0;
+end;
+
+function  TUSBGrid.GetDefaultManufacturerID : string;
+var
+  i : integer;
+begin
+  Result := '';
+  for i := 0 to sizeof( fDefaultManufacturerID ) do
+  begin
+    if fDefaultManufacturerID[ i ] = #0 then
+    begin
+      break;
+    end
+    else
+    begin
+      Result := Result + char(fDefaultManufacturerID[ i ]);
+    end;
+  end;
+end;
+
+procedure TUSBGrid.SetDefaultManufacturerID( NewVal : string );
+var
+  i : integer;
+begin
+  // should check size - to do
+  for i := 1 to length( NewVal ) do
+  begin
+    fDefaultProgramData.ManufacturerID[ i - 1 ] := AnsiChar( NewVal[ i ] );
+  end;
+  fDefaultProgramData.ManufacturerID[ length( NewVal ) ] := #0;
+end;
+
+function  TUSBGrid.GetDefaultDescription : string;
+var
+  i : integer;
+begin
+  Result := '';
+  for i := 0 to sizeof( fDefaultDescription ) - 1 do
+  begin
+    if fDefaultDescription[ i ] = #0 then
+    begin
+      break;
+    end
+    else
+    begin
+      Result := Result + char(fDefaultDescription[ i ]);
+    end;
+  end;
+end;
+
+procedure TUSBGrid.SetDefaultDescription( newVal : string );
+var
+  i : integer;
+begin
+  // should check size - to do
+  for i := 1 to length( NewVal ) do
+  begin
+    fDefaultDescription[ i - 1 ] := AnsiChar( NewVal[ i ] );
+  end;
+  fDefaultDescription[ length( NewVal ) ] := #0;
+end;
+
+function  TUSBGrid.GetDefaultSerialNo : string;
+var
+  i : integer;
+begin
+  Result := '';
+  for i := 0 to sizeof( fDefaultSerialNo ) do
+  begin
+    if fDefaultSerialNo[ i ] = #0 then
+    begin
+      break;
+    end
+    else
+    begin
+      Result := Result + char(fDefaultSerialNo[ i ]);
+    end;
+  end;
+end;
+
+procedure TUSBGrid.SetDefaultSerialNo( NewVal : string );
+var
+  i : integer;
+begin
+  // should check size - to do
+  for i := 1 to length( NewVal ) do
+  begin
+    fDefaultSerialNo[ i - 1 ] := AnsiChar( NewVal[ i ] );
+  end;
+  fDefaultSerialNo[ length( NewVal ) ] := #0;
+end;
+
+function  TUSBGrid.GetDefaultMaxPower : word;
+begin
+  Result := fDefaultProgramData.MaxPower;
+end;
+
+procedure TUSBGrid.SetDefaultMaxPower( NewVal : word );
+begin
+  if (NewVal > 0) and (NewVal <= 500) then
+  begin
+    fDefaultProgramData.MaxPower := NewVal;
+  end
+  else
+  begin
+    raise Exception.Create('USB Max power must lie in range 1-500' );
+  end;
+end;
+
+function  TUSBGrid.GetDefaultPnP : tPnP;
+begin
+  if fDefaultProgramData.PnP = 0 then Result := PnP_disabled
+  else Result := PnP_enabled;
+end;
+
+procedure TUSBGrid.SetDefaultPnP( NewVal : tPnP );
+begin
+  fDefaultProgramData.PnP := Ord( NewVal );
+end;
+
+function  TUSBGrid.GetDefaultSelfPowered : tSelfPowered;
+begin
+  if fDefaultProgramData.SelfPowered = 0 then Result := spBusPowered
+  else Result := spSelfPowered;
+end;
+
+procedure TUSBGrid.SetDefaultSelfPowered( NewVal : tSelfPowered );
+begin
+  fDefaultProgramData.SelfPowered := Ord( NewVal );
+end;
+
+function  TUSBGrid.GetDefaultRemoteWakeup : tRemoteWakeUp;
+begin
+  if fDefaultProgramData.RemoteWakeup = 0 then Result := rwuNotCapable
+  else Result := rwuCapable;
+end;
+
+procedure TUSBGrid.SetDefaultRemoteWakeup( NewVal : tRemoteWakeUp );
+begin
+  fDefaultProgramData.RemoteWakeup := Ord( NewVal );
+end;
+
+function  TUSBGrid.GetDefaultRev4 : boolean;
+begin
+  Result := fDefaultProgramData.Rev4;
+end;
+
+procedure TUSBGrid.SetDefaultRev4( NewVal : boolean );
+begin
+  fDefaultProgramData.Rev4 := NewVal;
+end;
+
+function  TUSBGrid.GetDefaultIsoIn : boolean;
+begin
+  Result := fDefaultProgramData.IsoIn;
+end;
+
+procedure TUSBGrid.SetDefaultIsoIn( NewVal : boolean );
+begin
+  fDefaultProgramData.IsoIn := NewVal;
+end;
+
+function  TUSBGrid.GetDefaultIsoOut : boolean;
+begin
+  Result := fDefaultProgramData.IsoOut;
+end;
+
+procedure TUSBGrid.SetDefaultIsoOut( NewVal : boolean );
+begin
+  fDefaultProgramData.IsoOut := NewVal;
+end;
+
+function  TUSBGrid.GetDefaultPullDownEnable : boolean;
+begin
+  Result := fDefaultProgramData.PullDownEnable;
+end;
+
+procedure TUSBGrid.SetDefaultPullDownEnable( NewVal : boolean );
+begin
+  fDefaultProgramData.PullDownEnable := NewVal;
+end;
+
+function  TUSBGrid.GetDefaultSerNumEnable : boolean;
+begin
+  Result := fDefaultProgramData.SerNumEnable;
+end;
+
+procedure TUSBGrid.SetDefaultSerNumEnable( NewVal : boolean );
+begin
+  fDefaultProgramData.SerNumEnable := NewVal;
+end;
+
+function  TUSBGrid.GetDefaultUSBVersion : string;
+begin
+  Result := IntToHex( fDefaultProgramData.USBVersion, 4 );
+end;
+
+procedure TUSBGrid.SetDefaultUSBVersion( NewVal : string );
+begin
+  fDefaultProgramData.USBVersion := StrToInt( '$' + NewVal );
+end;
+
+{
+    function GetDefaultPnP : tPnP;
+    procedure SetDefaultPnP( NewVal : tPnP );
+    function GetDefaultSelfPowered : tSelfPowered;
+    procedure SetDefaultSelfPowered( NewVal : tSelfPowered );
+    function GetDefaultRemoteWakeup : boolean;
+    procedure SetDefaultRemoteWakeup( NewVal : boolean );
+    function GetDefaultRev4 : boolean;
+    procedure SetDefaultRev4( NewVal : boolean );
+    function GetDefaultIsoIn : boolean;
+    procedure SetDefaultIsoIn( NewVal : boolean );
+    function GetDefaultIsoOut : boolean;
+    procedure SetDefaultIsoOut( NewVal : boolean );
+    function GetDefaultPullDownEnable : boolean;
+    procedure SetDefaultPullDownEnable( NewVal : boolean );
+    function GetDefaultSerNumEnable : boolean;
+    procedure SetDefaultSerNumEnable( NewVal : boolean );
+    function GetDefaultUSBVersion : string;
+    procedure SetDefaultUSBVersion( NewVal : string );
+}
+
+procedure TUSBGrid.fTimerAction (Sender: TObject);
+var
+  iNewDeviceCount : integer;
+begin
+  // check for USB changes. Assume not able to both add and
+  // remove a device within one tenth of a second
+  try
+    iNewDeviceCount := GetFTDeviceCount;
+    if iNewDeviceCount <> fDeviceCount then
+    begin
+      fDeviceCount := iNewDeviceCount;
+      fFillGrid;
+    end;
+  except
+  end;
+end;
+
+procedure TUSBGrid.fFillGrid;
+var
+  i, j, iRowCount : integer;
+  iUSBHandle : dword;
+  iPortStatus : integer;
+//  iProgramData : FT_PROGRAM_DATA;
+//  iDevice_String : array[ 1..50 ] of char;
+begin
+  iRowCount := GetFTDeviceCount;
+  if (iRowCount = 0) or not fActiveMonitor then
+  begin
+    RowCount := 2;
+    for i := 0 to ColCount - 1 do
+    begin
+      Cells[ i, 1 ] := '';
+    end;
+  end
+  else
+  begin
+    RowCount := iRowCount + 1;
+    for i := 0 to IRowCount - 1 do
+    begin
+      Cells[ cIndex, i + 1 ] := intToStr( i );
+      for j := 1 to ColCount - 1 do
+      begin
+        Cells[ j, i + 1 ] := '';
+      end;
+//      if assigned( FT_OpenEx ) then
+//      begin
+//        if FT_Error_Check( 'Opening device ' + intToStr( i ),
+//           FT_OpenEx( @iDevice_String, FT_OPEN_BY_SERIAL_NUMBER, @iUSBHandle )) then
+      if assigned( FT_Open ) then
+      begin
+        {$WARNINGS OFF}
+        if FT_Error_Check( 'Opening device ' + intToStr( i ),
+           FT_Open( i, @iUSBHandle )) then
+           //           FT_Open( i, iUSBHandle )) then
+        begin
+          if assigned( FT_EE_Read ) then
+          begin
+            fActualProgramData := fDefaultProgramData; // what to program EEPROM with if blank
+            fActualProgramData.Manufacturer   := @fActualManufacturer;
+            fActualProgramData.ManufacturerID := @fActualManufacturerID;
+            fActualProgramData.Description    := @fActualDescription;
+            fActualProgramData.SerialNo       := @fActualSerialNo;
+            AnsiStrings.StrCopy( fActualManufacturer, fDefaultManufacturer );
+            AnsiStrings.StrCopy( fActualManufacturerID, fDefaultManufacturerID );
+            AnsiStrings.StrCopy( fActualDescription, fDefaultDescription );
+            AnsiStrings.StrCopy( fActualSerialNo, fDefaultSerialNo );
+            iPortStatus := FT_EE_Read( iUSBHandle, @fActualProgramData );
+            case iPortStatus of
+              FT_UNFORMATTED_EEPROM:
+              begin
+                if assigned( FT_EE_Program ) then
+                begin
+                  iPortStatus := FT_EE_Program( iUSBHandle, @fActualProgramData );
+                end;
+              end;
+            end;
+            case iPortStatus of
+              FT_OK:
+              begin
+              Cells[ cVendorID, i + 1 ] := IntToHex( fActualProgramData.Vendor_ID, 4 );
+              Cells[ cProductID, i + 1 ] := IntToHex( fActualProgramData.Product_ID, 4 );
+              Cells[ cManufacturer, i + 1 ] := string(fActualProgramData.Manufacturer);
+              Cells[ cManufacturerID, i + 1 ] := string(fActualProgramData.ManufacturerID);
+              Cells[ cDescription, i + 1 ] := string(fActualProgramData.Description);
+              if assigned( fActualProgramData.SerialNo ) then
+              begin
+                Cells[ cSerialNo, i + 1 ] := string(fActualProgramData.SerialNo);
+              end
+              else
+              begin
+                Cells[ cSerialNo, i + 1 ] := '[none]';
+              end;
+              Cells[ cMaxPower, i + 1 ] := intToStr( fActualProgramData.MaxPower );
+              if fActualProgramData.PnP = 0 then
+              begin
+                Cells[ cPnP, i + 1 ] := 'Disabled';
+              end
+              else
+              begin
+                Cells[ cPnP, i + 1 ] := 'Enabled';
+              end;
+              if fActualProgramData.SelfPowered = 0 then
+              begin
+                Cells[ cSelfPowered, i + 1 ] := 'False';
+              end
+              else
+              begin
+                Cells[ cSelfPowered, i + 1 ] := 'True';
+              end;
+              if fActualProgramData.RemoteWakeup = 0 then
+              begin
+                Cells[ cRemoteWakeup, i + 1 ] := 'False';
+              end
+              else
+              begin
+                Cells[ cRemoteWakeup, i + 1 ] := 'True';
+              end;
+                  //
+                  // Rev 4 extensions
+                  //
+              if fActualProgramData.Rev4 then
+              begin
+                Cells[ cRev4, i + 1 ] := 'True';
+              end
+              else
+              begin
+                Cells[ cRev4, i + 1 ] := 'False';
+              end;
+              if fActualProgramData.IsoIn then
+              begin
+                Cells[ cIsoIn, i + 1 ] := 'True';
+              end
+              else
+              begin
+                Cells[ cIsoIn, i + 1 ] := 'False';
+              end;
+              if fActualProgramData.IsoOut then
+              begin
+                Cells[ cIsoOut, i + 1 ] := 'True';
+              end
+              else
+              begin
+                Cells[ cIsoOut, i + 1 ] := 'False';
+              end;
+              if fActualProgramData.PullDownEnable then
+              begin
+                Cells[ cPullDownEnable, i + 1 ] := 'Enabled';
+              end
+              else
+              begin
+                Cells[ cPullDownEnable, i + 1 ] := 'Disabled';
+              end;
+              if fActualProgramData.SerNumEnable then
+              begin
+                Cells[ cSerNumEnable, i + 1 ] := 'True';
+              end
+              else
+              begin
+                Cells[ cSerNumEnable, i + 1 ] := 'Disabled';
+              end;
+              Cells[ cUSBVersion, i + 1 ] := intToHex( fActualProgramData.USBVersion, 4 );
+              end;
+              else
+              begin
+                FT_Error_Check( 'Reading device ' + intToStr( i ), iPortStatus );
+              end;
+            end;
+          end;
+        end;
+           {$WARNINGS ON}
+        if assigned( FT_Close ) then
+        begin
+          FT_Error_Check( 'Closing file ' + intToStr( i ),
+              FT_Close( iUSBHandle ));
+        end;
+      end;
+    end
+  end;
+end;
+
+function TUSBGrid.GetFTDeviceCount : dword;
+begin
+  Result := 0;
+  if assigned( FT_GetNumDevices ) then
+  begin
+  {$WARNINGS OFF}
+    FT_Error_Check( 'Getting USB Device Count', FT_GetNumDevices( @Result, nil, FT_LIST_NUMBER_ONLY ));
+    {$WARNINGS ON}
+  end;
+end;
+
+function TUSBGrid.FT_Error_Check(ErrStr: String; PortStatus : Integer) : boolean;
+var
+  Str : String;
+  pHandled : boolean;
+begin
+  if PortStatus = FT_OK then
+  begin
+    result := TRUE;
+  end
+  else
+  begin
+    pHandled := FALSE;
+    case PortStatus of
+      FT_INVALID_HANDLE :
+      begin
+        if errInvalidHandle in fFTErrorsShown then
+        begin
+          pHandled := TRUE;
+        end
+        else
+        begin
+          fFTErrorsShown := fFTErrorsShown + [ errInvalidHandle ];
+          Str := 'Error ' + ErrStr + ' - Invalid Handle...';
+        end;
+      end;
+      FT_DEVICE_NOT_FOUND :
+      begin
+        if errDeviceNotFound in fFTErrorsShown then
+        begin
+          pHandled := TRUE;
+        end
+        else
+        begin
+          fFTErrorsShown := fFTErrorsShown + [errDeviceNotFound];
+          Str := 'Error ' + ErrStr + ' - Device Not Found...';
+        end;
+      end;
+      FT_DEVICE_NOT_OPENED :
+      begin
+        if errDeviceNotOpenned in fFTErrorsShown then
+        begin
+          pHandled := TRUE;
+        end
+        else
+        begin
+          fFTErrorsShown := fFTErrorsShown + [errDeviceNotOpenned];
+          Str := 'Error ' + ErrStr + ' - Device Not Opened...';
+        end;
+      end;
+      FT_IO_ERROR :
+      begin
+        if errIOError in fFTErrorsShown then
+        begin
+          pHandled := TRUE;
+        end
+        else
+        begin
+          fFTErrorsShown := fFTErrorsShown + [errIOError];
+          Str := 'Error ' + ErrStr + ' - General IO Error...';
+        end;
+      end;
+      FT_INSUFFICIENT_RESOURCES :
+      begin
+        if errInsufficientResources in fFTErrorsShown then
+        begin
+          pHandled := TRUE;
+        end
+        else
+        begin
+          fFTErrorsShown := fFTErrorsShown + [errInsufficientResources];
+          Str := 'Error ' + ErrStr + ' - Insufficient Resources...';
+        end;
+      end;
+      FT_INVALID_PARAMETER :
+      begin
+        if errInvalidParameter in fFTErrorsShown then
+        begin
+          pHandled := TRUE;
+        end
+        else
+        begin
+          fFTErrorsShown := fFTErrorsShown + [errInValidParameter];
+          Str := 'Error ' + ErrStr + ' - Invalid Parameter ...';
+        end;
+      end;
+      FT_UNFORMATTED_EEPROM :
+      begin
+        if errUnformattedEEPROM in fFTErrorsShown then
+        begin
+          pHandled := TRUE;
+        end
+        else
+        begin
+          fFTErrorsShown := fFTErrorsShown + [errUnformattedEEPROM];
+          Str := 'Error ' + ErrStr + ' - Unformatted device...'; // deduced!
+        end;
+      end;
+      else
+      begin
+        if errOther in fFTErrorsShown then
+        begin
+          pHandled := TRUE;
+        end
+        else
+        begin
+          fFTErrorsShown := fFTErrorsShown + [errOther];
+          Str := 'Error ' + ErrStr + ' - Undefined Error ' + IntToStr( PortStatus );
+        end;
+      end;
+    end;
+    result := FALSE;
+    if assigned( fOnErr ) then
+    begin
+      fOnErr( self, PortStatus, Str, pHandled );
+    end;
+    if not pHandled then
+    begin
+      if not (csDesigning in ComponentState) then
+      begin
+        if ErrorStyle = esThrowErrors then
+        begin
+          raise Exception.Create( Str );
+        end
+        else if ErrorStyle = esPopUpErrors then
+        begin
+          MessageDlg(Str, mtError, [mbOk], 0);
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TUSBGrid.SetActiveMonitor( NewVal : boolean );
+begin
+  fActiveMonitor := NewVal;
+  fTimer.Enabled := NewVal;
+  fFillGrid;
+end;
+
+//------------- TUSBPanel ---------------------------
+
+constructor TUSBPanel.Create( AOwner: TComponent);
+begin
+  inherited Create( AOwner );
+
+  // load library if required
+  if InstanceCount = 0 then
+  begin
+    OpenUSBLib;
+  end;
+  inc( InstanceCount );
+
+  fOpen := FALSE;
+  fFT_Handle := 0;
+  fErrorStyle := esThrowErrors;
+//  Device_String := 'DLP-USB232M';
+  fWordLength := 8;
+  fStopBits := 0;  // seems odd!
+  fParity := pNone;
+
+{
+  fDefaultProgramData.Vendor_ID      := $0403;
+  fDefaultProgramData.Product_ID     := $6001;
+  fDefaultProgramData.Manufacturer   := @fDefaultManufacturer;
+  StrCopy( @fDefaultManufacturer, 'FTDI' );
+  fDefaultProgramData.ManufacturerID := @fDefaultManufacturerID;
+  StrCopy( @fDefaultManufacturerID, 'FT' );
+  fDefaultProgramData.Description    := @fDefaultDescription;
+  StrCopy( @fDefaultDescription, 'USB HS Serial Converter');
+  fDefaultProgramData.SerialNo       := @fDefaultSerialNo;
+  StrCopy( @fDefaultSerialNo, 'FT000001' );
+  fDefaultProgramData.MaxPower       := 44;
+  fDefaultProgramData.PnP            := 1;
+  fDefaultProgramData.SelfPowered    := 0;
+  fDefaultProgramData.RemoteWakeup   := 1;
+    //
+    // Rev 4 extensions
+    //
+  fDefaultProgramData.Rev4           := FALSE;  // True if rev4 chip, false otherwise
+  fDefaultProgramData.IsoIn          := FALSE;  // true if endpoint is isosynchronous
+  fDefaultProgramData.IsoOut         := FALSE;  // true if endpoint is isosynchronous
+  fDefaultProgramData.PullDownEnable := FALSE;  // true if Pull Down enabled
+  fDefaultProgramData.SerNumEnable   := FALSE;  // True if serial number to be used
+  fDefaultProgramData.USBVersion     := $0200; // BCD (0x0200 => USB 2.0)
+}
+
+ {$WARNINGS OFF}
+  fActualProgramData.Manufacturer   := @fActualManufacturer;
+  fActualProgramData.ManufacturerID := @fActualManufacturerID;
+  fActualProgramData.Description    := @fActualDescription;
+  fActualProgramData.SerialNo       := @fActualSerialNo;
+
+  fProgramProgramData.Vendor_ID      := $0403;
+  fProgramProgramData.Product_ID     := $6001;
+  fProgramProgramData.Manufacturer   := @fProgramManufacturer;
+  StrCopy( @fProgramManufacturer, 'FTDI' );
+  fProgramProgramData.ManufacturerID := @fProgramManufacturerID;
+  StrCopy( @fProgramManufacturerID, 'FT' );
+  fProgramProgramData.Description    := @fProgramDescription;
+  StrCopy( @fProgramDescription, 'USB HS Serial Converter');
+  fProgramProgramData.SerialNo       := @fProgramSerialNo;
+  StrCopy( @fProgramSerialNo, 'FT000001' );
+  {$WARNINGS ON}
+  fProgramProgramData.MaxPower       := 44;
+  fProgramProgramData.PnP            := 1;
+  fProgramProgramData.SelfPowered    := 0;
+  fProgramProgramData.RemoteWakeup   := 1;
+    //
+    // Rev 4 extensions
+    //
+  fProgramProgramData.Rev4           := FALSE;  // True if rev4 chip, false otherwise
+  fProgramProgramData.IsoIn          := FALSE;  // true if endpoint is isosynchronous
+  fProgramProgramData.IsoOut         := FALSE;  // true if endpoint is isosynchronous
+  fProgramProgramData.PullDownEnable := FALSE;  // true if Pull Down enabled
+  fProgramProgramData.SerNumEnable   := FALSE;  // True if serial number to be used
+  fProgramProgramData.USBVersion     := $0200; // BCD (0x0200 => USB 2.0)
+
+  ReadBufferSize := 2048;
+  WriteBufferSize := 2048;
+
+  fRTS := lsClr;
+  fDTR := lsClr;
+  fBreak := lsClr;
+  fXON := cDefaultXON;
+  fXOFF := cDefaultXOFF;
+  fFlowControl := FT_FLOW_NONE;
+  fWriteFlowControl;
+
+  BaudRate := br__9600;
+
+//  iImageList := nil;
+
+  fTimer := TTimer.Create( self );
+//  fTimer := TTimer.Create( AOwner );
+//  fTimer := TTimer.Create( nil );
+  fTimer.Enabled := not (csDesigning in ComponentState );
+  TickInterval := 10;
+  fTimer.OnTimer := fTimerAction;
+  fTimeout := 300;           { 300 ticks == 3 seconds }
+  fTimeoutCountDown := fTimeout;
+
+  fOnChar := nil;
+  fOnTimeOut := nil;
+  fOpenImage := nil;
+  fSendBufferImage := nil;
+  fRcvBufferImage  := nil;
+
+{
+  fOpenImage := TImage.Create( self );
+  with fOpenImage do
+  begin
+    Parent := self;
+    Anchors := [akBottom, akRight];
+    width := 17;
+    height := 17;
+    top := Height - 34;
+    left := self.Width - 102;
+  end;
+  fSendBufferImage := TImage.Create( self );
+  with fSendBufferImage do
+  begin
+    Parent := self;
+    Anchors := [akBottom, akRight];
+    width := 17;
+    height := 17;
+    top := self.Height - 34;
+    left := self.Width - 68;
+  end;
+  fRcvBufferImage  := TImage.Create( self );
+  with fRcvBufferImage do
+  begin
+    Parent := self;
+    Anchors := [akBottom, akRight];
+    width := 17;
+    height := 17;
+    top := self.Height - 34;
+    left := self.Width - 34;
+  end;
+}
+  fOpenMethod := omBySerialNo;
+  fDeviceNo   := 0;
+
+end;
+
+destructor TUSBPanel.Destroy;
+begin
+  fTimer.Enabled := FALSE;
+{
+  try
+    fTimer.Free;
+    fTimer := nil;
+  except
+  end;
+}
+  dec( InstanceCount );
+  if InstanceCount = 0 then
+  begin
+    CloseUSBLib;
+  end;
+  inherited Destroy;
+end;
+
+procedure TUSBPanel.SetTimeOut( NewVal : integer );
+begin
+  if fTimeout <> NewVal then
+  begin
+    fTimeout := NewVal;
+    if fTimeoutCountDown > fTimeout then
+    begin
+      fTimeoutCountDown := fTimeout;
+    end;
+  end;
+end;
+
+function TUSBPanel.GetDLLIsLoaded : boolean;
+begin
+  result := hUSB > HINSTANCE_ERROR;
+end;
+
+procedure TUSBPanel.SetOpen( NewVal : boolean );
+begin
+  // we only want open or close to do anything
+  // if we are not designing
+  if NewVal <> fOpen then
+  begin
+    if NewVal then
+    begin
+      Open_USB;
+    end
+    else
+    begin
+      Close_USB;
+    end;
+  end;
+end;
+
+{
+procedure TUSBPanel.SetImage( pImage: TImage; pRangeMax : integer; pImageNo : integer );
+begin
+  if assigned( pImage ) then
+  begin
+    if assigned( iImageList ) then
+    begin
+      if iImageList.Count > pRangeMax then
+      begin
+        iImageList.GetBitmap( pImageNo,pImage.Picture.Bitmap);
+        pImage.Invalidate;
+      end;
+    end;
+  end;
+end;
+}
+
+procedure TUSBPanel.fShowOpenImage;
+begin
+  if assigned( fOpenImage) then
+  begin
+    if fOpen then
+    begin
+      fOpenImage.ImageIndex := 1;
+//    SetImage( fOpenImage, 1, 1 );
+    end
+    else
+    begin
+      fOpenImage.ImageIndex := 0;
+//    SetImage( fOpenImage, 1, 0 );
+    end;
+  end;
+end;
+
+{
+procedure TUSBPanel.SetImageList( NewVal : TImageList );
+begin
+  iImageList := NewVal;
+  fShowOpenImage;
+//  SetImage( fSendBufferImage, 4, 2 ); // empty Xmit buffer
+//  SetImage( fRcvBufferImage, 7, 5 );
+  fSendBufferImage.ImageIndex := 0; // empty Xmit buffer
+  fRcvBufferImage.ImageInsex := 0;
+end;
+}
+
+procedure TUSBPanel.SetOpenImage( NewVal : tSigImage );
+begin
+  fOpenImage := NewVal;
+  fShowOpenImage;
+end;
+
+procedure TUSBPanel.SetSendBufferImage( NewVal : tSigImage );
+begin
+  fSendBufferImage := NewVal;
+  if assigned( NewVal ) then
+  begin
+    fSendBufferImage.ImageIndex := 0; // empty Xmit buffer
+  end;
+end;
+
+procedure TUSBPanel.SetRcvBufferImage( NewVal : tSigImage );
+begin
+  fRcvBufferImage := NewVal;
+  if assigned( NewVal ) then
+  begin
+    fRcvBufferImage.ImageIndex := 5;
+  end;
+end;
+
+procedure TUSBPanel.CheckStillOpen;
+var
+  iPortStatus : integer;
+begin
+  if fOpen then
+  begin
+  {$WARNINGS OFF}
+    iPortStatus := FT_EE_Read( fFT_Handle, @fActualProgramData );
+    {$WARNINGS ON}
+    if iPortStatus <> FT_OK then
+    begin
+      // handle no longer valid
+      Close_USB;
+    end;
+  end;
+end;
+
+procedure TUSBPanel.Open_USB;
+begin
+  fFTErrorsShown := [];
+  if fOpen then
+  begin
+    Close_USB;
+  end;
+  case fOpenMethod of
+    omByID, omBySerialNo: Open_USB_ByID;
+    omByDevice:           Open_USB_ByDevice;
+  end;
+  // call fOnOpen if we succeeded
+  if fOpen and assigned( fOnOpen ) then
+  begin
+    fOnOpen( self );
+  end;
+end;
+
+procedure TUSBPanel.Open_USB_ByDevice;
+begin
+  if assigned( FT_Open ) then
+  begin
+    try
+      {$WARNINGS OFF}
+      if FT_Error_Check( 'Opening USB',
+         FT_Open( fDeviceNo, @fFT_Handle )) then
+         {$WARNINGS ON}
+      begin
+        fOpen := TRUE;
+        SetCurrentBaudRate;
+        SetDataCharacteristics;
+//        fTimer.Enabled := TRUE;
+      end;
+      fShowOpenImage;
+    except
+      fOpen := FALSE;
+      fShowOpenImage;
+      raise;
+    end;
+  end;
+end;
+
+procedure TUSBPanel.Open_USB_ByID;
+var
+  i : integer;
+  iPortStatus : Integer;
+begin
+  // no way to call in design mode, so no need to test
+  if assigned( FT_Open ) then
+  begin
+    DetectedDeviceCount := GetFTDeviceCount;
+    for i := 0 to DetectedDeviceCount - 1 do
+    begin
+      try
+      {$WARNINGS OFF}
+        iPortStatus := FT_Open( i, @fFT_Handle );
+        {$WARNINGS ON}
+        if (iPortStatus = FT_UNFORMATTED_EEPROM)
+        or (iPortStatus = FT_INVALID_HANDLE) then
+        begin
+          if fAutoProgram then
+          begin
+            // need to format EEPROM
+            if assigned( fOnBlankEEProm ) then
+            begin
+              fOnBlankEEProm( self );
+            end;
+            if assigned( FT_EE_Program ) then
+            begin
+            {$WARNINGS OFF}
+              iPortStatus := FT_EE_Program( fFT_Handle, @fProgramProgramData );
+              {$WARNINGS ON}
+            end;
+            if assigned( fOnProgram ) then
+            begin
+              fOnProgram( self );
+            end;
+          end;
+        end;
+        if FT_Error_Check( 'Opening USB', iPortStatus ) then
+        begin
+          if Read_Device then
+          begin
+            if (fProgramProgramData.Vendor_ID = fActualProgramData.Vendor_ID)
+                 and (fProgramProgramData.Product_ID = fActualProgramData.Product_ID) then
+            begin
+              if (fOpenMethod = omByID) or (AnsiStrings.AnsiStrComp( fProgramSerialNo, fActualSerialNo ) = 0) then
+              begin
+                // done
+                fOpen := TRUE;
+                fDeviceNo := i;
+                SetCurrentBaudRate;
+                SetDataCharacteristics;
+//                fTimer.Enabled := TRUE;
+                fShowOpenImage;
+                exit;
+              end;
+            end;
+          end;
+        end;
+        if assigned( FT_Close ) then
+        begin
+          FT_Close( fFT_Handle );
+        end;
+      except
+      end;
+    end;
+  end;
+  fOpen := FALSE;
+  fShowOpenImage;
+  case ErrorStyle of
+    esThrowErrors: raise Exception.Create( 'Error opening by ID' );
+    esPopUpErrors: MessageDlg('Error opening by ID', mtError, [mbOk], 0);
+  end;
+end;
+
+procedure TUSBPanel.Close_USB;
+begin
+//  fTimer.Enabled := FALSE;
+  if fOpen then
+  begin
+    if assigned( FT_Close ) then
+    begin
+      try
+        FT_Close( fFT_Handle );
+      except
+
+      end;
+    end;
+    fOpen := FALSE;
+    fShowOpenImage;
+    if assigned( fOnClose ) then
+    begin
+      fOnClose( self );
+    end;
+  end;
+end;
+
+{
+function  TUSBPanel.GetDevice_String : string;
+var
+  i : integer;
+begin
+  result := '';
+  for i := 1 to 50 do
+  begin
+    if iDevice_String[ i ] = #0 then exit;
+    result := result + iDevice_String[ i ];
+  end;
+end;
+
+procedure TUSBPanel.SetDevice_String( NewVal : string );
+var
+  i : integer;
+begin
+  for i := 1 to length( NewVal ) do
+  begin
+    iDevice_String[ i ] := NewVal[ i ];
+  end;
+  iDevice_String[ length( NewVal ) + 1 ] := #0;
+end;
+}
+
+function TUSBPanel.GetFTDeviceDescription( DevNo : dword ) : string;
+var
+  Buffer : array [1..50] of AnsiChar;
+  i : integer;
+begin
+  Result := '';
+  if assigned( FT_ListDevices ) then
+  begin
+    if FT_Error_Check( 'Getting USB Device Description for device ' + IntToStr( DevNo ),
+    {$WARNINGS OFF}
+       FT_ListDevices( DevNo, @Buffer, FT_OPEN_BY_DESCRIPTION or FT_LIST_BY_INDEX )) then
+       {$WARNINGS ON}
+    begin
+      for i := 1 to 50 do
+      begin
+        if Buffer[ i ] = #0 then break; // done
+        Result := Result + char(Buffer[ i ]);
+      end;
+    end;
+  end;
+end;
+
+function TUSBPanel.GetFTDeviceCount : dword;
+begin
+  Result := 0;
+  if assigned( FT_GetNumDevices ) then
+  begin
+  {$WARNINGS OFF}
+    FT_Error_Check( 'Getting USB Device Count', FT_GetNumDevices( @Result, nil, FT_LIST_NUMBER_ONLY ));
+    {$WARNINGS ON}
+  end;
+end;
+
+procedure TUSBPanel.SetCurrentBaudRate;
+begin
+  if assigned( FT_SetBaudRate ) then
+  begin
+    if fOpen then
+    begin
+      FT_SetBaudRate( fFT_Handle, fBaudRate );
+    end;
+  end;
+end;
+
+procedure TUSBPanel.SetDataCharacteristics;
+begin
+  if not (csDesigning in ComponentState ) then
+  begin
+    if fOpen then
+    begin
+      if assigned( FT_SetDataCharacteristics ) then
+      begin
+        FT_Error_Check( 'Setting Data Characteristics', FT_SetDataCharacteristics( fFT_Handle, Ord(fWordLength), Ord( fStopBits ), Ord( fParity ) ));
+      end;
+    end;
+  end;
+end;
+
+procedure TUSBPanel.SetBaudRate( NewVal : TFTBaudRate );
+begin
+  case NewVal of
+    br___300: fBaudRate := 300;
+    br___600: fBaudRate := 600;
+    br__1200: fBaudRate := 1200;
+    br__2400: fBaudRate := 2400;
+    br__4800: fBaudRate := 4800;
+    br__9600: fBaudRate := 9600;
+    br_14400: fBaudRate := 14400;
+    br_19200: fBaudRate := 19200;
+    br_38400: fBaudRate := 38400;
+    br_57600: fBaudRate := 57600;
+    br115200: fBaudRate := 115200;
+    br230400: fBaudRate := 230400;
+    br460800: fBaudRate := 460800;
+    br921600: fBaudRate := 921600;
+    // fBaudRate := NewVal;
+  end;
+  if Open then
+  begin
+    SetCurrentBaudRate;
+  end;
+end;
+
+function TUSBPanel.GetBaudRate : TFTBaudRate;
+begin
+  case fBaudRate of
+       300: Result := br___300;
+       600: Result := br___600;
+      1200: Result := br__1200;
+      2400: Result := br__2400;
+      4800: Result := br__4800;
+      9600: Result := br__9600;
+     14400: Result := br_14400;
+     19200: Result := br_19200;
+     38400: Result := br_38400;
+     57600: Result := br_57600;
+    115200: Result := br115200;
+    230400: Result := br230400;
+    460800: Result := br460800;
+    921600: Result := br921600;
+  else
+    Result := br__9600;
+  end;
+end;
+
+procedure TUSBPanel.SetDataLength( NewVal : TDataLength );
+begin
+  case NewVal of
+    dl7Bits:
+    begin
+      if fWordLength <> 7 then
+      begin
+        fWordLength := 7;
+        SetDataCharacteristics;
+      end
+    end;
+    dl8Bits:
+    begin
+      if fWordLength <> 8 then
+      begin
+        fWordLength := 8;
+        SetDataCharacteristics;
+      end
+    end;
+  end;
+end;
+
+function TUSBPanel.GetDataLength : TDataLength;
+begin
+  case fWordLength of
+    7: Result := dl7Bits;
+  else
+    Result := dl8Bits;
+  end;
+end;
+
+procedure TUSBPanel.SetStopBits( NewVal : TStopBits );
+begin
+  case NewVal of
+    sb1Bit:
+    begin
+      if fStopBits <> 0 then
+      begin
+        fStopBits := 0;
+        SetDataCharacteristics;
+      end;
+    end;
+    sb2Bits:
+    begin
+      if fStopBits <> 2 then
+      begin
+        fStopBits := 2;
+        SetDataCharacteristics;
+      end;
+    end;
+  end;
+end;
+
+function TUSBPanel.GetStopBits : TStopBits;
+begin
+  case fStopBits of
+    2: Result := sb2Bits;
+  else
+    Result := sb1Bit;
+  end;
+end;
+
+procedure TUSBPanel.SetParity( NewVal : TParity );
+begin
+  if fParity <> NewVal then
+  begin
+    fParity := NewVal;
+    try
+      SetDataCharacteristics;
+    except
+      raise Exception.Create( 'Unable to set USB parity' );
+    end;
+  end;
+end;
+
+function  TUSBPanel.GetPnP : tPnP;
+begin
+  // if open, get actual data, otherwise get programmed data
+  if fOpen then
+  begin
+    if fActualProgramData.PnP = 0 then Result := PnP_disabled
+    else Result := PnP_enabled;
+  end
+  else
+  begin
+    if fProgramProgramData.PnP = 0 then Result := PnP_disabled
+    else Result := PnP_enabled;
+  end
+end;
+
+procedure TUSBPanel.SetPnP( NewVal : tPnP );
+begin
+  fProgramProgramData.PnP := Ord( NewVal );
+end;
+
+function TUSBPanel.GetText : string;
+var
+  i : integer;
+begin
+  Result := '';
+  for i := 0 to fRcvUSBBufferCount - 1 do
+  begin
+    Result := Result + char(fReadBuffer[ i ]);
+  end;
+  fRcvUSBBufferCount := 0;
+  if assigned( fOnGetText ) then
+  begin
+    fOnGetText( self, Result );
+  end;
+end;
+
+function TUSBPanel.Program_Device : boolean;
+begin
+  Result := FALSE;
+  if not (csDesigning in ComponentState) then
+  begin
+    if assigned( FT_EE_Program ) then
+    begin
+      {$WARNINGS OFF}
+      Result := FT_Error_Check( 'programming USB device',
+                FT_EE_Program( fFT_Handle, @fProgramProgramData ));
+      {$WARNINGS ON}
+    end;
+  end;
+end;
+
+procedure TUSBPanel.SetReadBufferSize( NewVal : integer );
+begin
+  fReadBufferSize := NewVal;
+{
+  if NewVal = 0 then
+  begin
+    SetLength( fReadBuffer, 0);
+  end
+  else
+  begin
+}
+    SetLength( fReadBuffer, NewVal );
+//  end;
+end;
+
+procedure TUSBPanel.SetWriteBufferSize( NewVal : integer );
+begin
+  fWriteBufferSize := NewVal;
+{
+  if NewVal = 0 then
+  begin
+    fWriteBuffer := nil;
+  end
+  else
+  begin
+}
+    SetLength( fWriteBuffer, NewVal );
+//  end;
+  fWriteBufferPending := 0;
+end;
+
+procedure TUSBPanel.SetText( NewVal : string );
+var
+  i : integer;
+  rPtr : integer;
+begin
+  if assigned( fOnSetText ) then
+  begin
+    fOnSetText( self, NewVal );
+  end;
+  if assigned( FT_Write ) then
+  begin
+    for i := 1 to length( NewVal ) do
+    begin
+      fWriteBuffer[ fWriteBufferPending  ] := AnsiChar(NewVal[ i ]);
+      inc( fWriteBufferPending );
+//      fWriteBuffer[ fWriteBufferPending + i - 1 ] := NewVal[ i ];
+//      fTimeoutCountDown := fTimeout;
+    end;
+//    FT_Error_Check( 'writing to USB port', FT_Write( fFT_Handle, @fWriteBuffer, Length( NewVal ), @rPtr ));
+    fTimeoutCountDown := fTimeout;
+    if Delay = 0 then
+    begin
+    {$WARNINGS OFF}
+      FT_Error_Check( 'writing to USB port', FT_Write( fFT_Handle, fWriteBuffer, fWriteBufferPending, @rPtr ));
+      {$WARNINGS ON}
+      fWriteBufferPending := 0;
+    end;
+  end;
+  if assigned( fSendBufferImage ) then
+  begin
+    fSendBufferImage.ImageIndex := 1;
+  end;
+  fTxStretch := 3;
+end;
+
+procedure TUSBPanel.GetUSBBuffer;
+var
+  pending : dword;
+  rcvd : dword;
+  RcvdChar : array [ 0..2 ] of AnsiChar; // leave one spare in case
+  iPortStatus : integer;
+begin
+
+  if assigned( fSendBufferImage ) then
+  begin
+    fSendBufferImage.ImageIndex := 2; // empty Xmit buffer
+  end;
+  if not ( csDesigning in ComponentState ) then
+  begin
+    if fOpen then
+    begin
+      if assigned( FT_GetQueueStatus ) then
+      begin
+      {$WARNINGS OFF}
+        iPortStatus := FT_EE_Read( fFT_Handle, @fActualProgramData );
+        {$WARNINGS ON}
+        case iPortStatus of
+          FT_UNFORMATTED_EEPROM:
+          begin
+            if fAutoProgram then
+            begin
+              if assigned( fOnBlankEEProm ) then
+              begin
+                fOnBlankEEProm( self );
+              end;
+              if assigned( FT_EE_Program ) then
+              begin
+                if Program_Device then
+                begin
+                {$WARNINGS OFF}
+                  iPortStatus := FT_EE_Program( fFT_Handle, @fProgramProgramData );
+                  {$WARNINGS ON}
+                end;
+              end;
+              // else allow error to drop through
+              if assigned( fOnProgram ) then
+              begin
+                fOnProgram( self );
+              end;
+            end;
+          end;
+          FT_INVALID_HANDLE:
+          begin
+            // in process of closing - ignore
+            fRxStretch := 0;
+            exit;
+          end;
+        end;
+        if FT_Error_Check( 'Reading from USB Port', iPortStatus ) then
+        begin
+        {$WARNINGS OFF}
+          if not FT_Error_Check( 'Reading from USB Port', FT_GetQueueStatus( fFT_Handle, @pending )) then
+          {$WARNINGS ON}
+          begin
+            pending := 0;
+          end;
+          if pending > 0 then
+          begin
+            if assigned( fRcvBufferImage ) then
+            begin
+              fRcvBufferImage.ImageIndex := 1;
+            end;
+            fRxStretch := 3;
+          end
+          else
+          begin
+            if fRxStretch > 0 then
+            begin
+              dec( fRxStretch );
+            end
+            else
+            begin
+              if assigned( fRcvBufferImage ) then
+              begin
+                fRcvBufferImage.ImageIndex := 0;
+              end;
+            end;
+          end;
+          while pending > 0 do
+          begin
+            if assigned( fRcvBufferImage ) then
+            begin
+              fRcvBufferImage.ImageIndex := 1;
+            end;
+            fTimeoutCountDown := fTimeout;
+            // FT_Read waits for ever, so we need to check if any data is available
+            {$WARNINGS OFF}
+            if FT_Error_Check('Reading from USB Port', FT_Read( fFT_Handle, @RcvdChar, 1, @rcvd )) then
+            {$WARNINGS ON}
+            begin
+              if fRcvUSBBufferCount < self.fReadBufferSize then
+              begin
+                fReadBuffer[ fRcvUSBBufferCount ] := RcvdChar[ 0 ];
+                inc( fRcvUSBBufferCount );
+              end;
+              if assigned( fOnChar ) then
+              begin
+                fOnChar( self, RcvdChar[ 0 ] );
+              end;
+              {$WARNINGS OFF}
+              if not FT_Error_Check( 'Reading from USB Port', FT_GetQueueStatus( fFT_Handle, @pending )) then
+              {$WARNINGS ON}
+              begin
+                pending := 0;
+              end;
+            end
+            else
+            begin
+              pending := 0;
+            end;
+          end;
+        end
+        else
+        begin
+  //          to do
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TUSBPanel.SetTickInterval( NewVal : integer );
+begin
+  fTimer.Interval := NewVal;
+end;
+
+function TUSBPanel.GetTickInterval : integer;
+begin
+  result := fTimer.Interval;
+end;
+
+procedure TUSBPanel.SetAutoOpen( NewVal : boolean );
+begin
+  if fAutoOpen <> NewVal then
+  begin
+    fAutoOpen := NewVal;
+    if not NewVal then
+    begin
+      fAutoProgram := FALSE;
+    end;
+  end;
+end;
+
+procedure TUSBPanel.SetAutoProgram( NewVal : boolean );
+begin
+  if fAutoProgram <> NewVal then
+  begin
+    fAutoProgram := NewVal;
+    if NewVal then
+    begin
+      fAutoOpen := TRUE;
+      try
+        Open_USB;
+      except;
+      end;
+    end;
+  end;
+end;
+
+procedure TUSBPanel.SetDetectedDeviceCount( NewVal : integer );
+begin
+
+  if fDetectedDeviceCount <> NewVal then
+  begin
+    if fDetectedDeviceCount < NewVal then
+    begin
+      fDetectedDeviceCount := NewVal;
+      // may be new device. If fAutoOpen set to TRUE, and we are not
+      // open, then try to open
+      if fAutoOpen then
+      begin
+        try
+          Open_USB;
+        except;
+        end;
+      end;
+    end
+    else
+    begin
+      // fDetectedDeviceCount < NewVal
+      fDetectedDeviceCount := NewVal;
+      // always close automatically
+      if fDetectedDeviceCount = 0 then // no need to check
+      begin
+        Close_USB;
+      end
+      else
+      begin
+        CheckStillOpen;
+      end;
+    end;
+  end;
+end;
+
+procedure TUSBPanel.fTimerAction (Sender: TObject);
+var
+  rPtr : integer;
+begin
+  //try
+    //if fAutoOpen then
+    //begin
+    DetectedDeviceCount := GetFTDeviceCount;
+    //end;
+    if fOpen then
+    begin
+      if fDelayCount > 0 then
+      begin
+        dec( fDelayCount );
+      end
+      else
+      begin
+//        fTimeoutCountDown := fTimeout;
+        if fWriteBufferPending > 0 then
+        begin
+        {$WARNINGS OFF}
+          FT_Error_Check( 'writing to USB port', FT_Write( fFT_Handle, fWriteBuffer, fWriteBufferPending, @rPtr ));
+          {$WARNINGS ON}
+          fWriteBufferPending := 0;
+        end;
+        try
+          GetUSBBuffer;
+        except
+          exit;
+//          Close_USB;
+//          if not fAutoOpen then
+//          begin
+//            MessageDlg('Error Communicating with Device', mtError, [mbOk], 0);
+//          end;
+        end;
+        if fTxStretch = 0 then
+        begin
+          if assigned( fSendBufferImage ) then
+          begin
+            fSendBufferImage.ImageIndex := 0;
+          end;
+        end
+        else
+        begin
+          Dec( fTxStretch );
+        end;
+      end;
+    end;
+    if fTimeoutCountDown > 0 then
+    begin
+      dec( fTimeoutCountDown );
+      if fTimeoutCountDown = 0 then
+      begin
+        if assigned( fOnTimeOut ) then
+        begin
+          fOnTimeOut( self );
+        end;
+        if assigned( fRcvBufferImage ) then
+        begin
+          fRcvBufferImage.ImageIndex := 3;
+        end;
+      end;
+    end;
+{  except
+    try
+      Close_USB;
+    except
+    end;
+  end;
+}
+end;
+
+function TUSBPanel.Read_Device : boolean;
+var
+  iPortStatus : integer;
+begin
+  Result := FALSE;
+  if not (csDesigning in ComponentState) then
+  begin
+    if assigned( FT_EE_Read ) then
+    begin
+    {$WARNINGS OFF}
+      iPortStatus := FT_EE_Read( fFT_Handle, @fActualProgramData );
+      {$WARNINGS ON}
+      if iPortStatus = FT_UNFORMATTED_EEPROM then  //JG This may need to come out or have some way to override
+      begin
+        if fAutoProgram then
+        begin
+          if assigned( FT_EE_Program ) then
+          begin
+            if Program_Device then
+            begin
+            {$WARNINGS OFF}
+              iPortStatus := FT_EE_Read( fFT_Handle, @fActualProgramData );
+              {$WARNINGS ON}
+            end;
+          end;
+        end;
+      end;
+      Result := FT_Error_Check( 'reading USB device EEPROM', iPortStatus );
+    end;
+  end;
+end;
+
+function TUSBPanel.Get_User_Area_Size : dword;
+begin
+  Result := 0;
+  if not (csDesigning in ComponentState) then
+  begin
+    if assigned( FT_EE_UASize ) then
+    begin
+      {$WARNINGS OFF}
+      FT_Error_Check( 'getting EEPROM user area size',
+                      FT_EE_UASize( fFT_Handle, @Result ));
+      {$WARNINGS ON}
+    end;
+  end;
+end;
+
+function TUSBPanel.ReadUserArea( pUA : pointer; size : dword ) : dword;
+begin
+  Result := 0;
+  if not (csDesigning in ComponentState) then
+  begin
+    if assigned( FT_EE_UARead ) then
+    begin
+      FT_Error_Check( 'reading USB device EEPROM user area', FT_EE_UARead( fFT_Handle, pUA, size, Result ));
+    end;
+  end;
+end;
+
+function TUSBPanel.WriteUserArea( pUA : pointer; size : dword ) : boolean;
+begin
+  Result := FALSE;
+  if not (csDesigning in ComponentState) then
+  begin
+    if assigned( FT_EE_UAWrite ) then
+    begin
+      Result := FT_Error_Check( 'writing to USB device EEPROM user area',
+                FT_EE_UAWrite( fFT_Handle, pUA, size ));
+    end;
+  end;
+end;
+
+function TUSBPanel.GetVendorID : string;
+begin
+  if fOpen then
+  begin
+    Result := IntToHex( fActualProgramData.Vendor_ID, 4 );
+  end
+  else
+  begin
+    Result := IntToHex( fProgramProgramData.Vendor_ID, 4 );
+  end;
+end;
+
+procedure TUSBPanel.SetVendorID( NewVal : string );
+begin
+  fProgramProgramData.Vendor_ID := StrToInt( '$' + NewVal );
+end;
+
+function TUSBPanel.GetProductID : string;
+begin
+  if fOpen then
+  begin
+    Result := IntToHex( fActualProgramData.Product_ID, 4 );
+  end
+  else
+  begin
+    Result := IntToHex( fProgramProgramData.Product_ID, 4 );
+  end;
+end;
+
+procedure TUSBPanel.SetProductID( NewVal : string );
+begin
+  fProgramProgramData.Product_ID := StrToInt( '$' + NewVal );
+end;
+
+function  TUSBPanel.GetManufacturer : string;
+var
+  i : integer;
+  iManufacturer : array [ 0..50 ] of AnsiChar;
+begin
+  if fOpen then
+  begin
+    AnsiStrings.StrCopy( iManufacturer, fActualManufacturer );
+  end
+  else
+  begin
+    AnsiStrings.StrCopy( iManufacturer, fProgramManufacturer );
+  end;
+  Result := '';
+  for i := 0 to sizeof( iManufacturer ) do
+  begin
+    if iManufacturer[ i ] = #0 then
+    begin
+      break;
+    end
+    else
+    begin
+      Result := Result + char(iManufacturer[ i ]);
+    end;
+  end;
+end;
+
+procedure TUSBPanel.SetManufacturer(NewVal : string );
+var
+  i : integer;
+begin
+  // should check size - to do
+  for i := 1 to length( NewVal ) do
+  begin
+    fProgramProgramData.Manufacturer[ i - 1 ] := AnsiChar( NewVal[ i ] );
+  end;
+  fProgramProgramData.Manufacturer[ length( NewVal ) ] := #0;
+end;
+
+function  TUSBPanel.GetManufacturerID : string;
+var
+  i : integer;
+  iManufacturerID : array [ 0..50 ] of AnsiChar;
+begin
+  if fOpen then
+  begin
+    AnsiStrings.StrCopy( iManufacturerID, fActualManufacturerID );
+  end
+  else
+  begin
+    AnsiStrings.StrCopy( iManufacturerID, fProgramManufacturerID );
+  end;
+  Result := '';
+  for i := 0 to sizeof( iManufacturerID ) do
+  begin
+    if iManufacturerID[ i ] = #0 then
+    begin
+      break;
+    end
+    else
+    begin
+      Result := Result + char(iManufacturerID[ i ]);
+    end;
+  end;
+end;
+
+procedure TUSBPanel.SetManufacturerID( NewVal : string );
+var
+  i : integer;
+begin
+  // should check size - to do
+  for i := 1 to length( NewVal ) do
+  begin
+    fProgramProgramData.ManufacturerID[ i - 1 ] := AnsiChar( NewVal[ i ] );
+  end;
+  fProgramProgramData.ManufacturerID[ length( NewVal ) ] := #0;
+end;
+
+function  TUSBPanel.GetDescription : string;
+var
+  i : integer;
+  iDescription : array [ 0..50 ] of AnsiChar;
+begin
+  if fOpen then
+  begin
+    AnsiStrings.StrCopy( iDescription, fActualDescription );
+  end
+  else
+  begin
+    AnsiStrings.StrCopy( iDescription, fProgramDescription );
+  end;
+  Result := '';
+  for i := 0 to sizeof( iDescription ) - 1 do
+  begin
+    if iDescription[ i ] = #0 then
+    begin
+      break;
+    end
+    else
+    begin
+      Result := Result + char(iDescription[ i ]);
+    end;
+  end;
+end;
+
+procedure TUSBPanel.SetDescription( newVal : string );
+var
+  i : integer;
+begin
+  // should check size - to do
+  for i := 1 to length( NewVal ) do
+  begin
+    fProgramDescription[ i - 1 ] := AnsiChar(NewVal[ i ]);
+  end;
+  fProgramDescription[ length( NewVal ) ] := #0;
+end;
+
+function  TUSBPanel.GetSerialNo : string;
+var
+  i : integer;
+  iSerialNo : array [ 0..50 ] of AnsiChar;
+begin
+  Result := '';
+  if fOpen then
+  begin
+    AnsiStrings.StrCopy( iSerialNo, fActualSerialNo );
+  end
+  else
+  begin
+    AnsiStrings.StrCopy( iSerialNo, fProgramSerialNo );
+  end;
+  for i := 0 to sizeof( iSerialNo ) do
+  begin
+    if iSerialNo[ i ] = #0 then
+    begin
+      break;
+    end
+    else
+    begin
+      Result := Result + char(iSerialNo[ i ]);
+    end;
+  end;
+end;
+
+procedure TUSBPanel.SetSerialNo( NewVal : string );
+var
+  i : integer;
+begin
+  // should check size - to do
+  for i := 1 to length( NewVal ) do
+  begin
+    fProgramSerialNo[ i - 1 ] := AnsiChar(NewVal[ i ]);
+  end;
+  fProgramSerialNo[ length( NewVal ) ] := #0;
+end;
+
+function  TUSBPanel.GetMaxPower : word;
+begin
+  if fOpen then
+  begin
+    Result := fActualProgramData.MaxPower;
+  end
+  else
+  begin
+    Result := fProgramProgramData.MaxPower;
+  end;
+end;
+
+procedure TUSBPanel.SetMaxPower( NewVal : word );
+begin
+  if (NewVal > 0) and (NewVal <= 500) then
+  begin
+    fProgramProgramData.MaxPower := NewVal;
+  end
+  else
+  begin
+    raise Exception.Create('USB Max power must lie in range 1-500' );
+  end;
+end;
+
+function  TUSBPanel.GetSelfPowered : tSelfPowered;
+begin
+  if fOpen then
+  begin
+    if fActualProgramData.SelfPowered = 0 then Result := spBusPowered
+    else Result := spSelfPowered;
+  end
+  else
+  begin
+    if fProgramProgramData.SelfPowered = 0 then Result := spBusPowered
+    else Result := spSelfPowered;
+  end;
+end;
+
+procedure TUSBPanel.SetSelfPowered( NewVal : tSelfPowered );
+begin
+  fProgramProgramData.SelfPowered := Ord( NewVal );
+end;
+
+function  TUSBPanel.GetRemoteWakeup : tRemoteWakeUp;
+begin
+  if fOpen then
+  begin
+    if fActualProgramData.RemoteWakeup = 0 then Result := rwuNotCapable
+    else Result := rwuCapable;
+  end
+  else
+  begin
+    if fProgramProgramData.RemoteWakeup = 0 then Result := rwuNotCapable
+    else Result := rwuCapable;
+  end;
+end;
+
+procedure TUSBPanel.SetRemoteWakeup( NewVal : tRemoteWakeUp );
+begin
+  fProgramProgramData.RemoteWakeup := Ord( NewVal );
+end;
+
+    //
+    // Rev 4 extensions
+    //
+function  TUSBPanel.GetRev4 : boolean;
+begin
+  if fOpen then
+  begin
+    Result := fActualProgramData.Rev4;
+  end
+  else
+  begin
+    Result := fProgramProgramData.Rev4;
+  end;
+end;
+
+procedure TUSBPanel.SetRev4( NewVal : boolean );
+begin
+  fProgramProgramData.Rev4 := NewVal;
+end;
+
+function  TUSBPanel.GetIsoIn : boolean;
+begin
+  if fOpen then
+  begin
+    Result := fActualProgramData.IsoIn;
+  end
+  else
+  begin
+    Result := fProgramProgramData.IsoIn;
+  end;
+end;
+
+procedure TUSBPanel.SetIsoIn( NewVal : boolean );
+begin
+  fProgramProgramData.IsoIn := NewVal;
+end;
+
+function  TUSBPanel.GetIsoOut : boolean;
+begin
+  if fOpen then
+  begin
+    Result := fActualProgramData.IsoOut;
+  end
+  else
+  begin
+    Result := fProgramProgramData.IsoOut;
+  end;
+end;
+
+procedure TUSBPanel.SetIsoOut( NewVal : boolean );
+begin
+  fProgramProgramData.IsoOut := NewVal;
+end;
+
+function  TUSBPanel.GetPullDownEnable : boolean;
+begin
+  if fOpen then
+  begin
+    Result := fActualProgramData.PullDownEnable;
+  end
+  else
+  begin
+    Result := fProgramProgramData.PullDownEnable;
+  end;
+end;
+
+procedure TUSBPanel.SetPullDownEnable( NewVal : boolean );
+begin
+  fProgramProgramData.PullDownEnable := NewVal;
+end;
+
+function  TUSBPanel.GetSerNumEnable : boolean;
+begin
+  if fOpen then
+  begin
+    Result := fActualProgramData.SerNumEnable;
+  end
+  else
+  begin
+    Result := fProgramProgramData.SerNumEnable;
+  end;
+end;
+
+procedure TUSBPanel.SetSerNumEnable( NewVal : boolean );
+begin
+  fProgramProgramData.SerNumEnable := NewVal;
+end;
+
+function  TUSBPanel.GetUSBVersion : string;
+begin
+  if fOpen then
+  begin
+    Result := IntToHex( fActualProgramData.USBVersion, 4 );
+  end
+  else
+  begin
+    Result := IntToHex( fProgramProgramData.USBVersion, 4 );
+  end;
+end;
+
+procedure TUSBPanel.SetUSBVersion( NewVal : string );
+begin
+  fProgramProgramData.USBVersion := StrToInt( '$' + NewVal );
+end;
+
+procedure TUSBPanel.SetFlowControl( NewVal : TFlowControl ); // FT_FLOW_NONE = fcNone
+begin
+  if NewVal <> FlowControl then
+  begin
+    case NewVal of
+      fcNone:     fFlowControl := FT_FLOW_NONE;
+      fcRTS_CTS:  fFlowControl := FT_FLOW_RTS_CTS;
+      fcDTR_DSR:  fFlowControl := FT_FLOW_DTR_DSR;
+      fcXON_XOFF: fFlowControl := FT_FLOW_XON_XOFF;
+    end;
+    fWriteFlowControl;
+  end;
+end;
+
+function  TUSBPanel.GetFlowControl : TFlowControl;
+begin
+  case fFlowControl of
+    FT_FLOW_NONE:     Result := fcNone;
+    FT_FLOW_RTS_CTS:  Result := fcRTS_CTS;
+    FT_FLOW_DTR_DSR:  Result := fcDTR_DSR;
+    FT_FLOW_XON_XOFF: REsult := fcXON_XOFF;
+  else
+    raise Exception.Create( 'Illegal Flow control setting.' );
+  end;
+end;
+
+procedure TUSBPanel.SetXON( NewVal : byte );  // 17  = ^Q
+begin
+  if NewVal <> fXON then
+  begin
+    fXON := NewVal;
+    if FlowControl = fcXON_XOFF then
+    begin
+      // Don't care for any other setting
+      fWriteFlowControl;
+    end;
+  end;
+end;
+
+procedure TUSBPanel.SetXOFF( NewVal : byte ); // 19  = ^S
+begin
+  if NewVal <> fXOFF then
+  begin
+    fXOFF := NewVal;
+    if FlowControl = fcXON_XOFF then
+    begin
+      // Don't care for any other setting
+      fWriteFlowControl;
+    end;
+  end;
+end;
+
+procedure TUSBPanel.fWriteFlowControl;
+begin
+  if not (csDesigning in ComponentState ) then
+  begin
+    if assigned( FT_SetFlowControl ) then
+    begin
+      if fOpen then
+      begin
+        FT_ERROR_CHECK( 'writing flow control',
+        FT_SetFlowControl( self.fFT_Handle, fFlowControl, fXON, fXOFF ));
+      end;
+    end;
+  end;
+end;
+
+procedure TUSBPanel.SetDTR( NewVal : tLineState );
+begin
+  if NewVal <> fDTR then
+  begin
+    fDTR := NewVal;
+    if not (csDesigning in ComponentState ) then
+    begin
+      if fOpen then
+      begin
+        if NewVal = lsSet then
+        begin
+          if assigned( FT_ClrDTR ) then
+          begin
+            FT_ClrDTR( fFT_Handle );
+          end;
+        end
+        else
+        begin
+          if assigned( FT_SetDTR ) then
+          begin
+            FT_SetDTR( fFT_Handle );
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TUSBPanel.SetRTS( NewVal : tLineState );
+begin
+  if NewVal <> fRTS then
+  begin
+    fRTS := NewVal;
+    if not (csDesigning in ComponentState ) then
+    begin
+      if fOpen then
+      begin
+        if NewVal = lsSet then
+        begin
+          if assigned( FT_ClrRTS ) then
+          begin
+            FT_ClrRTS( fFT_Handle );
+          end;
+        end
+        else
+        begin
+          if assigned( FT_SetRTS ) then
+          begin
+            FT_SetRTS( fFT_Handle );
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TUSBPanel.SetBreak( NewVal : tLineState );
+begin
+  if NewVal <> fBreak then
+  begin
+    fBreak := NewVal;
+    if not (csDesigning in ComponentState ) then
+    begin
+      if fOpen then
+      begin
+        if NewVal = lsSet then
+        begin
+          if assigned( FT_SetBreakOff ) then
+          begin
+            FT_SetBreakOff( fFT_Handle );
+          end;
+        end
+        else
+        begin
+          if assigned( FT_SetBreakOn ) then
+          begin
+            FT_SetBreakOn( fFT_Handle );
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TUSBPanel.Purge( Mask : dword );
+begin
+  if fOpen then
+  begin
+    if assigned( FT_Purge ) then
+    begin
+      FT_Error_Check( 'attempting to Purge',
+                      FT_Purge( fFT_Handle, Mask ));
+    end;
+  end;
+  if (Mask and FT_PURGE_TX) <> 0 then
+  begin
+    fWriteBufferPending := 0
+  end;
+end;
+
+procedure TUSBPanel.SetTimeouts( ReadTimeout : dword; WriteTimeout : dword );
+begin
+  if fOpen then
+  begin
+    if assigned( FT_SetTimeouts ) then
+    begin
+      FT_Error_Check( 'attempting to set timeouts',
+                      FT_SetTimeouts( fFT_Handle, ReadTimeout, WriteTimeout ));
+    end;
+  end;
+end;
+
+function TUSBPanel.FT_Error_Check(ErrStr: String; PortStatus : Integer) : boolean;
+var
+  Str : String;
+  pHandled : boolean;
+begin
+  if PortStatus = FT_OK then
+  begin
+    result := TRUE;
+  end
+  else
+  begin
+    pHandled := FALSE;
+    case PortStatus of
+      FT_INVALID_HANDLE :
+      begin
+        if errInvalidHandle in fFTErrorsShown then
+        begin
+          pHandled := TRUE;
+        end
+        else
+        begin
+          fFTErrorsShown := fFTErrorsShown + [ errInvalidHandle ];
+          Str := 'Error ' + ErrStr + ' - Invalid Handle...';
+        end;
+      end;
+      FT_DEVICE_NOT_FOUND :
+      begin
+        if errDeviceNotFound in fFTErrorsShown then
+        begin
+          pHandled := TRUE;
+        end
+        else
+        begin
+          fFTErrorsShown := fFTErrorsShown + [errDeviceNotFound];
+          Str := 'Error ' + ErrStr + ' - Device Not Found...';
+        end;
+      end;
+      FT_DEVICE_NOT_OPENED :
+      begin
+        if errDeviceNotOpenned in fFTErrorsShown then
+        begin
+          pHandled := TRUE;
+        end
+        else
+        begin
+          fFTErrorsShown := fFTErrorsShown + [errDeviceNotOpenned];
+          Str := 'Error ' + ErrStr + ' - Device Not Opened...';
+        end;
+      end;
+      FT_IO_ERROR :
+      begin
+        if errIOError in fFTErrorsShown then
+        begin
+          pHandled := TRUE;
+        end
+        else
+        begin
+          fFTErrorsShown := fFTErrorsShown + [errIOError];
+          Str := 'Error ' + ErrStr + ' - General IO Error...';
+        end;
+      end;
+      FT_INSUFFICIENT_RESOURCES :
+      begin
+        if errInsufficientResources in fFTErrorsShown then
+        begin
+          pHandled := TRUE;
+        end
+        else
+        begin
+          fFTErrorsShown := fFTErrorsShown + [errInsufficientResources];
+          Str := 'Error ' + ErrStr + ' - Insufficient Resources...';
+        end;
+      end;
+      FT_INVALID_PARAMETER :
+      begin
+        if errInvalidParameter in fFTErrorsShown then
+        begin
+          pHandled := TRUE;
+        end
+        else
+        begin
+          fFTErrorsShown := fFTErrorsShown + [errInValidParameter];
+          Str := 'Error ' + ErrStr + ' - Invalid Parameter ...';
+        end;
+      end;
+      FT_UNFORMATTED_EEPROM :
+      begin
+        if errUnformattedEEPROM in fFTErrorsShown then
+        begin
+          pHandled := TRUE;
+        end
+        else
+        begin
+          fFTErrorsShown := fFTErrorsShown + [errUnformattedEEPROM];
+          Str := 'Error ' + ErrStr + ' - Unformatted device...'; // deduced!
+        end;
+      end;
+      else
+      begin
+        if errOther in fFTErrorsShown then
+        begin
+          pHandled := TRUE;
+        end
+        else
+        begin
+          fFTErrorsShown := fFTErrorsShown + [errOther];
+          Str := 'Error ' + ErrStr + ' - Undefined Error ' + IntToStr( PortStatus );
+        end;
+      end;
+    end;
+    result := FALSE;
+    if assigned( fOnErr ) then
+    begin
+      fOnErr( self, PortStatus, Str, pHandled );
+    end;
+    if not pHandled then
+    begin
+      if ErrorStyle = esThrowErrors then
+      begin
+
+        raise Exception.Create( Str );
+      end
+      else if ErrorStyle = esPopUpErrors then
+      begin
+        MessageDlg(Str, mtError, [mbOk], 0);
+      end;
+    end;
+  end;
+end;
+
+end.

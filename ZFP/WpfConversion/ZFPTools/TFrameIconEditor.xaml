@@ -1,0 +1,23 @@
+﻿<!-- Converted from UnitFrameIconEditor.dfm by Delphi to WPF Converter -->
+<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFrameIconEditor" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Width="370" Height="240">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="370" rtl:Rtl.DesignHeight="240">
+        <DockPanel LastChildFill="True">
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="PanelEdit" DockPanel.Dock="Bottom" Height="41" rtl:Rtl.DesignWidth="370">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <Button Content="Add New Icon..." x:Name="BitBtnLoadNew" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="215,5,0,0" Width="113" Height="25" />
+                    <Button Content="Add New Group..." x:Name="BitBtn1" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,5,0,0" Width="113" Height="25" />
+                </Grid>
+            </Border>
+            <Grid rtl:Rtl.DesignWidth="370" rtl:Rtl.DesignHeight="199">
+                <TabControl SelectedIndex="0" x:Name="TabControlClasses" TabIndex="1">
+                    <TabItem Header="&lt;All&gt;" />
+                </TabControl>
+                <Grid KeyboardNavigation.TabNavigation="Local" Margin="4,26,4,4">
+                    <DockPanel LastChildFill="True">
+                        <DataGrid GridLinesVisibility="All" CanUserAddRows="False" HeadersVisibility="None" Tag="grid:5:5:0" x:Name="StringGridMain" TabIndex="0" rtl:Rtl.DesignWidth="362" rtl:Rtl.DesignHeight="171" />
+                    </DockPanel>
+                </Grid>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>

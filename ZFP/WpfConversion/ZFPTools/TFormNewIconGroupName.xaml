@@ -1,0 +1,9 @@
+﻿<!-- Converted from UnitNewIconGroupName.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormNewIconGroupName" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="New Icon Group Name" Width="373" Height="177" WindowStartupLocation="Manual" Left="0" Top="0" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="357" rtl:Rtl.DesignHeight="138">
+        <Label Padding="0" Content="New Group Name" x:Name="Label1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,32,0,0" rtl:Rtl.DesignWidth="83" rtl:Rtl.DesignHeight="13" />
+        <Button IsDefault="True" Content="OK" x:Name="BitBtnOK" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,72,0,0" Width="75" Height="25" />
+        <Button IsCancel="True" Content="Cancel" x:Name="BitBtnCancel" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="208,72,0,0" Width="75" Height="25" />
+        <TextBox Text="EditGroupName" VerticalContentAlignment="Center" x:Name="EditGroupName" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="136,32,0,0" Width="147" Height="21" />
+    </Grid>
+</Window>

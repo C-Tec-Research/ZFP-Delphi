@@ -1,0 +1,15 @@
+﻿<!-- Converted from UnitDisassociation.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormDissociation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="Disassociation" Width="561" Height="357" WindowStartupLocation="Manual" Left="0" Top="0" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="545" rtl:Rtl.DesignHeight="318">
+        <Label Padding="0" Content="Error" x:Name="Label1" FontFamily="Tahoma" FontSize="13" FontWeight="Bold" Foreground="#FF0000" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,8,0,0" rtl:Rtl.DesignWidth="33" rtl:Rtl.DesignHeight="16" />
+        <TextBox AcceptsReturn="True" Text="You are attempting to remove the association between a panel and a zone but there are devices on the &#xD;&#xA;panel that use this zone. This is not permitted.&#xD;&#xA;&#xD;&#xA;You may do one of the following:" TextWrapping="Wrap" IsReadOnly="True" x:Name="MemoNotes" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,32,0,0" Width="513" Height="81" />
+        <GroupBox Header="Corrective Action" Padding="0" x:Name="RadioGroupCorrection" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,128,0,0" Width="513" Height="137">
+            <UniformGrid Columns="1" Margin="2,-2,0,-2">
+                <RadioButton Content="Move all devices in this zone on this panel to a different zone (recommended)" VerticalAlignment="Center" IsChecked="True" />
+                <RadioButton Content="Show Errors" VerticalAlignment="Center" />
+                <RadioButton Content="Abort" VerticalAlignment="Center" />
+            </UniformGrid>
+        </GroupBox>
+        <Button IsDefault="True" Content="OK" x:Name="BitBtn1" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,280,0,0" Width="75" Height="25" />
+    </Grid>
+</Window>

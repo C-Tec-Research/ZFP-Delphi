@@ -1,0 +1,9 @@
+﻿<!-- Converted from UnitLoadErrors.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormLoadErrors" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="Load Errors" Width="543" Height="282" WindowStartupLocation="Manual" Left="0" Top="0" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="527" rtl:Rtl.DesignHeight="243">
+        <Label Padding="0" Content="The following error(s) were found when loading file:" x:Name="LabelMsg" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,24,0,0" rtl:Rtl.DesignWidth="248" rtl:Rtl.DesignHeight="13" />
+        <TextBox AcceptsReturn="True" Text="MemoLoadErrors" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" x:Name="MemoLoadErrors" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,56,0,0" Width="481" Height="121" />
+        <Button IsDefault="True" Content="Continue" x:Name="BitBtnContinue" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="144,200,0,0" Width="75" Height="25" />
+        <Button Content="Abort" x:Name="BitBtnAbort" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="280,200,0,0" Width="75" Height="25" />
+    </Grid>
+</Window>

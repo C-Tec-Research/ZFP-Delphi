@@ -1,0 +1,7 @@
+﻿<!-- Converted from UnitFormLoadFile.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormLoadFile" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="Loading..." Width="543" Height="282" WindowStartupLocation="CenterOwner" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="527" rtl:Rtl.DesignHeight="243">
+        <Label Padding="0" Content="LabelPC" x:Name="LabelPC" FontFamily="Tahoma" FontSize="11" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="216,128,0,0" rtl:Rtl.DesignWidth="44" rtl:Rtl.DesignHeight="13" />
+        <ProgressBar Minimum="0" Maximum="10000" Value="0" x:Name="ProgressBarLoad" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,64,0,0" Width="433" Height="41" />
+    </Grid>
+</Window>

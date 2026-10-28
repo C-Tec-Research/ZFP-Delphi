@@ -1,0 +1,18 @@
+﻿<!-- Converted from UnitChangeDefaultLogo.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormChangeDefaultLogo" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="Change Default Logo" Width="586" Height="358" WindowStartupLocation="Manual" Left="0" Top="0" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="570" rtl:Rtl.DesignHeight="319">
+        <GroupBox Header="Logo" x:Name="GroupBoxLogo" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="62,44,0,0" Width="185" Height="209">
+            <Grid KeyboardNavigation.TabNavigation="Local">
+                <Image Stretch="None" x:Name="ImageLogo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,25,0,0" Width="150" Height="150" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="WARNING" x:Name="GroupBox1" TabIndex="1" FontFamily="Tahoma" FontSize="11" FontWeight="Bold" Foreground="#FF0000" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="256,44,0,0" Width="289" Height="209">
+            <Grid KeyboardNavigation.TabNavigation="Local">
+                <TextBox AcceptsReturn="True" Text="This process is not reversible. The current &#xD;&#xA;logo will be overwritten and cannot be &#xD;&#xA;recovered." TextWrapping="Wrap" IsReadOnly="True" x:Name="Memo1" TabIndex="0" IsTabStop="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="11,9,11,113" rtl:Rtl.DesignWidth="257" rtl:Rtl.DesignHeight="65" />
+                <TextBox AcceptsReturn="True" Text="Click on the logo to change it." TextWrapping="Wrap" IsReadOnly="True" x:Name="Memo2" TabIndex="1" IsTabStop="False" FontFamily="Tahoma" FontSize="11" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="11,73,11,49" rtl:Rtl.DesignWidth="257" rtl:Rtl.DesignHeight="65" />
+            </Grid>
+        </GroupBox>
+        <Button IsDefault="True" Content="OK" x:Name="BitBtnOK" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="192,272,0,0" Width="75" Height="25" />
+        <Button IsCancel="True" Content="Cancel" x:Name="BitBtnCancel" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="312,272,0,0" Width="75" Height="25" />
+    </Grid>
+</Window>

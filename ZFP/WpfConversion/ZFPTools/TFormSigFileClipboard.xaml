@@ -1,0 +1,22 @@
+﻿<!-- Converted from SigFileClipboard.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormSigFileClipboard" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="SigFile Clipboard" Width="659" Height="380" WindowStartupLocation="Manual" Left="0" Top="0" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="643" rtl:Rtl.DesignHeight="341">
+        <DockPanel LastChildFill="True">
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel2" DockPanel.Dock="Top" Height="41" rtl:Rtl.DesignWidth="643">
+                <Grid />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel3" DockPanel.Dock="Bottom" Height="41" rtl:Rtl.DesignWidth="643">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <Button IsDefault="True" Content="Done" x:Name="BitBtnDone" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="279,5,0,0" Width="75" Height="25" />
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel1" rtl:Rtl.DesignWidth="643" rtl:Rtl.DesignHeight="259">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <DockPanel LastChildFill="True">
+                        <TextBox AcceptsReturn="True" TextWrapping="Wrap" IsReadOnly="True" x:Name="MemoClipboard" TabIndex="0" rtl:Rtl.DesignWidth="641" rtl:Rtl.DesignHeight="257" />
+                    </DockPanel>
+                </Grid>
+            </Border>
+        </DockPanel>
+    </Grid>
+</Window>

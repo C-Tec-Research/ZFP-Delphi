@@ -1,0 +1,82 @@
+﻿<!-- Converted from UnitFrameSupergroupEditor.dfm by Delphi to WPF Converter -->
+<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFrameSupergroupEditor" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Width="320" Height="240">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="640" rtl:Rtl.DesignHeight="480">
+        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel17" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="185" Height="41">
+            <Grid KeyboardNavigation.TabNavigation="Local">
+                <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="185" Height="41">
+                    <Grid KeyboardNavigation.TabNavigation="Local">
+                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel43" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="185" Height="41">
+                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                <TabControl x:Name="PageControlProperties" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="289" Height="193">
+                                    <TabItem Header="Component Groups" x:Name="TabSheetComponentGroups">
+                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                            <DockPanel LastChildFill="True">
+                                                <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="PanelSuperGroupsGroups" DockPanel.Dock="Left" Width="321" rtl:Rtl.DesignHeight="330">
+                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                        <DockPanel LastChildFill="True">
+                                                            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel57" DockPanel.Dock="Top" Height="32" rtl:Rtl.DesignWidth="319">
+                                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                    <TextBlock Text="Groups" Tag="Caption" VerticalAlignment="Center" IsHitTestVisible="False" HorizontalAlignment="Center" />
+                                                                    <DockPanel LastChildFill="False">
+                                                                        <Button x:Name="BitBtnAddAllGroups" TabIndex="0" DockPanel.Dock="Left" Width="96" rtl:Rtl.DesignHeight="30">
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <Image Source="Resources/TFrameSupergroupEditor_BitBtnAddAllGroups_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                                                                <AccessText Text="Add All" VerticalAlignment="Center" />
+                                                                            </StackPanel>
+                                                                        </Button>
+                                                                        <Button IsCancel="True" x:Name="BitBtnClearAllGroups" TabIndex="1" DockPanel.Dock="Right" Width="102" rtl:Rtl.DesignHeight="30">
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <Image Source="Resources/TFrameSupergroupEditor_BitBtnClearAllGroups_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                                                                <AccessText Text="Remove All" VerticalAlignment="Center" />
+                                                                            </StackPanel>
+                                                                        </Button>
+                                                                    </DockPanel>
+                                                                </Grid>
+                                                            </Border>
+                                                            <Border x:Name="SigGeneralGridSuperGroupGroups_Host" rtl:Rtl.DesignWidth="319" rtl:Rtl.DesignHeight="296" />
+                                                        </DockPanel>
+                                                    </Grid>
+                                                </Border>
+                                                <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel56" rtl:Rtl.DesignWidth="316" rtl:Rtl.DesignHeight="330">
+                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                        <DockPanel LastChildFill="True">
+                                                            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel58" DockPanel.Dock="Top" Height="32" rtl:Rtl.DesignWidth="314">
+                                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                    <TextBlock Text="Supergroups" Tag="Caption" VerticalAlignment="Center" IsHitTestVisible="False" HorizontalAlignment="Center" />
+                                                                    <DockPanel LastChildFill="False">
+                                                                        <Button x:Name="BitBtnAddAllSuperGroups" TabIndex="0" DockPanel.Dock="Left" Width="96" rtl:Rtl.DesignHeight="30">
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <Image Source="Resources/TFrameSupergroupEditor_BitBtnAddAllSuperGroups_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                                                                <AccessText Text="Add All" VerticalAlignment="Center" />
+                                                                            </StackPanel>
+                                                                        </Button>
+                                                                        <Button IsCancel="True" x:Name="BitBtnClearAllSuperGroups" TabIndex="1" DockPanel.Dock="Right" Width="102" rtl:Rtl.DesignHeight="30">
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <Image Source="Resources/TFrameSupergroupEditor_BitBtnClearAllSuperGroups_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                                                                <AccessText Text="Remove All" VerticalAlignment="Center" />
+                                                                            </StackPanel>
+                                                                        </Button>
+                                                                    </DockPanel>
+                                                                </Grid>
+                                                            </Border>
+                                                            <Border x:Name="SigGeneralGridSuperGroupSuperGroups_Host" rtl:Rtl.DesignWidth="314" rtl:Rtl.DesignHeight="296" />
+                                                        </DockPanel>
+                                                    </Grid>
+                                                </Border>
+                                            </DockPanel>
+                                        </Grid>
+                                    </TabItem>
+                                </TabControl>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel44" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="185" Height="41">
+            <Grid KeyboardNavigation.TabNavigation="Local">
+                <local:TFrameErrorList x:Name="FrameErrorList" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="0" Height="0" />
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,80 @@
+﻿<!-- Converted from UnitFrameGlobalObjectEditor.dfm by Delphi to WPF Converter -->
+<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFrameGlobalObjectEditor" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Width="1200" Height="612">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="1200" rtl:Rtl.DesignHeight="612">
+        <DockPanel LastChildFill="True">
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel17" DockPanel.Dock="Right" Width="651" rtl:Rtl.DesignHeight="612">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <DockPanel LastChildFill="True">
+                        <Border x:Name="SigGeneralGridGlobalPanelList_Host" DockPanel.Dock="Top" Height="224" rtl:Rtl.DesignWidth="649" />
+                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel18" rtl:Rtl.DesignWidth="649" rtl:Rtl.DesignHeight="386">
+                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                <DockPanel LastChildFill="True">
+                                    <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="PanelCaption" DockPanel.Dock="Top" Height="24" rtl:Rtl.DesignWidth="647">
+                                        <Grid>
+                                            <TextBlock Text="Properties" Tag="Caption" VerticalAlignment="Center" IsHitTestVisible="False" HorizontalAlignment="Center" />
+                                        </Grid>
+                                    </Border>
+                                    <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel43" rtl:Rtl.DesignWidth="647" rtl:Rtl.DesignHeight="360">
+                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                            <DockPanel LastChildFill="True">
+                                                <TabControl SelectedIndex="1" x:Name="PageControlProperties" TabIndex="0" rtl:Rtl.DesignWidth="645" rtl:Rtl.DesignHeight="358">
+                                                    <TabItem Header="Properties" x:Name="TabSheetProperties">
+                                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                                            <DockPanel LastChildFill="True">
+                                                                <Border x:Name="SigVariableEditorList_Host" rtl:Rtl.DesignWidth="637" rtl:Rtl.DesignHeight="330" />
+                                                            </DockPanel>
+                                                        </Grid>
+                                                    </TabItem>
+                                                    <TabItem Header="Where Used" x:Name="TabSheetWhereUsed">
+                                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                                            <DockPanel LastChildFill="True">
+                                                                <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel1" rtl:Rtl.DesignWidth="637" rtl:Rtl.DesignHeight="330">
+                                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                            <Label Padding="0" Content="Not used in Cause and Effects Tree" x:Name="Label1" FontFamily="Tahoma" FontSize="11" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,23,0,0" rtl:Rtl.DesignWidth="193" rtl:Rtl.DesignHeight="13" />
+                                                                        </Grid>
+                                                                        <DockPanel LastChildFill="True" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+                                                                            <TreeView x:Name="TreeViewWhereUsed" TabIndex="0" rtl:Rtl.DesignWidth="635" rtl:Rtl.DesignHeight="328">
+                                                                                <TreeView.ContextMenu>
+                                                                                    <ContextMenu x:Name="PopupMenuWhereUsed">
+                                                                                        <MenuItem Header="Go to CE Tree" x:Name="GotoCETree1" />
+                                                                                        <Separator x:Name="N1" />
+                                                                                        <MenuItem Header="Find _First" x:Name="FindFirst1" />
+                                                                                        <MenuItem Header="Find _Next" x:Name="FindNext1" InputGestureText="F3" />
+                                                                                        <MenuItem Header="_Delete" x:Name="Delete1" InputGestureText="Del" />
+                                                                                    </ContextMenu>
+                                                                                </TreeView.ContextMenu>
+                                                                            </TreeView>
+                                                                        </DockPanel>
+                                                                    </Grid>
+                                                                </Border>
+                                                            </DockPanel>
+                                                        </Grid>
+                                                    </TabItem>
+                                                </TabControl>
+                                            </DockPanel>
+                                        </Grid>
+                                    </Border>
+                                </DockPanel>
+                            </Grid>
+                        </Border>
+                    </DockPanel>
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel44" rtl:Rtl.DesignWidth="549" rtl:Rtl.DesignHeight="612">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <DockPanel LastChildFill="True">
+                        <local:TFrameErrorList x:Name="FrameErrorList" DockPanel.Dock="Bottom" Height="115" rtl:Rtl.DesignWidth="547" />
+                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="PanelTools" DockPanel.Dock="Bottom" Height="67" rtl:Rtl.DesignWidth="547">
+                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                <Button Content="Block Add..." x:Name="BitBtnBlockAdd" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,5,0,0" Width="97" Height="25" />
+                                <Button Content="Delete Selected" x:Name="BitBtnDeleteSelected" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,36,0,0" Width="97" Height="25" />
+                            </Grid>
+                        </Border>
+                        <Border x:Name="SigGeneralGridGlobal_Host" rtl:Rtl.DesignWidth="547" rtl:Rtl.DesignHeight="428" />
+                    </DockPanel>
+                </Grid>
+            </Border>
+        </DockPanel>
+    </Grid>
+</UserControl>

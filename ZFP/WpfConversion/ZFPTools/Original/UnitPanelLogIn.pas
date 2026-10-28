@@ -1,0 +1,186 @@
+unit UnitPanelLogIn;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Menus;
+
+type
+  TFormLogIn = class(TForm)
+    Label1: TLabel;
+    ImagePW1Blank: TImage;
+    ImagePW1Entered: TImage;
+    ImagePW2Entered: TImage;
+    ImagePW2Blank: TImage;
+    ImagePW3Entered: TImage;
+    ImagePW3Blank: TImage;
+    ImagePW4Entered: TImage;
+    ImagePW4Blank: TImage;
+    Panel1: TPanel;
+    ImageButton1: TImage;
+    ImageButton2: TImage;
+    ImageButton3: TImage;
+    ImageButton4: TImage;
+    ImageButton5: TImage;
+    ImageButton6: TImage;
+    ImageButtonTick: TImage;
+    ImageButton0: TImage;
+    ImageButtonX: TImage;
+    ImageButton7: TImage;
+    ImageButton8: TImage;
+    ImageButton9: TImage;
+    ImageErase1: TImage;
+    ImageEraseAll: TImage;
+    LabelRetry: TLabel;
+    procedure ImageButton4Click(Sender: TObject);
+    procedure ImageButtonXClick(Sender: TObject);
+    procedure ImageButtonTickClick(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure ImageErase1Click(Sender: TObject);
+    procedure ImageEraseAllClick(Sender: TObject);
+  private
+    fPassword: string;
+    procedure SetPassword(const Value: string);
+    { Private declarations }
+  public
+    { Public declarations }
+    Procedure AddKey( Const pKey : integer );
+    function Execute( const pLastLoginFailed : boolean = FALSE ) : boolean;
+    property Password : string
+             read fPassword
+             write SetPassword;
+  end;
+
+const
+  Code_Not_Entered = 0;
+  Code_Entered = 1;
+  Code_Cancelled = 2;
+var
+  FormLogIn: TFormLogIn;
+  CodeEntered: integer;
+
+implementation
+
+{$R *.dfm}
+
+  procedure TFormLogIn.AddKey(const pKey: integer);
+  begin
+    if Length( Password ) < 4 then
+    begin
+      Password := Password + IntToStr( pKey );
+    end
+    else
+    begin
+      Beep;
+    end;
+  end;
+
+  function TFormLogIn.Execute( const pLastLoginFailed : boolean ): boolean;
+  var
+  ActiveWindow: HWnd;
+  begin
+    ImagePW1Entered.Top := ImagePW1Blank.Top;
+    ImagePW2Entered.Top := ImagePW2Blank.Top;
+    ImagePW3Entered.Top := ImagePW3Blank.Top;
+    ImagePW4Entered.Top := ImagePW4Blank.Top;
+    LabelRetry.Visible := pLastLoginFailed;
+    Password := '';
+    CodeEntered := Code_Not_Entered;
+    Show;
+    while CodeEntered = Code_Not_Entered do
+    begin
+      Application.HandleMessage;
+      SetFocus;
+    end;
+    Hide;
+    if CodeEntered = Code_Entered then
+    begin
+      Result := TRUE;
+    end
+    else
+    begin
+      Result := FALSE;
+    end;
+    //Result := ShowModal = mrOK;
+  end;
+
+  procedure TFormLogIn.FormKeyPress(Sender: TObject; var Key: Char);
+  begin
+    case Key of
+      '0'..'9':
+      begin
+        Password := Password + Key;
+        Key := #0;
+      end;
+      #13:
+      begin
+        //ModalResult := mrOK;
+        CodeEntered := Code_Entered;
+        Key := #0;
+      end;
+      #27:
+      begin
+        //ModalResult := mrCancel;
+        CodeEntered := Code_Cancelled;
+        Key := #0;
+      end;
+      #8:
+      begin
+        Password := Copy( Password, 1, Length(Password) - 1);
+        Key := #0;
+      end;
+      #3:
+      begin
+        Password := '';
+        Key := #0;
+      end;
+    end;
+  end;
+
+  procedure TFormLogIn.ImageButton4Click(Sender: TObject);
+  begin
+    with sender as tComponent do
+    begin
+      AddKey( Tag );
+    end;
+  end;
+
+  procedure TFormLogIn.ImageButtonTickClick(Sender: TObject);
+  begin
+    //ModalResult := mrOK;
+    CodeEntered := Code_Entered;
+  end;
+
+  procedure TFormLogIn.ImageButtonXClick(Sender: TObject);
+  begin
+    //ModalResult := mrCancel;
+    CodeEntered := Code_Cancelled;
+  end;
+
+  procedure TFormLogIn.ImageErase1Click(Sender: TObject);
+  begin
+    if Password <> '' then
+    begin
+      Password := Copy( Password, 1, Length(Password) - 1);
+    end;
+  end;
+
+  procedure TFormLogIn.ImageEraseAllClick(Sender: TObject);
+  begin
+    Password := '';
+  end;
+
+  procedure TFormLogIn.SetPassword(const Value: string);
+  begin
+    fPassword := Value;
+    ImagePW1Blank.Visible := Length( fPassword ) < 1;
+    ImagePW2Blank.Visible := Length( fPassword ) < 2;
+    ImagePW3Blank.Visible := Length( fPassword ) < 3;
+    ImagePW4Blank.Visible := Length( fPassword ) < 4;
+    ImagePW1Entered.Visible := Length( fPassword ) >= 1;
+    ImagePW2Entered.Visible := Length( fPassword ) >= 2;
+    ImagePW3Entered.Visible := Length( fPassword ) >= 3;
+    ImagePW4Entered.Visible := Length( fPassword ) >= 4;
+  end;
+end.

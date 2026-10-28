@@ -1,0 +1,18 @@
+﻿<!-- Converted from UnitPasteSpecial.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormPasteSpecial" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="Paste Special" Width="543" Height="342" WindowStartupLocation="Manual" Left="0" Top="0" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="527" rtl:Rtl.DesignHeight="303">
+        <CheckBox Content="Auto Inc Input" VerticalContentAlignment="Center" x:Name="CheckBoxAutoIncInput" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,40,0,0" Width="97" Height="17" />
+        <CheckBox Content="Auto Inc Output" VerticalContentAlignment="Center" x:Name="CheckBoxAutoIncOutput" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,63,0,0" Width="97" Height="17" />
+        <GroupBox Header="Repeat" Padding="0" x:Name="RadioGroupRepeat" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,104,0,0" Width="417" Height="137">
+            <UniformGrid Columns="1" Margin="2,-2,0,-2">
+                <RadioButton Content="Fixed number of times" VerticalAlignment="Center" IsChecked="True" />
+                <RadioButton Content="Until List Exhausted" VerticalAlignment="Center" />
+                <RadioButton Content="Until Object Found or List Exhausted" VerticalAlignment="Center" />
+            </UniformGrid>
+        </GroupBox>
+        <Border x:Name="SigSpinEditFixedTimes_Host" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="296,128,0,0" Width="65" Height="22" />
+        <Button Content="&lt;Select&gt;" x:Name="BitBtnObject" TabIndex="4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="296,204,0,0" Width="177" Height="25" />
+        <Button IsDefault="True" Content="OK" x:Name="BitBtnOK" TabIndex="5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,256,0,0" Width="75" Height="25" />
+        <Button IsCancel="True" Content="Cancel" x:Name="BitBtn2" TabIndex="6" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="304,256,0,0" Width="75" Height="25" />
+    </Grid>
+</Window>

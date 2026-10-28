@@ -1,0 +1,9 @@
+﻿<!-- Converted from UnitFileNotSaved.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormFileNotSaved" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="File Not Saved" Width="321" Height="176" WindowStartupLocation="CenterOwner" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="305" rtl:Rtl.DesignHeight="137">
+        <Label Padding="0" Content="The file has not been saved. Save Now?" x:Name="LabelNotSavedWarning" FontFamily="Tahoma" FontSize="11" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="48,32,0,0" rtl:Rtl.DesignWidth="220" rtl:Rtl.DesignHeight="13" />
+        <Button IsDefault="True" Content="_Yes" x:Name="BitBtnYes" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,75,0,0" Width="75" Height="25" />
+        <Button Content="_No" x:Name="BitBtnNo" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120,75,0,0" Width="75" Height="25" />
+        <Button IsCancel="True" Content="Cancel" x:Name="BitBtnCancel" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="206,75,0,0" Width="75" Height="25" />
+    </Grid>
+</Window>

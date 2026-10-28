@@ -1,0 +1,732 @@
+﻿<!-- Converted from UnitMain.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormMain" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="ZFP Programming Tools" Width="1096" Height="626" WindowStartupLocation="Manual" Left="0" Top="0" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <DockPanel rtl:Rtl.DesignWidth="1080" rtl:Rtl.DesignHeight="587">
+        <Menu x:Name="MainMenu" DockPanel.Dock="Top">
+            <MenuItem Header="_Tools" x:Name="ools1">
+                <MenuItem Header="_Advanced Transfer" x:Name="AdvancedTransfer1" InputGestureText="F8" />
+                <Separator x:Name="N3" />
+                <MenuItem Header="_Export..." x:Name="Export1" />
+                <MenuItem Header="Import..." x:Name="Import1" />
+                <MenuItem Header="Show Config Page" x:Name="ShowConfigPage1" Visibility="Collapsed" InputGestureText="Ctrl+Shift+F5" />
+                <MenuItem Header="Get File From Panel" x:Name="GetFileFromPanel1" Visibility="Collapsed" />
+                <MenuItem Header="Send File to Panel" x:Name="SendFiletoPanel1" Visibility="Collapsed" />
+                <Separator x:Name="N1" />
+                <MenuItem Header="Change Default Logo" x:Name="ChangeDefaultLogo1" />
+                <Separator x:Name="N2" />
+                <MenuItem Header="Build SD Card files" x:Name="BuildSDCardfiles1" Visibility="Collapsed" InputGestureText="Ctrl+Alt+S" />
+            </MenuItem>
+        </Menu>
+        <Grid KeyboardNavigation.TabNavigation="Local">
+            <DockPanel LastChildFill="True">
+                <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel2" DockPanel.Dock="Top" Height="41" rtl:Rtl.DesignWidth="1080">
+                    <Grid KeyboardNavigation.TabNavigation="Local">
+                        <Button x:Name="SpeedButtonUndo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="231,9,0,0" Width="25" Height="25">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Resources/TFormMain_SpeedButtonUndo_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="SpeedButtonRedo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="262,9,0,0" Width="25" Height="25">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Resources/TFormMain_SpeedButtonRedo_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="SpeedButtonPrint" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="381,9,0,0" Width="25" Height="25">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Resources/TFormMain_SpeedButtonPrint_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="SpeedButtonPrintPreview" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="412,9,0,0" Width="25" Height="25">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Resources/TFormMain_SpeedButtonPrintPreview_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="SpeedButtonPrintSetup" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="443,9,0,0" Width="25" Height="25">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Resources/TFormMain_SpeedButtonPrintSetup_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="SpeedButtonNew" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,9,0,0" Width="26" Height="25">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Resources/TFormMain_SpeedButtonNew_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="SpeedButtonOpen" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="62,9,0,0" Width="26" Height="25">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Resources/TFormMain_SpeedButtonOpen_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="SpeedButtonSave" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="94,9,0,0" Width="26" Height="25">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Resources/TFormMain_SpeedButtonSave_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="SpeedButtonSaveAs" FontFamily="Tahoma" FontSize="11" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="126,9,0,0" Width="42" Height="25">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Resources/TFormMain_SpeedButtonSaveAs_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                <AccessText Text="..." VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel3" rtl:Rtl.DesignWidth="1080" rtl:Rtl.DesignHeight="546">
+                    <Grid KeyboardNavigation.TabNavigation="Local">
+                        <DockPanel LastChildFill="True">
+                            <TabControl SelectedIndex="2" x:Name="PageControlMain" TabIndex="0" rtl:Rtl.DesignWidth="1078" rtl:Rtl.DesignHeight="544">
+                                <TabItem Header="Site Details" x:Name="TabSheetSiteDetails">
+                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                        <DockPanel LastChildFill="True">
+                                            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="PanelSiteDetails" rtl:Rtl.DesignWidth="1070" rtl:Rtl.DesignHeight="516">
+                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                    <GroupBox Header="Client" x:Name="GroupBoxClient" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,11,0,0" Width="315" Height="209">
+                                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                                            <Label Padding="0" Content="Name:" x:Name="Label2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,9,0,0" rtl:Rtl.DesignWidth="31" rtl:Rtl.DesignHeight="13" />
+                                                            <Label Padding="0" Content="Address:" x:Name="Label3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,44,0,0" rtl:Rtl.DesignWidth="43" rtl:Rtl.DesignHeight="13" />
+                                                            <Label Padding="0" Content="Post Code:" x:Name="LabelClientPostCode" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,129,0,0" rtl:Rtl.DesignWidth="53" rtl:Rtl.DesignHeight="13" />
+                                                            <Label Padding="0" Content="Telephone:" x:Name="LabelClientTelephone" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,157,0,0" rtl:Rtl.DesignWidth="54" rtl:Rtl.DesignHeight="13" />
+                                                            <TextBox Text="EditClientName" VerticalContentAlignment="Center" x:Name="EditClientName" TabIndex="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="75,6,19,0" Height="21" rtl:Rtl.DesignWidth="211" />
+                                                            <TextBox AcceptsReturn="True" Text="MemoClientAddress" TextWrapping="Wrap" x:Name="MemoClientAddress" TabIndex="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="75,41,19,0" Height="73" rtl:Rtl.DesignWidth="211" />
+                                                            <TextBox Text="EditClientPostCode" VerticalContentAlignment="Center" x:Name="EditClientPostCode" TabIndex="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="75,126,19,0" Height="21" rtl:Rtl.DesignWidth="211" />
+                                                            <TextBox Text="EditClientTelephone" VerticalContentAlignment="Center" x:Name="EditClientTelephone" TabIndex="3" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="75,153,19,0" Height="21" rtl:Rtl.DesignWidth="211" />
+                                                        </Grid>
+                                                    </GroupBox>
+                                                    <GroupBox Header="Installer" x:Name="GroupBoxInstaller" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="389,11,0,0" Width="313" Height="209">
+                                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                                            <Label Padding="0" Content="Name:" x:Name="Label6" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,9,0,0" rtl:Rtl.DesignWidth="31" rtl:Rtl.DesignHeight="13" />
+                                                            <Label Padding="0" Content="Address:" x:Name="Label7" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,44,0,0" rtl:Rtl.DesignWidth="43" rtl:Rtl.DesignHeight="13" />
+                                                            <Label Padding="0" Content="Post Code:" x:Name="Label8" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,129,0,0" rtl:Rtl.DesignWidth="53" rtl:Rtl.DesignHeight="13" />
+                                                            <Label Padding="0" Content="Telephone:" x:Name="Label9" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,157,0,0" rtl:Rtl.DesignWidth="54" rtl:Rtl.DesignHeight="13" />
+                                                            <TextBox Text="EditInstallerName" VerticalContentAlignment="Center" x:Name="EditInstallerName" TabIndex="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="75,6,19,0" Height="21" rtl:Rtl.DesignWidth="209" />
+                                                            <TextBox AcceptsReturn="True" Text="MemoInstallerAddress" TextWrapping="Wrap" x:Name="MemoInstallerAddress" TabIndex="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="75,41,19,0" Height="73" rtl:Rtl.DesignWidth="209" />
+                                                            <TextBox Text="EditInstallerPostCode" VerticalContentAlignment="Center" x:Name="EditInstallerPostCode" TabIndex="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="75,126,19,0" Height="21" rtl:Rtl.DesignWidth="209" />
+                                                            <TextBox Text="EditInstallerTelephone" VerticalContentAlignment="Center" x:Name="EditInstallerTelephone" TabIndex="3" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="75,153,19,0" Height="21" rtl:Rtl.DesignWidth="209" />
+                                                        </Grid>
+                                                    </GroupBox>
+                                                    <GroupBox Header="General" x:Name="GroupBoxGeneral" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,226,0,0" Width="680" Height="97">
+                                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                                            <CheckBox Content="Auto Adjust Daylight Saving Time" VerticalContentAlignment="Center" x:Name="CheckBoxDaylightSaving" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,9,0,0" Width="332" Height="17" />
+                                                            <CheckBox Content="Site Uses Pager Texts" VerticalContentAlignment="Center" x:Name="CheckBoxSiteUsesPagerTexts" Visibility="Collapsed" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,55,0,0" Width="305" Height="17" />
+                                                            <CheckBox Content="Synchronise Panel Date/Time To PC on Panel update" VerticalContentAlignment="Center" IsChecked="True" x:Name="CheckBoxSynchroniseDateTimeToPC" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,32,0,0" Width="337" Height="17" />
+                                                        </Grid>
+                                                    </GroupBox>
+                                                    <GroupBox Header="Site Notes" x:Name="GroupBoxSiteNotes" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="22,329,0,31" Width="680" rtl:Rtl.DesignHeight="154">
+                                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                                            <TextBox AcceptsReturn="True" Text="MemoSiteNotes" TextWrapping="Wrap" x:Name="MemoSiteNotes" TabIndex="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="8,1,28,5" rtl:Rtl.DesignWidth="634" rtl:Rtl.DesignHeight="126" />
+                                                        </Grid>
+                                                    </GroupBox>
+                                                    <GroupBox Header="Logo" x:Name="GroupBoxLogo" TabIndex="4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="729,11,0,0" Width="185" Height="209">
+                                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                                            <Image Stretch="None" x:Name="ImageLogo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,25,0,0" Width="150" Height="150" />
+                                                        </Grid>
+                                                    </GroupBox>
+                                                </Grid>
+                                            </Border>
+                                        </DockPanel>
+                                    </Grid>
+                                </TabItem>
+                                <TabItem Header="System View" x:Name="TabSheetNetworkView">
+                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                        <DockPanel LastChildFill="True">
+                                            <Border BorderThickness="2" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel9" DockPanel.Dock="Top" Height="49" rtl:Rtl.DesignWidth="1070">
+                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                    <Button x:Name="SpeedButtonSendAllToAll" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="367,2,0,0" Width="232" Height="43">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Source="Resources/TFormMain_SpeedButtonSendAllToAll_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                                            <AccessText Text="Send All Data to All Panels" VerticalAlignment="Center" />
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button x:Name="SpeedButtonVerifyAll" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="206,2,0,0" Width="155" Height="43">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Source="Resources/TFormMain_SpeedButtonVerifyAll_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                                            <AccessText Text="Verify All Data" VerticalAlignment="Center" />
+                                                        </StackPanel>
+                                                    </Button>
+                                                </Grid>
+                                                <Border.ContextMenu>
+                                                    <ContextMenu x:Name="PopupMenuSplitterLines">
+                                                        <MenuItem Header="Panel" x:Name="MenuSplitterBlue" Visibility="Collapsed" />
+                                                        <MenuItem Header="Level 1" x:Name="MenuSplitterRed" Tag="1" />
+                                                        <MenuItem Header="Level 2" x:Name="MenuSplitterGreen" Tag="2" />
+                                                        <MenuItem Header="Level 3" x:Name="MenuSplitterFuschia" Tag="3" />
+                                                    </ContextMenu>
+                                                </Border.ContextMenu>
+                                            </Border>
+                                            <TabControl SelectedIndex="7" x:Name="PageControlNetworkView" TabIndex="0" rtl:Rtl.DesignWidth="1070" rtl:Rtl.DesignHeight="467">
+                                                <TabItem Header="Network" x:Name="TabSheetNetworkOverview">
+                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                        <DockPanel LastChildFill="True">
+                                                            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="PanelNodeTypePalette" rtl:Rtl.DesignWidth="1062" rtl:Rtl.DesignHeight="430">
+                                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                    <DockPanel LastChildFill="True">
+                                                                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel4" DockPanel.Dock="Left" Width="277" rtl:Rtl.DesignHeight="428">
+                                                                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                <DockPanel LastChildFill="True">
+                                                                                    <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel7" DockPanel.Dock="Top" Height="24" rtl:Rtl.DesignWidth="275">
+                                                                                        <Grid>
+                                                                                            <TextBlock Text="Node Type Palette" Tag="Caption" VerticalAlignment="Center" IsHitTestVisible="False" HorizontalAlignment="Center" />
+                                                                                        </Grid>
+                                                                                    </Border>
+                                                                                    <Grid rtl:Rtl.DesignWidth="275" rtl:Rtl.DesignHeight="402">
+                                                                                        <TabControl SelectedIndex="0" x:Name="TabControlNodeTypePalette" TabIndex="1">
+                                                                                            <TabItem Header="All" />
+                                                                                        </TabControl>
+                                                                                        <Grid KeyboardNavigation.TabNavigation="Local" Margin="4,26,4,4">
+                                                                                            <DockPanel LastChildFill="True">
+                                                                                                <Border BorderBrush="Gray" BorderThickness="1" Background="#FFF8F8E0" x:Name="ButtonGroupNodeTypePalette" rtl:Rtl.DesignWidth="267" rtl:Rtl.DesignHeight="374">
+                                                                                                    <TextBlock Text="TButtonGroup (not converted)" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                                                                                </Border>
+                                                                                            </DockPanel>
+                                                                                        </Grid>
+                                                                                    </Grid>
+                                                                                </DockPanel>
+                                                                            </Grid>
+                                                                        </Border>
+                                                                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel1" rtl:Rtl.DesignWidth="783" rtl:Rtl.DesignHeight="428">
+                                                                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                <DockPanel LastChildFill="True">
+                                                                                    <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel8" DockPanel.Dock="Top" Height="24" rtl:Rtl.DesignWidth="781">
+                                                                                        <Grid>
+                                                                                            <TextBlock Text="Nodes" Tag="Caption" VerticalAlignment="Center" IsHitTestVisible="False" HorizontalAlignment="Center" />
+                                                                                        </Grid>
+                                                                                    </Border>
+                                                                                    <local:TFrameErrorList x:Name="FrameErrorListOverview" DockPanel.Dock="Bottom" Height="122" rtl:Rtl.DesignWidth="781" />
+                                                                                    <DataGrid GridLinesVisibility="All" CanUserAddRows="False" HeadersVisibility="None" Tag="grid:16:8:0" x:Name="StringGridNodes" TabIndex="2" rtl:Rtl.DesignWidth="781" rtl:Rtl.DesignHeight="280" />
+                                                                                </DockPanel>
+                                                                            </Grid>
+                                                                        </Border>
+                                                                    </DockPanel>
+                                                                </Grid>
+                                                            </Border>
+                                                        </DockPanel>
+                                                    </Grid>
+                                                </TabItem>
+                                                <TabItem Header="Modes" x:Name="TabSheetGlobalModes">
+                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                        <DockPanel LastChildFill="True">
+                                                            <local:TFrameGlobalObjectEditor x:Name="FrameGlobalObjectEditorModes" rtl:Rtl.DesignWidth="1062" rtl:Rtl.DesignHeight="430" />
+                                                        </DockPanel>
+                                                    </Grid>
+                                                </TabItem>
+                                                <TabItem Header="Zones" x:Name="TabSheetGlobalZoning">
+                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                        <DockPanel LastChildFill="True">
+                                                            <local:TFrameZoneEditor x:Name="FrameZoneEditor" rtl:Rtl.DesignWidth="1062" rtl:Rtl.DesignHeight="430" />
+                                                        </DockPanel>
+                                                    </Grid>
+                                                </TabItem>
+                                                <TabItem Header="Input Groups" x:Name="TabSheetGlobalInputGroups">
+                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                        <DockPanel LastChildFill="True">
+                                                            <local:TFrameInputGroupEditor x:Name="FrameInputGroupEditor" rtl:Rtl.DesignWidth="1062" rtl:Rtl.DesignHeight="430" />
+                                                        </DockPanel>
+                                                    </Grid>
+                                                </TabItem>
+                                                <TabItem Header="Input Supergroups" x:Name="TabSheetInputSuperGroups">
+                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                        <DockPanel LastChildFill="True">
+                                                            <local:TFrameSupergroupEditor x:Name="FrameInputSupergroupEditor" rtl:Rtl.DesignWidth="1062" rtl:Rtl.DesignHeight="430" />
+                                                        </DockPanel>
+                                                    </Grid>
+                                                </TabItem>
+                                                <TabItem Header="Output Groups" x:Name="TabSheetGlobalOutputGroups">
+                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                        <DockPanel LastChildFill="True">
+                                                            <local:TFrameOutputGroupEditor x:Name="FrameOutputGroupEditor" rtl:Rtl.DesignWidth="1062" rtl:Rtl.DesignHeight="430" />
+                                                        </DockPanel>
+                                                    </Grid>
+                                                </TabItem>
+                                                <TabItem Header="Output Supergroups" x:Name="TabSheetSuperGroups">
+                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                        <DockPanel LastChildFill="True">
+                                                            <local:TFrameSupergroupEditor x:Name="FrameSupergroupEditor" rtl:Rtl.DesignWidth="1062" rtl:Rtl.DesignHeight="430" />
+                                                        </DockPanel>
+                                                    </Grid>
+                                                </TabItem>
+                                                <TabItem Header="Action Sequences" x:Name="TabSheetSequences">
+                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                        <DockPanel LastChildFill="True">
+                                                            <local:TFrameSequenceEditor x:Name="FrameSequenceEditor" rtl:Rtl.DesignWidth="1062" rtl:Rtl.DesignHeight="430" />
+                                                        </DockPanel>
+                                                    </Grid>
+                                                </TabItem>
+                                                <TabItem Header="Pulse Patterns" x:Name="TabSheetPulsePatterns">
+                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                        <DockPanel LastChildFill="True">
+                                                            <local:TFrameGlobalObjectEditor x:Name="FrameGlobalObjectEditorPulsePatterns" rtl:Rtl.DesignWidth="1062" rtl:Rtl.DesignHeight="430" />
+                                                        </DockPanel>
+                                                    </Grid>
+                                                </TabItem>
+                                                <TabItem Header="Group Actions" x:Name="TabSheetGroupActions">
+                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                        <DockPanel LastChildFill="True">
+                                                            <local:TFrameGlobalObjectEditor x:Name="FrameGlobalObjectEditorGroupActions" rtl:Rtl.DesignWidth="1062" rtl:Rtl.DesignHeight="430" />
+                                                        </DockPanel>
+                                                    </Grid>
+                                                </TabItem>
+                                            </TabControl>
+                                        </DockPanel>
+                                    </Grid>
+                                </TabItem>
+                                <TabItem Header="Node View" x:Name="TabSheetPanelView">
+                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                        <DockPanel LastChildFill="True">
+                                            <Grid rtl:Rtl.DesignWidth="1070" rtl:Rtl.DesignHeight="516">
+                                                <TabControl SelectedIndex="0" x:Name="TabControlPanels" TabIndex="0">
+                                                    <TabItem Header="TabControlPanels" />
+                                                </TabControl>
+                                                <Grid KeyboardNavigation.TabNavigation="Local" Margin="4,26,4,4">
+                                                    <DockPanel LastChildFill="True">
+                                                        <Border BorderThickness="2" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel5" DockPanel.Dock="Top" Height="49" rtl:Rtl.DesignWidth="1062">
+                                                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                <Label Padding="0" Content="Name" x:Name="LabelPanelName" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,18,0,0" rtl:Rtl.DesignWidth="27" rtl:Rtl.DesignHeight="13" />
+                                                                <Button x:Name="SpeedButtonSendAllToPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="367,2,0,0" Width="172" Height="43">
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <Image Source="Resources/TFormMain_SpeedButtonSendAllToPanel_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                                                        <AccessText Text="Send All Data" VerticalAlignment="Center" />
+                                                                    </StackPanel>
+                                                                </Button>
+                                                                <Button x:Name="SpeedButtonRetrieveAllData" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="565,2,0,0" Width="192" Height="43">
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <Image Source="Resources/TFormMain_SpeedButtonRetrieveAllData_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                                                        <AccessText Text="Retrieve All Data" VerticalAlignment="Center" />
+                                                                    </StackPanel>
+                                                                </Button>
+                                                                <Button x:Name="SpeedButtonRetrieveDeviceData" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="773,2,0,0" Width="238" Height="43">
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <Image Source="Resources/TFormMain_SpeedButtonRetrieveDeviceData_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                                                        <AccessText Text="Retrieve Device Data" VerticalAlignment="Center" />
+                                                                    </StackPanel>
+                                                                </Button>
+                                                                <Button x:Name="SpeedButtonVerify" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="246,2,0,0" Width="115" Height="43">
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <Image Source="Resources/TFormMain_SpeedButtonVerify_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                                                        <AccessText Text="Verify" VerticalAlignment="Center" />
+                                                                    </StackPanel>
+                                                                </Button>
+                                                                <TextBox Text="EditPanelName" VerticalContentAlignment="Center" x:Name="EditPanelName" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="102,14,0,0" Width="121" Height="21" />
+                                                            </Grid>
+                                                        </Border>
+                                                        <TabControl SelectedIndex="0" x:Name="PageControlPanelView" TabIndex="1" rtl:Rtl.DesignWidth="1062" rtl:Rtl.DesignHeight="439">
+                                                            <TabItem Header="General Properties" x:Name="TabSheetGlobalProperties">
+                                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                    <DockPanel LastChildFill="True">
+                                                                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel6" rtl:Rtl.DesignWidth="1054" rtl:Rtl.DesignHeight="411">
+                                                                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                <DockPanel LastChildFill="False">
+                                                                                    <local:TFrameErrorList x:Name="FrameErrorListGeneralProperties" DockPanel.Dock="Bottom" Height="102" rtl:Rtl.DesignWidth="1052" />
+                                                                                </DockPanel>
+                                                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                    <GroupBox Header="Verification Times" x:Name="GroupBoxVerificationTimes" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="430,95,0,0" Width="466" Height="153">
+                                                                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                            <Label Padding="0" Content="Detectors" x:Name="Label14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,4,0,0" rtl:Rtl.DesignWidth="47" rtl:Rtl.DesignHeight="13" />
+                                                                                            <Label Padding="0" Content="Manual Call points" x:Name="Label15" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,32,0,0" rtl:Rtl.DesignWidth="86" rtl:Rtl.DesignHeight="13" />
+                                                                                            <Label Padding="0" Content="I/O" x:Name="Label16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,60,0,0" rtl:Rtl.DesignWidth="16" rtl:Rtl.DesignHeight="13" />
+                                                                                            <Label Padding="0" Content="seconds" x:Name="Label25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="293,4,0,0" rtl:Rtl.DesignWidth="39" rtl:Rtl.DesignHeight="13" />
+                                                                                            <Label Padding="0" Content="seconds" x:Name="Label26" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="293,32,0,0" rtl:Rtl.DesignWidth="39" rtl:Rtl.DesignHeight="13" />
+                                                                                            <Label Padding="0" Content="seconds" x:Name="Label27" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="293,60,0,0" rtl:Rtl.DesignWidth="39" rtl:Rtl.DesignHeight="13" />
+                                                                                            <Label Padding="0" Content="Faults" x:Name="Label11" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,88,0,0" rtl:Rtl.DesignWidth="29" rtl:Rtl.DesignHeight="13" />
+                                                                                            <Label Padding="0" Content="seconds" x:Name="Label13" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="293,88,0,0" rtl:Rtl.DesignWidth="39" rtl:Rtl.DesignHeight="13" />
+                                                                                            <Button Content="Copy to all panels" x:Name="SpeedButtonCopyVerificationTimes" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="86,112,0,0" Width="247" Height="22" />
+                                                                                            <Border x:Name="SigSpinEditVerificationDet_Host" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="149,0,0,0" Width="121" Height="22" />
+                                                                                            <Border x:Name="SigSpinEditVerificationMCP_Host" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="149,28,0,0" Width="121" Height="22" />
+                                                                                            <Border x:Name="SigSpinEditVerificationIO_Host" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="149,56,0,0" Width="121" Height="22" />
+                                                                                            <Border x:Name="SigSpinEditVerificationFaults_Host" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="149,84,0,0" Width="121" Height="22" />
+                                                                                        </Grid>
+                                                                                    </GroupBox>
+                                                                                    <GroupBox Header="Panel Recalibration Time" x:Name="GroupBoxPanelRecalibrationTime" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="430,17,0,0" Width="466" Height="73">
+                                                                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                            <Label Padding="0" Content="Recalibration Time" x:Name="LabelPanelRecalibrationTime" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,6,0,0" rtl:Rtl.DesignWidth="87" rtl:Rtl.DesignHeight="13" />
+                                                                                            <Button Content="Copy to all panels" x:Name="SpeedButtonCopyRecalTimeToAllPanels" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="94,29,0,0" Width="247" Height="22" />
+                                                                                            <ComboBox IsEditable="True" Text="ComboBoxRecalibrationTime" VerticalContentAlignment="Center" x:Name="ComboBoxPanelRecalibrationTime" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="149,2,0,0" Width="121" rtl:Rtl.DesignHeight="21" />
+                                                                                        </Grid>
+                                                                                    </GroupBox>
+                                                                                    <GroupBox Header="Network Properties" x:Name="GroupBoxPanelNetworkProperties" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,16,0,0" Width="401" Height="73">
+                                                                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                            <Label Padding="0" Content="Segment" x:Name="LabelPanelSegment" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,10,0,0" rtl:Rtl.DesignWidth="42" rtl:Rtl.DesignHeight="13" />
+                                                                                            <Label Padding="0" Content="Address" x:Name="LabelPanelSegmentAddress" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,33,0,0" rtl:Rtl.DesignWidth="39" rtl:Rtl.DesignHeight="13" />
+                                                                                            <Border x:Name="SigImageNetworkProperties_Host" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="323,9,0,0" Width="36" Height="36" />
+                                                                                            <Border x:Name="SigSpinEditAddress_Host" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="78,29,0,0" Width="75" Height="22" />
+                                                                                            <Border x:Name="SigSpinEditSegment_Host" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="78,5,0,0" Width="75" Height="22" />
+                                                                                        </Grid>
+                                                                                    </GroupBox>
+                                                                                    <GroupBox Header="Firmware Versions" x:Name="GroupBoxFirmwareVersions" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,114,0,0" Width="401" Height="134">
+                                                                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                            <Label Padding="0" Content="Main Board" x:Name="Label4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="27,9,0,0" rtl:Rtl.DesignWidth="53" rtl:Rtl.DesignHeight="13" />
+                                                                                            <Label Padding="0" Content="Loop Driver 1" x:Name="Label5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="27,41,0,0" rtl:Rtl.DesignWidth="64" rtl:Rtl.DesignHeight="13" />
+                                                                                            <Label Padding="0" Content="Loop Driver 2" x:Name="Label17" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="27,73,0,0" rtl:Rtl.DesignWidth="64" rtl:Rtl.DesignHeight="13" />
+                                                                                            <TextBox Text="0 00" IsReadOnly="True" VerticalContentAlignment="Center" x:Name="EditMainBoardVersion" TabIndex="0" FontFamily="Tahoma" FontSize="11" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="147,5,0,0" Width="121" Height="21" />
+                                                                                            <TextBox Text="0 00" IsReadOnly="True" VerticalContentAlignment="Center" x:Name="EditLoopDriver1Version" TabIndex="1" FontFamily="Tahoma" FontSize="11" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="147,37,0,0" Width="121" Height="21" />
+                                                                                            <TextBox Text="0 00" IsReadOnly="True" VerticalContentAlignment="Center" x:Name="EditLoopDriver2Version" TabIndex="2" FontFamily="Tahoma" FontSize="11" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="147,69,0,0" Width="121" Height="21" />
+                                                                                        </Grid>
+                                                                                    </GroupBox>
+                                                                                </Grid>
+                                                                            </Grid>
+                                                                        </Border>
+                                                                    </DockPanel>
+                                                                </Grid>
+                                                            </TabItem>
+                                                            <TabItem Header="Basic Configuration" x:Name="TabSheetPanelBasicCfg">
+                                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                    <DockPanel LastChildFill="True">
+                                                                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel11" rtl:Rtl.DesignWidth="1054" rtl:Rtl.DesignHeight="411">
+                                                                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                <GroupBox Header="Panel Operation" x:Name="GroupBox5" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,11,0,0" Width="409" Height="109">
+                                                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                        <Label Padding="0" Content="Panel Auto Dim Time" x:Name="Label39" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,5,0,0" rtl:Rtl.DesignWidth="97" rtl:Rtl.DesignHeight="13" />
+                                                                                        <Label Padding="0" Content="Loop Protocol" x:Name="Label32" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,32,0,0" rtl:Rtl.DesignWidth="65" rtl:Rtl.DesignHeight="13" />
+                                                                                        <Button Content="Copy to all panels" x:Name="SpeedButtonCopyPanelOperationToAll" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="124,57,0,0" Width="247" Height="22" />
+                                                                                        <Border x:Name="SigSpinEditPanelAutoDimTime_Host" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="137,1,0,0" Width="51" Height="22" />
+                                                                                        <ComboBox IsEditable="True" Text="ComboBoxPanelLoopProtocol" VerticalContentAlignment="Center" x:Name="ComboBoxPanelLoopProtocol" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="124,29,0,0" Width="247" rtl:Rtl.DesignHeight="21" />
+                                                                                    </Grid>
+                                                                                </GroupBox>
+                                                                                <GroupBox Header="Panel Maintenance" x:Name="GroupBoxPanelMaintenance" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="440,11,0,0" Width="401" Height="237">
+                                                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                        <Label Padding="0" Content="Maintenance Date" x:Name="LabelPanelMaintenanceDate" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,8,0,0" rtl:Rtl.DesignWidth="87" rtl:Rtl.DesignHeight="13" />
+                                                                                        <Label Padding="0" Content="Maintenance String" x:Name="LabelPanelMaintenanceString" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,175,0,0" rtl:Rtl.DesignWidth="92" rtl:Rtl.DesignHeight="13" />
+                                                                                        <Button Content="Copy to all panels" x:Name="SpeedButtonCopyMaintenanceDataToAllPanels" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="118,198,0,0" Width="247" Height="22" />
+                                                                                        <Button Content="Copy to all panels" x:Name="SpeedButtonMaintenanceDateToAll" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="118,144,0,0" Width="247" Height="22" />
+                                                                                        <ComboBox IsEditable="False" VerticalContentAlignment="Center" x:Name="ComboBoxMaintenanceMonth" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="125,5,0,0" Width="145" rtl:Rtl.DesignHeight="21">
+                                                                                            <sys:String>January</sys:String>
+                                                                                            <sys:String>February</sys:String>
+                                                                                            <sys:String>March</sys:String>
+                                                                                            <sys:String>April</sys:String>
+                                                                                            <sys:String>May</sys:String>
+                                                                                            <sys:String>June</sys:String>
+                                                                                            <sys:String>July</sys:String>
+                                                                                            <sys:String>August</sys:String>
+                                                                                            <sys:String>September</sys:String>
+                                                                                            <sys:String>October</sys:String>
+                                                                                            <sys:String>November</sys:String>
+                                                                                            <sys:String>December</sys:String>
+                                                                                        </ComboBox>
+                                                                                        <Border x:Name="SigSpinEditMaintenanceYear_Host" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="283,4,0,0" Width="98" Height="22" />
+                                                                                        <Border BorderBrush="Gray" BorderThickness="1" Background="#FFF8F8E0" x:Name="CalendarMaintenanceDate" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="125,32,0,0" Width="256" Height="106">
+                                                                                            <TextBlock Text="TCalendar (not converted)" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                                                                        </Border>
+                                                                                        <TextBox Text="EditPanelMaintenanceString" VerticalContentAlignment="Center" x:Name="EditPanelMaintenanceString" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="125,171,0,0" Width="256" Height="21" />
+                                                                                    </Grid>
+                                                                                </GroupBox>
+                                                                                <GroupBox Header="Security" x:Name="GroupBoxSecurity" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="440,254,0,0" Width="409" Height="106">
+                                                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                        <Label Padding="0" Content="AL2 Code" x:Name="LabelPanelAL2Code" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,36,0,0" rtl:Rtl.DesignWidth="46" rtl:Rtl.DesignHeight="13" />
+                                                                                        <Label Padding="0" Content="AL3 Code" x:Name="LabelPanelAL3Code" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="203,38,0,0" rtl:Rtl.DesignWidth="46" rtl:Rtl.DesignHeight="13" />
+                                                                                        <Button Content="Copy to all panels" x:Name="SpeedButtonCopySecurity" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="118,59,0,0" Width="247" Height="22" />
+                                                                                        <CheckBox Content="Keyswitch Entry Only" VerticalContentAlignment="Center" x:Name="CheckBoxKeyswitchEntry" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,9,0,0" Width="369" Height="17" />
+                                                                                        <TextBox Text="EditPanelAL2Code" VerticalContentAlignment="Center" x:Name="EditPanelAL2Code" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="79,32,0,0" Width="94" Height="21" />
+                                                                                        <TextBox Text="EditPanelAL3Code" VerticalContentAlignment="Center" x:Name="EditPanelAL3Code" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="270,32,0,0" Width="95" Height="21" />
+                                                                                    </Grid>
+                                                                                </GroupBox>
+                                                                                <GroupBox Header="Print Options" x:Name="GroupBoxPrintOptions" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,126,0,0" Width="410" Height="234">
+                                                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                        <Button Content="Copy to all panels" x:Name="SpeedButtonCopyPrintOptionsToAll" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="94,0,0,4" Width="247" Height="22" />
+                                                                                        <ListBox x:Name="CheckListBoxPanelPrintOptions" TabIndex="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="14,9,24,33" rtl:Rtl.DesignWidth="362" rtl:Rtl.DesignHeight="170" />
+                                                                                    </Grid>
+                                                                                </GroupBox>
+                                                                            </Grid>
+                                                                        </Border>
+                                                                    </DockPanel>
+                                                                </Grid>
+                                                            </TabItem>
+                                                            <TabItem Header="Loops and Zones" x:Name="TabSheetPanelLoops">
+                                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                    <DockPanel LastChildFill="True">
+                                                                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel31" rtl:Rtl.DesignWidth="1054" rtl:Rtl.DesignHeight="411">
+                                                                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                <GroupBox Header="Loops Fitted" x:Name="GroupBoxLoopsFitted" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="16,15,0,10" Width="408" rtl:Rtl.DesignHeight="384">
+                                                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                        <Label Padding="0" Content="Loops Fitted" x:Name="Label30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,13,0,0" rtl:Rtl.DesignWidth="59" rtl:Rtl.DesignHeight="13" />
+                                                                                        <Border x:Name="SigSpinEditLoopsFitted_Host" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="163,9,0,0" Width="121" Height="22" />
+                                                                                        <Border x:Name="SigGeneralGridLoopDetails_Host" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="19,49,26,10" rtl:Rtl.DesignWidth="353" rtl:Rtl.DesignHeight="303" />
+                                                                                    </Grid>
+                                                                                </GroupBox>
+                                                                                <GroupBox Header="Zones Present on this Panel" x:Name="GroupBox7" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="457,15,0,10" Width="409" rtl:Rtl.DesignHeight="384">
+                                                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                        <Border x:Name="SigGeneralGridPanelZones_Host" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="15,9,11,9" rtl:Rtl.DesignWidth="373" rtl:Rtl.DesignHeight="344" />
+                                                                                    </Grid>
+                                                                                </GroupBox>
+                                                                            </Grid>
+                                                                        </Border>
+                                                                    </DockPanel>
+                                                                </Grid>
+                                                            </TabItem>
+                                                            <TabItem Header="Devices" x:Name="TabSheetLoops">
+                                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                    <DockPanel LastChildFill="True">
+                                                                        <Grid rtl:Rtl.DesignWidth="1054" rtl:Rtl.DesignHeight="411">
+                                                                            <TabControl SelectedIndex="0" x:Name="TabControlLoopDevices" TabIndex="0">
+                                                                                <TabItem Header="System devices" />
+                                                                                <TabItem Header="A-Bus devices" />
+                                                                            </TabControl>
+                                                                            <Grid KeyboardNavigation.TabNavigation="Local" Margin="4,26,4,4">
+                                                                                <DockPanel LastChildFill="True">
+                                                                                    <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel13" rtl:Rtl.DesignWidth="1046" rtl:Rtl.DesignHeight="383">
+                                                                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                            <DockPanel LastChildFill="True">
+                                                                                                <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="PanelComponentPalette" DockPanel.Dock="Left" Width="277" rtl:Rtl.DesignHeight="381">
+                                                                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                                        <DockPanel LastChildFill="True">
+                                                                                                            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel19" DockPanel.Dock="Top" Height="24" rtl:Rtl.DesignWidth="275">
+                                                                                                                <Grid>
+                                                                                                                    <TextBlock Text="Device Palette" Tag="Caption" VerticalAlignment="Center" IsHitTestVisible="False" HorizontalAlignment="Center" />
+                                                                                                                </Grid>
+                                                                                                            </Border>
+                                                                                                            <Grid rtl:Rtl.DesignWidth="275" rtl:Rtl.DesignHeight="355">
+                                                                                                                <TabControl SelectedIndex="0" x:Name="TabControlDevicePalette" TabIndex="1">
+                                                                                                                    <TabItem Header="All" />
+                                                                                                                </TabControl>
+                                                                                                                <Grid KeyboardNavigation.TabNavigation="Local" Margin="4,26,4,4">
+                                                                                                                    <DockPanel LastChildFill="True">
+                                                                                                                        <Border BorderBrush="Gray" BorderThickness="1" Background="#FFF8F8E0" x:Name="ButtonGroupDevicePalette" rtl:Rtl.DesignWidth="267" rtl:Rtl.DesignHeight="327">
+                                                                                                                            <TextBlock Text="TButtonGroup (not converted)" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                                                                                                        </Border>
+                                                                                                                    </DockPanel>
+                                                                                                                </Grid>
+                                                                                                            </Grid>
+                                                                                                        </DockPanel>
+                                                                                                    </Grid>
+                                                                                                </Border>
+                                                                                                <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="PanelDeviceProperties" DockPanel.Dock="Right" Width="349" rtl:Rtl.DesignHeight="381">
+                                                                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                                        <DockPanel LastChildFill="True">
+                                                                                                            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel21" DockPanel.Dock="Top" Height="24" rtl:Rtl.DesignWidth="347">
+                                                                                                                <Grid>
+                                                                                                                    <TextBlock Text="Device Properties" Tag="Caption" VerticalAlignment="Center" IsHitTestVisible="False" HorizontalAlignment="Center" />
+                                                                                                                </Grid>
+                                                                                                            </Border>
+                                                                                                            <Grid rtl:Rtl.DesignWidth="347" rtl:Rtl.DesignHeight="355">
+                                                                                                                <TabControl SelectedIndex="0" x:Name="TabControlSubDevices" TabIndex="1">
+                                                                                                                    <TabItem Header="Device" />
+                                                                                                                </TabControl>
+                                                                                                                <Grid KeyboardNavigation.TabNavigation="Local" Margin="4,26,4,4">
+                                                                                                                    <DockPanel LastChildFill="True">
+                                                                                                                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel14" DockPanel.Dock="Top" Height="121" rtl:Rtl.DesignWidth="339">
+                                                                                                                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                                                                <Label Padding="0" Content="Name" x:Name="LabelSubDeviceName" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,23,0,0" rtl:Rtl.DesignWidth="27" rtl:Rtl.DesignHeight="13" />
+                                                                                                                                <Label Padding="0" Content="IO Type" x:Name="LabelIOType" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,81,0,0" rtl:Rtl.DesignWidth="39" rtl:Rtl.DesignHeight="13" />
+                                                                                                                                <Label Padding="0" Content="Device Type" x:Name="LabelDeviceType" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,53,0,0" rtl:Rtl.DesignWidth="59" rtl:Rtl.DesignHeight="13" />
+                                                                                                                                <TextBox Text="EditSubDeviceName" VerticalContentAlignment="Center" x:Name="EditSubDeviceName" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="87,20,0,0" Width="145" Height="21" />
+                                                                                                                                <ComboBox IsEditable="False" SelectedIndex="0" VerticalContentAlignment="Center" x:Name="ComboBoxSubDeviceType" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="87,77,0,0" Width="145" rtl:Rtl.DesignHeight="21">
+                                                                                                                                    <sys:String>Input</sys:String>
+                                                                                                                                    <sys:String>Output</sys:String>
+                                                                                                                                </ComboBox>
+                                                                                                                                <TextBox Text="EditSubDeviceType" IsReadOnly="True" VerticalContentAlignment="Center" x:Name="EditSubDeviceType" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="87,50,0,0" Width="145" Height="21" />
+                                                                                                                            </Grid>
+                                                                                                                        </Border>
+                                                                                                                        <Border x:Name="SigVariableEditorListDeviceProperties_Host" rtl:Rtl.DesignWidth="339" rtl:Rtl.DesignHeight="206" />
+                                                                                                                    </DockPanel>
+                                                                                                                </Grid>
+                                                                                                            </Grid>
+                                                                                                        </DockPanel>
+                                                                                                    </Grid>
+                                                                                                </Border>
+                                                                                                <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="PanelDevices" rtl:Rtl.DesignWidth="418" rtl:Rtl.DesignHeight="381">
+                                                                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                                        <DockPanel LastChildFill="False">
+                                                                                                            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel20" DockPanel.Dock="Top" Height="24" rtl:Rtl.DesignWidth="416">
+                                                                                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                                                    <TextBlock Text="Devices" Tag="Caption" VerticalAlignment="Center" IsHitTestVisible="False" HorizontalAlignment="Center" />
+                                                                                                                    <Button x:Name="SpeedButtonShowComponentPalette" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="148" Height="22">
+                                                                                                                        <StackPanel Orientation="Horizontal">
+                                                                                                                            <Image Source="Resources/TFormMain_SpeedButtonShowComponentPalette_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                                                                                                            <AccessText Text="Device Palette" VerticalAlignment="Center" />
+                                                                                                                        </StackPanel>
+                                                                                                                    </Button>
+                                                                                                                    <Button x:Name="SpeedButtonEditDevices" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,3,0" Width="154" Height="22">
+                                                                                                                        <StackPanel Orientation="Horizontal">
+                                                                                                                            <Image Source="Resources/TFormMain_SpeedButtonEditDevices_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                                                                                                            <AccessText Text="Edit Devices" VerticalAlignment="Center" />
+                                                                                                                        </StackPanel>
+                                                                                                                    </Button>
+                                                                                                                </Grid>
+                                                                                                            </Border>
+                                                                                                            <local:TFrameErrorList x:Name="FrameErrorListDevices" DockPanel.Dock="Bottom" Height="122" rtl:Rtl.DesignWidth="416" />
+                                                                                                        </DockPanel>
+                                                                                                    </Grid>
+                                                                                                </Border>
+                                                                                            </DockPanel>
+                                                                                        </Grid>
+                                                                                    </Border>
+                                                                                </DockPanel>
+                                                                            </Grid>
+                                                                        </Grid>
+                                                                    </DockPanel>
+                                                                </Grid>
+                                                            </TabItem>
+                                                            <TabItem Header="Device Summary" x:Name="TabSheetDeviceSummary">
+                                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                    <DockPanel LastChildFill="True">
+                                                                        <local:TFrameGlobalDevices x:Name="FrameGlobalDevices" rtl:Rtl.DesignWidth="1054" rtl:Rtl.DesignHeight="411" />
+                                                                    </DockPanel>
+                                                                </Grid>
+                                                            </TabItem>
+                                                            <TabItem Header="Network Filters" x:Name="TabSheetPanelNetworkFilters">
+                                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                    <DockPanel LastChildFill="True">
+                                                                        <local:TFrameGlobalObjectEditor x:Name="FramePanelNetworkFilters" rtl:Rtl.DesignWidth="1054" rtl:Rtl.DesignHeight="411" />
+                                                                    </DockPanel>
+                                                                </Grid>
+                                                            </TabItem>
+                                                            <TabItem Header="Panel Notes" x:Name="TabSheetPanelNotes">
+                                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                    <DockPanel LastChildFill="True">
+                                                                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel12" rtl:Rtl.DesignWidth="1054" rtl:Rtl.DesignHeight="411">
+                                                                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                                <TextBox AcceptsReturn="True" Text="MemoPanelNotes&#xD;&#xA;WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" TextWrapping="Wrap" MaxLength="2500" x:Name="MemoPanelNotes" TabIndex="0" Background="#0000FF" FontFamily="Tahoma" FontSize="11" FontWeight="Bold" Foreground="#FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,31,0,0" Width="455" Height="233" />
+                                                                            </Grid>
+                                                                        </Border>
+                                                                    </DockPanel>
+                                                                </Grid>
+                                                            </TabItem>
+                                                            <TabItem Header="Panel Logs" x:Name="TabSheetPanelLogs">
+                                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                    <DockPanel LastChildFill="True">
+                                                                        <local:TFrameLogFiles x:Name="FrameLogFiles1" rtl:Rtl.DesignWidth="1054" rtl:Rtl.DesignHeight="411" />
+                                                                    </DockPanel>
+                                                                </Grid>
+                                                            </TabItem>
+                                                        </TabControl>
+                                                    </DockPanel>
+                                                </Grid>
+                                            </Grid>
+                                        </DockPanel>
+                                    </Grid>
+                                </TabItem>
+                                <TabItem Header="Cause and Effects" x:Name="TabSheetCauseAndEffects">
+                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                        <DockPanel LastChildFill="True">
+                                            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel34" DockPanel.Dock="Right" Width="651" rtl:Rtl.DesignHeight="516">
+                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                    <DockPanel LastChildFill="False">
+                                                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel35" DockPanel.Dock="Top" Height="32" rtl:Rtl.DesignWidth="649">
+                                                            <Grid>
+                                                                <TextBlock Text="Selected Item" Tag="Caption" VerticalAlignment="Center" IsHitTestVisible="False" HorizontalAlignment="Center" />
+                                                            </Grid>
+                                                        </Border>
+                                                    </DockPanel>
+                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                        <GroupBox Header="Adding" x:Name="GroupBox8" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,38,0,0" Width="315" Height="218">
+                                                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                <Button Content="Add Child 1" x:Name="SpeedButtonCETreeAdd1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="6,9,11,0" Height="22" rtl:Rtl.DesignWidth="288" />
+                                                                <Button Content="Add Child 2" x:Name="SpeedButtonCETreeAdd2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="6,36,11,0" Height="22" rtl:Rtl.DesignWidth="288" />
+                                                                <Button Content="Add Child 3" x:Name="SpeedButtonCETreeAdd3" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="6,63,11,0" Height="22" rtl:Rtl.DesignWidth="288" />
+                                                                <Button Content="Insert Sibling Before 1" x:Name="SpeedButtonCETreeInsertBefore1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="6,90,11,0" Height="22" rtl:Rtl.DesignWidth="288" />
+                                                                <Button Content="Insert Sibling After 1" x:Name="SpeedButtonCETreeInsertAfter1" FontFamily="Tahoma" FontSize="11" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="6,117,11,0" Height="22" rtl:Rtl.DesignWidth="288" />
+                                                                <Button Content="Insert Sibling Before 2" x:Name="SpeedButtonCETreeInsertBefore2" FontFamily="Tahoma" FontSize="11" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="6,145,11,0" Height="22" rtl:Rtl.DesignWidth="288" />
+                                                                <Button Content="Insert Sibling After 2" x:Name="SpeedButtonCETreeInsertAfter2" FontFamily="Tahoma" FontSize="11" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="6,173,11,0" Height="22" rtl:Rtl.DesignWidth="288" />
+                                                            </Grid>
+                                                        </GroupBox>
+                                                        <Border x:Name="SigVariableEditorListCETree_Host" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,271,9,5" rtl:Rtl.DesignWidth="635" rtl:Rtl.DesignHeight="238" />
+                                                        <GroupBox Header="Editing" x:Name="GroupBox9" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="326,38,0,0" Width="315" Height="218">
+                                                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                <Button Content="Cut" x:Name="SpeedButtonCETreeCut" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="6,9,11,0" Height="22" rtl:Rtl.DesignWidth="288" />
+                                                                <Button Content="Copy" x:Name="SpeedButtonCETreeCopy" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="6,36,11,0" Height="22" rtl:Rtl.DesignWidth="288" />
+                                                                <Button Content="Paste" x:Name="SpeedButtonCETreePaste" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="6,63,11,0" Height="22" rtl:Rtl.DesignWidth="288" />
+                                                                <Button Content="Delete!" x:Name="SpeedButtonCETreeDelete" FontFamily="Tahoma" FontSize="11" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="6,117,11,0" Height="22" rtl:Rtl.DesignWidth="288" />
+                                                                <Button Content="Paste Special..." x:Name="SpeedButtonCETreePasteSpecial" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="6,89,11,0" Height="22" rtl:Rtl.DesignWidth="288" />
+                                                            </Grid>
+                                                        </GroupBox>
+                                                    </Grid>
+                                                </Grid>
+                                            </Border>
+                                            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel36" rtl:Rtl.DesignWidth="419" rtl:Rtl.DesignHeight="516">
+                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                    <DockPanel LastChildFill="True">
+                                                        <local:TFrameErrorList x:Name="FrameErrorListCE" DockPanel.Dock="Bottom" Height="134" rtl:Rtl.DesignWidth="417" />
+                                                        <TreeView x:Name="TreeViewCE1" TabIndex="0" rtl:Rtl.DesignWidth="417" rtl:Rtl.DesignHeight="380" />
+                                                    </DockPanel>
+                                                </Grid>
+                                            </Border>
+                                        </DockPanel>
+                                    </Grid>
+                                </TabItem>
+                                <TabItem Header="Configuration" x:Name="TabSheetConfiguration">
+                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                        <DockPanel LastChildFill="True">
+                                            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel22" rtl:Rtl.DesignWidth="1070" rtl:Rtl.DesignHeight="516">
+                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                    <GroupBox Header="Edit Mode" Padding="0" x:Name="RadioGroupEditMode" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="55,31,0,0" Width="481" Height="137">
+                                                        <UniformGrid Columns="1" Margin="2,-2,0,-2">
+                                                            <RadioButton Content="Simple" VerticalAlignment="Center" IsChecked="True" />
+                                                            <RadioButton Content="Advanced" VerticalAlignment="Center" />
+                                                            <RadioButton Content="Custom" VerticalAlignment="Center" />
+                                                        </UniformGrid>
+                                                    </GroupBox>
+                                                    <GroupBox Header="Custom Settings" x:Name="GroupBoxCustomSettings" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="55,174,0,0" Width="481" Height="290">
+                                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                                            <CheckBox Content="Full Xfer Options" VerticalContentAlignment="Center" x:Name="CheckBoxFullXferOptions" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,40,0,0" Width="97" Height="17" />
+                                                            <CheckBox Content="Use Threading" VerticalContentAlignment="Center" x:Name="CheckBoxUseThreads" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,63,0,0" Width="97" Height="17" />
+                                                            <CheckBox Content="Check USB Status" VerticalContentAlignment="Center" x:Name="CheckBoxCheckUSBStatus" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,86,0,0" Width="137" Height="17" />
+                                                            <CheckBox Content="Use full dictionaries (requires restart)" VerticalContentAlignment="Center" x:Name="CheckBoxUseFullDictionaries" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,109,0,0" Width="257" Height="17" />
+                                                            <CheckBox Content="Allow cfg of remote panels" VerticalContentAlignment="Center" x:Name="CheckBoxCfgAcrossNetwork" TabIndex="4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,17,0,0" Width="203" Height="17" />
+                                                            <CheckBox Content="View logs as tables" VerticalContentAlignment="Center" x:Name="CheckBoxViewLogAsTable" TabIndex="5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,132,0,0" Width="257" Height="17" />
+                                                            <CheckBox Content="Unlock System Devices (this session only)" VerticalContentAlignment="Center" x:Name="CheckBoxUnlockSystemDevices" TabIndex="6" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,155,0,0" Width="257" Height="17" />
+                                                            <CheckBox Content="Allow File Transfers to Panel" VerticalContentAlignment="Center" x:Name="CheckBoxAllFileTransfersToPanel" TabIndex="7" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,178,0,0" Width="257" Height="17" />
+                                                            <CheckBox Content="Enable Import/Export" VerticalContentAlignment="Center" x:Name="CheckBoxAllowImportExport" TabIndex="8" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,201,0,0" Width="257" Height="17" />
+                                                        </Grid>
+                                                    </GroupBox>
+                                                    <GroupBox Header="Report Options" x:Name="GroupBox6" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="575,31,0,0" Width="473" Height="137">
+                                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                                            <CheckBox Content="Reports Include Security Information" VerticalContentAlignment="Center" x:Name="CheckBoxReportsIncludeSecurityInformation" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="27,17,0,0" Width="409" Height="17" />
+                                                        </Grid>
+                                                    </GroupBox>
+                                                    <GroupBox Header="Sim System" x:Name="GroupBoxSimSystem" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="575,174,0,0" Width="473" Height="290">
+                                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                                            <DockPanel LastChildFill="True">
+                                                                <Border x:Name="SigPanelSimLower_Host" DockPanel.Dock="Bottom" Height="41" rtl:Rtl.DesignWidth="469" />
+                                                                <Border x:Name="SigPanelSimMain_Host" rtl:Rtl.DesignWidth="469" rtl:Rtl.DesignHeight="232" />
+                                                            </DockPanel>
+                                                        </Grid>
+                                                    </GroupBox>
+                                                </Grid>
+                                            </Border>
+                                        </DockPanel>
+                                    </Grid>
+                                </TabItem>
+                                <TabItem Header="Debug" x:Name="TabSheetDebug">
+                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                        <Button Content="Debug" x:Name="BitBtn1" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="104,24,0,0" Width="75" Height="25" />
+                                        <TextBox AcceptsReturn="True" Text="MemoDebug" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" x:Name="MemoDebug" TabIndex="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="3,55,106,15" rtl:Rtl.DesignWidth="961" rtl:Rtl.DesignHeight="446" />
+                                    </Grid>
+                                </TabItem>
+                                <TabItem Header="Errors" x:Name="TabSheetErrors">
+                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                        <DockPanel LastChildFill="True">
+                                            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel17" DockPanel.Dock="Top" Height="33" rtl:Rtl.DesignWidth="1070">
+                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                    <CheckBox Content="Show Errors" VerticalContentAlignment="Center" IsChecked="True" x:Name="CheckBoxErrors" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,7,0,0" Width="97" Height="17" />
+                                                    <CheckBox Content="Show Warnings" VerticalContentAlignment="Center" IsChecked="True" x:Name="CheckBoxWarnings" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="226,7,0,0" Width="97" Height="17" />
+                                                    <CheckBox Content="Show Hints" VerticalContentAlignment="Center" IsChecked="True" x:Name="CheckBoxHints" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="438,7,0,0" Width="97" Height="17" />
+                                                </Grid>
+                                            </Border>
+                                            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel18" rtl:Rtl.DesignWidth="1070" rtl:Rtl.DesignHeight="483">
+                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                    <DockPanel LastChildFill="True">
+                                                        <Grid rtl:Rtl.DesignWidth="1068" rtl:Rtl.DesignHeight="481">
+                                                            <TabControl x:Name="TabControlImportedFiles" TabIndex="0" />
+                                                            <Grid KeyboardNavigation.TabNavigation="Local" Margin="4,26,4,4">
+                                                                <DockPanel LastChildFill="True">
+                                                                    <local:TFrameErrorList x:Name="FrameErrorListSystem" DockPanel.Dock="Bottom" Height="195" rtl:Rtl.DesignWidth="1060" />
+                                                                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" x:Name="MemoImportedFiles" TabIndex="0" rtl:Rtl.DesignWidth="1060" rtl:Rtl.DesignHeight="276" />
+                                                                </DockPanel>
+                                                            </Grid>
+                                                        </Grid>
+                                                    </DockPanel>
+                                                </Grid>
+                                            </Border>
+                                        </DockPanel>
+                                    </Grid>
+                                </TabItem>
+                                <TabItem Header="Options" x:Name="TabSheetOptions">
+                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                        <DockPanel LastChildFill="True">
+                                            <Border x:Name="SigPanel1_Host" rtl:Rtl.DesignWidth="1070" rtl:Rtl.DesignHeight="516" />
+                                        </DockPanel>
+                                    </Grid>
+                                </TabItem>
+                            </TabControl>
+                        </DockPanel>
+                    </Grid>
+                </Border>
+            </DockPanel>
+        </Grid>
+    </DockPanel>
+</Window>

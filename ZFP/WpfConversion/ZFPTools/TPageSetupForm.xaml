@@ -1,0 +1,81 @@
+﻿<!-- Converted from PageSetupDlg.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TPageSetupForm" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="Page Setup" Width="526" Height="482" WindowStartupLocation="Manual" Left="266" Top="160" ResizeMode="NoResize" ShowInTaskbar="False" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Microsoft Sans Serif" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="510" rtl:Rtl.DesignHeight="443">
+        <GroupBox Header="Page Margins" x:Name="PageMarginGroup" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,8,0,0" Width="193" Height="169">
+            <Grid KeyboardNavigation.TabNavigation="Local">
+                <Label Padding="0" Content="_Left" Target="{Binding ElementName=LeftEdit}" x:Name="Label1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,49,0,0" rtl:Rtl.DesignWidth="18" rtl:Rtl.DesignHeight="13" />
+                <Label Padding="0" Content="_Right" Target="{Binding ElementName=RightEdit}" x:Name="Label2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,49,0,0" rtl:Rtl.DesignWidth="25" rtl:Rtl.DesignHeight="13" />
+                <Label Padding="0" Content="_Top" Target="{Binding ElementName=TopEdit}" x:Name="Label3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,97,0,0" rtl:Rtl.DesignWidth="19" rtl:Rtl.DesignHeight="13" />
+                <Label Padding="0" Content="_Bottom" Target="{Binding ElementName=BotEdit}" x:Name="Label4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,97,0,0" rtl:Rtl.DesignWidth="33" rtl:Rtl.DesignHeight="13" />
+                <RadioButton Content="_Inches" VerticalContentAlignment="Center" IsChecked="True" GroupName="PageMarginGroup" x:Name="InchBut" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,5,0,0" Width="65" Height="17" />
+                <RadioButton Content="_Centimeters" VerticalContentAlignment="Center" GroupName="PageMarginGroup" x:Name="CentBut" Tag="1" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,21,0,0" Width="89" Height="17" />
+                <TextBox Text="LeftEdit" VerticalContentAlignment="Center" x:Name="LeftEdit" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,65,0,0" Width="65" Height="21" />
+                <TextBox Text="RightEdit" VerticalContentAlignment="Center" x:Name="RightEdit" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,65,0,0" Width="65" Height="21" />
+                <TextBox Text="TopEdit" VerticalContentAlignment="Center" x:Name="TopEdit" TabIndex="4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,113,0,0" Width="65" Height="21" />
+                <TextBox Text="BotEdit" VerticalContentAlignment="Center" x:Name="BotEdit" TabIndex="5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,113,0,0" Width="65" Height="21" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Page Orientation" x:Name="PageOrientGroup" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="208,8,0,0" Width="113" Height="169">
+            <Grid KeyboardNavigation.TabNavigation="Local">
+                <Rectangle Fill="#FFFFFF" Stroke="#000000" StrokeThickness="1" x:Name="PortShape" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,57,0,0" Width="56" Height="73" />
+                <Rectangle Fill="#FFFFFF" Stroke="#000000" StrokeThickness="1" x:Name="LandShape" Visibility="Collapsed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,65,0,0" Width="73" Height="56" />
+                <RadioButton Content="_Portrait" VerticalContentAlignment="Center" IsChecked="True" GroupName="PageOrientGroup" x:Name="PortBut" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,5,0,0" Width="85" Height="17" />
+                <RadioButton Content="Land_scape" VerticalContentAlignment="Center" GroupName="PageOrientGroup" x:Name="LandBut" Tag="1" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,21,0,0" Width="85" Height="17" />
+            </Grid>
+        </GroupBox>
+        <Button IsDefault="True" Content="OK" x:Name="OKBut" TabIndex="6" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="190,412,0,0" Width="75" Height="25" />
+        <Button IsCancel="True" Content="Cancel" x:Name="CancelBut" TabIndex="7" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="286,412,0,0" Width="75" Height="25" />
+        <GroupBox Header="Header Options" x:Name="HeaderGroup" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,184,0,0" Width="497" Height="105">
+            <Grid KeyboardNavigation.TabNavigation="Local">
+                <Label Padding="0" Content="_Header" Target="{Binding ElementName=HeaderEdit}" x:Name="Label5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,13,0,0" rtl:Rtl.DesignWidth="35" rtl:Rtl.DesignHeight="13" />
+                <Label Padding="0" Content="Header _Margin" Target="{Binding ElementName=HdrMarginEdit}" x:Name="Label6" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,40,0,0" rtl:Rtl.DesignWidth="70" rtl:Rtl.DesignHeight="13" />
+                <TextBox Text="HeaderEdit" VerticalContentAlignment="Center" x:Name="HeaderEdit" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,5,0,0" Width="425" Height="21" />
+                <TextBox Text="HdrMarginEdit" VerticalContentAlignment="Center" x:Name="HdrMarginEdit" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,56,0,0" Width="97" Height="21" />
+                <RadioButton Content="Left" VerticalContentAlignment="Center" GroupName="HeaderGroup" x:Name="HdrLeftBut" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="139,33,0,0" Width="70" Height="17" />
+                <RadioButton Content="Center" VerticalContentAlignment="Center" IsChecked="True" GroupName="HeaderGroup" x:Name="HdrCenterBut" Tag="2" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="139,49,0,0" Width="70" Height="17" />
+                <RadioButton Content="Right" VerticalContentAlignment="Center" GroupName="HeaderGroup" x:Name="HdrRightBut" Tag="1" TabIndex="4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="139,65,0,0" Width="70" Height="17" />
+                <Button Content="_Font..." x:Name="HdrFontBut" TabIndex="5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="227,46,0,0" Width="136" Height="25" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Footer Options" x:Name="FooterGroup" TabIndex="4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,296,0,0" Width="497" Height="105">
+            <Grid KeyboardNavigation.TabNavigation="Local">
+                <Label Padding="0" Content="_Footer" Target="{Binding ElementName=FooterEdit}" x:Name="Label7" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,13,0,0" rtl:Rtl.DesignWidth="30" rtl:Rtl.DesignHeight="13" />
+                <Label Padding="0" Content="Footer _Margin" Target="{Binding ElementName=FtrMarginEdit}" x:Name="Label8" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,40,0,0" rtl:Rtl.DesignWidth="65" rtl:Rtl.DesignHeight="13" />
+                <TextBox Text="HeaderEdit" VerticalContentAlignment="Center" x:Name="FooterEdit" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,5,0,0" Width="425" Height="21" />
+                <TextBox Text="FtrMarginEdit" VerticalContentAlignment="Center" x:Name="FtrMarginEdit" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,56,0,0" Width="97" Height="21" />
+                <RadioButton Content="Left" VerticalContentAlignment="Center" GroupName="FooterGroup" x:Name="FtrLeftBut" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="139,33,0,0" Width="70" Height="17" />
+                <RadioButton Content="Center" VerticalContentAlignment="Center" IsChecked="True" GroupName="FooterGroup" x:Name="FtrCenterBut" Tag="2" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="139,49,0,0" Width="70" Height="17" />
+                <RadioButton Content="Right" VerticalContentAlignment="Center" GroupName="FooterGroup" x:Name="FtrRightBut" Tag="1" TabIndex="4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="139,65,0,0" Width="70" Height="17" />
+                <Button Content="_Font..." x:Name="FtrFontBut" TabIndex="5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="227,46,0,0" Width="136" Height="25" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Page Number Options" x:Name="PageNumGroup" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="328,8,0,0" Width="177" Height="169">
+            <Grid KeyboardNavigation.TabNavigation="Local">
+                <Label Padding="0" Content="Page Number Text (%d = Page)" x:Name="Label9" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,73,0,0" rtl:Rtl.DesignWidth="149" rtl:Rtl.DesignHeight="13" />
+                <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,9,0,0" Width="81" Height="57">
+                    <Grid KeyboardNavigation.TabNavigation="Local">
+                        <RadioButton Content="Bottom" VerticalContentAlignment="Center" IsChecked="True" GroupName="Panel1" x:Name="PageBotBut" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,4,0,0" Width="65" Height="17" />
+                        <RadioButton Content="Top" VerticalContentAlignment="Center" GroupName="Panel1" x:Name="PageTopBut" Tag="1" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,20,0,0" Width="65" Height="17" />
+                        <RadioButton Content="None" VerticalContentAlignment="Center" GroupName="Panel1" x:Name="PageNoneBut" Tag="2" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,36,0,0" Width="65" Height="17" />
+                    </Grid>
+                </Border>
+                <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="83,9,0,0" Width="81" Height="57">
+                    <Grid KeyboardNavigation.TabNavigation="Local">
+                        <RadioButton Content="Left" VerticalContentAlignment="Center" GroupName="Panel2" x:Name="PageLeftBut" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,4,0,0" Width="65" Height="17" />
+                        <RadioButton Content="Center" VerticalContentAlignment="Center" GroupName="Panel2" x:Name="PageCenterBut" Tag="2" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,20,0,0" Width="65" Height="17" />
+                        <RadioButton Content="Right" VerticalContentAlignment="Center" IsChecked="True" GroupName="Panel2" x:Name="PageRightBut" Tag="1" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,36,0,0" Width="65" Height="17" />
+                    </Grid>
+                </Border>
+                <TextBox Text="PageNumEdit" VerticalContentAlignment="Center" x:Name="PageNumEdit" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,89,0,0" Width="153" Height="21" />
+                <Button Content="_Font..." x:Name="PageNumFontBut" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,120,0,0" Width="136" Height="25" />
+            </Grid>
+        </GroupBox>
+        <Button x:Name="PrinterSetupBut" TabIndex="5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="52,412,0,0" Width="105" Height="25">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="Resources/TPageSetupForm_PrinterSetupBut_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                <AccessText Text="Printer _Setup..." VerticalAlignment="Center" />
+            </StackPanel>
+        </Button>
+        <Button Content="Set _Default" x:Name="SetDefaultBut" TabIndex="8" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="384,412,0,0" Width="75" Height="25" />
+    </Grid>
+</Window>

@@ -1,0 +1,44 @@
+﻿<!-- Converted from UnitFrameGlobalObjectPanelEditor.dfm by Delphi to WPF Converter -->
+<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFrameGlobalObjectPanelEditor" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Width="1137" Height="676">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="1137" rtl:Rtl.DesignHeight="676">
+        <DockPanel LastChildFill="True">
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel17" DockPanel.Dock="Right" Width="651" rtl:Rtl.DesignHeight="676">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <DockPanel LastChildFill="True">
+                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel18" rtl:Rtl.DesignWidth="649" rtl:Rtl.DesignHeight="674">
+                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                <DockPanel LastChildFill="True">
+                                    <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel42" DockPanel.Dock="Top" Height="39" rtl:Rtl.DesignWidth="647">
+                                        <Grid>
+                                            <TextBlock Text="Properties" Tag="Caption" VerticalAlignment="Center" IsHitTestVisible="False" HorizontalAlignment="Center" />
+                                        </Grid>
+                                    </Border>
+                                    <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel43" rtl:Rtl.DesignWidth="647" rtl:Rtl.DesignHeight="633">
+                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                            <DockPanel LastChildFill="True">
+                                                <Border x:Name="SigVariableEditorList_Host" rtl:Rtl.DesignWidth="645" rtl:Rtl.DesignHeight="631" />
+                                            </DockPanel>
+                                        </Grid>
+                                    </Border>
+                                </DockPanel>
+                            </Grid>
+                        </Border>
+                    </DockPanel>
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel44" rtl:Rtl.DesignWidth="486" rtl:Rtl.DesignHeight="676">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <DockPanel LastChildFill="True">
+                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel1" DockPanel.Dock="Top" Height="40" rtl:Rtl.DesignWidth="484">
+                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                <TextBlock Text="Usage on this panel" Tag="Caption" VerticalAlignment="Center" IsHitTestVisible="False" HorizontalAlignment="Center" />
+                                <Button Content="Show/Hide Unused" x:Name="SpeedButtonShowHide" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="311,7,0,0" Width="161" Height="22" />
+                            </Grid>
+                        </Border>
+                        <Border x:Name="SigGeneralGridUsage_Host" rtl:Rtl.DesignWidth="484" rtl:Rtl.DesignHeight="634" />
+                    </DockPanel>
+                </Grid>
+            </Border>
+        </DockPanel>
+    </Grid>
+</UserControl>

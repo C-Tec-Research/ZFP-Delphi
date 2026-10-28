@@ -1,0 +1,20 @@
+﻿ZFPTools
+1.0.0.0
+
+winexe
+C#
+.cs
+C:\Users\jamie.bartleet\Documents\Dev\ZFP Delphi\ZFP\WpfConversion\ZFPTools\obj\Debug\net8.0-windows\
+ZFPTools
+none
+false
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP1_0_OR_GREATER;NETCOREAPP1_1_OR_GREATER;NETCOREAPP2_0_OR_GREATER;NETCOREAPP2_1_OR_GREATER;NETCOREAPP2_2_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+C:\Users\jamie.bartleet\Documents\Dev\ZFP Delphi\ZFP\WpfConversion\ZFPTools\App.xaml
+38-316113281
+
+136-162955400
+1981266802334
+TAboutBox.xaml;TFormAdvancedTransferSelector.xaml;TFormASCIITransfer.xaml;TFormBlockAddition.xaml;TFormChangeDefaultLogo.xaml;TFormConfirmCETreeDelete.xaml;TFormDissociation.xaml;TFormDongleInterface.xaml;TFormFileNotSaved.xaml;TFormFileTransfer.xaml;TFormImageSelector.xaml;TFormLoadErrors.xaml;TFormLoadFile.xaml;TFormLogIn.xaml;TFormMain.xaml;TFormNewIconGroupName.xaml;TFormNodeChangeProblems.xaml;TFormPasteSpecial.xaml;TFormRemoteLoginNotSupported.xaml;TFormReplace.xaml;TFormSelectGlobalObject.xaml;TFormShortNameAndIconEditor.xaml;TFormSigFileClipboard.xaml;TFrameErrorList.xaml;TFrameGlobalDevices.xaml;TFrameGlobalObjectEditor.xaml;TFrameGlobalObjectPanelEditor.xaml;TFrameIconEditor.xaml;TFrameInputGroupEditor.xaml;TFrameLogFiles.xaml;TFrameOutputGroupEditor.xaml;TFrameSequenceEditor.xaml;TFrameSimSystem.xaml;TFrameSupergroupEditor.xaml;TFrameZoneEditor.xaml;TGoPageForm.xaml;TPageSetupForm.xaml;TPreviewForm.xaml;
+
+False
+

@@ -1,0 +1,126 @@
+﻿<!-- Converted from PrevForm.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TPreviewForm" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="Preview Form" Width="648" Height="509" WindowStartupLocation="CenterScreen" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" Icon="Resources/TPreviewForm_Icon.ico" FontFamily="Microsoft Sans Serif" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="632" rtl:Rtl.DesignHeight="470">
+        <DockPanel LastChildFill="True">
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="ToolBarPanel" DockPanel.Dock="Top" Height="32" rtl:Rtl.DesignWidth="632">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <Button Content="Grid" x:Name="GridBut" ToolTip="Turns Grid On/Off" FontFamily="Arial" FontSize="12" Foreground="#000000" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="338,3,0,0" Width="33" Height="24" />
+                    <Button x:Name="ZoomCursorBut" ToolTip="Selects the Zoom Tool to zoom in or out" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="383,2,0,0" Width="25" Height="25">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Resources/TPreviewForm_ZoomCursorBut_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="HandCursorBut" ToolTip="Selects the Hand Tool to pan across the Page" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="407,2,0,0" Width="25" Height="25">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Resources/TPreviewForm_HandCursorBut_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                        </StackPanel>
+                    </Button>
+                    <Button Content="_1" x:Name="OnePageBut" ToolTip="Display One page at a time" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="442,2,0,0" Width="25" Height="25" />
+                    <Button Content="_2" x:Name="TwoPageBut" ToolTip="Display Two pages side by side" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="466,2,0,0" Width="25" Height="25" />
+                    <Button x:Name="FitPageBut" ToolTip="Fit to Page" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="279,2,0,0" Width="25" Height="25">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Resources/TPreviewForm_FitPageBut_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="FitWidthBut" ToolTip="Fit to Width" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="303,2,0,0" Width="25" Height="25">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Resources/TPreviewForm_FitWidthBut_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                        </StackPanel>
+                    </Button>
+                    <Button Content="_Print..." x:Name="PrintBut" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,3,0,0" Width="50" Height="24" />
+                    <Button Content="_Next" x:Name="NextPageBut" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="114,3,0,0" Width="50" Height="24" />
+                    <Button Content="Pre_v" x:Name="PrevPageBut" IsEnabled="False" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="59,3,0,0" Width="50" Height="24" />
+                    <Button Content="_Close" IsCancel="True" x:Name="CloseBut" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="561,3,0,0" Width="50" Height="24" />
+                    <Button Content="_About..." x:Name="AboutBut" Visibility="Collapsed" TabIndex="4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="502,3,0,0" Width="50" Height="24" />
+                    <ComboBox IsEditable="False" VerticalContentAlignment="Center" x:Name="ZoomBox" TabIndex="5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="175,3,0,0" Width="97" rtl:Rtl.DesignHeight="23">
+                        <sys:String>Fit To Page</sys:String>
+                        <sys:String>Fit To Width</sys:String>
+                        <sys:String>Custom</sys:String>
+                        <sys:String>25%</sys:String>
+                        <sys:String>50%</sys:String>
+                        <sys:String>75%</sys:String>
+                        <sys:String>100%</sys:String>
+                        <sys:String>125%</sys:String>
+                        <sys:String>150%</sys:String>
+                        <sys:String>200%</sys:String>
+                        <sys:String>300%</sys:String>
+                        <sys:String>400%</sys:String>
+                    </ComboBox>
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="StatBarPanel" DockPanel.Dock="Bottom" Height="28" rtl:Rtl.DesignWidth="632">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <DockPanel LastChildFill="True">
+                        <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="MoveButPanel" DockPanel.Dock="Left" Width="124" rtl:Rtl.DesignHeight="26">
+                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                <TextBlock Text="MoveButPanel" Tag="Caption" VerticalAlignment="Center" IsHitTestVisible="False" HorizontalAlignment="Center" />
+                                <Button x:Name="FirstPageSpeed" ToolTip="Go to First Page in Document" FontFamily="Times New Roman" FontSize="13" Foreground="#000000" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1,0,0,0" Width="25" Height="25">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="Resources/TPreviewForm_FirstPageSpeed_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="PrevPageSpeed" ToolTip="Move to Previous Page in Document" FontFamily="Times New Roman" FontSize="13" Foreground="#000000" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,0,0,0" Width="25" Height="25">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="Resources/TPreviewForm_PrevPageSpeed_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="NextPageSpeed" ToolTip="Advance to Next Page in Document" FontFamily="Times New Roman" FontSize="13" Foreground="#000000" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="49,0,0,0" Width="25" Height="25">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="Resources/TPreviewForm_NextPageSpeed_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="LastPageSpeed" ToolTip="Go to Last Page in Document" FontFamily="Times New Roman" FontSize="13" Foreground="#000000" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="73,0,0,0" Width="25" Height="25">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="Resources/TPreviewForm_LastPageSpeed_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="PageNumSpeed" ToolTip="Go to Page by Page Number" FontFamily="Times New Roman" FontSize="13" Foreground="#000000" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="97,0,0,0" Width="25" Height="25">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="Resources/TPreviewForm_PageNumSpeed_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </Border>
+                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="CurPageLabel" DockPanel.Dock="Left" Width="101" rtl:Rtl.DesignHeight="26">
+                            <Grid>
+                                <TextBlock Text="CurPageLabel" Tag="Caption" VerticalAlignment="Center" IsHitTestVisible="False" HorizontalAlignment="Center" />
+                            </Grid>
+                        </Border>
+                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="ZoomLabel" DockPanel.Dock="Left" Width="88" rtl:Rtl.DesignHeight="26">
+                            <Grid>
+                                <TextBlock Text="ZoomLabel" Tag="Caption" VerticalAlignment="Center" IsHitTestVisible="False" HorizontalAlignment="Center" />
+                            </Grid>
+                        </Border>
+                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel1" rtl:Rtl.DesignWidth="317" rtl:Rtl.DesignHeight="26">
+                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                <Label Padding="0" Content="HintLabel" x:Name="HintLabel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,4,0,0" rtl:Rtl.DesignWidth="53" rtl:Rtl.DesignHeight="15" />
+                            </Grid>
+                        </Border>
+                    </DockPanel>
+                </Grid>
+            </Border>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="ScrollBox1" TabIndex="2" rtl:Rtl.DesignWidth="632" rtl:Rtl.DesignHeight="410">
+                <Grid KeyboardNavigation.TabNavigation="Local" MinWidth="489" MinHeight="329">
+                    <Border x:Name="ContainPanel" Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="489" Height="329">
+                        <Grid KeyboardNavigation.TabNavigation="Local">
+                            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" x:Name="PagePanel" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,32,0,0" Width="209" Height="265">
+                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                    <DockPanel LastChildFill="True">
+                                        <Canvas Background="Transparent" x:Name="PB1" rtl:Rtl.DesignWidth="205" rtl:Rtl.DesignHeight="261" />
+                                    </DockPanel>
+                                </Grid>
+                            </Border>
+                            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" x:Name="PagePanel2" Visibility="Collapsed" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="260,32,0,0" Width="209" Height="265">
+                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                    <DockPanel LastChildFill="True">
+                                        <Canvas Background="Transparent" x:Name="PB2" rtl:Rtl.DesignWidth="205" rtl:Rtl.DesignHeight="261" />
+                                    </DockPanel>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </ScrollViewer>
+        </DockPanel>
+    </Grid>
+</Window>

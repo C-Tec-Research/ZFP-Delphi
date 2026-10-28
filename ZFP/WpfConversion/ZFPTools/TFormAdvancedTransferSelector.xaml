@@ -1,0 +1,73 @@
+﻿<!-- Converted from UnitAdvancedTransferSelector.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormAdvancedTransferSelector" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="Advanced Transfer" Width="656" Height="519" WindowStartupLocation="Manual" Left="0" Top="0" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="640" rtl:Rtl.DesignHeight="480">
+        <DockPanel LastChildFill="True">
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel1" DockPanel.Dock="Top" Height="121" rtl:Rtl.DesignWidth="640">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <DockPanel LastChildFill="True">
+                        <TextBox AcceptsReturn="True" Text="How to use&#xD;&#xA;=======&#xD;&#xA;&#xD;&#xA;1. Select nodes to Transfer to or from&#xD;&#xA;2. Select Data to be transferred&#xD;&#xA;3. Select Transfer To or Transfer From&#xD;&#xA;&#xD;&#xA;IMPORTANT: This may be a very long running process" TextWrapping="Wrap" x:Name="MemoAdvancedTransferUsage" TabIndex="0" rtl:Rtl.DesignWidth="638" rtl:Rtl.DesignHeight="119" />
+                    </DockPanel>
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel2" DockPanel.Dock="Bottom" Height="80" rtl:Rtl.DesignWidth="640">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <Button x:Name="SpeedButtonSendToPanels" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="28,19,0,0" Width="172" Height="43">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Resources/TFormAdvancedTransferSelector_SpeedButtonSendToPanels_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                            <AccessText Text="Send Data" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SpeedButtonRetrieveData" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="226,19,0,0" Width="192" Height="43">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Resources/TFormAdvancedTransferSelector_SpeedButtonRetrieveData_Glyph.bmp" Stretch="None" Margin="0,0,4,0" />
+                            <AccessText Text="Retrieve Data" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    <Button IsCancel="True" Content="Cancel" x:Name="BitBtnCancel" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="443,19,0,0" Width="172" Height="43" />
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel3" rtl:Rtl.DesignWidth="640" rtl:Rtl.DesignHeight="279">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <DockPanel LastChildFill="True">
+                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="PanelNodes" DockPanel.Dock="Left" Width="304" rtl:Rtl.DesignHeight="277">
+                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                <DockPanel LastChildFill="True">
+                                    <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel6" DockPanel.Dock="Top" Height="41" rtl:Rtl.DesignWidth="302">
+                                        <Grid>
+                                            <TextBlock Text="Nodes" Tag="Caption" VerticalAlignment="Center" IsHitTestVisible="False" HorizontalAlignment="Center" />
+                                        </Grid>
+                                    </Border>
+                                    <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel8" rtl:Rtl.DesignWidth="302" rtl:Rtl.DesignHeight="234">
+                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                            <DockPanel LastChildFill="True">
+                                                <ListBox x:Name="CheckListBoxAMNodes" TabIndex="0" rtl:Rtl.DesignWidth="300" rtl:Rtl.DesignHeight="232" />
+                                            </DockPanel>
+                                        </Grid>
+                                    </Border>
+                                </DockPanel>
+                            </Grid>
+                        </Border>
+                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel5" rtl:Rtl.DesignWidth="334" rtl:Rtl.DesignHeight="277">
+                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                <DockPanel LastChildFill="True">
+                                    <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel7" DockPanel.Dock="Top" Height="41" rtl:Rtl.DesignWidth="332">
+                                        <Grid>
+                                            <TextBlock Text="Files" Tag="Caption" VerticalAlignment="Center" IsHitTestVisible="False" HorizontalAlignment="Center" />
+                                        </Grid>
+                                    </Border>
+                                    <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel9" rtl:Rtl.DesignWidth="332" rtl:Rtl.DesignHeight="234">
+                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                            <DockPanel LastChildFill="True">
+                                                <ListBox x:Name="CheckListBoxAMFileSets" TabIndex="0" rtl:Rtl.DesignWidth="330" rtl:Rtl.DesignHeight="232" />
+                                            </DockPanel>
+                                        </Grid>
+                                    </Border>
+                                </DockPanel>
+                            </Grid>
+                        </Border>
+                    </DockPanel>
+                </Grid>
+            </Border>
+        </DockPanel>
+    </Grid>
+</Window>

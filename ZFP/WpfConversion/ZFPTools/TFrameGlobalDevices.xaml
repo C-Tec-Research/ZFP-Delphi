@@ -1,0 +1,29 @@
+﻿<!-- Converted from UnitGlobalDevices.dfm by Delphi to WPF Converter -->
+<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFrameGlobalDevices" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Width="906" Height="485">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="906" rtl:Rtl.DesignHeight="485">
+        <DockPanel LastChildFill="True">
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel1" rtl:Rtl.DesignWidth="906" rtl:Rtl.DesignHeight="485">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <DockPanel LastChildFill="True">
+                        <TabControl SelectedIndex="0" x:Name="PageControlPanelDevices" TabIndex="0" rtl:Rtl.DesignWidth="904" rtl:Rtl.DesignHeight="483">
+                            <TabItem Header="Device Summary" x:Name="TabSheetDeviceSummary">
+                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                    <DockPanel LastChildFill="True">
+                                        <Border x:Name="SigGeneralGridGlobalDevices_Host" rtl:Rtl.DesignWidth="896" rtl:Rtl.DesignHeight="455" />
+                                    </DockPanel>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="Zonal Summary" x:Name="TabSheetZonalSummary">
+                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                    <DockPanel LastChildFill="True">
+                                        <Border x:Name="SigGeneralGridZonalSummary_Host" rtl:Rtl.DesignWidth="896" rtl:Rtl.DesignHeight="455" />
+                                    </DockPanel>
+                                </Grid>
+                            </TabItem>
+                        </TabControl>
+                    </DockPanel>
+                </Grid>
+            </Border>
+        </DockPanel>
+    </Grid>
+</UserControl>

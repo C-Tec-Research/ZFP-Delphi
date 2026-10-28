@@ -1,0 +1,20 @@
+﻿<!-- Converted from UnitFrameErrorList.dfm by Delphi to WPF Converter -->
+<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFrameErrorList" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Width="761" Height="240">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="761" rtl:Rtl.DesignHeight="240">
+        <FrameworkElement Visibility="Collapsed">
+            <FrameworkElement.ContextMenu>
+                <ContextMenu x:Name="PopupMenu">
+                    <MenuItem Header="Prev" x:Name="Prev1" InputGestureText="Alt+P" />
+                    <MenuItem Header="Next" x:Name="Next1" InputGestureText="Alt+N" />
+                    <MenuItem Header="Go to" x:Name="Goto1" />
+                    <MenuItem Header="Remove" x:Name="Remove1" InputGestureText="Alt+X" />
+                    <Separator x:Name="N1" />
+                    <MenuItem Header="Close" x:Name="Close1" />
+                </ContextMenu>
+            </FrameworkElement.ContextMenu>
+        </FrameworkElement>
+        <DockPanel LastChildFill="True">
+            <Border x:Name="SigGeneralGridErrors_Host" rtl:Rtl.DesignWidth="761" rtl:Rtl.DesignHeight="240" />
+        </DockPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,42 @@
+﻿<!-- Converted from UnitShortNameAndIconEditor.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormShortNameAndIconEditor" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="Short Name And Icon Editor" Width="659" Height="439" WindowStartupLocation="Manual" Left="0" Top="0" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="643" rtl:Rtl.DesignHeight="400">
+        <DockPanel LastChildFill="True">
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel2" DockPanel.Dock="Top" Height="73" rtl:Rtl.DesignWidth="643">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <Label Padding="0" Content="Device Type" x:Name="LabelDeviceType" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="79,29,0,0" rtl:Rtl.DesignWidth="59" rtl:Rtl.DesignHeight="13" />
+                    <TextBox Text="EditSubDeviceType" IsReadOnly="True" VerticalContentAlignment="Center" x:Name="EditSubDeviceType" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="151,26,0,0" Width="145" Height="21" />
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel3" DockPanel.Dock="Bottom" Height="55" rtl:Rtl.DesignWidth="643">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <Button IsDefault="True" Content="OK" x:Name="BitBtn1" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="151,15,0,0" Width="75" Height="25" />
+                    <Button IsCancel="True" Content="Cancel" x:Name="BitBtn2" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="359,15,0,0" Width="75" Height="25" />
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel1" DockPanel.Dock="Right" Width="233" rtl:Rtl.DesignHeight="272">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <Label Padding="0" Content="Icon" x:Name="LabelSubDeviceIcon" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,23,0,0" rtl:Rtl.DesignWidth="21" rtl:Rtl.DesignHeight="13" />
+                    <Image Stretch="None" HorizontalAlignment="Left" x:Name="ImageSubDevice" VerticalAlignment="Top" Margin="111,23,0,0" Width="32" Height="32" />
+                    <Label Padding="0" Content="Brief Text" x:Name="Label43" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,55,0,0" rtl:Rtl.DesignWidth="47" rtl:Rtl.DesignHeight="13" />
+                    <Label Padding="0" Content="Edit Brief Text" x:Name="Label1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,106,0,0" rtl:Rtl.DesignWidth="68" rtl:Rtl.DesignHeight="13" />
+                    <Label Padding="0" Content="(Sample with substitutions shown to right)" x:Name="Label2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,165,0,0" rtl:Rtl.DesignWidth="201" rtl:Rtl.DesignHeight="13" />
+                    <Label Padding="0" Content="Substitutions: " x:Name="Label3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,192,0,0" rtl:Rtl.DesignWidth="69" rtl:Rtl.DesignHeight="13" />
+                    <Label Padding="0" Content="&lt;n&gt; = node" x:Name="Label4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="98,192,0,0" rtl:Rtl.DesignWidth="60" rtl:Rtl.DesignHeight="13" />
+                    <Label Padding="0" Content="&lt;l&gt; = loop" x:Name="Label5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="98,211,0,0" rtl:Rtl.DesignWidth="52" rtl:Rtl.DesignHeight="13" />
+                    <Label Padding="0" Content="&lt;d&gt; = device" x:Name="Label6" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="98,230,0,0" rtl:Rtl.DesignWidth="67" rtl:Rtl.DesignHeight="13" />
+                    <Label Padding="0" Content="&lt;s&gt; = subdevice" x:Name="Label7" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="98,249,0,0" rtl:Rtl.DesignWidth="83" rtl:Rtl.DesignHeight="13" />
+                    <TextBox Text="1:1/2.3" VerticalContentAlignment="Center" x:Name="EditSubunitBriefText" TabIndex="0" FontFamily="Tahoma" FontSize="11" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="111,55,0,0" Width="33" Height="21" />
+                    <TextBox Text="EditBriefTextFull" VerticalContentAlignment="Center" x:Name="EditFullBriefText" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="55,125,0,0" Width="169" Height="21" />
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel4" rtl:Rtl.DesignWidth="410" rtl:Rtl.DesignHeight="272">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <DockPanel LastChildFill="True">
+                        <local:TFrameIconEditor x:Name="FrameIconEditor1" rtl:Rtl.DesignWidth="408" rtl:Rtl.DesignHeight="270" />
+                    </DockPanel>
+                </Grid>
+            </Border>
+        </DockPanel>
+    </Grid>
+</Window>

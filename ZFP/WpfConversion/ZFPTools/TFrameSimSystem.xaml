@@ -1,0 +1,8 @@
+﻿<!-- Converted from UnitSimSystem.dfm by Delphi to WPF Converter -->
+<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFrameSimSystem" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Width="605" Height="333">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="605" rtl:Rtl.DesignHeight="333">
+        <DockPanel LastChildFill="True">
+            <Border x:Name="SigPanelMain_Host" rtl:Rtl.DesignWidth="605" rtl:Rtl.DesignHeight="333" />
+        </DockPanel>
+    </Grid>
+</UserControl>

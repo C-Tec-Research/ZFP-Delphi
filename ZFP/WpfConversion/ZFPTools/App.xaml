@@ -1,0 +1,8 @@
+﻿<!-- Application definition generated from ZFPTools.dpr by Delphi to WPF Converter -->
+<Application x:Class="ZFPTools.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             ShutdownMode="OnMainWindowClose">
+    <Application.Resources>
+    </Application.Resources>
+</Application>

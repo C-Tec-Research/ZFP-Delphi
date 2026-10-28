@@ -1,0 +1,16 @@
+﻿<!-- Converted from UnitReplace.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormReplace" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="Replace..." Width="377" Height="377" WindowStartupLocation="CenterOwner" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="361" rtl:Rtl.DesignHeight="338">
+        <Label Padding="0" Content="Warning:" x:Name="Label1" FontFamily="Tahoma" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,32,0,0" rtl:Rtl.DesignWidth="74" rtl:Rtl.DesignHeight="19" />
+        <Label Padding="0" Content="You are attempting to replace" x:Name="Label2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,72,0,0" rtl:Rtl.DesignWidth="143" rtl:Rtl.DesignHeight="13" />
+        <Label Padding="0" Content="By" x:Name="Label3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,128,0,0" rtl:Rtl.DesignWidth="12" rtl:Rtl.DesignHeight="13" />
+        <Label Padding="0" Content="Do you really want to do this?" x:Name="Label4" FontFamily="Tahoma" FontSize="11" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,208,0,0" rtl:Rtl.DesignWidth="167" rtl:Rtl.DesignHeight="13" />
+        <Label Padding="0" Content="Address" x:Name="LabelAddress" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,176,0,0" rtl:Rtl.DesignWidth="39" rtl:Rtl.DesignHeight="13" />
+        <Label Padding="0" Content="(Note - this will reset device fields to default values)" x:Name="Label5" FontFamily="Tahoma" FontSize="11" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,227,0,0" rtl:Rtl.DesignWidth="293" rtl:Rtl.DesignHeight="13" />
+        <Border x:Name="SigImageReplace_Host" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="208,64,0,0" Width="32" Height="32" />
+        <Border x:Name="SigImageReplaceBy_Host" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="208,120,0,0" Width="32" Height="32" />
+        <CheckBox Content="Remember my answer" VerticalContentAlignment="Center" x:Name="CheckBoxRememberAnswer" TabIndex="0" FontFamily="Tahoma" FontSize="11" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,256,0,0" Width="329" Height="17" />
+        <Button IsDefault="True" Content="_Yes" x:Name="BitBtn1" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,296,0,0" Width="75" Height="25" />
+        <Button Content="_No" x:Name="BitBtn2" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="181,296,0,0" Width="75" Height="25" />
+    </Grid>
+</Window>

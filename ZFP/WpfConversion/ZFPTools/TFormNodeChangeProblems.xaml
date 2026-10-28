@@ -1,0 +1,30 @@
+﻿<!-- Converted from UnitNodeChangeProblems.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormNodeChangeProblems" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="Node Change Problems" Width="603" Height="398" WindowStartupLocation="CenterOwner" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="587" rtl:Rtl.DesignHeight="359">
+        <DockPanel LastChildFill="True">
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel1" DockPanel.Dock="Bottom" Height="70" rtl:Rtl.DesignWidth="587">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <Button IsDefault="True" Content="Proceed Anyway" x:Name="BitBtnProceedAnyway" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="127,0,0,12" Width="131" Height="25" />
+                    <Button IsCancel="True" Content="Cancel" x:Name="BitBtn2" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="271,0,0,12" Width="131" Height="25" />
+                    <CheckBox Content="Ignore Similar Problems" VerticalContentAlignment="Center" x:Name="CheckBoxIgnoreSimilarProblems" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="127,7,0,0" Width="185" Height="17" />
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel2" rtl:Rtl.DesignWidth="587" rtl:Rtl.DesignHeight="289">
+                <Grid KeyboardNavigation.TabNavigation="Local">
+                    <Label Padding="0" Content="Warning - you are trying to change a Node Type" x:Name="Label4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,17,0,0" rtl:Rtl.DesignWidth="233" rtl:Rtl.DesignHeight="13" />
+                    <Label Padding="0" Content="Address" x:Name="Label1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,47,0,0" rtl:Rtl.DesignWidth="39" rtl:Rtl.DesignHeight="13" />
+                    <Label Padding="0" Content="Current Type" x:Name="Label2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="159,47,0,0" rtl:Rtl.DesignWidth="64" rtl:Rtl.DesignHeight="13" />
+                    <Image Stretch="None" HorizontalAlignment="Left" x:Name="ImageNodeCurrentIcon" VerticalAlignment="Top" Margin="423,38,0,0" Width="32" Height="32" />
+                    <Image Stretch="None" HorizontalAlignment="Left" x:Name="Image1" VerticalAlignment="Top" Margin="423,82,0,0" Width="32" Height="32" />
+                    <Label Padding="0" Content="New Type" x:Name="Label3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="159,91,0,0" rtl:Rtl.DesignWidth="48" rtl:Rtl.DesignHeight="13" />
+                    <Label Padding="0" Content="but the following problems were detected" x:Name="LabelFollowingProblemsDetected" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,119,0,0" rtl:Rtl.DesignWidth="199" rtl:Rtl.DesignHeight="13" />
+                    <Label Padding="0" Content="but the following problem was detected" x:Name="LabelFollowingProblemDetected" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,132,0,0" rtl:Rtl.DesignWidth="189" rtl:Rtl.DesignHeight="13" />
+                    <TextBox Text="EditAddress" IsReadOnly="True" VerticalContentAlignment="Center" x:Name="EditAddress" TabIndex="0" IsTabStop="False" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="87,44,0,0" Width="49" Height="21" />
+                    <TextBox Text="EditCurrentType" IsReadOnly="True" VerticalContentAlignment="Center" x:Name="EditCurrentType" TabIndex="1" IsTabStop="False" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="255,44,0,0" Width="121" Height="21" />
+                    <TextBox Text="EditNewType" IsReadOnly="True" VerticalContentAlignment="Center" x:Name="EditNewType" TabIndex="2" IsTabStop="False" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="255,88,0,0" Width="121" Height="21" />
+                    <TextBox AcceptsReturn="True" Text="MemoProblemsDetected" TextWrapping="Wrap" IsReadOnly="True" x:Name="MemoProblemsDetected" TabIndex="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="21,151,27,23" rtl:Rtl.DesignWidth="537" rtl:Rtl.DesignHeight="113" />
+                </Grid>
+            </Border>
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,16 @@
+﻿<!-- Converted from SigFileImageSelector.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormImageSelector" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="Image Selector" Width="593" Height="448" WindowStartupLocation="Manual" Left="0" Top="0" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="577" rtl:Rtl.DesignHeight="409">
+        <Button IsCancel="True" Content="Cancel" x:Name="BitBtn1" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="240,0,0,40" Width="75" Height="25" />
+        <DataGrid GridLinesVisibility="None" CanUserAddRows="False" HeadersVisibility="None" Tag="grid:5:5:0" x:Name="StringGridUserImages" TabIndex="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="32,40,40,89" rtl:Rtl.DesignWidth="505" rtl:Rtl.DesignHeight="280">
+            <DataGrid.ContextMenu>
+                <ContextMenu x:Name="PopupMenuOptions">
+                    <MenuItem Header="Insert _Before" x:Name="InsertBefore1" />
+                    <MenuItem Header="Insert _After" x:Name="InsertAfter1" />
+                    <MenuItem Header="_Delete" x:Name="Delete1" />
+                    <MenuItem Header="Append" x:Name="Append1" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+    </Grid>
+</Window>

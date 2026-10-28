@@ -1,0 +1,27 @@
+﻿<!-- Converted from UnitSelectInputGroup.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormSelectGlobalObject" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="Select Group" Width="543" Height="360" WindowStartupLocation="Manual" Left="0" Top="0" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="527" rtl:Rtl.DesignHeight="321">
+        <Label Padding="0" Content="Select tab for correct type" x:Name="LabelTabs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,22,0,0" rtl:Rtl.DesignWidth="127" rtl:Rtl.DesignHeight="13" />
+        <Button IsDefault="True" Content="OK" x:Name="BitBtn1" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="120,0,0,16" Width="75" Height="25" />
+        <Button Content="_None" x:Name="BitBtn2" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="216,0,0,16" Width="75" Height="25" />
+        <Button IsCancel="True" Content="Cancel" x:Name="BitBtn3" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="312,0,0,16" Width="75" Height="25" />
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="16,41,8,47" rtl:Rtl.DesignWidth="503" rtl:Rtl.DesignHeight="233">
+            <TabControl x:Name="TabControlObjects" TabIndex="0" />
+            <Grid KeyboardNavigation.TabNavigation="Local" Margin="4,26,4,4">
+                <DockPanel LastChildFill="True">
+                    <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel1" rtl:Rtl.DesignWidth="495" rtl:Rtl.DesignHeight="223">
+                        <Grid KeyboardNavigation.TabNavigation="Local">
+                            <Label Padding="0" Content="Select from the following" x:Name="LabelPrompt" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,12,0,0" rtl:Rtl.DesignWidth="118" rtl:Rtl.DesignHeight="13" />
+                            <Label Padding="0" Content="or" x:Name="LabelOr" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="12,0,0,44" rtl:Rtl.DesignWidth="10" rtl:Rtl.DesignHeight="13" />
+                            <Label Padding="0" Content="Type New Name and click 'Add'" x:Name="LabelNewPrompt" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="39,0,0,44" rtl:Rtl.DesignWidth="147" rtl:Rtl.DesignHeight="13" />
+                            <Label Padding="0" Content="New Name" x:Name="LabelNewName" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="39,0,0,25" rtl:Rtl.DesignWidth="51" rtl:Rtl.DesignHeight="13" />
+                            <Button Content="Add" x:Name="SpeedButtonAddIG" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,21,23" Width="66" Height="22" />
+                            <ListBox x:Name="ListBoxIG" TabIndex="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="39,31,21,67" rtl:Rtl.DesignWidth="433" rtl:Rtl.DesignHeight="123" />
+                            <TextBox Text="EditNewObject" VerticalContentAlignment="Center" x:Name="EditNewObject" TabIndex="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="111,0,93,23" Height="21" rtl:Rtl.DesignWidth="289" />
+                        </Grid>
+                    </Border>
+                </DockPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

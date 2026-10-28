@@ -1,0 +1,10 @@
+﻿<!-- Converted from UnitRemoteLoginNotSupported.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormRemoteLoginNotSupported" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="Remote Login Not Supported" Width="426" Height="302" WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="#0000FF">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="410" rtl:Rtl.DesignHeight="263">
+        <Label Padding="0" Content="Remote Log in is not supported on this panel" x:Name="Label1" FontFamily="Tahoma" FontSize="12" FontWeight="Bold" Foreground="#FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,16,0,0" rtl:Rtl.DesignWidth="281" rtl:Rtl.DesignHeight="14" />
+        <Label Padding="0" Content="Please Enter Access Level 3 Code On the Panel" x:Name="Label2" FontFamily="Tahoma" FontSize="12" FontWeight="Bold" Foreground="#FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,48,0,0" rtl:Rtl.DesignWidth="284" rtl:Rtl.DesignHeight="14" />
+        <Label Padding="0" Content="and press button to continue or abort" x:Name="Label3" FontFamily="Tahoma" FontSize="12" FontWeight="Bold" Foreground="#FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,80,0,0" rtl:Rtl.DesignWidth="238" rtl:Rtl.DesignHeight="14" />
+        <Image Source="Resources/TFormRemoteLoginNotSupported_ImageButtonX.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImageButtonX" VerticalAlignment="Top" Margin="153,140,0,0" Width="32" Height="32" />
+        <Image Source="Resources/TFormRemoteLoginNotSupported_ImageButtonTick.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImageButtonTick" VerticalAlignment="Top" Margin="219,140,0,0" Width="32" Height="32" />
+    </Grid>
+</Window>

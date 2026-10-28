@@ -1,0 +1,18 @@
+﻿<!-- Converted from about.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TAboutBox" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="About Envision PC Tools" Width="314" Height="253" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Microsoft Sans Serif" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="298" rtl:Rtl.DesignHeight="214">
+        <Border BorderThickness="2" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,8,0,0" Width="281" Height="161">
+            <Grid KeyboardNavigation.TabNavigation="Local">
+                <Image Stretch="Fill" x:Name="ProgramIcon" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,6,0,0" Width="32" Height="32" />
+                <Label Padding="0" Content="Quantec PC Tools" HorizontalContentAlignment="Center" x:Name="ProductName" FontFamily="Microsoft Sans Serif" FontSize="11" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,14,0,0" Width="281" Height="13" />
+                <Label Padding="0" Content="Version" HorizontalContentAlignment="Center" x:Name="Version" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,38,0,0" Width="281" Height="13" />
+                <Label Padding="0" Content="Copyright (c) C-Tec Ltd. 1999-2009" HorizontalContentAlignment="Center" x:Name="Copyright" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,78,0,0" Width="281" Height="13" />
+                <Label Padding="0" HorizontalContentAlignment="Center" x:Name="Comments" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,110,0,0" Width="281" Height="13">
+                    <TextBlock Text="Full version." TextWrapping="Wrap" />
+                </Label>
+                <Label Padding="0" Content="Version" HorizontalContentAlignment="Center" x:Name="lblConfigVersion" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,57,0,0" Width="281" Height="13" />
+            </Grid>
+        </Border>
+        <Button Content="OK" IsDefault="True" x:Name="OKButton" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="111,180,0,0" Width="75" Height="25" />
+    </Grid>
+</Window>

@@ -1,0 +1,33 @@
+﻿<!-- Converted from UnitPanelLogIn.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormLogIn" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="Panel Log In" Width="426" Height="302" WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="#0000FF">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="410" rtl:Rtl.DesignHeight="263">
+        <Label Padding="0" Content="Enter Access Level 3 Code" x:Name="Label1" FontFamily="Tahoma" FontSize="12" FontWeight="Bold" Foreground="#FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,16,0,0" rtl:Rtl.DesignWidth="159" rtl:Rtl.DesignHeight="14" />
+        <Image Source="Resources/TFormLogIn_ImagePW1Blank.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImagePW1Blank" VerticalAlignment="Top" Margin="32,48,0,0" Width="32" Height="32" />
+        <Image Source="Resources/TFormLogIn_ImagePW1Entered.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImagePW1Entered" VerticalAlignment="Top" Margin="32,124,0,0" Width="32" Height="32" />
+        <Image Source="Resources/TFormLogIn_ImagePW2Entered.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImagePW2Entered" VerticalAlignment="Top" Margin="80,124,0,0" Width="32" Height="32" />
+        <Image Source="Resources/TFormLogIn_ImagePW2Blank.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImagePW2Blank" VerticalAlignment="Top" Margin="80,48,0,0" Width="32" Height="32" />
+        <Image Source="Resources/TFormLogIn_ImagePW3Entered.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImagePW3Entered" VerticalAlignment="Top" Margin="128,124,0,0" Width="32" Height="32" />
+        <Image Source="Resources/TFormLogIn_ImagePW3Blank.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImagePW3Blank" VerticalAlignment="Top" Margin="128,48,0,0" Width="32" Height="32" />
+        <Image Source="Resources/TFormLogIn_ImagePW4Entered.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImagePW4Entered" VerticalAlignment="Top" Margin="176,124,0,0" Width="32" Height="32" />
+        <Image Source="Resources/TFormLogIn_ImagePW4Blank.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImagePW4Blank" VerticalAlignment="Top" Margin="176,48,0,0" Width="32" Height="32" />
+        <Label Padding="0" Content="Wrong PIN. Please Retry" x:Name="LabelRetry" FontFamily="Tahoma" FontSize="12" FontWeight="Bold" Foreground="#FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,104,0,0" rtl:Rtl.DesignWidth="150" rtl:Rtl.DesignHeight="14" />
+        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" x:Name="Panel1" Background="#FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="272,48,0,0" Width="101" Height="167">
+            <Grid KeyboardNavigation.TabNavigation="Local">
+                <Image Source="Resources/TFormLogIn_ImageButton1.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImageButton1" Tag="1" VerticalAlignment="Top" Margin="0,0,0,0" Width="32" Height="32" />
+                <Image Source="Resources/TFormLogIn_ImageButton2.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImageButton2" Tag="2" VerticalAlignment="Top" Margin="33,0,0,0" Width="32" Height="32" />
+                <Image Source="Resources/TFormLogIn_ImageButton3.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImageButton3" Tag="3" VerticalAlignment="Top" Margin="66,0,0,0" Width="32" Height="32" />
+                <Image Source="Resources/TFormLogIn_ImageButton4.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImageButton4" Tag="4" VerticalAlignment="Top" Margin="0,33,0,0" Width="32" Height="32" />
+                <Image Source="Resources/TFormLogIn_ImageButton5.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImageButton5" Tag="5" VerticalAlignment="Top" Margin="33,33,0,0" Width="32" Height="32" />
+                <Image Source="Resources/TFormLogIn_ImageButton6.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImageButton6" Tag="6" VerticalAlignment="Top" Margin="66,33,0,0" Width="32" Height="32" />
+                <Image Source="Resources/TFormLogIn_ImageButtonTick.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImageButtonTick" VerticalAlignment="Top" Margin="66,99,0,0" Width="32" Height="32" />
+                <Image Source="Resources/TFormLogIn_ImageButton0.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImageButton0" VerticalAlignment="Top" Margin="33,99,0,0" Width="32" Height="32" />
+                <Image Source="Resources/TFormLogIn_ImageButtonX.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImageButtonX" VerticalAlignment="Top" Margin="0,99,0,0" Width="32" Height="32" />
+                <Image Source="Resources/TFormLogIn_ImageButton7.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImageButton7" Tag="7" VerticalAlignment="Top" Margin="0,66,0,0" Width="32" Height="32" />
+                <Image Source="Resources/TFormLogIn_ImageButton8.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImageButton8" Tag="8" VerticalAlignment="Top" Margin="33,66,0,0" Width="32" Height="32" />
+                <Image Source="Resources/TFormLogIn_ImageButton9.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImageButton9" Tag="9" VerticalAlignment="Top" Margin="66,66,0,0" Width="32" Height="32" />
+                <Image Source="Resources/TFormLogIn_ImageErase1.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImageErase1" VerticalAlignment="Top" Margin="0,132,0,0" Width="32" Height="32" />
+                <Image Source="Resources/TFormLogIn_ImageEraseAll.bmp" Stretch="None" HorizontalAlignment="Left" x:Name="ImageEraseAll" VerticalAlignment="Top" Margin="33,132,0,0" Width="65" Height="32" />
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

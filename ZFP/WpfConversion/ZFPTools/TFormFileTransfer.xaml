@@ -1,0 +1,16 @@
+﻿<!-- Converted from UnitFileTransfer.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormFileTransfer" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="FormFileTransfer" Width="543" Height="306" WindowStartupLocation="CenterOwner" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="527" rtl:Rtl.DesignHeight="267">
+        <GroupBox Header="File Name On PC" x:Name="GroupBoxFileNameOnPC" TabIndex="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="32,24,38,0" Height="65" rtl:Rtl.DesignWidth="457">
+            <Grid KeyboardNavigation.TabNavigation="Local">
+                <Button Content="Browse..." x:Name="SpeedButtonBrowse" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="354,9,0,0" Width="82" Height="22" />
+                <TextBox Text="EditFileNameOnPC" VerticalContentAlignment="Center" x:Name="EditFileNameOnPC" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,9,0,0" Width="337" Height="21" />
+            </Grid>
+        </GroupBox>
+        <Button IsDefault="True" Content="OK" x:Name="BitBtn1" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="152,0,0,11" Width="75" Height="25" />
+        <Button IsCancel="True" Content="Cancel" x:Name="BitBtn2" TabIndex="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,179,11" Width="75" Height="25" />
+        <GroupBox Header="File Name On Panel" Padding="0" x:Name="RadioGroupFileNameOnPanel" TabIndex="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="32,95,38,67" rtl:Rtl.DesignWidth="457" rtl:Rtl.DesignHeight="105">
+            <UniformGrid Columns="1" Margin="2,-2,0,-2" />
+        </GroupBox>
+    </Grid>
+</Window>

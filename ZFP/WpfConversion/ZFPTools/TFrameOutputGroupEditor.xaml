@@ -1,0 +1,44 @@
+﻿<!-- Converted from UnitFrameOutputGroupEditor.dfm by Delphi to WPF Converter -->
+<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFrameOutputGroupEditor" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Width="320" Height="240">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="640" rtl:Rtl.DesignHeight="480">
+        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel17" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="185" Height="41">
+            <Grid KeyboardNavigation.TabNavigation="Local">
+                <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="185" Height="41">
+                    <Grid KeyboardNavigation.TabNavigation="Local">
+                        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel43" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="185" Height="41">
+                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                <TabControl SelectedIndex="0" x:Name="PageControlProperties" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="289" Height="193">
+                                    <TabItem Header="TabSheetProperties" x:Name="TabSheetProperties" />
+                                    <TabItem Header="TabSheetWhereUsed" x:Name="TabSheetWhereUsed" />
+                                    <TabItem Header="Devices" x:Name="TabSheetDevices">
+                                        <Grid KeyboardNavigation.TabNavigation="Local">
+                                            <DockPanel LastChildFill="True">
+                                                <Border BorderThickness="2" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="PanelDevices" rtl:Rtl.DesignWidth="637" rtl:Rtl.DesignHeight="330">
+                                                    <Grid KeyboardNavigation.TabNavigation="Local">
+                                                        <TextBlock Text="No Devices in this Group" Tag="Caption" VerticalAlignment="Center" IsHitTestVisible="False" HorizontalAlignment="Center" />
+                                                        <DockPanel LastChildFill="False">
+                                                            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="PanelDeviceOptions" DockPanel.Dock="Bottom" Height="41" rtl:Rtl.DesignWidth="633">
+                                                                <Grid KeyboardNavigation.TabNavigation="Local">
+                                                                    <Button Content="Include Selected Devices In..." x:Name="SpeedButtonIncludeSelectionIn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="239,5,0,0" Width="217" Height="27" />
+                                                                </Grid>
+                                                            </Border>
+                                                        </DockPanel>
+                                                    </Grid>
+                                                </Border>
+                                            </DockPanel>
+                                        </Grid>
+                                    </TabItem>
+                                </TabControl>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Panel44" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="185" Height="41">
+            <Grid KeyboardNavigation.TabNavigation="Local">
+                <local:TFrameErrorList x:Name="FrameErrorList" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="0" Height="0" />
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

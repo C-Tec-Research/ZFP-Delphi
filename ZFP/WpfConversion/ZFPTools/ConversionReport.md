@@ -1,0 +1,3976 @@
+﻿# Conversion report - ZFPTools
+
+Generated 2026-10-28 15:55 by Delphi to WPF Converter.
+
+| Errors | Warnings | TODO items | Info |
+|---|---|---|---|
+| 5 | 2198 | 1054 | 699 |
+
+## Errors
+
+- UnitFiles.pas: error: Line 86: ')' expected but '<' found
+- SigFile.pas: error: Line 286: unexpected '<' in class declaration
+- UnitLogFileCfg.pas: error: Line 88: ';' expected but '<' found
+- PendingActions.pas: error: Line 76: ')' expected but '<' found
+- SigGeneralGrid.pas: error: Line 386: 'implementation' expected but '[' found
+
+## Warnings
+
+- `ZFPTools.dproj` ZFPTools.dproj was written by Delphi 2009 or later (ProjectVersion 18.1). These versions use Unicode strings and language features (generics, anonymous methods) beyond the supported Delphi 5-2007 range; conversion is best effort.
+- moduleloader.pas: warning: Include file 'jedi-sdl.inc' not found.
+- WinIOCtl.pas: warning: Include file 'jediapilib.inc' not found.
+- jwawinnt.pas: warning: Include file 'jediapilib.inc' not found.
+- jwawintype.pas: warning: Include file 'jediapilib.inc' not found.
+- `ZFPTools.dpr` Units used by the project but not found in the project folder: AnsiStrings, ButtonGroup, UITypes, UnitAdvancedTransfer, UnitPCCfgFile. Types and routines from these units cannot be resolved - make their .pas files available (e.g. copy them next to the project) and convert again.
+- Unresolved identifier 'cColLoopName' (kept as-is).
+- `UnitMain.pas(546)` Unresolved identifier 'cColLoopName' (kept as-is).
+- Unresolved identifier 'cColLoopID' (kept as-is).
+- `UnitMain.pas(547)` Unresolved identifier 'cColLoopID' (kept as-is).
+- Unresolved identifier 'cColDevAddress' (kept as-is).
+- `UnitMain.pas(548)` Unresolved identifier 'cColDevAddress' (kept as-is).
+- Unresolved identifier 'cColDevType' (kept as-is).
+- `UnitMain.pas(549)` Unresolved identifier 'cColDevType' (kept as-is).
+- Unresolved identifier 'cColDevImage' (kept as-is).
+- `UnitMain.pas(550)` Unresolved identifier 'cColDevImage' (kept as-is).
+- Unresolved identifier 'cColDevName' (kept as-is).
+- `UnitMain.pas(551)` Unresolved identifier 'cColDevName' (kept as-is).
+- Unresolved identifier 'cColZoneMain' (kept as-is).
+- `UnitMain.pas(552)` Unresolved identifier 'cColZoneMain' (kept as-is).
+- Unresolved identifier 'cColIGMain' (kept as-is).
+- `UnitMain.pas(553)` Unresolved identifier 'cColIGMain' (kept as-is).
+- Unresolved identifier 'cColOGMain' (kept as-is).
+- `UnitMain.pas(554)` Unresolved identifier 'cColOGMain' (kept as-is).
+- Unresolved identifier 'cColDisablement' (kept as-is).
+- `UnitMain.pas(555)` Unresolved identifier 'cColDisablement' (kept as-is).
+- `UnitMain.pas(975)` Member 'Parent' not found in TStringGrid.
+- `UnitMain.pas(976)` Member 'DefaultColWidth' not found in TStringGrid.
+- `UnitMain.pas(977)` Member 'DefaultRowHeight' not found in TStringGrid.
+- `UnitMain.pas(979)` Member 'FixedCols' not found in TStringGrid.
+- `UnitMain.pas(980)` Member 'TabOrder' not found in TStringGrid.
+- `UnitMain.pas(981)` Member 'Align' not found in TStringGrid.
+- `UnitMain.pas(981)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitMain.pas(1060)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1060)` Unresolved identifier 'tXFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1061)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1063)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1063)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1065)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1067)` Unresolved identifier 'XFP4PGMCfg' (kept as-is).
+- `UnitMain.pas(1068)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1069)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1070)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1071)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1072)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1073)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1074)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1075)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1076)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1077)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1078)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1079)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1081)` Unresolved identifier 'tZFPFile' (kept as-is).
+- `UnitMain.pas(1082)` 'SpeedButtonUndoClick' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1082)` 'SpeedButtonUndoClick' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1083)` 'SpeedButtonRedoClick' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1083)` 'SpeedButtonRedoClick' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1084)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1089)` 'OnClearErrorLists' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1089)` 'OnClearErrorLists' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1114)` VCL member 'TabVisible' has no automatic WPF mapping (kept as TabSheetConfiguration.TabVisible).
+- `UnitMain.pas(1125)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1125)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1126)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1145)` Member 'OnCellEditChange' not found in TSigGeneralGrid.
+- `UnitMain.pas(1145)` 'FrameGlobalDevicesSigGeneralGridGlobalDevicesCellEditChange' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1145)` 'FrameGlobalDevicesSigGeneralGridGlobalDevicesCellEditChange' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1146)` Member 'OnKeyPress' not found in TSigGeneralGrid.
+- `UnitMain.pas(1146)` 'FrameGlobalDevicesSigGeneralGridGlobalDevicesKeyPress' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1146)` 'FrameGlobalDevicesSigGeneralGridGlobalDevicesKeyPress' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1147)` Member 'OnSelectCell' not found in TSigGeneralGrid.
+- `UnitMain.pas(1147)` 'FrameGlobalDevicesSigGeneralGridGlobalDevicesSelectCell' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1147)` 'FrameGlobalDevicesSigGeneralGridGlobalDevicesSelectCell' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1149)` Member 'OnCellEditChange' not found in TSigGeneralGrid.
+- `UnitMain.pas(1149)` 'FrameGlobalDevicesSigGeneralGridZonalSummaryCellEditChange' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1149)` 'FrameGlobalDevicesSigGeneralGridZonalSummaryCellEditChange' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1150)` Member 'OnKeyPress' not found in TSigGeneralGrid.
+- `UnitMain.pas(1150)` 'FrameGlobalDevicesSigGeneralGridZonalSummaryKeyPress' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1150)` 'FrameGlobalDevicesSigGeneralGridZonalSummaryKeyPress' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1152)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1154)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1159)` VCL member 'TabVisible' has no automatic WPF mapping (kept as TabSheetDebug.TabVisible).
+- `UnitMain.pas(1160)` VCL member 'TabVisible' has no automatic WPF mapping (kept as TabSheetErrors.TabVisible).
+- `UnitMain.pas(1161)` VCL member 'TabVisible' has no automatic WPF mapping (kept as TabSheetConfiguration.TabVisible).
+- `UnitMain.pas(1167)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1167)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1186)` 'PrepareUndoableActionTag' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1186)` 'PrepareUndoableActionTag' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1187)` 'OnUndoableChange' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1187)` 'OnUndoableChange' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1188)` 'CompleteUndoableActionTag' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1188)` 'CompleteUndoableActionTag' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1189)` 'OnRedoableChange' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1189)` 'OnRedoableChange' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1190)` 'SpeedButtonUndoClick' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1190)` 'SpeedButtonUndoClick' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1191)` 'SpeedButtonRedoClick' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1191)` 'SpeedButtonRedoClick' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1193)` 'OnLoadLine' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1193)` 'OnLoadLine' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1196)` 'OnFrameErrorList2DblClick' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1196)` 'OnFrameErrorList2DblClick' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1198)` 'ShowOGTab' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1198)` 'ShowOGTab' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1209)` 'SpeedButtonPrintClick' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1209)` 'SpeedButtonPrintClick' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1210)` 'SpeedButtonPrintPreviewClick' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1210)` 'SpeedButtonPrintPreviewClick' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1211)` 'SpeedButtonPrintSetupClick' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1211)` 'SpeedButtonPrintSetupClick' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1227)` 'OnLoad' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1227)` 'OnLoad' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1228)` 'OnNew' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1228)` 'OnNew' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(1278)` Member 'OnResize' not found in TFrameGlobalDevices.
+- `UnitMain.pas(1278)` Member 'OnResize' not found in TFrameGlobalDevices.
+- `UnitMain.pas(2547)` VCL member 'TabVisible' has no automatic WPF mapping (kept as TabSheetErrors.TabVisible).
+- `UnitMain.pas(1305)` Member 'Selection' not found in TSigGeneralGrid.
+- `UnitMain.pas(1306)` Member 'RowCount' not found in TSigGeneralGrid.
+- `UnitMain.pas(1310)` Member 'Selection' not found in TSigGeneralGrid.
+- `UnitMain.pas(1311)` Member 'SetFocus' not found in TSigGeneralGrid.
+- `UnitMain.pas(1365)` Member 'Selection' not found in TSigGeneralGrid.
+- `UnitMain.pas(1366)` Member 'RowCount' not found in TSigGeneralGrid.
+- `UnitMain.pas(1370)` Member 'Selection' not found in TSigGeneralGrid.
+- `UnitMain.pas(1371)` Member 'SetFocus' not found in TSigGeneralGrid.
+- `UnitMain.pas(1372)` Member 'Invalidate' not found in TSigGeneralGrid.
+- `UnitMain.pas(2869)` VCL member 'TabVisible' has no automatic WPF mapping (kept as TabSheetConfiguration.TabVisible).
+- `UnitMain.pas(2869)` VCL member 'TabVisible' has no automatic WPF mapping (kept as TabSheetConfiguration.TabVisible).
+- `UnitMain.pas(2146)` Unresolved identifier 'FileSize' (kept as-is).
+- `UnitMain.pas(3354)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitMain.pas(3470)` Unresolved identifier 'MouseToCell' (kept as-is).
+- `UnitMain.pas(3470)` Unresolved identifier 'MouseToCell' (kept as-is).
+- `UnitMain.pas(3471)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitMain.pas(3477)` Unresolved identifier 'BeginDrag' (kept as-is).
+- `UnitMain.pas(3477)` Unresolved identifier 'BeginDrag' (kept as-is).
+- `UnitMain.pas(3510)` Unresolved identifier 'MouseToCell' (kept as-is).
+- `UnitMain.pas(3510)` Unresolved identifier 'MouseToCell' (kept as-is).
+- `UnitMain.pas(3511)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitMain.pas(3521)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitMain.pas(3522)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitMain.pas(3531)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitMain.pas(3532)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitMain.pas(3558)` Unresolved identifier 'MouseToCell' (kept as-is).
+- `UnitMain.pas(3558)` Unresolved identifier 'MouseToCell' (kept as-is).
+- `UnitMain.pas(3559)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitMain.pas(3563)` Unresolved identifier 'EndDrag' (kept as-is).
+- `UnitMain.pas(3563)` Unresolved identifier 'EndDrag' (kept as-is).
+- `UnitMain.pas(3567)` Unresolved identifier 'EndDrag' (kept as-is).
+- `UnitMain.pas(3567)` Unresolved identifier 'EndDrag' (kept as-is).
+- `UnitMain.pas(3596)` Unresolved identifier 'tNodalType' (kept as-is).
+- `UnitMain.pas(3640)` Member 'Invalidate' not found in TStringGrid.
+- `UnitMain.pas(3437)` Unresolved identifier 'MouseToCell' (kept as-is).
+- `UnitMain.pas(3437)` Unresolved identifier 'MouseToCell' (kept as-is).
+- `UnitMain.pas(3438)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitMain.pas(3459)` Member 'Invalidate' not found in TStringGrid.
+- `UnitMain.pas(3647)` Unresolved identifier 'TDragControlObjectEx' (kept as-is).
+- `UnitMain.pas(3648)` Member 'DragCursor' not found in TStringGrid.
+- `UnitMain.pas(3318)` Unresolved identifier 'MouseToCell' (kept as-is).
+- `UnitMain.pas(3318)` Unresolved identifier 'MouseToCell' (kept as-is).
+- `UnitMain.pas(3319)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitMain.pas(3326)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitMain.pas(3327)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitMain.pas(1289)` Member 'CellObject' not found in TSigGeneralGrid.
+- `UnitMain.pas(1289)` Unresolved identifier 'tLoopDevice' (kept as-is).
+- `UnitMain.pas(1350)` Member 'CellObject' not found in TSigGeneralGrid.
+- `UnitMain.pas(1350)` Unresolved identifier 'tLoopDevice' (kept as-is).
+- `UnitMain.pas(640)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1512)` Member 'CellObject' not found in TSigGeneralGrid.
+- `UnitMain.pas(1512)` Unresolved identifier 'tLoopDevice' (kept as-is).
+- `UnitMain.pas(1521)` Unresolved identifier 'tZFPZone' (kept as-is).
+- `UnitMain.pas(1528)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(1532)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(1537)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(1425)` Member 'CellObject' not found in TSigGeneralGrid.
+- `UnitMain.pas(1425)` Unresolved identifier 'tLoopDevice' (kept as-is).
+- `UnitMain.pas(1434)` Unresolved identifier 'tInputGroup' (kept as-is).
+- `UnitMain.pas(1441)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(1445)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(1450)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(1468)` Member 'CellObject' not found in TSigGeneralGrid.
+- `UnitMain.pas(1468)` Unresolved identifier 'tLoopDevice' (kept as-is).
+- `UnitMain.pas(1477)` Unresolved identifier 'tOutputGroup' (kept as-is).
+- `UnitMain.pas(1484)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(1488)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(1493)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(1389)` Member 'CellObject' not found in TSigGeneralGrid.
+- `UnitMain.pas(1389)` Unresolved identifier 'tLoopDevice' (kept as-is).
+- `UnitMain.pas(1398)` Unresolved identifier 'tInputGroup' (kept as-is).
+- `UnitMain.pas(1403)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(1407)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(1556)` Member 'CellObject' not found in TSigGeneralGrid.
+- `UnitMain.pas(1556)` Unresolved identifier 'tLoopDevice' (kept as-is).
+- `UnitMain.pas(1565)` Unresolved identifier 'tInputGroup' (kept as-is).
+- `UnitMain.pas(1572)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(1576)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(1581)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(1327)` Member 'CellObject' not found in TSigGeneralGrid.
+- `UnitMain.pas(1327)` Unresolved identifier 'tLoopDevice' (kept as-is).
+- `UnitMain.pas(1333)` Unresolved identifier 'TZFPNode' (kept as-is).
+- `UnitMain.pas(1333)` Unresolved identifier 'TZFPNode' (kept as-is).
+- `UnitMain.pas(5079)` Member 'Invalidate' not found in TStringGrid.
+- `UnitMain.pas(4269)` Unresolved identifier 'NodeType' (kept as-is).
+- `UnitMain.pas(4271)` Unresolved identifier 'Name1' (kept as-is).
+- `UnitMain.pas(4276)` Unresolved identifier 'NetworkFile' (kept as-is).
+- `UnitMain.pas(4277)` Unresolved identifier 'NetworkFile' (kept as-is).
+- `UnitMain.pas(4279)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitMain.pas(4279)` Unresolved identifier 'tZFPPanelMaintenanceDate' (kept as-is).
+- `UnitMain.pas(4280)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitMain.pas(4285)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitMain.pas(4285)` Unresolved identifier 'tZFPPanelMaintenanceDate' (kept as-is).
+- `UnitMain.pas(4287)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitMain.pas(4289)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitMain.pas(4291)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitMain.pas(4300)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitMain.pas(4301)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitMain.pas(4302)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitMain.pas(2026)` Member 'Invalidate' not found in TStringGrid.
+- `UnitMain.pas(2054)` Member 'Invalidate' not found in TStringGrid.
+- `UnitMain.pas(4353)` 'Lines' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(4353)` 'Lines' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(4355)` 'Lines' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(4355)` 'Lines' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(2474)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(1916)` VCL member 'CaretPos' has no automatic WPF mapping (kept as MemoImportedFiles.CaretPos).
+- `UnitMain.pas(1917)` Unresolved identifier 'EM_SCROLLCARET' (kept as-is).
+- `UnitMain.pas(1951)` Unresolved identifier 'TLoopSubdeviceError' (kept as-is).
+- `UnitMain.pas(1953)` Unresolved identifier 'TLoopSubdeviceError' (kept as-is).
+- `UnitMain.pas(1957)` Unresolved identifier 'TZFPNode' (kept as-is).
+- `UnitMain.pas(1957)` Unresolved identifier 'TZFPNode' (kept as-is).
+- `UnitMain.pas(1964)` Unresolved identifier 'TLoopSubdeviceError' (kept as-is).
+- `UnitMain.pas(1970)` Unresolved identifier 'TBaseInputGroup' (kept as-is).
+- `UnitMain.pas(1978)` Unresolved identifier 'TBaseInputGroup' (kept as-is).
+- `UnitMain.pas(1981)` Unresolved identifier 'tZFPSuperGroup' (kept as-is).
+- `UnitMain.pas(1989)` Unresolved identifier 'tZFPSuperGroup' (kept as-is).
+- `UnitMain.pas(1991)` Unresolved identifier 'TOutputGroup' (kept as-is).
+- `UnitMain.pas(1999)` Unresolved identifier 'TOutputGroup' (kept as-is).
+- `UnitMain.pas(1794)` Member 'Owner' not found in TSigBaseProperty.
+- `UnitMain.pas(1802)` Unresolved identifier 'tCETreeProperty' (kept as-is).
+- `UnitMain.pas(1806)` Unresolved identifier 'tCETreeProperty' (kept as-is).
+- `UnitMain.pas(1808)` Unresolved identifier 'TreeNode1' (kept as-is).
+- `UnitMain.pas(1812)` Unresolved identifier 'tLoopDevice' (kept as-is).
+- `UnitMain.pas(1815)` Unresolved identifier 'tLoopDevice' (kept as-is).
+- `UnitMain.pas(1821)` Unresolved identifier 'demDeviceEntries' (kept as-is).
+- `UnitMain.pas(1826)` Unresolved identifier 'tLoopSubDevice' (kept as-is).
+- `UnitMain.pas(1829)` Unresolved identifier 'tLoopSubDevice' (kept as-is).
+- `UnitMain.pas(1836)` Unresolved identifier 'demDeviceEntries' (kept as-is).
+- `UnitMain.pas(1841)` Unresolved identifier 'tZFPGlobalObject' (kept as-is).
+- `UnitMain.pas(1844)` Unresolved identifier 'tZFPGlobalObject' (kept as-is).
+- `UnitMain.pas(1887)` Member 'Owner' not found in TSigCompoundProperty.
+- `UnitMain.pas(2071)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(2077)` 'Items' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(2077)` 'Items' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(2085)` Unresolved identifier 'ButtonGroup' (kept as-is).
+- `UnitMain.pas(2316)` VCL member 'TabVisible' has no automatic WPF mapping (kept as TabSheetErrors.TabVisible).
+- `UnitMain.pas(950)` Unresolved identifier 'tLogReport' (kept as-is).
+- `UnitMain.pas(4699)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitMain.pas(4704)` Member 'GetPrintParms' not found in TSigGeneralGrid.
+- `UnitMain.pas(4704)` Member 'GetPrintParms' not found in TSigGeneralGrid.
+- `UnitMain.pas(4706)` Member 'RowCount' not found in TSigGeneralGrid.
+- `UnitMain.pas(4708)` Member 'PrintLineHeight' not found in TSigGeneralGrid.
+- `UnitMain.pas(4725)` Member 'Font' not found in TSigGeneralGrid.
+- `UnitMain.pas(4729)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitMain.pas(4731)` Member 'PrintLineHeight' not found in TSigGeneralGrid.
+- `UnitMain.pas(4735)` Member 'ColCount' not found in TSigGeneralGrid.
+- `UnitMain.pas(4737)` Member 'PrintColWidth' not found in TSigGeneralGrid.
+- `UnitMain.pas(4740)` Unresolved identifier 'GridLineWidth' (kept as-is).
+- `UnitMain.pas(4753)` Member 'Cell' not found in TSigGeneralGrid.
+- `UnitMain.pas(4754)` Member 'Editor' not found in TSigGeneralGrid.
+- `UnitMain.pas(4754)` Member 'Editor' not found in TSigGeneralGrid.
+- `UnitMain.pas(4763)` Member 'PrintLineHeight' not found in TSigGeneralGrid.
+- `UnitMain.pas(4767)` Member 'ColCount' not found in TSigGeneralGrid.
+- `UnitMain.pas(4769)` Member 'PrintColWidth' not found in TSigGeneralGrid.
+- `UnitMain.pas(4774)` Unresolved identifier 'GridLineWidth' (kept as-is).
+- `UnitMain.pas(4787)` Member 'Cell' not found in TSigGeneralGrid.
+- `UnitMain.pas(4788)` Member 'Editor' not found in TSigGeneralGrid.
+- `UnitMain.pas(4788)` Member 'Editor' not found in TSigGeneralGrid.
+- `UnitMain.pas(4425)` VCL member 'Indent' has no automatic WPF mapping (kept as pTree.Indent).
+- `UnitMain.pas(4437)` Unresolved identifier 'Level' (kept as-is).
+- `UnitMain.pas(4437)` Type name 'TEXT' used as a value (probably an inherited VCL member of the same name).
+- `UnitMain.pas(4538)` Unresolved identifier 'Level' (kept as-is).
+- `UnitMain.pas(4549)` Unresolved identifier 'Level' (kept as-is).
+- `UnitMain.pas(4551)` Unresolved identifier 'Level' (kept as-is).
+- `UnitMain.pas(4553)` Unresolved identifier 'Level' (kept as-is).
+- `UnitMain.pas(4573)` Unresolved identifier 'ImageIndex' (kept as-is).
+- `UnitMain.pas(4573)` Unresolved identifier 'ImageIndex' (kept as-is).
+- `UnitMain.pas(4577)` Unresolved identifier 'SetStretchBltMode' (kept as-is).
+- `UnitMain.pas(4577)` Unresolved identifier 'SetStretchBltMode' (kept as-is).
+- `UnitMain.pas(4577)` Unresolved identifier 'HalfTone' (kept as-is).
+- `UnitMain.pas(4578)` Unresolved identifier 'ImageIndex' (kept as-is).
+- `UnitMain.pas(4579)` Unresolved identifier 'StretchBlt' (kept as-is).
+- `UnitMain.pas(4579)` Unresolved identifier 'StretchBlt' (kept as-is).
+- `UnitMain.pas(4581)` Unresolved identifier 'SRCCOPY' (kept as-is).
+- `UnitMain.pas(4589)` Unresolved identifier 'HasChildren' (kept as-is).
+- `UnitMain.pas(4200)` Member 'Canvas' not found in TStringGrid.
+- `UnitMain.pas(4205)` Member 'GridLineWidth' not found in TStringGrid.
+- `UnitMain.pas(4206)` Unresolved identifier 'tLogReport' (kept as-is).
+- `UnitMain.pas(4207)` Member 'Canvas' not found in TStringGrid.
+- `UnitMain.pas(4871)` Unresolved identifier 'tLogReport' (kept as-is).
+- `UnitMain.pas(4879)` Member 'Canvas' not found in TStringGrid.
+- `UnitMain.pas(4884)` Unresolved identifier 'PrintPrepareLogFilePages' (kept as-is).
+- `UnitMain.pas(2346)` Unresolved identifier 'NodeList' (kept as-is).
+- `UnitMain.pas(2348)` Unresolved identifier 'OnNodeNameChange' (kept as-is).
+- `UnitMain.pas(2348)` 'RefreshPanelView' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(2348)` 'RefreshPanelView' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(2349)` Unresolved identifier 'NodeNameEditor' (kept as-is).
+- `UnitMain.pas(2350)` Unresolved identifier 'PanelRecalTimeEditor' (kept as-is).
+- `UnitMain.pas(2351)` Unresolved identifier 'MaintenanceDateEditor' (kept as-is).
+- `UnitMain.pas(2353)` Unresolved identifier 'VerificationDetEditor' (kept as-is).
+- `UnitMain.pas(2354)` Unresolved identifier 'VerificationMCPEditor' (kept as-is).
+- `UnitMain.pas(2355)` Unresolved identifier 'VerificationIOEditor' (kept as-is).
+- `UnitMain.pas(2356)` Unresolved identifier 'VerificationFaultsEditor' (kept as-is).
+- `UnitMain.pas(2359)` Unresolved identifier 'KeyswitchEntryEditor' (kept as-is).
+- `UnitMain.pas(2360)` Unresolved identifier 'LoopsFittedTabSheet' (kept as-is).
+- `UnitMain.pas(2361)` Unresolved identifier 'LoopsFittedEditor' (kept as-is).
+- `UnitMain.pas(2362)` Unresolved identifier 'LoopDetailsEditor' (kept as-is).
+- `UnitMain.pas(2363)` Unresolved identifier 'PrintOptionsEditor' (kept as-is).
+- `UnitMain.pas(2364)` Unresolved identifier 'LoopProtocolEditor' (kept as-is).
+- `UnitMain.pas(2365)` Unresolved identifier 'AL2CodeEditor' (kept as-is).
+- `UnitMain.pas(2366)` Unresolved identifier 'AL3CodeEditor' (kept as-is).
+- `UnitMain.pas(2367)` Unresolved identifier 'SynchroniseToPCDateTimeEditor' (kept as-is).
+- `UnitMain.pas(2368)` Unresolved identifier 'PanelNotesEditor' (kept as-is).
+- `UnitMain.pas(2369)` Unresolved identifier 'SegmentEditor' (kept as-is).
+- `UnitMain.pas(2370)` Unresolved identifier 'SegmentEditorLabel' (kept as-is).
+- `UnitMain.pas(2371)` Unresolved identifier 'AddressEditor' (kept as-is).
+- `UnitMain.pas(2372)` Unresolved identifier 'PanelImageEditor' (kept as-is).
+- `UnitMain.pas(2373)` Unresolved identifier 'PanelZoneEditor' (kept as-is).
+- `UnitMain.pas(2374)` Unresolved identifier 'LoopListEditor' (kept as-is).
+- `UnitMain.pas(2376)` Unresolved identifier 'DeviceClassesEditor' (kept as-is).
+- `UnitMain.pas(2378)` Unresolved identifier 'DeviceTypeEditor' (kept as-is).
+- `UnitMain.pas(2379)` Unresolved identifier 'DeviceGrid' (kept as-is).
+- `UnitMain.pas(2380)` Unresolved identifier 'SubDeviceEditor' (kept as-is).
+- `UnitMain.pas(2382)` Unresolved identifier 'SubDeviceNameEditor' (kept as-is).
+- `UnitMain.pas(2383)` Unresolved identifier 'SubDeviceNameLabel' (kept as-is).
+- `UnitMain.pas(2384)` Unresolved identifier 'SubDeviceTypeEditor' (kept as-is).
+- `UnitMain.pas(2385)` Unresolved identifier 'SubDeviceTypeLabel' (kept as-is).
+- `UnitMain.pas(2386)` Unresolved identifier 'SubDeviceIOTypeLabel' (kept as-is).
+- `UnitMain.pas(2387)` Unresolved identifier 'SubDeviceIOTypeEditor' (kept as-is).
+- `UnitMain.pas(2388)` Unresolved identifier 'SubDeviceFieldEditor' (kept as-is).
+- `UnitMain.pas(2393)` Unresolved identifier 'FilterEditorFrame' (kept as-is).
+- `UnitMain.pas(2394)` Unresolved identifier 'LCDDimmingEditor' (kept as-is).
+- `UnitMain.pas(2395)` Unresolved identifier 'MaintenanceDateEditor' (kept as-is).
+- `UnitMain.pas(2396)` Unresolved identifier 'MaintenanceStringEditor' (kept as-is).
+- `UnitMain.pas(2397)` Unresolved identifier 'MainBoardVersionEditor' (kept as-is).
+- `UnitMain.pas(2398)` Unresolved identifier 'LoopDriver1VersionEditor' (kept as-is).
+- `UnitMain.pas(2399)` Unresolved identifier 'LoopDriver2VersionEditor' (kept as-is).
+- `UnitMain.pas(2400)` Unresolved identifier 'LogFileFrame' (kept as-is).
+- `UnitMain.pas(2404)` Unresolved identifier 'Client' (kept as-is).
+- `UnitMain.pas(2407)` Unresolved identifier 'Address' (kept as-is).
+- `UnitMain.pas(2408)` Unresolved identifier 'Postcode' (kept as-is).
+- `UnitMain.pas(2409)` Unresolved identifier 'TelNo' (kept as-is).
+- `UnitMain.pas(2412)` Unresolved identifier 'Installer' (kept as-is).
+- `UnitMain.pas(2415)` Unresolved identifier 'Address' (kept as-is).
+- `UnitMain.pas(2416)` Unresolved identifier 'Postcode' (kept as-is).
+- `UnitMain.pas(2417)` Unresolved identifier 'TelNo' (kept as-is).
+- `UnitMain.pas(2420)` Unresolved identifier 'GlobalDefaults' (kept as-is).
+- `UnitMain.pas(2423)` Unresolved identifier 'DefaultAutoAdjustDST' (kept as-is).
+- `UnitMain.pas(2426)` Unresolved identifier 'SiteNotes' (kept as-is).
+- `UnitMain.pas(2427)` Unresolved identifier 'ZoneList' (kept as-is).
+- `UnitMain.pas(2428)` Unresolved identifier 'ModeList' (kept as-is).
+- `UnitMain.pas(2429)` Unresolved identifier 'PulsePatternList' (kept as-is).
+- `UnitMain.pas(2430)` Unresolved identifier 'GroupActionList' (kept as-is).
+- `UnitMain.pas(2431)` Unresolved identifier 'SuperGroupList' (kept as-is).
+- `UnitMain.pas(2432)` Unresolved identifier 'InputSuperGroupList' (kept as-is).
+- `UnitMain.pas(2433)` Unresolved identifier 'SequenceList' (kept as-is).
+- `UnitMain.pas(2435)` Unresolved identifier 'CauseAndEffects' (kept as-is).
+- `UnitMain.pas(2437)` Unresolved identifier 'OutputGroups' (kept as-is).
+- `UnitMain.pas(2438)` Unresolved identifier 'InputGroups' (kept as-is).
+- `UnitMain.pas(2439)` Unresolved identifier 'TreeView1' (kept as-is).
+- `UnitMain.pas(2440)` Unresolved identifier 'CEAddChildButton' (kept as-is).
+- `UnitMain.pas(2441)` Unresolved identifier 'CEAddChildButton' (kept as-is).
+- `UnitMain.pas(2442)` Unresolved identifier 'CEAddChildButton' (kept as-is).
+- `UnitMain.pas(2443)` Unresolved identifier 'CEAddSibling1BeforeButton' (kept as-is).
+- `UnitMain.pas(2444)` Unresolved identifier 'CEAddSibling1AfterButton' (kept as-is).
+- `UnitMain.pas(2445)` Unresolved identifier 'CEAddSibling2BeforeButton' (kept as-is).
+- `UnitMain.pas(2446)` Unresolved identifier 'CEAddSibling2AfterButton' (kept as-is).
+- `UnitMain.pas(2447)` Unresolved identifier 'CECutButton' (kept as-is).
+- `UnitMain.pas(2448)` Unresolved identifier 'CECopyButton' (kept as-is).
+- `UnitMain.pas(2449)` Unresolved identifier 'CEPasteButton' (kept as-is).
+- `UnitMain.pas(2450)` Unresolved identifier 'CEPasteSpecialButton' (kept as-is).
+- `UnitMain.pas(2451)` Unresolved identifier 'CEDeleteButton' (kept as-is).
+- `UnitMain.pas(2452)` Unresolved identifier 'CEVariableEditor' (kept as-is).
+- `UnitMain.pas(2456)` Unresolved identifier 'XFP4PGMCfg' (kept as-is).
+- `UnitMain.pas(2458)` Unresolved identifier 'TransferTimeout' (kept as-is).
+- `UnitMain.pas(2459)` Unresolved identifier 'TranferReadTimeout' (kept as-is).
+- `UnitMain.pas(2462)` Unresolved identifier 'XFP4PGMCfg' (kept as-is).
+- `UnitMain.pas(2464)` Unresolved identifier 'NodalInfo' (kept as-is).
+- `UnitMain.pas(2464)` Unresolved identifier 'tNodalClass' (kept as-is).
+- `UnitMain.pas(2467)` Unresolved identifier 'NodalInfo' (kept as-is).
+- `UnitMain.pas(2467)` 'OnNodeClassChange' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(2467)` 'OnNodeClassChange' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitMain.pas(2468)` Unresolved identifier 'NodalInfo' (kept as-is).
+- `UnitMain.pas(2468)` Unresolved identifier 'NodalInfo' (kept as-is).
+- `UnitMain.pas(3677)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitMain.pas(3810)` Unresolved identifier 'DeviceEditMode' (kept as-is).
+- `UnitMain.pas(3810)` Unresolved identifier 'demDeviceEntries' (kept as-is).
+- `UnitMain.pas(3811)` Unresolved identifier 'ActiveChild' (kept as-is).
+- `UnitMain.pas(3811)` Unresolved identifier 'IndexOfNodeWithID' (kept as-is).
+- `UnitMain.pas(3812)` Unresolved identifier 'ActiveChild' (kept as-is).
+- `UnitMain.pas(3814)` Unresolved identifier 'ActiveChild' (kept as-is).
+- `UnitMain.pas(3815)` Unresolved identifier 'Node' (kept as-is).
+- `UnitMain.pas(3815)` Unresolved identifier 'ActiveChild' (kept as-is).
+- `UnitMain.pas(3817)` Unresolved identifier 'ActiveChild' (kept as-is).
+- `UnitMain.pas(3817)` Unresolved identifier 'IndexOfLoopWithID' (kept as-is).
+- `UnitMain.pas(2903)` Unresolved identifier 'ClearCells' (kept as-is).
+- `UnitMain.pas(2926)` Unresolved identifier 'sdt_Not_Fitted' (kept as-is).
+- `UnitMain.pas(2929)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(2930)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(2931)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(2932)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(2933)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(2934)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(2935)` Unresolved identifier 'CellObject' (kept as-is).
+- `UnitMain.pas(2941)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(2945)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(2950)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(2957)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(2961)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(2966)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(2973)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(2977)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(2982)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(2989)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(2993)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(2998)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(3005)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(3009)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(3014)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(3022)` Unresolved identifier 'RowCount' (kept as-is).
+- Unresolved identifier 'cColZoneName' (kept as-is).
+- Unresolved identifier 'cColZoneID' (kept as-is).
+- Unresolved identifier 'cColLoopName' (kept as-is).
+- Unresolved identifier 'cColLoopID' (kept as-is).
+- Unresolved identifier 'cColDevAddress' (kept as-is).
+- Unresolved identifier 'cColDevSubAddresses' (kept as-is).
+- Unresolved identifier 'cColDevType' (kept as-is).
+- Unresolved identifier 'cColDevImage' (kept as-is).
+- `UnitMain.pas(3187)` Unresolved identifier 'ClearCells' (kept as-is).
+- `UnitMain.pas(3211)` Unresolved identifier 'sdt_Not_Fitted' (kept as-is).
+- `UnitMain.pas(3223)` Unresolved identifier 'es_Zone' (kept as-is).
+- `UnitMain.pas(3228)` Unresolved identifier 'tZFPZone' (kept as-is).
+- `UnitMain.pas(3233)` Unresolved identifier 'lf_Zone' (kept as-is).
+- `UnitMain.pas(3282)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(3283)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(3284)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(3285)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(3286)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(3287)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(3288)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(3289)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(3290)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitMain.pas(3291)` Unresolved identifier 'CellObject' (kept as-is).
+- `UnitMain.pas(3300)` Unresolved identifier 'RowCount' (kept as-is).
+- `about.pas(369)` Unresolved identifier 'TResourceStream' (kept as-is).
+- `about.pas(369)` Type name 'HINSTANCE' used as a value (probably an inherited VCL member of the same name).
+- `about.pas(369)` Unresolved identifier 'RT_VERSION' (kept as-is).
+- `about.pas(375)` Member 'Icon' is not provided by TApplication in DelphiRtl.
+- `about.pas(333)` Unresolved identifier 'soFromBeginning' (kept as-is).
+- `UnitUndoList.pas(568)` Unresolved identifier 'Count' (kept as-is).
+- `UnitUndoList.pas(602)` Unresolved identifier 'Count' (kept as-is).
+- `UnitUndoList.pas(393)` Member 'AmRedoing' not found in TSigFileProperty.
+- `UnitUndoList.pas(410)` Member 'AmRedoing' not found in TSigFileProperty.
+- `UnitUndoList.pas(423)` Member 'AmUndoing' not found in TSigFileProperty.
+- `UnitUndoList.pas(437)` Member 'AmUndoing' not found in TSigFileProperty.
+- `UnitUndoList.pas(168)` Member 'Count' not found in tUndoRedoStack.
+- `UnitUndoList.pas(163)` Member 'Count' not found in tUndoRedoStack.
+- `UnitUndoList.pas(534)` Member 'Count' not found in tUndoRedoStack.
+- `UnitUndoList.pas(313)` Member 'Count' not found in tUndoRedoStack.
+- `UnitUndoList.pas(466)` Member 'Count' not found in tUndoRedoStack.
+- `UnitUndoList.pas(476)` Member 'Undo' not found in TSigBaseProperty.
+- `UnitUndoList.pas(476)` Member 'Undo' not found in TSigBaseProperty.
+- `UnitUndoList.pas(481)` Member 'OnCompleteUndo' not found in TSigBaseProperty.
+- `UnitUndoList.pas(275)` Member 'Count' not found in tUndoRedoStack.
+- `UnitUndoList.pas(288)` Member 'Redo' not found in TSigBaseProperty.
+- `UnitUndoList.pas(288)` Member 'Redo' not found in TSigBaseProperty.
+- `UnitUndoList.pas(295)` Member 'OnCompleteRedo' not found in TSigBaseProperty.
+- `USBBulkTransferMode.pas(377)` Unresolved identifier 'INVALID_HANDLE_VALUE' (kept as-is).
+- `USBBulkTransferMode.pas(364)` Unresolved identifier 'GetOverlappedResult' (kept as-is).
+- `USBBulkTransferMode.pas(548)` Unresolved identifier 'WaitForSingleObject' (kept as-is).
+- `USBBulkTransferMode.pas(550)` Unresolved identifier 'GetOverlappedResult' (kept as-is).
+- `USBBulkTransferMode.pas(550)` Unresolved identifier 'GetOverlappedResult' (kept as-is).
+- `USBBulkTransferMode.pas(551)` Unresolved identifier 'NO_ERROR' (kept as-is).
+- `USBBulkTransferMode.pas(338)` Unresolved identifier 'CancelIO' (kept as-is).
+- `USBBulkTransferMode.pas(338)` Unresolved identifier 'CancelIO' (kept as-is).
+- `USBBulkTransferMode.pas(596)` Unresolved identifier 'NO_ERROR' (kept as-is).
+- `USBBulkTransferMode.pas(538)` Unresolved identifier 'ReadFile' (kept as-is).
+- `USBBulkTransferMode.pas(560)` Unresolved identifier 'ERROR_IO_PENDING' (kept as-is).
+- `USBBulkTransferMode.pas(400)` Unresolved identifier 'ReadFile' (kept as-is).
+- `USBBulkTransferMode.pas(400)` Unresolved identifier 'ReadFile' (kept as-is).
+- `USBBulkTransferMode.pas(410)` Unresolved identifier 'ERROR_IO_PENDING' (kept as-is).
+- `USBBulkTransferMode.pas(410)` Unresolved identifier 'ERROR_IO_INCOMPLETE' (kept as-is).
+- `USBBulkTransferMode.pas(414)` Unresolved identifier 'WaitForSingleObject' (kept as-is).
+- `USBBulkTransferMode.pas(415)` Unresolved identifier 'GetOverlappedResult' (kept as-is).
+- `USBBulkTransferMode.pas(415)` Unresolved identifier 'GetOverlappedResult' (kept as-is).
+- `USBBulkTransferMode.pas(419)` Unresolved identifier 'GetOverlappedResult' (kept as-is).
+- `USBBulkTransferMode.pas(419)` Unresolved identifier 'GetOverlappedResult' (kept as-is).
+- `USBBulkTransferMode.pas(422)` Unresolved identifier 'NO_ERROR' (kept as-is).
+- `USBBulkTransferMode.pas(765)` Unresolved identifier 'D1' (kept as-is).
+- `USBBulkTransferMode.pas(766)` Unresolved identifier 'D2' (kept as-is).
+- `USBBulkTransferMode.pas(767)` Unresolved identifier 'D3' (kept as-is).
+- `USBBulkTransferMode.pas(768)` Unresolved identifier 'D4' (kept as-is).
+- `USBBulkTransferMode.pas(769)` Unresolved identifier 'D4' (kept as-is).
+- `USBBulkTransferMode.pas(770)` Unresolved identifier 'D4' (kept as-is).
+- `USBBulkTransferMode.pas(771)` Unresolved identifier 'D4' (kept as-is).
+- `USBBulkTransferMode.pas(772)` Unresolved identifier 'D4' (kept as-is).
+- `USBBulkTransferMode.pas(773)` Unresolved identifier 'D4' (kept as-is).
+- `USBBulkTransferMode.pas(774)` Unresolved identifier 'D4' (kept as-is).
+- `USBBulkTransferMode.pas(775)` Unresolved identifier 'D4' (kept as-is).
+- `moduleloader.pas(105)` Unresolved identifier 'LoadLibraryEx' (kept as-is).
+- `moduleloader.pas(117)` Unresolved identifier 'FreeLibrary' (kept as-is).
+- `moduleloader.pas(117)` Unresolved identifier 'FreeLibrary' (kept as-is).
+- `UnitASCIITransfer.pas(4898)` Unresolved identifier 'ERROR_BAD_COMMAND' (kept as-is).
+- `UnitASCIITransfer.pas(4900)` Unresolved identifier 'ERROR_GEN_FAILURE' (kept as-is).
+- `UnitASCIITransfer.pas(4508)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(4272)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(4325)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(4380)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(4435)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(4219)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(4167)` VCL member 'CheckAll' has no automatic WPF mapping (kept as CheckListBoxToSend.CheckAll).
+- `UnitASCIITransfer.pas(4167)` VCL member 'CheckAll' has no automatic WPF mapping (kept as CheckListBoxToSend.CheckAll).
+- `UnitASCIITransfer.pas(4119)` VCL member 'CheckAll' has no automatic WPF mapping (kept as CheckListBoxToSend.CheckAll).
+- `UnitASCIITransfer.pas(4119)` VCL member 'CheckAll' has no automatic WPF mapping (kept as CheckListBoxToSend.CheckAll).
+- `UnitASCIITransfer.pas(4162)` VCL member 'CheckAll' has no automatic WPF mapping (kept as CheckListBoxToRetrieve.CheckAll).
+- `UnitASCIITransfer.pas(4162)` VCL member 'CheckAll' has no automatic WPF mapping (kept as CheckListBoxToRetrieve.CheckAll).
+- `UnitASCIITransfer.pas(4114)` VCL member 'CheckAll' has no automatic WPF mapping (kept as CheckListBoxToRetrieve.CheckAll).
+- `UnitASCIITransfer.pas(4114)` VCL member 'CheckAll' has no automatic WPF mapping (kept as CheckListBoxToRetrieve.CheckAll).
+- `UnitASCIITransfer.pas(3963)` Unresolved identifier 'DateTimeToString' (kept as-is).
+- `UnitASCIITransfer.pas(3963)` Unresolved identifier 'DateTimeToString' (kept as-is).
+- `UnitASCIITransfer.pas(3928)` Unresolved identifier 'DateTimeToString' (kept as-is).
+- `UnitASCIITransfer.pas(3928)` Unresolved identifier 'DateTimeToString' (kept as-is).
+- `UnitASCIITransfer.pas(1136)` Unresolved identifier 'ERROR_BAD_COMMAND' (kept as-is).
+- `UnitASCIITransfer.pas(1154)` Unresolved identifier 'ERROR_ACCESS_DENIED' (kept as-is).
+- `UnitASCIITransfer.pas(1095)` Unresolved identifier 'ERROR_BAD_COMMAND' (kept as-is).
+- `UnitASCIITransfer.pas(1113)` Unresolved identifier 'ERROR_ACCESS_DENIED' (kept as-is).
+- `UnitASCIITransfer.pas(1177)` Unresolved identifier 'NO_ERROR' (kept as-is).
+- `UnitASCIITransfer.pas(1181)` Unresolved identifier 'ERROR_BAD_COMMAND' (kept as-is).
+- `UnitASCIITransfer.pas(1198)` Unresolved identifier 'ERROR_IO_INCOMPLETE' (kept as-is).
+- `UnitASCIITransfer.pas(1202)` Unresolved identifier 'ERROR_ACCESS_DENIED' (kept as-is).
+- `UnitASCIITransfer.pas(1047)` Unresolved identifier 'NO_ERROR' (kept as-is).
+- `UnitASCIITransfer.pas(1051)` Unresolved identifier 'ERROR_BAD_COMMAND' (kept as-is).
+- `UnitASCIITransfer.pas(1068)` Unresolved identifier 'ERROR_IO_INCOMPLETE' (kept as-is).
+- `UnitASCIITransfer.pas(1072)` Unresolved identifier 'ERROR_ACCESS_DENIED' (kept as-is).
+- `UnitASCIITransfer.pas(1002)` Unresolved identifier 'ERROR_INVALID_HANDLE' (kept as-is).
+- `UnitASCIITransfer.pas(1006)` Unresolved identifier 'ERROR_BAD_COMMAND' (kept as-is).
+- `UnitASCIITransfer.pas(1010)` Unresolved identifier 'ERROR_GEN_FAILURE' (kept as-is).
+- `UnitASCIITransfer.pas(1014)` Unresolved identifier 'WAIT_TIMEOUT' (kept as-is).
+- `UnitASCIITransfer.pas(1018)` Unresolved identifier 'ERROR_INVALID_PARAMETER' (kept as-is).
+- `UnitASCIITransfer.pas(1022)` Unresolved identifier 'ERROR_ACCESS_DENIED' (kept as-is).
+- `UnitASCIITransfer.pas(1026)` Unresolved identifier 'ERROR_IO_INCOMPLETE' (kept as-is).
+- `UnitASCIITransfer.pas(4095)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(4084)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(4088)` VCL member 'TabVisible' has no automatic WPF mapping (kept as TabSheetTransfer.TabVisible).
+- `UnitASCIITransfer.pas(4089)` VCL member 'TabVisible' has no automatic WPF mapping (kept as TabSheetRetrieveData.TabVisible).
+- `UnitASCIITransfer.pas(4104)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(4108)` VCL member 'TabVisible' has no automatic WPF mapping (kept as TabSheetTransfer.TabVisible).
+- `UnitASCIITransfer.pas(4109)` VCL member 'TabVisible' has no automatic WPF mapping (kept as TabSheetRetrieveData.TabVisible).
+- `UnitASCIITransfer.pas(3798)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(3805)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitASCIITransfer.pas(3859)` Member 'Value' not found in tZFPDiskFile.
+- `UnitASCIITransfer.pas(3910)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(859)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(866)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitASCIITransfer.pas(949)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(478)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(484)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(491)` Unresolved identifier 'ExportNamesFile' (kept as-is).
+- `UnitASCIITransfer.pas(491)` Unresolved identifier 'ExportNamesFile' (kept as-is).
+- `UnitASCIITransfer.pas(492)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(497)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitASCIITransfer.pas(497)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitASCIITransfer.pas(498)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(501)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(504)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(504)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(505)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(509)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(512)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(512)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(513)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(517)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(520)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(520)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(521)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(525)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(528)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(528)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(529)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(533)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(536)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(536)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(537)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(541)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(544)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(544)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(545)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(549)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(552)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(552)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(553)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(557)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(560)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(560)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(561)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(567)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(567)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(568)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(572)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(572)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(573)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(577)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(577)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(578)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(581)` Unresolved identifier 'ExportDeviceFieldsFile' (kept as-is).
+- `UnitASCIITransfer.pas(581)` Unresolved identifier 'ExportDeviceFieldsFile' (kept as-is).
+- `UnitASCIITransfer.pas(582)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(586)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(586)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(587)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(590)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(590)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(591)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(594)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(594)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(595)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(598)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(598)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(599)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(603)` Unresolved identifier 'PanelNotes' (kept as-is).
+- `UnitASCIITransfer.pas(603)` Unresolved identifier 'PanelNotes' (kept as-is).
+- `UnitASCIITransfer.pas(604)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(607)` Unresolved identifier 'ZonesFile' (kept as-is).
+- `UnitASCIITransfer.pas(610)` Unresolved identifier 'ExportFile' (kept as-is).
+- `UnitASCIITransfer.pas(610)` Unresolved identifier 'ExportFile' (kept as-is).
+- `UnitASCIITransfer.pas(611)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(616)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(616)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(617)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(620)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(623)` Unresolved identifier 'ExportTreeFile' (kept as-is).
+- `UnitASCIITransfer.pas(623)` Unresolved identifier 'ExportTreeFile' (kept as-is).
+- `UnitASCIITransfer.pas(624)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(628)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(631)` Unresolved identifier 'ExportConfigFile' (kept as-is).
+- `UnitASCIITransfer.pas(631)` Unresolved identifier 'ExportConfigFile' (kept as-is).
+- `UnitASCIITransfer.pas(632)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(637)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(637)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(640)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(647)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(647)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(650)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(657)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(657)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(660)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2949)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(3331)` Unresolved identifier 'tZFPNode' (kept as-is).
+- `UnitASCIITransfer.pas(3523)` Unresolved identifier 'at_Logo' (kept as-is).
+- `UnitASCIITransfer.pas(3542)` Unresolved identifier 'at_Client' (kept as-is).
+- `UnitASCIITransfer.pas(3556)` Unresolved identifier 'at_Installer' (kept as-is).
+- `UnitASCIITransfer.pas(3570)` Unresolved identifier 'at_Site_Notes' (kept as-is).
+- `UnitASCIITransfer.pas(3586)` Unresolved identifier 'at_Full_Update' (kept as-is).
+- `UnitASCIITransfer.pas(3592)` Unresolved identifier 'at_Partial_Update' (kept as-is).
+- `UnitASCIITransfer.pas(3598)` Unresolved identifier 'at_No_Update' (kept as-is).
+- `UnitASCIITransfer.pas(3655)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(3672)` Unresolved identifier 'tAdvancedTransfer' (kept as-is).
+- `UnitASCIITransfer.pas(3676)` Unresolved identifier 'at_Internal' (kept as-is).
+- `UnitASCIITransfer.pas(3705)` Unresolved identifier 'tAdvancedTransfer' (kept as-is).
+- `UnitASCIITransfer.pas(2634)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2636)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2651)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2651)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2655)` Unresolved identifier 'ExportNamesFile' (kept as-is).
+- `UnitASCIITransfer.pas(2655)` Unresolved identifier 'ExportNamesFile' (kept as-is).
+- `UnitASCIITransfer.pas(2656)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2656)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2661)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitASCIITransfer.pas(2661)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitASCIITransfer.pas(2662)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2662)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2665)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2668)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2668)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2669)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2669)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2673)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2676)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(2676)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(2677)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2677)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2681)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2684)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(2684)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(2685)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2685)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2689)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2692)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(2692)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(2693)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2693)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2697)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2700)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(2700)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(2701)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2701)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2705)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2708)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(2708)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(2709)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2709)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2713)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2716)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(2716)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(2717)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2717)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2721)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2724)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(2724)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(2725)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2725)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2731)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2731)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2732)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2732)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2736)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2736)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2737)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2737)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2741)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2741)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2742)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2742)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2745)` Unresolved identifier 'ExportDeviceFieldsFile' (kept as-is).
+- `UnitASCIITransfer.pas(2745)` Unresolved identifier 'ExportDeviceFieldsFile' (kept as-is).
+- `UnitASCIITransfer.pas(2746)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2746)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2750)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2750)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2751)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2751)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2754)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2754)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2755)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2755)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2758)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2758)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2759)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2759)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2762)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2762)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2763)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2763)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2767)` Unresolved identifier 'PanelNotes' (kept as-is).
+- `UnitASCIITransfer.pas(2767)` Unresolved identifier 'PanelNotes' (kept as-is).
+- `UnitASCIITransfer.pas(2768)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2768)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2771)` Unresolved identifier 'ZonesFile' (kept as-is).
+- `UnitASCIITransfer.pas(2774)` Unresolved identifier 'ExportFile' (kept as-is).
+- `UnitASCIITransfer.pas(2774)` Unresolved identifier 'ExportFile' (kept as-is).
+- `UnitASCIITransfer.pas(2775)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2775)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2780)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2780)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2781)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2781)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2784)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2787)` Unresolved identifier 'ExportTreeFile' (kept as-is).
+- `UnitASCIITransfer.pas(2787)` Unresolved identifier 'ExportTreeFile' (kept as-is).
+- `UnitASCIITransfer.pas(2788)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2788)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2792)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2795)` Unresolved identifier 'ExportConfigFile' (kept as-is).
+- `UnitASCIITransfer.pas(2795)` Unresolved identifier 'ExportConfigFile' (kept as-is).
+- `UnitASCIITransfer.pas(2796)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2796)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2801)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2803)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2807)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2809)` Unresolved identifier 'ExportFile' (kept as-is).
+- `UnitASCIITransfer.pas(2809)` Unresolved identifier 'ExportFile' (kept as-is).
+- `UnitASCIITransfer.pas(2809)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2812)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2816)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2816)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2823)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2823)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2827)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2827)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2834)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2834)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2838)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2838)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2845)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2845)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2849)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2849)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2855)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2856)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(2856)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(3013)` Unresolved identifier 'ExportNamesFile' (kept as-is).
+- `UnitASCIITransfer.pas(3013)` Unresolved identifier 'ExportNamesFile' (kept as-is).
+- `UnitASCIITransfer.pas(3018)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitASCIITransfer.pas(3018)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitASCIITransfer.pas(3023)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3026)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3026)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3032)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3034)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(3034)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(3040)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3042)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(3042)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(3048)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3050)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(3050)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(3056)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3058)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(3058)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(3064)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3066)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(3066)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(3072)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3074)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(3074)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(3080)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3082)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(3082)` Unresolved identifier 'ExportShareFile' (kept as-is).
+- `UnitASCIITransfer.pas(3089)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3089)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3094)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3094)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3099)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3099)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3103)` Unresolved identifier 'ExportDeviceFieldsFile' (kept as-is).
+- `UnitASCIITransfer.pas(3103)` Unresolved identifier 'ExportDeviceFieldsFile' (kept as-is).
+- `UnitASCIITransfer.pas(3108)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3108)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3113)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3113)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3118)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3118)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3123)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3123)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3128)` Unresolved identifier 'PanelNotes' (kept as-is).
+- `UnitASCIITransfer.pas(3128)` Unresolved identifier 'PanelNotes' (kept as-is).
+- `UnitASCIITransfer.pas(3133)` Unresolved identifier 'ZonesFile' (kept as-is).
+- `UnitASCIITransfer.pas(3133)` Unresolved identifier 'ZonesFile' (kept as-is).
+- `UnitASCIITransfer.pas(3138)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3138)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3143)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3145)` Unresolved identifier 'ExportTreeFile' (kept as-is).
+- `UnitASCIITransfer.pas(3145)` Unresolved identifier 'ExportTreeFile' (kept as-is).
+- `UnitASCIITransfer.pas(3150)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3153)` Unresolved identifier 'ExportConfigFile' (kept as-is).
+- `UnitASCIITransfer.pas(3153)` Unresolved identifier 'ExportConfigFile' (kept as-is).
+- `UnitASCIITransfer.pas(3161)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3163)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3167)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3169)` Unresolved identifier 'ExportFile' (kept as-is).
+- `UnitASCIITransfer.pas(3169)` Unresolved identifier 'ExportFile' (kept as-is).
+- `UnitASCIITransfer.pas(3169)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(3182)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3182)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3194)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3194)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3206)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3206)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(3222)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(3275)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(1733)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1735)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(1737)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1741)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1741)` Unresolved identifier 'ImportNetworkCfgRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1743)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1743)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitASCIITransfer.pas(1745)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1745)` Unresolved identifier 'ImportSharedInputGroupsRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1747)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1747)` Unresolved identifier 'ImportSharedOutputGroupsRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1749)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1749)` Unresolved identifier 'ImportSharedSuperGroupsRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1751)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1751)` Unresolved identifier 'ImportSharedModesRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1753)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1753)` Unresolved identifier 'PanelNotes' (kept as-is).
+- `UnitASCIITransfer.pas(1755)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1755)` Unresolved identifier 'ZonesFile' (kept as-is).
+- `UnitASCIITransfer.pas(1757)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1757)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(1759)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1759)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(1761)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1761)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(1763)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1763)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(1765)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1765)` Unresolved identifier 'ImportDeviceFieldsRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1769)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1769)` Unresolved identifier 'ImportInputGroupsRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1771)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1771)` Unresolved identifier 'ImportOutputGroupsRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1773)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1773)` Unresolved identifier 'ImportSuperGroupsRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1775)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(1775)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1775)` Unresolved identifier 'ImportEffectsFileRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1777)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(1777)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1777)` Unresolved identifier 'ImportPulseSeqFileRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1779)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(1779)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1779)` Unresolved identifier 'ImportGroupActionFileRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1781)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1781)` Unresolved identifier 'ImportInputSuperGroupsRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1783)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1783)` Unresolved identifier 'ImportNamesFileRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1785)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1785)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(1785)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1787)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1787)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(1787)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1793)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1801)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1809)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(1880)` Unresolved identifier 'ImportNetworkCfgRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1883)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitASCIITransfer.pas(1886)` Unresolved identifier 'ImportSharedInputGroupsRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1889)` Unresolved identifier 'ImportSharedOutputGroupsRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1892)` Unresolved identifier 'ImportSharedSuperGroupsRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1895)` Unresolved identifier 'ImportSharedModesRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1898)` Unresolved identifier 'PanelNotes' (kept as-is).
+- `UnitASCIITransfer.pas(1901)` Unresolved identifier 'ZonesFile' (kept as-is).
+- `UnitASCIITransfer.pas(1904)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(1907)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(1910)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(1913)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(1916)` Unresolved identifier 'ImportDeviceFieldsRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1921)` Unresolved identifier 'ImportInputGroupsRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1924)` Unresolved identifier 'ImportOutputGroupsRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1927)` Unresolved identifier 'ImportSuperGroupsRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1930)` Unresolved identifier 'ImportEffectsFileRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1933)` Unresolved identifier 'ImportPulseSeqFileRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1936)` Unresolved identifier 'ImportGroupActionFileRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1939)` Unresolved identifier 'ImportInputSuperGroupsRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1942)` Unresolved identifier 'ImportNamesFileRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1945)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(1967)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(1968)` Unresolved identifier 'ImportSharedModesRequest' (kept as-is).
+- `UnitASCIITransfer.pas(1990)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(2072)` Unresolved identifier 'tZFPNode' (kept as-is).
+- `UnitASCIITransfer.pas(2216)` Unresolved identifier 'at_Client' (kept as-is).
+- `UnitASCIITransfer.pas(2221)` Unresolved identifier 'at_Installer' (kept as-is).
+- `UnitASCIITransfer.pas(2226)` Unresolved identifier 'at_Site_Notes' (kept as-is).
+- `UnitASCIITransfer.pas(2234)` Unresolved identifier 'at_Logo' (kept as-is).
+- `UnitASCIITransfer.pas(2269)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(2288)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(2335)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(2394)` Unresolved identifier 'ImportNetworkCfgRequest' (kept as-is).
+- `UnitASCIITransfer.pas(2397)` Unresolved identifier 'GeneralProperties' (kept as-is).
+- `UnitASCIITransfer.pas(2400)` Unresolved identifier 'ImportDeviceFieldsRequest' (kept as-is).
+- `UnitASCIITransfer.pas(2403)` Unresolved identifier 'ImportNamesFileRequest' (kept as-is).
+- `UnitASCIITransfer.pas(2424)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(2448)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(2507)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(2534)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(2584)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(984)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitASCIITransfer.pas(376)` Unresolved identifier 'ZFPFile' (kept as-is).
+- `UnitASCIITransfer.pas(378)` Unresolved identifier 'ID' (kept as-is).
+- `UnitASCIITransfer.pas(4702)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitASCIITransfer.pas(4704)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `PrevForm.pas(124)` Member 'Cursors' is not provided by TScreen in DelphiRtl.
+- `PrevForm.pas(124)` Unresolved identifier 'LoadCursor' (kept as-is).
+- `PrevForm.pas(124)` Type name 'HINSTANCE' used as a value (probably an inherited VCL member of the same name).
+- `PrevForm.pas(158)` Unresolved identifier 'PixelsPerInch' (kept as-is).
+- `PrevForm.pas(160)` Unresolved identifier 'PixelsPerInch' (kept as-is).
+- `PrevForm.pas(177)` Unresolved identifier 'PixelsPerInch' (kept as-is).
+- `PrevForm.pas(178)` Unresolved identifier 'PixelsPerInch' (kept as-is).
+- `PrevForm.pas(243)` Unresolved identifier 'SetMapMode' (kept as-is).
+- `PrevForm.pas(243)` Unresolved identifier 'SetMapMode' (kept as-is).
+- `PrevForm.pas(243)` Unresolved identifier 'MM_ANISOTROPIC' (kept as-is).
+- `PrevForm.pas(244)` Unresolved identifier 'SetWindowExtEx' (kept as-is).
+- `PrevForm.pas(244)` Unresolved identifier 'SetWindowExtEx' (kept as-is).
+- `PrevForm.pas(245)` Unresolved identifier 'SetViewportExtEx' (kept as-is).
+- `PrevForm.pas(245)` Unresolved identifier 'SetViewportExtEx' (kept as-is).
+- `PrevForm.pas(378)` VCL member 'HorzScrollBar' has no automatic WPF mapping (kept as ScrollBox1.HorzScrollBar).
+- `PrevForm.pas(379)` VCL member 'VertScrollBar' has no automatic WPF mapping (kept as ScrollBox1.VertScrollBar).
+- `PrevForm.pas(392)` VCL member 'HorzScrollBar' has no automatic WPF mapping (kept as ScrollBox1.HorzScrollBar).
+- `PrevForm.pas(392)` VCL member 'HorzScrollBar' has no automatic WPF mapping (kept as ScrollBox1.HorzScrollBar).
+- `PrevForm.pas(393)` VCL member 'VertScrollBar' has no automatic WPF mapping (kept as ScrollBox1.VertScrollBar).
+- `PrevForm.pas(393)` VCL member 'VertScrollBar' has no automatic WPF mapping (kept as ScrollBox1.VertScrollBar).
+- `PrevForm.pas(413)` VCL member 'MaxValue' has no automatic WPF mapping (kept as gp.PageNum.MaxValue).
+- `SigFileClipboard.pas(93)` Member 'CopyToClipboard' not found in TSigBaseProperty.
+- `SigFileClipboard.pas(93)` Member 'CopyToClipboard' not found in TSigBaseProperty.
+- `SigFileClipboard.pas(46)` Member 'Clear' not found in TSigBaseProperty.
+- `SigFileClipboard.pas(47)` Member 'Value' not found in TSigBaseProperty.
+- `SigFileClipboard.pas(51)` Member 'PasteFromClipboard' not found in TSigBaseProperty.
+- `SigFileClipboard.pas(51)` Member 'PasteFromClipboard' not found in TSigBaseProperty.
+- `SigFileClipboard.pas(83)` Member 'IsMe' not found in TSigBaseProperty.
+- `SigFileImageList.pas(173)` Unresolved identifier 'tSigRelativeFileProperty' (kept as-is).
+- `SigFileImageList.pas(131)` Unresolved identifier 'Entry' (kept as-is).
+- `SigFileImageList.pas(71)` 'Max' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `SigFileImageList.pas(71)` 'Max' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `SigFileImageList.pas(117)` 'Max' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `SigFileImageList.pas(117)` 'Max' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `SigFileImageList.pas(101)` 'Max' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `SigFileImageList.pas(101)` 'Max' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `SigFileImageSelector.pas(134)` Member 'ColCount' not found in TStringGrid.
+- `SigFileImageSelector.pas(135)` Member 'Canvas' not found in TStringGrid.
+- `SigFileImageSelector.pas(138)` Unresolved identifier 'Pen' (kept as-is).
+- `SigFileImageSelector.pas(139)` Member 'Max' not found in tSigFileImageList.
+- `SigFileImageSelector.pas(141)` Unresolved identifier 'Rectangle' (kept as-is).
+- `SigFileImageSelector.pas(141)` Unresolved identifier 'Rectangle' (kept as-is).
+- `SigFileImageSelector.pas(148)` Unresolved identifier 'Rectangle' (kept as-is).
+- `SigFileImageSelector.pas(148)` Unresolved identifier 'Rectangle' (kept as-is).
+- `SigFileImageSelector.pas(188)` Member 'ColCount' not found in TStringGrid.
+- `SigFileImageSelector.pas(163)` Member 'MouseToCell' not found in TStringGrid.
+- `SigFileImageSelector.pas(163)` Member 'MouseToCell' not found in TStringGrid.
+- `SigFileImageSelector.pas(164)` Member 'ColCount' not found in TStringGrid.
+- `SigFileImageSelector.pas(99)` Member 'InsertNewChild' not found in tSigFileImageList.
+- `SigFileImageSelector.pas(99)` Member 'InsertNewChild' not found in tSigFileImageList.
+- `SigFileImageSelector.pas(172)` Member 'MouseToCell' not found in TStringGrid.
+- `SigFileImageSelector.pas(172)` Member 'MouseToCell' not found in TStringGrid.
+- `SigFileImageSelector.pas(173)` Member 'ColCount' not found in TStringGrid.
+- `SigFileImageSelector.pas(176)` Member 'Max' not found in tSigFileImageList.
+- `SigFileImageSelector.pas(178)` Member 'Max' not found in tSigFileImageList.
+- `SigFileImageSelector.pas(180)` Member 'MoveChild' not found in tSigFileImageList.
+- `SigFileImageSelector.pas(180)` Member 'MoveChild' not found in tSigFileImageList.
+- `SigFileImageSelector.pas(181)` Member 'Invalidate' not found in TStringGrid.
+- `SigFileImageSelector.pas(110)` VCL member 'Kind' has no automatic WPF mapping (kept as BitBtn1.Kind).
+- `SigFileImageSelector.pas(110)` Unresolved identifier 'bkOK' (kept as-is).
+- `SigFileImageSelector.pas(114)` VCL member 'Kind' has no automatic WPF mapping (kept as BitBtn1.Kind).
+- `SigFileImageSelector.pas(114)` Unresolved identifier 'bkCancel' (kept as-is).
+- `SigFilePgmStatus.pas(463)` Unresolved identifier 'SaveWithFile' (kept as-is).
+- `SigFilePgmStatus.pas(214)` Unresolved identifier 'ValueAsInt' (kept as-is).
+- `SigFilePgmStatus.pas(254)` Unresolved identifier 'ValueAsInt' (kept as-is).
+- `SigFilePgmStatus.pas(256)` Unresolved identifier 'ValueAsInt' (kept as-is).
+- `SigFilePgmStatus.pas(223)` Unresolved identifier 'AmUndoing' (kept as-is).
+- `SigFilePgmStatus.pas(227)` Unresolved identifier 'AmRedoing' (kept as-is).
+- `SigFilePgmStatus.pas(231)` Unresolved identifier 'ValueAsInt' (kept as-is).
+- `SigFilePgmStatus.pas(233)` Unresolved identifier 'ValueAsInt' (kept as-is).
+- `SigFilePgmStatus.pas(238)` Unresolved identifier 'AmUndoing' (kept as-is).
+- `SigFilePgmStatus.pas(242)` Unresolved identifier 'AmRedoing' (kept as-is).
+- `SigFilePgmStatus.pas(302)` Unresolved identifier 'ValueAsInt' (kept as-is).
+- `SigFilePgmStatus.pas(304)` Unresolved identifier 'ValueAsInt' (kept as-is).
+- `SigFilePgmStatus.pas(348)` VCL member 'Selection' has no automatic WPF mapping (kept as fControl.Selection).
+- `SigFilePgmStatus.pas(349)` VCL member 'Selection' has no automatic WPF mapping (kept as fControl.Selection).
+- `SigFilePgmStatus.pas(350)` Unresolved identifier 'Value' (kept as-is).
+- `SigFilePgmStatus.pas(362)` Unresolved identifier 'Value' (kept as-is).
+- `SigFilePgmStatus.pas(421)` Unresolved identifier 'Value' (kept as-is).
+- `SigFilePgmStatus.pas(429)` Unresolved identifier 'Value' (kept as-is).
+- `SigFilePgmStatus.pas(430)` Unresolved identifier 'Value' (kept as-is).
+- `SigFilePgmStatus.pas(438)` Unresolved identifier 'Top' (kept as-is).
+- `SigFilePgmStatus.pas(439)` Unresolved identifier 'Bottom' (kept as-is).
+- `SigFilePgmStatus.pas(440)` Unresolved identifier 'Left' (kept as-is).
+- `SigFilePgmStatus.pas(441)` Unresolved identifier 'Right' (kept as-is).
+- `SigFilePgmStatus.pas(128)` Unresolved identifier 'SaveWithFile' (kept as-is).
+- `SigFilePgmStatus.pas(135)` Unresolved identifier 'Entry' (kept as-is).
+- `SigFilePgmStatus.pas(187)` Unresolved identifier 'Count' (kept as-is).
+- `SigFilePgmStatus.pas(189)` Unresolved identifier 'Children' (kept as-is).
+- `SigFilePgmStatus.pas(192)` Unresolved identifier 'Children' (kept as-is).
+- `SigFilePgmStatus.pas(192)` Unresolved identifier 'Children' (kept as-is).
+- `SigFilePgmStatus.pas(118)` Unresolved identifier 'Count' (kept as-is).
+- `UnitShortNameAndIconEditor.pas(89)` Unresolved identifier 'UnitPCCfgFile' (kept as-is).
+- `UnitFrameIconEditor.pas(718)` Unresolved identifier 'FindFirst' (kept as-is).
+- `UnitFrameIconEditor.pas(723)` Unresolved identifier 'FindNext' (kept as-is).
+- `UnitFrameIconEditor.pas(724)` Unresolved identifier 'FindClose' (kept as-is).
+- `UnitFrameIconEditor.pas(724)` Unresolved identifier 'FindClose' (kept as-is).
+- `UnitFrameIconEditor.pas(446)` Unresolved identifier 'DefaultRowHeight' (kept as-is).
+- `UnitFrameIconEditor.pas(451)` Unresolved identifier 'DefaultColWidth' (kept as-is).
+- `UnitFrameIconEditor.pas(451)` Unresolved identifier 'GridLineWidth' (kept as-is).
+- `UnitFrameIconEditor.pas(452)` Unresolved identifier 'GridLineWidth' (kept as-is).
+- `UnitFrameIconEditor.pas(466)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitFrameIconEditor.pas(468)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitFrameIconEditor.pas(365)` Member 'ColCount' not found in TStringGrid.
+- `UnitFrameIconEditor.pas(238)` Member 'Invalidate' not found in TStringGrid.
+- `SigTranslation.pas(209)` Unresolved identifier 'Children' (kept as-is).
+- `SigTranslation.pas(211)` Unresolved identifier 'Count' (kept as-is).
+- `SigTranslation.pas(213)` Unresolved identifier 'Item' (kept as-is).
+- `SigTranslation.pas(215)` Unresolved identifier 'Item' (kept as-is).
+- `SigTranslation.pas(71)` Unresolved identifier 'Children' (kept as-is).
+- `SigTranslation.pas(73)` Unresolved identifier 'Count' (kept as-is).
+- `SigTranslation.pas(75)` Unresolved identifier 'Item' (kept as-is).
+- `SigTranslation.pas(80)` Unresolved identifier 'tSigSimpleProperty' (kept as-is).
+- `SigTranslation.pas(100)` Unresolved identifier 'tSigSimpleProperty' (kept as-is).
+- `SigTranslation.pas(101)` Member 'Value' not found in TSigBaseProperty.
+- `SigTranslation.pas(113)` Unresolved identifier 'Children' (kept as-is).
+- `SigTranslation.pas(115)` Unresolved identifier 'Count' (kept as-is).
+- `SigTranslation.pas(117)` Unresolved identifier 'Item' (kept as-is).
+- `SigTranslation.pas(199)` Unresolved identifier 'Children' (kept as-is).
+- `SigTranslation.pas(199)` Unresolved identifier 'Children' (kept as-is).
+- `SigTranslation.pas(199)` 'SortCompare' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `SigTranslation.pas(199)` 'SortCompare' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `SigTranslation.pas(200)` Unresolved identifier 'IsDirty' (kept as-is).
+- `SigTranslation.pas(154)` Unresolved identifier 'TerminationString' (kept as-is).
+- `SigTranslation.pas(194)` Unresolved identifier 'IsDirty' (kept as-is).
+- `SigTranslation.pas(59)` Unresolved identifier 'tSigSimpleProperty' (kept as-is).
+- `SigTranslation.pas(60)` Unresolved identifier 'tSigSimpleProperty' (kept as-is).
+- `PrevPrinter.pas(437)` Unresolved identifier 'TMetaFile' (kept as-is).
+- `PrevPrinter.pas(811)` Unresolved identifier 'GetTextMetrics' (kept as-is).
+- `PrevPrinter.pas(811)` Unresolved identifier 'GetTextMetrics' (kept as-is).
+- `PrevPrinter.pas(837)` Type RECT used as a function.
+- `PrevPrinter.pas(935)` Type RECT used as a function.
+- `PrevPrinter.pas(205)` 'Font' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `PrevPrinter.pas(205)` 'Font' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `PrevPrinter.pas(206)` 'Font' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `PrevPrinter.pas(206)` 'Font' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `PrevPrinter.pas(879)` Unresolved identifier 'IsRectEmpty' (kept as-is).
+- `PrevPrinter.pas(892)` Unresolved identifier 'SetMapMode' (kept as-is).
+- `PrevPrinter.pas(892)` Unresolved identifier 'MM_TEXT' (kept as-is).
+- `PrevPrinter.pas(893)` Unresolved identifier 'EM_FORMATRANGE' (kept as-is).
+- `PrevPrinter.pas(897)` Unresolved identifier 'EM_FORMATRANGE' (kept as-is).
+- `PrevPrinter.pas(901)` Unresolved identifier 'EM_FORMATRANGE' (kept as-is).
+- `PrevPrinter.pas(902)` Unresolved identifier 'SetMapMode' (kept as-is).
+- `PrevPrinter.pas(902)` Unresolved identifier 'SetMapMode' (kept as-is).
+- `jwawintype.pas(1808)` 'EJwaLoadLibraryError.CreateResFmt' could not be resolved.
+- `jwawintype.pas(1813)` 'EJwaGetProcAddressError.CreateResFmt' could not be resolved.
+- `SigFileDSMList.pas(71)` Unresolved identifier 'Value' (kept as-is).
+- `UnitSelectInputGroup.pas(224)` VCL member 'Selected' has no automatic WPF mapping (kept as ListBoxIG.Selected).
+- `UnitSelectInputGroup.pas(247)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitSelectInputGroup.pas(162)` VCL member 'Selected' has no automatic WPF mapping (kept as ListBoxIG.Selected).
+- `UnitCEStructures.pas(170)` Unresolved identifier 'Count' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(229)` VCL member 'Selected' has no automatic WPF mapping (kept as TreeViewWhereUsed.Selected).
+- `UnitFrameGlobalObjectEditor.pas(232)` Unresolved identifier 'TTreeNode' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(251)` VCL member 'Selected' has no automatic WPF mapping (kept as TreeViewWhereUsed.Selected).
+- `UnitFrameGlobalObjectEditor.pas(254)` Unresolved identifier 'TTreeNode' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(256)` Unresolved identifier 'tCETreeProperty' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(257)` Unresolved identifier 'TZFPGlobalObject' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(193)` Unresolved identifier 'TTreeNode' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(194)` Unresolved identifier 'tCETreeProperty' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(195)` Unresolved identifier 'TZFPGlobalObject' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(207)` Unresolved identifier 'TTreeNode' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(208)` Unresolved identifier 'tCETreeProperty' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(209)` Unresolved identifier 'TZFPGlobalObject' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(107)` VCL member 'Selected' has no automatic WPF mapping (kept as TreeViewWhereUsed.Selected).
+- `UnitFrameGlobalObjectEditor.pas(110)` Unresolved identifier 'TTreeNode' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(111)` Unresolved identifier 'tCETreeProperty' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(112)` Unresolved identifier 'TZFPGlobalObject' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(126)` Unresolved identifier 'TCETreeProperty' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(128)` Unresolved identifier 'TCETreeProperty' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(141)` Unresolved identifier 'TCETreeProperty' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(143)` Unresolved identifier 'TCETreeProperty' (kept as-is).
+- `UnitFrameGlobalObjectEditor.pas(292)` VCL member 'Selected' has no automatic WPF mapping (kept as TreeViewWhereUsed.Selected).
+- `UnitFrameGlobalObjectEditor.pas(294)` VCL member 'Selected' has no automatic WPF mapping (kept as TreeViewWhereUsed.Selected).
+- `SigFileDefaultableObjects.pas(383)` Unresolved identifier 'ValueAsBool' (kept as-is).
+- `SigFileDefaultableObjects.pas(405)` Unresolved identifier 'ValueAsBool' (kept as-is).
+- `SigFileDefaultableObjects.pas(409)` Unresolved identifier 'ValueAsBool' (kept as-is).
+- `SigFileDefaultableObjects.pas(413)` Unresolved identifier 'ValueAsBool' (kept as-is).
+- `SigFileDefaultableObjects.pas(346)` Unresolved identifier 'Value' (kept as-is).
+- `SigFileDefaultableObjects.pas(350)` Unresolved identifier 'Value' (kept as-is).
+- `SigFileDefaultableObjects.pas(137)` Unresolved identifier 'Value' (kept as-is).
+- `SigFileDefaultableObjects.pas(141)` Unresolved identifier 'Value' (kept as-is).
+- `SigFileDefaultableObjects.pas(361)` Unresolved identifier 'Value' (kept as-is).
+- `SigFileDefaultableObjects.pas(365)` Unresolved identifier 'Value' (kept as-is).
+- `SigFileDefaultableObjects.pas(369)` Unresolved identifier 'Value' (kept as-is).
+- `SigFileDefaultableObjects.pas(297)` Unresolved identifier 'Style' (kept as-is).
+- `SigFileDefaultableObjects.pas(297)` Unresolved identifier 'csDropDownList' (kept as-is).
+- `SigFileDefaultableObjects.pas(88)` Unresolved identifier 'tSigBooleanProperty' (kept as-is).
+- `SigFileDefaultableObjects.pas(90)` Unresolved identifier 'tSigBooleanProperty' (kept as-is).
+- `SigFileDefaultableObjects.pas(328)` Unresolved identifier 'Value' (kept as-is).
+- `UnitFrameInputGroupEditor.pas(118)` Member 'Parent' not found in TStringGrid.
+- `UnitFrameInputGroupEditor.pas(119)` Member 'DefaultColWidth' not found in TStringGrid.
+- `UnitFrameInputGroupEditor.pas(120)` Member 'DefaultRowHeight' not found in TStringGrid.
+- `UnitFrameInputGroupEditor.pas(121)` Member 'Align' not found in TStringGrid.
+- `UnitFrameInputGroupEditor.pas(121)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitFrameInputGroupEditor.pas(122)` Member 'TabOrder' not found in TStringGrid.
+- `UnitFrameOutputGroupEditor.pas(73)` Member 'Parent' not found in TStringGrid.
+- `UnitFrameOutputGroupEditor.pas(74)` Member 'DefaultColWidth' not found in TStringGrid.
+- `UnitFrameOutputGroupEditor.pas(75)` Member 'DefaultRowHeight' not found in TStringGrid.
+- `UnitFrameOutputGroupEditor.pas(76)` Member 'Align' not found in TStringGrid.
+- `UnitFrameOutputGroupEditor.pas(76)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitFrameOutputGroupEditor.pas(77)` Member 'TabOrder' not found in TStringGrid.
+- `UnitASCIITransportLayer.pas(735)` Unresolved identifier 'ERROR_IO_PENDING' (kept as-is).
+- `UnitASCIITransportLayer.pas(737)` Unresolved identifier 'ERROR_IO_INCOMPLETE' (kept as-is).
+- `UnitASCIITransportLayer.pas(248)` Member 'OwnsObjects' is not provided by TStringList in DelphiRtl.
+- `UnitASCIITransportLayer.pas(250)` Member 'OwnsObjects' is not provided by TStringList in DelphiRtl.
+- `UnitASCIITransportLayer.pas(214)` Unresolved identifier 'NO_ERROR' (kept as-is).
+- `UnitASCIITransportLayer.pas(439)` Unresolved identifier 'ERROR_INVALID_HANDLE' (kept as-is).
+- `UnitASCIITransportLayer.pas(593)` Unresolved identifier 'ERROR_INVALID_HANDLE' (kept as-is).
+- `UnitASCIITransportLayer.pas(403)` Unresolved identifier 'ERROR_INVALID_HANDLE' (kept as-is).
+- `UnitASCIITransportLayer.pas(405)` Unresolved identifier 'NO_ERROR' (kept as-is).
+- `UnitASCIITransportLayer.pas(470)` Unresolved identifier 'NO_ERROR' (kept as-is).
+- `UnitGlobalDevices.pas(80)` Unresolved identifier 'RowHeights' (kept as-is).
+- `UnitGlobalDevices.pas(81)` Unresolved identifier 'RowHeights' (kept as-is).
+- `UnitGlobalDevices.pas(85)` Unresolved identifier 'RowHeights' (kept as-is).
+- `UnitGlobalDevices.pas(86)` Unresolved identifier 'RowHeights' (kept as-is).
+- `UnitGlobalDevices.pas(135)` Member 'Canvas' not found in TSigGeneralGrid.
+- `UnitGlobalDevices.pas(137)` Unresolved identifier 'Pen' (kept as-is).
+- `UnitGlobalDevices.pas(138)` Unresolved identifier 'Pen' (kept as-is).
+- `UnitGlobalDevices.pas(139)` Unresolved identifier 'MoveTo' (kept as-is).
+- `UnitGlobalDevices.pas(139)` Unresolved identifier 'MoveTo' (kept as-is).
+- `UnitGlobalDevices.pas(140)` Unresolved identifier 'LineTo' (kept as-is).
+- `UnitGlobalDevices.pas(140)` Unresolved identifier 'LineTo' (kept as-is).
+- `UnitGlobalDevices.pas(141)` Unresolved identifier 'Pen' (kept as-is).
+- `UnitGlobalDevices.pas(142)` Unresolved identifier 'MoveTo' (kept as-is).
+- `UnitGlobalDevices.pas(142)` Unresolved identifier 'MoveTo' (kept as-is).
+- `UnitGlobalDevices.pas(143)` Unresolved identifier 'LineTo' (kept as-is).
+- `UnitGlobalDevices.pas(143)` Unresolved identifier 'LineTo' (kept as-is).
+- `UnitGlobalDevices.pas(144)` Unresolved identifier 'Pen' (kept as-is).
+- `UnitGlobalDevices.pas(114)` Member 'Canvas' not found in TSigGeneralGrid.
+- `UnitGlobalDevices.pas(116)` Unresolved identifier 'Pen' (kept as-is).
+- `UnitGlobalDevices.pas(117)` Unresolved identifier 'Pen' (kept as-is).
+- `UnitGlobalDevices.pas(118)` Unresolved identifier 'MoveTo' (kept as-is).
+- `UnitGlobalDevices.pas(118)` Unresolved identifier 'MoveTo' (kept as-is).
+- `UnitGlobalDevices.pas(119)` Unresolved identifier 'LineTo' (kept as-is).
+- `UnitGlobalDevices.pas(119)` Unresolved identifier 'LineTo' (kept as-is).
+- `UnitGlobalDevices.pas(120)` Unresolved identifier 'Pen' (kept as-is).
+- `UnitGlobalDevices.pas(121)` Unresolved identifier 'MoveTo' (kept as-is).
+- `UnitGlobalDevices.pas(121)` Unresolved identifier 'MoveTo' (kept as-is).
+- `UnitGlobalDevices.pas(122)` Unresolved identifier 'LineTo' (kept as-is).
+- `UnitGlobalDevices.pas(122)` Unresolved identifier 'LineTo' (kept as-is).
+- `UnitGlobalDevices.pas(123)` Unresolved identifier 'Pen' (kept as-is).
+- `UnitLogFileCfg.pas(42)` No implementation found for tLogField.ValueAsInt; a stub was generated.
+- `UnitLogFileCfg.pas(43)` No implementation found for tLogField.ValueAsBool; a stub was generated.
+- `UnitLogFileCfg.pas` No implementation found for constructor tLogRequestIDs.Create.
+- `UnitLogFileCfg.pas(60)` No implementation found for tLogRequestIDs.GetRequestID; a stub was generated.
+- `UnitLogFileCfg.pas(63)` No implementation found for tLogRequestIDs.BuildRequestList; a stub was generated.
+- `UnitLogFileCfg.pas` No implementation found for constructor tLogFieldDefs.Create.
+- `UnitCTecVersion.pas(57)` Unresolved identifier 'CharInSet' (kept as-is).
+- `UnitCTecVersion.pas(156)` Unresolved identifier 'CharInSet' (kept as-is).
+- `UnitFrameZoneEditor.pas(84)` Member 'Parent' not found in TStringGrid.
+- `UnitFrameZoneEditor.pas(85)` Member 'DefaultColWidth' not found in TStringGrid.
+- `UnitFrameZoneEditor.pas(86)` Member 'DefaultRowHeight' not found in TStringGrid.
+- `UnitFrameZoneEditor.pas(87)` Member 'Align' not found in TStringGrid.
+- `UnitFrameZoneEditor.pas(87)` Unresolved identifier 'alClient' (kept as-is).
+- `UnitFrameZoneEditor.pas(88)` Member 'TabOrder' not found in TStringGrid.
+- `UnitZFPDiskFile.pas(145)` Unresolved identifier 'Value' (kept as-is).
+- `UnitZFPDiskFile.pas(150)` Unresolved identifier 'System' (kept as-is).
+- `UnitZFPDiskFile.pas(150)` Unresolved identifier 'Value' (kept as-is).
+- `UnitZFPDiskFile.pas(84)` Unresolved identifier 'Value' (kept as-is).
+- `UnitZFPDiskFile.pas(94)` Unresolved identifier 'tFile' (kept as-is).
+- `UnitZFPDiskFile.pas(94)` Unresolved identifier 'Value' (kept as-is).
+- `UnitZFPDiskFile.pas(172)` Unresolved identifier 'tFile' (kept as-is).
+- `UnitZFPDiskFile.pas(172)` Unresolved identifier 'tFile' (kept as-is).
+- `UnitZFPDiskFile.pas(172)` Unresolved identifier 'Value' (kept as-is).
+- `UnitZFPDiskFile.pas(220)` Unresolved identifier 'Value' (kept as-is).
+- `UnitZFPDiskFile.pas(233)` Unresolved identifier 'OwnerFile' (kept as-is).
+- `UnitZFPDiskFile.pas(238)` Unresolved identifier 'OwnerFile' (kept as-is).
+- `UnitZFPDiskFile.pas(253)` Unresolved identifier 'OwnerFile' (kept as-is).
+- `UnitZFPDiskFile.pas(265)` Unresolved identifier 'OwnerFile' (kept as-is).
+- `UnitZFPDiskFile.pas(292)` Unresolved identifier 'tFile' (kept as-is).
+- `UnitZFPDiskFile.pas(292)` Unresolved identifier 'tFile' (kept as-is).
+- `UnitZFPDiskFile.pas(295)` Unresolved identifier 'Value' (kept as-is).
+- `UnitChangeDefaultLogo.pas(100)` Unresolved identifier 'FileSize' (kept as-is).
+- Unresolved identifier 'cColSel' (kept as-is).
+- `UnitDeviceEditorHelper.pas(92)` Unresolved identifier 'cColSel' (kept as-is).
+- Unresolved identifier 'cColPanel' (kept as-is).
+- `UnitDeviceEditorHelper.pas(93)` Unresolved identifier 'cColPanel' (kept as-is).
+- Unresolved identifier 'cColLoop' (kept as-is).
+- `UnitDeviceEditorHelper.pas(94)` Unresolved identifier 'cColLoop' (kept as-is).
+- Unresolved identifier 'cColPosition' (kept as-is).
+- `UnitDeviceEditorHelper.pas(95)` Unresolved identifier 'cColPosition' (kept as-is).
+- Unresolved identifier 'cColSubDevice' (kept as-is).
+- `UnitDeviceEditorHelper.pas(96)` Unresolved identifier 'cColSubDevice' (kept as-is).
+- Unresolved identifier 'cColDeviceType' (kept as-is).
+- `UnitDeviceEditorHelper.pas(97)` Unresolved identifier 'cColDeviceType' (kept as-is).
+- Unresolved identifier 'cColDeviceName' (kept as-is).
+- `UnitDeviceEditorHelper.pas(98)` Unresolved identifier 'cColDeviceName' (kept as-is).
+- `UnitDeviceEditorHelper.pas(227)` Member 'OnDrawCell' not found in TStringGrid.
+- `UnitDeviceEditorHelper.pas(227)` 'SigNETStringGridDevicesDrawCell' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitDeviceEditorHelper.pas(227)` 'SigNETStringGridDevicesDrawCell' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitDeviceEditorHelper.pas(228)` Member 'OnMouseDown' not found in TStringGrid.
+- `UnitDeviceEditorHelper.pas(228)` 'SigNETStringGridDevicesMouseDown' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitDeviceEditorHelper.pas(228)` 'SigNETStringGridDevicesMouseDown' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitDeviceEditorHelper.pas(419)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitDeviceEditorHelper.pas(421)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitDeviceEditorHelper.pas(155)` Member 'Cells' not found in TStringGrid.
+- `UnitDeviceEditorHelper.pas(203)` Member 'Cells' not found in TStringGrid.
+- `UnitDeviceEditorHelper.pas(208)` Member 'Cells' not found in TStringGrid.
+- `UnitDeviceEditorHelper.pas(407)` Member 'Objects' not found in TStringGrid.
+- `UnitDeviceEditorHelper.pas(291)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitDeviceEditorHelper.pas(294)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitDeviceEditorHelper.pas(295)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitDeviceEditorHelper.pas(296)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitDeviceEditorHelper.pas(297)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitDeviceEditorHelper.pas(298)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitDeviceEditorHelper.pas(298)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitDeviceEditorHelper.pas(299)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitDeviceEditorHelper.pas(300)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitDeviceEditorHelper.pas(304)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitDeviceEditorHelper.pas(306)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitDeviceEditorHelper.pas(306)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitDeviceEditorHelper.pas(306)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitDeviceEditorHelper.pas(310)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitDeviceEditorHelper.pas(311)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitDeviceEditorHelper.pas(312)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitDeviceEditorHelper.pas(312)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitDeviceEditorHelper.pas(313)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitDeviceEditorHelper.pas(322)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitDeviceEditorHelper.pas(324)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitDeviceEditorHelper.pas(328)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitDeviceEditorHelper.pas(346)` Member 'MouseToCell' not found in TStringGrid.
+- `UnitDeviceEditorHelper.pas(346)` Member 'MouseToCell' not found in TStringGrid.
+- `UnitDeviceEditorHelper.pas(113)` Unresolved identifier 'Objects' (kept as-is).
+- `UnitDeviceEditorHelper.pas(114)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitDeviceEditorHelper.pas(115)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitDeviceEditorHelper.pas(116)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitDeviceEditorHelper.pas(117)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitDeviceEditorHelper.pas(118)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitDeviceEditorHelper.pas(119)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitDeviceEditorHelper.pas(121)` 'Invalidate' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitDeviceEditorHelper.pas(172)` Unresolved identifier 'Objects' (kept as-is).
+- `UnitDeviceEditorHelper.pas(246)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitDeviceEditorHelper.pas(247)` Unresolved identifier 'ClientWidth' (kept as-is).
+- `UnitDeviceEditorHelper.pas(247)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitDeviceEditorHelper.pas(247)` Unresolved identifier 'GridLineWidth' (kept as-is).
+- `UnitDeviceEditorHelper.pas(248)` Unresolved identifier 'RowHeights' (kept as-is).
+- `UnitDeviceEditorHelper.pas(250)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitDeviceEditorHelper.pas(252)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitDeviceEditorHelper.pas(255)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitDeviceEditorHelper.pas(258)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitDeviceEditorHelper.pas(261)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitDeviceEditorHelper.pas(264)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitDeviceEditorHelper.pas(270)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitPanelLogIn.pas(93)` Member 'HandleMessage' is not provided by TApplication in DelphiRtl.
+- `PendingActions.pas` No implementation found for constructor tSigPendingAction.Create.
+- `PendingActions.pas(52)` No implementation found for tSigPendingAction.GetCanDelete; a stub was generated.
+- `PendingActions.pas(70)` No implementation found for tSigPendingAction.Execute; a stub was generated.
+- `PendingActions.pas(72)` No implementation found for tSigPendingAction.Matches; a stub was generated.
+- `UnitFileTransfer.pas(115)` Member 'FileName' not found in TSigSaveDialog.
+- `UnitFileTransfer.pas(116)` Member 'InitialDir' not found in TSigSaveDialog.
+- `UnitFileTransfer.pas(117)` Member 'Execute' not found in TSigSaveDialog.
+- `UnitFileTransfer.pas(119)` Member 'FileName' not found in TSigSaveDialog.
+- `UnitSigFileBindings.pas(998)` Member 'Max' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(983)` Member 'ActiveChild' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(462)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(496)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(508)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(527)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(559)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(571)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(598)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(653)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(626)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(1187)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(1187)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(1187)` 'PendingRemoveAction' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1187)` 'PendingRemoveAction' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1197)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(1281)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(1281)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(1281)` 'PendingRemoveAction' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1281)` 'PendingRemoveAction' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1291)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(1120)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(1120)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(1120)` 'PendingRemoveAction' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1120)` 'PendingRemoveAction' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1130)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(1055)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(1055)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(1055)` 'PendingComponentChangeAction' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1055)` 'PendingComponentChangeAction' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1088)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(735)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(735)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(735)` 'PendingNotifyAction' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(735)` 'PendingNotifyAction' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(775)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(674)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(674)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(674)` 'PendingNotifyAction' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(674)` 'PendingNotifyAction' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(937)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(937)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(937)` 'PendingRowChangeAction' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(937)` 'PendingRowChangeAction' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(956)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(888)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(888)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(888)` 'PendingMaxChangeAction' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(888)` 'PendingMaxChangeAction' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(924)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(836)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(836)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(836)` 'PendingCellEditChangeAction' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(836)` 'PendingCellEditChangeAction' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(855)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(788)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(788)` Member 'Add' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(788)` 'PendingChangeChildAction' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(788)` 'PendingChangeChildAction' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(823)` Member 'ExecuteTick' not found in tSigPendingActionList.
+- `UnitSigFileBindings.pas(2108)` Member 'OnActiveChildChange' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(2110)` Member 'OnActiveChildChange' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(2110)` 'OnActiveChildChange' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(2110)` 'OnActiveChildChange' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1983)` Member 'OnMaxChange' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1985)` Member 'OnMaxChange' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1985)` 'OnMaxChange' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1985)` 'OnMaxChange' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1987)` Member 'OnNotify' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1989)` Member 'OnNotify' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1989)` 'Notify' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1989)` 'Notify' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(2010)` Member 'Owner' not found in TSigBaseProperty.
+- `UnitSigFileBindings.pas(2010)` Member 'Owner' not found in TSigBaseProperty.
+- `UnitSigFileBindings.pas(2016)` Member 'Value' not found in TSigBaseProperty.
+- `UnitSigFileBindings.pas(2030)` Member 'Max' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(2032)` Member 'Entry' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(2033)` Member 'Children' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(2034)` Member 'Value' not found in TSigBaseProperty.
+- `UnitSigFileBindings.pas(2064)` Unresolved identifier 'OnChange' (kept as-is).
+- `UnitSigFileBindings.pas(2064)` 'ComponentChange' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(2064)` 'ComponentChange' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(2093)` Member 'ActiveChild' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1337)` Member 'OnNotify' not found in TSigBaseProperty.
+- `UnitSigFileBindings.pas(1339)` Member 'OnNotify' not found in TSigBaseProperty.
+- `UnitSigFileBindings.pas(1339)` 'Notify' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1339)` 'Notify' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1495)` Unresolved identifier 'OnNotify' (kept as-is).
+- `UnitSigFileBindings.pas(1497)` Unresolved identifier 'OnNotify' (kept as-is).
+- `UnitSigFileBindings.pas(1497)` 'Notify' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1497)` 'Notify' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1504)` Member 'OnRowSelectionChange' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1506)` Member 'OnRowSelectionChange' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1506)` 'OnRowChange' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1506)` 'OnRowChange' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1509)` Member 'OnActiveChildChange' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1511)` Member 'OnActiveChildChange' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1511)` 'OnActiveChildChange' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1511)` 'OnActiveChildChange' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1514)` Member 'OnMaxChange' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1516)` Member 'OnMaxChange' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1516)` 'OnMaxChange' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1516)` 'OnMaxChange' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1518)` Member 'RowCount' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1518)` Member 'Max' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1518)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1520)` Member 'OnCellEditChange' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1522)` Member 'OnCellEditChange' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1522)` 'OnCellEditChange' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1522)` 'OnCellEditChange' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1524)` Member 'OnSelectCell' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1526)` Member 'OnSelectCell' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1526)` 'OnCellEditClick' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1526)` 'OnCellEditClick' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1533)` Unresolved identifier 'tSigObjectList' (kept as-is).
+- `UnitSigFileBindings.pas(1535)` Unresolved identifier 'tSigObjectList' (kept as-is).
+- `UnitSigFileBindings.pas(1537)` Unresolved identifier 'ChildArray' (kept as-is).
+- `UnitSigFileBindings.pas(1745)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1747)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1748)` Member 'Max' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1750)` Member 'Max' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1751)` Member 'RowCount' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1751)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1756)` Member 'ActiveChild' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1758)` Member 'RowBeingEdited' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1585)` Member 'RowBeingEdited' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1585)` Member 'ActiveChild' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1585)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1586)` Member 'RowBeingEdited' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1723)` Member 'RowCount' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1724)` Member 'RowCount' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1724)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1725)` Member 'RowCount' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1609)` Member 'Entry' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1609)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1615)` Member 'Children' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1618)` Unresolved identifier 'tSigBooleanProperty' (kept as-is).
+- `UnitSigFileBindings.pas(1620)` Unresolved identifier 'tSigBooleanProperty' (kept as-is).
+- `UnitSigFileBindings.pas(1624)` Unresolved identifier 'ValueAsBool' (kept as-is).
+- `UnitSigFileBindings.pas(1628)` Unresolved identifier 'ValueAsBool' (kept as-is).
+- `UnitSigFileBindings.pas(1634)` Member 'Value' not found in TSigBaseProperty.
+- `UnitSigFileBindings.pas(1661)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1665)` Member 'ActiveChild' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1665)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1672)` Member 'Entry' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1672)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1678)` Member 'Children' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1681)` Unresolved identifier 'tSigBooleanProperty' (kept as-is).
+- `UnitSigFileBindings.pas(1683)` Unresolved identifier 'tSigBooleanProperty' (kept as-is).
+- `UnitSigFileBindings.pas(1685)` Unresolved identifier 'ValueAsBool' (kept as-is).
+- `UnitSigFileBindings.pas(1687)` Unresolved identifier 'ValueAsBool' (kept as-is).
+- `UnitSigFileBindings.pas(1692)` Unresolved identifier 'ValueAsBool' (kept as-is).
+- `UnitSigFileBindings.pas(1697)` Member 'ActiveChild' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1697)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1705)` Member 'Max' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1705)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1779)` Member 'Owner' not found in TSigBaseProperty.
+- `UnitSigFileBindings.pas(1785)` Member 'Owner' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1793)` Member 'Entry' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1806)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1811)` Member 'Children' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1815)` Unresolved identifier 'tSigBooleanProperty' (kept as-is).
+- `UnitSigFileBindings.pas(1817)` Unresolved identifier 'tSigBooleanProperty' (kept as-is).
+- `UnitSigFileBindings.pas(1819)` Unresolved identifier 'ValueAsBool' (kept as-is).
+- `UnitSigFileBindings.pas(1821)` Member 'Cell' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1825)` Member 'Cell' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1831)` Member 'Cell' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1831)` Member 'Value' not found in TSigBaseProperty.
+- `UnitSigFileBindings.pas(1423)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1426)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1427)` Member 'Entry' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1433)` Member 'Children' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1437)` Unresolved identifier 'tSigBooleanProperty' (kept as-is).
+- `UnitSigFileBindings.pas(1439)` Unresolved identifier 'tSigBooleanProperty' (kept as-is).
+- `UnitSigFileBindings.pas(1441)` Unresolved identifier 'ValueAsBool' (kept as-is).
+- `UnitSigFileBindings.pas(1443)` Member 'Cell' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1447)` Member 'Cell' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1453)` Member 'Cell' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1453)` Member 'Value' not found in TSigBaseProperty.
+- `UnitSigFileBindings.pas(1461)` Member 'ColCount' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1463)` Member 'Cell' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1847)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1849)` Member 'Cell' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1858)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1860)` Member 'Cell' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1371)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1371)` Unresolved identifier 'RowCount' (kept as-is).
+- `UnitSigFileBindings.pas(1373)` Member 'Entry' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1373)` Member 'FixedRows' not found in TSigGeneralGrid.
+- `UnitSigFileBindings.pas(1377)` Member 'Children' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(1380)` Unresolved identifier 'tSigBooleanProperty' (kept as-is).
+- `UnitSigFileBindings.pas(1382)` Unresolved identifier 'tSigBooleanProperty' (kept as-is).
+- `UnitSigFileBindings.pas(1384)` Unresolved identifier 'ValueAsBool' (kept as-is).
+- `UnitSigFileBindings.pas(1386)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitSigFileBindings.pas(1390)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitSigFileBindings.pas(1396)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitSigFileBindings.pas(1396)` Member 'Value' not found in TSigBaseProperty.
+- `UnitSigFileBindings.pas(1401)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitSigFileBindings.pas(1406)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitSigFileBindings.pas(1888)` Unresolved identifier 'OnChange' (kept as-is).
+- `UnitSigFileBindings.pas(1888)` 'ComponentChange' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1888)` 'ComponentChange' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1895)` Unresolved identifier 'OnChange' (kept as-is).
+- `UnitSigFileBindings.pas(1895)` 'ComponentChange' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1895)` 'ComponentChange' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1902)` Unresolved identifier 'OnChange' (kept as-is).
+- `UnitSigFileBindings.pas(1902)` 'ComponentChange' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1902)` 'ComponentChange' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(1934)` Member 'Value' not found in TSigBaseProperty.
+- `UnitSigFileBindings.pas(1922)` Member 'Value' not found in TSigBaseProperty.
+- `UnitSigFileBindings.pas(2233)` Member 'OnNotify' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(2235)` Member 'OnNotify' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(2235)` 'Notify' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(2235)` 'Notify' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitSigFileBindings.pas(2181)` Member 'Children' not found in TSigCompoundProperty.
+- `UnitSigFileBindings.pas(2274)` Member 'Owner' not found in TSigBaseProperty.
+- `UnitSigFileBindings.pas(2280)` Member 'Value' not found in TSigBaseProperty.
+- `UnitSigFileBindings.pas(2257)` Member 'Value' not found in TSigBaseProperty.
+- `UnitNodeChangeProblems.pas(198)` Type name 'tNodeTypeIncompatibilities' used as a value (probably an inherited VCL member of the same name).
+- `UnitNodeChangeProblems.pas(199)` Unresolved identifier 'GetTypeData' (kept as-is).
+- `UnitNodeChangeProblems.pas(80)` 'Max' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitNodeChangeProblems.pas(80)` 'Max' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitNodeChangeProblems.pas(82)` Unresolved identifier 'Loop' (kept as-is).
+- `UnitNodeChangeProblems.pas(83)` Unresolved identifier 'ltSystem' (kept as-is).
+- `UnitNodeChangeProblems.pas(87)` Unresolved identifier 'ltA_Bus' (kept as-is).
+- `UnitNodeChangeProblems.pas(101)` Unresolved identifier 'ltNormal' (kept as-is).
+- `UnitNodeChangeProblems.pas(91)` Unresolved identifier 'Loop' (kept as-is).
+- `UnitNodeChangeProblems.pas(105)` Unresolved identifier 'Loop' (kept as-is).
+- `UnitNodeChangeProblems.pas(108)` Unresolved identifier 'Loop' (kept as-is).
+- `UnitNodeChangeProblems.pas(120)` Unresolved identifier 'NodeCountOfType' (kept as-is).
+- `UnitNodeChangeProblems.pas(120)` Unresolved identifier 'MaxNodeCountOfType' (kept as-is).
+- `UnitNodeChangeProblems.pas(152)` Unresolved identifier 'GetEnumName' (kept as-is).
+- `UnitNodeChangeProblems.pas(161)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitZFPErrorObjects.pas(64)` Unresolved identifier 'tCETreeProperty' (kept as-is).
+- `UnitZFPErrorObjects.pas(85)` Unresolved identifier 'tSigIntegerProperty' (kept as-is).
+- `UnitZFPErrorObjects.pas(87)` Unresolved identifier 'ValueAsInt' (kept as-is).
+- `UnitAdvancedTransferSelector.pas(74)` 'Max' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitAdvancedTransferSelector.pas(74)` 'Max' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitAdvancedTransferSelector.pas(76)` VCL member 'AddItem' has no automatic WPF mapping (kept as CheckListBoxAMNodes.AddItem).
+- `UnitAdvancedTransferSelector.pas(76)` VCL member 'AddItem' has no automatic WPF mapping (kept as CheckListBoxAMNodes.AddItem).
+- `UnitAdvancedTransferSelector.pas(76)` Unresolved identifier 'Node' (kept as-is).
+- `UnitAdvancedTransferSelector.pas(76)` Unresolved identifier 'Node' (kept as-is).
+- `UnitAdvancedTransferSelector.pas(79)` VCL member 'Count' has no automatic WPF mapping (kept as CheckListBoxAMNodes.Count).
+- `UnitAdvancedTransferSelector.pas(59)` 'Max' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitAdvancedTransferSelector.pas(59)` 'Max' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitAdvancedTransferSelector.pas(61)` VCL member 'AddItem' has no automatic WPF mapping (kept as CheckListBoxAMFileSets.AddItem).
+- `UnitAdvancedTransferSelector.pas(61)` VCL member 'AddItem' has no automatic WPF mapping (kept as CheckListBoxAMFileSets.AddItem).
+- `UnitAdvancedTransferSelector.pas(61)` Unresolved identifier 'AdvancedTransfer' (kept as-is).
+- `UnitAdvancedTransferSelector.pas(61)` Unresolved identifier 'AdvancedTransfer' (kept as-is).
+- `UnitAdvancedTransferSelector.pas(64)` VCL member 'Count' has no automatic WPF mapping (kept as CheckListBoxAMFileSets.Count).
+- `TimeSpinButton.pas(147)` 'fOnChangeFirst' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `TimeSpinButton.pas(147)` 'fOnChangeFirst' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `TimeSpinButton.pas(439)` Unresolved identifier 'EditorEnabled' (kept as-is).
+- `TimeSpinButton.pas(370)` Unresolved identifier 'SysUtils' (kept as-is).
+- `TimeSpinButton.pas(376)` Unresolved identifier 'SysUtils' (kept as-is).
+- `TimeSpinButton.pas(378)` Unresolved identifier 'SysUtils' (kept as-is).
+- `TimeSpinButton.pas(385)` Unresolved identifier 'SysUtils' (kept as-is).
+- `TimeSpinButton.pas(387)` Unresolved identifier 'SysUtils' (kept as-is).
+- `TimeSpinButton.pas(389)` Unresolved identifier 'SysUtils' (kept as-is).
+- `TimeSpinButton.pas(391)` Unresolved identifier 'SysUtils' (kept as-is).
+- `TimeSpinButton.pas(398)` Unresolved identifier 'SysUtils' (kept as-is).
+- `TimeSpinButton.pas(400)` Unresolved identifier 'SysUtils' (kept as-is).
+- `TimeSpinButton.pas(402)` Unresolved identifier 'SysUtils' (kept as-is).
+- `TimeSpinButton.pas(404)` Unresolved identifier 'SysUtils' (kept as-is).
+- `TimeSpinButton.pas(406)` Unresolved identifier 'SysUtils' (kept as-is).
+- `UnitDisassociation.pas(45)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitDisassociation.pas(50)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitDisassociation.pas(55)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitDisassociation.pas(57)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitDisassociation.pas(58)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `ThreadObjectList.pas(165)` Unresolved identifier 'TMonitor' (kept as-is).
+- `ThreadObjectList.pas(165)` Unresolved identifier 'TMonitor' (kept as-is).
+- `ThreadObjectList.pas(181)` 'TList.TDirection' could not be resolved.
+- `ThreadObjectList.pas(189)` Member 'RemoveItem' is not provided by TObjectList in DelphiRtl.
+- `ThreadObjectList.pas(189)` Member 'RemoveItem' is not provided by TObjectList in DelphiRtl.
+- `ThreadObjectList.pas(212)` Unresolved identifier 'TMonitor' (kept as-is).
+- `ThreadObjectList.pas(212)` Unresolved identifier 'TMonitor' (kept as-is).
+- Unresolved identifier 'cColSel' (kept as-is).
+- `UnitObjectEditorHelper.pas(84)` Unresolved identifier 'cColSel' (kept as-is).
+- Unresolved identifier 'cColImage' (kept as-is).
+- `UnitObjectEditorHelper.pas(85)` Unresolved identifier 'cColImage' (kept as-is).
+- Unresolved identifier 'cColDeviceName' (kept as-is).
+- `UnitObjectEditorHelper.pas(86)` Unresolved identifier 'cColDeviceName' (kept as-is).
+- Unresolved identifier 'cColID' (kept as-is).
+- `UnitObjectEditorHelper.pas(87)` Unresolved identifier 'cColID' (kept as-is).
+- `UnitObjectEditorHelper.pas(209)` Member 'OnDrawCell' not found in TStringGrid.
+- `UnitObjectEditorHelper.pas(209)` 'SigNETStringGridObjectsDrawCell' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitObjectEditorHelper.pas(209)` 'SigNETStringGridObjectsDrawCell' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitObjectEditorHelper.pas(210)` Member 'OnMouseDown' not found in TStringGrid.
+- `UnitObjectEditorHelper.pas(210)` 'SigNETStringGridObjectsMouseDown' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitObjectEditorHelper.pas(210)` 'SigNETStringGridObjectsMouseDown' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitObjectEditorHelper.pas(357)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitObjectEditorHelper.pas(359)` Unresolved identifier 'XFP4PgmCfg' (kept as-is).
+- `UnitObjectEditorHelper.pas(140)` Member 'Cells' not found in TStringGrid.
+- `UnitObjectEditorHelper.pas(188)` Member 'Cells' not found in TStringGrid.
+- `UnitObjectEditorHelper.pas(193)` Member 'Cells' not found in TStringGrid.
+- `UnitObjectEditorHelper.pas(253)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitObjectEditorHelper.pas(256)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitObjectEditorHelper.pas(257)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitObjectEditorHelper.pas(258)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitObjectEditorHelper.pas(259)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitObjectEditorHelper.pas(260)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitObjectEditorHelper.pas(260)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitObjectEditorHelper.pas(261)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitObjectEditorHelper.pas(262)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitObjectEditorHelper.pas(268)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitObjectEditorHelper.pas(272)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitObjectEditorHelper.pas(273)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitObjectEditorHelper.pas(274)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitObjectEditorHelper.pas(274)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitObjectEditorHelper.pas(275)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitObjectEditorHelper.pas(284)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitObjectEditorHelper.pas(286)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitObjectEditorHelper.pas(290)` Unresolved identifier 'Canvas' (kept as-is).
+- `UnitObjectEditorHelper.pas(308)` Member 'MouseToCell' not found in TStringGrid.
+- `UnitObjectEditorHelper.pas(308)` Member 'MouseToCell' not found in TStringGrid.
+- `UnitObjectEditorHelper.pas(102)` Unresolved identifier 'Objects' (kept as-is).
+- `UnitObjectEditorHelper.pas(103)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitObjectEditorHelper.pas(104)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitObjectEditorHelper.pas(105)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitObjectEditorHelper.pas(107)` 'Invalidate' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `UnitObjectEditorHelper.pas(157)` Unresolved identifier 'Objects' (kept as-is).
+- `UnitObjectEditorHelper.pas(220)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitObjectEditorHelper.pas(221)` Unresolved identifier 'ClientWidth' (kept as-is).
+- `UnitObjectEditorHelper.pas(221)` Unresolved identifier 'ColCount' (kept as-is).
+- `UnitObjectEditorHelper.pas(221)` Unresolved identifier 'GridLineWidth' (kept as-is).
+- `UnitObjectEditorHelper.pas(222)` Unresolved identifier 'RowHeights' (kept as-is).
+- `UnitObjectEditorHelper.pas(224)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitObjectEditorHelper.pas(227)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitObjectEditorHelper.pas(230)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitObjectEditorHelper.pas(236)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitFrameErrorList.pas(321)` Member 'MouseToCell' not found in TSigGeneralGrid.
+- `UnitFrameErrorList.pas(321)` Member 'MouseToCell' not found in TSigGeneralGrid.
+- `UnitFrameErrorList.pas(338)` Member 'MouseToCell' not found in TSigGeneralGrid.
+- `UnitFrameErrorList.pas(338)` Member 'MouseToCell' not found in TSigGeneralGrid.
+- `UnitFrameErrorList.pas(197)` Member 'RowCount' not found in TSigGeneralGrid.
+- `UnitFrameErrorList.pas(199)` Member 'RowCount' not found in TSigGeneralGrid.
+- `UnitFrameErrorList.pas(236)` Member 'RowCount' not found in TSigGeneralGrid.
+- `UnitFrameErrorList.pas(266)` Unresolved identifier 'RowCount' (kept as-is).
+- `UnitFrameErrorList.pas(267)` Unresolved identifier 'RowCount' (kept as-is).
+- `UnitFrameErrorList.pas(270)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitFrameErrorList.pas(271)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitFrameErrorList.pas(297)` Member 'RowCount' not found in TSigGeneralGrid.
+- `UnitFrameErrorList.pas(299)` Member 'Error' not found in TSigGeneralGrid.
+- `UnitFrameErrorList.pas(302)` Member 'RowCount' not found in TSigGeneralGrid.
+- `UnitFrameErrorList.pas(304)` Member 'Error' not found in TSigGeneralGrid.
+- `UnitFrameErrorList.pas(305)` Member 'RowVisible' not found in TSigGeneralGrid.
+- `SigImageList.pas(176)` Member 'Masked' is not provided by TImageList in DelphiRtl.
+- `SigGeneralGrid.pas` No implementation found for constructor TSigGeneralGridCell.Create.
+- `SigGeneralGrid.pas(309)` No implementation found for TSigGeneralGridCell.SetText; a stub was generated.
+- `SigGeneralGrid.pas(310)` No implementation found for TSigGeneralGridCell.SetErrorText; a stub was generated.
+- `SigGeneralGrid.pas` No implementation found for constructor TSigGridEditor.Create.
+- `SigGeneralGrid.pas(85)` No implementation found for TSigGridEditor.OnButtonClick; a stub was generated.
+- `SigGeneralGrid.pas(86)` No implementation found for TSigGridEditor.SetSigGrid; a stub was generated.
+- `SigGeneralGrid.pas(87)` No implementation found for TSigGridEditor.SetStyle; a stub was generated.
+- `SigGeneralGrid.pas(88)` No implementation found for TSigGridEditor.GetSpinEditValue; a stub was generated.
+- `SigGeneralGrid.pas(89)` No implementation found for TSigGridEditor.GetDatePickerValue; a stub was generated.
+- `SigGeneralGrid.pas(90)` No implementation found for TSigGridEditor.GetSpinEdit; a stub was generated.
+- `SigGeneralGrid.pas(91)` No implementation found for TSigGridEditor.EditorExit; a stub was generated.
+- `SigGeneralGrid.pas(92)` No implementation found for TSigGridEditor.OnSpinEditChange; a stub was generated.
+- `SigGeneralGrid.pas(93)` No implementation found for TSigGridEditor.OnDatePickerChange; a stub was generated.
+- `SigGeneralGrid.pas(94)` No implementation found for TSigGridEditor.GetComboBox; a stub was generated.
+- `SigGeneralGrid.pas(95)` No implementation found for TSigGridEditor.SetAutoSizeColumn; a stub was generated.
+- `SigGeneralGrid.pas(96)` No implementation found for TSigGridEditor.GetDropDownListEditValue; a stub was generated.
+- `SigGeneralGrid.pas(97)` No implementation found for TSigGridEditor.GetDropDownImageListEditValue; a stub was generated.
+- `SigGeneralGrid.pas(98)` No implementation found for TSigGridEditor.GetDropDownEditValue; a stub was generated.
+- `SigGeneralGrid.pas(99)` No implementation found for TSigGridEditor.GetMaskEditValue; a stub was generated.
+- `SigGeneralGrid.pas(100)` No implementation found for TSigGridEditor.GetButtonEditValue; a stub was generated.
+- `SigGeneralGrid.pas(101)` No implementation found for TSigGridEditor.OnDropDownListChange; a stub was generated.
+- `SigGeneralGrid.pas(102)` No implementation found for TSigGridEditor.OnDropDownImageListChange; a stub was generated.
+- `SigGeneralGrid.pas(103)` No implementation found for TSigGridEditor.OnMaskEditChange; a stub was generated.
+- `SigGeneralGrid.pas(104)` No implementation found for TSigGridEditor.GetStrings; a stub was generated.
+- `SigGeneralGrid.pas(105)` No implementation found for TSigGridEditor.GetMaskEdit; a stub was generated.
+- `SigGeneralGrid.pas(106)` No implementation found for TSigGridEditor.SetStringList; a stub was generated.
+- `SigGeneralGrid.pas(107)` No implementation found for TSigGridEditor.SetColumn; a stub was generated.
+- `SigGeneralGrid.pas(108)` No implementation found for TSigGridEditor.SetParentColWidth; a stub was generated.
+- `SigGeneralGrid.pas(109)` No implementation found for TSigGridEditor.SetColWidth; a stub was generated.
+- `SigGeneralGrid.pas(110)` No implementation found for TSigGridEditor.SetImages; a stub was generated.
+- `SigGeneralGrid.pas(111)` No implementation found for TSigGridEditor.SetAllowUseToRight; a stub was generated.
+- `SigGeneralGrid.pas(112)` No implementation found for TSigGridEditor.SetParentAutoSizeColumn; a stub was generated.
+- `SigGeneralGrid.pas(113)` No implementation found for TSigGridEditor.SetItemsList; a stub was generated.
+- `SigGeneralGrid.pas(114)` No implementation found for TSigGridEditor.OnDropDownImageListDrawItem; a stub was generated.
+- `SigGeneralGrid.pas(116)` No implementation found for TSigGridEditor.SetVisible; a stub was generated.
+- `SigGeneralGrid.pas(117)` No implementation found for TSigGridEditor.SetOnKeyPress; a stub was generated.
+- `SigGeneralGrid.pas(118)` No implementation found for TSigGridEditor.SetMaxLen; a stub was generated.
+- `SigGeneralGrid.pas(119)` No implementation found for TSigGridEditor.SetMaxVal; a stub was generated.
+- `SigGeneralGrid.pas(120)` No implementation found for TSigGridEditor.SetMinVal; a stub was generated.
+- `SigGeneralGrid.pas(121)` No implementation found for TSigGridEditor.GetButton; a stub was generated.
+- `SigGeneralGrid.pas(122)` No implementation found for TSigGridEditor.SetOnClick; a stub was generated.
+- `SigGeneralGrid.pas(123)` No implementation found for TSigGridEditor.GetCellRowBeingEdited; a stub was generated.
+- `SigGeneralGrid.pas(124)` No implementation found for TSigGridEditor.SetCellRowBeingEdited; a stub was generated.
+- `SigGeneralGrid.pas(125)` No implementation found for TSigGridEditor.GetCellColBeingEdited; a stub was generated.
+- `SigGeneralGrid.pas(126)` No implementation found for TSigGridEditor.SetCellColBeingEdited; a stub was generated.
+- `SigGeneralGrid.pas(127)` No implementation found for TSigGridEditor.GetObjects; a stub was generated.
+- `SigGeneralGrid.pas(128)` No implementation found for TSigGridEditor.SetObjects; a stub was generated.
+- `SigGeneralGrid.pas(129)` No implementation found for TSigGridEditor.GetDatePicker; a stub was generated.
+- `SigGeneralGrid.pas(133)` No implementation found for TSigGridEditor.DelayedImmediateAction; a stub was generated.
+- `SigGeneralGrid.pas(135)` No implementation found for TSigGridEditor.ShowEditor; a stub was generated.
+- `SigGeneralGrid.pas(146)` No implementation found for TSigGridEditor.CheckColWidth; a stub was generated.
+- `SigGeneralGrid.pas(149)` No implementation found for TSigGridEditor.AfterConstruction; a stub was generated.
+- `SigGeneralGrid.pas(150)` No implementation found for TSigGridEditor.Destroy; a stub was generated.
+- `SigGeneralGrid.pas(172)` No implementation found for TSigGridEditor.DrawCell; a stub was generated.
+- `SigGeneralGrid.pas(176)` No implementation found for TSigGridEditor.PrintCell; a stub was generated.
+- `SigGeneralGrid.pas(177)` No implementation found for TSigGridEditor.DesiredRowHeight; a stub was generated.
+- `SigGeneralGrid.pas(178)` No implementation found for TSigGridEditor.DrawString; a stub was generated.
+- `SigGeneralGrid.pas(179)` No implementation found for TSigGridEditor.AutoSizeCol; a stub was generated.
+- `SigGeneralGrid.pas(180)` No implementation found for TSigGridEditor.ScrollBarWidth; a stub was generated.
+- `SigGeneralGrid.pas(249)` No implementation found for TSigGridEditor.ResetText; a stub was generated.
+- `SigGeneralGrid.pas(250)` No implementation found for TSigGridEditor.HideEditor; a stub was generated.
+- `SigGeneralGrid.pas` No implementation found for constructor TSigEditorList.Create.
+- `SigGeneralGrid.pas(260)` No implementation found for TSigEditorList.GetEditor; a stub was generated.
+- `SigGeneralGrid.pas(261)` No implementation found for TSigEditorList.GetEditorType; a stub was generated.
+- `SigGeneralGrid.pas(262)` No implementation found for TSigEditorList.GetChoiceStrings; a stub was generated.
+- `SigGeneralGrid.pas(263)` No implementation found for TSigEditorList.SetVisible; a stub was generated.
+- `SigGeneralGrid.pas(264)` No implementation found for TSigEditorList.SetOnKeyPress; a stub was generated.
+- `SigGeneralGrid.pas(267)` No implementation found for TSigEditorList.Destroy; a stub was generated.
+- `SigGeneralGrid.pas(285)` No implementation found for TSigEditorList.DrawCell; a stub was generated.
+- `SigGeneralGrid.pas(289)` No implementation found for TSigEditorList.PrintCell; a stub was generated.
+- `SigGeneralGrid.pas(291)` No implementation found for TSigEditorList.RegisterEditor; a stub was generated.
+- `SigGeneralGrid.pas(292)` No implementation found for TSigEditorList.UnregisterEditor; a stub was generated.
+- `SigGeneralGrid.pas` No implementation found for constructor TSigGeneralGridCellList.Create.
+- `SigGeneralGrid.pas(342)` No implementation found for TSigGeneralGridCellList.GetSigGeneralGridCell; a stub was generated.
+- `SigGeneralGrid.pas(343)` No implementation found for TSigGeneralGridCellList.GetCell; a stub was generated.
+- `SigGeneralGrid.pas(344)` No implementation found for TSigGeneralGridCellList.SetCell; a stub was generated.
+- `SigGeneralGrid.pas(345)` No implementation found for TSigGeneralGridCellList.GetError; a stub was generated.
+- `SigGeneralGrid.pas(346)` No implementation found for TSigGeneralGridCellList.SetError; a stub was generated.
+- `SigGeneralGrid.pas(347)` No implementation found for TSigGeneralGridCellList.GetEnabled; a stub was generated.
+- `SigGeneralGrid.pas(348)` No implementation found for TSigGeneralGridCellList.SetEnabled; a stub was generated.
+- `SigGeneralGrid.pas(349)` No implementation found for TSigGeneralGridCellList.GetErrorText; a stub was generated.
+- `SigGeneralGrid.pas(350)` No implementation found for TSigGeneralGridCellList.SetErrorText; a stub was generated.
+- `SigGeneralGrid.pas(351)` No implementation found for TSigGeneralGridCellList.GetCellObject; a stub was generated.
+- `SigGeneralGrid.pas(352)` No implementation found for TSigGeneralGridCellList.SetCellObject; a stub was generated.
+- `SigGeneralGrid.pas(353)` No implementation found for TSigGeneralGridCellList.GetCellTag; a stub was generated.
+- `SigGeneralGrid.pas(354)` No implementation found for TSigGeneralGridCellList.SetCellTag; a stub was generated.
+- `SelectableEdit.pas(168)` VCL member 'Style' has no automatic WPF mapping (kept as fComboBox.Style).
+- `SelectableEdit.pas(168)` Unresolved identifier 'csDropDownList' (kept as-is).
+- `Common.pas(291)` Unresolved identifier 'StrictDelimiter' (kept as-is).
+- `Common.pas(1009)` Unresolved identifier 'DrawText' (kept as-is).
+- `Common.pas(1083)` Unresolved identifier 'TResourceStream' (kept as-is).
+- `Common.pas(1083)` Type name 'HINSTANCE' used as a value (probably an inherited VCL member of the same name).
+- `Common.pas(1083)` Unresolved identifier 'RT_VERSION' (kept as-is).
+- `SigSaveDialog.pas(450)` Unresolved identifier 'DefaultExt' (kept as-is).
+- `SigSaveDialog.pas(451)` Unresolved identifier 'Filter' (kept as-is).
+- `SigSaveDialog.pas(229)` Unresolved identifier 'FileName' (kept as-is).
+- `SigSaveDialog.pas(233)` Unresolved identifier 'InitialDir' (kept as-is).
+- `SigSaveDialog.pas(167)` Unresolved identifier 'Execute' (kept as-is).
+- `SigSaveDialog.pas(169)` Unresolved identifier 'FileName' (kept as-is).
+- `SigSpinEdit.pas(354)` Unresolved identifier 'Strings' (kept as-is).
+- `SigSpinEdit.pas(276)` Unresolved identifier 'Strings' (kept as-is).
+- `SigSpinEdit.pas(252)` Unresolved identifier 'Strings' (kept as-is).
+- `SigSpinEdit.pas(328)` Unresolved identifier 'Strings' (kept as-is).
+- `SigSpinEdit.pas(302)` Unresolved identifier 'Strings' (kept as-is).
+- `SigSpinEdit.pas(154)` Unresolved identifier 'MinValue' (kept as-is).
+- `SigSpinEdit.pas(154)` Unresolved identifier 'MaxValue' (kept as-is).
+- `SigSpinEdit.pas(155)` Unresolved identifier 'MinValue' (kept as-is).
+- `SigSpinEdit.pas(156)` Unresolved identifier 'MaxValue' (kept as-is).
+- `SigSpinEdit.pas(222)` Unresolved identifier 'Button' (kept as-is).
+- `SigRegistry.pas(76)` Unresolved identifier 'tRegistry' (kept as-is).
+- `SigRegistry.pas(179)` Unresolved identifier 'OpenKey' (kept as-is).
+- `SigRegistry.pas(179)` Unresolved identifier 'OpenKey' (kept as-is).
+- `SigRegistry.pas(127)` VCL member 'Monitor' has no automatic WPF mapping (kept as Rtl.Application.MainForm.Monitor).
+- `SigRegistry.pas(250)` Member 'MonitorCount' is not provided by TScreen in DelphiRtl.
+- `SigRegistry.pas(266)` Member 'MonitorCount' is not provided by TScreen in DelphiRtl.
+- `SigVariableEditor.pas(1140)` 'Items' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `SigVariableEditor.pas(1140)` 'Items' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `SigVariableEditor.pas(1067)` VCL member 'VertScrollBar' has no automatic WPF mapping (kept as (this.Parent as ScrollViewer).VertScrollBar).
+- `SigVariableEditor.pas(766)` Member 'OnChange' not found in TSigSpinEdit.
+- `SigVariableEditor.pas(766)` 'OnEditorChange' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `SigVariableEditor.pas(766)` 'OnEditorChange' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `SigVariableEditor.pas(795)` Member 'OnClick' not found in TSigImage.
+- `SigVariableEditor.pas(795)` 'OnEditorChange' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `SigVariableEditor.pas(795)` 'OnEditorChange' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `SigVariableEditor.pas(808)` VCL member 'VertScrollBar' has no automatic WPF mapping (kept as (this.Parent as ScrollViewer).VertScrollBar).
+- `SigVariableEditor.pas(819)` VCL member 'DoubleBuffered' has no automatic WPF mapping (kept as (fEditor as FrameworkElement).DoubleBuffered).
+- `SigVariableEditor.pas(820)` VCL member 'ParentDoubleBuffered' has no automatic WPF mapping (kept as (fEditor as FrameworkElement).ParentDoubleBuffered).
+- `SigVariableEditor.pas(958)` VCL member 'ParentDoubleBuffered' has no automatic WPF mapping (kept as (fEditor as FrameworkElement).ParentDoubleBuffered).
+- `SigVariableEditor.pas(505)` VCL member 'MouseInClient' has no automatic WPF mapping (kept as (fEditor as FrameworkElement).MouseInClient).
+- `SigVariableEditor.pas(722)` VCL member 'DoubleBuffered' has no automatic WPF mapping (kept as (fEditor as FrameworkElement).DoubleBuffered).
+- `SigVariableEditor.pas(385)` VCL member 'DoubleBuffered' has no automatic WPF mapping (kept as (fEditor as FrameworkElement).DoubleBuffered).
+- `SigVariableEditor.pas(304)` Member 'Remove' not found in TSigVariableEditors.
+- `SigVariableEditor.pas(304)` Member 'Remove' not found in TSigVariableEditors.
+- `SigVariableEditorList.pas(145)` Member 'Count' not found in TSigVariableEditors.
+- `SigVariableEditorList.pas(181)` Member 'Count' not found in TSigVariableEditors.
+- `SigVariableEditorList.pas(120)` Member 'Count' not found in TSigVariableEditors.
+- `SigVariableEditorList.pas(122)` Member 'Last' not found in TSigVariableEditors.
+- `comm32.pas(653)` Unresolved identifier 'CreateEvent' (kept as-is).
+- `comm32.pas(662)` Unresolved identifier 'CreateEvent' (kept as-is).
+- `comm32.pas(679)` Unresolved identifier 'SetCommMask' (kept as-is).
+- `comm32.pas(679)` Unresolved identifier 'EV_ERR' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- `comm32.pas(712)` Unresolved identifier 'WaitForMultipleObjects' (kept as-is).
+- `comm32.pas(713)` Unresolved identifier 'INFINITE' (kept as-is).
+- `comm32.pas(717)` Unresolved identifier 'WAIT_OBJECT_0' (kept as-is).
+- `comm32.pas(724)` Unresolved identifier 'WAIT_OBJECT_0' (kept as-is).
+- `comm32.pas(744)` Unresolved identifier 'WAIT_OBJECT_0' (kept as-is).
+- `comm32.pas(767)` Unresolved identifier 'WAIT_FAILED' (kept as-is).
+- `comm32.pas(788)` Unresolved identifier 'PurgeComm' (kept as-is).
+- `comm32.pas(788)` Unresolved identifier 'PurgeComm' (kept as-is).
+- `comm32.pas(788)` Unresolved identifier 'PURGE_RXABORT' (kept as-is).
+- `comm32.pas(788)` Unresolved identifier 'PURGE_RXCLEAR' (kept as-is).
+- `comm32.pas(789)` Unresolved identifier 'CloseHandle' (kept as-is).
+- `comm32.pas(789)` Unresolved identifier 'CloseHandle' (kept as-is).
+- `comm32.pas(790)` Unresolved identifier 'CloseHandle' (kept as-is).
+- `comm32.pas(790)` Unresolved identifier 'CloseHandle' (kept as-is).
+- `comm32.pas(1022)` Unresolved identifier 'WAIT_TIMEOUT' (kept as-is).
+- `comm32.pas(1022)` Unresolved identifier 'WaitForSingleObject' (kept as-is).
+- `comm32.pas(1026)` Unresolved identifier 'WaitCommEvent' (kept as-is).
+- `comm32.pas(1047)` Unresolved identifier 'ERROR_IO_PENDING' (kept as-is).
+- `comm32.pas(1056)` Unresolved identifier 'ERROR_INVALID_HANDLE' (kept as-is).
+- `comm32.pas(834)` Unresolved identifier 'WAIT_TIMEOUT' (kept as-is).
+- `comm32.pas(834)` Unresolved identifier 'WaitForSingleObject' (kept as-is).
+- `comm32.pas(838)` Unresolved identifier 'ReadFile' (kept as-is).
+- `comm32.pas(859)` Unresolved identifier 'ERROR_IO_PENDING' (kept as-is).
+- `comm32.pas(868)` Unresolved identifier 'ERROR_INVALID_HANDLE' (kept as-is).
+- `comm32.pas(1109)` Unresolved identifier 'LocalAlloc' (kept as-is).
+- `comm32.pas(1109)` Unresolved identifier 'LPTR' (kept as-is).
+- `comm32.pas(1120)` Unresolved identifier 'GetOverlappedResult' (kept as-is).
+- `comm32.pas(1127)` Unresolved identifier 'ERROR_INVALID_HANDLE' (kept as-is).
+- `comm32.pas(1140)` Unresolved identifier 'EV_ERR' (kept as-is).
+- `comm32.pas(1143)` Unresolved identifier 'ClearCommError' (kept as-is).
+- `comm32.pas(1149)` Unresolved identifier 'ERROR_INVALID_HANDLE' (kept as-is).
+- `comm32.pas(1165)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1165)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1167)` Unresolved identifier 'CE_FRAME' (kept as-is).
+- `comm32.pas(1170)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1170)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1172)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1172)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1175)` Unresolved identifier 'CE_OVERRUN' (kept as-is).
+- `comm32.pas(1178)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1178)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1180)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1180)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1183)` Unresolved identifier 'CE_RXPARITY' (kept as-is).
+- `comm32.pas(1186)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1186)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1188)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1188)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1191)` Unresolved identifier 'CE_FRAME' (kept as-is).
+- `comm32.pas(1191)` Unresolved identifier 'CE_OVERRUN' (kept as-is).
+- `comm32.pas(1191)` Unresolved identifier 'CE_RXPARITY' (kept as-is).
+- `comm32.pas(1194)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1194)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1196)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1196)` Unresolved identifier 'strcat' (kept as-is).
+- `comm32.pas(1199)` Unresolved identifier 'wsprintf' (kept as-is).
+- `comm32.pas(962)` Unresolved identifier 'GetOverlappedResult' (kept as-is).
+- `comm32.pas(975)` Unresolved identifier 'ERROR_INVALID_HANDLE' (kept as-is).
+- `comm32.pas(917)` Unresolved identifier 'LocalAlloc' (kept as-is).
+- `comm32.pas(917)` Unresolved identifier 'LPTR' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- `comm32.pas(1259)` Unresolved identifier 'CreateEvent' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- `comm32.pas(1273)` Unresolved identifier 'PeekMessage' (kept as-is).
+- `comm32.pas(1273)` Unresolved identifier 'PM_REMOVE' (kept as-is).
+- `comm32.pas(1278)` Unresolved identifier 'MsgWaitForMultipleObjects' (kept as-is).
+- `comm32.pas(1279)` Unresolved identifier 'INFINITE' (kept as-is).
+- `comm32.pas(1279)` Unresolved identifier 'QS_ALLINPUT' (kept as-is).
+- `comm32.pas(1282)` Unresolved identifier 'WAIT_OBJECT_0' (kept as-is).
+- `comm32.pas(1288)` Unresolved identifier 'WAIT_OBJECT_0' (kept as-is).
+- `comm32.pas(1294)` Unresolved identifier 'WAIT_FAILED' (kept as-is).
+- `comm32.pas(1312)` Unresolved identifier 'WAIT_TIMEOUT' (kept as-is).
+- `comm32.pas(1312)` Unresolved identifier 'WaitForSingleObject' (kept as-is).
+- `comm32.pas(1323)` Unresolved identifier 'TranslateMessage' (kept as-is).
+- `comm32.pas(1323)` Unresolved identifier 'TranslateMessage' (kept as-is).
+- `comm32.pas(1324)` Unresolved identifier 'DispatchMessage' (kept as-is).
+- `comm32.pas(1324)` Unresolved identifier 'DispatchMessage' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- `comm32.pas(1344)` Unresolved identifier 'LocalFree' (kept as-is).
+- `comm32.pas(1344)` Unresolved identifier 'LocalFree' (kept as-is).
+- `comm32.pas(1349)` Unresolved identifier 'LocalFree' (kept as-is).
+- `comm32.pas(1349)` Unresolved identifier 'LocalFree' (kept as-is).
+- `comm32.pas(1367)` Unresolved identifier 'PurgeComm' (kept as-is).
+- `comm32.pas(1367)` Unresolved identifier 'PurgeComm' (kept as-is).
+- `comm32.pas(1367)` Unresolved identifier 'PURGE_TXABORT' (kept as-is).
+- `comm32.pas(1367)` Unresolved identifier 'PURGE_TXCLEAR' (kept as-is).
+- `comm32.pas(1369)` Unresolved identifier 'CloseHandle' (kept as-is).
+- `comm32.pas(1369)` Unresolved identifier 'CloseHandle' (kept as-is).
+- `comm32.pas(1417)` Unresolved identifier 'WriteFile' (kept as-is).
+- `comm32.pas(1427)` Unresolved identifier 'ERROR_INVALID_HANDLE' (kept as-is).
+- `comm32.pas(1436)` Unresolved identifier 'ERROR_IO_PENDING' (kept as-is).
+- `comm32.pas(1452)` Unresolved identifier 'WaitForMultipleObjects' (kept as-is).
+- `comm32.pas(1453)` Unresolved identifier 'INFINITE' (kept as-is).
+- `comm32.pas(1456)` Unresolved identifier 'WAIT_OBJECT_0' (kept as-is).
+- `comm32.pas(1463)` Unresolved identifier 'WAIT_OBJECT_0' (kept as-is).
+- `comm32.pas(1468)` Unresolved identifier 'WAIT_FAILED' (kept as-is).
+- `comm32.pas(1486)` Unresolved identifier 'GetOverlappedResult' (kept as-is).
+- `comm32.pas(1494)` Unresolved identifier 'ERROR_INVALID_HANDLE' (kept as-is).
+- `comm32.pas(1523)` Unresolved identifier 'PostThreadMessage' (kept as-is).
+- `comm32.pas(1523)` Unresolved identifier 'ThreadID' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- `comm32.pas(184)` Unresolved identifier 'AllocateHWnd' (kept as-is).
+- `comm32.pas(184)` 'CommWndProc' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `comm32.pas(184)` 'CommWndProc' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- `comm32.pas(556)` Unresolved identifier 'LocalFree' (kept as-is).
+- `comm32.pas(556)` Unresolved identifier 'LocalFree' (kept as-is).
+- `comm32.pas(468)` Unresolved identifier 'PurgeComm' (kept as-is).
+- `comm32.pas(468)` Unresolved identifier 'PurgeComm' (kept as-is).
+- `comm32.pas(468)` Unresolved identifier 'PURGE_RXABORT' (kept as-is).
+- `comm32.pas(468)` Unresolved identifier 'PURGE_RXCLEAR' (kept as-is).
+- `comm32.pas(471)` Unresolved identifier 'WaitForSingleObject' (kept as-is).
+- `comm32.pas(471)` Member 'Handle' not found in TReadThread.
+- `comm32.pas(471)` Unresolved identifier 'WAIT_TIMEOUT' (kept as-is).
+- `comm32.pas(515)` Unresolved identifier 'PurgeComm' (kept as-is).
+- `comm32.pas(515)` Unresolved identifier 'PurgeComm' (kept as-is).
+- `comm32.pas(515)` Unresolved identifier 'PURGE_TXABORT' (kept as-is).
+- `comm32.pas(515)` Unresolved identifier 'PURGE_TXCLEAR' (kept as-is).
+- `comm32.pas(518)` Unresolved identifier 'WaitForSingleObject' (kept as-is).
+- `comm32.pas(518)` Member 'Handle' not found in TWriteThread.
+- `comm32.pas(518)` Unresolved identifier 'WAIT_TIMEOUT' (kept as-is).
+- `comm32.pas(191)` Unresolved identifier 'DeallocateHWnd' (kept as-is).
+- `comm32.pas(191)` Unresolved identifier 'DeallocateHWnd' (kept as-is).
+- `comm32.pas(236)` Unresolved identifier 'CreateFile' (kept as-is).
+- `comm32.pas(241)` Unresolved identifier 'OPEN_EXISTING' (kept as-is).
+- `comm32.pas(242)` Unresolved identifier 'FILE_FLAG_OVERLAPPED' (kept as-is).
+- `comm32.pas(244)` Unresolved identifier 'INVALID_HANDLE_VALUE' (kept as-is).
+- `comm32.pas(248)` Unresolved identifier 'GetFileType' (kept as-is).
+- `comm32.pas(248)` Unresolved identifier 'FILE_TYPE_CHAR' (kept as-is).
+- `comm32.pas(261)` Unresolved identifier 'GetCommState' (kept as-is).
+- `comm32.pas(261)` Unresolved identifier 'GetCommState' (kept as-is).
+- `comm32.pas(262)` Unresolved identifier 'GetCommProperties' (kept as-is).
+- `comm32.pas(262)` Unresolved identifier 'GetCommProperties' (kept as-is).
+- `comm32.pas(263)` Unresolved identifier 'GetCommMask' (kept as-is).
+- `comm32.pas(263)` Unresolved identifier 'GetCommMask' (kept as-is).
+- `comm32.pas(264)` Unresolved identifier 'GetCommTimeouts' (kept as-is).
+- `comm32.pas(264)` Unresolved identifier 'GetCommTimeouts' (kept as-is).
+- `comm32.pas(280)` Unresolved identifier 'SetCommTimeouts' (kept as-is).
+- `comm32.pas(280)` Unresolved identifier 'SetCommTimeouts' (kept as-is).
+- `comm32.pas(288)` Unresolved identifier 'SetCommState' (kept as-is).
+- `comm32.pas(288)` Unresolved identifier 'SetCommState' (kept as-is).
+- `comm32.pas(291)` Unresolved identifier 'CreateEvent' (kept as-is).
+- `comm32.pas(317)` Member 'Priority' not found in TReadThread.
+- `comm32.pas(317)` Unresolved identifier 'tpHighest' (kept as-is).
+- `comm32.pas(332)` Member 'Priority' not found in TWriteThread.
+- `comm32.pas(332)` Unresolved identifier 'tpHigher' (kept as-is).
+- `comm32.pas(372)` Unresolved identifier 'CloseHandle' (kept as-is).
+- `comm32.pas(372)` Unresolved identifier 'CloseHandle' (kept as-is).
+- `comm32.pas(375)` Unresolved identifier 'CloseHandle' (kept as-is).
+- `comm32.pas(375)` Unresolved identifier 'CloseHandle' (kept as-is).
+- `comm32.pas(414)` Unresolved identifier 'LocalAlloc' (kept as-is).
+- `comm32.pas(414)` Unresolved identifier 'LPTR' (kept as-is).
+- `comm32.pas(416)` Unresolved identifier 'PostThreadMessage' (kept as-is).
+- `comm32.pas(416)` Member 'ThreadID' not found in TWriteThread.
+- Unresolved identifier 'WM_USER' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- `comm32.pas(42)` Unresolved identifier 'WM_USER' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- `comm32.pas(43)` Unresolved identifier 'WM_USER' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- `comm32.pas(44)` Unresolved identifier 'WM_USER' (kept as-is).
+- Unresolved identifier 'WM_USER' (kept as-is).
+- `comm32.pas(145)` Unresolved identifier 'WM_USER' (kept as-is).
+- `comm32.pas(1570)` Unresolved identifier 'wsprintf' (kept as-is).
+- `comm32.pas(1570)` Unresolved identifier 'wsprintf' (kept as-is).
+- `comm32.pas(1577)` Unresolved identifier 'wsprintf' (kept as-is).
+- `comm32.pas(1577)` Unresolved identifier 'wsprintf' (kept as-is).
+- `comm32.pas(1581)` Unresolved identifier 'LocalFree' (kept as-is).
+- `comm32.pas(1581)` Unresolved identifier 'LocalFree' (kept as-is).
+- `SigImage.pas(104)` Unresolved identifier 'Picture' (kept as-is).
+- `SigPanel.pas(77)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(122)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(123)` Unresolved identifier 'alClient' (kept as-is).
+- `SigPanel.pas(129)` VCL member 'BevelOuter' has no automatic WPF mapping (kept as (Rtl.GetParent(this) as Border).BevelOuter).
+- `SigPanel.pas(130)` Unresolved identifier 'bvNone' (kept as-is).
+- `SigPanel.pas(131)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(132)` Unresolved identifier 'bvRaised' (kept as-is).
+- `SigPanel.pas(133)` Unresolved identifier 'bvSpace' (kept as-is).
+- `SigPanel.pas(130)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(131)` Unresolved identifier 'bvRaised' (kept as-is).
+- `SigPanel.pas(132)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(133)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(138)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(140)` Unresolved identifier 'alTop' (kept as-is).
+- `SigPanel.pas(146)` VCL member 'BevelOuter' has no automatic WPF mapping (kept as (Rtl.GetParent(this) as Border).BevelOuter).
+- `SigPanel.pas(147)` Unresolved identifier 'bvNone' (kept as-is).
+- `SigPanel.pas(148)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(149)` Unresolved identifier 'bvRaised' (kept as-is).
+- `SigPanel.pas(150)` Unresolved identifier 'bvSpace' (kept as-is).
+- `SigPanel.pas(147)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(148)` Unresolved identifier 'bvRaised' (kept as-is).
+- `SigPanel.pas(149)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(150)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(155)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(157)` Unresolved identifier 'alBottom' (kept as-is).
+- `SigPanel.pas(163)` VCL member 'BevelOuter' has no automatic WPF mapping (kept as (Rtl.GetParent(this) as Border).BevelOuter).
+- `SigPanel.pas(164)` Unresolved identifier 'bvNone' (kept as-is).
+- `SigPanel.pas(165)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(166)` Unresolved identifier 'bvRaised' (kept as-is).
+- `SigPanel.pas(167)` Unresolved identifier 'bvSpace' (kept as-is).
+- `SigPanel.pas(164)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(165)` Unresolved identifier 'bvRaised' (kept as-is).
+- `SigPanel.pas(166)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(167)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(172)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(174)` Unresolved identifier 'alClient' (kept as-is).
+- `SigPanel.pas(180)` VCL member 'BevelOuter' has no automatic WPF mapping (kept as (Rtl.GetParent(this) as Border).BevelOuter).
+- `SigPanel.pas(181)` Unresolved identifier 'bvNone' (kept as-is).
+- `SigPanel.pas(182)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(183)` Unresolved identifier 'bvRaised' (kept as-is).
+- `SigPanel.pas(184)` Unresolved identifier 'bvSpace' (kept as-is).
+- `SigPanel.pas(181)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(182)` Unresolved identifier 'bvRaised' (kept as-is).
+- `SigPanel.pas(183)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(184)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(189)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(191)` Unresolved identifier 'alLeft' (kept as-is).
+- `SigPanel.pas(197)` VCL member 'BevelOuter' has no automatic WPF mapping (kept as (Rtl.GetParent(this) as Border).BevelOuter).
+- `SigPanel.pas(198)` Unresolved identifier 'bvNone' (kept as-is).
+- `SigPanel.pas(199)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(200)` Unresolved identifier 'bvRaised' (kept as-is).
+- `SigPanel.pas(201)` Unresolved identifier 'bvSpace' (kept as-is).
+- `SigPanel.pas(198)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(199)` Unresolved identifier 'bvRaised' (kept as-is).
+- `SigPanel.pas(200)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(201)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(206)` Unresolved identifier 'bvLowered' (kept as-is).
+- `SigPanel.pas(208)` Unresolved identifier 'alRight' (kept as-is).
+- `USBPanel.pas(1775)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1775)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1777)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1777)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1779)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1779)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1781)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1781)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1896)` Unresolved identifier 'HINSTANCE_ERROR' (kept as-is).
+- `USBPanel.pas(2847)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(2847)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(2851)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(2851)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(2886)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(2886)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(2890)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(2890)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(2925)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(2925)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(2929)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(2929)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(2965)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(2965)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(2969)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(2969)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(2089)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(1024)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1026)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1028)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1030)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1032)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1033)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1034)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1036)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1037)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1039)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1041)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1046)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1048)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1050)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1052)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1054)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1056)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1076)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1076)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1077)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1077)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1079)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1079)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1080)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1080)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1082)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1082)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1083)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1083)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1085)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1085)` Unresolved identifier 'StrCopy' (kept as-is).
+- `USBPanel.pas(1420)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1428)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1431)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1451)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(1451)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(1452)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(1452)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(1453)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(1453)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(1454)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(1454)` Unresolved identifier 'AnsiStrings' (kept as-is).
+- `USBPanel.pas(1468)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1469)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1470)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1471)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1472)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1475)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1479)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1481)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1484)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1488)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1492)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1496)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1500)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1504)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1511)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1515)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1519)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1523)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1527)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1531)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1535)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1539)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1543)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1547)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(1549)` Unresolved identifier 'Cells' (kept as-is).
+- `USBPanel.pas(937)` Unresolved identifier 'HINSTANCE_ERROR' (kept as-is).
+- `USBPanel.pas(1001)` Unresolved identifier 'HINSTANCE_ERROR' (kept as-is).
+- `USBPanel.pas(1003)` Unresolved identifier 'FreeLibrary' (kept as-is).
+- `USBPanel.pas(1003)` Unresolved identifier 'FreeLibrary' (kept as-is).
+- `misc.pas(73)` Unresolved identifier 'FORMAT_MESSAGE_FROM_SYSTEM' (kept as-is).
+- `misc.pas(79)` Unresolved identifier 'FORMAT_MESSAGE_ALLOCATE_BUFFER' (kept as-is).
+- `misc.pas(94)` Unresolved identifier 'FormatMessage' (kept as-is).
+- `misc.pas(107)` Unresolved identifier 'FORMAT_MESSAGE_ALLOCATE_BUFFER' (kept as-is).
+- `misc.pas(109)` Unresolved identifier 'LocalFree' (kept as-is).
+- `misc.pas(109)` Unresolved identifier 'LocalFree' (kept as-is).
+- `misc.pas(111)` Unresolved identifier 'LocalAlloc' (kept as-is).
+- `misc.pas(111)` Unresolved identifier 'LPTR' (kept as-is).
+- `misc.pas(134)` Unresolved identifier 'wsprintf' (kept as-is).
+- `misc.pas(134)` Unresolved identifier 'wsprintf' (kept as-is).
+- `misc.pas(38)` Unresolved identifier 'LocalFree' (kept as-is).
+- `misc.pas(38)` Unresolved identifier 'LocalFree' (kept as-is).
+- `misc.pas(154)` Unresolved identifier 'FindWindow' (kept as-is).
+- `misc.pas(155)` Unresolved identifier 'FindWindow' (kept as-is).
+- `misc.pas(156)` Unresolved identifier 'FindWindow' (kept as-is).
+- `misc.pas(157)` Unresolved identifier 'FindWindow' (kept as-is).
+- `misc.pas(182)` Unresolved identifier 'CharInSet' (kept as-is).
+- `misc.pas(188)` Unresolved identifier 'CharInSet' (kept as-is).
+- `misc.pas(194)` Unresolved identifier 'CharInSet' (kept as-is).
+- `misc.pas(205)` Inc on a PChar/pointer (pszBuffer) - pointer arithmetic is not supported in C#.
+- `SigNET.TStringGrid.pas(60)` Unresolved identifier 'Visible' (kept as-is).
+- `SigNET.TStringGrid.pas(64)` Unresolved identifier 'Visible' (kept as-is).
+- `SigNET.TStringGrid.pas(149)` Unresolved identifier 'Visible' (kept as-is).
+- `SigNET.TStringGrid.pas(154)` Unresolved identifier 'Visible' (kept as-is).
+- `SigNET.TStringGrid.pas(137)` Unresolved identifier 'OnResize' (kept as-is).
+- `SigNET.TStringGrid.pas(137)` 'fOnAutoResize' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `SigNET.TStringGrid.pas(137)` 'fOnAutoResize' is called without arguments but needs parameters (probably an inherited VCL member that is not mapped).
+- `SigNET.TStringGrid.pas(141)` Unresolved identifier 'OnResize' (kept as-is).
+- `SigNET.TStringGrid.pas(72)` Unresolved identifier 'DefaultColWidth' (kept as-is).
+- `SigNET.TStringGrid.pas(72)` Unresolved identifier 'ClientWidth' (kept as-is).
+- `SigNET.TStringGrid.pas(72)` Unresolved identifier 'ColCount' (kept as-is).
+- `SigNET.TStringGrid.pas(72)` Unresolved identifier 'GridLineWidth' (kept as-is).
+- `SigNET.TStringGrid.pas(72)` Unresolved identifier 'ColCount' (kept as-is).
+- `SigNET.TStringGrid.pas(126)` Unresolved identifier 'Rows' (kept as-is).
+- `SigNET.TStringGrid.pas(100)` Unresolved identifier 'ColCount' (kept as-is).
+- `SigNET.TStringGrid.pas(102)` Unresolved identifier 'ColCount' (kept as-is).
+- `SigNET.TStringGrid.pas(110)` Unresolved identifier 'Cells' (kept as-is).
+- `UnitSimSystem.pas(54)` Member 'RowCount' not found in TSigGeneralGrid.
+- `UnitSimSystem.pas(56)` Member 'Cell' not found in TSigGeneralGrid.
+- `UnitSimSystem.pas(57)` Member 'Cell' not found in TSigGeneralGrid.
+- `UnitSimSystem.pas(67)` Unresolved identifier 'ltNormal' (kept as-is).
+- `UnitSimSystem.pas(82)` Unresolved identifier 'sdt_Not_Fitted' (kept as-is).
+- `UnitSimSystem.pas(100)` Member 'Cell' not found in TSigGeneralGrid.
+- `UnitSimSystem.pas(100)` Member 'Cell' not found in TSigGeneralGrid.
+- `UnitSimSystem.pas(121)` Unresolved identifier 'ClearCells' (kept as-is).
+- `UnitSimSystem.pas(126)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitSimSystem.pas(127)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitSimSystem.pas(128)` Unresolved identifier 'Cell' (kept as-is).
+- `UnitSimSystem.pas(129)` Unresolved identifier 'RowCount' (kept as-is).
+- `ZFPTools.dpr(106)` Member 'MainFormOnTaskbar' is not provided by TApplication in DelphiRtl.
+
+## TODO - manual review needed
+
+- `UnitMain.dfm` Unknown component ButtonGroupNodeTypePalette: TButtonGroup - a placeholder was generated.
+- `UnitMain.dfm` StringGridNodes.OnDragOver = SigNETStringGridNodesDragOver was not wired (no automatic WPF mapping). Hook it up manually.
+- `UnitMain.dfm` StringGridNodes.OnEndDrag = SigNETStringGridNodesEndDrag was not wired (no automatic WPF mapping). Hook it up manually.
+- `UnitMain.dfm` StringGridNodes.OnStartDrag = SigNETStringGridNodesStartDrag was not wired (no automatic WPF mapping). Hook it up manually.
+- `UnitMain.dfm` SigSpinEditVerificationDet: TSigSpinEdit is created in code and placed in SigSpinEditVerificationDet_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitMain.dfm` SigSpinEditVerificationMCP: TSigSpinEdit is created in code and placed in SigSpinEditVerificationMCP_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitMain.dfm` SigSpinEditVerificationIO: TSigSpinEdit is created in code and placed in SigSpinEditVerificationIO_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitMain.dfm` SigSpinEditVerificationFaults: TSigSpinEdit is created in code and placed in SigSpinEditVerificationFaults_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitMain.dfm` SigImageNetworkProperties.ImageList: value from the form file was not applied (Ident).
+- `UnitMain.dfm` SigImageNetworkProperties: TSigImage is created in code and placed in SigImageNetworkProperties_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitMain.dfm` SigSpinEditAddress: TSigSpinEdit is created in code and placed in SigSpinEditAddress_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitMain.dfm` SigSpinEditSegment: TSigSpinEdit is created in code and placed in SigSpinEditSegment_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitMain.dfm` SigSpinEditPanelAutoDimTime: TSigSpinEdit is created in code and placed in SigSpinEditPanelAutoDimTime_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitMain.dfm` SigSpinEditMaintenanceYear.OnChange = SigSpinEditMaintenanceYearChange was not wired (TSigSpinEdit has no event property OnChange).
+- `UnitMain.dfm` SigSpinEditMaintenanceYear: TSigSpinEdit is created in code and placed in SigSpinEditMaintenanceYear_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitMain.dfm` Unknown component CalendarMaintenanceDate: TCalendar - a placeholder was generated.
+- `UnitMain.dfm` CheckListBoxPanelPrintOptions: TCheckListBox - check marks are not converted.
+- `UnitMain.dfm` SigSpinEditLoopsFitted: TSigSpinEdit is created in code and placed in SigSpinEditLoopsFitted_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitMain.dfm` SigGeneralGridLoopDetails: TSigGeneralGrid is created in code and placed in SigGeneralGridLoopDetails_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitMain.dfm` SigGeneralGridPanelZones: TSigGeneralGrid is created in code and placed in SigGeneralGridPanelZones_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitMain.dfm` Unknown component ButtonGroupDevicePalette: TButtonGroup - a placeholder was generated.
+- `UnitMain.dfm` SigVariableEditorListDeviceProperties: TSigVariableEditorList is created in code and placed in SigVariableEditorListDeviceProperties_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitMain.dfm` SigVariableEditorListCETree: TSigVariableEditorList is created in code and placed in SigVariableEditorListCETree_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitMain.dfm` SigPanelSimLower: TSigPanel is created in code and placed in SigPanelSimLower_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitMain.dfm` SigPanelSimMain: TSigPanel is created in code and placed in SigPanelSimMain_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitMain.dfm` SigPanel1: TSigPanel is created in code and placed in SigPanel1_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitMain.dfm` SigGridEditorLoop.OnKeyPress = FrameGlobalDevicesSigGeneralGridGlobalDevicesKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorDevice.OnKeyPress = FrameGlobalDevicesSigGeneralGridGlobalDevicesKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorDeviceType.OnKeyPress = FrameGlobalDevicesSigGeneralGridGlobalDevicesKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorDeviceImage.OnKeyPress = FrameGlobalDevicesSigGeneralGridGlobalDevicesKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorDevName.OnKeyPress = FrameGlobalDevicesSigGeneralGridGlobalDevicesKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorLoopName.OnKeyPress = FrameGlobalDevicesSigGeneralGridGlobalDevicesKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorZoneName.OnKeyPress = FrameGlobalDevicesSigGeneralGridZonalSummaryKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorZoneLoopName.OnKeyPress = FrameGlobalDevicesSigGeneralGridZonalSummaryKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorZoneLoop.OnKeyPress = FrameGlobalDevicesSigGeneralGridZonalSummaryKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorZoneLoopSubdevices.OnKeyPress = FrameGlobalDevicesSigGeneralGridZonalSummaryKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorZoneDevice.OnKeyPress = FrameGlobalDevicesSigGeneralGridZonalSummaryKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorZoneDeviceType.OnKeyPress = FrameGlobalDevicesSigGeneralGridZonalSummaryKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorZoneDeviceImage.OnKeyPress = FrameGlobalDevicesSigGeneralGridZonalSummaryKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorZoneDeviceName.OnKeyPress = FrameGlobalDevicesSigGeneralGridZonalSummaryKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorZoneID.OnKeyPress = FrameGlobalDevicesSigGeneralGridZonalSummaryKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorDevIG.OnKeyPress = FrameGlobalDevicesSigGeneralGridGlobalDevicesKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorDevIG.OnClick = FrameGlobalDevicesSigGridEditorDevIGClick was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorDevOG.OnKeyPress = FrameGlobalDevicesSigGeneralGridGlobalDevicesKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorDevOG.OnClick = FrameGlobalDevicesSigGridEditorDevOGClick was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorDevZone.OnKeyPress = FrameGlobalDevicesSigGeneralGridGlobalDevicesKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorDevZone.OnClick = FrameGlobalDevicesSigGridEditorDevZoneClick was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorDevDisablement.OnKeyPress = FrameGlobalDevicesSigGeneralGridGlobalDevicesKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorDevDisablement.OnClick = FrameGlobalDevicesSigGridEditorDevDisablementClick was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorFaultGroup.OnKeyPress = FrameGlobalDevicesSigGeneralGridGlobalDevicesKeyPress was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigGridEditorFaultGroup.OnClick = FrameGlobalDevicesSigGridEditorFaultGroupClick was not wired (TSigGridEditor).
+- `UnitMain.dfm` SigSaveDialogMain.SigRegistry: value from the form file was not applied (Ident).
+- `UnitMain.dfm` tSigGridEditorPanelZoneName.SigGrid: value from the form file was not applied (Ident).
+- `UnitMain.dfm` tSigGridEditorPanelZoneNo.SigGrid: value from the form file was not applied (Ident).
+- `UnitMain.dfm` SigGridEditorLoopName.SigGrid: value from the form file was not applied (Ident).
+- `UnitMain.dfm` SigGridEditorLoopID.SigGrid: value from the form file was not applied (Ident).
+- `UnitMain.dfm` tSigGridEditorPanelZonePresent.SigGrid: value from the form file was not applied (Ident).
+- `UnitMain.dfm` tSigGridEditorPanelZonePresent.Images: value from the form file was not applied (Ident).
+- `UnitMain.pas(971)` Routine TFormMain.FormCreate was emitted as a stub because 17 problem(s) were found (first: Member 'Parent' not found in TStringGrid.). The attempted C# is kept in a comment.
+- `UnitMain.pas(1111)` Routine TFormMain.FormDestroy was emitted as a stub because 2 problem(s) were found (first: VCL member 'TabVisible' has no automatic WPF mapping (kept as TabSheetConfiguration.TabVisible).). The attempted C# is kept in a comment.
+- `UnitMain.pas(1137)` Routine TFormMain.FormShow was emitted as a stub because 46 problem(s) were found (first: Member 'OnCellEditChange' not found in TSigGeneralGrid.). The attempted C# is kept in a comment.
+- `UnitMain.pas(2533)` Routine TFormMain.SpeedButtonOpenClick was emitted as a stub because 1 problem(s) were found (first: VCL member 'TabVisible' has no automatic WPF mapping (kept as TabSheetErrors.TabVisible).). The attempted C# is kept in a comment.
+- `UnitMain.pas(1297)` Routine TFormMain.FrameGlobalDevicesSigGeneralGridGlobalDevicesKeyPress was emitted as a stub because 3 problem(s) were found (first: Member 'Selection' not found in TSigGeneralGrid.). The attempted C# is kept in a comment.
+- `UnitMain.pas(1357)` Routine TFormMain.FrameGlobalDevicesSigGeneralGridZonalSummaryKeyPress was emitted as a stub because 4 problem(s) were found (first: Member 'Selection' not found in TSigGeneralGrid.). The attempted C# is kept in a comment.
+- `UnitMain.pas(2867)` Routine TFormMain.ShowConfigPage1Click was emitted as a stub because 1 problem(s) were found (first: VCL member 'TabVisible' has no automatic WPF mapping (kept as TabSheetConfiguration.TabVisible).). The attempted C# is kept in a comment.
+- `UnitMain.pas(2117)` Routine TFormMain.ImageLogoClick was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'FileSize' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(3343)` Routine TFormMain.SigNETStringGridNodesDrawCell was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'ColCount' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(3462)` Routine TFormMain.SigNETStringGridNodesMouseDown was emitted as a stub because 3 problem(s) were found (first: Unresolved identifier 'MouseToCell' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(3501)` Routine TFormMain.SigNETStringGridNodesMouseMove was emitted as a stub because 2 problem(s) were found (first: Unresolved identifier 'MouseToCell' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(3541)` Routine TFormMain.SigNETStringGridNodesMouseUp was emitted as a stub because 5 problem(s) were found (first: Unresolved identifier 'MouseToCell' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(3427)` Routine TFormMain.SigNETStringGridNodesEndDrag was emitted as a stub because 3 problem(s) were found (first: Unresolved identifier 'MouseToCell' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(3644)` Routine TFormMain.SigNETStringGridNodesStartDrag was emitted as a stub because 2 problem(s) were found (first: Unresolved identifier 'TDragControlObjectEx' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(3311)` Routine TFormMain.SigNETStringGridNodesDragOver was emitted as a stub because 2 problem(s) were found (first: Unresolved identifier 'MouseToCell' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(1282)` Routine TFormMain.FrameGlobalDevicesSigGeneralGridGlobalDevicesCellEditChange was emitted as a stub because 2 problem(s) were found (first: Member 'CellObject' not found in TSigGeneralGrid.). The attempted C# is kept in a comment.
+- `UnitMain.pas(1345)` Routine TFormMain.FrameGlobalDevicesSigGeneralGridZonalSummaryCellEditChange was emitted as a stub because 2 problem(s) were found (first: Member 'CellObject' not found in TSigGeneralGrid.). The attempted C# is kept in a comment.
+- `UnitMain.pas(638)` Routine TFormMain.AdvancedTransfer1Click was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'XFP4PgmCfg' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(1501)` Routine TFormMain.FrameGlobalDevicesSigGridEditorDevZoneClick was emitted as a stub because 4 problem(s) were found (first: Member 'CellObject' not found in TSigGeneralGrid.). The attempted C# is kept in a comment.
+- `UnitMain.pas(1415)` Routine TFormMain.FrameGlobalDevicesSigGridEditorDevIGClick was emitted as a stub because 4 problem(s) were found (first: Member 'CellObject' not found in TSigGeneralGrid.). The attempted C# is kept in a comment.
+- `UnitMain.pas(1458)` Routine TFormMain.FrameGlobalDevicesSigGridEditorDevOGClick was emitted as a stub because 4 problem(s) were found (first: Member 'CellObject' not found in TSigGeneralGrid.). The attempted C# is kept in a comment.
+- `UnitMain.pas(1378)` Routine TFormMain.FrameGlobalDevicesSigGridEditorDevDisablementClick was emitted as a stub because 4 problem(s) were found (first: Member 'CellObject' not found in TSigGeneralGrid.). The attempted C# is kept in a comment.
+- `UnitMain.pas(1545)` Routine TFormMain.FrameGlobalDevicesSigGridEditorFaultGroupClick was emitted as a stub because 4 problem(s) were found (first: Member 'CellObject' not found in TSigGeneralGrid.). The attempted C# is kept in a comment.
+- `UnitMain.pas(1318)` Routine TFormMain.FrameGlobalDevicesSigGeneralGridGlobalDevicesSelectCell was emitted as a stub because 3 problem(s) were found (first: Member 'CellObject' not found in TSigGeneralGrid.). The attempted C# is kept in a comment.
+- `UnitMain.pas(5073)` Routine TFormMain.RefreshCurrentPage was emitted as a stub because 1 problem(s) were found (first: Member 'Invalidate' not found in TStringGrid.). The attempted C# is kept in a comment.
+- `UnitMain.pas(4267)` 'with' on an expression of unknown type (fSigFile.NodeList.Node[pNode]) - members inside could not be qualified automatically.
+- `UnitMain.pas(4256)` Routine TFormMain.PrintNode was emitted as a stub because 5 problem(s) were found (first: Unresolved identifier 'NodeType' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(2013)` Routine TFormMain.OnLoad was emitted as a stub because 1 problem(s) were found (first: Member 'Invalidate' not found in TStringGrid.). The attempted C# is kept in a comment.
+- `UnitMain.pas(2034)` Routine TFormMain.OnNew was emitted as a stub because 1 problem(s) were found (first: Member 'Invalidate' not found in TStringGrid.). The attempted C# is kept in a comment.
+- `UnitMain.pas(4351)` 'with' on an expression of unknown type (AddressDetails.Address) - members inside could not be qualified automatically.
+- `UnitMain.pas(4318)` Routine TFormMain.PrintNameAddress was emitted as a stub because 2 problem(s) were found (first: 'Lines' is used without arguments but needs parameters (probably an inherited VCL member that is not mapped).). The attempted C# is kept in a comment.
+- `UnitMain.pas(2472)` Routine TFormMain.SetupDevicePalette was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'XFP4PgmCfg' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(1897)` Routine TFormMain.OnFrameErrorList1DblClick was emitted as a stub because 2 problem(s) were found (first: VCL member 'CaretPos' has no automatic WPF mapping (kept as MemoImportedFiles.CaretPos).). The attempted C# is kept in a comment.
+- `UnitMain.pas(1928)` Routine TFormMain.OnFrameErrorList2DblClick was emitted as a stub because 5 problem(s) were found (first: Unresolved identifier 'TLoopSubdeviceError' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(1806)` 'with' on an expression of unknown type ((iOwner as object)) - members inside could not be qualified automatically.
+- `UnitMain.pas(1765)` Routine TFormMain.OnErrorDblClick was emitted as a stub because 8 problem(s) were found (first: Member 'Owner' not found in TSigBaseProperty.). The attempted C# is kept in a comment.
+- `UnitMain.pas(2072)` 'with' on an expression of unknown type (ButtonGroupNodeTypePalette) - members inside could not be qualified automatically.
+- `UnitMain.pas(2063)` Routine TFormMain.OnNodeClassChange was emitted as a stub because 4 problem(s) were found (first: Unresolved identifier 'XFP4PgmCfg' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(2179)` Routine TFormMain.ImportLines was emitted as a stub because 1 problem(s) were found (first: VCL member 'TabVisible' has no automatic WPF mapping (kept as TabSheetErrors.TabVisible).). The attempted C# is kept in a comment.
+- `UnitMain.pas(939)` Routine TFormMain.ExportLines was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'tLogReport' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(4610)` Routine TFormMain.PrintPrepareCurrentDevicePages was emitted as a stub because 10 problem(s) were found (first: Member 'FixedRows' not found in TSigGeneralGrid.). The attempted C# is kept in a comment.
+- `UnitMain.pas(4435)` 'with' on an expression of unknown type (Rtl.Items(pTree)[i]) - members inside could not be qualified automatically.
+- `UnitMain.pas(4417)` Routine TFormMain.PrintFindCETreeLogicalWidth was emitted as a stub because 3 problem(s) were found (first: VCL member 'Indent' has no automatic WPF mapping (kept as pTree.Indent).). The attempted C# is kept in a comment.
+- `UnitMain.pas(4535)` 'with' on an expression of unknown type (Rtl.Items(TreeViewCE1)[i]) - members inside could not be qualified automatically.
+- `UnitMain.pas(4451)` Routine TFormMain.PrintPrepareCETreePages was emitted as a stub because 7 problem(s) were found (first: Unresolved identifier 'Level' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(4188)` Routine TFormMain.PrintCalculateCurrentLogPages was emitted as a stub because 3 problem(s) were found (first: Member 'Canvas' not found in TStringGrid.). The attempted C# is kept in a comment.
+- `UnitMain.pas(4873)` 'with' on an expression of unknown type (iLogReport) - members inside could not be qualified automatically.
+- `UnitMain.pas(4804)` Routine TFormMain.PrintPrepareCurrentLogPages was emitted as a stub because 3 problem(s) were found (first: Unresolved identifier 'tLogReport' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(2343)` 'with' on an expression of unknown type (fSigFile) - members inside could not be qualified automatically.
+- `UnitMain.pas(2346)` 'with' on an expression of unknown type (NodeList) - members inside could not be qualified automatically.
+- `UnitMain.pas(2404)` 'with' on an expression of unknown type (Client) - members inside could not be qualified automatically.
+- `UnitMain.pas(2412)` 'with' on an expression of unknown type (Installer) - members inside could not be qualified automatically.
+- `UnitMain.pas(2420)` 'with' on an expression of unknown type (GlobalDefaults) - members inside could not be qualified automatically.
+- `UnitMain.pas(2435)` 'with' on an expression of unknown type (CauseAndEffects) - members inside could not be qualified automatically.
+- `UnitMain.pas(2456)` 'with' on an expression of unknown type (XFP4PGMCfg) - members inside could not be qualified automatically.
+- `UnitMain.pas(2462)` 'with' on an expression of unknown type (XFP4PGMCfg) - members inside could not be qualified automatically.
+- `UnitMain.pas(2338)` Routine TFormMain.SetEditors was emitted as a stub because 82 problem(s) were found (first: Unresolved identifier 'NodeList' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(3675)` Routine TFormMain.Translate was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'XFP4PgmCfg' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(3807)` 'with' on an expression of unknown type (fSigFile.NodeList) - members inside could not be qualified automatically.
+- `UnitMain.pas(3815)` 'with' on an expression of unknown type (Node[ActiveChild].LoopList) - members inside could not be qualified automatically.
+- `UnitMain.pas(3800)` Routine TFormMain.LocateDevices was emitted as a stub because 6 problem(s) were found (first: Unresolved identifier 'DeviceEditMode' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(2872)` Routine TFormMain.ShowDeviceSummary was emitted as a stub because 5 problem(s) were found (first: Unresolved identifier 'ClearCells' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitMain.pas(3162)` Routine TFormMain.ShowZoneDeviceSummary was emitted as a stub because 16 problem(s) were found (first: Unresolved identifier 'cColZoneName' (kept as-is).). The attempted C# is kept in a comment.
+- `about.pas(362)` Routine TAboutBox.FormCreate was emitted as a stub because 4 problem(s) were found (first: Unresolved identifier 'TResourceStream' (kept as-is).). The attempted C# is kept in a comment.
+- `about.pas(326)` Routine TAboutBox.FindResourceString was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'soFromBeginning' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitUndoList.pas` tUndoRedoStack descends from TObjectStack, which is not part of the project; the base class was dropped.
+- `UnitUndoList.pas(588)` 'inherited Pop' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitUndoList.pas(583)` 'inherited Peek' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitUndoList.pas(564)` Routine tUndoRedoStack.Clear was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'Count' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitUndoList.pas` tUndoCountStack descends from TObjectStack, which is not part of the project; the base class was dropped.
+- `UnitUndoList.pas(622)` 'inherited Pop' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitUndoList.pas(617)` 'inherited Peek' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitUndoList.pas(598)` Routine tUndoCountStack.Clear was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'Count' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitUndoList.pas(385)` Routine tUndoRedo.SetRedoActive was emitted as a stub because 1 problem(s) were found (first: Member 'AmRedoing' not found in TSigFileProperty.). The attempted C# is kept in a comment.
+- `UnitUndoList.pas(417)` Routine tUndoRedo.SetUndoActive was emitted as a stub because 1 problem(s) were found (first: Member 'AmUndoing' not found in TSigFileProperty.). The attempted C# is kept in a comment.
+- `UnitUndoList.pas(166)` Routine tUndoRedo.CanUndo was emitted as a stub because 1 problem(s) were found (first: Member 'Count' not found in tUndoRedoStack.). The attempted C# is kept in a comment.
+- `UnitUndoList.pas(161)` Routine tUndoRedo.CanRedo was emitted as a stub because 1 problem(s) were found (first: Member 'Count' not found in tUndoRedoStack.). The attempted C# is kept in a comment.
+- `UnitUndoList.pas(489)` Routine tUndoRedo.UndoableAction was emitted as a stub because 1 problem(s) were found (first: Member 'Count' not found in tUndoRedoStack.). The attempted C# is kept in a comment.
+- `UnitUndoList.pas(301)` Routine tUndoRedo.RedoableAction was emitted as a stub because 1 problem(s) were found (first: Member 'Count' not found in tUndoRedoStack.). The attempted C# is kept in a comment.
+- `UnitUndoList.pas(443)` Routine tUndoRedo.Undo was emitted as a stub because 3 problem(s) were found (first: Member 'Count' not found in tUndoRedoStack.). The attempted C# is kept in a comment.
+- `UnitUndoList.pas(252)` Routine tUndoRedo.Redo was emitted as a stub because 3 problem(s) were found (first: Member 'Count' not found in tUndoRedoStack.). The attempted C# is kept in a comment.
+- `USBBulkTransferMode.pas(371)` Routine tUSBBulkTransfer.Create was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'INVALID_HANDLE_VALUE' (kept as-is).). The attempted C# is kept in a comment.
+- `USBBulkTransferMode.pas(358)` Routine tUSBBulkTransfer.CompleteRead was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'GetOverlappedResult' (kept as-is).). The attempted C# is kept in a comment.
+- `USBBulkTransferMode.pas(546)` Routine tUSBBulkTransfer.ReadReady was emitted as a stub because 3 problem(s) were found (first: Unresolved identifier 'WaitForSingleObject' (kept as-is).). The attempted C# is kept in a comment.
+- `USBBulkTransferMode.pas(336)` Routine tUSBBulkTransfer.CancelRead was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'CancelIO' (kept as-is).). The attempted C# is kept in a comment.
+- `USBBulkTransferMode.pas(584)` Address-of (@) operator on data is not supported in C#.
+- `USBBulkTransferMode.pas(577)` Routine tUSBBulkTransfer.Write was emitted as a stub because 2 problem(s) were found (first: Address-of (@) operator on data is not supported in C#.). The attempted C# is kept in a comment.
+- `USBBulkTransferMode.pas(538)` Address-of (@) operator on data is not supported in C#.
+- `USBBulkTransferMode.pas(523)` Routine tUSBBulkTransfer.Read was emitted as a stub because 2 problem(s) were found (first: Unresolved identifier 'ReadFile' (kept as-is).). The attempted C# is kept in a comment.
+- `USBBulkTransferMode.pas(554)` Routine tUSBBulkTransfer.StartExchange was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'ERROR_IO_PENDING' (kept as-is).). The attempted C# is kept in a comment.
+- `USBBulkTransferMode.pas(400)` Address-of (@) operator on data is not supported in C#.
+- `USBBulkTransferMode.pas(389)` Routine tUSBBulkTransfer.Flush was emitted as a stub because 2 problem(s) were found (first: Unresolved identifier 'ReadFile' (kept as-is).). The attempted C# is kept in a comment.
+- `USBBulkTransferMode.pas(429)` Address-of (@) operator on data is not supported in C#.
+- `USBBulkTransferMode.pas(406)` Routine tUSBBulkTransfer.GetByte was emitted as a stub because 6 problem(s) were found (first: Unresolved identifier 'ERROR_IO_PENDING' (kept as-is).). The attempted C# is kept in a comment.
+- `USBBulkTransferMode.pas(763)` 'with' on an expression of unknown type (fBulkGUID) - members inside could not be qualified automatically.
+- `USBBulkTransferMode.pas(753)` Routine tUSBBulkTransferList.Create was emitted as a stub because 4 problem(s) were found (first: Unresolved identifier 'D1' (kept as-is).). The attempted C# is kept in a comment.
+- `USBBulkTransferMode.pas(882)` Address-of (@) operator on data is not supported in C#.
+- `USBBulkTransferMode.pas(885)` Address-of (@) operator on data is not supported in C#.
+- `USBBulkTransferMode.pas(895)` Address-of (@) operator on data is not supported in C#.
+- `USBBulkTransferMode.pas(895)` Address-of (@) operator on data is not supported in C#.
+- `USBBulkTransferMode.pas(860)` Routine tUSBBulkTransferList.fRetrieveInfo was emitted as a stub because 1 problem(s) were found (first: Address-of (@) operator on data is not supported in C#.). The attempted C# is kept in a comment.
+- `USBBulkTransferMode.pas(609)` 'inherited Add(Value)' used as a value: the VCL ancestor has no C# equivalent.
+- Typecast to TModuleHandle kept as-is.
+- `moduleloader.pas(72)` Typecast to TModuleHandle kept as-is.
+- `moduleloader.pas(102)` Routine LoadModuleEx was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'LoadLibraryEx' (kept as-is).). The attempted C# is kept in a comment.
+- `moduleloader.pas(114)` Routine UnloadModule was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'FreeLibrary' (kept as-is).). The attempted C# is kept in a comment.
+- `moduleloader.pas(155)` Untyped parameter 'Buffer' of ReadModuleData converted to 'ref object'.
+- `moduleloader.pas(162)` Move(...) has no C# equivalent (memory/pointer/RTTI intrinsic) - rewrite manually.
+- `moduleloader.pas(162)` Pointer dereference (^) kept as plain reference - check the logic.
+- `moduleloader.pas(155)` Routine ReadModuleData was emitted as a stub because 2 problem(s) were found (first: Move(...) has no C# equivalent (memory/pointer/RTTI intrinsic) - rewrite manually.). The attempted C# is kept in a comment.
+- `moduleloader.pas(174)` Untyped parameter 'Buffer' of WriteModuleData converted to 'ref object'.
+- `moduleloader.pas(181)` Move(...) has no C# equivalent (memory/pointer/RTTI intrinsic) - rewrite manually.
+- `moduleloader.pas(181)` Pointer dereference (^) kept as plain reference - check the logic.
+- `moduleloader.pas(174)` Routine WriteModuleData was emitted as a stub because 2 problem(s) were found (first: Move(...) has no C# equivalent (memory/pointer/RTTI intrinsic) - rewrite manually.). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(4721)` 'inherited Add(iASCIIRequest)' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitASCIITransfer.pas(4893)` Routine ExceptionUSB.Create was emitted as a stub because 2 problem(s) were found (first: Unresolved identifier 'ERROR_BAD_COMMAND' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.dfm` SigSpinEditTimeOut: TSigSpinEdit is created in code and placed in SigSpinEditTimeOut_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitASCIITransfer.dfm` CheckListBoxToSend: TCheckListBox - check marks are not converted.
+- `UnitASCIITransfer.dfm` SigSpinEditRetrieveTimeout: TSigSpinEdit is created in code and placed in SigSpinEditRetrieveTimeout_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitASCIITransfer.dfm` CheckListBoxToRetrieve: TCheckListBox - check marks are not converted.
+- `UnitASCIITransfer.dfm` Unknown component GaugeWait: TGauge - a placeholder was generated.
+- `UnitASCIITransfer.pas(4446)` Routine TFormASCIITransfer.SpeedButtonStartTransferClick was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'alClient' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(4230)` Routine TFormASCIITransfer.SpeedButtonStartSimpleTransferClick was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'alClient' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(4283)` Routine TFormASCIITransfer.SpeedButtonStartAdvancedTransferClick was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'alClient' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(4336)` Routine TFormASCIITransfer.SpeedButtonStartSimpleTransferRcvClick was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'alClient' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(4391)` Routine TFormASCIITransfer.SpeedButtonStartAdvancedTransferRcvClick was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'alClient' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(4170)` Routine TFormASCIITransfer.SpeedButtonStartRetrieveClick was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'alClient' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(4165)` Routine TFormASCIITransfer.SpeedButtonSelectAllSendClick was emitted as a stub because 1 problem(s) were found (first: VCL member 'CheckAll' has no automatic WPF mapping (kept as CheckListBoxToSend.CheckAll).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(4117)` Routine TFormASCIITransfer.SpeedButtonClearAllSendClick was emitted as a stub because 1 problem(s) were found (first: VCL member 'CheckAll' has no automatic WPF mapping (kept as CheckListBoxToSend.CheckAll).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(4160)` Routine TFormASCIITransfer.SpeedButtonSelectAllRcvClick was emitted as a stub because 1 problem(s) were found (first: VCL member 'CheckAll' has no automatic WPF mapping (kept as CheckListBoxToRetrieve.CheckAll).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(4112)` Routine TFormASCIITransfer.SpeedButtonClearAllRcvClick was emitted as a stub because 1 problem(s) were found (first: VCL member 'CheckAll' has no automatic WPF mapping (kept as CheckListBoxToRetrieve.CheckAll).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(3955)` Routine TFormASCIITransfer.SendNextSendRec was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'DateTimeToString' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(3920)` Routine TFormASCIITransfer.SendNextRcvRec was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'DateTimeToString' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(1133)` Routine TFormASCIITransfer.OnSendWhoAreYouFail was emitted as a stub because 2 problem(s) were found (first: Unresolved identifier 'ERROR_BAD_COMMAND' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(1092)` Routine TFormASCIITransfer.OnSendSendFail was emitted as a stub because 2 problem(s) were found (first: Unresolved identifier 'ERROR_BAD_COMMAND' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(1174)` Routine TFormASCIITransfer.OnSendWhoAreYouRcvFail was emitted as a stub because 4 problem(s) were found (first: Unresolved identifier 'NO_ERROR' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(1044)` Routine TFormASCIITransfer.OnSendRcvFail was emitted as a stub because 4 problem(s) were found (first: Unresolved identifier 'NO_ERROR' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(994)` Routine TFormASCIITransfer.OnSendFail was emitted as a stub because 7 problem(s) were found (first: Unresolved identifier 'ERROR_INVALID_HANDLE' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(4092)` Routine TFormASCIITransfer.SetupVisualInterfaceSimple was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'alClient' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(4081)` Routine TFormASCIITransfer.SetupVisualInterfaceExpert was emitted as a stub because 3 problem(s) were found (first: Unresolved identifier 'alClient' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(4101)` Routine TFormASCIITransfer.SetupVisualSDCardPrep was emitted as a stub because 3 problem(s) were found (first: Unresolved identifier 'alClient' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(3754)` Routine TFormASCIITransfer.SendFile2 was emitted as a stub because 2 problem(s) were found (first: Unresolved identifier 'alClient' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(3816)` Routine TFormASCIITransfer.SendFile3 was emitted as a stub because 2 problem(s) were found (first: Member 'Value' not found in tZFPDiskFile.). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(815)` Routine TFormASCIITransfer.GetFile2 was emitted as a stub because 2 problem(s) were found (first: Unresolved identifier 'alClient' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(877)` Routine TFormASCIITransfer.GetFile3 was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'alClient' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(474)` 'with' on an expression of unknown type (pPanel) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(501)` 'with' on an expression of unknown type (ZFPFile.CauseAndEffects.InputGroups) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(509)` 'with' on an expression of unknown type (ZFPFile.CauseAndEffects.OutputGroups) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(517)` 'with' on an expression of unknown type (ZFPFile.SuperGroupList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(525)` 'with' on an expression of unknown type (ZFPFile.ModeList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(533)` 'with' on an expression of unknown type (ZFPFile.InputSuperGroupList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(541)` 'with' on an expression of unknown type (ZFPFile.SequenceList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(549)` 'with' on an expression of unknown type (ZFPFile.PulsePatternList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(557)` 'with' on an expression of unknown type (ZFPFile.GroupActionList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(607)` 'with' on an expression of unknown type (ZonesFile) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(620)` 'with' on an expression of unknown type (ZFPFile.CauseAndEffects) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(628)` 'with' on an expression of unknown type (ZFPFile.InputSuperGroupList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(461)` Routine TFormASCIITransfer.BuildSDCardFiles was emitted as a stub because 11 problem(s) were found (first: Unresolved identifier 'ZFPFile' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(2891)` Routine TFormASCIITransfer.AdvancedSendData was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'alClient' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(3281)` Routine TFormASCIITransfer.AdvancedSendData2 was emitted as a stub because 9 problem(s) were found (first: Unresolved identifier 'tZFPNode' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(3660)` Routine TFormASCIITransfer.AdvancedSendData2HasRecType was emitted as a stub because 2 problem(s) were found (first: Unresolved identifier 'tAdvancedTransfer' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(3692)` Routine TFormASCIITransfer.AdvancedSendData2HasType was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'tAdvancedTransfer' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(2627)` 'with' on an expression of unknown type (pPanel) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(2665)` 'with' on an expression of unknown type (ZFPFile.CauseAndEffects.InputGroups) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(2673)` 'with' on an expression of unknown type (ZFPFile.CauseAndEffects.OutputGroups) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(2681)` 'with' on an expression of unknown type (ZFPFile.SuperGroupList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(2689)` 'with' on an expression of unknown type (ZFPFile.ModeList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(2697)` 'with' on an expression of unknown type (ZFPFile.InputSuperGroupList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(2705)` 'with' on an expression of unknown type (ZFPFile.SequenceList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(2713)` 'with' on an expression of unknown type (ZFPFile.PulsePatternList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(2721)` 'with' on an expression of unknown type (ZFPFile.GroupActionList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(2771)` 'with' on an expression of unknown type (ZonesFile) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(2784)` 'with' on an expression of unknown type (ZFPFile.CauseAndEffects) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(2792)` 'with' on an expression of unknown type (ZFPFile.InputSuperGroupList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(2807)` 'with' on an expression of unknown type (ZFPFile.Logo) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(2595)` Routine TFormASCIITransfer.SendAllData was emitted as a stub because 11 problem(s) were found (first: Unresolved identifier 'ZFPFile' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(3005)` 'with' on an expression of unknown type (fCurrPanel) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(3023)` 'with' on an expression of unknown type (ZFPFile.CauseAndEffects.InputGroups) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(3032)` 'with' on an expression of unknown type (ZFPFile.CauseAndEffects.OutputGroups) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(3040)` 'with' on an expression of unknown type (ZFPFile.SuperGroupList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(3048)` 'with' on an expression of unknown type (ZFPFile.ModeList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(3056)` 'with' on an expression of unknown type (ZFPFile.InputSuperGroupList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(3064)` 'with' on an expression of unknown type (ZFPFile.SequenceList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(3072)` 'with' on an expression of unknown type (ZFPFile.PulsePatternList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(3080)` 'with' on an expression of unknown type (ZFPFile.GroupActionList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(3143)` 'with' on an expression of unknown type (ZFPFile.CauseAndEffects) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(3150)` 'with' on an expression of unknown type (ZFPFile.InputSuperGroupList) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(3167)` 'with' on an expression of unknown type (ZFPFile.Logo) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(2967)` Routine TFormASCIITransfer.SendAllData2 was emitted as a stub because 12 problem(s) were found (first: Unresolved identifier 'ExportNamesFile' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(1731)` 'with' on an expression of unknown type (pPanel) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(1701)` Routine TFormASCIITransfer.RcvAllData was emitted as a stub because 19 problem(s) were found (first: Unresolved identifier 'ID' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(1873)` 'with' on an expression of unknown type (fCurrPanel) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(1838)` Routine TFormASCIITransfer.RcvAllData2 was emitted as a stub because 19 problem(s) were found (first: Unresolved identifier 'ImportNetworkCfgRequest' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(2021)` Routine TFormASCIITransfer.AdvancedRcvData2 was emitted as a stub because 6 problem(s) were found (first: Unresolved identifier 'tZFPNode' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(2275)` Routine TFormASCIITransfer.RcvDeviceData was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'alClient' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(2385)` 'with' on an expression of unknown type (fCurrPanel) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(2349)` Routine TFormASCIITransfer.RcvDeviceData2 was emitted as a stub because 5 problem(s) were found (first: Unresolved identifier 'ImportNetworkCfgRequest' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(2433)` Routine TFormASCIITransfer.RcvLogFile was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'alClient' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(2499)` 'with' on an expression of unknown type (fCurrPanel) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(2462)` Routine TFormASCIITransfer.RcvLogFile2 was emitted as a stub because 2 problem(s) were found (first: Unresolved identifier 'ID' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(2543)` Routine TFormASCIITransfer.StartLogTransfer was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'alClient' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(978)` Routine TFormASCIITransfer.InitFileRcv was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'alClient' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(373)` 'with' on an expression of unknown type (pPanel) - members inside could not be qualified automatically.
+- `UnitASCIITransfer.pas(368)` Routine TFormASCIITransfer.AddFileRcvRequest was emitted as a stub because 2 problem(s) were found (first: Unresolved identifier 'ZFPFile' (kept as-is).). The attempted C# is kept in a comment.
+- `UnitASCIITransfer.pas(4700)` Routine TFormASCIITransfer.Translate was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'XFP4PgmCfg' (kept as-is).). The attempted C# is kept in a comment.
+- `PrevForm.dfm` PB1: TPaintBox - OnPaint drawing must be rewritten.
+- `PrevForm.dfm` PB1: OnPaint drawing must be rewritten (WPF uses retained graphics - add Shapes to the Canvas or override OnRender).
+- `PrevForm.dfm` PB1.OnPaint = PBPaint was not wired (no automatic WPF mapping). Hook it up manually.
+- `PrevForm.dfm` PB2: TPaintBox - OnPaint drawing must be rewritten.
+- `PrevForm.dfm` PB2: OnPaint drawing must be rewritten (WPF uses retained graphics - add Shapes to the Canvas or override OnRender).
+- `PrevForm.dfm` PB2.OnPaint = PBPaint was not wired (no automatic WPF mapping). Hook it up manually.
+- `PrevForm.pas(120)` Routine TPreviewForm.FormCreate was emitted as a stub because 3 problem(s) were found (first: Member 'Cursors' is not provided by TScreen in DelphiRtl.). The attempted C# is kept in a comment.
+- `PrevForm.pas(140)` Routine TPreviewForm.ScrollBox1Resize was emitted as a stub because 1 problem(s) were found (first: Unresolved identifier 'PixelsPerInch' (kept as-is).). The attempted C# is kept in a comment.
+- `PrevForm.pas(224)` Routine TPreviewForm.PBPaint was emitted as a stub because 4 problem(s) were found (first: Unresolved identifier 'SetMapMode' (kept as-is).). The attempted C# is kept in a comment.
+- `PrevForm.pas(361)` Routine TPreviewForm.PB1MouseDown was emitted as a stub because 2 problem(s) were found (first: VCL member 'HorzScrollBar' has no automatic WPF mapping (kept as ScrollBox1.HorzScrollBar).). The attempted C# is kept in a comment.
+- `PrevForm.pas(388)` Routine TPreviewForm.PB1MouseMove was emitted as a stub because 2 problem(s) were found (first: VCL member 'HorzScrollBar' has no automatic WPF mapping (kept as ScrollBox1.HorzScrollBar).). The attempted C# is kept in a comment.
+- `PrevForm.pas(408)` Routine TPreviewForm.PageNumSpeedClick was emitted as a stub because 1 problem(s) were found (first: VCL member 'MaxValue' has no automatic WPF mapping (kept as gp.PageNum.MaxValue).). The attempted C# is kept in a comment.
+- `Gopage.dfm` PageNum: TSpinEdit - spin buttons not converted.
+- `SigFileClipboard.pas(91)` Routine TFormSigFileClipboard.CopyToClipBoard was emitted as a stub because 1 problem(s) were found (first: Member 'CopyToClipboard' not found in TSigBaseProperty.). The attempted C# is kept in a comment.
+- `SigFileImageList.pas` tSigFileImageList descends from tSigObjectList, which is not part of the project; the base class was dropped.
+- `SigFileImageList.pas(149)` 'inherited Load(pFile, ref pLine, pAllowUndo, pIsDirty, pErrors)' used as a value: the VCL ancestor has no C# equivalent.
+- `SigFileImageList.pas(156)` 'inherited PasteFromClipboard(pClipboard, pLine, pErrors)' used as a value: the VCL ancestor has no C# equivalent.
+- `SigFileImageSelector.pas(135)` 'with' on an expression of unknown type (StringGridUserImages.Canvas) - members inside could not be qualified automatically.
+- `SigFilePgmStatus.pas` tSigPgmStatusHelper descends from tSigBaseIntegerProperty, which is not part of the project; the base class was dropped.
+- `SigFilePgmStatus.pas(346)` Run-time event assignment fControl.OnSelectCell must be rewritten as a WPF event subscription.
+- `SigFilePgmStatus.pas(347)` Run-time event assignment fControl.OnSelectCell must be rewritten as a WPF event subscription.
+- `SigFilePgmStatus.pas(436)` 'with' on an expression of unknown type (iSelection) - members inside could not be qualified automatically.
+- `UnitFrameIconEditor.pas(665)` 'inherited Add(pNumberedFile)' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitFrameIconEditor.pas(262)` Address-of (@) operator on data is not supported in C#.
+- `UnitFrameIconEditor.pas(262)` Address-of (@) operator on data is not supported in C#.
+- `SigTranslation.pas(209)` 'with' on an expression of unknown type (Children) - members inside could not be qualified automatically.
+- `SigTranslation.pas(71)` 'with' on an expression of unknown type (Children) - members inside could not be qualified automatically.
+- `SigTranslation.pas(113)` 'with' on an expression of unknown type (Children) - members inside could not be qualified automatically.
+- `PrevPrinter.pas` TBenMetaFileCanvas descends from TMetaFileCanvas, which is not part of the project; the base class was dropped.
+- `PrevPrinter.pas(870)` FillChar on this kind of value is not supported.
+- `PrevPrinter.pas(897)` Address-of (@) operator on data is not supported in C#.
+- `PageSetupDlg.dfm` FormSettings1.SaveValueOptions: value from the form file was not applied (Set).
+- `FormSettings.pas(140)` Form.Position set at run time is not converted.
+- `FormSettings.pas(167)` Form.Position set at run time is not converted.
+- `WinIOCtl.pas(470)` Pointer type PSTORAGE_HOTPLUG_INFO mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(497)` Pointer type PSTORAGE_DEVICE_NUMBER mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(524)` Pointer type PSTORAGE_BUS_RESET_REQUEST mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(562)` Pointer type PPREVENT_MEDIA_REMOVAL mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(585)` Pointer type PCLASS_MEDIA_CHANGE_CONTEXT mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(590)` Pointer type PTAPE_STATISTICS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(623)` Pointer type PTAPE_GET_STATISTICS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(743)` Pointer type PSTORAGE_MEDIA_TYPE mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(746)` Pointer type PStorageMediaType mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(783)` Pointer type PSTORAGE_BUS_TYPE mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(808)` Record TDMITapeInfo has a variant part; the variants were flattened into separate fields.
+- `WinIOCtl.pas(822)` Pointer type PDEVICE_MEDIA_INFO mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(824)` Record _DEVICE_MEDIA_INFO has a variant part; the variants were flattened into separate fields.
+- `WinIOCtl.pas(836)` Pointer type PGET_MEDIA_TYPES mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(862)` Pointer type PSTORAGE_PREDICT_FAILURE mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1309)` Pointer type PMEDIA_TYPE mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1319)` Pointer type PFORMAT_PARAMETERS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1343)` Pointer type PBAD_TRACK_NUMBER mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1351)` Pointer type PFORMAT_EX_PARAMETERS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1375)` Pointer type PDISK_GEOMETRY mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1406)` Pointer type PPARTITION_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1430)` Pointer type PSET_PARTITION_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1446)` Pointer type PDRIVE_LAYOUT_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1464)` Pointer type PVERIFY_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1481)` Pointer type PREASSIGN_BLOCKS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1521)` Pointer type PPARTITION_INFORMATION_GPT mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1562)` Pointer type PPARTITION_INFORMATION_MBR mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1591)` Pointer type PSET_PARTITION_INFORMATION_EX mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1593)` Record _SET_PARTITION_INFORMATION_EX has a variant part; the variants were flattened into separate fields.
+- `WinIOCtl.pas(1610)` Pointer type PCREATE_DISK_GPT mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1627)` Pointer type PCREATE_DISK_MBR mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1638)` Pointer type PCREATE_DISK mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1640)` Record _CREATE_DISK has a variant part; the variants were flattened into separate fields.
+- `WinIOCtl.pas(1658)` Pointer type PGET_LENGTH_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1675)` Pointer type PPARTITION_INFORMATION_EX mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1677)` Record _PARTITION_INFORMATION_EX has a variant part; the variants were flattened into separate fields.
+- `WinIOCtl.pas(1697)` Pointer type PDRIVE_LAYOUT_INFORMATION_GPT mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1715)` Pointer type PDRIVE_LAYOUT_INFORMATION_MBR mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1731)` Pointer type PDRIVE_LAYOUT_INFORMATION_EX mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1763)` Pointer type PDISK_INT13_INFO mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1778)` Pointer type PDISK_EX_INT13_INFO mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1796)` Pointer type PDISK_DETECTION_INFO mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1798)` Record _DISK_DETECTION_INFO has a variant part; the variants were flattened into separate fields.
+- `WinIOCtl.pas(1820)` Pointer type PDISK_PARTITION_INFO mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1822)` Record _DISK_PARTITION_INFO has a variant part; the variants were flattened into separate fields.
+- `WinIOCtl.pas(1845)` Pointer type PDISK_GEOMETRY_EX mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1870)` Pointer type PDISK_CONTROLLER_NUMBER mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1915)` Pointer type PDISK_CACHE_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(1917)` Record _DISK_CACHE_INFORMATION has a variant part; the variants were flattened into separate fields.
+- `WinIOCtl.pas(1984)` Pointer type PDISK_GROW_PARTITION mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2017)` Pointer type PHISTOGRAM_BUCKET mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2034)` Pointer type PDISK_HISTOGRAM mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2080)` Pointer type PDISK_PERFORMANCE mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2108)` Pointer type PDISK_RECORD mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2130)` Pointer type PDISK_LOGGING mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2195)` Pointer type PBIN_RANGE mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2211)` Pointer type PPERF_BIN mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2228)` Pointer type PBIN_COUNT mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2244)` Pointer type PBIN_RESULTS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2265)` Pointer type LPGETVERSIONINPARAMS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2302)` Pointer type LPIDEREGS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2353)` Pointer type LPSENDCMDINPARAMS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2378)` Pointer type LPDRIVERSTATUS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2446)` Pointer type LPSENDCMDOUTPARAMS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2587)` Pointer type PELEMENT_TYPE mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2592)` Pointer type PCHANGER_ELEMENT mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2604)` Pointer type PCHANGER_ELEMENT_LIST mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2753)` Pointer type PGET_CHANGER_PARAMETERS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2837)` Pointer type PCHANGER_PRODUCT_DATA mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2883)` Pointer type PCHANGER_SET_ACCESS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2909)` Pointer type PCHANGER_READ_ELEMENT_STATUS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2931)` Pointer type PCHANGER_ELEMENT_STATUS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(2981)` Pointer type PCHANGER_ELEMENT_STATUS_EX mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(3104)` Pointer type PCHANGER_INITIALIZE_ELEMENT_STATUS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(3127)` Pointer type PCHANGER_SET_POSITION mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(3153)` Pointer type PCHANGER_EXCHANGE_MEDIUM mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(3188)` Pointer type PCHANGER_MOVE_MEDIUM mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(3222)` Pointer type PCHANGER_SEND_VOLUME_TAG_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(3248)` Pointer type PREAD_ELEMENT_ADDRESS_INFO mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(3324)` Pointer type PCHANGER_DEVICE_PROBLEM_TYPE mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(3809)` Pointer type PPATHNAME_BUFFER mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(3825)` Pointer type PFSCTL_QUERY_FAT_BPB_BUFFER mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(4307)` Pointer type PFILE_PREFETCH mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(4322)` Pointer type PFILESYSTEM_STATISTICS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(4363)` Pointer type PFAT_STATISTICS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(4427)` Pointer type PNTFS_STATISTICS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(4507)` Pointer type PFILE_OBJECTID_BUFFER mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(4509)` Record _FILE_OBJECTID_BUFFER has a variant part; the variants were flattened into separate fields.
+- `WinIOCtl.pas(4540)` Pointer type PFILE_SET_SPARSE_BUFFER mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(4555)` Pointer type PFILE_ZERO_DATA_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(4578)` Pointer type PFILE_ALLOCATED_RANGE_BUFFER mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(4599)` Pointer type PENCRYPTION_BUFFER mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(4630)` Pointer type PDECRYPTION_STATUS_BUFFER mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(4655)` Pointer type PREQUEST_RAW_ENCRYPTED_DATA mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(4697)` Pointer type PENCRYPTED_DATA_INFO mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(4847)` Pointer type PPLEX_READ_DATA_REQUEST mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(4860)` Pointer type PSI_COPYFILE mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(4904)` Pointer type PDISK_EXTENT mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(4921)` Pointer type PVOLUME_DISK_EXTENTS mapped to IntPtr; pointer code must be rewritten.
+- `WinIOCtl.pas(4994)` Pointer dereference (^) kept as plain reference - check the logic.
+- `WinIOCtl.pas(4994)` Address-of (@) operator on data is not supported in C#.
+- `WinIOCtl.pas(5002)` Pointer dereference (^) kept as plain reference - check the logic.
+- `WinIOCtl.pas(5002)` Typecast to PDiskDetectionInfo kept as-is.
+- `jwawinnt.pas(612)` Pointer type PKSPIN_LOCK mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(680)` Pointer type PFLOATING_SAVE_AREA mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(710)` Pointer type PContext mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(812)` Pointer type PLDT_ENTRY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(841)` Pointer type PEXCEPTION_RECORD mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(857)` Pointer type PEXCEPTION_RECORD32 mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(873)` Pointer type PEXCEPTION_RECORD64 mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(894)` Pointer type PEXCEPTION_POINTERS mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(904)` Pointer type PExceptionPointers mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(950)` Pointer type PACCESS_MASK mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1025)` Pointer type PGENERIC_MAPPING mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1049)` Pointer type PLUID_AND_ATTRIBUTES mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1063)` Pointer type PLUID_AND_ATTRIBUTES_ARRAY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1066)` Pointer type PLuidAndAttributesArray mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1098)` Pointer type PSID_IDENTIFIER_AUTHORITY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1109)` Pointer type PSid mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1119)` Pointer type PPSID mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1158)` Pointer type PSID_NAME_USE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1163)` Pointer type PSID_AND_ATTRIBUTES mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1177)` Pointer type PSID_AND_ATTRIBUTES_ARRAY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1179)` Pointer type PSidAndAttributesArray mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1594)` Pointer type PACL mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1608)` Pointer type PPACL mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1630)` Pointer type PACE_HEADER mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1777)` Pointer type PACCESS_ALLOWED_ACE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1790)` Pointer type PACCESS_DENIED_ACE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1803)` Pointer type PSYSTEM_AUDIT_ACE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1816)` Pointer type PSYSTEM_ALARM_ACE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1829)` Pointer type PACCESS_ALLOWED_OBJECT_ACE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1845)` Pointer type PACCESS_DENIED_OBJECT_ACE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1861)` Pointer type PSYSTEM_AUDIT_OBJECT_ACE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1877)` Pointer type PSYSTEM_ALARM_OBJECT_ACE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1907)` Pointer type PACCESS_ALLOWED_CALLBACK_ACE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1921)` Pointer type PACCESS_DENIED_CALLBACK_ACE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1935)` Pointer type PSYSTEM_AUDIT_CALLBACK_ACE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1949)` Pointer type PSYSTEM_ALARM_CALLBACK_ACE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1966)` Pointer type PACCESS_ALLOWED_CALLBACK_OBJECT_ACE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(1983)` Pointer type PACCESS_DENIED_CALLBACK_OBJECT_ACE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2000)` Pointer type PSYSTEM_AUDIT_CALLBACK_OBJECT_ACE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2017)` Pointer type PSYSTEM_ALARM_CALLBACK_OBJECT_ACE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2055)` Pointer type PACL_REVISION_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2070)` Pointer type PACL_SIZE_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2106)` Pointer type PSECURITY_DESCRIPTOR_CONTROL mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2215)` Pointer type PSECURITY_DESCRIPTOR_RELATIVE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2232)` Pointer type PSECURITY_DESCRIPTOR mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2249)` Pointer type PPSECURITY_DESCRIPTOR mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2301)` Pointer type POBJECT_TYPE_LIST mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2338)` Pointer type PAUDIT_EVENT_TYPE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2397)` Pointer type PPRIVILEGE_SET mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2500)` Pointer type PSECURITY_IMPERSONATION_LEVEL mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2574)` Pointer type PTOKEN_TYPE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2594)` Pointer type PTOKEN_INFORMATION_CLASS mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2605)` Pointer type PTOKEN_USER mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2616)` Pointer type PTOKEN_GROUPS mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2628)` Pointer type PTOKEN_PRIVILEGES mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2640)` Pointer type PTOKEN_OWNER mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2651)` Pointer type PTOKEN_PRIMARY_GROUP mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2662)` Pointer type PTOKEN_DEFAULT_DACL mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2688)` Pointer type PTOKEN_GROUPS_AND_PRIVILEGES mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2721)` Pointer type PTOKEN_AUDIT_POLICY_ELEMENT mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2738)` Pointer type PTOKEN_AUDIT_POLICY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2754)` Pointer type PTOKEN_SOURCE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2766)` Pointer type PTOKEN_STATISTICS mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2786)` Pointer type PTOKEN_CONTROL mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2806)` Pointer type PTOKEN_ORIGIN mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2824)` Pointer type PSECURITY_CONTEXT_TRACKING_MODE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2831)` Pointer type PSECURITY_QUALITY_OF_SERVICE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2849)` Pointer type PSE_IMPERSONATION_STATE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2872)` Pointer type PSECURITY_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2970)` Pointer type PJOB_SET_ARRAY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2982)` Pointer type PEXCEPTION_REGISTRATION_RECORD mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(2991)` Pointer type PNT_TIB mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3060)` Pointer type PNtTib mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3066)` Pointer type PNT_TIB32 mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3085)` Pointer type PNtTib32 mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3087)` Pointer type PNT_TIB64 mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3106)` Pointer type PNtTib64 mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3126)` Pointer type PQUOTA_LIMITS mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3170)` Pointer type PQUOTA_LIMITS_EX mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3175)` Pointer type PIO_COUNTERS mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3191)` Pointer type PJOBOBJECT_BASIC_ACCOUNTING_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3209)` Pointer type PJOBOBJECT_BASIC_LIMIT_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3228)` Pointer type PJOBOBJECT_EXTENDED_LIMIT_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3244)` Pointer type PJOBOBJECT_BASIC_PROCESS_ID_LIST mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3257)` Pointer type PJOBOBJECT_BASIC_UI_RESTRICTIONS mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3268)` Pointer type PJOBOBJECT_SECURITY_LIMIT_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3283)` Pointer type PJOBOBJECT_END_OF_JOB_TIME_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3294)` Pointer type PJOBOBJECT_ASSOCIATE_COMPLETION_PORT mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3306)` Pointer type PJOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3324)` Pointer type PJOBOBJECT_JOBSET_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3526)` Record _SYSTEM_LOGICAL_PROCESSOR_INFORMATION has a variant part; the variants were flattened into separate fields.
+- `jwawinnt.pas(3537)` Pointer type PSYSTEM_LOGICAL_PROCESSOR_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3639)` Pointer type PMEMORY_BASIC_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3656)` Pointer type PMEMORY_BASIC_INFORMATION32 mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3673)` Pointer type PMEMORY_BASIC_INFORMATION64 mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3934)` Pointer type PFILE_NOTIFY_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3953)` Pointer type PFILE_SEGMENT_ELEMENT mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(3955)` Record _FILE_SEGMENT_ELEMENT has a variant part; the variants were flattened into separate fields.
+- `jwawinnt.pas(3977)` Pointer type PREPARSE_GUID_DATA_BUFFER mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4101)` Pointer type PSYSTEM_POWER_STATE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4121)` Pointer type PPOWER_ACTION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4136)` Pointer type PDEVICE_POWER_STATE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4198)` Pointer type PCM_POWER_DATA mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4337)` Pointer type PSYSTEM_POWER_POLICY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4387)` Pointer type PPROCESSOR_POWER_POLICY_INFO mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4412)` Pointer type PPROCESSOR_POWER_POLICY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4438)` Pointer type PADMINISTRATOR_POWER_POLICY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4541)` Pointer type PIMAGE_DOS_HEADER mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4572)` Pointer type PIMAGE_OS2_HEADER mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4614)` Pointer type PIMAGE_VXD_HEADER mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4681)` Pointer type PIMAGE_FILE_HEADER mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4797)` Pointer type PIMAGE_DATA_DIRECTORY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4818)` Pointer type PIMAGE_OPTIONAL_HEADER32 mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4865)` Pointer type PIMAGE_ROM_OPTIONAL_HEADER mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4888)` Pointer type PIMAGE_OPTIONAL_HEADER64 mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4958)` Pointer type PIMAGE_NT_HEADERS64 mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4971)` Pointer type PIMAGE_NT_HEADERS32 mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(4984)` Pointer type PIMAGE_ROM_HEADERS mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(5119)` Record TImgSecHdrMisc has a variant part; the variants were flattened into separate fields.
+- `jwawinnt.pas(5125)` Pointer type PIMAGE_SECTION_HEADER mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(5272)` Record TImageSymbolN has a variant part; the variants were flattened into separate fields.
+- `jwawinnt.pas(5283)` Pointer type PIMAGE_SYMBOL mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(5485)` Record TImgAuzSymSymMisc has a variant part; the variants were flattened into separate fields.
+- `jwawinnt.pas(5494)` Record TImgAuzSymSymFcnAry has a variant part; the variants were flattened into separate fields.
+- `jwawinnt.pas(5523)` Pointer type PIMAGE_AUX_SYMBOL mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(5525)` Record _IMAGE_AUX_SYMBOL has a variant part; the variants were flattened into separate fields.
+- `jwawinnt.pas(5593)` Record TImgRelocUnion has a variant part; the variants were flattened into separate fields.
+- `jwawinnt.pas(5599)` Pointer type PIMAGE_RELOCATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6151)` Record TImgLineNoType has a variant part; the variants were flattened into separate fields.
+- `jwawinnt.pas(6157)` Pointer type PIMAGE_LINENUMBER mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6180)` Pointer type PIMAGE_BASE_RELOCATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6239)` Pointer type PIMAGE_ARCHIVE_MEMBER_HEADER mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6269)` Pointer type PIMAGE_EXPORT_DIRECTORY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6294)` Pointer type PIMAGE_IMPORT_BY_NAME mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6308)` Pointer type PIMAGE_THUNK_DATA64 mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6310)` Record _IMAGE_THUNK_DATA64 has a variant part; the variants were flattened into separate fields.
+- `jwawinnt.pas(6325)` Pointer type PIMAGE_THUNK_DATA32 mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6327)` Record _IMAGE_THUNK_DATA32 has a variant part; the variants were flattened into separate fields.
+- `jwawinnt.pas(6364)` Pointer type PIMAGE_TLS_DIRECTORY64 mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6380)` Pointer type PIMAGE_TLS_DIRECTORY32 mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6421)` Record TIIDUnion has a variant part; the variants were flattened into separate fields.
+- `jwawinnt.pas(6427)` Pointer type PIMAGE_IMPORT_DESCRIPTOR mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6451)` Pointer type PIMAGE_BOUND_IMPORT_DESCRIPTOR mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6465)` Pointer type PIMAGE_BOUND_FORWARDER_REF mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6496)` Pointer type PIMAGE_RESOURCE_DIRECTORY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6535)` Record TIRDEName has a variant part; the variants were flattened into separate fields.
+- `jwawinnt.pas(6545)` Record TIRDEDirectory has a variant part; the variants were flattened into separate fields.
+- `jwawinnt.pas(6553)` Pointer type PIMAGE_RESOURCE_DIRECTORY_ENTRY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6575)` Pointer type PIMAGE_RESOURCE_DIRECTORY_STRING mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6587)` Pointer type PIMAGE_RESOURCE_DIR_STRING_U mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6608)` Pointer type PIMAGE_RESOURCE_DATA_ENTRY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6700)` Pointer type PIMAGE_CE_RUNTIME_FUNCTION_ENTRY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6721)` Pointer type PIMAGE_DEBUG_DIRECTORY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6766)` Pointer type PIMAGE_COFF_SYMBOLS_HEADER mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6802)` Pointer type PFPO_DATA mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6825)` Pointer type PIMAGE_DEBUG_MISC mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6846)` Pointer type PIMAGE_FUNCTION_ENTRY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6859)` Pointer type PIMAGE_FUNCTION_ENTRY64 mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6861)` Record _IMAGE_FUNCTION_ENTRY64 has a variant part; the variants were flattened into separate fields.
+- `jwawinnt.pas(6894)` Pointer type PIMAGE_SEPARATE_DEBUG_HEADER mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6933)` Pointer type PNON_PAGED_DEBUG_INFO mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6963)` Pointer type PIMAGE_ARCHITECTURE_HEADER mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(6975)` Pointer type PIMAGE_ARCHITECTURE_ENTRY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(7162)` Record _SLIST_HEADER has a variant part; the variants were flattened into separate fields.
+- `jwawinnt.pas(7174)` Pointer type PSLIST_HEADER mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(7282)` Pointer type PMESSAGE_RESOURCE_ENTRY mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(7300)` Pointer type PMESSAGE_RESOURCE_BLOCK mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(7313)` Pointer type PMESSAGE_RESOURCE_DATA mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(7325)` Pointer type LPOSVERSIONINFOA mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(7341)` Pointer type LPOSVERSIONINFOW mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(7376)` Pointer type POSVERSIONINFOEXA mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(7394)` Pointer type LPOSVERSIONINFOEXA mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(7398)` Pointer type POSVERSIONINFOEXW mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(7416)` Pointer type LPOSVERSIONINFOEXW mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(7420)` Pointer type PRTL_OSVERSIONINFOEXW mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(7527)` Pointer type PRTL_CRITICAL_SECTION_DEBUG mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(7557)` Pointer type PRTL_CRITICAL_SECTION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(7590)` Pointer type PRTL_VERIFIER_THUNK_DESCRIPTOR mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(7603)` Pointer type PRTL_VERIFIER_DLL_DESCRIPTOR mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(7617)` Pointer type PRTL_VERIFIER_PROVIDER_DESCRIPTOR mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(7978)` Pointer type PACTIVATION_CONTEXT_QUERY_INDEX mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8001)` Pointer type PASSEMBLY_FILE_DETAILED_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8034)` Pointer type PACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8063)` Pointer type PACTIVATION_CONTEXT_DETAILED_INFORMATION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8153)` Pointer type PEventlogrecord mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8193)` Pointer type PEventsForLogFile mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8205)` Pointer type PPackedEventInfo mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8491)` Pointer type PTAPE_ERASE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8522)` Pointer type PTAPE_PREPARE mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8549)` Pointer type PTAPE_WRITE_MARKS mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8575)` Pointer type PTAPE_GET_POSITION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8615)` Pointer type PTAPE_SET_POSITION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8773)` Pointer type PTAPE_GET_DRIVE_PARAMETERS mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8798)` Pointer type PTAPE_SET_DRIVE_PARAMETERS mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8817)` Pointer type PTAPE_GET_MEDIA_PARAMETERS mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8836)` Pointer type PTAPE_SET_MEDIA_PARAMETERS mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8860)` Pointer type PTAPE_CREATE_PARTITION mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8898)` Pointer type PTAPE_WMI_OPERATIONS mapped to IntPtr; pointer code must be rewritten.
+- `jwawinnt.pas(8986)` Inline assembler block must be rewritten.
+- `jwawinnt.pas(8992)` Inline assembler block must be rewritten.
+- `jwawinnt.pas(8968)` Pointer dereference (^) kept as plain reference - check the logic.
+- `jwawinnt.pas(8969)` Pointer dereference (^) kept as plain reference - check the logic.
+- `jwawinnt.pas(8981)` Inline assembler block must be rewritten.
+- `jwawinnt.pas(9102)` Pointer dereference (^) kept as plain reference - check the logic.
+- `jwawinnt.pas(9102)` Pointer dereference (^) kept as plain reference - check the logic.
+- `jwawinnt.pas(9103)` Pointer dereference (^) kept as plain reference - check the logic.
+- `jwawinnt.pas(9102)` Typecast to PImageSectionHeader kept as-is.
+- `jwawinnt.pas(9094)` Untyped parameter 'Struc' of FieldOffset converted to 'ref object'.
+- `jwawinnt.pas(9094)` Untyped parameter 'Field' of FieldOffset converted to 'ref object'.
+- `jwawinnt.pas(9096)` Address-of (@) operator on data is not supported in C#.
+- `jwawinnt.pas(9096)` Address-of (@) operator on data is not supported in C#.
+- `jwawintype.pas(83)` Pointer type PQuad mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(121)` Pointer type PLONGLONG mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(123)` Pointer type PULONGLONG mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(146)` Pointer type PPVOID mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(220)` Pointer type LPLPSTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(222)` Pointer type LPLPCSTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(224)` Pointer type LPLPCWSTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(226)` Pointer type LPLPWSTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(229)` Pointer type PPTSTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(230)` Pointer type PPChar mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(231)` Pointer type PPWideChar mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(232)` Pointer type PPointer mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(236)` Pointer type LPGUID mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(328)` Pointer type PSHORT mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(330)` Pointer type PLONG mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(337)` Pointer type PUCHAR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(339)` Pointer type PUSHORT mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(341)` Pointer type PULONG mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(343)` Pointer type PUQUAD mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(352)` Pointer type PSCHAR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(361)` Pointer type PHANDLE mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(405)` Pointer type PCSHORT mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(407)` Pointer type PCLONG mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(416)` Pointer type PLCID mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(420)` Pointer type PLANGID mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(428)` Pointer type PLOGICAL mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(437)` Pointer type PNTSTATUS mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(512)` Pointer type LPLARGE_INTEGER mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(520)` Record _LARGE_INTEGER has a variant part; the variants were flattened into separate fields.
+- `jwawintype.pas(534)` Pointer type PLARGE_INTEGER mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(584)` Pointer type PFloat128 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(604)` Pointer type PLuid mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(616)` Pointer type PDWORDLONG mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(625)` Pointer type PPHYSICAL_ADDRESS mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(695)` Pointer type PString mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(718)` Pointer type PCString mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(751)` Pointer type PUNICODE_STRING mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(761)` Pointer type PCUNICODE_STRING mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(772)` Pointer type PBOOLEAN mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(781)` Pointer type PLIST_ENTRY mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(801)` Pointer type PRLIST_ENTRY mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(809)` Pointer type PSINGLE_LIST_ENTRY mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(866)` Pointer type PString32 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(879)` Pointer type PUNICODE_STRING32 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(884)` Pointer type PANSI_STRING32 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(887)` Pointer type PString64 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(900)` Pointer type PUNICODE_STRING64 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(905)` Pointer type PANSI_STRING64 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(935)` Pointer type POBJECT_ATTRIBUTES mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(972)` Pointer type PObjectId mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1034)` Pointer type PKIRQL mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1045)` Pointer type PNT_PRODUCT_TYPE mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1114)` Pointer type PINT_PTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1118)` Pointer type PUINT_PTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1122)` Pointer type PLONG_PTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1126)` Pointer type PULONG_PTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1131)` Pointer type PLONG32 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1135)` Pointer type PINT32 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1144)` Pointer type PULONG32 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1148)` Pointer type PDWORD32 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1152)` Pointer type PUINT32 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1166)` Pointer type PFLOAT mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1168)` Pointer type PBOOL mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1170)` Pointer type LPBOOL mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1172)` Pointer type PBYTE mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1174)` Pointer type LPBYTE mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1176)` Pointer type PINT mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1178)` Pointer type PUINT mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1180)` Pointer type LPUINT mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1182)` Pointer type LPINT mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1184)` Pointer type PWORD mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1186)` Pointer type LPWORD mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1188)` Pointer type LPLONG mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1190)` Pointer type PDWORD mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1192)` Pointer type LPDWORD mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1198)` Pointer type LPLPVOID mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1232)` Pointer type LPHWND mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1236)` Pointer type LPHHOOK mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1244)` Pointer type SPHANDLE mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1246)` Pointer type LPHANDLE mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1268)` Pointer type PHKEY mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1318)` Pointer type PHKL mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1335)` Pointer type LPCOLORREF mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1338)` Pointer type PHMODULE mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1346)` Pointer type LPRECT mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1357)` Pointer type NPRECT mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1359)` Pointer type LPCRECT mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1394)` Pointer type PPointl mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1404)` Pointer type LPSIZE mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1429)` Pointer type LPPOINTS mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1452)` Pointer type PFILETIME mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1531)` Pointer type PUHALF_PTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1535)` Pointer type PHALF_PTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1550)` Pointer type PSIZE_T mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1554)` Pointer type PSSIZE_T mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1563)` Pointer type PDWORD_PTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1572)` Pointer type PLONG64 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1575)` Pointer type PINT64 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1584)` Pointer type PULONG64 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1588)` Pointer type PDWORD64 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1592)` Pointer type PUINT64 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1622)` Pointer type PINT8 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1626)` Pointer type PINT16 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1630)` Pointer type PUINT8 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1634)` Pointer type PUINT16 mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1643)` Pointer type PKAFFINITY mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1652)` Pointer type PPCWSTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1653)` Pointer type PPCASTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1654)` Pointer type PPCSTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1655)` Pointer type PPWSTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1656)` Pointer type PPASTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1657)` Pointer type PPSTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1658)` Pointer type PPTCHAR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1659)` Pointer type LPLPCTSTR mapped to IntPtr; pointer code must be rewritten.
+- `jwawintype.pas(1803)` Address-of (@) operator on data is not supported in C#.
+- `jwawintype.pas(1806)` Address-of (@) operator on data is not supported in C#.
+- `jwawintype.pas(1808)` Address-of (@) operator on data is not supported in C#.
+- `jwawintype.pas(1811)` Address-of (@) operator on data is not supported in C#.
+- `jwawintype.pas(1811)` Typecast to Pointer kept as-is.
+- `jwawintype.pas(1813)` Address-of (@) operator on data is not supported in C#.
+- `jwawintype.pas(1681)` Inline assembler block must be rewritten.
+- `jwawintype.pas(1690)` Inline assembler block must be rewritten.
+- `jwawintype.pas(1699)` Inline assembler block must be rewritten.
+- `jwawintype.pas(1743)` Pointer dereference (^) kept as plain reference - check the logic.
+- `jwawintype.pas(1744)` Pointer dereference (^) kept as plain reference - check the logic.
+- `jwawintype.pas(1745)` Pointer dereference (^) kept as plain reference - check the logic.
+- `jwawintype.pas(1746)` Pointer dereference (^) kept as plain reference - check the logic.
+- `jwawintype.pas(1747)` Pointer dereference (^) kept as plain reference - check the logic.
+- `jwawintype.pas(1748)` Pointer dereference (^) kept as plain reference - check the logic.
+- `SetupAPI.pas(56)` Pointer type PPWSTR mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(57)` Pointer type PPASTR mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(58)` Pointer type PPSTR mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(59)` Pointer type PHICON mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(114)` Pointer type PInfContext mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(127)` Pointer type PSPInfInformation mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(140)` Pointer type PSPAltPlatformInfo mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(168)` Pointer type PSPOriginalFileInfoA mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(169)` Pointer type PSPOriginalFileInfoW mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(453)` Pointer type PFilePathsA mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(454)` Pointer type PFilePathsW mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(477)` Pointer type PSourceMediaA mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(478)` Pointer type PSourceMediaW mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(514)` Pointer type PCabinetInfoA mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(515)` Pointer type PCabinetInfoW mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(540)` Pointer type PFileInCabinetInfoA mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(541)` Pointer type PFileInCabinetInfoW mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(576)` Pointer type PSPFileCopyParamsA mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(577)` Pointer type PSPFileCopyParamsW mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(629)` Pointer type PSPDevInfoData mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(644)` Pointer type PSPDeviceInterfaceData mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(682)` Pointer type PSPDeviceInterfaceDetailDataA mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(683)` Pointer type PSPDeviceInterfaceDetailDataW mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(716)` Pointer type PSPDevInfoListDetailDataA mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(717)` Pointer type PSPDevInfoListDetailDataW mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(829)` Pointer type PSPDevInstallParamsA mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(830)` Pointer type PSPDevInstallParamsW mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1041)` Pointer type PSPClassInstallHeader mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1052)` Pointer type PSPEnableClassParams mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1073)` Pointer type PSPMoveDevParams mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1110)` Pointer type PSPPropChangeParams mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1123)` Pointer type PSPRemoveDeviceParams mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1142)` Pointer type PSPUnremoveDeviceParams mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1159)` Pointer type PSPSelectDeviceParamsA mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1160)` Pointer type PSPSelectDeviceParamsW mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1201)` Pointer type PSPDetectDeviceParams mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1227)` Pointer type PSPInstallWizardData mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1410)` Pointer type PSPNewDeviceWizardData mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1424)` Pointer type PSPTroubleShooterParamsA mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1425)` Pointer type PSPTroubleShooterParamsW mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1446)` Pointer type PSPPowerMessageWakeParamsA mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1447)` Pointer type PSPPowerMessageWakeParamsW mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1467)` Pointer type PSPDrvInfoDataV2A mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1468)` Pointer type PSPDrvInfoDataV2W mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1500)` Pointer type PSPDrvInfoDataV1A mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1501)` Pointer type PSPDrvInfoDataV1W mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1545)` Pointer type PSPDrvInfoDetailDataA mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1546)` Pointer type PSPDrvInfoDetailDataW mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1580)` Pointer type PSPDrvInstallParams mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1639)` Pointer type PCoInstallerContextData mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1651)` Pointer type PSPClassImageListData mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1666)` Pointer type PSPPropSheetPageRequest mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1691)` Pointer type PSPBackupQueueParamsA mapped to IntPtr; pointer code must be rewritten.
+- `SetupAPI.pas(1692)` Pointer type PSPBackupQueueParamsW mapped to IntPtr; pointer code must be rewritten.
+- `SigFileDSMList.pas` tSigFileDSMList descends from tSigSimpleProperty, which is not part of the project; the base class was dropped.
+- `UnitFrameGlobalObjectPanelEditor.dfm` SigVariableEditorList: TSigVariableEditorList is created in code and placed in SigVariableEditorList_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitFrameGlobalObjectPanelEditor.dfm` SigGeneralGridUsage: TSigGeneralGrid is created in code and placed in SigGeneralGridUsage_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitFrameGlobalObjectEditor.dfm` SigGeneralGridGlobalPanelList: TSigGeneralGrid is created in code and placed in SigGeneralGridGlobalPanelList_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitFrameGlobalObjectEditor.dfm` SigVariableEditorList: TSigVariableEditorList is created in code and placed in SigVariableEditorList_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitFrameGlobalObjectEditor.dfm` TreeViewWhereUsed.OnChange = TreeViewWhereUsedChange: no WPF equivalent event for TreeView.
+- `UnitFrameGlobalObjectEditor.dfm` SigGeneralGridGlobal: TSigGeneralGrid is created in code and placed in SigGeneralGridGlobal_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitFrameGlobalObjectEditor.dfm` SigGridEditorNames.SigGrid: value from the form file was not applied (Ident).
+- `UnitFrameGlobalObjectEditor.dfm` tSigGridEditorID.SigGrid: value from the form file was not applied (Ident).
+- `UnitFrameGlobalObjectEditor.dfm` tSigGridEditorPanelUses.SigGrid: value from the form file was not applied (Ident).
+- `UnitFrameGlobalObjectEditor.dfm` tSigGridEditorPanelUses.Images: value from the form file was not applied (Ident).
+- `UnitFrameGlobalObjectEditor.dfm` tSigGridEditorPanelNo.SigGrid: value from the form file was not applied (Ident).
+- `UnitFrameGlobalObjectEditor.dfm` tSigGridEditorSequencesPanelName.SigGrid: value from the form file was not applied (Ident).
+- `UnitFrameGlobalObjectEditor.dfm` SigGridEditorSelected.SigGrid: value from the form file was not applied (Ident).
+- `UnitFrameGlobalObjectEditor.dfm` SigGridEditorSelected.Images: value from the form file was not applied (Ident).
+- `SigFileDefaultableObjects.pas` tSigSpecialBooleanProperty descends from tSigBooleanProperty, which is not part of the project; the base class was dropped.
+- `SigFileDefaultableObjects.pas(378)` 'inherited GetValueAsBool' used as a value: the VCL ancestor has no C# equivalent.
+- `SigFileDefaultableObjects.pas` tSigDefaultableBooleanProperty descends from tSigSimpleProperty, which is not part of the project; the base class was dropped.
+- `SigFileDefaultableObjects.pas(90)` 'with' on an expression of unknown type ((DefaultProperty as object)) - members inside could not be qualified automatically.
+- `UnitFrameSeqEditor.dfm` SigGeneralGridSequenceSteps: TSigGeneralGrid is created in code and placed in SigGeneralGridSequenceSteps_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitFrameSeqEditor.dfm` SigGridEditorSequenceID.SigGrid: value from the form file was not applied (Ident).
+- `UnitFrameSeqEditor.dfm` SigGridEditorSeqPredelay.SigGrid: value from the form file was not applied (Ident).
+- `UnitFrameSeqEditor.dfm` SigGridEditorSeqAction.SigGrid: value from the form file was not applied (Ident).
+- `UnitFrameSeqEditor.dfm` SigGridEditorPulsePattern.SigGrid: value from the form file was not applied (Ident).
+- `UnitFrameSupergroupEditor.dfm` SigGeneralGridSuperGroupGroups: TSigGeneralGrid is created in code and placed in SigGeneralGridSuperGroupGroups_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitFrameSupergroupEditor.dfm` SigGeneralGridSuperGroupSuperGroups: TSigGeneralGrid is created in code and placed in SigGeneralGridSuperGroupSuperGroups_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitFrameSupergroupEditor.dfm` tSigGridEditorSGSGDescrition.SigGrid: value from the form file was not applied (Ident).
+- `UnitFrameSupergroupEditor.dfm` tSigGridEditorSGSGPresent.SigGrid: value from the form file was not applied (Ident).
+- `UnitFrameSupergroupEditor.dfm` tSigGridEditorSGSGPresent.Images: value from the form file was not applied (Ident).
+- `UnitFrameSupergroupEditor.dfm` tSigGridEditorSGGPresent.SigGrid: value from the form file was not applied (Ident).
+- `UnitFrameSupergroupEditor.dfm` tSigGridEditorSGGPresent.Images: value from the form file was not applied (Ident).
+- `UnitFrameSupergroupEditor.dfm` tSigGridEditorSGGDescription.SigGrid: value from the form file was not applied (Ident).
+- `UnitFrameInputGroupEditor.dfm` SigVariableEditorListIGModalOverrides2: TSigVariableEditorList is created in code and placed in SigVariableEditorListIGModalOverrides2_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitFrameInputGroupEditor.dfm` SigPanel1: TSigPanel is created in code and placed in SigPanel1_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitFrameInputGroupEditor.dfm` SigPanel2: TSigPanel is created in code and placed in SigPanel2_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitBlockAddition.dfm` SigSpinEditFrom: TSigSpinEdit is created in code and placed in SigSpinEditFrom_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitBlockAddition.dfm` SigSpinEditTo: TSigSpinEdit is created in code and placed in SigSpinEditTo_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitPasteSpecial.dfm` SigSpinEditFixedTimes.OnChange = SigSpinEditFixedTimesChange was not wired (TSigSpinEdit has no event property OnChange).
+- `UnitPasteSpecial.dfm` SigSpinEditFixedTimes: TSigSpinEdit is created in code and placed in SigSpinEditFixedTimes_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitErrorObjects.pas(168)` 'inherited Add(pErrorObject)' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitErrorObjects.pas(184)` 'inherited Remove(AObject)' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitSigStrings.pas(63)` 'inherited Get(Index)' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitDongleInterface.dfm` USBPanel: TUSBPanel is created in code and placed in USBPanel_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitGlobalDevices.dfm` SigGeneralGridGlobalDevices.OnDrawCell = SigGeneralGridGlobalDevicesDrawCell was not wired (TSigGeneralGrid has no event property OnDrawCell).
+- `UnitGlobalDevices.dfm` SigGeneralGridGlobalDevices: TSigGeneralGrid is created in code and placed in SigGeneralGridGlobalDevices_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitGlobalDevices.dfm` SigGeneralGridZonalSummary.OnDrawCell = SigGeneralGridZonalSummaryDrawCell was not wired (TSigGeneralGrid has no event property OnDrawCell).
+- `UnitGlobalDevices.dfm` SigGeneralGridZonalSummary: TSigGeneralGrid is created in code and placed in SigGeneralGridZonalSummary_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitGlobalDevices.dfm` SigGridEditorLoop.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorDevice.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorDeviceType.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorDeviceImage.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorDevName.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorLoopName.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorZoneName.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorZoneLoopName.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorZoneLoop.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorZoneLoopSubdevices.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorZoneDevice.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorZoneDeviceType.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorZoneDeviceImage.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorZoneDeviceName.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorZoneID.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorDevIG.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorDevOG.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorDevZone.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorDevDisablement.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.dfm` SigGridEditorFaultGroup.SigGrid: value from the form file was not applied (Ident).
+- `UnitGlobalDevices.pas(135)` 'with' on an expression of unknown type (SigGeneralGridZonalSummary.Canvas) - members inside could not be qualified automatically.
+- `UnitGlobalDevices.pas(114)` 'with' on an expression of unknown type (SigGeneralGridGlobalDevices.Canvas) - members inside could not be qualified automatically.
+- `UnitLogFiles.dfm` SigPanelLog: TSigPanel is created in code and placed in SigPanelLog_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitLogFileCfg.pas` tLogField descends from tSigTextProperty, which is not part of the project; the base class was dropped.
+- `UnitLogFileCfg.pas` tLogLine descends from tSigTextProperty, which is not part of the project; the base class was dropped.
+- `UnitLogFileCfg.pas` tLogRequestID descends from tSigIntegerProperty, which is not part of the project; the base class was dropped.
+- `UnitLogFileCfg.pas` tLogRequestIDs descends from tSigObjectArray, which is not part of the project; the base class was dropped.
+- `UnitLogFileCfg.pas` tLogFieldDefs descends from tSigObjectArray, which is not part of the project; the base class was dropped.
+- `UnitZFPDiskFile.pas` tZFPDiskFile descends from tSigRelativeFileProperty, which is not part of the project; the base class was dropped.
+- `UnitZFPDiskFile.pas(195)` SetLength on a value of unknown type.
+- `UnitZFPDiskFile.pas(284)` SetLength on a value of unknown type.
+- `UnitZFPDiskFile.pas` tZFPDiskFileList descends from tSigObjectList, which is not part of the project; the base class was dropped.
+- `UnitSigFileBindings.pas(454)` 'inherited Add(new tSigEditBindingObject(this, pSigfileObject, pComponent))' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitSigFileBindings.pas(473)` 'inherited Add(new tSigFileGridBindingObject(this, pSigfileObject, pComponent))' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitSigFileBindings.pas(483)` 'inherited Add(new tSigFileGridBindingObject(this, pSigfileObject, pComponent))' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitSigFileBindings.pas(492)` 'inherited Add(new tSigFileGridBindingObject(this, pSigfileObject, pComponent))' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitSigFileBindings.pas(505)` 'inherited Add(new tSigBaseBindingStringList(this, pSigfileObject, pName, pList))' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitSigFileBindings.pas(519)` 'inherited Add(new tSigBindingTabControl(this, pSigfileObject, pName, (pComponent as TabControl)))' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitSigFileBindings.pas(546)` Address-of (@) operator on data is not supported in C#.
+- `UnitSigFileBindings.pas(546)` Address-of (@) operator on data is not supported in C#.
+- `UnitSigFileBindings.pas(556)` 'inherited Add(new tSigActiveChildComponent(this, pSigfileObject, pAction))' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitSigFileBindings.pas(568)` 'inherited Add(new tSigFileVariableEditorList(this, pSigfileObject, (pComponent as TSigVariableEditorList)))' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitSigFileBindings.pas(1535)` 'with' on an expression of unknown type ((fSigFileObject as object)) - members inside could not be qualified automatically.
+- `UnitSigFileBindings.pas(1620)` 'with' on an expression of unknown type ((iChild as object)) - members inside could not be qualified automatically.
+- `UnitSigFileBindings.pas(1683)` 'with' on an expression of unknown type ((iChild as object)) - members inside could not be qualified automatically.
+- `UnitSigFileBindings.pas(1817)` 'with' on an expression of unknown type ((iChild as object)) - members inside could not be qualified automatically.
+- `UnitSigFileBindings.pas(1439)` 'with' on an expression of unknown type ((iChild as object)) - members inside could not be qualified automatically.
+- `UnitSigFileBindings.pas(1357)` 'inherited Add(new tSigFileGridBindingColumn(pCol, pName))' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitSigFileBindings.pas(1382)` 'with' on an expression of unknown type ((iChild as object)) - members inside could not be qualified automatically.
+- `UnitNodeChangeProblems.pas(198)` TypeInfo(...) has no C# equivalent (memory/pointer/RTTI intrinsic) - rewrite manually.
+- `UnitNodeChangeProblems.pas(78)` 'with' on an expression of unknown type (pFrom.LoopList) - members inside could not be qualified automatically.
+- `UnitNodeChangeProblems.pas(118)` 'with' on an expression of unknown type (pFrom.OwnerList) - members inside could not be qualified automatically.
+- `UnitReplace.dfm` SigImageReplace: TSigImage is created in code and placed in SigImageReplace_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitReplace.dfm` SigImageReplaceBy: TSigImage is created in code and placed in SigImageReplaceBy_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitZFPErrorObjects.pas(85)` 'with' on an expression of unknown type ((fErrorObject as object)) - members inside could not be qualified automatically.
+- `UnitAdvancedTransferSelector.dfm` CheckListBoxAMNodes: TCheckListBox - check marks are not converted.
+- `UnitAdvancedTransferSelector.dfm` CheckListBoxAMFileSets: TCheckListBox - check marks are not converted.
+- `UnitAdvancedTransferSelector.pas(72)` 'with' on an expression of unknown type (pFile.NodeList) - members inside could not be qualified automatically.
+- `UnitAdvancedTransferSelector.pas(57)` 'with' on an expression of unknown type (pFile.UserTransferObjects) - members inside could not be qualified automatically.
+- `TimeSpinButton.pas` TTimeSpinButton descends from the VCL class TSpinEdit; it now derives from TextBox - overridden VCL methods must be reviewed.
+- `TimeSpinButton.pas(147)` 'inherited OnChange' used as a value: the VCL ancestor has no C# equivalent.
+- `TimeSpinButton.pas(72)` TTimeSpinButton.CMExit is a Windows message handler (message CM_EXIT); WPF does not route window messages - hook HwndSource.AddHook or use a WPF event instead.
+- `UnitFrameErrorList.pas(364)` 'inherited Add(pErrorList)' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitFrameErrorList.dfm` SigGeneralGridErrors.OnMouseDown = SigGeneralGridErrorsMouseDown was not wired (TSigGeneralGrid has no event property OnMouseDown).
+- `UnitFrameErrorList.dfm` SigGeneralGridErrors: TSigGeneralGrid is created in code and placed in SigGeneralGridErrors_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitFrameErrorList.dfm` tSigGridEditorStatus.SigGrid: value from the form file was not applied (Ident).
+- `UnitFrameErrorList.dfm` tSigGridEditorStatus.Images: value from the form file was not applied (Ident).
+- `UnitFrameErrorList.dfm` tSigGridEditorErrorText.SigGrid: value from the form file was not applied (Ident).
+- `SigImageList.pas(73)` 'inherited Add(iImageObject)' used as a value: the VCL ancestor has no C# equivalent.
+- `SigSaveDialog.pas` TSigSaveDialog descends from the VCL class TSaveDialog; it now derives from TSaveDialog - overridden VCL methods must be reviewed.
+- `SigSaveDialog.pas(239)` 'inherited FilterIndex' used as a value: the VCL ancestor has no C# equivalent.
+- `SigSpinEdit.pas` TSigSpinEdit descends from the VCL class TSpinEdit; it now derives from TextBox - overridden VCL methods must be reviewed.
+- `SigSpinEdit.pas(221)` 'inherited ReadOnly' used as a value: the VCL ancestor has no C# equivalent.
+- `SigSpinEdit.pas(173)` 'inherited Value' used as a value: the VCL ancestor has no C# equivalent.
+- `SigSpinEdit.pas(239)` 'inherited Value' used as a value: the VCL ancestor has no C# equivalent.
+- `SigSpinEdit.pas(181)` 'inherited IsValidChar(Key)' used as a value: the VCL ancestor has no C# equivalent.
+- `SigRegistry.pas(177)` 'with' on an expression of unknown type (iRegistry) - members inside could not be qualified automatically.
+- `SigVariableEditor.pas` TSigVariableEditors descends from tComponentList, which is not part of the project; the base class was dropped.
+- `SigVariableEditor.pas(1123)` 'inherited Add(NewVal)' used as a value: the VCL ancestor has no C# equivalent.
+- `SigVariableEditor.pas(755)` tMaskEdit.Create at run time: the control must be added to a WPF panel (Children.Add) instead of setting Parent.
+- `SigVariableEditor.pas(771)` tComboBox.Create at run time: the control must be added to a WPF panel (Children.Add) instead of setting Parent.
+- `SigVariableEditor.pas(776)` tCheckBox.Create at run time: the control must be added to a WPF panel (Children.Add) instead of setting Parent.
+- `SigVariableEditor.pas(781)` tButton.Create at run time: the control must be added to a WPF panel (Children.Add) instead of setting Parent.
+- `SigVariableEditor.pas(887)` tLabel.Create at run time: the control must be added to a WPF panel (Children.Add) instead of setting Parent.
+- `SigVariableEditorList.pas` TSigVariableEditorList descends from the VCL class TScrollBox; it now derives from ScrollViewer - overridden VCL methods must be reviewed.
+- `comm32.pas(649)` FillChar on this kind of value is not supported.
+- `comm32.pas(650)` FillChar on this kind of value is not supported.
+- `comm32.pas(687)` Address-of (@) operator on data is not supported in C#.
+- `comm32.pas(695)` Address-of (@) operator on data is not supported in C#.
+- `comm32.pas(712)` Address-of (@) operator on data is not supported in C#.
+- `comm32.pas(727)` Address-of (@) operator on data is not supported in C#.
+- `comm32.pas(735)` Address-of (@) operator on data is not supported in C#.
+- `comm32.pas(747)` Address-of (@) operator on data is not supported in C#.
+- `comm32.pas(757)` Address-of (@) operator on data is not supported in C#.
+- `comm32.pas(1121)` Pointer dereference (^) kept as plain reference - check the logic.
+- `comm32.pas(963)` Pointer dereference (^) kept as plain reference - check the logic.
+- `comm32.pas(925)` Move(...) has no C# equivalent (memory/pointer/RTTI intrinsic) - rewrite manually.
+- `comm32.pas(1257)` FillChar on this kind of value is not supported.
+- `comm32.pas(1338)` Address-of (@) operator on data is not supported in C#.
+- `comm32.pas(1412)` Pointer dereference (^) kept as plain reference - check the logic.
+- `comm32.pas(1452)` Address-of (@) operator on data is not supported in C#.
+- `comm32.pas(1487)` Pointer dereference (^) kept as plain reference - check the logic.
+- `comm32.pas(414)` Typecast to Pointer kept as-is.
+- `comm32.pas(415)` Move(...) has no C# equivalent (memory/pointer/RTTI intrinsic) - rewrite manually.
+- `comm32.pas(415)` Pointer dereference (^) kept as plain reference - check the logic.
+- `SigImage.pas` TSigImage descends from the VCL class TImage; it now derives from Image - overridden VCL methods must be reviewed.
+- `SigPanel.pas` TSigPanel descends from the VCL class TPanel; it now derives from Border - overridden VCL methods must be reviewed.
+- `SigPanel.pas(122)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(130)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(131)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(132)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(133)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(138)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(140)` 'inherited Align' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(147)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(148)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(149)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(150)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(155)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(157)` 'inherited Align' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(164)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(165)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(166)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(167)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(172)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(174)` 'inherited Align' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(181)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(182)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(183)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(184)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(189)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(191)` 'inherited Align' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(198)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(199)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(200)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(201)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(206)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(208)` 'inherited Align' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(89)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(94)` 'inherited ParentBackground' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(99)` 'inherited ShowCaption' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(110)` 'inherited BevelOuter' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(220)` 'inherited ShowCaption' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(84)` 'inherited Align' used as a value: the VCL ancestor has no C# equivalent.
+- `SigPanel.pas(104)` 'inherited Align' used as a value: the VCL ancestor has no C# equivalent.
+- `ErrorList.pas(387)` 'inherited Add(iObject)' used as a value: the VCL ancestor has no C# equivalent.
+- `USBPanel.pas` TUSBPanel descends from the VCL class TPanel; it now derives from Border - overridden VCL methods must be reviewed.
+- `USBPanel.pas(1767)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1768)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1769)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1770)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1774)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1775)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1776)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1777)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1778)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1779)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1780)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1781)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(2451)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(2482)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(2498)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(2519)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(2555)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(2555)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(2568)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(2683)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1993)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(2194)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(2176)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(2391)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(2744)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(2755)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(2775)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(2058)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(2073)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(2028)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1074)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1075)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1076)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1077)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1078)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1079)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1080)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1081)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1082)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1083)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1084)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1085)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1441)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1447)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1448)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1449)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1450)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1455)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1461)` Address-of (@) operator on data is not supported in C#.
+- `USBPanel.pas(1575)` Address-of (@) operator on data is not supported in C#.
+- `misc.pas(97)` Address-of (@) operator on data is not supported in C#.
+- `SigNET.TStringGrid.pas` TStringGrid descends from VCL.Grids.TStringGrid, which is not part of the project; the base class was dropped.
+- `SigNET.TStringGrid.pas(48)` 'inherited RowCount' used as a value: the VCL ancestor has no C# equivalent.
+- `SigNET.TStringGrid.pas(65)` 'inherited RowCount' used as a value: the VCL ancestor has no C# equivalent.
+- `SigNET.TStringGrid.pas(150)` 'inherited RowCount' used as a value: the VCL ancestor has no C# equivalent.
+- `SigNET.TStringGrid.pas(155)` 'inherited FixedRows' used as a value: the VCL ancestor has no C# equivalent.
+- `SigNET.TStringGrid.pas(156)` 'inherited RowCount' used as a value: the VCL ancestor has no C# equivalent.
+- `SigNET.TStringGrid.pas(158)` 'inherited RowCount' used as a value: the VCL ancestor has no C# equivalent.
+- `SigNET.TStringGrid.pas(77)` 'inherited FixedRows' used as a value: the VCL ancestor has no C# equivalent.
+- `UnitSimSystem.dfm` SigPanelMain: TSigPanel is created in code and placed in SigPanelMain_Host; published properties declared by the class are applied, inherited VCL properties (Font, Color ...) are not.
+- `UnitSimSystem.dfm` SigGridEditorPanelName.SigGrid: value from the form file was not applied (Ident).
+- `UnitSimSystem.dfm` SigGridEditorPanelID.SigGrid: value from the form file was not applied (Ident).
+- `UnitSimSystem.dfm` SigGridEditorFileID.SigGrid: value from the form file was not applied (Ident).
+- `USBBulkDLL.pas(92)` Pointer type P_USBBULK_DEVICE_EVENT mapped to IntPtr; pointer code must be rewritten.
+- `USBBulkDLL.pas(111)` Pointer type PUSBBULK_DEV_INFO mapped to IntPtr; pointer code must be rewritten.
+- `USBBulkDLL.pas(122)` Pointer type PUSBBULK_SETUP_REQUEST mapped to IntPtr; pointer code must be rewritten.
+
+## Infos
+
+- `ZFPTools.dproj` Read project options from ZFPTools.dproj (Delphi 2009+, 0 search paths, 2 defines)
+- `ZFPTools.dpr` Loading Delphi 2009+ project ZFPTools.dpr
+- `UnitMain.dfm` Loaded text form FormMain: TFormMain (538 components)
+- `about.dfm` Loaded binary form AboutBox: TAboutBox (8 components)
+- `UnitASCIITransfer.dfm` Loaded text form FormASCIITransfer: TFormASCIITransfer (76 components)
+- `PrevForm.dfm` Loaded binary form PreviewForm: TPreviewForm (32 components)
+- `Gopage.dfm` Loaded binary form GoPageForm: TGoPageForm (4 components)
+- `SigFileClipboard.dfm` Loaded text form FormSigFileClipboard: TFormSigFileClipboard (5 components)
+- `SigFileImageSelector.dfm` Loaded text form FormImageSelector: TFormImageSelector (9 components)
+- `UnitShortNameAndIconEditor.dfm` Loaded text form FormShortNameAndIconEditor: TFormShortNameAndIconEditor (25 components)
+- `UnitFrameIconEditor.dfm` Loaded text form FrameIconEditor: TFrameIconEditor (7 components)
+- `UnitNewIconGroupName.dfm` Loaded text form FormNewIconGroupName: TFormNewIconGroupName (4 components)
+- `PageSetupDlg.dfm` Loaded binary form PageSetupForm: TPageSetupForm (55 components)
+- `UnitLoadErrors.dfm` Loaded text form FormLoadErrors: TFormLoadErrors (4 components)
+- `UnitSelectInputGroup.dfm` Loaded text form FormSelectGlobalObject: TFormSelectGlobalObject (13 components)
+- `UnitFrameGlobalObjectPanelEditor.dfm` Loaded text form FrameGlobalObjectPanelEditor: TFrameGlobalObjectPanelEditor (9 components)
+- `UnitFrameGlobalObjectEditor.dfm` Loaded text form FrameGlobalObjectEditor: TFrameGlobalObjectEditor (34 components)
+- `UnitFrameSeqEditor.dfm` Loaded text form FrameSequenceEditor: TFrameSequenceEditor (20 components)
+- `UnitFrameSupergroupEditor.dfm` Loaded text form FrameSupergroupEditor: TFrameSupergroupEditor (24 components)
+- `UnitFrameInputGroupEditor.dfm` Loaded text form FrameInputGroupEditor: TFrameInputGroupEditor (29 components)
+- `UnitFrameOutputGroupEditor.dfm` Loaded text form FrameOutputGroupEditor: TFrameOutputGroupEditor (16 components)
+- `UnitBlockAddition.dfm` Loaded text form FormBlockAddition: TFormBlockAddition (8 components)
+- `UnitPasteSpecial.dfm` Loaded text form FormPasteSpecial: TFormPasteSpecial (7 components)
+- `UnitFormLoadFile.dfm` Loaded text form FormLoadFile: TFormLoadFile (3 components)
+- `UnitDongleInterface.dfm` Loaded text form FormDongleInterface: TFormDongleInterface (1 components)
+- `UnitGlobalDevices.dfm` Loaded text form FrameGlobalDevices: TFrameGlobalDevices (26 components)
+- `UnitLogFiles.dfm` Loaded text form FrameLogFiles: TFrameLogFiles (5 components)
+- `UnitFrameZoneEditor.dfm` Loaded text form FrameZoneEditor: TFrameZoneEditor (14 components)
+- `UnitChangeDefaultLogo.dfm` Loaded text form FormChangeDefaultLogo: TFormChangeDefaultLogo (8 components)
+- `UnitPanelLogIn.dfm` Loaded text form FormLogIn: TFormLogIn (25 components)
+- `UnitRemoteLoginNotSupported.dfm` Loaded text form FormRemoteLoginNotSupported: TFormRemoteLoginNotSupported (5 components)
+- `UnitFileTransfer.dfm` Loaded text form FormFileTransfer: TFormFileTransfer (7 components)
+- `UnitNodeChangeProblems.dfm` Loaded text form FormNodeChangeProblems: TFormNodeChangeProblems (17 components)
+- `UnitReplace.dfm` Loaded text form FormReplace: TFormReplace (11 components)
+- `UnitAdvancedTransferSelector.dfm` Loaded text form FormAdvancedTransferSelector: TFormAdvancedTransferSelector (15 components)
+- `UnitDisassociation.dfm` Loaded text form FormDissociation: TFormDissociation (4 components)
+- `UnitConfirmTreeDelete.dfm` Loaded text form FormConfirmCETreeDelete: TFormConfirmCETreeDelete (7 components)
+- `UnitFrameErrorList.dfm` Loaded text form FrameErrorList: TFrameErrorList (11 components)
+- `UnitFileNotSaved.dfm` Loaded text form FormFileNotSaved: TFormFileNotSaved (4 components)
+- `UnitSimSystem.dfm` Loaded text form FrameSimSystem: TFrameSimSystem (9 components)
+- Converting ZFPTools: 94 unit(s), 38 form(s)
+- `SetupApi` Type PPWSTR is declared in units JwaWinType and SetupApi; the one in SetupApi is named SetupApi_PPWSTR in C#.
+- `SetupApi` Type PPASTR is declared in units JwaWinType and SetupApi; the one in SetupApi is named SetupApi_PPASTR in C#.
+- `SetupApi` Type PPSTR is declared in units JwaWinType and SetupApi; the one in SetupApi is named SetupApi_PPSTR in C#.
+- `SetupApi` Type ULONG_PTR is declared in units JwaWinType and SetupApi; the one in SetupApi is named SetupApi_ULONG_PTR in C#.
+- `SetupApi` Type DWORD_PTR is declared in units JwaWinType and SetupApi; the one in SetupApi is named SetupApi_DWORD_PTR in C#.
+- `SetupApi` Type UINT_PTR is declared in units JwaWinType and SetupApi; the one in SetupApi is named SetupApi_UINT_PTR in C#.
+- `UnitDeviceEditorHelper` Type TSigNETStringGrid is declared in units UnitFiles and UnitDeviceEditorHelper; the one in UnitDeviceEditorHelper is named UnitDeviceEditorHelper_TSigNETStringGrid in C#.
+- `UnitDeviceEditorHelper` Type tIncludeSelectionIn is declared in units UnitFrameZoneEditor and UnitDeviceEditorHelper; the one in UnitDeviceEditorHelper is named UnitDeviceEditorHelper_tIncludeSelectionIn in C#.
+- `UnitObjectEditorHelper` Type tIncludeSelectionIn is declared in units UnitFrameZoneEditor and UnitObjectEditorHelper; the one in UnitObjectEditorHelper is named UnitObjectEditorHelper_tIncludeSelectionIn in C#.
+- `ErrorList` Type tOnTranslate is declared in units UnitPrintColumns and ErrorList; the one in ErrorList is named ErrorList_tOnTranslate in C#.
+- `USBPanel` Type TStopBits is declared in units Comm32 and USBPanel; the one in USBPanel is named USBPanel_TStopBits in C#.
+- `USBPanel` Type TParity is declared in units Comm32 and USBPanel; the one in USBPanel is named USBPanel_TParity in C#.
+- `UnitMain.pas` Converting unit UnitMain
+- `UnitMain.dfm` SpeedButtonUndo: glyph contains 2 state images side by side; only the strip is shown.
+- `UnitMain.dfm` SpeedButtonRedo: glyph contains 2 state images side by side; only the strip is shown.
+- `UnitMain.dfm` SpeedButtonPrint: glyph contains 2 state images side by side; only the strip is shown.
+- `UnitMain.dfm` SpeedButtonPrintPreview: glyph contains 2 state images side by side; only the strip is shown.
+- `UnitMain.dfm` SpeedButtonPrintSetup: glyph contains 2 state images side by side; only the strip is shown.
+- `UnitMain.dfm` SpeedButtonNew: glyph contains 2 state images side by side; only the strip is shown.
+- `UnitMain.dfm` SpeedButtonOpen: glyph contains 2 state images side by side; only the strip is shown.
+- `UnitMain.dfm` SpeedButtonSave: glyph contains 2 state images side by side; only the strip is shown.
+- `UnitMain.dfm` SpeedButtonSaveAs: glyph contains 2 state images side by side; only the strip is shown.
+- `UnitMain.dfm` SpeedButtonShowComponentPalette: glyph contains 2 state images side by side; only the strip is shown.
+- `UnitMain.dfm` SpeedButtonEditDevices: glyph contains 2 state images side by side; only the strip is shown.
+- `about.pas` Converting unit About
+- `UnitFiles.pas` Converting unit UnitFiles
+- `SigFile.pas` Converting unit SigFile
+- `UnitUndoList.pas` Converting unit UnitUndoList
+- `UnitRecordTypes.pas` Converting unit UnitRecordTypes
+- `USBBulkTransferMode.pas` Converting unit USBBulkTransferMode
+- `moduleloader.pas` Converting unit moduleloader
+- `UnitASCIITransfer.pas` Converting unit UnitASCIITransfer
+- `UnitASCIITransfer.pas(77)` tASCIIRequestList.Clear overrides a VCL/RTL method; 'override' was removed.
+- `UnitASCIITransfer.dfm` BitBtnStartXFER: glyph contains 2 state images side by side; only the strip is shown.
+- `UnitASCIITransfer.dfm` BitBtnAbortXFER: glyph contains 2 state images side by side; only the strip is shown.
+- `PrevForm.pas` Converting unit PrevForm
+- `PrevForm.dfm` ZoomCursorBut: glyph contains 2 state images side by side; only the strip is shown.
+- `PrevForm.dfm` PageNumSpeed: glyph contains 2 state images side by side; only the strip is shown.
+- `Gopage.pas` Converting unit Gopage
+- `SigFileClipboard.pas` Converting unit SigFileClipboard
+- `SigFileImageList.pas` Converting unit SigFileImageList
+- `SigFileImageList.pas(39)` tSigFileImageList.Load overrides a VCL/RTL method; 'override' was removed.
+- `SigFileImageList.pas(40)` tSigFileImageList.PasteFromClipboard overrides a VCL/RTL method; 'override' was removed.
+- `SigFileImageSelector.pas` Converting unit SigFileImageSelector
+- `UnitFieldArray.pas` Converting unit UnitFieldArray
+- `SigFilePgmStatus.pas` Converting unit SigFilePgmStatus
+- `SigFilePgmStatus.pas(30)` tSigPgmStatusHelper.Clear overrides a VCL/RTL method; 'override' was removed.
+- `SigFilePgmStatus.pas(46)` tPageControlStatusEntry.ExecuteOnChange overrides a VCL/RTL method; 'override' was removed.
+- `SigFilePgmStatus.pas(47)` tPageControlStatusEntry.SetValue overrides a VCL/RTL method; 'override' was removed.
+- `SigFilePgmStatus.pas(65)` tTabControlStatusEntry.SetValue overrides a VCL/RTL method; 'override' was removed.
+- `SigFilePgmStatus.pas(84)` tGridStatusEntry.SetValue overrides a VCL/RTL method; 'override' was removed.
+- `SigFilePgmStatus.pas(98)` tSigFilePgmStatus.RefreshEditor overrides a VCL/RTL method; 'override' was removed.
+- `UnitShortNameAndIconEditor.pas` Converting unit UnitShortNameAndIconEditor
+- `UnitFrameIconEditor.pas` Converting unit UnitFrameIconEditor
+- `UnitNewIconGroupName.pas` Converting unit UnitNewIconGroupName
+- `UnitExpertModes.pas` Converting unit UnitExpertModes
+- `SigTranslation.pas` Converting unit SigTranslation
+- `SigTranslation.pas(35)` TSigTranslation.Translate overrides a VCL/RTL method; 'override' was removed.
+- `SigTranslation.pas(36)` TSigTranslation.ClassType overrides a VCL/RTL method; 'override' was removed.
+- `SigTranslation.pas(40)` TSigTranslation.CreateChild overrides a VCL/RTL method; 'override' was removed.
+- `SigTranslation.pas(46)` TSigTranslation.ChildMustExist overrides a VCL/RTL method; 'override' was removed.
+- `SigTranslation.pas(47)` TSigTranslation.Load overrides a VCL/RTL method; 'override' was removed.
+- `PrevPrinter.pas` Converting unit PrevPrinter
+- `PrevPrinter.pas(57)` TTextOptions.Assign overrides a VCL/RTL method; 'override' was removed.
+- `PrevPrinter.pas(116)` TPreviewPrinter.Loaded overrides a VCL/RTL method; 'override' was removed.
+- `PageSetupDlg.pas` Converting unit PageSetupDlg
+- `PageSetupDlg.dfm` PrinterSetupBut: glyph contains 2 state images side by side; only the strip is shown.
+- `FormSettings.pas` Converting unit FormSettings
+- `FormSettings.pas(32)` TFormSettings.Loaded overrides a VCL/RTL method; 'override' was removed.
+- `FormSettings.pas(36)` TFormSettings.Notification overrides a VCL/RTL method; 'override' was removed.
+- `WinIOCtl.pas` Converting unit WinIoctl
+- `WinIOCtl.pas(539)` Record STORAGE_BREAK_RESERVATION_REQUEST is used via pointer type PSTORAGE_BREAK_RESERVATION_REQUEST; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(3845)` Record NTFS_VOLUME_DATA_BUFFER is used via pointer type PNTFS_VOLUME_DATA_BUFFER; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(3867)` Record NTFS_EXTENDED_VOLUME_DATA is used via pointer type PNTFS_EXTENDED_VOLUME_DATA; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(3882)` Record STARTING_LCN_INPUT_BUFFER is used via pointer type PSTARTING_LCN_INPUT_BUFFER; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(3891)` Record VOLUME_BITMAP_BUFFER is used via pointer type PVOLUME_BITMAP_BUFFER; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(3906)` Record STARTING_VCN_INPUT_BUFFER is used via pointer type PSTARTING_VCN_INPUT_BUFFER; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(3920)` Record RETRIEVAL_POINTERS_BUFFER is used via pointer type PRETRIEVAL_POINTERS_BUFFER; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(3935)` Record NTFS_FILE_RECORD_INPUT_BUFFER is used via pointer type PNTFS_FILE_RECORD_INPUT_BUFFER; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(3944)` Record NTFS_FILE_RECORD_OUTPUT_BUFFER is used via pointer type PNTFS_FILE_RECORD_OUTPUT_BUFFER; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(3959)` Record MOVE_FILE_DATA is used via pointer type PMOVE_FILE_DATA; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(3997)` Record FIND_BY_SID_DATA is used via pointer type PFIND_BY_SID_DATA; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(4005)` Record FIND_BY_SID_OUTPUT is used via pointer type PFIND_BY_SID_OUTPUT; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(4026)` Record MFT_ENUM_DATA is used via pointer type PMFT_ENUM_DATA; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(4041)` Record CREATE_USN_JOURNAL_DATA is used via pointer type PCREATE_USN_JOURNAL_DATA; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(4055)` Record READ_USN_JOURNAL_DATA is used via pointer type PREAD_USN_JOURNAL_DATA; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(4089)` Record USN_RECORD is used via pointer type PUSN_RECORD; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(4164)` Record USN_JOURNAL_DATA is used via pointer type PUSN_JOURNAL_DATA; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(4183)` Record DELETE_USN_JOURNAL_DATA is used via pointer type PDELETE_USN_JOURNAL_DATA; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(4207)` Record MARK_HANDLE_INFO is used via pointer type PMARK_HANDLE_INFO; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `WinIOCtl.pas(4276)` Record BULK_SECURITY_TEST_DATA is used via pointer type PBULK_SECURITY_TEST_DATA; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `jwawinnt.pas` Converting unit JwaWinNT
+- `jwawinnt.pas(4236)` Record BATTERY_REPORTING_SCALE is used via pointer type PBATTERY_REPORTING_SCALE; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `jwawinnt.pas(4251)` Record POWER_ACTION_POLICY is used via pointer type PPOWER_ACTION_POLICY; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `jwawinnt.pas(4298)` Record SYSTEM_POWER_LEVEL is used via pointer type PSYSTEM_POWER_LEVEL; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `jwawinnt.pas(4459)` Record SYSTEM_POWER_CAPABILITIES is used via pointer type PSYSTEM_POWER_CAPABILITIES; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `jwawinnt.pas(4500)` Record SYSTEM_BATTERY_STATE is used via pointer type PSYSTEM_BATTERY_STATE; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `jwawinnt.pas(5098)` Record ANON_OBJECT_HEADER is used via pointer type PAnonObjectHeader; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `jwawinnt.pas(5549)` Record IMAGE_AUX_SYMBOL_TOKEN_DEF is used via pointer type PIMAGE_AUX_SYMBOL_TOKEN_DEF; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `jwawinnt.pas(6629)` Record IMAGE_LOAD_CONFIG_DIRECTORY32 is used via pointer type PIMAGE_LOAD_CONFIG_DIRECTORY32; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `jwawinnt.pas(6657)` Record IMAGE_LOAD_CONFIG_DIRECTORY64 is used via pointer type PIMAGE_LOAD_CONFIG_DIRECTORY64; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `jwawinnt.pas(7005)` Record IMPORT_OBJECT_HEADER is used via pointer type PImportObjectHeader; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `jwawinnt.pas(7112)` Record IMAGE_COR20_HEADER is used via pointer type PIMAGE_COR20_HEADER; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `jwawinnt.pas(9296)` External routine RtlInitializeSListHead from ntdll.dll converted to [DllImport]; check parameter marshalling.
+- `jwawinnt.pas(9297)` External routine RtlFirstEntrySList from ntdll.dll converted to [DllImport]; check parameter marshalling.
+- `jwawinnt.pas(9298)` External routine RtlInterlockedPopEntrySList from ntdll.dll converted to [DllImport]; check parameter marshalling.
+- `jwawinnt.pas(9299)` External routine RtlInterlockedPushEntrySList from ntdll.dll converted to [DllImport]; check parameter marshalling.
+- `jwawinnt.pas(9300)` External routine RtlInterlockedFlushSList from ntdll.dll converted to [DllImport]; check parameter marshalling.
+- `jwawinnt.pas(9301)` External routine RtlQueryDepthSList from ntdll.dll converted to [DllImport]; check parameter marshalling.
+- `jwawinnt.pas(9293)` External routine RtlCaptureContext from ntdll.dll converted to [DllImport]; check parameter marshalling.
+- `jwawinnt.pas(9294)` External routine RtlCompareMemory from ntdll.dll converted to [DllImport]; check parameter marshalling.
+- `jwawinnt.pas(9295)` External routine VerSetConditionMask from kernel32.dll converted to [DllImport]; check parameter marshalling.
+- `jwawintype.pas` Converting unit JwaWinType
+- `jwawintype.pas(546)` Record ULARGE_INTEGER is used via pointer type LPULARGE_INTEGER, PULARGE_INTEGER; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `jwawintype.pas(827)` Record LIST_ENTRY32 is used via pointer type PLIST_ENTRY32; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `jwawintype.pas(837)` Record LIST_ENTRY64 is used via pointer type PLIST_ENTRY64; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `jwawintype.pas(1366)` Record _RECTL is used via pointer type LPCRECTL; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `jwawintype.pas(1382)` Record tagPOINT is used via pointer type NPPOINT; converted to a class (New/Dispose/^ map to new/null/plain access).
+- `jwawintype.pas(1786)` External routine GetModuleHandle from kernel32.dll converted to [DllImport]; check parameter marshalling.
+- `jwawintype.pas(1787)` External routine LoadLibrary from kernel32.dll converted to [DllImport]; check parameter marshalling.
+- `jwawintype.pas(1788)` External routine GetProcAddress from kernel32.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas` Converting unit SetupApi
+- `SetupAPI.pas(6929)` External routine SetupGetInfInformationA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6930)` External routine SetupGetInfInformationW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6931)` External routine SetupGetInfInformation from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6932)` External routine SetupQueryInfFileInformationA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6933)` External routine SetupQueryInfFileInformationW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6934)` External routine SetupQueryInfFileInformation from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6940)` External routine SetupQueryInfVersionInformationA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6941)` External routine SetupQueryInfVersionInformationW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6942)` External routine SetupQueryInfVersionInformation from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6943)` External routine SetupGetInfFileListA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6944)` External routine SetupGetInfFileListW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6945)` External routine SetupGetInfFileList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6946)` External routine SetupOpenInfFileA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6947)` External routine SetupOpenInfFileW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6948)` External routine SetupOpenInfFile from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6949)` External routine SetupOpenMasterInf from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6950)` External routine SetupOpenAppendInfFileA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6951)` External routine SetupOpenAppendInfFileW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6952)` External routine SetupOpenAppendInfFile from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6953)` External routine SetupCloseInfFile from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6954)` External routine SetupFindFirstLineA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6955)` External routine SetupFindFirstLineW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6956)` External routine SetupFindFirstLine from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6957)` External routine SetupFindNextLine from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6958)` External routine SetupFindNextMatchLineA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6959)` External routine SetupFindNextMatchLineW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6960)` External routine SetupFindNextMatchLine from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6961)` External routine SetupGetLineByIndexA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6962)` External routine SetupGetLineByIndexW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6963)` External routine SetupGetLineByIndex from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6964)` External routine SetupGetLineCountA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6965)` External routine SetupGetLineCountW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6966)` External routine SetupGetLineCount from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6967)` External routine SetupGetLineTextA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6968)` External routine SetupGetLineTextW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6969)` External routine SetupGetLineText from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6970)` External routine SetupGetFieldCount from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6971)` External routine SetupGetStringFieldA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6972)` External routine SetupGetStringFieldW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6973)` External routine SetupGetStringField from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6974)` External routine SetupGetIntField from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6975)` External routine SetupGetMultiSzFieldA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6976)` External routine SetupGetMultiSzFieldW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6977)` External routine SetupGetMultiSzField from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6978)` External routine SetupGetBinaryField from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6979)` External routine SetupGetFileCompressionInfoA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6980)` External routine SetupGetFileCompressionInfoW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6981)` External routine SetupGetFileCompressionInfo from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6982)` External routine SetupDecompressOrCopyFileA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6983)` External routine SetupDecompressOrCopyFileW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6984)` External routine SetupDecompressOrCopyFile from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6985)` External routine SetupGetSourceFileLocationA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6986)` External routine SetupGetSourceFileLocationW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6987)` External routine SetupGetSourceFileLocation from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6988)` External routine SetupGetSourceFileSizeA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6989)` External routine SetupGetSourceFileSizeW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6990)` External routine SetupGetSourceFileSize from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6991)` External routine SetupGetTargetPathA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6992)` External routine SetupGetTargetPathW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6993)` External routine SetupGetTargetPath from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6994)` External routine SetupSetSourceListA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6995)` External routine SetupSetSourceListW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6996)` External routine SetupSetSourceList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6997)` External routine SetupCancelTemporarySourceList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6998)` External routine SetupAddToSourceListA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(6999)` External routine SetupAddToSourceListW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7000)` External routine SetupAddToSourceList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7001)` External routine SetupRemoveFromSourceListA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7002)` External routine SetupRemoveFromSourceListW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7003)` External routine SetupRemoveFromSourceList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7004)` External routine SetupQuerySourceListA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7005)` External routine SetupQuerySourceListW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7006)` External routine SetupQuerySourceList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7007)` External routine SetupFreeSourceListA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7008)` External routine SetupFreeSourceListW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7009)` External routine SetupFreeSourceList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7010)` External routine SetupPromptForDiskA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7011)` External routine SetupPromptForDiskW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7012)` External routine SetupPromptForDisk from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7013)` External routine SetupCopyErrorA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7014)` External routine SetupCopyErrorW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7015)` External routine SetupCopyError from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7016)` External routine SetupRenameErrorA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7017)` External routine SetupRenameErrorW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7018)` External routine SetupRenameError from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7019)` External routine SetupDeleteErrorA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7020)` External routine SetupDeleteErrorW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7021)` External routine SetupDeleteError from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7027)` External routine SetupSetDirectoryIdA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7028)` External routine SetupSetDirectoryIdW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7029)` External routine SetupSetDirectoryId from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7030)` External routine SetupSetDirectoryIdExA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7031)` External routine SetupSetDirectoryIdExW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7032)` External routine SetupSetDirectoryIdEx from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7033)` External routine SetupGetSourceInfoA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7034)` External routine SetupGetSourceInfoW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7035)` External routine SetupGetSourceInfo from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7036)` External routine SetupInstallFileA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7037)` External routine SetupInstallFileW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7038)` External routine SetupInstallFile from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7039)` External routine SetupInstallFileExA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7040)` External routine SetupInstallFileExW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7041)` External routine SetupInstallFileEx from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7042)` External routine SetupOpenFileQueue from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7043)` External routine SetupCloseFileQueue from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7049)` External routine SetupSetPlatformPathOverrideA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7050)` External routine SetupSetPlatformPathOverrideW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7051)` External routine SetupSetPlatformPathOverride from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7052)` External routine SetupQueueCopyA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7053)` External routine SetupQueueCopyW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7054)` External routine SetupQueueCopy from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7060)` External routine SetupQueueDefaultCopyA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7061)` External routine SetupQueueDefaultCopyW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7062)` External routine SetupQueueDefaultCopy from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7063)` External routine SetupQueueCopySectionA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7064)` External routine SetupQueueCopySectionW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7065)` External routine SetupQueueCopySection from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7066)` External routine SetupQueueDeleteA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7067)` External routine SetupQueueDeleteW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7068)` External routine SetupQueueDelete from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7069)` External routine SetupQueueDeleteSectionA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7070)` External routine SetupQueueDeleteSectionW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7071)` External routine SetupQueueDeleteSection from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7072)` External routine SetupQueueRenameA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7073)` External routine SetupQueueRenameW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7074)` External routine SetupQueueRename from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7075)` External routine SetupQueueRenameSectionA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7076)` External routine SetupQueueRenameSectionW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7077)` External routine SetupQueueRenameSection from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7078)` External routine SetupCommitFileQueueA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7079)` External routine SetupCommitFileQueueW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7080)` External routine SetupCommitFileQueue from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7081)` External routine SetupScanFileQueueA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7082)` External routine SetupScanFileQueueW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7083)` External routine SetupScanFileQueue from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7084)` External routine SetupCopyOEMInfA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7085)` External routine SetupCopyOEMInfW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7086)` External routine SetupCopyOEMInf from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7087)` External routine SetupCreateDiskSpaceListA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7088)` External routine SetupCreateDiskSpaceListW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7089)` External routine SetupCreateDiskSpaceList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7090)` External routine SetupDuplicateDiskSpaceListA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7091)` External routine SetupDuplicateDiskSpaceListW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7092)` External routine SetupDuplicateDiskSpaceList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7093)` External routine SetupDestroyDiskSpaceList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7094)` External routine SetupQueryDrivesInDiskSpaceListA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7095)` External routine SetupQueryDrivesInDiskSpaceListW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7096)` External routine SetupQueryDrivesInDiskSpaceList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7097)` External routine SetupQuerySpaceRequiredOnDriveA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7098)` External routine SetupQuerySpaceRequiredOnDriveW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7099)` External routine SetupQuerySpaceRequiredOnDrive from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7100)` External routine SetupAdjustDiskSpaceListA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7101)` External routine SetupAdjustDiskSpaceListW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7102)` External routine SetupAdjustDiskSpaceList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7103)` External routine SetupAddToDiskSpaceListA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7104)` External routine SetupAddToDiskSpaceListW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7105)` External routine SetupAddToDiskSpaceList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7106)` External routine SetupAddSectionToDiskSpaceListA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7107)` External routine SetupAddSectionToDiskSpaceListW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7108)` External routine SetupAddSectionToDiskSpaceList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7109)` External routine SetupAddInstallSectionToDiskSpaceListA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7110)` External routine SetupAddInstallSectionToDiskSpaceListW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7111)` External routine SetupAddInstallSectionToDiskSpaceList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7112)` External routine SetupRemoveFromDiskSpaceListA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7113)` External routine SetupRemoveFromDiskSpaceListW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7114)` External routine SetupRemoveFromDiskSpaceList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7115)` External routine SetupRemoveSectionFromDiskSpaceListA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7116)` External routine SetupRemoveSectionFromDiskSpaceListW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7117)` External routine SetupRemoveSectionFromDiskSpaceList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7118)` External routine SetupRemoveInstallSectionFromDiskSpaceListA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7119)` External routine SetupRemoveInstallSectionFromDiskSpaceListW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7120)` External routine SetupRemoveInstallSectionFromDiskSpaceList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7121)` External routine SetupIterateCabinetA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7122)` External routine SetupIterateCabinetW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7123)` External routine SetupIterateCabinet from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7124)` External routine SetupPromptReboot from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7125)` External routine SetupInitDefaultQueueCallback from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7126)` External routine SetupInitDefaultQueueCallbackEx from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7127)` External routine SetupTermDefaultQueueCallback from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7128)` External routine SetupDefaultQueueCallbackA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7129)` External routine SetupDefaultQueueCallbackW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7130)` External routine SetupDefaultQueueCallback from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7131)` External routine SetupInstallFromInfSectionA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7132)` External routine SetupInstallFromInfSectionW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7133)` External routine SetupInstallFromInfSection from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7134)` External routine SetupInstallFilesFromInfSectionA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7135)` External routine SetupInstallFilesFromInfSectionW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7136)` External routine SetupInstallFilesFromInfSection from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7137)` External routine SetupInstallServicesFromInfSectionA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7138)` External routine SetupInstallServicesFromInfSectionW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7139)` External routine SetupInstallServicesFromInfSection from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7140)` External routine SetupInstallServicesFromInfSectionExA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7141)` External routine SetupInstallServicesFromInfSectionExW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7142)` External routine SetupInstallServicesFromInfSectionEx from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7143)` External routine SetupInitializeFileLogA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7144)` External routine SetupInitializeFileLogW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7145)` External routine SetupInitializeFileLog from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7146)` External routine SetupTerminateFileLog from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7147)` External routine SetupLogFileA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7148)` External routine SetupLogFileW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7149)` External routine SetupLogFile from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7150)` External routine SetupRemoveFileLogEntryA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7151)` External routine SetupRemoveFileLogEntryW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7152)` External routine SetupRemoveFileLogEntry from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7153)` External routine SetupQueryFileLogA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7154)` External routine SetupQueryFileLogW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7155)` External routine SetupQueryFileLog from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7156)` External routine SetupOpenLog from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7157)` External routine SetupLogErrorA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7158)` External routine SetupLogErrorW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7159)` External routine SetupLogError from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7160)` External routine SetupCloseLog from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7166)` External routine SetupDiCreateDeviceInfoList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7167)` External routine SetupDiCreateDeviceInfoListExA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7168)` External routine SetupDiCreateDeviceInfoListExW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7169)` External routine SetupDiCreateDeviceInfoListEx from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7170)` External routine SetupDiGetDeviceInfoListClass from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7171)` External routine SetupDiGetDeviceInfoListDetailA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7172)` External routine SetupDiGetDeviceInfoListDetailW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7173)` External routine SetupDiGetDeviceInfoListDetail from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7174)` External routine SetupDiCreateDeviceInfoA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7175)` External routine SetupDiCreateDeviceInfoW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7176)` External routine SetupDiCreateDeviceInfo from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7177)` External routine SetupDiOpenDeviceInfoA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7178)` External routine SetupDiOpenDeviceInfoW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7179)` External routine SetupDiOpenDeviceInfo from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7180)` External routine SetupDiGetDeviceInstanceIdA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7181)` External routine SetupDiGetDeviceInstanceIdW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7182)` External routine SetupDiGetDeviceInstanceId from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7183)` External routine SetupDiDeleteDeviceInfo from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7184)` External routine SetupDiEnumDeviceInfo from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7185)` External routine SetupDiDestroyDeviceInfoList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7186)` External routine SetupDiEnumDeviceInterfaces from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7187)` External routine SetupDiEnumInterfaceDevice from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7188)` External routine SetupDiCreateDeviceInterfaceA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7190)` External routine SetupDiCreateDeviceInterfaceW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7192)` External routine SetupDiCreateDeviceInterface from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7189)` External routine SetupDiCreateInterfaceDeviceA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7191)` External routine SetupDiCreateInterfaceDeviceW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7193)` External routine SetupDiCreateInterfaceDevice from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7194)` External routine SetupDiOpenDeviceInterfaceA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7196)` External routine SetupDiOpenDeviceInterfaceW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7198)` External routine SetupDiOpenDeviceInterface from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7195)` External routine SetupDiOpenInterfaceDeviceA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7197)` External routine SetupDiOpenInterfaceDeviceW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7199)` External routine SetupDiOpenInterfaceDevice from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7200)` External routine SetupDiGetDeviceInterfaceAlias from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7201)` External routine SetupDiGetInterfaceDeviceAlias from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7202)` External routine SetupDiDeleteDeviceInterfaceData from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7203)` External routine SetupDiDeleteInterfaceDeviceData from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7204)` External routine SetupDiRemoveDeviceInterface from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7205)` External routine SetupDiRemoveInterfaceDevice from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7206)` External routine SetupDiGetDeviceInterfaceDetailA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7208)` External routine SetupDiGetDeviceInterfaceDetailW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7210)` External routine SetupDiGetDeviceInterfaceDetail from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7207)` External routine SetupDiGetInterfaceDeviceDetailA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7209)` External routine SetupDiGetInterfaceDeviceDetailW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7211)` External routine SetupDiGetInterfaceDeviceDetail from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7212)` External routine SetupDiInstallDeviceInterfaces from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7213)` External routine SetupDiInstallInterfaceDevices from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7214)` External routine SetupDiRegisterDeviceInfo from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7215)` External routine SetupDiBuildDriverInfoList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7216)` External routine SetupDiCancelDriverInfoSearch from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7217)` External routine SetupDiEnumDriverInfoA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7218)` External routine SetupDiEnumDriverInfoW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7219)` External routine SetupDiEnumDriverInfo from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7220)` External routine SetupDiGetSelectedDriverA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7221)` External routine SetupDiGetSelectedDriverW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7222)` External routine SetupDiGetSelectedDriver from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7223)` External routine SetupDiSetSelectedDriverA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7224)` External routine SetupDiSetSelectedDriverW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7225)` External routine SetupDiSetSelectedDriver from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7226)` External routine SetupDiGetDriverInfoDetailA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7227)` External routine SetupDiGetDriverInfoDetailW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7228)` External routine SetupDiGetDriverInfoDetail from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7229)` External routine SetupDiDestroyDriverInfoList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7230)` External routine SetupDiGetClassDevsA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7231)` External routine SetupDiGetClassDevsW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7232)` External routine SetupDiGetClassDevs from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7233)` External routine SetupDiGetClassDevsExA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7234)` External routine SetupDiGetClassDevsExW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7235)` External routine SetupDiGetClassDevsEx from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7236)` External routine SetupDiGetINFClassA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7237)` External routine SetupDiGetINFClassW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7238)` External routine SetupDiGetINFClass from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7239)` External routine SetupDiBuildClassInfoList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7240)` External routine SetupDiBuildClassInfoListExA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7241)` External routine SetupDiBuildClassInfoListExW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7242)` External routine SetupDiBuildClassInfoListEx from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7243)` External routine SetupDiGetClassDescriptionA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7244)` External routine SetupDiGetClassDescriptionW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7245)` External routine SetupDiGetClassDescription from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7246)` External routine SetupDiGetClassDescriptionExA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7247)` External routine SetupDiGetClassDescriptionExW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7248)` External routine SetupDiGetClassDescriptionEx from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7249)` External routine SetupDiCallClassInstaller from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7250)` External routine SetupDiSelectDevice from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7251)` External routine SetupDiSelectBestCompatDrv from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7252)` External routine SetupDiInstallDevice from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7253)` External routine SetupDiInstallDriverFiles from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7254)` External routine SetupDiRegisterCoDeviceInstallers from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7255)` External routine SetupDiRemoveDevice from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7256)` External routine SetupDiUnremoveDevice from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7257)` External routine SetupDiMoveDuplicateDevice from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7258)` External routine SetupDiChangeState from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7259)` External routine SetupDiInstallClassA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7260)` External routine SetupDiInstallClassW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7261)` External routine SetupDiInstallClass from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7262)` External routine SetupDiInstallClassExA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7263)` External routine SetupDiInstallClassExW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7264)` External routine SetupDiInstallClassEx from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7265)` External routine SetupDiOpenClassRegKey from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7266)` External routine SetupDiOpenClassRegKeyExA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7267)` External routine SetupDiOpenClassRegKeyExW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7268)` External routine SetupDiOpenClassRegKeyEx from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7269)` External routine SetupDiCreateDeviceInterfaceRegKeyA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7271)` External routine SetupDiCreateDeviceInterfaceRegKeyW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7273)` External routine SetupDiCreateDeviceInterfaceRegKey from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7270)` External routine SetupDiCreateInterfaceDeviceRegKeyA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7272)` External routine SetupDiCreateInterfaceDeviceRegKeyW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7274)` External routine SetupDiCreateInterfaceDeviceRegKey from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7275)` External routine SetupDiOpenDeviceInterfaceRegKey from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7276)` External routine SetupDiOpenInterfaceDeviceRegKey from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7277)` External routine SetupDiDeleteDeviceInterfaceRegKey from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7278)` External routine SetupDiDeleteInterfaceDeviceRegKey from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7279)` External routine SetupDiCreateDevRegKeyA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7280)` External routine SetupDiCreateDevRegKeyW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7281)` External routine SetupDiCreateDevRegKey from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7282)` External routine SetupDiOpenDevRegKey from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7283)` External routine SetupDiDeleteDevRegKey from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7284)` External routine SetupDiGetHwProfileList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7285)` External routine SetupDiGetHwProfileListExA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7286)` External routine SetupDiGetHwProfileListExW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7287)` External routine SetupDiGetHwProfileListEx from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7288)` External routine SetupDiGetDeviceRegistryPropertyA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7289)` External routine SetupDiGetDeviceRegistryPropertyW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7290)` External routine SetupDiGetDeviceRegistryProperty from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7296)` External routine SetupDiSetDeviceRegistryPropertyA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7297)` External routine SetupDiSetDeviceRegistryPropertyW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7298)` External routine SetupDiSetDeviceRegistryProperty from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7304)` External routine SetupDiGetDeviceInstallParamsA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7305)` External routine SetupDiGetDeviceInstallParamsW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7306)` External routine SetupDiGetDeviceInstallParams from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7307)` External routine SetupDiGetClassInstallParamsA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7308)` External routine SetupDiGetClassInstallParamsW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7309)` External routine SetupDiGetClassInstallParams from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7310)` External routine SetupDiSetDeviceInstallParamsA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7311)` External routine SetupDiSetDeviceInstallParamsW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7312)` External routine SetupDiSetDeviceInstallParams from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7313)` External routine SetupDiSetClassInstallParamsA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7314)` External routine SetupDiSetClassInstallParamsW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7315)` External routine SetupDiSetClassInstallParams from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7316)` External routine SetupDiGetDriverInstallParamsA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7317)` External routine SetupDiGetDriverInstallParamsW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7318)` External routine SetupDiGetDriverInstallParams from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7319)` External routine SetupDiSetDriverInstallParamsA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7320)` External routine SetupDiSetDriverInstallParamsW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7321)` External routine SetupDiSetDriverInstallParams from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7322)` External routine SetupDiLoadClassIcon from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7323)` External routine SetupDiDrawMiniIcon from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7324)` External routine SetupDiGetClassBitmapIndex from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7325)` External routine SetupDiGetClassImageList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7326)` External routine SetupDiGetClassImageListExA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7327)` External routine SetupDiGetClassImageListExW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7328)` External routine SetupDiGetClassImageListEx from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7329)` External routine SetupDiGetClassImageIndex from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7330)` External routine SetupDiDestroyClassImageList from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7331)` External routine SetupDiGetClassDevPropertySheetsA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7332)` External routine SetupDiGetClassDevPropertySheetsW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7333)` External routine SetupDiGetClassDevPropertySheets from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7334)` External routine SetupDiAskForOEMDisk from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7335)` External routine SetupDiSelectOEMDrv from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7336)` External routine SetupDiClassNameFromGuidA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7337)` External routine SetupDiClassNameFromGuidW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7338)` External routine SetupDiClassNameFromGuid from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7339)` External routine SetupDiClassNameFromGuidExA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7340)` External routine SetupDiClassNameFromGuidExW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7341)` External routine SetupDiClassNameFromGuidEx from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7342)` External routine SetupDiClassGuidsFromNameA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7343)` External routine SetupDiClassGuidsFromNameW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7344)` External routine SetupDiClassGuidsFromName from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7345)` External routine SetupDiClassGuidsFromNameExA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7346)` External routine SetupDiClassGuidsFromNameExW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7347)` External routine SetupDiClassGuidsFromNameEx from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7348)` External routine SetupDiGetHwProfileFriendlyNameA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7349)` External routine SetupDiGetHwProfileFriendlyNameW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7350)` External routine SetupDiGetHwProfileFriendlyName from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7351)` External routine SetupDiGetHwProfileFriendlyNameExA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7352)` External routine SetupDiGetHwProfileFriendlyNameExW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7353)` External routine SetupDiGetHwProfileFriendlyNameEx from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7354)` External routine SetupDiGetWizardPage from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7355)` External routine SetupDiGetSelectedDevice from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7356)` External routine SetupDiSetSelectedDevice from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7357)` External routine SetupDiGetActualSectionToInstallA from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7358)` External routine SetupDiGetActualSectionToInstallW from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `SetupAPI.pas(7359)` External routine SetupDiGetActualSectionToInstall from SetupApiModuleName.dll converted to [DllImport]; check parameter marshalling.
+- `UnitLoadErrors.pas` Converting unit UnitLoadErrors
+- `SigFileDSMList.pas` Converting unit SigFileDSMList
+- `SigFileDSMList.pas(21)` tSigFileDSMList.SetValue overrides a VCL/RTL method; 'override' was removed.
+- `UnitParseZFPRec.pas` Converting unit UnitParseZFPRec
+- `UnitSelectInputGroup.pas` Converting unit UnitSelectInputGroup
+- `UnitCEStructures.pas` Converting unit UnitCEStructures
+- `UnitFrameGlobalObjectPanelEditor.pas` Converting unit UnitFrameGlobalObjectPanelEditor
+- `UnitFrameGlobalObjectEditor.pas` Converting unit UnitFrameGlobalObjectEditor
+- `SigFileDefaultableObjects.pas` Converting unit SigFileDefaultableObjects
+- `SigFileDefaultableObjects.pas(28)` tSigSpecialBooleanProperty.GetValueAsBool overrides a VCL/RTL method; 'override' was removed.
+- `SigFileDefaultableObjects.pas(29)` tSigSpecialBooleanProperty.SetValueAsBool overrides a VCL/RTL method; 'override' was removed.
+- `SigFileDefaultableObjects.pas(56)` tSigDefaultableBooleanProperty.SetValue overrides a VCL/RTL method; 'override' was removed.
+- `UnitFrameSeqEditor.pas` Converting unit UnitFrameSeqEditor
+- `UnitFrameSupergroupEditor.pas` Converting unit UnitFrameSupergroupEditor
+- `UnitFrameSupergroupEditor.dfm` BitBtnAddAllGroups: glyph contains 2 state images side by side; only the strip is shown.
+- `UnitFrameSupergroupEditor.dfm` BitBtnClearAllGroups: glyph contains 2 state images side by side; only the strip is shown.
+- `UnitFrameSupergroupEditor.dfm` BitBtnAddAllSuperGroups: glyph contains 2 state images side by side; only the strip is shown.
+- `UnitFrameSupergroupEditor.dfm` BitBtnClearAllSuperGroups: glyph contains 2 state images side by side; only the strip is shown.
+- `UnitFrameInputGroupEditor.pas` Converting unit UnitFrameInputGroupEditor
+- `UnitFrameOutputGroupEditor.pas` Converting unit UnitFrameOutputGroupEditor
+- `UnitPrintColumns.pas` Converting unit UnitPrintColumns
+- `UnitBlockAddition.pas` Converting unit UnitBlockAddition
+- `UnitPasteSpecial.pas` Converting unit UnitPasteSpecial
+- `UnitASCIITransportLayer.pas` Converting unit UnitASCIITransportLayer
+- `UnitErrorObjects.pas` Converting unit UnitErrorObjects
+- `UnitSigStrings.pas` Converting unit UnitSigStrings
+- `UnitSigStrings.pas(18)` TInfiniteStringList.Get overrides a VCL/RTL method; 'override' was removed.
+- `UnitFormLoadFile.pas` Converting unit UnitFormLoadFile
+- `UnitDongleInterface.pas` Converting unit UnitDongleInterface
+- `UnitGlobalDevices.pas` Converting unit UnitGlobalDevices
+- `UnitLogFiles.pas` Converting unit UnitLogFiles
+- `UnitLogFileCfg.pas` Converting unit UnitLogFileCfg
+- `UnitCTecVersion.pas` Converting unit UnitCTecVersion
+- `UnitFrameZoneEditor.pas` Converting unit UnitFrameZoneEditor
+- `UnitZFPDiskFile.pas` Converting unit UnitZFPDiskFile
+- `UnitChangeDefaultLogo.pas` Converting unit UnitChangeDefaultLogo
+- `UnitDeviceEditorHelper.pas` Converting unit UnitDeviceEditorHelper
+- `UnitPanelLogIn.pas` Converting unit UnitPanelLogIn
+- `UnitRemoteLoginNotSupported.pas` Converting unit UnitRemoteLoginNotSupported
+- `PendingActions.pas` Converting unit PendingActions
+- `UnitFileTransfer.pas` Converting unit UnitFileTransfer
+- `UnitSigFileBindings.pas` Converting unit UnitSigFileBindings
+- `UnitSigFileBindings.pas(420)` tSigFileBindingObjectList.Clear overrides a VCL/RTL method; 'override' was removed.
+- `UnitNodeChangeProblems.pas` Converting unit UnitNodeChangeProblems
+- `UnitReplace.pas` Converting unit UnitReplace
+- `UnitReplace.dfm` TFormReplace: the form's stored size (335x338) is smaller than its controls (361x321); the window is enlarged to fit them.
+- `UnitZFPErrorObjects.pas` Converting unit UnitZFPErrorObjects
+- `UnitAdvancedTransferSelector.pas` Converting unit UnitAdvancedTransferSelector
+- `TimeSpinButton.pas` Converting unit TimeSpinButton
+- `TimeSpinButton.pas(65)` TTimeSpinButton.IsValidChar overrides a VCL/RTL method; 'override' was removed.
+- `TimeSpinButton.pas(66)` TTimeSpinButton.UpClick overrides a VCL/RTL method; 'override' was removed.
+- `TimeSpinButton.pas(67)` TTimeSpinButton.DownClick overrides a VCL/RTL method; 'override' was removed.
+- `TimeSpinButton.pas(69)` TTimeSpinButton.KeyPress overrides a VCL/RTL method; 'override' was removed.
+- `UnitDisassociation.pas` Converting unit UnitDisassociation
+- `ThreadObjectList.pas` Converting unit ThreadObjectList
+- `DSMList.pas` Converting unit DSMList
+- `UnitObjectEditorHelper.pas` Converting unit UnitObjectEditorHelper
+- `UnitConfirmTreeDelete.pas` Converting unit UnitConfirmTreeDelete
+- `UnitFrameErrorList.pas` Converting unit UnitFrameErrorList
+- `UnitFrameErrorList.pas(103)` TFrameErrorLists.Clear overrides a VCL/RTL method; 'override' was removed.
+- `UnitFileNotSaved.pas` Converting unit UnitFileNotSaved
+- `SigImageList.pas` Converting unit SigImageList
+- `SigGeneralGrid.pas` Converting unit SigGeneralGrid
+- `SigGeneralGrid.pas(149)` TSigGridEditor.AfterConstruction overrides a VCL/RTL method; 'override' was removed.
+- `UnitFileVer.pas` Converting unit UnitFileVer
+- `SelectableEdit.pas` Converting unit SelectableEdit
+- `Common.pas` Converting unit Common
+- `SigSaveDialog.pas` Converting unit SigSaveDialog
+- `SigSpinEdit.pas` Converting unit SigSpinEdit
+- `SigSpinEdit.pas(52)` TSigSpinEdit.Change overrides a VCL/RTL method; 'override' was removed.
+- `SigSpinEdit.pas(53)` TSigSpinEdit.IsValidChar overrides a VCL/RTL method; 'override' was removed.
+- `SigRegistry.pas` Converting unit SigRegistry
+- `SigVariableEditor.pas` Converting unit SigVariableEditor
+- `SigVariableEditor.pas(263)` TSigVariableEditors.Clear overrides a VCL/RTL method; 'override' was removed.
+- `SigVariableEditorList.pas` Converting unit SigVariableEditorList
+- `comm32.pas` Converting unit Comm32
+- `SigImage.pas` Converting unit SigImage
+- `SigPanel.pas` Converting unit SigPanel
+- `SigPanel.pas(28)` TSigPanel.SetParentBackground overrides a VCL/RTL method; 'override' was removed.
+- `ErrorList.pas` Converting unit ErrorList
+- `ErrorList.pas(82)` TErrorList.Clear overrides a VCL/RTL method; 'override' was removed.
+- `sigparse.pas` Converting unit Sigparse
+- `UnitParseExpression.pas` Converting unit UnitParseExpression
+- `USBPanel.pas` Converting unit USBPanel
+- `misc.pas` Converting unit Misc
+- `SigNET.TStringGrid.pas` Converting unit SigNET.TStringGrid
+- `UnitSimSystem.pas` Converting unit UnitSimSystem
+- `USBBulkDLL.pas` Converting unit USBBulkDLL
+- `USBBulkDLL.pas(136)` External routine USBBULK_Close from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(143)` External routine USBBULK_Open from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(150)` External routine USBBULK_OpenTimed from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(158)` External routine USBBULK_GetDevInfoByIdx from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(165)` External routine USBBULK_Init from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(172)` External routine USBBULK_Exit from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(179)` External routine USBBULK_AddAllowedDeviceItem from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(187)` External routine USBBULK_RemoveAllowedDeviceItem from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(199)` External routine USBBULK_Read from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(206)` External routine USBBULK_Write from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(213)` External routine USBBULK_CancelRead from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(220)` External routine USBBULK_ReadTimed from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(227)` External routine USBBULK_WriteTimed from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(234)` External routine USBBULK_WriteEx from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(241)` External routine USBBULK_FlushRx from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(248)` External routine USBBULK_SetupRequest from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(259)` External routine USBBULK_GetConfigDescriptor from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(266)` External routine USBBULK_GetMode from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(273)` External routine USBBULK_GetReadMaxTransferSize from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(280)` External routine USBBULK_GetWriteMaxTransferSize from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(287)` External routine USBBULK_GetReadMaxPacketSize from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(294)` External routine USBBULK_GetWriteMaxPacketSize from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(301)` External routine USBBULK_ResetINPipe from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(308)` External routine USBBULK_ResetOUTPipe from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(315)` External routine USBBULK_ResetDevice from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(322)` External routine USBBULK_SetMode from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(329)` External routine USBBULK_SetReadTimeout from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(336)` External routine USBBULK_SetWriteTimeout from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(343)` External routine USBBULK_GetEnumTickCount from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(350)` External routine USBBULK_GetReadMaxTransferSizeDown from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(357)` External routine USBBULK_GetWriteMaxTransferSizeDown from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(364)` External routine USBBULK_SetWriteMaxTransferSizeDown from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(371)` External routine USBBULK_SetReadMaxTransferSizeDown from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(378)` External routine USBBULK_GetSN from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(385)` External routine USBBULK_GetDevInfo from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(392)` External routine USBBULK_GetUSBId from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(399)` External routine USBBULK_GetProductName from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(406)` External routine USBBULK_GetVendorName from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(413)` External routine USBBULK_GetLocationInfo from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(420)` External routine USBBULK_GetStringDesc from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(427)` External routine USBBULK_SetAlternateSetting from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(438)` External routine USBBULK_GetDriverCompileDate from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(445)` External routine USBBULK_GetDriverVersion from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(452)` External routine USBBULK_GetVersion from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(459)` External routine USBBULK_GetNumAvailableDevices from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(466)` External routine USBBULK_GetGUID from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(483)` External routine USBBULK_EnableLog from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(490)` External routine USBBULK_SetLogFilter from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(497)` External routine USBBULK_SetWarnFilter from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(504)` External routine USBBULK_AddLogFilter from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- `USBBulkDLL.pas(511)` External routine USBBULK_AddWarnFilter from LIB_USBBULK.dll converted to [DllImport]; check parameter marshalling.
+- Conversion finished: 405 files, 1054 TODO item(s), 2198 warning(s), 5 error(s).
+

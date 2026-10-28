@@ -1,0 +1,134 @@
+program ZFPTools;
+
+uses
+  VCL.Forms,
+  UnitMain in 'UnitMain.pas' {FormMain},
+  about in 'about.pas' {AboutBox},
+  UnitFiles in 'UnitFiles.pas',
+  SigFile in '..\Lib\SigFile\SigFile.pas',
+  UnitUndoList in '..\Lib\UndoRedo\UnitUndoList.pas',
+  UnitRecordTypes in 'UnitRecordTypes.pas',
+  USBBulkTransferMode in '..\Lib\USB\USBBulkTransferMode.pas',
+  moduleloader in '..\Lib\ModuleLoader\moduleloader.pas',
+  UnitASCIITransfer in 'UnitASCIITransfer.pas' {FormASCIITransfer},
+  PrevForm in '..\Lib\Printer\PrevForm.pas' {PreviewForm},
+  Gopage in '..\Lib\Printer\Gopage.pas' {GoPageForm},
+  SigFileClipboard in '..\Lib\SigFile\SigFileClipboard.pas' {FormSigFileClipboard},
+  UnitPCCfgFile in '..\XFP\PCTools\UnitPCCfgFile.pas',
+  SigFileImageList in '..\Lib\SigFile\SigFileImageList.pas',
+  SigFileImageSelector in '..\Lib\SigFile\SigFileImageSelector.pas' {FormImageSelector},
+  UnitFieldArray in 'UnitFieldArray.pas',
+  SigFilePgmStatus in '..\Lib\SigFile\SigFilePgmStatus.pas',
+  UnitShortNameAndIconEditor in 'UnitShortNameAndIconEditor.pas' {FormShortNameAndIconEditor},
+  UnitFrameIconEditor in '..\Lib\FrameIconEditor\UnitFrameIconEditor.pas' {FrameIconEditor: TFrame},
+  UnitNewIconGroupName in 'UnitNewIconGroupName.pas' {FormNewIconGroupName},
+  UnitExpertModes in 'UnitExpertModes.pas',
+  SigTranslation in '..\Lib\SigFile\SigTranslation.pas',
+  PrevPrinter in '..\lib\Printer\PrevPrinter.pas',
+  PageSetupDlg in '..\Lib\Printer\PageSetupDlg.pas' {PageSetupForm},
+  FormSettings in '..\Lib\Printer\FormSettings.pas',
+  WinIOCtl in '..\Lib\WinIOCtl\WinIOCtl.pas',
+  jwawinnt in '..\lib\winioctl\jwawinnt.pas',
+  jwawintype in '..\Lib\WinIOCtl\jwawintype.pas',
+  SetupAPI in '..\Lib\SetupAPI\SetupAPI.pas',
+  UnitLoadErrors in 'UnitLoadErrors.pas' {FormLoadErrors},
+  SigFileDSMList in '..\Lib\SigFile\SigFileDSMList.pas',
+  UnitParseZFPRec in 'UnitParseZFPRec.pas',
+  UnitSelectInputGroup in 'UnitSelectInputGroup.pas' {FormSelectGlobalObject},
+  UnitCEStructures in 'UnitCEStructures.pas',
+  UnitFrameGlobalObjectPanelEditor in 'UnitFrameGlobalObjectPanelEditor.pas' {FrameGlobalObjectPanelEditor: TFrame},
+  UnitFrameGlobalObjectEditor in 'UnitFrameGlobalObjectEditor.pas' {FrameGlobalObjectEditor: TFrame},
+  SigFileDefaultableObjects in '..\Lib\SigFile\SigFileDefaultableObjects.pas',
+  UnitFrameSeqEditor in 'UnitFrameSeqEditor.pas' {FrameSequenceEditor: TFrame},
+  UnitFrameSupergroupEditor in 'UnitFrameSupergroupEditor.pas' {FrameSupergroupEditor: TFrame},
+  UnitFrameInputGroupEditor in 'UnitFrameInputGroupEditor.pas' {FrameInputGroupEditor: TFrame},
+  UnitFrameOutputGroupEditor in 'UnitFrameOutputGroupEditor.pas' {FrameOutputGroupEditor: TFrame},
+  UnitPrintColumns in '..\Lib\Printer\UnitPrintColumns.pas',
+  UnitBlockAddition in 'UnitBlockAddition.pas' {FormBlockAddition},
+  UnitPasteSpecial in 'UnitPasteSpecial.pas' {FormPasteSpecial},
+  UnitASCIITransportLayer in '..\Lib\TransferInterface\UnitASCIITransportLayer.pas',
+  UnitErrorObjects in 'UnitErrorObjects.pas',
+  UnitSigStrings in '..\Lib\SigStrings\UnitSigStrings.pas',
+  UnitFormLoadFile in 'UnitFormLoadFile.pas' {FormLoadFile},
+  UnitDongleInterface in 'UnitDongleInterface.pas' {FormDongleInterface},
+  UnitGlobalDevices in 'UnitGlobalDevices.pas' {FrameGlobalDevices: TFrame},
+  UnitLogFiles in 'UnitLogFiles.pas' {FrameLogFiles: TFrame},
+  UnitLogFileCfg in 'UnitLogFileCfg.pas',
+  UnitCTecVersion in '..\Lib\C-Tec\UnitCTecVersion.pas',
+  UnitFrameZoneEditor in 'UnitFrameZoneEditor.pas' {FrameZoneEditor: TFrame},
+  UnitZFPDiskFile in 'UnitZFPDiskFile.pas',
+  UnitChangeDefaultLogo in 'UnitChangeDefaultLogo.pas' {FormChangeDefaultLogo},
+  UnitDeviceEditorHelper in 'UnitDeviceEditorHelper.pas',
+  UnitPanelLogIn in 'UnitPanelLogIn.pas' {FormLogIn},
+  UnitRemoteLoginNotSupported in 'UnitRemoteLoginNotSupported.pas' {FormRemoteLoginNotSupported},
+  PendingActions in '..\Lib\PendingActions\PendingActions.pas',
+  UnitFileTransfer in 'UnitFileTransfer.pas' {FormFileTransfer},
+  UnitSigFileBindings in '..\Lib\SigFile\UnitSigFileBindings.pas',
+  UnitNodeChangeProblems in 'UnitNodeChangeProblems.pas' {FormNodeChangeProblems},
+  UnitReplace in 'UnitReplace.pas' {FormReplace},
+  UnitZFPErrorObjects in 'UnitZFPErrorObjects.pas',
+  UnitAdvancedTransfer in '..\XFP\PCToolsCFGEditor\UnitAdvancedTransfer.pas',
+  UnitAdvancedTransferSelector in 'UnitAdvancedTransferSelector.pas' {FormAdvancedTransferSelector},
+  TimeSpinButton in '..\Lib\TimeSpinButton\TimeSpinButton.pas',
+  UnitDisassociation in 'UnitDisassociation.pas' {FormDissociation},
+  ThreadObjectList in '..\Lib\ThreadObjectList\ThreadObjectList.pas',
+  DSMList in '..\Lib\DSMList\DSMList.pas',
+  UnitObjectEditorHelper in 'UnitObjectEditorHelper.pas',
+  UnitConfirmTreeDelete in 'UnitConfirmTreeDelete.pas' {FormConfirmCETreeDelete},
+  UnitFrameErrorList in '..\Lib\ErrorList\UnitFrameErrorList.pas' {FrameErrorList: TFrame},
+  UnitFileNotSaved in '..\Lib\FileNotSaved\UnitFileNotSaved.pas' {FormFileNotSaved},
+  SigImageList in '..\Lib\SigImageList\SigImageList.pas',
+  SigGeneralGrid in '..\Lib\SigStringGrid\SigGeneralGrid.pas',
+  UnitFileVer in '..\Lib\SigFile\UnitFileVer.pas',
+  SelectableEdit in '..\Lib\SelectableEdit\SelectableEdit.pas',
+  Common in '..\Lib\Common\Common.pas',
+  SigSaveDialog in '..\Lib\SigSave\SigSaveDialog.pas',
+  SigSpinEdit in '..\Lib\SigSpinEdit\SigSpinEdit.pas',
+  SigRegistry in '..\Lib\SigRegistry\SigRegistry.pas',
+  SigVariableEditor in '..\Lib\SigVariableComponent\SigVariableEditor.pas',
+  SigVariableEditorList in '..\Lib\SigVariableComponent\SigVariableEditorList.pas',
+  comm32 in '..\Lib\Comms\comm32.pas',
+  SigImage in '..\Lib\SigImage\SigImage.pas',
+  SigPanel in '..\Lib\SigPanel\SigPanel.pas',
+  ErrorList in '..\Lib\ErrorList\ErrorList.pas',
+  sigparse in '..\Lib\Common\sigparse.pas',
+  UnitParseExpression in '..\Lib\Common\UnitParseExpression.pas',
+  USBPanel in '..\Lib\USB\USBPanel.pas',
+  misc in '..\Lib\Comms\misc.pas',
+  SigNET.TStringGrid in '..\Lib\SigStringGrid\SigNET.TStringGrid.pas',
+  UnitSimSystem in 'UnitSimSystem.pas' {FrameSimSystem: TFrame},
+  USBBulkDLL in '..\Lib\USB\USBBulkDLL.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFormMain, FormMain);
+  Application.CreateForm(TAboutBox, AboutBox);
+  Application.CreateForm(TFormASCIITransfer, FormASCIITransfer);
+  Application.CreateForm(TGoPageForm, GoPageForm);
+  Application.CreateForm(TFormSigFileClipboard, FormSigFileClipboard);
+  Application.CreateForm(TFormImageSelector, FormImageSelector);
+  Application.CreateForm(TFormShortNameAndIconEditor, FormShortNameAndIconEditor);
+  Application.CreateForm(TFormNewIconGroupName, FormNewIconGroupName);
+  Application.CreateForm(TPageSetupForm, PageSetupForm);
+  Application.CreateForm(TFormLoadErrors, FormLoadErrors);
+  Application.CreateForm(TFormSelectGlobalObject, FormSelectGlobalObject);
+  Application.CreateForm(TFrameSupergroupEditor, FrameSupergroupEditor);
+  Application.CreateForm(TFormBlockAddition, FormBlockAddition);
+  Application.CreateForm(TFormPasteSpecial, FormPasteSpecial);
+  Application.CreateForm(TFormLoadFile, FormLoadFile);
+  Application.CreateForm(TFormDongleInterface, FormDongleInterface);
+  Application.CreateForm(TFormChangeDefaultLogo, FormChangeDefaultLogo);
+  Application.CreateForm(TFormLogIn, FormLogIn);
+  Application.CreateForm(TFormRemoteLoginNotSupported, FormRemoteLoginNotSupported);
+  Application.CreateForm(TFormFileTransfer, FormFileTransfer);
+  Application.CreateForm(TFormNodeChangeProblems, FormNodeChangeProblems);
+  Application.CreateForm(TFormReplace, FormReplace);
+  Application.CreateForm(TFormAdvancedTransferSelector, FormAdvancedTransferSelector);
+  Application.CreateForm(TFormDissociation, FormDissociation);
+  Application.CreateForm(TFormConfirmCETreeDelete, FormConfirmCETreeDelete);
+  Application.CreateForm(TFormFileNotSaved, FormFileNotSaved);
+  Application.Run;
+end.

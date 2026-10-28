@@ -1,0 +1,17 @@
+﻿<!-- Converted from UnitConfirmTreeDelete.dfm by Delphi to WPF Converter -->
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="ZFPTools.TFormConfirmCETreeDelete" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:rtl="clr-namespace:DelphiRtl" xmlns:local="clr-namespace:ZFPTools" Title="Confirm Deletion from CE Tree" Width="500" Height="379" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" ShowInTaskbar="False" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display" FontFamily="Tahoma" FontSize="11" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid KeyboardNavigation.TabNavigation="Local" rtl:Rtl.DesignWidth="484" rtl:Rtl.DesignHeight="340">
+        <Label Padding="0" Content="Warning" x:Name="Label1" FontFamily="Tahoma" FontSize="11" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,32,0,0" rtl:Rtl.DesignWidth="47" rtl:Rtl.DesignHeight="13" />
+        <Label Padding="0" Content="This action will also delete the entry from the main CE Tree." x:Name="Label2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,64,0,0" rtl:Rtl.DesignWidth="285" rtl:Rtl.DesignHeight="13" />
+        <Label Padding="0" Content="It may also possibly lead to an Invalid tree." x:Name="Label3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,96,0,0" rtl:Rtl.DesignWidth="207" rtl:Rtl.DesignHeight="13" />
+        <GroupBox Header="You may.." Padding="0" x:Name="RadioGroupPruneParents" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,136,0,0" Width="401" Height="81">
+            <UniformGrid Columns="1" Margin="2,-2,0,-2">
+                <RadioButton Content="Just delete this item, even if it leaves an illegal tree (I will correct later)" VerticalAlignment="Center" />
+                <RadioButton Content="Prune tree to leave a valid tree (may require more effort to correct later)" VerticalAlignment="Center" />
+            </UniformGrid>
+        </GroupBox>
+        <Button IsDefault="True" Content="Confirm Delete" x:Name="BitBtn1" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,272,0,0" Width="131" Height="25" />
+        <Button IsCancel="True" Content="Cancel" x:Name="BitBtn2" TabIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="272,272,0,0" Width="137" Height="25" />
+        <CheckBox Content=" Always do this (don't ask me again)" VerticalContentAlignment="Center" x:Name="CheckBoxDontAskAgain" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,240,0,0" Width="369" Height="17" />
+    </Grid>
+</Window>
